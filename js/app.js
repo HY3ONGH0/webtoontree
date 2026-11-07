@@ -322,6 +322,12 @@
         btn.disabled = true; btn.textContent = '잠시만요…';
         try {
           const r = await WT.api.call(tab === 'login' ? 'login' : 'signup', payload);
+          if (r.admin) {
+            // 관리자 로그인: 비밀번호는 이 탭에서만 기억하고, 관리자 화면의 [회원 · 댓글 · 제보]로 바로 가요
+            try { sessionStorage.setItem('webtoontree.adminpw', payload.password); } catch (x) { /* 무시 */ }
+            location.href = 'admin.html#server';
+            return;
+          }
           s.token = r.token; s.guest = false;
           WT.api.applyMe(r.me);
           WT.toast(`${r.me.nickname} 님, 환영해요!`);

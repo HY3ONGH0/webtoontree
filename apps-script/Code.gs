@@ -6,6 +6,7 @@
  * - 처음 한 번 setup() 을 실행하면 필요한 시트 탭과 주간 알림이 만들어져요.
  * - 비밀 값은 [프로젝트 설정 → 스크립트 속성]에 넣어요. 코드에는 비밀번호를 적지 않아요.
  *     ADMIN_PASSWORD  (필수) 관리자 비밀번호
+ *     ADMIN_ID        (선택) 사용자 사이트 로그인 화면에서 관리자로 들어갈 아이디. 기본: admin
  *     ADMIN_EMAIL     (선택) 주간 알림을 받을 메일. 비우면 스크립트 주인 메일
  *     DATA_URL        (선택) 사이트 data.json 주소. 기본: https://hy3ongh0.github.io/webtoontree/data/data.json
  *     GITHUB_TOKEN    (선택) 관리자 화면 [바로 저장]용 GitHub 토큰 (webtoontree 저장소 Contents 쓰기 권한만)
@@ -77,7 +78,7 @@ var ACTIONS = {
     if (!/^[a-z0-9]{4,16}$/.test(id)) fail_('아이디는 영어 소문자·숫자 4~16자로 정해 주세요.');
     if (pw.length < 8 || pw.length > 64) fail_('비밀번호는 8자 이상으로 정해 주세요.');
     checkNick_(nick);
-    if (findRow_('users', 'userId', id)) fail_('이미 쓰고 있는 아이디예요.');
+    if (id === adminId_() || findRow_('users', 'userId', id)) fail_('이미 쓰고 있는 아이디예요.');
     if (nickTaken_(nick, null)) fail_('이미 쓰고 있는 닉네임이에요.');
     var salt = randomHex_(16);
     var site = siteData_();
@@ -92,6 +93,11 @@ var ACTIONS = {
 
   login: function (b) {
     var id = String(b.userId || '').trim().toLowerCase();
+    // 관리자 아이디로 로그인하면: 관리자 비밀번호를 확인하고 관리자 화면으로 보내요 (회원 계정은 만들지 않아요)
+    if (id === adminId_()) {
+      checkAdmin_(b.password);
+      return { admin: true };
+    }
     var tries = cacheGet_('login:' + id) || 0;
     if (tries >= 10) fail_('로그인을 너무 많이 시도했어요. 30분 뒤에 다시 해 주세요.');
     var hit = findRow_('users', 'userId', id);
@@ -578,6 +584,9 @@ function auth_(token) {
   if (!u) fail_('로그인이 필요해요. 다시 로그인해 주세요.');
   if (u.obj.status === 'banned') fail_('이용이 정지된 계정이에요.');
   return u;
+}
+function adminId_() {
+  return String(PropertiesService.getScriptProperties().getProperty('ADMIN_ID') || 'admin').trim().toLowerCase();
 }
 function checkAdmin_(pw) {
   var real = PropertiesService.getScriptProperties().getProperty('ADMIN_PASSWORD');

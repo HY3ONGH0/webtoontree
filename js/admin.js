@@ -130,6 +130,7 @@
         <nav class="ad-nav" aria-label="관리 메뉴">
           ${TABS.map(([id, name]) => `<button type="button" data-a="tab" data-id="${id}" ${ui.tab === id ? 'aria-current="page"' : ''}>${name}</button>`).join('')}
           <a href="index.html" target="_blank" rel="noopener">실제 사이트 열기</a>
+          ${srv.ok ? '<button type="button" data-a="srv-logout" style="margin-top:4px">관리자 나가기</button>' : ''}
         </nav>
         <main class="ad-main" id="ad-main">${({ webtoons: tabWebtoons, genres: tabGenres, tree: tabTree, map: tabMap, settings: tabSettings, shop: tabShop, server: tabServer, data: tabData })[ui.tab]()}</main>
       </div>`;
@@ -892,6 +893,7 @@
         ui.w = null; ui.g = null; ui.tsel = null; ui.msel = null;
         toast('사이트 데이터로 되돌렸어요'); render();
       } break;
+      case 'srv-logout': srv.pw = ''; srv.ok = false; srv.users = srv.comments = srv.reports = null; try { sessionStorage.removeItem('webtoontree.adminpw'); } catch (e) { /* 무시 */ } toast('관리자에서 나왔어요'); render(); break;
       case 'srv-connect': srv.pw = document.getElementById('srv-pw').value; srvLoad(); break;
       case 'srv-report-done': srvDo('adminReportDone', { webtoonId: id }, '처리했어요'); break;
       case 'srv-hide': srvDo('adminHideComment', { commentId: id, hidden: i === 1 }, i === 1 ? '댓글을 숨겼어요' : '댓글을 다시 보이게 했어요'); break;
@@ -1026,6 +1028,14 @@
     root().addEventListener('click', onClick);
     root().addEventListener('input', onInput);
     root().addEventListener('change', onChange);
+    if (location.hash === '#server' && srv.pw && (D.settings.apiUrl || '').trim()) {
+      ui.tab = 'server';
+      history.replaceState(null, '', 'admin.html');
+      render();
+      srvLoad();
+      toast('관리자로 들어왔어요');
+      return;
+    }
     render();
     if (draft && isDirty()) toast('이전에 하던 작업을 불러왔어요');
   }
