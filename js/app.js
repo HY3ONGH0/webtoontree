@@ -132,7 +132,9 @@
         <h1>${esc(st.siteName)}</h1>
         <p>${esc(st.tagline)}</p>
       </header>
-      <section class="genre-grid" aria-label="장르 선택">${cards}</section>
+      ${cards ? `<section class="genre-grid" aria-label="장르 선택">${cards}</section>` : `<section class="rpg" style="max-width:520px; margin:0 20px; padding:28px; text-align:center; display:flex; flex-direction:column; gap:10px"><span class="corner-b" aria-hidden="true"></span>
+        <h2 style="margin:0; font-family:var(--display); font-weight:400; font-size:24px">웹툰 별자리를 준비하고 있어요</h2>
+        <p class="hint" style="font-size:14px; margin:0">곧 장르별 웹툰 트리가 열려요. 조금만 기다려 주세요!</p></section>`}
       <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center; align-items:center; padding:0 20px">
         <a href="#/map" class="pill pill-gold press" style="min-height:52px; padding:0 28px; font-size:17px; border-width:2px">${WT.icon.map}전체 지도 보기</a>
         <span class="hint" style="font-size:14px">장르가 애매한 웹툰은 전체 지도에서 만날 수 있어요</span>
@@ -143,6 +145,7 @@
   // ---------- 로그인 · 회원가입 ----------
   function viewLogin() {
     const s = WT.store.state;
+    if (WT.api.on()) return s.profile && s.token ? viewAccountMe() : viewAccount();
     if (s.profile) return viewMe();
     let tab = 'start';
     const draw = () => {
@@ -242,6 +245,147 @@
     });
   }
 
+
+  // ---------- 서버 모드: 아이디·비밀번호 로그인 / 회원가입 ----------
+  function viewAccount() {
+    const s = WT.store.state;
+    let tab = 'login';
+    const draw = () => {
+      app().innerHTML = `<div class="view"><div class="login">
+        <section class="intro">
+          <svg viewBox="0 0 300 150" width="300" height="150" aria-hidden="true" style="max-width:100%">
+            <polyline points="20,120 70,70 120,95 170,40 220,60 280,20" fill="none" stroke="#E8C66A" stroke-width="2"/>
+            <circle cx="20" cy="120" r="9" fill="#5BB8FF"/><circle class="tw" cx="70" cy="70" r="8" fill="#FF7EB6"/>
+            <circle cx="120" cy="95" r="8" fill="#FF9A4D"/><circle class="tw" cx="170" cy="40" r="8" fill="#A97BFF"/>
+            <circle cx="220" cy="60" r="8" fill="#6BE3A4"/><circle class="tw" cx="280" cy="20" r="6" fill="#2A3A6A" stroke="#9AA6C8" stroke-width="2"/>
+          </svg>
+          <h1>${esc(WT.settings().siteName)}</h1>
+          <p>나만의 닉네임으로 웹툰 별자리를 하나씩 밝히고,<br>본 웹툰에 별점과 한 줄 감상을 남겨 보세요.</p>
+        </section>
+        <section class="card rpg" aria-label="계정"><span class="corner-b" aria-hidden="true"></span>
+          <div class="tabs2" role="tablist" aria-label="로그인 또는 회원가입">
+            <button type="button" role="tab" aria-selected="${tab === 'login'}" data-tab="login">로그인</button>
+            <button type="button" role="tab" aria-selected="${tab === 'signup'}" data-tab="signup">회원가입</button>
+          </div>
+          ${tab === 'login' ? `<form class="pane" id="acc-form" novalidate>
+            <div class="field"><label for="l-id">아이디</label><input id="l-id" class="fld" autocomplete="username" autocapitalize="off"></div>
+            <div class="field"><label for="l-pw">비밀번호</label><input id="l-pw" class="fld" type="password" autocomplete="current-password"></div>
+            <p class="err" id="acc-err" role="alert" hidden></p>
+            <button type="submit" class="btn btn-gold press" style="min-height:52px; font-size:17px">로그인</button>
+          </form>` : `<form class="pane" id="acc-form" novalidate>
+            <div class="field"><label for="s-nick" style="color:var(--gold); font-weight:700">닉네임</label><input id="s-nick" class="fld" maxlength="10" placeholder="별점·댓글에 표시될 이름"><span class="hint">2~10자 · 한글, 영어, 숫자 · 다른 사람과 겹칠 수 없어요</span></div>
+            <div class="field"><label for="s-id">아이디</label><input id="s-id" class="fld" maxlength="16" autocomplete="username" autocapitalize="off"><span class="hint">영어 소문자·숫자 4~16자 · 가입 후 바꿀 수 없어요</span></div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap">
+              <div class="field" style="flex:1 1 150px"><label for="s-pw">비밀번호</label><input id="s-pw" class="fld" type="password" autocomplete="new-password"></div>
+              <div class="field" style="flex:1 1 150px"><label for="s-pw2">비밀번호 확인</label><input id="s-pw2" class="fld" type="password" autocomplete="new-password"></div>
+            </div>
+            <p class="warn" style="font-size:12px">8자 이상 · 다른 사이트에서 쓰는 비밀번호는 사용하지 마세요.</p>
+            <div class="soon" style="border-style:solid; border-color:rgba(255,255,255,0.15); background:rgba(0,0,0,0.25)">
+              <p class="hint" style="margin:0; font-size:12px; line-height:1.7; color:var(--soft)"><b style="color:var(--text)">[필수] 개인정보 수집·이용 동의</b><br>
+              · 모으는 것: 아이디, 닉네임, 비밀번호(암호화해서 저장)<br>
+              · 쓰는 곳: 로그인, 별점·댓글 표시, 감상 진행·코인 저장<br>
+              · 보관 기간: 탈퇴할 때까지 (탈퇴하면 바로 삭제)<br>
+              · 댓글은 다른 사용자에게 닉네임과 함께 공개돼요.</p>
+            </div>
+            <label style="display:flex; align-items:center; gap:8px; font-size:14px; min-height:36px"><input type="checkbox" id="s-agree" style="width:18px; height:18px; accent-color:var(--gold)"> 위 내용을 읽고 동의합니다</label>
+            <p class="err" id="acc-err" role="alert" hidden></p>
+            <button type="submit" class="btn btn-gold press" style="min-height:52px; font-size:17px">가입하고 시작하기</button>
+          </form>`}
+          <div class="or">또는</div>
+          <button type="button" class="btn press" id="guest-btn">로그인 없이 둘러보기</button>
+          <span class="hint" style="text-align:center">둘러보기 중에는 캐릭터·코인·별점·댓글을 쓸 수 없어요</span>
+        </section>
+      </div></div>`;
+      app().querySelectorAll('[data-tab]').forEach((b) => b.addEventListener('click', () => { tab = b.dataset.tab; draw(); }));
+      document.getElementById('guest-btn').addEventListener('click', () => { s.guest = true; WT.store.save(); location.hash = '#/'; });
+      const form = document.getElementById('acc-form');
+      const err = document.getElementById('acc-err');
+      const showErr = (m) => { err.hidden = false; err.textContent = m; };
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type=submit]');
+        let payload;
+        if (tab === 'login') {
+          payload = { userId: document.getElementById('l-id').value.trim().toLowerCase(), password: document.getElementById('l-pw').value };
+          if (!payload.userId || !payload.password) return showErr('아이디와 비밀번호를 적어 주세요.');
+        } else {
+          const nick = document.getElementById('s-nick').value.trim();
+          const id = document.getElementById('s-id').value.trim().toLowerCase();
+          const pw = document.getElementById('s-pw').value;
+          if (!/^[가-힣a-zA-Z0-9]{2,10}$/.test(nick)) return showErr('닉네임은 2~10자의 한글, 영어, 숫자로 정해 주세요.');
+          if (!/^[a-z0-9]{4,16}$/.test(id)) return showErr('아이디는 영어 소문자·숫자 4~16자로 정해 주세요.');
+          if (pw.length < 8) return showErr('비밀번호는 8자 이상으로 정해 주세요.');
+          if (pw !== document.getElementById('s-pw2').value) return showErr('비밀번호 확인이 맞지 않아요.');
+          if (!document.getElementById('s-agree').checked) return showErr('개인정보 수집·이용에 동의해 주세요.');
+          payload = { userId: id, password: pw, nickname: nick, agree: true };
+        }
+        btn.disabled = true; btn.textContent = '잠시만요…';
+        try {
+          const r = await WT.api.call(tab === 'login' ? 'login' : 'signup', payload);
+          s.token = r.token; s.guest = false;
+          WT.api.applyMe(r.me);
+          WT.toast(`${r.me.nickname} 님, 환영해요!`);
+          location.hash = '#/';
+        } catch (x) {
+          showErr(x.message);
+          btn.disabled = false; btn.textContent = tab === 'login' ? '로그인' : '가입하고 시작하기';
+        }
+      });
+    };
+    draw();
+  }
+
+  function viewAccountMe() {
+    const s = WT.store.state;
+    app().innerHTML = `<div class="view"><div class="login">
+      <section class="card rpg" aria-label="내 정보"><span class="corner-b" aria-hidden="true"></span>
+        <div style="display:flex; align-items:center; gap:16px">
+          <div>${WT.charSVG(WT.currentLook(), 72)}</div>
+          <div class="title-block"><h1 style="font-size:26px">${esc(s.profile.nick)} 님</h1><span class="sub">아이디 ${esc(s.profile.userId || '')} · 코인 ${s.coins}개</span></div>
+        </div>
+        <form class="pane" id="nick-form" novalidate>
+          <div class="field"><label for="nick2">닉네임 바꾸기</label><input id="nick2" class="fld" maxlength="10" value="${esc(s.profile.nick)}"><p class="err" id="nick2-err" role="alert" hidden></p></div>
+          <button type="submit" class="btn btn-gold press">저장</button>
+        </form>
+        <div class="row2"><a href="#/" class="btn press">홈으로</a><button type="button" class="btn press" id="logout-btn">로그아웃</button></div>
+        <details style="border-top:1px dashed rgba(255,255,255,0.16); padding-top:12px">
+          <summary style="cursor:pointer; font-size:14px; color:var(--muted)">회원 탈퇴</summary>
+          <form class="pane" id="del-form" style="margin-top:12px" novalidate>
+            <p class="warn">탈퇴하면 계정, 감상 기록, 코인, 별점이 바로 지워져요. 댓글은 "탈퇴한 사용자"로 남아요.</p>
+            <div class="field"><label for="del-pw">비밀번호 확인</label><input id="del-pw" class="fld" type="password" autocomplete="current-password"></div>
+            <p class="err" id="del-err" role="alert" hidden></p>
+            <button type="submit" class="btn btn-danger press" style="border:1px solid #7A3045; color:#FF9BB0; background:transparent">탈퇴하기</button>
+          </form>
+        </details>
+      </section>
+    </div></div>`;
+    document.getElementById('nick-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const v = document.getElementById('nick2').value.trim();
+      const err = document.getElementById('nick2-err');
+      try { const r = await WT.api.authed('nick', { nickname: v }); WT.api.applyMe(r.me); WT.toast('닉네임을 바꿨어요'); viewAccountMe(); }
+      catch (x) { err.hidden = false; err.textContent = x.message; }
+    });
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      try { await WT.api.call('logout', { token: s.token }); } catch (x) { /* 이미 풀렸어도 괜찮아요 */ }
+      WT.store.reset();
+      WT.toast('로그아웃했어요');
+      location.hash = '#/login';
+      viewAccount();
+    });
+    document.getElementById('del-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const err = document.getElementById('del-err');
+      try {
+        await WT.api.authed('deleteAccount', { password: document.getElementById('del-pw').value });
+        WT.store.reset();
+        WT.toast('탈퇴했어요. 그동안 고마웠어요');
+        location.hash = '#/login';
+        viewAccount();
+      } catch (x) { err.hidden = false; err.textContent = x.message; }
+    });
+  }
+
   // ---------- 주소 이동 ----------
   WT.views = { home: viewHome, login: viewLogin };
 
@@ -292,6 +436,21 @@
       } catch (e) { /* 초안이 없으면 원래 데이터 */ }
     }
     WT.applySettings();
+    // 서버 모드: 로그인 상태 확인 + 오늘 폭주 목록 (늦어도 4초만 기다려요)
+    if (WT.api.on()) {
+      const S = WT.store.state;
+      const tasks = [
+        WT.api.call('hot').then((r) => { WT.data.hotToday = r.hot || []; }).catch(() => {})
+      ];
+      if (S.token) {
+        tasks.push(WT.api.call('me', { token: S.token }).then((r) => WT.api.applyMe(r.me)).catch((e) => {
+          if (e.auth) { S.token = null; S.profile = null; WT.store.save(); }
+        }));
+      } else if (S.profile) {
+        S.profile = null; WT.store.save();   // 혼자 모드 닉네임은 서버 계정이 아니에요
+      }
+      await Promise.race([Promise.all(tasks), new Promise((r) => setTimeout(r, 4000))]);
+    }
     window.addEventListener('hashchange', () => {
       if (WT.onHashChange && WT.onHashChange()) return;
       route();

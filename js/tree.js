@@ -17,6 +17,8 @@
     const hasChar = !!S.profile;
 
     let sel = null;
+    const server = WT.api.on();
+    const social = {};          // 웹툰ID → { avg, count, comments } (서버 모드)
     let charAt = T.start;
     let facing = 1;
     const sigs = {};
@@ -229,7 +231,7 @@
               ${WT.schedule.status(w) === 'hiatus' ? '<span class="chip chip-hiatus">휴재 중</span>' : ''}
             </div>
             <h2>${esc(w.title)}</h2>
-            <span style="font-size:13px; color:var(--soft)">${my ? `내 별점 ${my}점` : '아직 별점을 주지 않았어요'}</span>
+            <span style="font-size:13px; color:var(--soft)">${server ? (social[id] ? (social[id].count ? `평균 별점 ★ ${social[id].avg} · ${social[id].count}명` : '아직 별점이 없어요') : '별점 불러오는 중…') : (my ? `내 별점 ${my}점` : '아직 별점을 주지 않았어요')}</span>
           </div>
           <button type="button" class="icon-btn press" data-act="close" aria-label="창 닫기" style="margin-left:auto; align-self:flex-start; background:transparent">${WT.icon.close}</button>
         </div>
@@ -263,6 +265,7 @@
             <a class="btn btn-line press" href="${esc(w.url)}" target="_blank" rel="noopener">${goLabel}</a>
             <button type="button" class="btn ${done ? 'btn-soft' : 'btn-gold'} press" data-act="done">${done ? `${esc(labels.done || '완독')} · 취소` : esc(labels.doneButton || '다 봤어요')}</button>
           </div>
+          ${server && WT.schedule.status(w) !== 'completed' ? '<button type="button" class="btn press" data-act="report" style="min-height:40px; font-size:13px; font-weight:500">플랫폼에 새 화가 나왔는데 여기 화수가 적어요</button>' : ''}
         </section>
         <div class="box box-gold">
           <span class="box-title">내 별점</span>
@@ -270,22 +273,31 @@
             ${[1, 2, 3, 4, 5].map((v) => `<button type="button" role="radio" aria-checked="${v <= my}" aria-label="${v}점" class="${v <= my ? 'on' : ''}" data-rate="${v}">★</button>`).join('')}
             <span style="margin-left:8px; font-size:13px; color:var(--soft)">${my ? `${my}점을 줬어요` : '별을 눌러 평가해요'}</span>
           </div>
-          <span class="hint">평균 별점은 회원 기능이 열리면 함께 보여요</span>` : '<a href="#/login" class="btn press">닉네임으로 시작하고 별점 남기기</a>'}
+          ${server ? '' : '<span class="hint">평균 별점은 회원 기능이 열리면 함께 보여요</span>'}` : `<a href="#/login" class="btn press">${server ? '로그인하고 별점 남기기' : '닉네임으로 시작하고 별점 남기기'}</a>`}
         </div>
         ${nexts.length ? `<div style="display:flex; flex-direction:column; gap:8px">
           <span style="font-size:13px; color:var(--muted); font-weight:700">${esc(labels.nextList || '다음으로 이어지는 웹툰')}</span>
           ${nexts.map((l) => `<button type="button" class="next-btn" data-next="${l.to}"><b>${esc(WT.toon(l.to).title)}</b><span>${esc(l.why || '')}</span></button>`).join('')}
         </div>` : ''}
         <div class="comments">
-          <span style="font-size:13px; color:var(--muted); font-weight:700">댓글 ${list.length}</span>
-          ${S.profile ? `<form style="display:flex; gap:8px" data-form="comment">
-            <label for="cmt" class="sr">댓글 쓰기</label>
-            <input id="cmt" class="fld" maxlength="200" placeholder="한 줄 감상을 남겨 보세요">
-            <button type="submit" class="btn press" style="background:${g.color}; color:#07122E; border:none; flex:0 0 auto">등록</button>
-          </form>
-          <span class="hint">지금은 이 기기에만 저장돼요. 회원 기능이 열리면 다른 사람과 함께 보여요.</span>` : '<a href="#/login" class="btn press">닉네임으로 시작하고 댓글 쓰기</a>'}
-          ${list.length ? list.map((c) => `<div class="cm"><span class="avatar" style="width:28px; height:28px; font-size:12px" aria-hidden="true">${esc((S.profile ? S.profile.nick : '?')[0])}</span>
-            <div><div class="who"><b>${esc(S.profile ? S.profile.nick : '')}</b> · ${esc(c.at)}</div><div class="txt">${esc(c.text)}</div></div></div>`).join('') : (S.profile ? '<span style="font-size:13px; color:#7F8BB0">아직 댓글이 없어요. 첫 감상을 남겨 주세요.</span>' : '')}
+          ${(() => {
+            const sc = server ? social[id] : null;
+            const items = server ? (sc ? sc.comments : null) : list.map((c) => ({ nickname: S.profile ? S.profile.nick : '', text: c.text, createdAt: c.at, mine: true, local: true }));
+            const count = items ? items.length : 0;
+            const form = S.profile ? `<form style="display:flex; gap:8px" data-form="comment">
+              <label for="cmt" class="sr">댓글 쓰기</label>
+              <input id="cmt" class="fld" maxlength="200" placeholder="한 줄 감상을 남겨 보세요">
+              <button type="submit" class="btn press" style="background:${g.color}; color:#07122E; border:none; flex:0 0 auto">등록</button>
+            </form>${server ? '' : '<span class="hint">지금은 이 기기에만 저장돼요. 회원 기능이 열리면 다른 사람과 함께 보여요.</span>'}`
+              : `<a href="#/login" class="btn press">${server ? '로그인하고 댓글 쓰기' : '닉네임으로 시작하고 댓글 쓰기'}</a>`;
+            const when = (t) => { const m = String(t).match(/^\d{4}-(\d{2})-(\d{2})/); return m ? `${Number(m[1])}월 ${Number(m[2])}일` : esc(t); };
+            const rows = items === null ? '<span class="hint">댓글 불러오는 중…</span>'
+              : count ? items.map((c) => `<div class="cm"><span class="avatar" style="width:28px; height:28px; font-size:12px" aria-hidden="true">${esc((c.nickname || '?')[0])}</span>
+                <div style="flex:1 1 auto; min-width:0"><div class="who"><b>${esc(c.nickname)}</b> · ${c.local ? esc(c.createdAt) : when(c.createdAt)}</div><div class="txt">${esc(c.text)}</div></div>
+                ${c.mine && !c.local ? `<button type="button" class="icon-btn" data-delc="${esc(c.commentId)}" aria-label="내 댓글 지우기" style="width:36px; height:36px; background:transparent; flex:0 0 auto">${WT.icon.close}</button>` : ''}</div>`).join('')
+              : (S.profile ? '<span style="font-size:13px; color:#7F8BB0">아직 댓글이 없어요. 첫 감상을 남겨 주세요.</span>' : '<span style="font-size:13px; color:#7F8BB0">아직 댓글이 없어요.</span>');
+            return `<span style="font-size:13px; color:var(--muted); font-weight:700">댓글 ${items === null ? '' : count}</span>${form}${rows}`;
+          })()}
         </div>
       </aside>`;
     }
@@ -303,6 +315,8 @@
       sel = id;
       refreshNodes();
       animateNode(id);
+      WT.api.fire('view', { webtoonId: id, viewerId: WT.api.viewerId() });
+      if (server) loadSocial(id);
       moveChar(id, true);
       renderPanel(true);
       if (!o.keepHash) history.replaceState(null, '', `#/tree/${gid}/${id}`);
@@ -320,8 +334,24 @@
       history.replaceState(null, '', `#/tree/${gid}`);
     }
 
+    async function loadSocial(id) {
+      try {
+        const r = await WT.api.call('social', { webtoonId: id, token: S.token || '' });
+        social[id] = r.social;
+      } catch (e) { social[id] = { avg: 0, count: 0, comments: [] }; }
+      if (sel === id) renderPanel(false);
+    }
+
     function setEp(id, value) {
-      const r = WT.store.recordEpisodes(id, value, total(id), rules, WT.canEarn());
+      const useServer = server && !!S.token;
+      const r = WT.store.recordEpisodes(id, value, total(id), rules, WT.canEarn() && !useServer);
+      if (useServer) {
+        WT.api.authed('progress', { webtoonId: id, value: S.progress[id] }).then((x) => {
+          WT.api.applyMe(x.me);
+          if (x.label) WT.popCoin(x.label); else WT.popCoin('');
+          if (sel === id) renderPanel(false);
+        }).catch((e) => { if (!e.auth) WT.toast(e.message); });
+      }
       refreshNodes();
       renderPanel(false);
       if (r.label) WT.popCoin(r.label);
@@ -346,15 +376,47 @@
         <div class="or">또는 관리자</div>
         <div class="field">
           <label for="admin-pw">관리자 비밀번호</label>
-          <input id="admin-pw" class="fld" type="password" disabled placeholder="서버 연결 후 사용할 수 있어요">
-          <span class="hint">비밀번호 확인은 보안을 위해 Apps Script(서버)에서 해요. 연결하면 열립니다.</span>
+          ${server ? `<div style="display:flex; gap:8px"><input id="admin-pw" class="fld" type="password" autocomplete="off"><button type="button" class="btn btn-gold press" data-m="admin" style="flex:0 0 auto">해제</button></div>
+          <p class="err" id="admin-err" role="alert" hidden></p>` : `<input id="admin-pw" class="fld" type="password" disabled placeholder="서버 연결 후 사용할 수 있어요">
+          <span class="hint">비밀번호 확인은 보안을 위해 Apps Script(서버)에서 해요. 연결하면 열립니다.</span>`}
         </div>
         <button type="button" class="btn press" data-m="cancel">닫기</button>
       </div>`, (bg, closeModal) => {
         bg.querySelector('[data-m="cancel"]').addEventListener('click', closeModal);
         const cb = bg.querySelector('[data-m="coin"]');
-        if (cb) cb.addEventListener('click', () => {
+        const done = (label) => {
+          closeModal();
+          refreshNodes();
+          renderPanel(false);
+          if (label) WT.popCoin(label);
+          animateNode(id, 'burst');
+          moveChar(charAt, false);
+        };
+        const ab = bg.querySelector('[data-m="admin"]');
+        if (ab) {
+          const go = async () => {
+            const err = bg.querySelector('#admin-err');
+            ab.disabled = true;
+            try {
+              const r = await WT.api.call('unlockAdmin', { adminPassword: bg.querySelector('#admin-pw').value, webtoonId: id, token: S.token || '' });
+              if (r.me) WT.api.applyMe(r.me); else { S.unlocked[id] = true; WT.store.save(); }
+              done('');
+            } catch (x) {
+              err.hidden = false; err.textContent = x.message; ab.disabled = false;
+              const m = bg.querySelector('.modal'); m.classList.remove('shake'); void m.offsetWidth; m.classList.add('shake');
+            }
+          };
+          ab.addEventListener('click', go);
+          bg.querySelector('#admin-pw').addEventListener('keydown', (e) => { if (e.key === 'Enter') go(); });
+        }
+        if (cb) cb.addEventListener('click', async () => {
           if (!(WT.canEarn() && S.coins >= price)) return;
+          if (server && S.token) {
+            cb.disabled = true;
+            try { const r = await WT.api.authed('unlockCoin', { webtoonId: id }); WT.api.applyMe(r.me); done(`-${price} 코인 · 잠금 해제`); }
+            catch (x) { cb.disabled = false; if (!x.auth) WT.toast(x.message); }
+            return;
+          }
           S.coins -= price;
           S.unlocked[id] = true;
           WT.store.save();
@@ -374,16 +436,36 @@
       if (b) select(b.dataset.node);
     });
     slot.addEventListener('click', (e) => {
+      const dc = e.target.closest('[data-delc]');
+      if (dc && sel) {
+        const id = sel;
+        WT.api.authed('deleteComment', { commentId: dc.dataset.delc }).then((x) => { social[id] = x.social; if (sel === id) renderPanel(false); }).catch((er) => { if (!er.auth) WT.toast(er.message); });
+        return;
+      }
       const t = e.target.closest('[data-act], [data-rate], [data-next]');
       if (!t || !sel) return;
       if (t.dataset.next) return select(t.dataset.next);
-      if (t.dataset.rate) { S.ratings[sel] = Number(t.dataset.rate); WT.store.save(); renderPanel(false); return; }
+      if (t.dataset.rate) {
+        const v = Number(t.dataset.rate);
+        S.ratings[sel] = v; WT.store.save(); renderPanel(false);
+        if (server && S.token) {
+          const id = sel;
+          WT.api.authed('rate', { webtoonId: id, score: v }).then((x) => { WT.api.applyMe(x.me); social[id] = x.social; if (sel === id) renderPanel(false); }).catch((e) => { if (!e.auth) WT.toast(e.message); });
+        }
+        return;
+      }
       const a = t.dataset.act;
       if (a === 'close') close();
       else if (a === 'minus') setEp(sel, ep(sel) - 1);
       else if (a === 'plus') setEp(sel, ep(sel) + 1);
       else if (a === 'done') setEp(sel, isDone(sel) ? 0 : total(sel));
       else if (a === 'unlock') openUnlock(sel);
+      else if (a === 'report') {
+        t.disabled = true;
+        WT.api.call('report', { webtoonId: sel, viewerId: WT.api.viewerId() })
+          .then((x) => { WT.toast(x.already ? '이미 알려 줬어요. 고마워요!' : '관리자에게 알렸어요. 고마워요!'); })
+          .catch((e) => { WT.toast(e.message); t.disabled = false; });
+      }
     });
     slot.addEventListener('change', (e) => {
       if (e.target.id === 'ep-in' && sel) setEp(sel, e.target.value);
@@ -394,6 +476,14 @@
       const input = e.target.querySelector('#cmt');
       const text = input.value.trim().slice(0, 200);
       if (!text) return;
+      if (server && S.token) {
+        const id = sel;
+        const btn = e.target.querySelector('button');
+        btn.disabled = true;
+        WT.api.authed('comment', { webtoonId: id, text }).then((x) => { social[id] = x.social; if (sel === id) renderPanel(false); })
+          .catch((er) => { btn.disabled = false; if (!er.auth) WT.toast(er.message); });
+        return;
+      }
       const d = new Date(Date.now() + 9 * 3600 * 1000);
       const at = `${d.getUTCMonth() + 1}월 ${d.getUTCDate()}일`;
       S.comments[sel] = [{ text, at }].concat(S.comments[sel] || []);

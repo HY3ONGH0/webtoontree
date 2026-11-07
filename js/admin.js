@@ -23,6 +23,8 @@
 
   let D = null;          // 편집 중인 데이터
   let siteJSON = '';     // 사이트에 올라가 있는 data.json
+  const srv = { pw: '', ok: false, github: false, users: null, comments: null, reports: null, busy: false, msg: '' };
+  try { srv.pw = sessionStorage.getItem('webtoontree.adminpw') || ''; } catch (e) { srv.pw = ''; }
   const ui = {
     tab: 'webtoons', w: null, q: '', fg: 'all', confirm: null,
     g: null, newGenre: false,
@@ -113,7 +115,7 @@
   }
 
   // ---------- 틀 ----------
-  const TABS = [['webtoons', '웹툰 목록'], ['genres', '장르 관리'], ['tree', '트리 편집'], ['map', '전체 지도 편집'], ['settings', '디자인 · 코인 설정'], ['shop', '상점 아이템'], ['data', '데이터 내보내기']];
+  const TABS = [['webtoons', '웹툰 목록'], ['genres', '장르 관리'], ['tree', '트리 편집'], ['map', '전체 지도 편집'], ['settings', '디자인 · 코인 설정'], ['shop', '상점 아이템'], ['server', '회원 · 댓글 · 제보'], ['data', '데이터 내보내기']];
   function render() {
     const scrollY = window.scrollY;
     root().innerHTML = `<header class="ad-head">
@@ -129,7 +131,7 @@
           ${TABS.map(([id, name]) => `<button type="button" data-a="tab" data-id="${id}" ${ui.tab === id ? 'aria-current="page"' : ''}>${name}</button>`).join('')}
           <a href="index.html" target="_blank" rel="noopener">실제 사이트 열기</a>
         </nav>
-        <main class="ad-main" id="ad-main">${({ webtoons: tabWebtoons, genres: tabGenres, tree: tabTree, map: tabMap, settings: tabSettings, shop: tabShop, data: tabData })[ui.tab]()}</main>
+        <main class="ad-main" id="ad-main">${({ webtoons: tabWebtoons, genres: tabGenres, tree: tabTree, map: tabMap, settings: tabSettings, shop: tabShop, server: tabServer, data: tabData })[ui.tab]()}</main>
       </div>`;
     setState();
     if (ui.tab === 'tree') mountTree();
@@ -595,6 +597,10 @@
     };
     return `<h2>디자인 · 코인 설정</h2>
       <p class="ad-help">바꾼 내용은 [사이트 미리보기]로 바로 확인할 수 있어요.</p>
+      <section class="ad-card"><h3>서버 (Apps Script)</h3>
+        ${f('apiUrl', 'Apps Script 웹앱 주소 (비우면 혼자 모드)', 'text', 'placeholder="https://script.google.com/macros/s/…/exec"')}
+        <span class="hint">주소를 넣고 data.json을 올리면 회원가입·로그인, 함께 보는 별점·댓글, 랭킹, 오늘 폭주가 켜져요. 설치 방법은 저장소의 apps-script/설치방법.md에 있어요.</span>
+      </section>
       <section class="ad-card"><h3>문구</h3>
         ${f('siteName', '사이트 이름', 'text', 'maxlength="20"')}
         ${f('tagline', '홈 소개 문구', 'text')}
@@ -657,6 +663,82 @@
       <p class="ad-help">이미 산 사람이 있는 아이템을 지우면 그 사람의 착용이 기본으로 돌아가요.</p>`;
   }
 
+
+  // ---------- 서버: 회원 · 댓글 · 제보 ----------
+  async function api(action, payload) {
+    const url = (D.settings.apiUrl || '').trim();
+    if (!url) throw new Error('먼저 [디자인 · 코인 설정]에 Apps Script 주소를 넣어 주세요.');
+    const res = await fetch(url, { method: 'POST', body: JSON.stringify(Object.assign({ action, adminPassword: srv.pw }, payload || {})) });
+    const j = await res.json();
+    if (!j.ok) throw new Error(j.error || '서버에서 문제가 생겼어요.');
+    return j;
+  }
+  async function srvLoad() {
+    srv.busy = true; srv.msg = ''; render();
+    try {
+      const c = await api('adminCheck');
+      srv.ok = true; srv.github = c.github;
+      try { sessionStorage.setItem('webtoontree.adminpw', srv.pw); } catch (e) { /* 무시 */ }
+      const [u, cm, rp] = await Promise.all([api('adminUsers'), api('adminComments'), api('adminReports')]);
+      srv.users = u.users; srv.comments = cm.comments; srv.reports = rp.reports;
+    } catch (e) {
+      srv.ok = false; srv.msg = e.message;
+    }
+    srv.busy = false; render();
+  }
+  async function srvDo(action, payload, okMsg) {
+    try { await api(action, payload); if (okMsg) toast(okMsg); await srvLoad(); }
+    catch (e) { toast(e.message); }
+  }
+  function tabServer() {
+    const url = (D.settings.apiUrl || '').trim();
+    if (!url) return `<h2>회원 · 댓글 · 제보</h2><div class="ad-empty">서버(Apps Script)가 아직 연결되지 않았어요.<br>[디자인 · 코인 설정]의 "Apps Script 웹앱 주소"를 먼저 넣어 주세요.</div>`;
+    const login = `<section class="ad-card"><h3>관리자 비밀번호</h3>
+        <form id="srv-form" style="display:flex; gap:8px; flex-wrap:wrap" onsubmit="return false">
+          <label for="srv-pw" class="sr">관리자 비밀번호</label>
+          <input id="srv-pw" class="fld" type="password" style="flex:1 1 220px" value="${esc(srv.pw)}" autocomplete="off" placeholder="Apps Script에 넣은 ADMIN_PASSWORD">
+          <button type="button" class="btn btn-gold press" data-a="srv-connect" ${srv.busy ? 'disabled' : ''}>${srv.busy ? '불러오는 중…' : srv.ok ? '새로고침' : '연결'}</button>
+        </form>
+        ${srv.msg ? `<p class="err">${esc(srv.msg)}</p>` : ''}
+        <span class="hint">비밀번호는 이 탭을 닫으면 잊어요.</span>
+      </section>`;
+    if (!srv.ok) return `<h2>회원 · 댓글 · 제보</h2>${login}`;
+    const reports = srv.reports || [];
+    const grouped = {};
+    reports.forEach((r) => { (grouped[r.webtoonId] = grouped[r.webtoonId] || { title: r.title, n: 0, notes: [] }).n++; if (r.note) grouped[r.webtoonId].notes.push(r.note); });
+    return `<h2>회원 · 댓글 · 제보</h2>${login}
+      <section class="ad-card"><h3>새 화 제보 ${reports.length ? `(${reports.length})` : ''}</h3>
+        ${Object.keys(grouped).length ? Object.keys(grouped).map((id) => `<div class="link-row" style="flex-wrap:wrap">
+          <span style="flex:1 1 auto; font-size:14px"><b>${esc(grouped[id].title)}</b> · 제보 ${grouped[id].n}건${grouped[id].notes.length ? ` · ${esc(grouped[id].notes.slice(0, 2).join(' / '))}` : ''}</span>
+          <button type="button" class="btn btn-sm press" data-a="edit-w" data-id="${id}">화수 고치러 가기</button>
+          <button type="button" class="btn btn-sm press" data-a="srv-report-done" data-id="${id}">처리 완료</button></div>`).join('') : '<p class="ad-help">새 제보가 없어요.</p>'}
+        <span class="hint">화수를 고친 뒤에는 data.json을 다시 올리거나 [데이터] 탭에서 바로 저장해 주세요.</span>
+      </section>
+      <section class="ad-card"><h3>최근 댓글 ${srv.comments ? `(${srv.comments.length})` : ''}</h3>
+        <div class="table-box" style="max-height:420px; overflow:auto"><table class="ad-table">
+          <thead><tr><th>웹툰</th><th>닉네임</th><th>내용</th><th>날짜</th><th></th></tr></thead>
+          <tbody>${(srv.comments || []).map((c) => `<tr style="${c.hidden ? 'opacity:.5' : ''}">
+            <td>${esc(c.title)}</td><td>${esc(c.nickname)}</td><td style="max-width:340px">${esc(c.text)}</td><td style="white-space:nowrap">${esc(String(c.createdAt).slice(0, 10))}</td>
+            <td><button type="button" class="btn btn-sm ${c.hidden ? '' : 'btn-danger'} press" data-a="srv-hide" data-id="${esc(c.commentId)}" data-i="${c.hidden ? 0 : 1}">${c.hidden ? '다시 보이기' : '숨기기'}</button></td></tr>`).join('') || '<tr><td colspan="5" class="ad-help">댓글이 없어요</td></tr>'}</tbody>
+        </table></div>
+      </section>
+      <section class="ad-card"><h3>회원 ${srv.users ? `(${srv.users.length}명)` : ''}</h3>
+        <div class="table-box" style="max-height:420px; overflow:auto"><table class="ad-table">
+          <thead><tr><th>아이디</th><th>닉네임</th><th>가입일</th><th>코인</th><th>상태</th><th></th></tr></thead>
+          <tbody>${(srv.users || []).map((u) => `<tr>
+            <td>${esc(u.userId)}</td><td>${esc(u.nickname)}</td><td>${esc(String(u.createdAt).slice(0, 10))}</td><td>${u.coins}</td>
+            <td>${u.status === 'banned' ? '<span class="chip chip-hiatus">정지</span>' : '정상'}</td>
+            <td style="white-space:nowrap">
+              <button type="button" class="btn btn-sm press" data-a="srv-nick" data-id="${esc(u.userId)}">닉네임 변경</button>
+              <button type="button" class="btn btn-sm press" data-a="srv-pw" data-id="${esc(u.userId)}">비밀번호 초기화</button>
+              <button type="button" class="btn btn-sm ${u.status === 'banned' ? '' : 'btn-danger'} press" data-a="srv-ban" data-id="${esc(u.userId)}" data-i="${u.status === 'banned' ? 0 : 1}">${u.status === 'banned' ? '정지 풀기' : '이용 정지'}</button>
+            </td></tr>`).join('') || '<tr><td colspan="6" class="ad-help">아직 회원이 없어요</td></tr>'}</tbody>
+        </table></div>
+        <div id="srv-edit"></div>
+        <span class="hint">관리자도 회원의 비밀번호는 볼 수 없어요. 잊어버린 회원은 새 비밀번호로 초기화해 주세요.</span>
+      </section>`;
+  }
+
   // ---------- 데이터 ----------
   function tabData() {
     const list = issues();
@@ -673,6 +755,11 @@
           <a class="btn press" href="index.html?preview=1" target="_blank" rel="noopener">올리기 전에 미리보기</a>
         </div>
       </section>
+      ${(D.settings.apiUrl || '').trim() ? `<section class="ad-card"><h3>서버로 바로 저장</h3>
+        <p class="ad-help">Apps Script에 GitHub 토큰을 넣어 두면 파일을 올리지 않고 이 버튼으로 바로 반영돼요. 관리자 비밀번호는 [회원 · 댓글 · 제보] 탭에서 연결한 것을 써요.</p>
+        <div class="ad-actions"><button type="button" class="btn btn-gold press" data-a="srv-save" ${srv.ok ? '' : 'disabled'}>${srv.ok ? '지금 내용으로 사이트에 바로 저장' : '먼저 [회원 · 댓글 · 제보]에서 관리자 비밀번호로 연결해 주세요'}</button></div>
+        ${srv.ok && !srv.github ? '<p class="warn">서버에 GitHub 토큰(GITHUB_TOKEN)이 없어서 바로 저장은 아직 안 돼요. 설치방법.md의 6단계를 봐 주세요.</p>' : ''}
+      </section>` : ''}
       <section class="ad-card"><h3>확인할 것 ${list.length ? `(${list.length})` : ''}</h3>
         ${list.length ? `<ul class="ad-issues">${list.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p class="ad-help">문제없어요.</p>'}
       </section>
@@ -805,6 +892,36 @@
         ui.w = null; ui.g = null; ui.tsel = null; ui.msel = null;
         toast('사이트 데이터로 되돌렸어요'); render();
       } break;
+      case 'srv-connect': srv.pw = document.getElementById('srv-pw').value; srvLoad(); break;
+      case 'srv-report-done': srvDo('adminReportDone', { webtoonId: id }, '처리했어요'); break;
+      case 'srv-hide': srvDo('adminHideComment', { commentId: id, hidden: i === 1 }, i === 1 ? '댓글을 숨겼어요' : '댓글을 다시 보이게 했어요'); break;
+      case 'srv-ban': srvDo('adminSetStatus', { userId: id, status: i === 1 ? 'banned' : 'active' }, i === 1 ? '이용을 정지했어요' : '정지를 풀었어요'); break;
+      case 'srv-nick': case 'srv-pw': {
+        const box = document.getElementById('srv-edit');
+        const isNick = a === 'srv-nick';
+        box.innerHTML = `<div class="ad-card" style="margin-top:12px"><h3>${esc(id)} ${isNick ? '닉네임 변경' : '비밀번호 초기화'}</h3>
+          <div style="display:flex; gap:8px; flex-wrap:wrap"><label for="srv-val" class="sr">${isNick ? '새 닉네임' : '새 비밀번호'}</label>
+          <input id="srv-val" class="fld" style="flex:1 1 200px" ${isNick ? 'maxlength="10" placeholder="새 닉네임"' : 'placeholder="새 비밀번호 (8자 이상)"'}>
+          <button type="button" class="btn btn-gold press" data-a="${isNick ? 'srv-nick-save' : 'srv-pw-save'}" data-id="${esc(id)}">저장</button></div>
+          ${isNick ? '' : '<span class="hint">회원에게 새 비밀번호를 알려 주고, 로그인한 뒤 바꾸도록 안내해 주세요.</span>'}</div>`;
+        document.getElementById('srv-val').focus();
+        break;
+      }
+      case 'srv-nick-save': srvDo('adminSetNick', { userId: id, nickname: document.getElementById('srv-val').value.trim() }, '닉네임을 바꿨어요'); break;
+      case 'srv-pw-save': srvDo('adminResetPassword', { userId: id, newPassword: document.getElementById('srv-val').value }, '비밀번호를 초기화했어요'); break;
+      case 'srv-save': {
+        const list = issues().filter((x) => !x.startsWith('전체 지도'));
+        if (list.length && ui.confirm !== 'srv-save') { ui.confirm = 'srv-save'; toast(`확인할 것이 ${list.length}개 있어요. 그래도 저장하려면 한 번 더 눌러 주세요`); break; }
+        ui.confirm = null;
+        t.disabled = true; t.textContent = '저장하는 중…';
+        api('adminSaveData', { data: D }).then(() => {
+          siteJSON = JSON.stringify(D);
+          try { localStorage.removeItem(DRAFT); } catch (e) { /* 무시 */ }
+          toast('사이트에 저장했어요. 1~2분 뒤 반영돼요');
+          render();
+        }).catch((e) => { toast(e.message); render(); });
+        break;
+      }
       default: break;
     }
   }

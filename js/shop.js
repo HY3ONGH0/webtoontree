@@ -85,8 +85,23 @@
       const app = document.getElementById('app');
       app.querySelectorAll('[data-tab]').forEach((b) => b.addEventListener('click', () => { tab = b.dataset.tab; draw(false); }));
       app.querySelectorAll('[data-item]').forEach((b) => b.addEventListener('click', () => { preview = b.dataset.item; draw(true); }));
-      document.getElementById('shop-act').addEventListener('click', () => {
+      document.getElementById('shop-act').addEventListener('click', async () => {
         if (!S.profile) return;
+        if (WT.api.on() && S.token) {
+          const btn = document.getElementById('shop-act');
+          btn.disabled = true;
+          try {
+            let r;
+            if (eq && item.kind === 'color') r = await WT.api.authed('equip', { slot: 'color', itemId: null });
+            else if (eq) return;
+            else if (own) r = await WT.api.authed('equip', { itemId: item.id });
+            else r = await WT.api.authed('buy', { itemId: item.id });
+            WT.api.applyMe(r.me);
+            WT.toast(eq ? '원래 몸 색으로 돌아왔어요' : own ? `${item.name} 착용!` : `${item.name} 구매 완료! 바로 착용했어요`);
+            draw(false);
+          } catch (x) { btn.disabled = false; if (!x.auth) WT.toast(x.message); }
+          return;
+        }
         if (eq && item.kind === 'color') { S.equip.color = null; WT.store.save(); WT.toast('원래 몸 색으로 돌아왔어요'); return draw(false); }
         if (eq) return;
         if (!own) {
@@ -104,7 +119,75 @@
   }
 
   // ---------- 랭킹 ----------
+  function viewRankingServer() {
+    const S = WT.store.state;
+    let period = 'week', metric = 'eps';
+    const look = (eq) => {
+      const items = WT.data.shop;
+      const acc = items.find((i) => i.id === (eq && eq.acc)) || items[0];
+      const color = eq && eq.color ? items.find((i) => i.id === eq.color) : null;
+      return { acc: acc.acc, body: color ? color.body : acc.body, feet: color ? color.feet : acc.feet };
+    };
+    async function draw() {
+      document.getElementById('app').innerHTML = `<div class="view">
+        <div class="topbar">
+          <div class="left">
+            <a href="#/" class="icon-btn press" aria-label="홈으로">${WT.icon.back}</a>
+            <div class="title-block"><h1 style="color:var(--coin)">랭킹</h1><span class="sub">누가 웹툰 별자리를 가장 많이 밝혔을까?</span></div>
+          </div>
+          ${WT.topRight()}
+        </div>
+        <div class="rank-wrap">
+          <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center">
+            <div class="seg" role="tablist" aria-label="기간">${[['week', '이번 주'], ['month', '이번 달'], ['all', '전체']].map(([id, n]) => `<button type="button" role="tab" aria-selected="${period === id}" data-p="${id}">${n}</button>`).join('')}</div>
+            <div class="seg" role="tablist" aria-label="기준">${[['eps', '많이 본 화수'], ['done', '완독 수']].map(([id, n]) => `<button type="button" role="tab" aria-selected="${metric === id}" data-m="${id}">${n}</button>`).join('')}</div>
+          </div>
+          <div id="rank-body"><p class="hint" style="text-align:center; padding:30px">랭킹 불러오는 중…</p></div>
+          <p class="hint" style="text-align:center">이번 주 랭킹은 매주 월요일 0시(한국 시간)에 새로 시작해요. 하루에 인정되는 화수는 ${WT.settings().coins.dailyEpisodeCap}화까지예요.</p>
+        </div>
+      </div>`;
+      document.querySelectorAll('[data-p]').forEach((b) => b.addEventListener('click', () => { period = b.dataset.p; draw(); }));
+      document.querySelectorAll('[data-m]').forEach((b) => b.addEventListener('click', () => { metric = b.dataset.m; draw(); }));
+      let r;
+      try { r = await WT.api.call('ranking', { period, metric, token: S.token || '' }); }
+      catch (x) { document.getElementById('rank-body').innerHTML = `<p class="err" style="text-align:center">${esc(x.message)}</p>`; return; }
+      const fmt = (u) => (metric === 'eps' ? `${u.eps.toLocaleString()}화` : `${u.done}개 완독`);
+      const body = document.getElementById('rank-body');
+      if (!body) return;
+      if (!r.top.length) { body.innerHTML = '<section class="rpg" style="padding:28px; text-align:center"><span class="corner-b" aria-hidden="true"></span><p style="margin:0">아직 기록이 없어요. 첫 1등의 주인공이 되어 보세요!</p></section>'; return; }
+      const podium = [1, 0, 2].filter((i) => r.top[i]).map((i) => {
+        const u = r.top[i];
+        const h = [150, 110, 84][i];
+        const bg = ['linear-gradient(180deg, #FFE9A0, #E8B730)', 'linear-gradient(180deg, #E6ECF5, #9FAEC6)', 'linear-gradient(180deg, #F2B98A, #B9733F)'][i];
+        return `<div style="flex:1 1 0; max-width:200px; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:6px">
+          ${i === 0 ? '<svg aria-hidden="true" width="40" height="30" viewBox="0 0 40 30" style="animation:starTw 2s ease-in-out infinite"><polygon points="4,28 6,8 14,16 20,4 26,16 34,8 36,28" fill="#FFD34D" stroke="#FFF4C2" stroke-width="1.5" stroke-linejoin="round"/></svg>' : ''}
+          <div style="animation:bob 1.4s ease-in-out infinite">${WT.charSVG(look(u.equip), i === 0 ? 76 : 60)}</div>
+          <span style="font-size:16px; font-weight:700">${esc(u.nickname)}</span>
+          <span style="font-size:14px; font-weight:700; color:var(--coin)">${fmt(u)}</span>
+          <div style="align-self:stretch; height:${h}px; border-radius:8px 8px 0 0; background:${bg}; display:flex; justify-content:center; padding-top:10px; transform-origin:50% 100%; animation:rise .6s cubic-bezier(.2,.9,.3,1.2) ${i * 0.1}s both"><span style="font-family:var(--display); font-size:34px; color:#2A2410">${i + 1}</span></div>
+        </div>`;
+      }).join('');
+      const rest = r.top.slice(3).map((u, k) => `<li class="stat" style="flex-direction:row; align-items:center; gap:12px; animation-delay:${k * 0.05}s">
+          <span style="width:32px; text-align:center; font-family:var(--display); font-size:20px; color:var(--muted)">${u.rank}</span>
+          ${WT.charSVG(look(u.equip), 36)}
+          <span style="flex:1 1 auto; font-weight:700">${esc(u.nickname)}</span>
+          <span style="font-size:13px; color:var(--muted)">${metric === 'eps' ? `완독 ${u.done}개` : `${u.eps}화 감상`}</span>
+          <span style="min-width:90px; text-align:right; font-weight:700; color:var(--coin)">${fmt(u)}</span></li>`).join('');
+      const mine = S.profile ? (r.mine
+        ? `<div class="stat" style="flex-direction:row; align-items:center; gap:12px; border:2px solid var(--gold); background:rgba(232,198,106,0.12)">
+            <em class="chip chip-done" style="font-style:normal; color:#1A1405">내 순위</em><b style="font-size:22px">${r.mine.rank}위</b><span style="flex:1 1 auto; font-weight:700">${esc(S.profile.nick)}</span>
+            <span class="hint" style="font-size:13px">${r.gap ? (r.gap.value > 0 ? `${esc(r.gap.nickname)}님까지 ${r.gap.value}${metric === 'eps' ? '화' : '개'} 남았어요` : `${esc(r.gap.nickname)}님과 동점!`) : '1등이에요!'}</span>
+            <span style="font-weight:700; color:var(--coin)">${fmt(r.mine)}</span></div>`
+        : '<p class="hint" style="text-align:center">이 기간에는 아직 내 기록이 없어요. 웹툰을 보고 화수를 기록해 보세요!</p>') : '';
+      body.innerHTML = `<section style="display:flex; align-items:flex-end; justify-content:center; gap:14px; border-bottom:2px solid rgba(232,198,106,0.4)">${podium}</section>
+        <ol style="list-style:none; margin:16px 0 0; padding:0; display:flex; flex-direction:column; gap:8px">${rest}</ol>
+        <div style="margin-top:12px">${mine}</div>`;
+    }
+    draw();
+  }
+
   function viewRanking() {
+    if (WT.api.on()) return viewRankingServer();
     const S = WT.store.state;
     const week = WT.store.stats(WT.store.weekStart());
     const all = WT.store.stats();
