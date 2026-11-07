@@ -262,6 +262,19 @@ button { cursor: pointer; }
 .panel { flex: 1 1 340px; max-width: 400px; padding: 22px; display: flex; flex-direction: column; gap: 16px; transform-origin: 0 30%; }
 .panel.anim { animation: panelIn .35s cubic-bezier(.2, .9, .3, 1.2) both; }
 .panel-head { display: flex; gap: 16px; align-items: center; }
+/* 상세 창 표지: 사각형, 이미지 전체가 잘리지 않게 보여요 */
+.cover-rect {
+  position: relative; width: 100%; min-height: 120px; max-height: 300px; border-radius: 4px; overflow: hidden;
+  border: 2px solid var(--gold); background: #070B1A; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 18px color-mix(in srgb, var(--gc) 45%, transparent);
+}
+.cover-rect img { display: block; max-width: 100%; max-height: 296px; width: auto; height: auto; object-fit: contain; }
+.cover-rect.empty { height: 150px; background: linear-gradient(135deg, color-mix(in srgb, var(--gc) 85%, #fff) 0%, var(--gc) 45%, #0B1A45 100%); }
+.cover-letter { font-family: var(--display); font-size: 64px; color: #fff; text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45); }
+.cover-letter.fallback { display: none; }
+.cover-rect.broken .cover-letter.fallback { display: block; }
+.cover-close { position: absolute; right: 8px; top: 8px; background: rgba(7, 11, 26, 0.7); }
+.cover-close:hover { background: rgba(7, 11, 26, 0.9); }
 .cover-big {
   flex: 0 0 auto; width: 84px; height: 84px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
   font-family: var(--display); font-size: 36px; color: #fff; background: radial-gradient(circle at 35% 30%, #ffffff55, var(--gc) 45%, #0B1A45 100%);

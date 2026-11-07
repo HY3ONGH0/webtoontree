@@ -218,10 +218,13 @@
       const nexts = T.links.filter((l) => l.from === id && WT.toon(l.to));
       const genreNames = (w.genres || []).map((x) => (WT.genre(x) || {}).name).filter(Boolean).join(' · ');
       const goLabel = done ? '다시 보러 가기' : e > 0 ? `${e + 1}화 이어 보기` : '1화 보러 가기';
-      const coverStyle = w.cover ? `background-image:url('${esc(w.cover)}')` : '';
       return `<aside class="panel rpg anim" aria-label="${esc(w.title)} 정보"><span class="corner-b" aria-hidden="true"></span>
+        <div class="cover-rect${w.cover ? '' : ' empty'}">
+          ${w.cover ? `<img src="${esc(w.cover)}" alt="${esc(w.title)} 표지" loading="lazy" onerror="this.parentElement.classList.add('empty', 'broken'); this.remove()">` : ''}
+          <span class="cover-letter${w.cover ? ' fallback' : ''}" aria-hidden="true">${esc(w.title[0] || '?')}</span>
+          <button type="button" class="icon-btn press cover-close" data-act="close" aria-label="창 닫기">${WT.icon.close}</button>
+        </div>
         <div class="panel-head">
-          <div class="cover-big" style="${coverStyle}">${w.cover ? '' : esc(w.title[0])}</div>
           <div style="display:flex; flex-direction:column; gap:6px; min-width:0">
             <div class="chips">
               ${w.recommended ? '<span class="chip chip-rec">★ 관리자 강추</span>' : ''}
@@ -233,7 +236,6 @@
             <h2>${esc(w.title)}</h2>
             <span style="font-size:13px; color:var(--soft)">${server ? (social[id] ? (social[id].count ? `평균 별점 ★ ${social[id].avg} · ${social[id].count}명` : '아직 별점이 없어요') : '별점 불러오는 중…') : (my ? `내 별점 ${my}점` : '아직 별점을 주지 않았어요')}</span>
           </div>
-          <button type="button" class="icon-btn press" data-act="close" aria-label="창 닫기" style="margin-left:auto; align-self:flex-start; background:transparent">${WT.icon.close}</button>
         </div>
         <div class="divider"></div>
         <dl class="meta">
