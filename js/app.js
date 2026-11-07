@@ -26,6 +26,8 @@
   WT.genre = (id) => WT.data.genres.find((g) => g.id === id);
   WT.toon = (id) => WT.data.webtoons.find((w) => w.id === id);
   WT.isHot = (id) => (WT.data.hotToday || []).includes(id);
+  /** 홈·장르 띠에 보여줄 장르: 트리에 웹툰이 하나 이상 있는 장르 */
+  WT.liveGenres = () => WT.data.genres.filter((g) => WT.data.trees[g.id] && Object.keys(WT.data.trees[g.id].nodes || {}).length && WT.data.trees[g.id].start);
   WT.canEarn = () => !!WT.store.state.profile;
   WT.settings = () => WT.data.settings;
 
@@ -83,7 +85,7 @@
   };
 
   WT.band = function (current) {
-    const items = WT.data.genres.filter((g) => WT.data.trees[g.id]).map((g) =>
+    const items = WT.liveGenres().map((g) =>
       `<a href="#/tree/${g.id}" style="--gc:${g.color}" ${current === g.id ? 'aria-current="page"' : ''} class="press"><span class="dot" aria-hidden="true"></span>${esc(g.name)}</a>`).join('');
     return `<nav class="band" aria-label="장르 선택"><a href="#/map" style="--gc:#E8C66A" ${current === 'map' ? 'aria-current="page"' : ''} class="press">전체</a>${items}</nav>`;
   };
@@ -112,7 +114,7 @@
   // ---------- 홈 ----------
   function viewHome() {
     const st = WT.settings();
-    const cards = WT.data.genres.filter((g) => WT.data.trees[g.id]).map((g, i) => {
+    const cards = WT.liveGenres().map((g, i) => {
       const start = WT.toon(WT.data.trees[g.id].start);
       return `<a class="gcard" href="#/tree/${g.id}" style="--gc:${g.color}; animation-delay:${i * 0.06}s">
         ${constellationSVG(g)}
@@ -272,6 +274,20 @@
     } catch (e) {
       app().innerHTML = '<div class="view" style="align-items:center; justify-content:center; padding:40px; text-align:center"><p>웹툰 데이터를 불러오지 못했어요. 잠시 뒤 새로고침해 주세요.</p></div>';
       return;
+    }
+    // 관리자 미리보기: index.html?preview=1 이면 관리자 화면에서 고치던 초안을 보여 줘요
+    if (new URLSearchParams(location.search).get('preview') === '1') {
+      try {
+        const draft = JSON.parse(localStorage.getItem('webtoontree.admin.draft') || 'null');
+        if (draft && Array.isArray(draft.webtoons)) {
+          WT.data = draft;
+          const bar = document.createElement('div');
+          bar.setAttribute('role', 'status');
+          bar.style.cssText = 'position:fixed; left:50%; top:8px; transform:translateX(-50%); z-index:70; padding:6px 14px; border-radius:999px; background:#FFB27A; color:#2A1405; font-size:13px; font-weight:700; box-shadow:0 4px 14px rgba(0,0,0,.4)';
+          bar.textContent = '관리자 미리보기 · 아직 사이트에 올리지 않은 데이터예요';
+          document.body.appendChild(bar);
+        }
+      } catch (e) { /* 초안이 없으면 원래 데이터 */ }
     }
     WT.applySettings();
     window.addEventListener('hashchange', () => {

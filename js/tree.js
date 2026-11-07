@@ -5,7 +5,9 @@
 
   function view(params) {
     const trees = WT.data.trees;
-    const gid = trees[params[0]] ? params[0] : Object.keys(trees)[0];
+    const live = WT.liveGenres().map((x) => x.id);
+    if (!live.length) { document.getElementById('app').innerHTML = '<div class="view" style="align-items:center; justify-content:center; padding:40px; text-align:center"><p>아직 트리가 준비되지 않았어요.</p><a class="btn press" href="#/">홈으로</a></div>'; return; }
+    const gid = live.includes(params[0]) ? params[0] : live[0];
     const g = WT.genre(gid);
     const T = trees[gid];
     const ids = Object.keys(T.nodes).filter((id) => WT.toon(id));
