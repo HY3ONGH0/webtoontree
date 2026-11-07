@@ -37,7 +37,7 @@
       const w = WT.toon(id);
       const [x, y] = M.nodes[id];
       const [c1, c2] = colorOf(w);
-      const done = (S.progress[id] || 0) >= (w.episodes || 1);
+      const done = (S.progress[id] || 0) >= WT.eps(w);
       return `<div class="mnode-wrap" style="left:${x - 90}px; top:${y - 34}px">
         <button type="button" class="mnode" data-id="${id}" style="--c1:${c1}; --c2:${c2}; ${w.cover ? `background-image:url('${esc(w.cover)}')` : ''}" aria-label="${esc(w.title)}${done ? ', 완독' : ''}">${w.cover ? '' : esc(w.title[0])}</button>
         <span>${esc(w.title)}${done ? ' ✓' : ''}</span>
@@ -120,12 +120,12 @@
       const w = WT.toon(id);
       const [c1, c2] = colorOf(w);
       const gnames = w.genres.map((x) => (WT.genre(x) || {}).name).filter(Boolean);
-      const e = Math.min(w.episodes, S.progress[id] || 0);
+      const e = Math.min(WT.eps(w), S.progress[id] || 0);
       cardSlot.innerHTML = `<div class="map-card rpg"><span class="corner-b" aria-hidden="true"></span>
         <div class="mnode" style="--c1:${c1}; --c2:${c2}; width:52px; height:52px; font-size:24px; flex:0 0 auto; display:flex; align-items:center; justify-content:center; ${w.cover ? `background-image:url('${esc(w.cover)}')` : ''}" aria-hidden="true">${w.cover ? '' : esc(w.title[0])}</div>
         <div style="display:flex; flex-direction:column; gap:4px; min-width:0">
           <span style="font-family:var(--display); font-size:20px">${esc(w.title)}</span>
-          <span class="hint" style="font-size:13px">${esc(gnames.join(' + '))}${gnames.length > 1 ? ' · 여러 장르에 걸친 작품' : ''} · ${e}화 / ${w.episodes}화</span>
+          <span class="hint" style="font-size:13px">${esc(gnames.join(' + '))}${gnames.length > 1 ? ' · 여러 장르에 걸친 작품' : ''} · ${esc(WT.schedule.label(w))} · ${e}화 / ${WT.eps(w)}화</span>
         </div>
         <a href="#/tree/${WT.treeGenreOf(id)}/${id}" class="btn btn-soft press" style="margin-left:auto; flex:0 0 auto; min-height:44px">트리에서 보기</a>
       </div>`;

@@ -110,7 +110,7 @@
     const all = WT.store.stats();
     const reading = Object.keys(S.progress).filter((id) => {
       const w = WT.toon(id);
-      return w && S.progress[id] > 0 && S.progress[id] < w.episodes;
+      return w && S.progress[id] > 0 && S.progress[id] < WT.eps(w);
     }).length;
     document.getElementById('app').innerHTML = `<div class="view">
       <div class="topbar">

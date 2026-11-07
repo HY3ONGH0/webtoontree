@@ -22,7 +22,8 @@
     const sigs = {};
 
     // ---------- 상태 계산 ----------
-    const total = (id) => Math.max(1, WT.toon(id).episodes || 1);
+    const total = (id) => WT.eps(WT.toon(id));
+    const newEps = (id) => (S.rewarded[id + ':done'] && ep(id) < total(id) ? total(id) - ep(id) : 0);
     const ep = (id) => Math.min(total(id), S.progress[id] || 0);
     const isDone = (id) => ep(id) >= total(id);
     const status = (id) => {
@@ -52,7 +53,7 @@
       const st = status(id);
       const sz = sizeOf(id);
       const hot = WT.isHot(id) && st !== 'locked';
-      let sub = st === 'reading' ? `${ep(id)}화 · ${pct(id)}%` : statusText[st];
+      let sub = newEps(id) ? `새 화 ${newEps(id)}개` : st === 'reading' ? `${ep(id)}화 · ${pct(id)}%` : statusText[st];
       if (hot) sub = `오늘 폭주 · ${sub}`;
       const subCls = hot ? 'hot' : st === 'reading' ? 'reading' : st === 'done' ? 'done' : '';
       const cover = w.cover ? `<span class="cover" style="background-image:url('${esc(w.cover)}')"></span>` : '';
@@ -68,7 +69,8 @@
           ${w.recommended ? `<span class="badge-rec" aria-hidden="true">${WT.icon.star}</span>` : ''}
         </div>
         <span class="node-label${st === 'locked' ? ' dim' : ''}">${esc(w.title)}</span>
-        <span class="node-sub ${subCls}">${esc(sub)}</span>`;
+        <span class="node-sub ${subCls}">${esc(sub)}</span>
+        <span class="node-tag tag-${WT.schedule.status(w)}">${esc(WT.schedule.label(w))}</span>`;
     }
 
     function linkHTML(l, i) {
@@ -223,6 +225,8 @@
               ${w.recommended ? '<span class="chip chip-rec">★ 관리자 강추</span>' : ''}
               ${WT.isHot(id) ? '<span class="chip chip-hot">오늘 폭주 중</span>' : ''}
               <span class="chip chip-${st}">${statusText[st]}</span>
+              ${newEps(id) ? `<span class="chip chip-new">새 화 ${newEps(id)}개</span>` : ''}
+              ${WT.schedule.status(w) === 'hiatus' ? '<span class="chip chip-hiatus">휴재 중</span>' : ''}
             </div>
             <h2>${esc(w.title)}</h2>
             <span style="font-size:13px; color:var(--soft)">${my ? `내 별점 ${my}점` : '아직 별점을 주지 않았어요'}</span>
@@ -232,7 +236,8 @@
         <div class="divider"></div>
         <dl class="meta">
           <dt>작가</dt><dd>${esc(w.author)}</dd>
-          <dt>플랫폼</dt><dd>${esc(w.platform)}${w.ongoing ? ' · 연재 중' : ' · 완결'}</dd>
+          <dt>플랫폼</dt><dd>${esc(w.platform)}</dd>
+          <dt>연재</dt><dd><span class="node-tag tag-${WT.schedule.status(w)}" style="font-size:13px">${esc(WT.schedule.label(w))}</span></dd>
           <dt>장르</dt><dd>${esc(genreNames)}</dd>
           ${(w.tags || []).length ? `<dt>태그</dt><dd style="color:${g.color}">${w.tags.map((x) => '#' + esc(x)).join(' ')}</dd>` : ''}
         </dl>

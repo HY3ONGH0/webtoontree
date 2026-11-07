@@ -73,7 +73,7 @@
     return 'w' + String(D.meta.lastWebtoonId).padStart(3, '0');
   }
   function blankWebtoon(title, gid) {
-    return { id: newWebtoonId(), title: title || '새 웹툰', author: '', platform: '네이버웹툰', url: '', cover: '', genres: gid ? [gid] : [], recommended: false, episodes: 1, ongoing: false, tags: [], desc: '' };
+    return { id: newWebtoonId(), title: title || '새 웹툰', author: '', platform: '네이버웹툰', url: '', cover: '', genres: gid ? [gid] : [], recommended: false, episodes: 1, status: 'ongoing', days: [], autoCount: true, baseDate: WT.schedule.today(), tags: [], desc: '' };
   }
   function treesOf(id) { return Object.keys(D.trees).filter((g) => D.trees[g].nodes[id]); }
   function removeFromTree(gid, id) {
@@ -97,6 +97,7 @@
       ids.add(w.id);
       if (!w.title.trim()) out.push(`${w.id}: 제목이 비어 있어요`);
       if (!(w.episodes >= 1)) out.push(`${w.title}: 총 화수를 1 이상으로 적어 주세요`);
+      if (WT.schedule.status(w) === 'ongoing' && w.autoCount && !(w.days || []).length) out.push(`${w.title}: 화수 자동 계산을 켰는데 연재 요일이 없어요`);
       if (!w.genres.length) out.push(`${w.title}: 장르를 하나 이상 골라 주세요`);
       if (w.url && !/^https?:\/\//.test(w.url)) out.push(`${w.title}: 링크는 https:// 로 시작해야 해요`);
     });
@@ -158,7 +159,7 @@
           <div class="items-box">
             ${list.map((x) => `<button type="button" class="ad-row${ui.w === x.id ? ' sel' : ''}" data-a="pick-w" data-id="${x.id}">
               <span class="dotc" style="background:${gColor(x)}">${esc(x.title[0] || '?')}</span>
-              <span class="t"><b>${x.recommended ? '★ ' : ''}${esc(x.title)}</b><span>${x.id} · ${esc(x.genres.map((g) => (genre(g) || {}).name).join(', ') || '장르 없음')} · ${x.episodes}화</span></span>
+              <span class="t"><b>${x.recommended ? '★ ' : ''}${esc(x.title)}</b><span>${x.id} · ${esc(x.genres.map((g) => (genre(g) || {}).name).join(', ') || '장르 없음')} · ${WT.schedule.episodes(x)}화 · ${esc(WT.schedule.label(x))}</span></span>
             </button>`).join('') || '<p class="ad-help">찾는 웹툰이 없어요</p>'}
           </div>
         </section>
@@ -177,7 +178,7 @@
       <div class="field"><label for="f-author">작가</label><input id="f-author" class="fld" data-wf="author" value="${esc(w.author)}" placeholder="예: 김작가 글 · 이작가 그림"></div>
       <div class="grid2">
         <div class="field"><label for="f-plat">플랫폼</label><input id="f-plat" class="fld" data-wf="platform" list="plat-list" value="${esc(w.platform)}"><datalist id="plat-list">${PLATFORMS.map((p) => `<option value="${p}">`).join('')}</datalist></div>
-        <div class="field"><label for="f-ep">총 화수</label><input id="f-ep" class="fld" type="number" min="1" data-wf="episodes" value="${w.episodes}"></div>
+        <div class="field"><label for="f-ep">총 화수 (오늘 기준)</label><input id="f-ep" class="fld" type="number" min="1" data-wf="episodes" value="${WT.schedule.episodes(w)}"></div>
       </div>
       <div class="field"><label for="f-url">보러 가기 링크</label><input id="f-url" class="fld" type="url" data-wf="url" value="${esc(w.url)}" placeholder="https://"></div>
       <div class="field"><label for="f-cover">표지 이미지 주소 (선택)</label><input id="f-cover" class="fld" type="url" data-wf="cover" value="${esc(w.cover)}" placeholder="비워 두면 제목 첫 글자로 표시"><span class="hint">직접 만들었거나 써도 되는 이미지만 넣어 주세요.</span></div>
@@ -186,8 +187,18 @@
       </fieldset>
       <div class="checks">
         <label class="ad-check" style="color:var(--coin); font-weight:700"><input type="checkbox" data-wf="recommended" ${w.recommended ? 'checked' : ''}> 관리자 강추 (노드에 큰 별)</label>
-        <label class="ad-check"><input type="checkbox" data-wf="ongoing" ${w.ongoing ? 'checked' : ''}> 연재 중</label>
       </div>
+      <div class="grid2">
+        <div class="field"><label for="f-status">연재 상태</label><select id="f-status" class="fld" data-wf="status">
+          ${Object.keys(WT.schedule.STATUS_KO).map((k) => `<option value="${k}" ${WT.schedule.status(w) === k ? 'selected' : ''}>${WT.schedule.STATUS_KO[k]}</option>`).join('')}
+        </select></div>
+        <div class="field"><span style="font-size:14px; color:var(--soft)">사이트에 보이는 표시</span><span class="node-tag tag-${WT.schedule.status(w)}" style="align-self:flex-start; font-size:13px; margin-top:8px">${esc(WT.schedule.label(w))}</span></div>
+      </div>
+      <fieldset style="border:none; margin:0; padding:0"><legend class="hint" style="margin-bottom:6px; font-size:14px; color:var(--soft)">올라오는 요일</legend>
+        <div class="checks">${WT.schedule.DAYS.map((d) => `<label><input type="checkbox" data-wd="${d}" ${(w.days || []).includes(d) ? 'checked' : ''}> ${WT.schedule.DAY_KO[d]}</label>`).join('')}</div>
+      </fieldset>
+      ${WT.schedule.status(w) === 'ongoing' ? `<label class="ad-check"><input type="checkbox" data-wf="autoCount" ${w.autoCount ? 'checked' : ''}> 연재 요일마다 총 화수 자동으로 +1</label>
+      <span class="hint">${w.autoCount ? ((w.days || []).length ? `${esc(w.baseDate || '')}에 ${w.episodes}화로 적었고, 그 뒤 연재 요일마다 1화씩 늘어나요. 휴재 등으로 어긋나면 총 화수를 다시 적어 주세요.` : '올라오는 요일을 골라 주세요.') : '끄면 총 화수를 직접 고쳐야 해요.'}</span>` : `<span class="hint">${WT.schedule.status(w) === 'hiatus' ? '휴재 중에는 화수가 늘어나지 않아요. 다시 연재되면 "연재 중"으로 바꿔 주세요.' : '완결된 웹툰은 화수가 늘어나지 않아요.'}</span>`}
       <div class="field"><label for="f-tags">태그 (쉼표로 구분)</label><input id="f-tags" class="fld" data-wf="tags" value="${esc((w.tags || []).join(', '))}" placeholder="예: 회귀, 성장"></div>
       <div class="field"><label for="f-desc">설명</label><textarea id="f-desc" class="fld" data-wf="desc" maxlength="300">${esc(w.desc)}</textarea></div>
       <div class="ad-actions">
@@ -812,7 +823,8 @@
     if (el.dataset.wf && el.type !== 'checkbox') {
       const w = toon(ui.w);
       const k = el.dataset.wf;
-      if (k === 'episodes') w.episodes = Math.max(1, parseInt(el.value, 10) || 1);
+      if (k === 'episodes') { w.episodes = Math.max(1, parseInt(el.value, 10) || 1); w.baseDate = WT.schedule.today(); }
+      else if (k === 'status') { w.episodes = WT.schedule.episodes(w); w.baseDate = WT.schedule.today(); w.status = el.value; delete w.ongoing; }
       else if (k === 'tags') w.tags = el.value.split(',').map((x) => x.trim()).filter(Boolean);
       else w[k] = el.value;
       saveDraft();
@@ -832,7 +844,18 @@
     const el = e.target;
     if (el.id === 'w-fg') { ui.fg = el.value; render(); return; }
     if (el.id === 'import-file') { importFile(el.files[0]); return; }
-    if (el.dataset.wf && el.type === 'checkbox') { toon(ui.w)[el.dataset.wf] = el.checked; saveDraft(); render(); return; }
+    if (el.dataset.wf && el.type === 'checkbox') {
+      const w = toon(ui.w);
+      if (el.dataset.wf === 'autoCount') { w.episodes = WT.schedule.episodes(w); w.baseDate = WT.schedule.today(); }
+      w[el.dataset.wf] = el.checked; saveDraft(); render(); return;
+    }
+    if (el.dataset.wd) {
+      const w = toon(ui.w);
+      w.episodes = WT.schedule.episodes(w); w.baseDate = WT.schedule.today();   // 요일을 바꾸기 전까지 늘어난 화수는 굳혀 둬요
+      const d = el.dataset.wd;
+      w.days = el.checked ? Array.from(new Set((w.days || []).concat(d))) : (w.days || []).filter((x) => x !== d);
+      saveDraft(); render(); return;
+    }
     if (el.dataset.wg) {
       const w = toon(ui.w);
       const g = el.dataset.wg;

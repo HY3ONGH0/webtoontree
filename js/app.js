@@ -25,6 +25,8 @@
 
   WT.genre = (id) => WT.data.genres.find((g) => g.id === id);
   WT.toon = (id) => WT.data.webtoons.find((w) => w.id === id);
+  /** 오늘 기준 총 화수 (연재 요일 자동 계산 포함) */
+  WT.eps = (w) => WT.schedule.episodes(w);
   WT.isHot = (id) => (WT.data.hotToday || []).includes(id);
   /** 홈·장르 띠에 보여줄 장르: 트리에 웹툰이 하나 이상 있는 장르 */
   WT.liveGenres = () => WT.data.genres.filter((g) => WT.data.trees[g.id] && Object.keys(WT.data.trees[g.id].nodes || {}).length && WT.data.trees[g.id].start);

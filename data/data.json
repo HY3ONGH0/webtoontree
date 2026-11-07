@@ -470,13 +470,16 @@
       ],
       "recommended": false,
       "episodes": 200,
-      "ongoing": false,
       "tags": [
         "레벨업",
         "헌터",
         "성장"
       ],
-      "desc": "세상에서 가장 약한 E급 헌터가 자신에게만 보이는 시스템 창을 얻고, 레벨을 올리며 강해지는 이야기."
+      "desc": "세상에서 가장 약한 E급 헌터가 자신에게만 보이는 시스템 창을 얻고, 레벨을 올리며 강해지는 이야기.",
+      "status": "completed",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     },
     {
       "id": "w002",
@@ -490,13 +493,16 @@
       ],
       "recommended": true,
       "episodes": 250,
-      "ongoing": true,
       "tags": [
         "소설속세계",
         "생존",
         "시나리오"
       ],
-      "desc": "혼자 끝까지 읽은 소설이 현실이 되고, 결말을 아는 유일한 독자가 살아남기 위해 움직이는 이야기."
+      "desc": "혼자 끝까지 읽은 소설이 현실이 되고, 결말을 아는 유일한 독자가 살아남기 위해 움직이는 이야기.",
+      "status": "ongoing",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     },
     {
       "id": "w003",
@@ -510,13 +516,16 @@
       ],
       "recommended": false,
       "episodes": 500,
-      "ongoing": false,
       "tags": [
         "귀족",
         "학원",
         "액션"
       ],
-      "desc": "820년의 긴 잠에서 깨어난 귀족이 고등학교에 다니며 소중한 사람들을 지켜 나가는 이야기."
+      "desc": "820년의 긴 잠에서 깨어난 귀족이 고등학교에 다니며 소중한 사람들을 지켜 나가는 이야기.",
+      "status": "completed",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     },
     {
       "id": "w004",
@@ -530,13 +539,16 @@
       ],
       "recommended": false,
       "episodes": 600,
-      "ongoing": true,
       "tags": [
         "탑등반",
         "시험",
         "대서사"
       ],
-      "desc": "꼭대기에 오르면 무엇이든 얻을 수 있다는 탑. 한 소녀를 따라 탑에 들어간 소년이 층마다 시험을 넘어서는 모험."
+      "desc": "꼭대기에 오르면 무엇이든 얻을 수 있다는 탑. 한 소녀를 따라 탑에 들어간 소년이 층마다 시험을 넘어서는 모험.",
+      "status": "ongoing",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     },
     {
       "id": "w005",
@@ -550,13 +562,16 @@
       ],
       "recommended": false,
       "episodes": 550,
-      "ongoing": false,
       "tags": [
         "격투",
         "신화",
         "배틀"
       ],
-      "desc": "고등학생 최강자를 가리는 격투 대회에서 시작해 신화의 세계로까지 커져 가는 액션."
+      "desc": "고등학생 최강자를 가리는 격투 대회에서 시작해 신화의 세계로까지 커져 가는 액션.",
+      "status": "completed",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     },
     {
       "id": "w006",
@@ -570,13 +585,16 @@
       ],
       "recommended": false,
       "episodes": 220,
-      "ongoing": false,
       "tags": [
         "학원",
         "메이크업",
         "로맨틱코미디"
       ],
-      "desc": "화장으로 여신이 된 주경이 민낯을 들키지 않으려 애쓰며 펼쳐지는 학원 로맨스."
+      "desc": "화장으로 여신이 된 주경이 민낯을 들키지 않으려 애쓰며 펼쳐지는 학원 로맨스.",
+      "status": "completed",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     },
     {
       "id": "w007",
@@ -590,13 +608,16 @@
       ],
       "recommended": false,
       "episodes": 400,
-      "ongoing": false,
       "tags": [
         "학원",
         "고백",
         "코미디"
       ],
-      "desc": "평범한 고등학생 공주영의 고백으로 시작되는 학원 로맨틱 코미디."
+      "desc": "평범한 고등학생 공주영의 고백으로 시작되는 학원 로맨틱 코미디.",
+      "status": "completed",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     },
     {
       "id": "w008",
@@ -611,13 +632,16 @@
       ],
       "recommended": true,
       "episodes": 300,
-      "ongoing": false,
       "tags": [
         "대학",
         "심리",
         "긴장감"
       ],
-      "desc": "속을 알 수 없는 선배 유정과 그를 경계하는 홍설의, 긴장감 있는 대학가 로맨스."
+      "desc": "속을 알 수 없는 선배 유정과 그를 경계하는 홍설의, 긴장감 있는 대학가 로맨스.",
+      "status": "completed",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     },
     {
       "id": "w009",
@@ -632,13 +656,16 @@
       ],
       "recommended": false,
       "episodes": 500,
-      "ongoing": false,
       "tags": [
         "연애",
         "일상",
         "세포"
       ],
-      "desc": "유미의 머릿속 세포들의 시점으로 그린 연애와 일상."
+      "desc": "유미의 머릿속 세포들의 시점으로 그린 연애와 일상.",
+      "status": "completed",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     },
     {
       "id": "w010",
@@ -652,13 +679,16 @@
       ],
       "recommended": false,
       "episodes": 150,
-      "ongoing": true,
       "tags": [
         "회귀",
         "문파",
         "성장"
       ],
-      "desc": "전설의 검수 청명이 백 년 뒤 몰락한 화산파의 제자로 다시 태어나, 문파를 일으켜 세우는 이야기."
+      "desc": "전설의 검수 청명이 백 년 뒤 몰락한 화산파의 제자로 다시 태어나, 문파를 일으켜 세우는 이야기.",
+      "status": "ongoing",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     },
     {
       "id": "w011",
@@ -672,13 +702,16 @@
       ],
       "recommended": true,
       "episodes": 200,
-      "ongoing": true,
       "tags": [
         "나노머신",
         "마교",
         "성장"
       ],
-      "desc": "미래에서 온 나노머신을 몸에 품게 된 마교의 서자가 강해지는 무협 판타지."
+      "desc": "미래에서 온 나노머신을 몸에 품게 된 마교의 서자가 강해지는 무협 판타지.",
+      "status": "ongoing",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     },
     {
       "id": "w012",
@@ -692,12 +725,15 @@
       ],
       "recommended": false,
       "episodes": 300,
-      "ongoing": true,
       "tags": [
         "정통무협",
         "액션"
       ],
-      "desc": "강해지고 싶은 소년이 무림의 고수들 사이에서 성장하는 정통 무협 액션."
+      "desc": "강해지고 싶은 소년이 무림의 고수들 사이에서 성장하는 정통 무협 액션.",
+      "status": "ongoing",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     },
     {
       "id": "w013",
@@ -711,13 +747,16 @@
       ],
       "recommended": true,
       "episodes": 140,
-      "ongoing": false,
       "tags": [
         "괴물",
         "생존",
         "아파트"
       ],
-      "desc": "사람이 괴물로 변하는 세상, 아파트에 고립된 주민들의 생존기."
+      "desc": "사람이 괴물로 변하는 세상, 아파트에 고립된 주민들의 생존기.",
+      "status": "completed",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     },
     {
       "id": "w014",
@@ -731,13 +770,16 @@
       ],
       "recommended": false,
       "episodes": 80,
-      "ongoing": false,
       "tags": [
         "고시원",
         "공포",
         "심리"
       ],
-      "desc": "서울로 올라온 청년이 머물게 된 낡은 고시원과 그곳의 수상한 이웃들."
+      "desc": "서울로 올라온 청년이 머물게 된 낡은 고시원과 그곳의 수상한 이웃들.",
+      "status": "completed",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     },
     {
       "id": "w015",
@@ -751,13 +793,16 @@
       ],
       "recommended": false,
       "episodes": 100,
-      "ongoing": false,
       "tags": [
         "추리",
         "반전",
         "심리"
       ],
-      "desc": "우연히 사람을 죽인 평범한 대학생, 그리고 그가 죽인 사람들에게 숨겨진 비밀."
+      "desc": "우연히 사람을 죽인 평범한 대학생, 그리고 그가 죽인 사람들에게 숨겨진 비밀.",
+      "status": "completed",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     },
     {
       "id": "w016",
@@ -771,13 +816,16 @@
       ],
       "recommended": true,
       "episodes": 1000,
-      "ongoing": false,
       "tags": [
         "개그",
         "가족",
         "일상"
       ],
-      "desc": "작가와 가족들의 엉뚱한 일상을 그린 개그 웹툰."
+      "desc": "작가와 가족들의 엉뚱한 일상을 그린 개그 웹툰.",
+      "status": "completed",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     },
     {
       "id": "w017",
@@ -791,13 +839,16 @@
       ],
       "recommended": false,
       "episodes": 120,
-      "ongoing": false,
       "tags": [
         "자취",
         "공감",
         "일상"
       ],
-      "desc": "처음으로 독립해 혼자 살며 겪는 소소한 일상과 공감."
+      "desc": "처음으로 독립해 혼자 살며 겪는 소소한 일상과 공감.",
+      "status": "completed",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-07"
     }
   ],
   "trees": {
