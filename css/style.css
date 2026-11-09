@@ -207,11 +207,39 @@ button { cursor: pointer; }
 .node .letter { position: relative; font-family: var(--display); font-size: calc(var(--sz) * 0.4); color: #fff; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); }
 .node.st-open { animation: breathe 2.4s ease-in-out infinite; }
 .node.st-done { border-color: var(--gold); box-shadow: 0 0 28px rgba(232, 198, 106, 0.75), inset 0 0 18px rgba(255, 255, 255, 0.35); }
-.node.st-locked { border: 2px solid #3A4670; background: #141C3A; box-shadow: none; }
-.node.st-locked .letter { color: #6E7AA3; }
-.node.st-locked .cover { filter: grayscale(1) brightness(.4); }
+.node.st-locked {
+  border: 3px solid #5A6690;
+  background: radial-gradient(circle at 32% 26%, #4A557C 0%, #2A3356 45%, #141A33 100%);
+  box-shadow: inset 0 3px 6px rgba(255, 255, 255, 0.18), inset 0 -6px 12px rgba(0, 0, 0, 0.55), 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+.node.st-locked .letter { display: none; }
+.node.st-locked .cover { filter: grayscale(1) brightness(.5); opacity: .3; }
+/* 자물쇠: 원이 몸통, 위에 고리, 가운데 열쇠 구멍 */
+.shackle {
+  position: absolute; z-index: 0; pointer-events: none;
+  left: calc(var(--sz) * 0.24); top: calc(var(--sz) * -0.36);
+  width: calc(var(--sz) * 0.52); height: calc(var(--sz) * 0.62);
+  border: calc(var(--sz) * 0.085) solid #6C78A3; border-bottom: 0;
+  border-radius: calc(var(--sz) * 0.3) calc(var(--sz) * 0.3) 0 0;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.18), 0 -2px 8px rgba(0, 0, 0, 0.4);
+  transition: transform .25s ease;
+}
+.node-box.is-locked .node { z-index: 1; }
+.node-box.is-locked:hover .shackle { animation: shackleTug .5s ease-in-out; }
+.keyhole {
+  position: absolute; z-index: 1; display: block; left: 50%; top: 40%; transform: translate(-50%, -50%);
+  width: calc(var(--sz) * 0.2); height: calc(var(--sz) * 0.2); border-radius: 50%;
+  background: #070B1A; box-shadow: 0 0 0 2px rgba(232, 198, 106, 0.55), 0 0 12px rgba(232, 198, 106, 0.35);
+}
+.keyhole i {
+  position: absolute; left: 50%; top: 70%; transform: translateX(-50%);
+  width: calc(var(--sz) * 0.09); height: calc(var(--sz) * 0.2);
+  background: #070B1A; clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+}
+@keyframes shackleTug { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-5px); } 70% { transform: translateY(1px); } }
 .node.is-hot:not(.st-locked) { box-shadow: 0 0 26px rgba(255, 120, 40, 0.9), inset 0 0 18px rgba(255, 200, 120, 0.5); }
-.node.is-sel { outline: 3px solid #fff; outline-offset: 9px; }
+.node.is-sel { outline: 3px solid #fff; outline-offset: 6px; }
+.node-box + .node-label { margin-top: 8px; }
 .node.pop { animation: pop2 .45s ease-out; }
 .node.pop.gold { animation: pop2 .45s ease-out, gold 1s ease-out; }
 .node.pop.burst { animation: pop2 .45s ease-out, burst .9s ease-out; }
@@ -223,12 +251,11 @@ button { cursor: pointer; }
   pointer-events: none;
 }
 .ripple { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--gc); animation: ripple .7s ease-out both; pointer-events: none; }
-.badge-done, .badge-lock {
-  position: absolute; right: -4px; top: -4px; width: 26px; height: 26px; border-radius: 50%;
+.badge-done {
+  position: absolute; right: -4px; bottom: -4px; width: 26px; height: 26px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
 }
 .badge-done { background: var(--gold); box-shadow: 0 0 10px rgba(232, 198, 106, 0.8); }
-.badge-lock { background: #2A3456; }
 .badge-rec { position: absolute; left: -14px; top: -16px; width: 40px; height: 40px; animation: starTw 2.4s ease-in-out infinite; pointer-events: none; }
 .node-label { font-size: 14px; font-weight: 700; text-align: center; color: #fff; text-shadow: 0 1px 4px #000; }
 .node-label.dim { color: #7F8BB0; }
@@ -237,6 +264,12 @@ button { cursor: pointer; }
 .node-sub.done { color: var(--gold); }
 .node-sub.hot { color: #FF9A4D; }
 .node-tag { font-size: 11px; font-weight: 700; border-radius: 999px; padding: 1px 8px; white-space: nowrap; border: 1px solid rgba(255, 255, 255, 0.2); color: var(--soft); background: rgba(7, 11, 26, 0.7); }
+/* 트리 원: 연재 상태를 원의 오른쪽 위에 */
+.node-box > .node-tag {
+  position: absolute; z-index: 2; left: calc(var(--sz) * 0.74); top: calc(var(--sz) * -0.06);
+  line-height: 1.5; padding: 0 7px; pointer-events: none;
+  background: rgba(7, 11, 26, 0.9); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
 .node-tag.tag-ongoing { border-color: rgba(91, 184, 255, 0.6); color: #9FD4FF; }
 .node-tag.tag-hiatus { border-color: rgba(255, 178, 122, 0.7); color: #FFB27A; }
 .node-tag.tag-completed { border-color: rgba(232, 198, 106, 0.5); color: var(--gold); }

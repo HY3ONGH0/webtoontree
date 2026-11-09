@@ -57,22 +57,25 @@
       const hot = WT.isHot(id) && st !== 'locked';
       let sub = newEps(id) ? `새 화 ${newEps(id)}개` : st === 'reading' ? `${ep(id)}화 · ${pct(id)}%` : statusText[st];
       if (hot) sub = `오늘 폭주 · ${sub}`;
+      // 제목 아래에는 꼭 필요한 것만 (읽는 중 진행률, 새 화, 폭주). 안 봄·잠김·완독은 원 모양으로 보여 줘요
+      const showSub = hot || newEps(id) || st === 'reading';
       const subCls = hot ? 'hot' : st === 'reading' ? 'reading' : st === 'done' ? 'done' : '';
       const cover = w.cover ? `<img class="cover" src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.nextElementSibling.hidden = false; this.remove()">` : '';
-      return `<div class="node-box">
+      return `<div class="node-box${st === 'locked' ? ' is-locked' : ''}" style="--sz:${sz}px">
           ${hot ? fireHTML(sz) : ''}
+          ${st === 'locked' ? '<span class="shackle" aria-hidden="true"></span>' : ''}
           ${st !== 'locked' ? `<span class="ring" style="--sz:${sz}px; --pct:${pct(id)}%"></span>` : ''}
           <button type="button" class="node st-${st}${hot ? ' is-hot' : ''}${sel === id ? ' is-sel' : ''}" style="--sz:${sz}px" data-node="${id}"
-            aria-label="${esc(w.title)}, ${esc(sub)}${w.recommended ? ', 관리자 강추' : ''}">
+            aria-label="${esc(w.title)}, ${esc(sub)}, ${esc(WT.schedule.label(w))}${w.recommended ? ', 관리자 강추' : ''}">
             ${cover}<span class="letter" ${w.cover ? 'hidden' : ''}>${esc(w.title[0])}</span>
             ${st === 'done' ? `<span class="badge-done" aria-hidden="true">${WT.icon.check}</span>` : ''}
-            ${st === 'locked' ? `<span class="badge-lock" aria-hidden="true">${WT.icon.lock}</span>` : ''}
+            ${st === 'locked' ? '<span class="keyhole" aria-hidden="true"><i></i></span>' : ''}
           </button>
           ${w.recommended ? `<span class="badge-rec" aria-hidden="true">${WT.icon.star}</span>` : ''}
+          <span class="node-tag tag-${WT.schedule.status(w)}" aria-hidden="true">${esc(WT.schedule.label(w))}</span>
         </div>
         <span class="node-label${st === 'locked' ? ' dim' : ''}">${esc(w.title)}</span>
-        <span class="node-sub ${subCls}">${esc(sub)}</span>
-        <span class="node-tag tag-${WT.schedule.status(w)}">${esc(WT.schedule.label(w))}</span>`;
+        ${showSub ? `<span class="node-sub ${subCls}">${esc(sub)}</span>` : ''}`;
     }
 
     function linkHTML(l, i) {
