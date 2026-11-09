@@ -456,9 +456,239 @@
           ]
         ]
       }
+    },
+    {
+      "id": "sports",
+      "name": "스포츠",
+      "constellation": "",
+      "color": "#E8C66A",
+      "desc": "",
+      "shape": {
+        "lines": [
+          [
+            [
+              50,
+              4
+            ],
+            [
+              62,
+              30
+            ],
+            [
+              92,
+              30
+            ],
+            [
+              68,
+              48
+            ],
+            [
+              78,
+              70
+            ],
+            [
+              50,
+              56
+            ],
+            [
+              22,
+              70
+            ],
+            [
+              32,
+              48
+            ],
+            [
+              8,
+              30
+            ],
+            [
+              38,
+              30
+            ],
+            [
+              50,
+              4
+            ]
+          ]
+        ],
+        "stars": [
+          [
+            50,
+            4,
+            4
+          ],
+          [
+            92,
+            30,
+            3
+          ],
+          [
+            78,
+            70,
+            3
+          ],
+          [
+            22,
+            70,
+            3
+          ],
+          [
+            8,
+            30,
+            3
+          ],
+          [
+            50,
+            40,
+            4.6
+          ]
+        ]
+      }
     }
   ],
   "webtoons": [
+    {
+      "id": "w028",
+      "title": "화산귀환",
+      "author": "ARCHE, LICO, 비가",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/9500.html",
+      "cover": "https://i.namu.wiki/i/6Ju3rrJag9aWNiVldT_Jm_rq-7ShfaSbp5bNYhJzsdC9Jr7hQ2uDeG-28k1WpGUE8C3rDi1J_fkwqTFkJto0aQr8Rh3IMUBLnO9KTRtRfWiMGVzKlP8ESGCl8Ued43IO_W2dEFrhi8yN_bsAA0ouAw.webp",
+      "genres": [
+        "murim",
+        "fantasy"
+      ],
+      "recommended": true,
+      "episodes": 181,
+      "status": "ongoing",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "무협/사극",
+        "판타지",
+        "개그",
+        "회귀",
+        "힘순찐",
+        "먼치킨",
+        "소설원작"
+      ],
+      "desc": "대 화산파 13대 제자. 천하삼대검수 매화검존 청명. 천하를 혼란에 빠뜨린 고금제일마 천마의 목을 치고 십만대산의 정상에서 영면. 백 년의 시간을 뛰어넘어 아이의 몸으로 다시 살아나다. 뭐? 화산이 망해? 이게 뭔 개소리야!?"
+    },
+    {
+      "id": "w027",
+      "title": "가비지타임",
+      "author": "2사장",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/3044.html",
+      "cover": "https://i.namu.wiki/i/HkOlzsfkzdI-Asc2E79y6AeT45NsnQQIANjiQ5w91oL08J3_TzqDLbQaiIS0-V_eRgcDtqgMPXhpr3UlsYWJQdXMyB7OovPqDNn8rsE06cg4pI1pbMw7wYl3DocwRxyU_P3YFbAp8ceJCc0viYIocQ.webp",
+      "genres": [
+        "sports"
+      ],
+      "recommended": true,
+      "episodes": 203,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "스포츠",
+        "최강자전",
+        "농구"
+      ],
+      "desc": "한국 최초 한국형 고교스포츠 웹툰! 열혈따윈 개나 줘, 낙오자들 뿐인 농구부의 운명은?"
+    },
+    {
+      "id": "w026",
+      "title": "엄마를 만나러 가는 길",
+      "author": "고먕",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/17333.html",
+      "cover": "https://i.namu.wiki/i/6iGaaZgEaSRChIWV12Z0jvCecaUU6qNHzmJbpGyxv2EbwMcZ8FPFcWEOQxpk5nbhujX4O8fcMRM9crbdKlg0O05K4yVxu-FIcxzTx9q0EDwPDfWnWCcBLNMmrT2Ubz43tQIcIR3EeA808dXQFcFI2g.webp",
+      "genres": [
+        "daily",
+        "fantasy"
+      ],
+      "recommended": true,
+      "episodes": 55,
+      "status": "completed",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "판타지",
+        "모험",
+        "가족",
+        "힐링",
+        "육아물"
+      ],
+      "desc": "폐가에서 발견된 아이 '모리'는 구조대에 의해 보호소에서 눈을 뜬다. 익숙하지 않은 생활에 적응하던 어느 날 후원자에게 조건 없는 사랑을 받고 자라는데.. 친하게 지내던 친구가 엄마와 떠나고, 엄마라는 존재가 있다는 걸 알게 된 아이는 생각한다. 혹시 이 사람이.. 나의 엄마가 아닐까? 모리의 멀고도 험한 엄마 만나러 가는 이야기."
+    },
+    {
+      "id": "w025",
+      "title": "말년용사",
+      "author": "후딩, 신마니",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/10025.html",
+      "cover": "https://i.namu.wiki/i/ZStu0iNQjl5z7k0gyNSlqB8K-5rb082b78KdT84QW2VTMPLuL71nWTEu8mGCCLcQQ63EaWYUG-acc0KJYKiyoGO8XA451ENcSEJgr-aIC-JJiYjTyDS8Vw2nLM-B3yif1xFFL0NwBkFq-D-SMoBNGA.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": true,
+      "episodes": 225,
+      "status": "ongoing",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "판타지",
+        "신화",
+        "액션",
+        "개그",
+        "밀리터리",
+        "회귀",
+        "이세계",
+        "이능력"
+      ],
+      "desc": "전역하기 3일 전 어이없는 사고로 죽어버린 말년 병장. 갑자기 이세계로 떠나라는 현실을 받아들이지 못하고 난리를 치다 맨몸으로 이세계에 떨어지는 벌을 받게 된다. 말년 병장의 눈물겨운 밀리터리 생존 판타지"
+    },
+    {
+      "id": "w024",
+      "title": "전지적 독자 시점",
+      "author": "UMI, 슬리피-C, 싱숑",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/4279.html",
+      "cover": "https://i.namu.wiki/i/hctZcawovPWWqUJIBtPBE8Y2xEa10m9amRGwYbHx60s95WLdcCCpH0pMjV1boEHYomAOZf22bw78avxZwHbA5uXorldONML8NhwKQ9zWBBNDeTEbey4Uk3H8KDSEud5Q4JxthGNbcumhJAs6al4fUw.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": true,
+      "episodes": 310,
+      "status": "hiatus",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "판타지",
+        "소설원작",
+        "먼치킨",
+        "구원서사",
+        "회귀",
+        "독자"
+      ],
+      "desc": "‘이건 내가 아는 그 전개다‘ 한순간에 세계가 멸망하고, 새로운 세상이 펼쳐졌다. 오지 나만이 완주했던 소설 세계에서 평범했던 독자의 새로운 삶이 시작된다."
+    },
     {
       "id": "w023",
       "title": "나 혼자만 레벨업",
@@ -625,11 +855,30 @@
       "start": "w023",
       "nodes": {
         "w023": [
-          130,
+          110,
+          280
+        ],
+        "w024": [
+          340,
+          280
+        ],
+        "w025": [
+          570,
           280
         ]
       },
-      "links": []
+      "links": [
+        {
+          "from": "w023",
+          "to": "w024",
+          "why": ""
+        },
+        {
+          "from": "w024",
+          "to": "w025",
+          "why": ""
+        }
+      ]
     },
     "romance": {
       "start": "w019",
@@ -679,8 +928,13 @@
       ]
     },
     "murim": {
-      "start": null,
-      "nodes": {},
+      "start": "w028",
+      "nodes": {
+        "w028": [
+          130,
+          280
+        ]
+      },
       "links": []
     },
     "thriller": {
@@ -689,8 +943,23 @@
       "links": []
     },
     "daily": {
-      "start": null,
-      "nodes": {},
+      "start": "w026",
+      "nodes": {
+        "w026": [
+          130,
+          280
+        ]
+      },
+      "links": []
+    },
+    "sports": {
+      "start": "w027",
+      "nodes": {
+        "w027": [
+          130,
+          280
+        ]
+      },
       "links": []
     }
   },
@@ -722,6 +991,11 @@
         "genre": "daily",
         "x": 1430,
         "y": 1080
+      },
+      {
+        "genre": "sports",
+        "x": 1200,
+        "y": 700
       }
     ],
     "nodes": {},
@@ -823,6 +1097,6 @@
   ],
   "hotToday": [],
   "meta": {
-    "lastWebtoonId": 23
+    "lastWebtoonId": 28
   }
 }
