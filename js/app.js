@@ -405,6 +405,37 @@
   const GUEST_KEY = 'webtoontree.guestVisit';
   function markGuest() { try { sessionStorage.setItem(GUEST_KEY, '1'); } catch (e) { /* 무시 */ } }
 
+  /** 제작진 소개: 검은 화면에 흰 글씨. 누르거나 키를 누르면 건너뛰어요 */
+  const CREDITS_KEY = 'webtoontree.creditsSeen';
+  const CREDITS = ['김형호', '신효제', '이유섭'];
+  function playCredits(done) {
+    try { sessionStorage.setItem(CREDITS_KEY, '1'); } catch (e) { /* 무시 */ }
+    const el = document.createElement('div');
+    el.className = 'credits';
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-label', '제작: ' + CREDITS.join(', '));
+    el.innerHTML = `<div class="credits-in">
+        <p class="cr-role">제작</p>
+        ${CREDITS.map((n, i) => `<p class="cr-name" style="animation-delay:${0.9 + i * 0.45}s">${esc(n)}</p>`).join('')}
+      </div>
+      <p class="cr-skip">화면을 누르면 건너뛰어요</p>`;
+    document.body.appendChild(el);
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      clearTimeout(timer);
+      el.classList.add('out');
+      document.removeEventListener('keydown', finish);
+      setTimeout(() => { el.remove(); }, 700);
+      setTimeout(done, 250);   // 로그인 화면은 검은 화면이 걷히면서 바로 등장해요
+    };
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const timer = setTimeout(finish, reduce ? 1800 : 4600);
+    el.addEventListener('click', finish);
+    document.addEventListener('keydown', finish);
+  }
+
   function route() {
     const parts = (location.hash || '#/').replace(/^#\/?/, '').split('/').filter(Boolean);
     const name = parts[0] || 'home';
@@ -478,7 +509,13 @@
       if (WT.onHashChange && WT.onHashChange()) return;
       route();
     });
-    route();
+    // 로그인 화면으로 가는 첫 방문이면, 게임처럼 제작진 소개를 먼저 보여 줘요 (탭마다 한 번)
+    const S3 = WT.store.state;
+    const loggedIn = WT.api.on() ? !!(S3.profile && S3.token) : !!S3.profile;
+    let seen = false;
+    try { seen = sessionStorage.getItem(CREDITS_KEY) === '1'; } catch (e) { seen = false; }
+    if (!loggedIn && !S3.guest && !seen && !new URLSearchParams(location.search).has('preview')) playCredits(route);
+    else route();
   }
 
   document.addEventListener('DOMContentLoaded', init);
