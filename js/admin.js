@@ -214,7 +214,7 @@
       </fieldset>
       <div class="checks">
         <div class="field"><label for="f-rec" style="color:var(--coin); font-weight:700">관리자 추천 (원 옆에 별)</label>
-          <select id="f-rec" class="fld" data-wf="recommended" style="max-width:220px">${[0, 1, 2, 3].map((n) => `<option value="${n}" ${WT.recStars(w) === n ? 'selected' : ''}>${n ? '★'.repeat(n) + ` 별 ${n}개` : '추천 안 함'}</option>`).join('')}</select></div>
+          <select id="f-rec" class="fld" data-wf="recommended" style="max-width:220px">${[0, 1, 2, 3, 4, 5].map((n) => `<option value="${n}" ${WT.recStars(w) === n ? 'selected' : ''}>${n ? '★'.repeat(n) + ` 별 ${n}개` : '추천 안 함'}</option>`).join('')}</select></div>
       </div>
       <div class="grid2">
         <div class="field"><label for="f-status">연재 상태</label><select id="f-status" class="fld" data-wf="status">
@@ -1138,7 +1138,7 @@
       if (k === 'episodes') { w.episodes = Math.max(1, parseInt(el.value, 10) || 1); w.baseDate = WT.schedule.today(); }
       else if (k === 'status') { w.episodes = WT.schedule.episodes(w); w.baseDate = WT.schedule.today(); w.status = el.value; delete w.ongoing; }
       else if (k === 'tags') w.tags = el.value.split(',').map((x) => x.trim()).filter(Boolean);
-      else if (k === 'recommended') w.recommended = Math.max(0, Math.min(3, parseInt(el.value, 10) || 0));
+      else if (k === 'recommended') w.recommended = Math.max(0, Math.min(5, parseInt(el.value, 10) || 0));
       else w[k] = el.value;
       saveDraft();
       return;
