@@ -317,7 +317,8 @@
       </div>
       <div class="ad-split">
         <div style="flex:999 1 560px; min-width:0">
-          <div class="ad-canvas-wrap" id="t-wrap"><div class="ad-canvas" id="t-canvas" style="width:${TREE_W}px; height:${TREE_H}px"></div></div>
+          <div class="ad-canvas-wrap ad-scroll" id="t-wrap"><div class="ad-sizer" id="t-sizer"><div class="ad-canvas" id="t-canvas" style="width:${treeEditW(D.trees[g.id])}px; height:${TREE_H}px"></div></div></div>
+          <p class="ad-help">웹툰이 많아지면 오른쪽 끝으로 끌어 놓으세요. 판이 옆으로 늘어나고, 사이트에서도 옆으로 밀어서 이어 볼 수 있어요.</p>
           ${ui.mode === 'link' ? `<p class="ad-help" style="margin-top:8px">${ui.from ? `<b>${esc((toon(ui.from) || {}).title)}</b>에서 이을 웹툰을 눌러 주세요` : '먼저 출발할 웹툰을 눌러 주세요'}</p>` : ''}
           ${ui.mode === 'branch' && !ui.branchFor ? '<p class="ad-help" style="margin-top:8px">가지를 내릴 웹툰(부모)을 눌러 주세요</p>' : ''}
         </div>
@@ -376,13 +377,18 @@
     el.style.transform = `rotate(${Math.atan2(dy, dx) * 180 / Math.PI}deg)`;
   }
 
+  /** 편집 판 너비: 사이트 판 너비 + 오른쪽에 끌어다 놓을 여유 */
+  function treeEditW(T) { return WT.treeWidth(T) + 260; }
+
   function mountTree() {
     const g = genre(ui.tg);
     const T = D.trees[g.id];
     const wrap = document.getElementById('t-wrap');
     const cv = document.getElementById('t-canvas');
+    const sizer = document.getElementById('t-sizer');
+    let EW = treeEditW(T);
     const scale = () => Math.min(1, wrap.clientWidth / TREE_W);
-    const fit = () => { const s = scale(); cv.style.transform = `scale(${s})`; wrap.style.height = `${TREE_H * s}px`; };
+    const fit = () => { const s = scale(); cv.style.width = `${EW}px`; cv.style.transform = `scale(${s})`; sizer.style.width = `${EW * s}px`; sizer.style.height = `${TREE_H * s}px`; wrap.style.height = ''; };
     cv.innerHTML = T.links.map((l, i) => `<div class="ad-link${ui.tsel && (l.from === ui.tsel || l.to === ui.tsel) ? ' sel' : ''}" data-l="${i}"></div>`).join('') +
       Object.keys(T.nodes).map((id) => {
         const w = toon(id) || { title: '?' };
@@ -415,7 +421,7 @@
       const dx = (e.clientX - drag.sx) / s, dy = (e.clientY - drag.sy) / s;
       drag.moved = Math.max(drag.moved, Math.hypot(dx, dy));
       if (drag.moved < 5) return;
-      const nx = Math.round(Math.min(TREE_W - 60, Math.max(60, drag.x + dx)) / 10) * 10;
+      const nx = Math.round(Math.min(EW - 60, Math.max(60, drag.x + dx)) / 10) * 10;
       const ny = Math.round(Math.min(TREE_H - 60, Math.max(50, drag.y + dy)) / 10) * 10;
       T.nodes[drag.id] = [nx, ny];
       drag.el.style.left = `${nx}px`;
@@ -426,7 +432,13 @@
       if (!drag) return;
       const d = drag;
       drag = null;
-      if (d.moved >= 5) { saveDraft(); return; }
+      if (d.moved >= 5) {
+        saveDraft();
+        // 오른쪽 끝 근처에 놓으면 판을 넓혀요
+        const nw = treeEditW(T);
+        if (nw !== EW) { const keep = wrap.scrollLeft; EW = nw; fit(); wrap.scrollLeft = keep; }
+        return;
+      }
       nodeTap(d.id, d.plus);
     });
     cv.addEventListener('keydown', (e) => {
@@ -465,9 +477,10 @@
     // 부모 오른쪽부터 차례로 살펴서, 다른 노드와 겹치지 않는 첫 자리에 놓아요
     const tries = [[230, 0], [230, -130], [230, 130], [0, 150], [0, -150], [150, 200], [150, -200], [-230, 0], [-230, 140], [-230, -140], [120, 260], [-120, 260]];
     const taken = Object.values(T.nodes);
-    const free = ([x, y]) => x >= 70 && x <= TREE_W - 70 && y >= 60 && y <= TREE_H - 60 && taken.every(([a, b]) => Math.hypot(a - x, b - y) > 120);
-    const spot = tries.map(([dx, dy]) => [p[0] + dx, p[1] + dy]).find(free) ||
-      [Math.round(Math.min(TREE_W - 70, Math.max(70, p[0] + 60))), Math.round(Math.min(TREE_H - 60, p[1] + 90))];
+    const free = ([x, y]) => x >= 70 && y >= 60 && y <= TREE_H - 60 && taken.every(([a, b]) => Math.hypot(a - x, b - y) > 120);
+    // 근처에 빈자리가 없으면 오른쪽으로 계속 넓혀 가며 찾아요 (판이 옆으로 늘어나요)
+    let spot = tries.map(([dx, dy]) => [p[0] + dx, p[1] + dy]).find(free);
+    for (let x = p[0] + 230; !spot && x < p[0] + 230 * 40; x += 230) spot = [p[1], 280, 140, 420, 90, 470].map((y) => [x, y]).find(free);
     T.nodes[childId] = [Math.round(spot[0]), Math.round(spot[1])];
     T.links.push({ from: parentId, to: childId, why: '' });
     ui.tsel = childId; ui.branchFor = null; ui.mode = 'select';
@@ -490,13 +503,19 @@
     let maxL = Math.max(0, ...Object.values(level));
     ids.forEach((id) => { if (level[id] === undefined) level[id] = maxL + 1; });
     maxL = Math.max(...Object.values(level));
-    const stepX = maxL ? Math.min(230, (TREE_W - 220) / maxL) : 0;
+    // 한 줄에 너무 많으면 옆으로 나눠서 (판이 옆으로 늘어나요)
+    const MAXROW = 4;
+    let col = 0;
     for (let L = 0; L <= maxL; L++) {
       const row = ids.filter((id) => level[id] === L);
-      row.forEach((id, k) => {
-        const y = row.length === 1 ? TREE_H / 2 : 90 + k * ((TREE_H - 180) / (row.length - 1));
-        T.nodes[id] = [Math.round(110 + L * stepX), Math.round(y)];
-      });
+      for (let c = 0; c < row.length; c += MAXROW) {
+        const part = row.slice(c, c + MAXROW);
+        part.forEach((id, k) => {
+          const y = part.length === 1 ? TREE_H / 2 : 90 + k * ((TREE_H - 180) / (part.length - 1));
+          T.nodes[id] = [Math.round(110 + col * 200), Math.round(y)];
+        });
+        col++;
+      }
     }
     saveDraft();
     render();

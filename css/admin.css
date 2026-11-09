@@ -41,6 +41,8 @@ body.admin { background: #0B1022; background-image: none; }
 .ad-toolbar .tool[aria-pressed="true"] { border: 2px solid var(--accent); background: rgba(91, 184, 255, 0.16); color: #fff; }
 .ad-canvas-wrap { position: relative; border-radius: 12px; border: 1px solid #1F2850; overflow: hidden; background-color: #070B1A; background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px); background-size: 40px 40px; touch-action: none; -webkit-user-select: none; user-select: none; }
 .ad-canvas { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.ad-canvas-wrap.ad-scroll { overflow-x: auto; overflow-y: hidden; touch-action: pan-x; scrollbar-width: thin; scrollbar-color: rgba(232, 198, 106, 0.5) transparent; }
+.ad-sizer { position: relative; overflow: hidden; }
 .ad-node { position: absolute; width: 130px; margin-left: -65px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: grab; }
 .ad-node .c { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--gc); background: radial-gradient(circle at 35% 30%, #ffffff55, var(--gc) 45%, #0B1A45 100%); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-size: 28px; color: #fff; position: relative; }
 .ad-node.start .c { width: 90px; height: 90px; border-color: var(--gold); }
@@ -80,3 +82,4 @@ body.admin { background: #0B1022; background-image: none; }
 .chip-admin { color: #10162B; background: #8FD3FF; }
 .box-warn-ad { margin: 10px 0; padding: 12px 14px; border: 1px dashed rgba(255, 178, 122, 0.7); border-radius: 8px; background: rgba(255, 178, 122, 0.08); color: #FFD6B5; font-size: 14px; line-height: 1.6; }
 .box-warn-ad .ad-actions { margin-top: 10px; }
+.ad-scroll .ad-node { touch-action: none; }

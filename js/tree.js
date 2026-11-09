@@ -1,7 +1,7 @@
 /* 장르 트리 화면: 별자리 노드, 캐릭터 이동, 상세 창(감상 진행 · 별점 · 댓글), 잠금 해제 */
 (function () {
   const esc = WT.esc;
-  const STAGE_W = 1000, STAGE_H = 560;
+  const STAGE_W = 1000, STAGE_H = 560;   // 기본 판 크기 (웹툰이 많으면 판이 옆으로 넓어져요: WT.treeWidth)
 
   function view(params) {
     const trees = WT.data.trees;
@@ -10,6 +10,7 @@
     const gid = live.includes(params[0]) ? params[0] : live[0];
     const g = WT.genre(gid);
     const T = trees[gid];
+    const SW = WT.treeWidth(T);   // 판 너비
     const ids = Object.keys(T.nodes).filter((id) => WT.toon(id));
     const S = WT.store.state;
     const rules = WT.settings().coins;
@@ -133,7 +134,8 @@
       </div>
       <main class="tree-main">
         <div class="stage-wrap stage-anim" id="wrap">
-          <div class="stage" id="stage">
+          <div class="stage-sizer" id="sizer">
+          <div class="stage" id="stage" style="width:${SW}px">
             ${T.links.map(linkHTML).join('')}
             ${ids.map((id) => {
               const [x, y] = T.nodes[id];
@@ -141,6 +143,8 @@
             }).join('')}
             ${hasChar ? `<div class="char" id="char" aria-hidden="true"><div class="hop" id="hop"><div class="flip" id="flip"><div class="bob">${WT.charSVG(WT.currentLook(), 56)}</div></div></div><span class="bubble" id="bubble">어디로 갈까?</span></div>` : ''}
           </div>
+          </div>
+          <div class="more-hint-row" aria-hidden="true"><span class="more-hint">옆으로 밀어서 더 보기 →</span></div>
         </div>
         <div id="panel-slot"></div>
       </main>
@@ -172,12 +176,50 @@
       document.getElementById('prog-text').textContent = `${c.d} / ${ids.length} ${labels.done || '완독'} · 보는 중 ${c.r}`;
     }
 
+    // 판 크기: 기본 너비(1000)를 화면에 맞추고, 웹툰이 많아 판이 넓으면 옆으로 밀어서 봐요
+    const sizer = document.getElementById('sizer');
     function fit() {
       const w = wrap.clientWidth || STAGE_W;
       const sc = Math.min(1, w / STAGE_W);
       stage.style.transform = `scale(${sc})`;
-      wrap.style.height = `${STAGE_H * sc}px`;
+      sizer.style.width = `${SW * sc}px`;
+      sizer.style.height = `${STAGE_H * sc}px`;
+      wrap.classList.toggle('scrolls', SW * sc > w + 2);
+      edges();
     }
+    function edges() {
+      const max = wrap.scrollWidth - wrap.clientWidth;
+      wrap.classList.toggle('at-start', wrap.scrollLeft <= 2);
+      wrap.classList.toggle('at-end', wrap.scrollLeft >= max - 2);
+    }
+    /** 고른 웹툰이 화면 밖이면 그쪽으로 부드럽게 이동 */
+    function reveal(id, smooth) {
+      if (!wrap.classList.contains('scrolls') || !T.nodes[id]) return;
+      const sc = sizer.clientWidth / SW;
+      const x = T.nodes[id][0] * sc;
+      const left = wrap.scrollLeft, w = wrap.clientWidth;
+      if (x > left + 90 && x < left + w - 90) return;
+      wrap.scrollTo({ left: Math.max(0, x - w / 2), behavior: smooth ? 'smooth' : 'auto' });
+    }
+    wrap.addEventListener('scroll', () => { edges(); wrap.classList.add('scrolled'); }, { passive: true });
+    // 마우스로 빈 곳을 끌어도 옆으로 이동 (터치는 손가락으로 그냥 밀면 돼요)
+    let pan = null, panned = false;
+    wrap.addEventListener('pointerdown', (e) => {
+      if (e.pointerType !== 'mouse' || e.button !== 0 || !wrap.classList.contains('scrolls') || e.target.closest('[data-node], button, a')) return;
+      pan = { x: e.clientX, left: wrap.scrollLeft, moved: false };
+    });
+    window.addEventListener('pointermove', (e) => {
+      if (!pan) return;
+      const dx = e.clientX - pan.x;
+      if (Math.abs(dx) > 5) { pan.moved = true; wrap.classList.add('panning'); }
+      if (pan.moved) wrap.scrollLeft = pan.left - dx;
+    });
+    window.addEventListener('pointerup', () => {
+      if (!pan) return;
+      panned = pan.moved; pan = null; wrap.classList.remove('panning');
+      setTimeout(() => { panned = false; }, 0);
+    });
+    stage.addEventListener('click', (e) => { if (panned) { e.stopPropagation(); e.preventDefault(); } }, true);
 
     function animateNode(id, extra) {
       const btn = stage.querySelector(`[data-node="${id}"]`);
@@ -350,6 +392,7 @@
         });
       }
       fit();
+      if (animate) reveal(sel, true);   // 상세 창이 열려 판이 좁아져도 고른 웹툰이 보이게
     }
 
     function select(id, opts) {
@@ -357,6 +400,7 @@
       if (!WT.toon(id) || !T.nodes[id]) return;
       sel = id;
       refreshNodes();
+      reveal(id, !o.keepHash);
       animateNode(id);
       WT.api.fire('view', { webtoonId: id, viewerId: WT.api.viewerId() });
       if (server) loadSocial(id);

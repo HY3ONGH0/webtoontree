@@ -178,6 +178,13 @@
     return { nodes: pos, links, auto, groupOf, regions, shift: [sx, sy], width: Math.round(W), height: Math.round(H) };
   }
 
+  /** 장르 트리 판 너비: 기본 1000, 웹툰이 오른쪽으로 더 있으면 그만큼 넓혀요 */
+  function treeWidth(T) {
+    const xs = Object.values((T && T.nodes) || {}).map((p) => p[0]);
+    return Math.max(TREE_W, Math.ceil(((xs.length ? Math.max(...xs) : 0) + 140) / 10) * 10);
+  }
+
   window.WT = window.WT || {};
   WT.layoutMap = layoutMap;
+  WT.treeWidth = treeWidth;
 })();
