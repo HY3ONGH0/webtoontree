@@ -620,7 +620,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 1,
       "color": "#450d59",
       "episodes": 39,
       "status": "ongoing",
@@ -758,7 +758,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "color": "#016e8f",
       "episodes": 88,
       "status": "ongoing",
@@ -838,7 +838,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "color": "#f5ec00",
       "episodes": 162,
       "status": "ongoing",
@@ -944,7 +944,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "color": "#b51a00",
       "episodes": 124,
       "status": "ongoing",
@@ -1006,7 +1006,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": false,
+      "recommended": 2,
       "color": "#01c7fc",
       "episodes": 114,
       "status": "completed",
@@ -1056,7 +1056,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "color": "#b51a00",
       "episodes": 70,
       "status": "hiatus",
@@ -1083,7 +1083,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "color": "#7a4a00",
       "episodes": 112,
       "status": "ongoing",
@@ -1194,7 +1194,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 5,
       "color": "#3a87fe",
       "episodes": 1,
       "status": "ongoing",
@@ -1309,7 +1309,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 5,
       "color": "#ffffff",
       "episodes": 573,
       "status": "completed",
@@ -1336,7 +1336,7 @@
         "murim",
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "episodes": 181,
       "status": "ongoing",
       "days": [
@@ -1393,7 +1393,7 @@
         "daily",
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "episodes": 55,
       "status": "completed",
       "days": [
@@ -1421,7 +1421,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "episodes": 225,
       "status": "ongoing",
       "days": [
@@ -1452,7 +1452,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 5,
       "episodes": 310,
       "status": "hiatus",
       "days": [
