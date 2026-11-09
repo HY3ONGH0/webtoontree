@@ -149,8 +149,9 @@
     if (WT.api.on()) return s.profile && s.token ? viewAccountMe() : viewAccount();
     if (s.profile) return viewMe();
     let tab = 'start';
+    let enter = true;   // 처음 그릴 때만 등장 애니메이션 (탭을 바꿀 땐 안 해요)
     const draw = () => {
-      app().innerHTML = `<div class="view"><div class="login">
+      app().innerHTML = `<div class="view"><div class="login${enter ? ' login-enter' : ''}">${enter ? '<span class="shoot" aria-hidden="true"></span>' : ''}
         <section class="intro">
           <svg viewBox="0 0 300 150" width="300" height="150" aria-hidden="true" style="max-width:100%">
             <polyline points="20,120 70,70 120,95 170,40 220,60 280,20" fill="none" stroke="#E8C66A" stroke-width="2"/>
@@ -185,6 +186,7 @@
           <span class="hint" style="text-align:center">둘러보기 중에는 캐릭터·코인·별점·댓글을 쓸 수 없어요</span>
         </section>
       </div></div>`;
+      enter = false;
       app().querySelectorAll('[data-tab]').forEach((b) => b.addEventListener('click', () => { tab = b.dataset.tab; draw(); }));
       const form = document.getElementById('start-form');
       if (form) form.addEventListener('submit', (e) => {
@@ -204,7 +206,7 @@
         location.hash = '#/';
       });
       document.getElementById('guest-btn').addEventListener('click', () => {
-        s.guest = true;
+        s.guest = true; markGuest();
         WT.store.save();
         location.hash = '#/';
       });
@@ -251,8 +253,9 @@
   function viewAccount() {
     const s = WT.store.state;
     let tab = 'login';
+    let enter = true;
     const draw = () => {
-      app().innerHTML = `<div class="view"><div class="login">
+      app().innerHTML = `<div class="view"><div class="login${enter ? ' login-enter' : ''}">${enter ? '<span class="shoot" aria-hidden="true"></span>' : ''}
         <section class="intro">
           <svg viewBox="0 0 300 150" width="300" height="150" aria-hidden="true" style="max-width:100%">
             <polyline points="20,120 70,70 120,95 170,40 220,60 280,20" fill="none" stroke="#E8C66A" stroke-width="2"/>
@@ -297,8 +300,9 @@
           <span class="hint" style="text-align:center">둘러보기 중에는 캐릭터·코인·별점·댓글을 쓸 수 없어요</span>
         </section>
       </div></div>`;
+      enter = false;
       app().querySelectorAll('[data-tab]').forEach((b) => b.addEventListener('click', () => { tab = b.dataset.tab; draw(); }));
-      document.getElementById('guest-btn').addEventListener('click', () => { s.guest = true; WT.store.save(); location.hash = '#/'; });
+      document.getElementById('guest-btn').addEventListener('click', () => { s.guest = true; markGuest(); WT.store.save(); location.hash = '#/'; });
       const form = document.getElementById('acc-form');
       const err = document.getElementById('acc-err');
       const showErr = (m) => { err.hidden = false; err.textContent = m; };
@@ -397,6 +401,10 @@
   // ---------- 주소 이동 ----------
   WT.views = { home: viewHome, login: viewLogin };
 
+  /** 둘러보기는 이번 방문(탭)에서만: 사이트를 새로 열면 다시 로그인 화면부터 */
+  const GUEST_KEY = 'webtoontree.guestVisit';
+  function markGuest() { try { sessionStorage.setItem(GUEST_KEY, '1'); } catch (e) { /* 무시 */ } }
+
   function route() {
     const parts = (location.hash || '#/').replace(/^#\/?/, '').split('/').filter(Boolean);
     const name = parts[0] || 'home';
@@ -458,6 +466,13 @@
         S.profile = null; WT.store.save();   // 혼자 모드 닉네임은 서버 계정이 아니에요
       }
       await Promise.race([Promise.all(tasks), new Promise((r) => setTimeout(r, 4000))]);
+    }
+    // 사이트를 새로 열었을 때: 로그인하지 않았으면 (예전에 둘러보기를 했어도) 로그인 화면부터 보여 줘요
+    {
+      const S2 = WT.store.state;
+      let visiting = false;
+      try { visiting = sessionStorage.getItem(GUEST_KEY) === '1'; } catch (e) { visiting = false; }
+      if (S2.guest && !visiting) { S2.guest = false; WT.store.save(); }
     }
     window.addEventListener('hashchange', () => {
       if (WT.onHashChange && WT.onHashChange()) return;

@@ -78,7 +78,10 @@
     const max = D.webtoons.reduce((m, w) => Math.max(m, parseInt(String(w.id).replace(/\D/g, ''), 10) || 0), 0);
     D.meta.lastWebtoonId = Math.max(D.meta.lastWebtoonId || 0, max);
     D.trees = D.trees || {};
-    D.map = D.map || { width: 2400, height: 1400, regions: [], nodes: {}, links: [] };
+    D.map = D.map || { width: 2400, height: 1400, regions: [], links: [] };
+    D.map.regions = D.map.regions || []; D.map.links = D.map.links || [];
+    D.map.pins = D.map.pins || {};      // 관리자가 직접 고정한 웹툰 위치 (나머지는 자동 배치)
+    delete D.map.nodes;                  // 예전 방식의 고정 위치는 쓰지 않아요 (모두 자동 배치로)
     D.shop = D.shop || [];
     D.hotToday = D.hotToday || [];
     D.genres.forEach((g) => { if (!D.trees[g.id]) D.trees[g.id] = { start: null, nodes: {}, links: [] }; });
@@ -99,7 +102,7 @@
   }
   function deleteWebtoon(id) {
     Object.keys(D.trees).forEach((g) => removeFromTree(g, id));
-    delete D.map.nodes[id];
+    delete D.map.pins[id];
     D.map.links = D.map.links.filter(([a, b]) => a !== id && b !== id);
     D.hotToday = D.hotToday.filter((x) => x !== id);
     D.webtoons = D.webtoons.filter((w) => w.id !== id);
@@ -122,7 +125,6 @@
       if (!n) out.push(`${g.name}: 트리에 웹툰이 없어요 (홈에 카드가 나오지 않아요)`);
       else if (!T.start || !T.nodes[T.start]) out.push(`${g.name}: 시작 웹툰(입문작)을 정해 주세요`);
     });
-    const off = D.webtoons.filter((w) => !D.map.nodes[w.id]).length;
 
     return out;
   }
@@ -188,7 +190,7 @@
     return `<section class="ad-form" aria-label="웹툰 정보 수정">
       <div style="display:flex; align-items:center; gap:12px">
         <span class="dotc" style="width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--display); font-size:24px; color:#fff; background:${w.cover ? `url('${esc(w.cover)}') center/cover` : gColor(w)}">${w.cover ? '' : esc(w.title[0] || '?')}</span>
-        <div><b style="font-size:17px">${esc(w.title)}</b><div class="ad-help">${w.id} · 트리: ${esc(inTrees.join(', ') || '없음')} · 전체 지도: ${D.map.nodes[w.id] ? '있음' : '없음'}</div></div>
+        <div><b style="font-size:17px">${esc(w.title)}</b><div class="ad-help">${w.id} · 트리: ${esc(inTrees.join(', ') || '없음')} · 전체 지도: ${D.map.pins[w.id] ? '직접 고정' : '자동 배치'}</div></div>
       </div>
       <div class="field"><label for="f-title">제목</label><input id="f-title" class="fld" data-wf="title" value="${esc(w.title)}"></div>
       <div class="field"><label for="f-author">작가</label><input id="f-author" class="fld" data-wf="author" value="${esc(w.author)}" placeholder="예: 김작가 글 · 이작가 그림"></div>
@@ -229,7 +231,6 @@
       <div class="field"><label for="f-desc">설명</label><textarea id="f-desc" class="fld" data-wf="desc" maxlength="300">${esc(w.desc)}</textarea></div>
       <div class="ad-actions">
         ${treesOf(w.id).length ? '' : (w.genres.length ? `<button type="button" class="btn btn-sm press" data-a="w-to-tree" data-id="${w.id}">${esc((genre(w.genres[0]) || {}).name)} 트리에 넣기</button>` : '')}
-        ${D.map.nodes[w.id] ? '' : `<button type="button" class="btn btn-sm press" data-a="w-to-map" data-id="${w.id}">전체 지도에 넣기</button>`}
         <button type="button" class="btn btn-sm btn-danger press" data-a="del-w" data-id="${w.id}">${confirming ? '한 번 더 누르면 삭제돼요 (트리·지도에서도 빠져요)' : '웹툰 삭제'}</button>
       </div>
     </section>`;
@@ -504,16 +505,16 @@
   // ---------- 전체 지도 편집 ----------
   function tabMap() {
     const M = D.map;
-    const off = D.webtoons.filter((w) => !M.nodes[w.id]);
+    const off = D.webtoons.filter((w) => !M.pins[w.id]);
     const id = ui.msel && toon(ui.msel) ? ui.msel : null;
     const links = M.links.map((l, i) => [l, i]).filter(([l]) => id && (l[0] === id || l[1] === id));
     const modeBtn = (m, label) => `<button type="button" class="btn btn-sm tool press" data-a="mmode" data-id="${m}" aria-pressed="${ui.mmode === m}">${label}</button>`;
     return `<h2>전체 지도 편집</h2>
-      <p class="ad-help">장르 트리에 넣은 웹툰은 트리 모양 그대로 자동으로 지도에 나와요(조금 흐리게 보이는 별). 끌어서 옮기면 그 자리에 고정돼요. 장르 트리의 연결선도 자동으로 보여요. 웹툰 별과 장르 구역(색 영역)을 끌어서 옮겨요. 장르가 애매한 웹툰은 두 구역 사이에 두면 좋아요. 다른 장르끼리 이은 선은 사이트에서 점선으로 보여요.</p>
+      <p class="ad-help">웹툰은 장르별 무리로 자동 배치돼요. 장르 트리 모양을 따르고, 트리에 없는 웹툰은 무리 아래에 줄지어 놓여요. 웹툰을 추가하면 무리가 커지고, 다른 장르 무리는 겹치지 않게 알아서 비켜요.</p>
+      <p class="ad-help"><b>장르 위치 옮기기:</b> 색 영역(장르 무리)의 빈 곳을 끌면 그 장르 웹툰이 통째로 따라와요. 놓으면 다른 무리가 겹치지 않게 다시 정리돼요. <b>웹툰 하나만 옮기기:</b> 별을 끌면 그 자리에 고정돼요(자동 배치에서 빠짐). 장르가 애매한 웹툰을 두 무리 사이에 둘 때 쓰면 좋아요.</p>
       <div class="ad-toolbar">
         ${modeBtn('select', '선택 · 이동')}${modeBtn('link', '연결하기 (A ↔ B)')}
-        <button type="button" class="btn btn-sm press" data-a="map-import">장르 트리 연결 모두 가져오기</button>
-        <span class="ad-help">별 ${Object.keys(M.nodes).length}개 · 연결 ${M.links.length}개</span>
+        <span class="ad-help">고정 ${Object.keys(M.pins).length}개 · 직접 그은 연결 ${M.links.length}개 (장르 트리 연결선은 자동으로 보여요)</span>
       </div>
       <div class="ad-split">
         <div style="flex:999 1 560px; min-width:0">
@@ -524,28 +525,26 @@
           ${id ? `<h3>${esc(toon(id).title)}</h3>
             <span class="box-title">이어진 웹툰</span>
             ${links.length ? links.map(([l, i]) => `<div class="link-row"><span class="who" style="max-width:none; flex:1 1 auto">↔ ${esc((toon(l[0] === id ? l[1] : l[0]) || {}).title)}</span><button type="button" class="icon-btn" data-a="mdel-link" data-i="${i}" aria-label="연결 지우기">✕</button></div>`).join('') : '<span class="hint">이어진 웹툰이 없어요</span>'}
-            <div class="ad-actions"><button type="button" class="btn btn-sm btn-danger press" data-a="map-remove" data-id="${id}">지도에서 빼기</button></div>` : '<h3>자동 배치된 웹툰</h3>'}
-          ${off.length ? `${id ? '<h3 style="margin-top:8px">자동 배치된 웹툰</h3>' : ''}<p class="ad-help">아래 웹툰은 자동 위치에 있어요. 누르면 지금 자리에 고정돼요.</p><div class="pop-list">${off.map((w) => `<button type="button" data-a="map-add" data-id="${w.id}">고정 · ${esc(w.title)}</button>`).join('')}</div>
-            <button type="button" class="btn btn-sm press" data-a="map-add-all">모두 지금 자리에 고정</button>` : (id ? '' : '<span class="hint">모든 웹툰이 지도에 있어요</span>')}
+            ${M.pins[id] ? `<div class="ad-actions"><button type="button" class="btn btn-sm press" data-a="map-remove" data-id="${id}">고정 풀기 (자동 자리로)</button></div>` : '<span class="hint">자동 배치 중이에요</span>'}` : '<h3>자동 배치된 웹툰</h3>'}
+          ${!id ? `<p class="ad-help">${off.length}개는 자동 배치 중, ${Object.keys(M.pins).length}개는 직접 고정했어요.</p>${Object.keys(M.pins).length ? `<button type="button" class="btn btn-sm press" data-a="map-unpin-all">${ui.confirm === 'unpin' ? '한 번 더 누르면 모두 자동 배치로 돌아가요' : '고정 모두 풀기'}</button>` : ''}` : ''}
         </aside>
       </div>`;
   }
   function mountMap() {
     const M = D.map;
-    const L = WT.layoutMap(D);   // 직접 놓은 위치 + 트리 모양 자동 배치 (사이트와 똑같이)
+    const L = WT.layoutMap(D);   // 사이트와 똑같은 자동 배치
+    const [sx, sy] = L.shift;
     const wrap = document.getElementById('m-wrap');
     const cv = document.getElementById('m-canvas');
-    const scale = () => wrap.clientWidth / M.width;
-    const fit = () => { const s = scale(); cv.style.transform = `scale(${s})`; wrap.style.height = `${M.height * s}px`; };
-    cv.innerHTML = M.regions.map((r, i) => {
-      const g = genre(r.genre);
-      if (!g) return '';
-      return `<div class="ad-region" data-r="${i}" style="left:${r.x}px; top:${r.y}px; background:radial-gradient(ellipse at center, ${g.color}55 0%, ${g.color}18 50%, transparent 72%)"><b style="color:${g.color}">${esc(g.name)}</b></div>`;
-    }).join('') + L.links.map((l, i) => `<div class="ad-link${ui.msel && l.includes(ui.msel) ? ' sel' : ''}" data-l="${i}"></div>`).join('') +
+    cv.style.width = `${L.width}px`; cv.style.height = `${L.height}px`;
+    const scale = () => wrap.clientWidth / L.width;
+    const fit = () => { const s = scale(); cv.style.transform = `scale(${s})`; wrap.style.height = `${L.height * s}px`; };
+    cv.innerHTML = L.regions.map((r, i) => `<div class="ad-region" data-r="${i}" style="left:${r.cx - r.w / 2}px; top:${r.cy - r.h / 2}px; width:${r.w}px; height:${r.h}px; margin:0; border-radius:48px; align-items:flex-start; padding-top:8px; box-sizing:border-box; background:radial-gradient(ellipse at center, ${r.color}40 0%, ${r.color}14 60%, transparent 100%); border:2px dashed ${r.color}66" title="끌어서 장르 위치 옮기기"><b style="color:${r.color}; font-size:30px">${esc(r.name)}</b></div>`).join('') +
+      L.links.map((l, i) => `<div class="ad-link${ui.msel && l.includes(ui.msel) ? ' sel' : ''}" data-l="${i}"></div>`).join('') +
       Object.keys(L.nodes).filter((id) => toon(id)).map((id) => {
         const w = toon(id);
         const [x, y] = L.nodes[id];
-        return `<div class="ad-node${ui.msel === id ? ' sel' : ''}${ui.mfrom === id ? ' from' : ''}" data-n="${id}" style="--gc:${gColor(w)}; left:${x}px; top:${y - 36}px; ${L.auto[id] ? 'opacity:.75' : ''}" role="button" tabindex="0" aria-label="${esc(w.title)}${L.auto[id] ? ' (자동 배치)' : ''}"><div class="c">${esc(w.title[0])}</div><span>${esc(w.title)}</span></div>`;
+        return `<div class="ad-node${ui.msel === id ? ' sel' : ''}${ui.mfrom === id ? ' from' : ''}" data-n="${id}" style="--gc:${gColor(w)}; left:${x}px; top:${y - 36}px; ${L.auto[id] ? 'opacity:.8' : ''}" role="button" tabindex="0" aria-label="${esc(w.title)}${L.auto[id] ? ' (자동 배치)' : ' (고정)'}"><div class="c">${esc(w.title[0])}</div><span>${L.auto[id] ? '' : '📌 '}${esc(w.title)}</span></div>`;
       }).join('');
     const drawLinks = () => L.links.forEach(([a, b], i) => {
       const el = cv.querySelector(`[data-l="${i}"]`);
@@ -559,11 +558,15 @@
       const nEl = e.target.closest('[data-n]');
       const rEl = !nEl && e.target.closest('[data-r]');
       if (!nEl && !rEl) return;
-      const isNode = !!nEl;
-      const key = isNode ? nEl.dataset.n : Number(rEl.dataset.r);
-      const pos = isNode ? L.nodes[key] : [M.regions[key].x, M.regions[key].y];
-      drag = { isNode, key, el: nEl || rEl, sx: e.clientX, sy: e.clientY, x: pos[0], y: pos[1], moved: 0 };
-      (nEl || rEl).setPointerCapture(e.pointerId);
+      if (nEl) {
+        const key = nEl.dataset.n;
+        drag = { isNode: true, key, el: nEl, sx: e.clientX, sy: e.clientY, x: L.nodes[key][0], y: L.nodes[key][1], moved: 0 };
+      } else {
+        const r = L.regions[Number(rEl.dataset.r)];
+        const members = Object.keys(L.nodes).filter((id) => L.auto[id] && L.groupOf[id] === r.genre).map((id) => ({ id, el: cv.querySelector(`[data-n="${id}"]`), x: L.nodes[id][0], y: L.nodes[id][1] }));
+        drag = { isNode: false, r, el: rEl, sx: e.clientX, sy: e.clientY, left: parseFloat(rEl.style.left), top: parseFloat(rEl.style.top), members, moved: 0 };
+      }
+      drag.el.setPointerCapture(e.pointerId);
     });
     cv.addEventListener('pointermove', (e) => {
       if (!drag || ui.mmode !== 'select') return;
@@ -571,16 +574,33 @@
       const dx = (e.clientX - drag.sx) / s, dy = (e.clientY - drag.sy) / s;
       drag.moved = Math.max(drag.moved, Math.hypot(dx, dy));
       if (drag.moved < 8) return;
-      const nx = Math.round(Math.min(M.width - 60, Math.max(60, drag.x + dx)));
-      const ny = Math.round(Math.min(M.height - 60, Math.max(60, drag.y + dy)));
-      if (drag.isNode) { M.nodes[drag.key] = [nx, ny]; L.nodes[drag.key] = [nx, ny]; drag.el.style.left = `${nx}px`; drag.el.style.top = `${ny - 36}px`; drag.el.style.opacity = '1'; drawLinks(); }
-      else { M.regions[drag.key].x = nx; M.regions[drag.key].y = ny; drag.el.style.left = `${nx}px`; drag.el.style.top = `${ny}px`; }
+      drag.dx = dx; drag.dy = dy;
+      if (drag.isNode) {
+        const nx = Math.round(drag.x + dx), ny = Math.round(drag.y + dy);
+        L.nodes[drag.key] = [nx, ny]; drag.el.style.left = `${nx}px`; drag.el.style.top = `${ny - 36}px`; drag.el.style.opacity = '1';
+      } else {
+        drag.el.style.left = `${drag.left + dx}px`; drag.el.style.top = `${drag.top + dy}px`;
+        drag.members.forEach((m) => { L.nodes[m.id] = [m.x + dx, m.y + dy]; if (m.el) { m.el.style.left = `${m.x + dx}px`; m.el.style.top = `${m.y + dy - 36}px`; } });
+      }
+      drawLinks();
     });
     cv.addEventListener('pointerup', () => {
       if (!drag) return;
       const d = drag;
       drag = null;
-      if (d.moved >= 8) { saveDraft(); return; }
+      if (d.moved >= 8) {
+        if (d.isNode) {
+          const [nx, ny] = L.nodes[d.key];
+          M.pins[d.key] = [Math.round(nx - sx), Math.round(ny - sy)];
+        } else {
+          const nx = Math.round(d.r.x + d.dx - sx), ny = Math.round(d.r.y + d.dy - sy);
+          const saved = M.regions.find((x) => x.genre === d.r.genre);
+          if (saved) { saved.x = nx; saved.y = ny; } else M.regions.push({ genre: d.r.genre, x: nx, y: ny });
+        }
+        saveDraft();
+        render();   // 다른 장르 무리가 겹치지 않게 다시 정리
+        return;
+      }
       if (d.isNode) mapTap(d.key);
     });
     cv.addEventListener('keydown', (e) => {
@@ -605,12 +625,13 @@
     render();
   }
   function placeOnMap(id) {
-    const auto = WT.layoutMap(D).nodes[id];
-    if (auto) { D.map.nodes[id] = auto.slice(); return; }
+    const L = WT.layoutMap(D);
+    const auto = L.nodes[id];
+    if (auto) { D.map.pins[id] = [auto[0] - L.shift[0], auto[1] - L.shift[1]]; return; }
     const w = toon(id);
     const r = D.map.regions.find((x) => w.genres.includes(x.genre)) || { x: D.map.width / 2, y: D.map.height / 2 };
-    const k = Object.keys(D.map.nodes).length;
-    D.map.nodes[id] = [Math.round(r.x + Math.cos(k * 2.4) * 160), Math.round(r.y + 40 + Math.sin(k * 2.4) * 120)];
+    const k = Object.keys(D.map.pins).length;
+    D.map.pins[id] = [Math.round(r.x + Math.cos(k * 2.4) * 160), Math.round(r.y + 40 + Math.sin(k * 2.4) * 120)];
   }
 
   // ---------- 설정 ----------
@@ -914,13 +935,14 @@
       case 'del-node': if (confirmOnce('tn:' + id)) { removeFromTree(ui.tg, id); ui.tsel = null; saveDraft(); render(); } break;
       case 'mmode': ui.mmode = id; ui.mfrom = null; render(); break;
       case 'map-add': placeOnMap(id); ui.msel = id; saveDraft(); render(); break;
-      case 'map-add-all': D.webtoons.filter((w) => !D.map.nodes[w.id]).forEach((w) => placeOnMap(w.id)); saveDraft(); toast('지도에 모두 넣었어요'); render(); break;
-      case 'map-remove': delete D.map.nodes[id]; D.map.links = D.map.links.filter(([x, y]) => x !== id && y !== id); ui.msel = null; saveDraft(); render(); break;
+      case 'map-add-all': D.webtoons.filter((w) => !D.map.pins[w.id]).forEach((w) => placeOnMap(w.id)); saveDraft(); toast('지도에 모두 넣었어요'); render(); break;
+      case 'map-unpin-all': if (confirmOnce('unpin')) { D.map.pins = {}; saveDraft(); toast('모두 자동 배치로 돌렸어요'); render(); } break;
+      case 'map-remove': delete D.map.pins[id]; saveDraft(); toast('자동 자리로 돌렸어요'); render(); break;
       case 'mdel-link': D.map.links.splice(i, 1); saveDraft(); render(); break;
       case 'map-import': {
         let added = 0;
         Object.values(D.trees).forEach((T) => T.links.forEach((l) => {
-          if (!D.map.nodes[l.from] || !D.map.nodes[l.to]) return;
+          if (!D.map.pins[l.from] || !D.map.pins[l.to]) return;
           if (D.map.links.some(([x, y]) => (x === l.from && y === l.to) || (x === l.to && y === l.from))) return;
           D.map.links.push([l.from, l.to]); added++;
         }));

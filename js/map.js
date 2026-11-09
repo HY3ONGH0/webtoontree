@@ -4,19 +4,14 @@
 
   function view(params) {
     const M = WT.data.map;
-    const L = WT.layoutMap(WT.data);   // 지도에 직접 놓은 위치 + 트리 모양 자동 배치
-    const W = M.width, H = M.height;
+    const L = WT.layoutMap(WT.data);   // 장르 무리를 겹치지 않게 자동 배치 (+ 관리자가 고정한 위치)
+    const W = L.width, H = L.height;
     const S = WT.store.state;
     let ox = 0, oy = 0, s = 0.5;
     let pick = null;
 
-    const live = new Set(WT.data.webtoons.flatMap((w) => w.genres || []));
-    const regions = M.regions.map((r) => {
-      const g = WT.genre(r.genre);
-      if (!g || !live.has(g.id)) return '';
-      return `<div class="region" aria-hidden="true" style="left:${r.x - 360}px; top:${r.y - 300}px; background:radial-gradient(ellipse at center, ${g.color}40 0%, ${g.color}18 45%, transparent 70%)"></div>
-        <span class="region-label" aria-hidden="true" style="left:${r.x - 200}px; top:${r.y - 250}px; color:${g.color}; text-shadow:0 0 20px ${g.color}">${esc(g.name)}</span>`;
-    }).join('');
+    const regions = L.regions.map((r) => `<div class="region" aria-hidden="true" style="left:${r.cx - r.w / 2 - 90}px; top:${r.cy - r.h / 2 - 70}px; width:${r.w + 180}px; height:${r.h + 140}px; background:radial-gradient(ellipse at center, ${r.color}40 0%, ${r.color}18 45%, transparent 70%)"></div>
+        <span class="region-label" aria-hidden="true" style="left:${r.cx - 200}px; top:${r.labelY}px; color:${r.color}; text-shadow:0 0 20px ${r.color}">${esc(r.name)}</span>`).join('');
 
     const links = L.links.map(([a, b]) => {
       const pa = L.nodes[a], pb = L.nodes[b];
@@ -69,7 +64,7 @@
           <span id="zoom-pct">50%</span>
         </div>
         <div class="minimap" aria-hidden="true">
-          ${M.regions.map((r) => `<div class="mr" style="left:${r.x / W * 200 - 18}px; top:${r.y / H * 117 - 14}px; background:${(WT.genre(r.genre) || {}).color}"></div>`).join('')}
+          ${L.regions.map((r) => `<div class="mr" style="left:${r.cx / W * 200 - 18}px; top:${r.cy / H * 117 - 14}px; background:${r.color}"></div>`).join('')}
           <div class="mv" id="mini-view"></div>
         </div>
         <div id="map-card-slot"></div>
@@ -95,7 +90,7 @@
     function fitAll(smooth) {
       const vw = mapv.clientWidth, vh = mapv.clientHeight;
       // 웹툰과 장르 이름이 있는 범위만큼 화면에 꽉 차게 보여 줘요
-      const pts = Object.values(L.nodes).concat(M.regions.filter((r) => WT.liveGenres().some((g) => g.id === r.genre)).map((r) => [r.x, r.y - 230]));
+      const pts = Object.values(L.nodes).concat(L.regions.map((r) => [r.cx, r.labelY]));
       let x0 = 0, y0 = 0, x1 = W, y1 = H;
       if (pts.length) {
         x0 = Math.min(...pts.map((p) => p[0])) - 140; x1 = Math.max(...pts.map((p) => p[0])) + 140;
