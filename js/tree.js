@@ -58,13 +58,13 @@
       let sub = newEps(id) ? `새 화 ${newEps(id)}개` : st === 'reading' ? `${ep(id)}화 · ${pct(id)}%` : statusText[st];
       if (hot) sub = `오늘 폭주 · ${sub}`;
       const subCls = hot ? 'hot' : st === 'reading' ? 'reading' : st === 'done' ? 'done' : '';
-      const cover = w.cover ? `<span class="cover" style="background-image:url('${esc(w.cover)}')"></span>` : '';
+      const cover = w.cover ? `<img class="cover" src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.nextElementSibling.hidden = false; this.remove()">` : '';
       return `<div class="node-box">
           ${hot ? fireHTML(sz) : ''}
           ${st !== 'locked' ? `<span class="ring" style="--sz:${sz}px; --pct:${pct(id)}%"></span>` : ''}
           <button type="button" class="node st-${st}${hot ? ' is-hot' : ''}${sel === id ? ' is-sel' : ''}" style="--sz:${sz}px" data-node="${id}"
             aria-label="${esc(w.title)}, ${esc(sub)}${w.recommended ? ', 관리자 강추' : ''}">
-            ${cover}<span class="letter">${esc(w.title[0])}</span>
+            ${cover}<span class="letter" ${w.cover ? 'hidden' : ''}>${esc(w.title[0])}</span>
             ${st === 'done' ? `<span class="badge-done" aria-hidden="true">${WT.icon.check}</span>` : ''}
             ${st === 'locked' ? `<span class="badge-lock" aria-hidden="true">${WT.icon.lock}</span>` : ''}
           </button>
@@ -220,7 +220,7 @@
       const goLabel = done ? '다시 보러 가기' : e > 0 ? `${e + 1}화 이어 보기` : '1화 보러 가기';
       return `<aside class="panel rpg anim" aria-label="${esc(w.title)} 정보"><span class="corner-b" aria-hidden="true"></span>
         <div class="cover-rect${w.cover ? '' : ' empty'}">
-          ${w.cover ? `<img src="${esc(w.cover)}" alt="${esc(w.title)} 표지" loading="lazy" onerror="this.parentElement.classList.add('empty', 'broken'); this.remove()">` : ''}
+          ${w.cover ? `<img src="${esc(w.cover)}" alt="${esc(w.title)} 표지" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add('empty', 'broken'); this.remove()">` : ''}
           <span class="cover-letter${w.cover ? ' fallback' : ''}" aria-hidden="true">${esc(w.title[0] || '?')}</span>
           <button type="button" class="icon-btn press cover-close" data-act="close" aria-label="창 닫기">${WT.icon.close}</button>
         </div>

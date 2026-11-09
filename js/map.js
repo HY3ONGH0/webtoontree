@@ -4,20 +4,22 @@
 
   function view(params) {
     const M = WT.data.map;
+    const L = WT.layoutMap(WT.data);   // 지도에 직접 놓은 위치 + 트리 모양 자동 배치
     const W = M.width, H = M.height;
     const S = WT.store.state;
     let ox = 0, oy = 0, s = 0.5;
     let pick = null;
 
+    const live = new Set(WT.data.webtoons.flatMap((w) => w.genres || []));
     const regions = M.regions.map((r) => {
       const g = WT.genre(r.genre);
-      if (!g) return '';
+      if (!g || !live.has(g.id)) return '';
       return `<div class="region" aria-hidden="true" style="left:${r.x - 360}px; top:${r.y - 300}px; background:radial-gradient(ellipse at center, ${g.color}40 0%, ${g.color}18 45%, transparent 70%)"></div>
         <span class="region-label" aria-hidden="true" style="left:${r.x - 200}px; top:${r.y - 250}px; color:${g.color}; text-shadow:0 0 20px ${g.color}">${esc(g.name)}</span>`;
     }).join('');
 
-    const links = M.links.map(([a, b]) => {
-      const pa = M.nodes[a], pb = M.nodes[b];
+    const links = L.links.map(([a, b]) => {
+      const pa = L.nodes[a], pb = L.nodes[b];
       if (!pa || !pb) return '';
       const dx = pb[0] - pa[0], dy = pb[1] - pa[1];
       const len = Math.sqrt(dx * dx + dy * dy);
@@ -33,13 +35,13 @@
       return [c1, c2];
     };
 
-    const nodes = Object.keys(M.nodes).filter((id) => WT.toon(id)).map((id) => {
+    const nodes = Object.keys(L.nodes).filter((id) => WT.toon(id)).map((id) => {
       const w = WT.toon(id);
-      const [x, y] = M.nodes[id];
+      const [x, y] = L.nodes[id];
       const [c1, c2] = colorOf(w);
       const done = (S.progress[id] || 0) >= WT.eps(w);
       return `<div class="mnode-wrap" style="left:${x - 90}px; top:${y - 34}px">
-        <button type="button" class="mnode" data-id="${id}" style="--c1:${c1}; --c2:${c2}; ${w.cover ? `background-image:url('${esc(w.cover)}')` : ''}" aria-label="${esc(w.title)}${done ? ', 완독' : ''}">${w.cover ? '' : esc(w.title[0])}</button>
+        <button type="button" class="mnode" data-id="${id}" style="--c1:${c1}; --c2:${c2}" aria-label="${esc(w.title)}${done ? ', 완독' : ''}">${w.cover ? `<img class="mcover" src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" draggable="false" onerror="this.nextElementSibling.hidden = false; this.remove()">` : ''}<span ${w.cover ? 'hidden' : ''}>${esc(w.title[0])}</span></button>
         <span>${esc(w.title)}${done ? ' ✓' : ''}</span>
       </div>`;
     }).join('');
@@ -92,9 +94,16 @@
     }
     function fitAll(smooth) {
       const vw = mapv.clientWidth, vh = mapv.clientHeight;
-      s = Math.min(vw / W, vh / H) * 0.98;
-      ox = (vw - W * s) / 2;
-      oy = (vh - H * s) / 2;
+      // 웹툰과 장르 이름이 있는 범위만큼 화면에 꽉 차게 보여 줘요
+      const pts = Object.values(L.nodes).concat(M.regions.filter((r) => WT.liveGenres().some((g) => g.id === r.genre)).map((r) => [r.x, r.y - 230]));
+      let x0 = 0, y0 = 0, x1 = W, y1 = H;
+      if (pts.length) {
+        x0 = Math.min(...pts.map((p) => p[0])) - 140; x1 = Math.max(...pts.map((p) => p[0])) + 140;
+        y0 = Math.min(...pts.map((p) => p[1])) - 90; y1 = Math.max(...pts.map((p) => p[1])) + 110;
+      }
+      s = Math.min(1.1, Math.min(vw / (x1 - x0), vh / (y1 - y0)));
+      ox = (vw - (x1 - x0) * s) / 2 - x0 * s;
+      oy = (vh - (y1 - y0) * s) / 2 - y0 * s;
       apply(smooth);
     }
     function zoomAt(f, cx, cy, smooth) {
@@ -105,7 +114,7 @@
       apply(smooth);
     }
     function centerOn(id) {
-      const p = M.nodes[id];
+      const p = L.nodes[id];
       if (!p) return;
       const vw = mapv.clientWidth, vh = mapv.clientHeight;
       s = Math.max(s, 0.8);
@@ -213,7 +222,7 @@
     input.addEventListener('input', () => {
       const q = input.value.trim().toLowerCase();
       if (!q) { results.hidden = true; return; }
-      const hits = WT.data.webtoons.filter((w) => M.nodes[w.id] && (w.title.toLowerCase().includes(q) || (w.author || '').toLowerCase().includes(q))).slice(0, 6);
+      const hits = WT.data.webtoons.filter((w) => L.nodes[w.id] && (w.title.toLowerCase().includes(q) || (w.author || '').toLowerCase().includes(q))).slice(0, 6);
       results.innerHTML = hits.length ? hits.map((w) => `<button type="button" data-id="${w.id}">${esc(w.title)} <span class="hint">· ${esc(w.author)}</span></button>`).join('') : '<button type="button" disabled>찾는 웹툰이 없어요</button>';
       results.hidden = false;
     });
@@ -231,7 +240,7 @@
     WT.leaveView = () => window.removeEventListener('resize', onResize);
 
     fitAll(false);
-    if (params[0] && M.nodes[params[0]]) { centerOn(params[0]); showCard(params[0]); }
+    if (params[0] && L.nodes[params[0]]) { centerOn(params[0]); showCard(params[0]); }
   }
 
   WT.views.map = view;
