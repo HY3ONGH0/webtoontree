@@ -23,8 +23,21 @@
 
   let D = null;          // 편집 중인 데이터
   let siteJSON = '';     // 사이트에 올라가 있는 data.json
-  const srv = { pw: '', ok: false, github: false, users: null, comments: null, reports: null, busy: false, msg: '' };
+  const BASE = 'webtoontree.admin.base';   // 초안을 고치기 시작할 때의 사이트 데이터 지문 (다른 관리자 저장 감지용)
+  const srv = { pw: '', token: '', ok: false, owner: false, name: '', github: false, users: null, comments: null, reports: null, busy: false, msg: '', conflict: false };
   try { srv.pw = sessionStorage.getItem('webtoontree.adminpw') || ''; } catch (e) { srv.pw = ''; }
+  // 관리자 권한을 받은 회원: 사용자 사이트에 로그인해 둔 토큰으로 들어와요
+  let userRole = '';
+  try { const st = JSON.parse(localStorage.getItem('webtoontree.v1') || '{}') || {}; srv.token = st.token || ''; userRole = st.role || ''; } catch (e) { srv.token = ''; }
+  let base = '';
+  let siteHash = '';
+  /** 서버(Code.gs의 hash_)와 같은 계산 */
+  function fp(str) {
+    let h = 0x811c9dc5;
+    for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+    return ('0000000' + h.toString(16)).slice(-8) + ':' + str.length;
+  }
+  function setBase(h) { base = h; try { localStorage.setItem(BASE, h); } catch (e) { /* 무시 */ } }
   const ui = {
     tab: 'webtoons', w: null, q: '', fg: 'all', confirm: null,
     g: null, newGenre: false,
@@ -681,7 +694,8 @@
   async function api(action, payload) {
     const url = (D.settings.apiUrl || '').trim();
     if (!url) throw new Error('먼저 [디자인 · 코인 설정]에 Apps Script 주소를 넣어 주세요.');
-    const res = await fetch(url, { method: 'POST', body: JSON.stringify(Object.assign({ action, adminPassword: srv.pw }, payload || {})) });
+    const who = srv.pw ? { adminPassword: srv.pw } : { token: srv.token };
+    const res = await fetch(url, { method: 'POST', body: JSON.stringify(Object.assign({ action }, who, payload || {})) });
     const j = await res.json();
     if (!j.ok) throw new Error(j.error || '서버에서 문제가 생겼어요.');
     return j;
@@ -690,8 +704,8 @@
     srv.busy = true; srv.msg = ''; render();
     try {
       const c = await api('adminCheck');
-      srv.ok = true; srv.github = c.github;
-      try { sessionStorage.setItem('webtoontree.adminpw', srv.pw); } catch (e) { /* 무시 */ }
+      srv.ok = true; srv.github = c.github; srv.owner = !!c.owner; srv.name = c.adminName || '';
+      if (srv.pw) { try { sessionStorage.setItem('webtoontree.adminpw', srv.pw); } catch (e) { /* 무시 */ } }
       const [u, cm, rp] = await Promise.all([api('adminUsers'), api('adminComments'), api('adminReports')]);
       srv.users = u.users; srv.comments = cm.comments; srv.reports = rp.reports;
     } catch (e) {
@@ -706,11 +720,15 @@
   function tabServer() {
     const url = (D.settings.apiUrl || '').trim();
     if (!url) return `<h2>회원 · 댓글 · 제보</h2><div class="ad-empty">서버(Apps Script)가 아직 연결되지 않았어요.<br>[디자인 · 코인 설정]의 "Apps Script 웹앱 주소"를 먼저 넣어 주세요.</div>`;
-    const login = `<section class="ad-card"><h3>관리자 비밀번호</h3>
+    const login = srv.ok ? `<section class="ad-card"><h3>${srv.owner ? '최종 관리자로 연결됨' : `관리자 ${esc(srv.name)} 님으로 연결됨`}</h3>
+        <p class="ad-help">${srv.owner ? '회원 목록에서 다른 회원에게 관리자 권한을 주거나 뺄 수 있어요.' : '웹툰·트리 편집, 바로 저장, 댓글·제보 관리를 할 수 있어요. 관리자 지정과 비밀번호 초기화는 최종 관리자만 할 수 있어요.'}</p>
+        <div class="ad-actions"><button type="button" class="btn btn-sm press" data-a="srv-connect" ${srv.busy ? 'disabled' : ''}>${srv.busy ? '불러오는 중…' : '새로고침'}</button></div>
+      </section>` : `<section class="ad-card"><h3>관리자 연결</h3>
+        <p class="ad-help">관리자 권한을 받은 회원은 사이트에서 로그인한 뒤 [내 정보 → 관리자 화면 열기]로 들어오면 돼요. 아래 칸은 최종 관리자용이에요.</p>
         <form id="srv-form" style="display:flex; gap:8px; flex-wrap:wrap" onsubmit="return false">
           <label for="srv-pw" class="sr">관리자 비밀번호</label>
-          <input id="srv-pw" class="fld" type="password" style="flex:1 1 220px" value="${esc(srv.pw)}" autocomplete="off" placeholder="Apps Script에 넣은 ADMIN_PASSWORD">
-          <button type="button" class="btn btn-gold press" data-a="srv-connect" ${srv.busy ? 'disabled' : ''}>${srv.busy ? '불러오는 중…' : srv.ok ? '새로고침' : '연결'}</button>
+          <input id="srv-pw" class="fld" type="password" style="flex:1 1 220px" value="${esc(srv.pw)}" autocomplete="off" placeholder="최종 관리자 비밀번호">
+          <button type="button" class="btn btn-gold press" data-a="srv-connect" ${srv.busy ? 'disabled' : ''}>${srv.busy ? '불러오는 중…' : '연결'}</button>
         </form>
         ${srv.msg ? `<p class="err">${esc(srv.msg)}</p>` : ''}
         <span class="hint">비밀번호는 이 탭을 닫으면 잊어요.</span>
@@ -737,18 +755,25 @@
       </section>
       <section class="ad-card"><h3>회원 ${srv.users ? `(${srv.users.length}명)` : ''}</h3>
         <div class="table-box" style="max-height:420px; overflow:auto"><table class="ad-table">
-          <thead><tr><th>아이디</th><th>닉네임</th><th>가입일</th><th>코인</th><th>상태</th><th></th></tr></thead>
-          <tbody>${(srv.users || []).map((u) => `<tr>
+          <thead><tr><th>아이디</th><th>닉네임</th><th>가입일</th><th>코인</th><th>상태</th><th>권한</th><th></th></tr></thead>
+          <tbody>${(srv.users || []).map((u) => {
+            const isAdmin = u.role === 'admin';
+            const canTouch = srv.owner || !isAdmin;
+            return `<tr>
             <td>${esc(u.userId)}</td><td>${esc(u.nickname)}</td><td>${esc(String(u.createdAt).slice(0, 10))}</td><td>${u.coins}</td>
             <td>${u.status === 'banned' ? '<span class="chip chip-hiatus">정지</span>' : '정상'}</td>
+            <td>${isAdmin ? '<span class="chip chip-admin">관리자</span>' : '회원'}</td>
             <td style="white-space:nowrap">
-              <button type="button" class="btn btn-sm press" data-a="srv-nick" data-id="${esc(u.userId)}">닉네임 변경</button>
-              <button type="button" class="btn btn-sm press" data-a="srv-pw" data-id="${esc(u.userId)}">비밀번호 초기화</button>
-              <button type="button" class="btn btn-sm ${u.status === 'banned' ? '' : 'btn-danger'} press" data-a="srv-ban" data-id="${esc(u.userId)}" data-i="${u.status === 'banned' ? 0 : 1}">${u.status === 'banned' ? '정지 풀기' : '이용 정지'}</button>
-            </td></tr>`).join('') || '<tr><td colspan="6" class="ad-help">아직 회원이 없어요</td></tr>'}</tbody>
+              ${srv.owner ? `<button type="button" class="btn btn-sm ${isAdmin ? '' : 'btn-gold'} press" data-a="srv-role" data-id="${esc(u.userId)}" data-i="${isAdmin ? 0 : 1}" ${!isAdmin && u.status === 'banned' ? 'disabled' : ''}>${ui.confirm === 'role:' + u.userId ? (isAdmin ? '정말 해제' : '정말 지정') : (isAdmin ? '관리자 해제' : '관리자로 지정')}</button>` : ''}
+              ${canTouch ? `<button type="button" class="btn btn-sm press" data-a="srv-nick" data-id="${esc(u.userId)}">닉네임 변경</button>` : ''}
+              ${srv.owner ? `<button type="button" class="btn btn-sm press" data-a="srv-pw" data-id="${esc(u.userId)}">비밀번호 초기화</button>` : ''}
+              ${canTouch ? `<button type="button" class="btn btn-sm ${u.status === 'banned' ? '' : 'btn-danger'} press" data-a="srv-ban" data-id="${esc(u.userId)}" data-i="${u.status === 'banned' ? 0 : 1}">${u.status === 'banned' ? '정지 풀기' : '이용 정지'}</button>` : ''}
+            </td></tr>`;
+          }).join('') || '<tr><td colspan="7" class="ad-help">아직 회원이 없어요</td></tr>'}</tbody>
         </table></div>
         <div id="srv-edit"></div>
-        <span class="hint">관리자도 회원의 비밀번호는 볼 수 없어요. 잊어버린 회원은 새 비밀번호로 초기화해 주세요.</span>
+        <span class="hint">관리자도 회원의 비밀번호는 볼 수 없어요. 잊어버린 회원은 ${srv.owner ? '새 비밀번호로 초기화해 주세요' : '최종 관리자에게 초기화를 부탁해 주세요'}.</span>
+        ${srv.owner ? '<span class="hint">관리자로 지정한 회원은 자기 아이디로 사이트에 로그인한 뒤 [내 정보 → 관리자 화면 열기]로 들어와요. 관리자 비밀번호를 알려 줄 필요가 없어요. 이용 정지하면 관리자 권한도 같이 멈춰요.</span>' : ''}
       </section>`;
   }
 
@@ -769,8 +794,16 @@
         </div>
       </section>
       ${(D.settings.apiUrl || '').trim() ? `<section class="ad-card"><h3>서버로 바로 저장</h3>
-        <p class="ad-help">Apps Script에 GitHub 토큰을 넣어 두면 파일을 올리지 않고 이 버튼으로 바로 반영돼요. 관리자 비밀번호는 [회원 · 댓글 · 제보] 탭에서 연결한 것을 써요.</p>
-        <div class="ad-actions"><button type="button" class="btn btn-gold press" data-a="srv-save" ${srv.ok ? '' : 'disabled'}>${srv.ok ? '지금 내용으로 사이트에 바로 저장' : '먼저 [회원 · 댓글 · 제보]에서 관리자 비밀번호로 연결해 주세요'}</button></div>
+        <p class="ad-help">Apps Script에 GitHub 토큰을 넣어 두면 파일을 올리지 않고 이 버튼으로 바로 반영돼요. 관리자 연결은 [회원 · 댓글 · 제보] 탭에서 해요.</p>
+        <p class="ad-help">여러 관리자가 같이 고칠 때: 내가 고치는 사이에 다른 관리자가 먼저 저장했으면, 덮어쓰기 전에 알려 줘요. 시작하기 전에 [최신 내용 불러오기]를 누르면 더 안전해요.</p>
+        ${srv.conflict ? `<div class="box-warn-ad" role="alert"><b>다른 관리자가 그사이 사이트에 먼저 저장했어요.</b><br>지금 내 내용으로 저장하면 그 사람이 고친 내용이 사라져요.
+          <div class="ad-actions">
+            <button type="button" class="btn btn-sm press" data-a="export">내 작업 파일로 백업</button>
+            <button type="button" class="btn btn-gold btn-sm press" data-a="srv-latest">최신 내용 불러오기 (내 변경은 버려요)</button>
+            <button type="button" class="btn btn-danger btn-sm press" data-a="srv-force">${ui.confirm === 'srv-force' ? '한 번 더 누르면 덮어써요' : '그래도 내 내용으로 덮어쓰기'}</button>
+          </div></div>` : ''}
+        <div class="ad-actions"><button type="button" class="btn btn-gold press" data-a="srv-save" ${srv.ok ? '' : 'disabled'}>${srv.ok ? '지금 내용으로 사이트에 바로 저장' : '먼저 [회원 · 댓글 · 제보]에서 관리자로 연결해 주세요'}</button>
+          ${srv.ok ? `<button type="button" class="btn press" data-a="srv-latest">${isDirty() && ui.confirm !== 'srv-latest' ? '최신 내용 불러오기' : ui.confirm === 'srv-latest' ? '한 번 더 누르면 내 변경을 버리고 불러와요' : '최신 내용 불러오기'}</button>` : ''}</div>
         ${srv.ok && !srv.github ? '<p class="warn">서버에 GitHub 토큰(GITHUB_TOKEN)이 없어서 바로 저장은 아직 안 돼요. 설치방법.md의 6단계를 봐 주세요.</p>' : ''}
       </section>` : ''}
       <section class="ad-card"><h3>확인할 것 ${list.length ? `(${list.length})` : ''}</h3>
@@ -900,14 +933,31 @@
       }
       case 'del-item': if (confirmOnce('si:' + i)) { D.shop.splice(i, 1); saveDraft(); render(); } break;
       case 'revert': if (confirmOnce('revert')) {
-        D = JSON.parse(siteJSON); ensure();
+        D = JSON.parse(siteJSON); ensure(); setBase(siteHash); srv.conflict = false;
         try { localStorage.removeItem(DRAFT); } catch (err) { /* 무시 */ }
         ui.w = null; ui.g = null; ui.tsel = null; ui.msel = null;
         toast('사이트 데이터로 되돌렸어요'); render();
       } break;
       case 'w-color': { const w = toon(id); w.color = ''; autoColor(w, true); break; }
-      case 'srv-logout': srv.pw = ''; srv.ok = false; srv.users = srv.comments = srv.reports = null; try { sessionStorage.removeItem('webtoontree.adminpw'); } catch (e) { /* 무시 */ } toast('관리자에서 나왔어요'); render(); break;
-      case 'srv-connect': srv.pw = document.getElementById('srv-pw').value; srvLoad(); break;
+      case 'srv-logout': srv.pw = ''; srv.token = ''; srv.ok = false; srv.owner = false; srv.users = srv.comments = srv.reports = null; try { sessionStorage.removeItem('webtoontree.adminpw'); } catch (e) { /* 무시 */ } toast('관리자에서 나왔어요'); render(); break;
+      case 'srv-connect': { const f = document.getElementById('srv-pw'); if (f) srv.pw = f.value; srvLoad(); break; }
+      case 'srv-role': {
+        if (!confirmOnce('role:' + id)) break;
+        srvDo('adminSetRole', { userId: id, role: i === 1 ? 'admin' : '' }, i === 1 ? `${id} 님을 관리자로 지정했어요` : `${id} 님의 관리자 권한을 뺐어요`);
+        break;
+      }
+      case 'srv-latest': {
+        if (isDirty() && !srv.conflict && !confirmOnce('srv-latest')) { toast('아직 안 올린 변경이 있어요. 한 번 더 누르면 버리고 최신 내용을 불러와요'); break; }
+        t.disabled = true;
+        api('adminLatest').then((r) => {
+          D = r.data; ensure(); siteJSON = JSON.stringify(D); setBase(r.hash); srv.conflict = false; ui.confirm = null;
+          try { localStorage.removeItem(DRAFT); } catch (e) { /* 무시 */ }
+          ui.w = null; ui.g = null; ui.tsel = null; ui.msel = null;
+          toast('최신 내용을 불러왔어요'); render();
+        }).catch((e) => { toast(e.message); render(); });
+        break;
+      }
+      case 'srv-force': if (confirmOnce('srv-force')) saveToServer(true); break;
       case 'srv-report-done': srvDo('adminReportDone', { webtoonId: id }, '처리했어요'); break;
       case 'srv-hide': srvDo('adminHideComment', { commentId: id, hidden: i === 1 }, i === 1 ? '댓글을 숨겼어요' : '댓글을 다시 보이게 했어요'); break;
       case 'srv-ban': srvDo('adminSetStatus', { userId: id, status: i === 1 ? 'banned' : 'active' }, i === 1 ? '이용을 정지했어요' : '정지를 풀었어요'); break;
@@ -929,16 +979,29 @@
         if (list.length && ui.confirm !== 'srv-save') { ui.confirm = 'srv-save'; toast(`확인할 것이 ${list.length}개 있어요. 그래도 저장하려면 한 번 더 눌러 주세요`); break; }
         ui.confirm = null;
         t.disabled = true; t.textContent = '저장하는 중…';
-        api('adminSaveData', { data: D }).then(() => {
-          siteJSON = JSON.stringify(D);
-          try { localStorage.removeItem(DRAFT); } catch (e) { /* 무시 */ }
-          toast('사이트에 저장했어요. 1~2분 뒤 반영돼요');
-          render();
-        }).catch((e) => { toast(e.message); render(); });
+        saveToServer(false);
         break;
       }
       default: break;
     }
+  }
+
+  /** 바로 저장: 다른 관리자가 먼저 저장했으면 멈추고 물어봐요 (force = 그래도 덮어쓰기) */
+  function saveToServer(force) {
+    api('adminSaveData', { data: D, baseHash: base, force: !!force }).then((r) => {
+      ui.confirm = null;
+      if (r.conflict) {
+        srv.conflict = true; ui.tab = 'data';
+        toast('다른 관리자가 먼저 저장했어요. [데이터] 탭에서 어떻게 할지 골라 주세요');
+        render();
+        return;
+      }
+      siteJSON = JSON.stringify(D); srv.conflict = false;
+      if (r.hash) setBase(r.hash);
+      try { localStorage.removeItem(DRAFT); } catch (e) { /* 무시 */ }
+      toast('사이트에 저장했어요. 1~2분 뒤 반영돼요');
+      render();
+    }).catch((e) => { toast(e.message); render(); });
   }
 
   /** 표지 색 자동으로 뽑기 (웹툰을 올릴 때마다) */
@@ -1051,27 +1114,32 @@
       root().innerHTML = '<p style="padding:40px">data/data.json을 불러오지 못했어요.</p>';
       return;
     }
+    siteHash = fp(JSON.stringify(site));
     D = clone(site);
     ensure();                     // 빠진 칸(meta 등)을 채운 상태를 "사이트 데이터"로 봐요
     siteJSON = JSON.stringify(D);
     let draft = null;
     try { draft = JSON.parse(localStorage.getItem(DRAFT) || 'null'); } catch (e) { draft = null; }
-    if (draft && Array.isArray(draft.webtoons)) { D = draft; ensure(); }
+    let savedBase = '';
+    try { savedBase = localStorage.getItem(BASE) || ''; } catch (e) { savedBase = ''; }
+    if (draft && Array.isArray(draft.webtoons)) { D = draft; ensure(); setBase(savedBase || siteHash); } else setBase(siteHash);
     root().addEventListener('click', onClick);
     root().addEventListener('input', onInput);
     root().addEventListener('change', onChange);
-    if (location.hash === '#server' && srv.pw && (D.settings.apiUrl || '').trim()) {
+    if (location.hash === '#server' && (srv.pw || srv.token) && (D.settings.apiUrl || '').trim()) {
       ui.tab = 'server';
       history.replaceState(null, '', 'admin.html');
       render();
       srvLoad();
-      toast('관리자로 들어왔어요');
+      toast('관리자 화면에 들어왔어요');
       fillMissingColors();
       return;
     }
     render();
     if (draft && isDirty()) toast('이전에 하던 작업을 불러왔어요');
     fillMissingColors();
+    // 이 탭에서 이미 관리자로 들어와 있었으면 (새로고침 등) 조용히 다시 연결해요
+    if ((D.settings.apiUrl || '').trim() && (srv.pw || (srv.token && userRole === 'admin'))) srvLoad();
   }
   document.addEventListener('DOMContentLoaded', init);
 })();

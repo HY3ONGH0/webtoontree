@@ -5,8 +5,9 @@
  * - 이 코드는 구글 시트에 붙어 있는(컨테이너 결합) Apps Script 프로젝트에 넣어요.
  * - 처음 한 번 setup() 을 실행하면 필요한 시트 탭과 주간 알림이 만들어져요.
  * - 비밀 값은 [프로젝트 설정 → 스크립트 속성]에 넣어요. 코드에는 비밀번호를 적지 않아요.
- *     ADMIN_PASSWORD  (필수) 관리자 비밀번호
- *     ADMIN_ID        (선택) 사용자 사이트 로그인 화면에서 관리자로 들어갈 아이디. 기본: admin
+ *     ADMIN_PASSWORD  (필수) 최종 관리자 비밀번호
+ *     ADMIN_ID        (선택) 최종 관리자 아이디. 기본: admin
+ *                     최종 관리자는 회원 중에서 관리자를 지정하거나 해제할 수 있어요 (관리자 화면 → 회원 목록).
  *     ADMIN_EMAIL     (선택) 주간 알림을 받을 메일. 비우면 스크립트 주인 메일
  *     DATA_URL        (선택) 사이트 data.json 주소. 기본: https://hy3ongh0.github.io/webtoontree/data/data.json
  *     GITHUB_TOKEN    (선택) 관리자 화면 [바로 저장]용 GitHub 토큰 (webtoontree 저장소 Contents 쓰기 권한만)
@@ -18,7 +19,7 @@ var DEFAULT_DATA_URL = 'https://hy3ongh0.github.io/webtoontree/data/data.json';
 var TZ = 'Asia/Seoul';
 
 var SHEETS = {
-  users: ['userId', 'nickname', 'pwHash', 'salt', 'createdAt', 'status', 'coins', 'progress', 'rewarded', 'daily', 'owned', 'equip', 'unlocked'],
+  users: ['userId', 'nickname', 'pwHash', 'salt', 'createdAt', 'status', 'coins', 'progress', 'rewarded', 'daily', 'owned', 'equip', 'unlocked', 'role'],
   sessions: ['token', 'userId', 'expiresAt'],
   ratings: ['webtoonId', 'userId', 'score', 'updatedAt'],
   comments: ['commentId', 'webtoonId', 'userId', 'text', 'createdAt', 'hidden'],
@@ -65,7 +66,7 @@ function doPost(e) {
 var WRITE_ACTIONS = {
   signup: 1, login: 1, logout: 1, nick: 1, deleteAccount: 1, progress: 1, rate: 1, comment: 1, deleteComment: 1,
   view: 1, buy: 1, equip: 1, unlockCoin: 1, unlockAdmin: 1, report: 1,
-  adminSetStatus: 1, adminResetPassword: 1, adminSetNick: 1, adminHideComment: 1, adminReportDone: 1, adminSaveData: 1
+  adminSetStatus: 1, adminResetPassword: 1, adminSetNick: 1, adminHideComment: 1, adminReportDone: 1, adminSaveData: 1, adminSetRole: 1
 };
 
 var ACTIONS = {
@@ -342,7 +343,7 @@ var ACTIONS = {
   },
 
   unlockAdmin: function (b) {
-    checkAdmin_(b.adminPassword);
+    who_(b);
     var w = findToon_(siteData_(), b.webtoonId);
     if (b.token) {
       var u = auth_(b.token);
@@ -367,25 +368,26 @@ var ACTIONS = {
 
   // ---------- 관리자 ----------
   adminCheck: function (b) {
-    checkAdmin_(b.adminPassword);
+    var me = who_(b);
     var p = PropertiesService.getScriptProperties();
-    return { github: !!p.getProperty('GITHUB_TOKEN'), email: p.getProperty('ADMIN_EMAIL') || '' };
+    return { github: !!p.getProperty('GITHUB_TOKEN'), email: p.getProperty('ADMIN_EMAIL') || '', owner: me.owner, adminName: me.name, adminUserId: me.userId };
   },
 
   adminUsers: function (b) {
-    checkAdmin_(b.adminPassword);
+    var me = who_(b);
     return {
       users: readAll_('users').map(function (r) {
         var u = r.obj;
-        return { userId: u.userId, nickname: u.nickname, createdAt: u.createdAt, status: u.status, coins: Number(u.coins) };
+        return { userId: u.userId, nickname: u.nickname, createdAt: u.createdAt, status: u.status, coins: Number(u.coins), role: u.role === 'admin' ? 'admin' : '' };
       })
     };
   },
 
   adminSetStatus: function (b) {
-    checkAdmin_(b.adminPassword);
+    var me = who_(b);
     var hit = findRow_('users', 'userId', String(b.userId || ''));
     if (!hit) fail_('없는 회원이에요.');
+    guardTarget_(me, hit.obj);
     hit.obj.status = b.status === 'banned' ? 'banned' : 'active';
     updateRow_('users', hit.row, hit.obj);
     if (hit.obj.status === 'banned') deleteWhere_('sessions', function (r) { return r.userId === hit.obj.userId; });
@@ -393,7 +395,8 @@ var ACTIONS = {
   },
 
   adminResetPassword: function (b) {
-    checkAdmin_(b.adminPassword);
+    var me = who_(b);
+    if (!me.owner) fail_('비밀번호 초기화는 최종 관리자만 할 수 있어요.');
     var hit = findRow_('users', 'userId', String(b.userId || ''));
     if (!hit) fail_('없는 회원이에요.');
     var pw = String(b.newPassword || '');
@@ -406,9 +409,10 @@ var ACTIONS = {
   },
 
   adminSetNick: function (b) {
-    checkAdmin_(b.adminPassword);
+    var me = who_(b);
     var hit = findRow_('users', 'userId', String(b.userId || ''));
     if (!hit) fail_('없는 회원이에요.');
+    guardTarget_(me, hit.obj);
     var nick = String(b.nickname || '').trim();
     checkNick_(nick);
     if (nickTaken_(nick, hit.obj.userId)) fail_('이미 쓰고 있는 닉네임이에요.');
@@ -418,7 +422,7 @@ var ACTIONS = {
   },
 
   adminComments: function (b) {
-    checkAdmin_(b.adminPassword);
+    var me = who_(b);
     var nicks = nickMap_();
     var site = siteData_();
     var titles = {};
@@ -431,7 +435,7 @@ var ACTIONS = {
   },
 
   adminHideComment: function (b) {
-    checkAdmin_(b.adminPassword);
+    var me = who_(b);
     var hit = findRow_('comments', 'commentId', String(b.commentId || ''));
     if (!hit) fail_('없는 댓글이에요.');
     hit.obj.hidden = b.hidden ? 'yes' : '';
@@ -441,7 +445,7 @@ var ACTIONS = {
   },
 
   adminReports: function (b) {
-    checkAdmin_(b.adminPassword);
+    var me = who_(b);
     var titles = {};
     siteData_().webtoons.forEach(function (w) { titles[w.id] = w.title; });
     return {
@@ -452,33 +456,50 @@ var ACTIONS = {
   },
 
   adminReportDone: function (b) {
-    checkAdmin_(b.adminPassword);
+    var me = who_(b);
     var wid = String(b.webtoonId || '');
     updateWhere_('reports', function (r) { return wid ? r.webtoonId === wid && !r.done : r.reportId === b.reportId; }, function (r) { r.done = 'yes'; return r; });
     return {};
   },
 
+  adminSetRole: function (b) {
+    var me = who_(b);
+    if (!me.owner) fail_('관리자 지정·해제는 최종 관리자만 할 수 있어요.');
+    var hit = findRow_('users', 'userId', String(b.userId || ''));
+    if (!hit) fail_('없는 회원이에요.');
+    if (b.role === 'admin' && hit.obj.status === 'banned') fail_('이용 정지된 회원은 관리자로 지정할 수 없어요.');
+    hit.obj.role = b.role === 'admin' ? 'admin' : '';
+    updateRow_('users', hit.row, hit.obj);
+    return {};
+  },
+
+  /** 지금 GitHub에 올라가 있는 최신 data.json (다른 관리자가 막 저장한 것도 바로 보여요) */
+  adminLatest: function (b) {
+    who_(b);
+    var cur = githubFile_(github_());
+    if (!cur) fail_('GitHub에서 data.json을 읽지 못했어요.');
+    var data = JSON.parse(cur.text);
+    return { data: data, hash: hash_(JSON.stringify(data)) };
+  },
+
   adminSaveData: function (b) {
-    checkAdmin_(b.adminPassword);
+    var me = who_(b);
     var data = b.data;
     if (!data || !Array.isArray(data.webtoons) || !Array.isArray(data.genres) || !data.settings) fail_('data.json 모양이 올바르지 않아요.');
-    var p = PropertiesService.getScriptProperties();
-    var token = p.getProperty('GITHUB_TOKEN');
-    if (!token) fail_('GitHub 토큰이 설정되지 않았어요. 설치방법.md의 [바로 저장] 부분을 봐 주세요.');
-    var repo = p.getProperty('GITHUB_REPO') || 'hy3ongh0/webtoontree';
-    var branch = p.getProperty('GITHUB_BRANCH') || 'main';
-    var api = 'https://api.github.com/repos/' + repo + '/contents/data/data.json';
-    var headers = { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' };
-    var cur = UrlFetchApp.fetch(api + '?ref=' + encodeURIComponent(branch), { headers: headers, muteHttpExceptions: true });
-    var sha = cur.getResponseCode() === 200 ? JSON.parse(cur.getContentText()).sha : undefined;
+    var g = github_();
+    var cur = githubFile_(g);
+    // 내가 고치기 시작한 뒤에 다른 관리자가 먼저 저장했으면, 덮어쓰기 전에 알려 줘요
+    if (cur && b.baseHash && !b.force && hash_(JSON.stringify(JSON.parse(cur.text))) !== b.baseHash) return { conflict: true };
     var text = JSON.stringify(data, null, 2) + '\n';
-    var res = UrlFetchApp.fetch(api, {
-      method: 'put', headers: headers, contentType: 'application/json', muteHttpExceptions: true,
-      payload: JSON.stringify({ message: '관리자 화면에서 데이터 저장', content: Utilities.base64Encode(text, Utilities.Charset.UTF_8), sha: sha, branch: branch })
+    var who = me.owner ? '최종 관리자' : me.name + ' (' + me.userId + ')';
+    var res = UrlFetchApp.fetch(g.api, {
+      method: 'put', headers: g.headers, contentType: 'application/json', muteHttpExceptions: true,
+      payload: JSON.stringify({ message: '관리자 화면에서 데이터 저장 - ' + who, content: Utilities.base64Encode(text, Utilities.Charset.UTF_8), sha: cur ? cur.sha : undefined, branch: g.branch })
     });
+    if (res.getResponseCode() === 409) return { conflict: true };
     if (res.getResponseCode() >= 300) fail_('GitHub에 저장하지 못했어요 (' + res.getResponseCode() + '). 토큰 권한을 확인해 주세요.');
     cacheDel_('site');
-    return { savedAt: now_() };
+    return { savedAt: now_(), hash: hash_(JSON.stringify(data)) };
   }
 };
 
@@ -598,12 +619,58 @@ function checkAdmin_(pw) {
     fail_('관리자 비밀번호가 맞지 않아요.');
   }
 }
+/**
+ * 관리자 확인
+ * - 최종 관리자: 관리자 비밀번호(adminPassword)
+ * - 관리자 회원: 로그인 토큰(token) + users 시트의 role 이 admin
+ */
+function who_(b) {
+  if (b.adminPassword) {
+    checkAdmin_(b.adminPassword);
+    return { owner: true, userId: adminId_(), name: '최종 관리자' };
+  }
+  if (b.token) {
+    var s = findRow_('sessions', 'token', String(b.token));
+    var u = s && new Date(s.obj.expiresAt).getTime() >= Date.now() ? findRow_('users', 'userId', s.obj.userId) : null;
+    if (u && u.obj.status !== 'banned' && u.obj.role === 'admin') return { owner: false, userId: u.obj.userId, name: u.obj.nickname };
+    if (u) fail_('관리자 권한이 없는 계정이에요. 최종 관리자에게 권한을 받아 주세요.');
+  }
+  fail_('관리자로 로그인해 주세요.');
+}
+/** 관리자 회원은 다른 관리자의 정지·닉네임을 바꿀 수 없어요 (최종 관리자만) */
+function guardTarget_(me, target) {
+  if (!me.owner && target.role === 'admin') fail_('다른 관리자 계정은 최종 관리자만 바꿀 수 있어요.');
+}
+/** 바뀐 내용 확인용 짧은 지문 (js/admin.js 와 같은 계산) */
+function hash_(str) {
+  var h = 0x811c9dc5;
+  for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+  return ('0000000' + h.toString(16)).slice(-8) + ':' + str.length;
+}
+function github_() {
+  var p = PropertiesService.getScriptProperties();
+  var token = p.getProperty('GITHUB_TOKEN');
+  if (!token) fail_('GitHub 토큰이 설정되지 않았어요. 설치방법.md의 [바로 저장] 부분을 봐 주세요.');
+  var repo = p.getProperty('GITHUB_REPO') || 'hy3ongh0/webtoontree';
+  var branch = p.getProperty('GITHUB_BRANCH') || 'main';
+  return {
+    api: 'https://api.github.com/repos/' + repo + '/contents/data/data.json', branch: branch,
+    headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' }
+  };
+}
+function githubFile_(g) {
+  var res = UrlFetchApp.fetch(g.api + '?ref=' + encodeURIComponent(g.branch) + '&t=' + Date.now(), { headers: g.headers, muteHttpExceptions: true });
+  if (res.getResponseCode() !== 200) return null;
+  var j = JSON.parse(res.getContentText());
+  var text = Utilities.newBlob(Utilities.base64Decode(String(j.content || '').replace(/\s/g, ''))).getDataAsString('UTF-8');
+  return { sha: j.sha, text: text };
+}
 function publicMe_(u) {
   var ratings = {};
   readAll_('ratings').forEach(function (r) { if (r.obj.userId === u.userId) ratings[r.obj.webtoonId] = Number(r.obj.score); });
   return {
     userId: u.userId, nickname: u.nickname, coins: Number(u.coins), progress: u.progress, rewarded: u.rewarded,
-    daily: u.daily, owned: u.owned, equip: u.equip, unlocked: u.unlocked, ratings: ratings
+    daily: u.daily, owned: u.owned, equip: u.equip, unlocked: u.unlocked, ratings: ratings, role: u.role === 'admin' ? 'admin' : ''
   };
 }
 function social_(wid, uid) {
@@ -684,6 +751,9 @@ function sheet_(name) {
     sh = ss.insertSheet(name);
     sh.getRange(1, 1, 1, SHEETS[name].length).setValues([SHEETS[name]]).setFontWeight('bold');
     sh.setFrozenRows(1);
+  } else if (sh.getLastColumn() < SHEETS[name].length) {
+    // 새 칸(예: users 의 role)이 생기면 제목 줄만 늘려요. 기존 내용은 그대로예요
+    sh.getRange(1, 1, 1, SHEETS[name].length).setValues([SHEETS[name]]).setFontWeight('bold');
   }
   return sh;
 }

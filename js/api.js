@@ -49,6 +49,7 @@
     S.equip = me.equip || { acc: 'basic', color: null };
     S.unlocked = me.unlocked || {};
     S.ratings = me.ratings || {};
+    S.role = me.role || '';
     WT.store.save();
   }
 

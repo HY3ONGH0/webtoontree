@@ -75,3 +75,8 @@ body.admin { background: #0B1022; background-image: none; }
   .ad-nav a { margin-top: 0; }
   .ad-form .grid2 { grid-template-columns: 1fr; }
 }
+
+/* 여러 관리자 */
+.chip-admin { color: #10162B; background: #8FD3FF; }
+.box-warn-ad { margin: 10px 0; padding: 12px 14px; border: 1px dashed rgba(255, 178, 122, 0.7); border-radius: 8px; background: rgba(255, 178, 122, 0.08); color: #FFD6B5; font-size: 14px; line-height: 1.6; }
+.box-warn-ad .ad-actions { margin-top: 10px; }

@@ -397,9 +397,9 @@
         <button type="button" class="btn ${canPay ? 'btn-coin' : ''} press" data-m="coin" ${canPay ? '' : 'disabled'} style="min-height:52px"><span class="coin" aria-hidden="true" style="width:26px; height:26px">C</span>${coinLabel}</button>
         <div class="or">또는 관리자</div>
         <div class="field">
-          <label for="admin-pw">관리자 비밀번호</label>
-          ${server ? `<div style="display:flex; gap:8px"><input id="admin-pw" class="fld" type="password" autocomplete="off"><button type="button" class="btn btn-gold press" data-m="admin" style="flex:0 0 auto">해제</button></div>
-          <p class="err" id="admin-err" role="alert" hidden></p>` : `<input id="admin-pw" class="fld" type="password" disabled placeholder="서버 연결 후 사용할 수 있어요">
+          ${server && S.role === 'admin' && S.token ? `<input id="admin-pw" type="hidden" value=""><button type="button" class="btn btn-gold press" data-m="admin">관리자 권한으로 해제</button>
+          <p class="err" id="admin-err" role="alert" hidden></p>` : server ? `<label for="admin-pw">관리자 비밀번호</label><div style="display:flex; gap:8px"><input id="admin-pw" class="fld" type="password" autocomplete="off"><button type="button" class="btn btn-gold press" data-m="admin" style="flex:0 0 auto">해제</button></div>
+          <p class="err" id="admin-err" role="alert" hidden></p>` : `<label for="admin-pw">관리자 비밀번호</label><input id="admin-pw" class="fld" type="password" disabled placeholder="서버 연결 후 사용할 수 있어요">
           <span class="hint">비밀번호 확인은 보안을 위해 Apps Script(서버)에서 해요. 연결하면 열립니다.</span>`}
         </div>
         <button type="button" class="btn press" data-m="cancel">닫기</button>

@@ -330,7 +330,7 @@
           }
           s.token = r.token; s.guest = false;
           WT.api.applyMe(r.me);
-          WT.toast(`${r.me.nickname} 님, 환영해요!`);
+          WT.toast(r.me.role === 'admin' ? `${r.me.nickname} 님, 환영해요! 관리자 화면은 [내 정보]에서 열 수 있어요` : `${r.me.nickname} 님, 환영해요!`);
           location.hash = '#/';
         } catch (x) {
           showErr(x.message);
@@ -354,6 +354,7 @@
           <button type="submit" class="btn btn-gold press">저장</button>
         </form>
         <div class="row2"><a href="#/" class="btn press">홈으로</a><button type="button" class="btn press" id="logout-btn">로그아웃</button></div>
+        ${s.role === 'admin' ? '<a href="admin.html#server" class="btn btn-gold press">관리자 화면 열기</a><span class="hint" style="text-align:center">최종 관리자에게 관리자 권한을 받은 계정이에요</span>' : ''}
         <details style="border-top:1px dashed rgba(255,255,255,0.16); padding-top:12px">
           <summary style="cursor:pointer; font-size:14px; color:var(--muted)">회원 탈퇴</summary>
           <form class="pane" id="del-form" style="margin-top:12px" novalidate>
