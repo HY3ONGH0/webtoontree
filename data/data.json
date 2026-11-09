@@ -611,6 +611,30 @@
   ],
   "webtoons": [
     {
+      "id": "w040",
+      "title": "강남도깨비",
+      "author": "이경민, 송준혁",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/3407.html",
+      "cover": "https://i.namu.wiki/i/sGL7zJKVZLuoY0F36dJxxW9llSha2kKHlu8IygKf5sgNFp6DsSaQQElJM6suI-7quQVyXTmKdZyXgW5lPyKB-j-dIkLz_uiuCSQDAea3CpSg8geB6sUw7V6F19rUJkfWqyCYhxrUqegKiUO56kCD-w.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": false,
+      "color": "#01c7fc",
+      "episodes": 114,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "판타지"
+      ],
+      "desc": "전세계 44명, 황금의 피를 가진 전국1등을 노리는 도깨비가 나타났다."
+    },
+    {
       "id": "w039",
       "title": "더 복서",
       "author": "정지훈",
@@ -1262,7 +1286,11 @@
         ],
         "w038": [
           920,
-          410
+          150
+        ],
+        "w040": [
+          920,
+          260
         ]
       },
       "links": [
@@ -1299,6 +1327,11 @@
         {
           "from": "w037",
           "to": "w038",
+          "why": ""
+        },
+        {
+          "from": "w038",
+          "to": "w040",
           "why": ""
         }
       ]
@@ -1530,6 +1563,10 @@
       "w039": [
         1430,
         740
+      ],
+      "w040": [
+        750,
+        500
       ]
     },
     "links": []
@@ -1630,6 +1667,6 @@
   ],
   "hotToday": [],
   "meta": {
-    "lastWebtoonId": 39
+    "lastWebtoonId": 40
   }
 }
