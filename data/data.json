@@ -611,6 +611,34 @@
   ],
   "webtoons": [
     {
+      "id": "w054",
+      "title": "모든걸 기억하는 천재무사",
+      "author": "Omin, 모기향, 적설목",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/19373.html",
+      "cover": "https://i.namu.wiki/i/4jdNM-15UGH__bz9CuPqC3HdxrErgIplisWaYw5FQ31Vqcycm21emIVwISZZ0eQUrof4ibuF8scLmy74ad_wNVUhVZ9HsPXsZPn01m5qiSzjXYlHVA340LcATbnM1Ft5ZqIQRC-0p040DqYdVznoOg.webp",
+      "genres": [
+        "murim"
+      ],
+      "recommended": 2,
+      "color": "#831100",
+      "episodes": 29,
+      "status": "ongoing",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "무협",
+        "소년물",
+        "회귀",
+        "먼치킨",
+        "소설원작"
+      ],
+      "desc": "모든걸 기억하는 삼류무사 진소운. 30년 전 마교가 재림하기 전으로 회귀하다.\n과거로 돌아온 사실이, 딱히 날더러 세상을 구하라는 신호로는 보이진 않는다.\n‘그랬다면 최소한 뭔가 특별한 능력을 주거나 장삼봉 조사의 영혼 같은 거라도 붙여줘야 했을 테니까?’\n답 없는 삼류 문파인 사문.\n미천하기 그지없는 무의 재능.\n되돌아왔다는 걸 기뻐하기엔 원체 가진 패가 너무 약하다.\n\"망했군.\"\n정해진 미래의 절망을 바꾸기 위한 진소운의 발악이 시작된다."
+    },
+    {
       "id": "w053",
       "title": "평행도시",
       "author": "고다",
@@ -1839,9 +1867,19 @@
         "w028": [
           130,
           280
+        ],
+        "w054": [
+          380,
+          280
         ]
       },
-      "links": []
+      "links": [
+        {
+          "from": "w028",
+          "to": "w054",
+          "why": ""
+        }
+      ]
     },
     "thriller": {
       "start": "w031",
@@ -2062,6 +2100,6 @@
   ],
   "hotToday": [],
   "meta": {
-    "lastWebtoonId": 53
+    "lastWebtoonId": 54
   }
 }
