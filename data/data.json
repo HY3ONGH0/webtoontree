@@ -647,7 +647,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": true,
+      "recommended": 2,
       "color": "#ffb5af",
       "episodes": 124,
       "status": "ongoing",
@@ -733,7 +733,7 @@
       "genres": [
         "action"
       ],
-      "recommended": true,
+      "recommended": 2,
       "color": "#000000",
       "episodes": 134,
       "status": "completed",
@@ -759,7 +759,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": true,
+      "recommended": 2,
       "color": "#b51a00",
       "episodes": 70,
       "status": "hiatus",
@@ -786,7 +786,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": true,
+      "recommended": 3,
       "color": "#7a4a00",
       "episodes": 112,
       "status": "ongoing",
@@ -815,7 +815,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": true,
+      "recommended": 3,
       "color": "#dfeed4",
       "episodes": 55,
       "status": "hiatus",
@@ -843,7 +843,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": true,
+      "recommended": 3,
       "color": "#96d35f",
       "episodes": 92,
       "status": "hiatus",
@@ -870,7 +870,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": true,
+      "recommended": 3,
       "color": "#ff6a00",
       "episodes": 279,
       "status": "completed",
@@ -897,7 +897,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": true,
+      "recommended": 3,
       "color": "#3a87fe",
       "episodes": 1,
       "status": "ongoing",
@@ -928,7 +928,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": true,
+      "recommended": 2,
       "color": "#fefb41",
       "episodes": 28,
       "status": "ongoing",
@@ -958,7 +958,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": true,
+      "recommended": 3,
       "color": "#000000",
       "episodes": 53,
       "status": "ongoing",
@@ -985,7 +985,7 @@
       "genres": [
         "action"
       ],
-      "recommended": true,
+      "recommended": 3,
       "color": "#831100",
       "episodes": 63,
       "status": "completed",
@@ -1012,7 +1012,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": true,
+      "recommended": 3,
       "color": "#ffffff",
       "episodes": 573,
       "status": "completed",
@@ -1039,7 +1039,7 @@
         "murim",
         "fantasy"
       ],
-      "recommended": true,
+      "recommended": 2,
       "episodes": 181,
       "status": "ongoing",
       "days": [
@@ -1069,7 +1069,7 @@
       "genres": [
         "sports"
       ],
-      "recommended": true,
+      "recommended": 3,
       "episodes": 203,
       "status": "completed",
       "days": [
@@ -1096,7 +1096,7 @@
         "daily",
         "fantasy"
       ],
-      "recommended": true,
+      "recommended": 3,
       "episodes": 55,
       "status": "completed",
       "days": [
@@ -1124,7 +1124,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": true,
+      "recommended": 3,
       "episodes": 225,
       "status": "ongoing",
       "days": [
@@ -1155,7 +1155,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": true,
+      "recommended": 3,
       "episodes": 310,
       "status": "hiatus",
       "days": [
@@ -1184,7 +1184,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": true,
+      "recommended": 2,
       "episodes": 200,
       "status": "completed",
       "days": [
@@ -1214,7 +1214,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": true,
+      "recommended": 2,
       "episodes": 18,
       "status": "ongoing",
       "days": [
@@ -1241,7 +1241,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": false,
+      "recommended": 1,
       "episodes": 123,
       "status": "completed",
       "days": [
@@ -1268,7 +1268,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": true,
+      "recommended": 2,
       "episodes": 115,
       "status": "completed",
       "days": [
@@ -1294,7 +1294,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": true,
+      "recommended": 3,
       "episodes": 130,
       "status": "completed",
       "days": [
@@ -1322,7 +1322,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": true,
+      "recommended": 3,
       "episodes": 154,
       "status": "completed",
       "days": [
