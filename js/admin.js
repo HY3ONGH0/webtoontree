@@ -88,7 +88,7 @@
     return 'w' + String(D.meta.lastWebtoonId).padStart(3, '0');
   }
   function blankWebtoon(title, gid) {
-    return { id: newWebtoonId(), title: title || '새 웹툰', author: '', platform: '네이버웹툰', url: '', cover: '', genres: gid ? [gid] : [], recommended: false, color: '', episodes: 1, status: 'ongoing', days: [], autoCount: true, baseDate: WT.schedule.today(), tags: [], desc: '' };
+    return { id: newWebtoonId(), title: title || '새 웹툰', author: '', platform: '네이버웹툰', url: '', cover: '', genres: gid ? [gid] : [], recommended: 0, color: '', episodes: 1, status: 'ongoing', days: [], autoCount: true, baseDate: WT.schedule.today(), tags: [], desc: '' };
   }
   function treesOf(id) { return Object.keys(D.trees).filter((g) => D.trees[g].nodes[id]); }
   function removeFromTree(gid, id) {
@@ -175,7 +175,7 @@
           <div class="items-box">
             ${list.map((x) => `<button type="button" class="ad-row${ui.w === x.id ? ' sel' : ''}" data-a="pick-w" data-id="${x.id}">
               <span class="dotc" style="background:${gColor(x)}">${esc(x.title[0] || '?')}</span>
-              <span class="t"><b>${x.recommended ? '★ ' : ''}${esc(x.title)}</b><span>${x.id} · ${esc(x.genres.map((g) => (genre(g) || {}).name).join(', ') || '장르 없음')} · ${WT.schedule.episodes(x)}화 · ${esc(WT.schedule.label(x))}</span></span>
+              <span class="t"><b>${WT.recStars(x) ? '★'.repeat(WT.recStars(x)) + ' ' : ''}${esc(x.title)}</b><span>${x.id} · ${esc(x.genres.map((g) => (genre(g) || {}).name).join(', ') || '장르 없음')} · ${WT.schedule.episodes(x)}화 · ${esc(WT.schedule.label(x))}</span></span>
             </button>`).join('') || '<p class="ad-help">찾는 웹툰이 없어요</p>'}
           </div>
         </section>
@@ -211,7 +211,8 @@
         <div class="checks">${D.genres.map((g) => `<label><input type="checkbox" data-wg="${g.id}" ${w.genres.includes(g.id) ? 'checked' : ''}> ${esc(g.name)}</label>`).join('')}</div>
       </fieldset>
       <div class="checks">
-        <label class="ad-check" style="color:var(--coin); font-weight:700"><input type="checkbox" data-wf="recommended" ${w.recommended ? 'checked' : ''}> 관리자 강추 (노드에 큰 별)</label>
+        <div class="field"><label for="f-rec" style="color:var(--coin); font-weight:700">관리자 추천 (원 옆에 별)</label>
+          <select id="f-rec" class="fld" data-wf="recommended" style="max-width:220px">${[0, 1, 2, 3].map((n) => `<option value="${n}" ${WT.recStars(w) === n ? 'selected' : ''}>${n ? '★'.repeat(n) + ` 별 ${n}개` : '추천 안 함'}</option>`).join('')}</select></div>
       </div>
       <div class="grid2">
         <div class="field"><label for="f-status">연재 상태</label><select id="f-status" class="fld" data-wf="status">
@@ -388,7 +389,7 @@
         const cls = [T.start === id ? 'start' : '', ui.tsel === id ? 'sel' : '', ui.from === id ? 'from' : ''].join(' ');
         return `<div class="ad-node ${cls}" data-n="${id}" style="--gc:${gColor(w)}; left:${x}px; top:${y - (T.start === id ? 45 : 36)}px" role="button" tabindex="0" aria-label="${esc(w.title)}">
           <div class="c">${esc(w.title[0] || '?')}${ui.tsel === id && ui.mode === 'select' ? '<span class="plus" data-plus="1" aria-hidden="true">+</span>' : ''}</div>
-          <span>${w.recommended ? '★ ' : ''}${esc(w.title)}</span>${T.start === id ? '<span class="start-tag">입문작</span>' : ''}
+          <span>${WT.recStars(w) ? '★'.repeat(WT.recStars(w)) + ' ' : ''}${esc(w.title)}</span>${T.start === id ? '<span class="start-tag">입문작</span>' : ''}
         </div>`;
       }).join('');
     const drawLinks = () => T.links.forEach((l, i) => {
@@ -1039,6 +1040,7 @@
       if (k === 'episodes') { w.episodes = Math.max(1, parseInt(el.value, 10) || 1); w.baseDate = WT.schedule.today(); }
       else if (k === 'status') { w.episodes = WT.schedule.episodes(w); w.baseDate = WT.schedule.today(); w.status = el.value; delete w.ongoing; }
       else if (k === 'tags') w.tags = el.value.split(',').map((x) => x.trim()).filter(Boolean);
+      else if (k === 'recommended') w.recommended = Math.max(0, Math.min(3, parseInt(el.value, 10) || 0));
       else w[k] = el.value;
       saveDraft();
       return;

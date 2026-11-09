@@ -50,6 +50,19 @@
       </span>`;
     }
 
+    /** 관리자 추천 별: 원의 왼쪽 위 테두리를 따라 1~3개 */
+    function recHTML(n, sz) {
+      if (!n) return '';
+      const s = n === 1 ? 40 : 30;
+      const r = sz / 2, R = r + (n === 1 ? 2 : 6);
+      const angles = n === 1 ? [135] : n === 2 ? [150, 118] : [165, 135, 105];
+      return angles.map((a, i) => {
+        const rad = a * Math.PI / 180;
+        const x = r + R * Math.cos(rad) - s / 2, y = r - R * Math.sin(rad) - s / 2;
+        return `<span class="badge-rec" aria-hidden="true" style="left:${x.toFixed(1)}px; top:${y.toFixed(1)}px; width:${s}px; height:${s}px; animation-delay:${i * 0.3}s">${WT.icon.star}</span>`;
+      }).join('');
+    }
+
     function nodeInner(id) {
       const w = WT.toon(id);
       const st = status(id);
@@ -61,18 +74,23 @@
       const showSub = hot || newEps(id) || st === 'reading';
       const subCls = hot ? 'hot' : st === 'reading' ? 'reading' : st === 'done' ? 'done' : '';
       const cover = w.cover ? `<img class="cover" src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.nextElementSibling.hidden = false; this.remove()">` : '';
+      const rec = WT.recStars(w);
+      const stName = WT.schedule.status(w);
+      const days = (w.days || []).length >= 7 ? '매일' : WT.schedule.daysLabel(w);
+      const tag = stName === 'ongoing' && days
+        ? `<span class="node-tag tag-ongoing two" aria-hidden="true">연재 중<small>${esc(days)}</small></span>`
+        : `<span class="node-tag tag-${stName}" aria-hidden="true">${esc(WT.schedule.STATUS_KO[stName])}</span>`;
       return `<div class="node-box${st === 'locked' ? ' is-locked' : ''}" style="--sz:${sz}px">
           ${hot ? fireHTML(sz) : ''}
-          ${st === 'locked' ? '<span class="shackle" aria-hidden="true"></span>' : ''}
           ${st !== 'locked' ? `<span class="ring" style="--sz:${sz}px; --pct:${pct(id)}%"></span>` : ''}
           <button type="button" class="node st-${st}${hot ? ' is-hot' : ''}${sel === id ? ' is-sel' : ''}" style="--sz:${sz}px" data-node="${id}"
-            aria-label="${esc(w.title)}, ${esc(sub)}, ${esc(WT.schedule.label(w))}${w.recommended ? ', 관리자 강추' : ''}">
+            aria-label="${esc(w.title)}, ${esc(sub)}, ${esc(WT.schedule.label(w))}${rec ? `, 관리자 추천 별 ${rec}개` : ''}">
             ${cover}<span class="letter" ${w.cover ? 'hidden' : ''}>${esc(w.title[0])}</span>
             ${st === 'done' ? `<span class="badge-done" aria-hidden="true">${WT.icon.check}</span>` : ''}
-            ${st === 'locked' ? '<span class="keyhole" aria-hidden="true"><i></i></span>' : ''}
+            ${st === 'locked' ? `<span class="lock-in" aria-hidden="true">${WT.icon.lockIn}</span>` : ''}
           </button>
-          ${w.recommended ? `<span class="badge-rec" aria-hidden="true">${WT.icon.star}</span>` : ''}
-          <span class="node-tag tag-${WT.schedule.status(w)}" aria-hidden="true">${esc(WT.schedule.label(w))}</span>
+          ${recHTML(rec, sz)}
+          ${tag}
         </div>
         <span class="node-label${st === 'locked' ? ' dim' : ''}">${esc(w.title)}</span>
         ${showSub ? `<span class="node-sub ${subCls}">${esc(sub)}</span>` : ''}`;
@@ -107,7 +125,7 @@
             <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
               <div class="progress" role="progressbar" aria-label="장르 진행률" aria-valuemin="0" aria-valuemax="${ids.length}" aria-valuenow="${c0.d}"><div id="prog-bar" style="width:${c0.d / ids.length * 100}%"></div></div>
               <span id="prog-text" style="font-size:13px; color:var(--gold); font-weight:700">${c0.d} / ${ids.length} ${esc(labels.done || '완독')} · 보는 중 ${c0.r}</span>
-              <span class="legend"><span>${WT.icon.starSmall}관리자 강추</span><span>${WT.icon.flame}오늘 폭주</span></span>
+              <span class="legend"><span>${WT.icon.starSmall}관리자 추천</span><span>${WT.icon.flame}오늘 폭주</span></span>
             </div>
           </div>
         </div>
@@ -231,7 +249,7 @@
         <div class="panel-head">
           <div style="display:flex; flex-direction:column; gap:6px; min-width:0">
             <div class="chips">
-              ${w.recommended ? '<span class="chip chip-rec">★ 관리자 강추</span>' : ''}
+              ${WT.recStars(w) ? `<span class="chip chip-rec">${'★'.repeat(WT.recStars(w))} 관리자 추천</span>` : ''}
               ${WT.isHot(id) ? '<span class="chip chip-hot">오늘 폭주 중</span>' : ''}
               <span class="chip chip-${st}">${statusText[st]}</span>
               ${newEps(id) ? `<span class="chip chip-new">새 화 ${newEps(id)}개</span>` : ''}

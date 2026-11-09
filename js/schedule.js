@@ -55,4 +55,6 @@
 
   window.WT = window.WT || {};
   WT.schedule = { DAYS, DAY_KO, STATUS_KO, today, status, countDays, episodes, daysLabel, label };
+  /** 관리자 추천 별 개수 0~3 (예전 데이터의 true 는 1개) */
+  WT.recStars = (w) => Math.max(0, Math.min(3, w && w.recommended === true ? 1 : Math.round(Number(w && w.recommended) || 0)));
 })();
