@@ -101,10 +101,18 @@
       const a = T.nodes[l.from], b = T.nodes[l.to];
       if (!a || !b) return '';
       const dx = b[0] - a[0], dy = b[1] - a[1];
-      const len = Math.sqrt(dx * dx + dy * dy);
+      const len = Math.sqrt(dx * dx + dy * dy) || 1;
+      const ux = dx / len, uy = dy / len;
       const ang = Math.atan2(dy, dx) * 180 / Math.PI;
-      return `<div class="link" data-link="${i}" aria-hidden="true" style="left:${a[0]}px; top:${a[1] - 1.5}px; width:${len}px; transform:rotate(${ang}deg)"></div>
-        <div class="ldot" data-dot="${i}" aria-hidden="true" style="left:${(a[0] + b[0]) / 2 - 6}px; top:${(a[1] + b[1]) / 2 - 6}px"></div>`;
+      const ra = sizeOf(l.from) / 2 + 6, rb = sizeOf(l.to) / 2 + 8;     // 원 가장자리에서 띄워서
+      const sx = a[0] + ux * ra, sy = a[1] + uy * ra;
+      const ex = b[0] - ux * rb, ey = b[1] - uy * rb;
+      const w = Math.max(0, len - ra - rb);
+      const mx = (sx + ex) / 2, my = (sy + ey) / 2;
+      // 선 → 가운데 꺾쇠(>) → 끝 화살촉(▶): 어느 웹툰에서 어느 웹툰으로 이어지는지 보여요
+      return `<div class="link" data-link="${i}" aria-hidden="true" style="left:${sx}px; top:${sy - 1.5}px; width:${w}px; transform:rotate(${ang}deg)"><i class="flow"></i></div>
+        <div class="ldot" data-dot="${i}" aria-hidden="true" style="left:${mx - 7}px; top:${my - 7}px; transform:rotate(${ang}deg)"></div>
+        <div class="larrow" data-arrow="${i}" aria-hidden="true" style="left:${ex - 16}px; top:${ey - 8}px; transform:rotate(${ang}deg)"></div>`;
     }
 
     const counts = () => {
@@ -126,7 +134,7 @@
             <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
               <div class="progress" role="progressbar" aria-label="장르 진행률" aria-valuemin="0" aria-valuemax="${ids.length}" aria-valuenow="${c0.d}"><div id="prog-bar" style="width:${c0.d / ids.length * 100}%"></div></div>
               <span id="prog-text" style="font-size:13px; color:var(--gold); font-weight:700">${c0.d} / ${ids.length} ${esc(labels.done || '완독')} · 보는 중 ${c0.r}</span>
-              <span class="legend"><span>${WT.icon.starSmall}관리자 추천</span><span>${WT.icon.flame}오늘 폭주</span></span>
+              <span class="legend"><span>${WT.icon.starSmall}관리자 추천</span><span>${WT.icon.flame}오늘 폭주</span><span class="kbd-hint"><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> 키로 이동</span></span>
             </div>
           </div>
         </div>
@@ -168,8 +176,10 @@
         const cls = both ? 'lit' : one ? 'half' : '';
         const ln = stage.querySelector(`[data-link="${i}"]`);
         const dt = stage.querySelector(`[data-dot="${i}"]`);
-        if (ln) { ln.classList.remove('lit', 'half'); if (cls) ln.classList.add(cls); }
-        if (dt) { dt.classList.remove('lit', 'half'); if (cls) dt.classList.add(cls); }
+        const ar = stage.querySelector(`[data-arrow="${i}"]`);
+        [ln, dt, ar].forEach((el) => { if (!el) return; el.classList.remove('lit', 'half', 'near'); if (cls) el.classList.add(cls); });
+        // 고른 웹툰에서 나가는 선은 흐름이 보이게
+        if (sel && l.from === sel) [ln, dt, ar].forEach((el) => el && el.classList.add('near'));
       });
       const c = counts();
       document.getElementById('prog-bar').style.width = `${c.d / ids.length * 100}%`;
@@ -578,10 +588,76 @@
       renderPanel(false);
     });
 
+    // ---------- 키보드 화살표로 웹툰 사이 이동 ----------
+    const DIRS = { ArrowRight: [1, 0], ArrowLeft: [-1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
+    /** 지금 웹툰에서 그 방향에 있는 웹툰 고르기 (이어진 웹툰을 먼저) */
+    function pickToward(from, dir) {
+      const c = T.nodes[from];
+      const linked = new Set(T.links.filter((l) => l.from === from || l.to === from).map((l) => (l.from === from ? l.to : l.from)));
+      let best = null, bestScore = Infinity;
+      ids.forEach((id) => {
+        if (id === from) return;
+        const p = T.nodes[id];
+        const vx = p[0] - c[0], vy = p[1] - c[1];
+        const along = vx * dir[0] + vy * dir[1];
+        if (along < 30) return;
+        const side = Math.abs(vx * dir[1] - vy * dir[0]);
+        if (side > along * 2.2) return;                  // 너무 옆쪽은 빼요
+        let score = along + side * 1.8;
+        if (linked.has(id)) score *= 0.55;
+        if (score < bestScore) { bestScore = score; best = id; }
+      });
+      return best;
+    }
+    /** 별똥: 지금 웹툰에서 다음 웹툰으로 빛이 날아가요 */
+    function comet(a, b) {
+      if (document.body.classList.contains('no-anim')) return;
+      const A = T.nodes[a], B = T.nodes[b];
+      if (!A || !B) return;
+      const ang = Math.atan2(B[1] - A[1], B[0] - A[0]) * 180 / Math.PI;
+      const el = document.createElement('div');
+      el.className = 'comet';
+      el.setAttribute('aria-hidden', 'true');
+      el.style.left = `${A[0]}px`; el.style.top = `${A[1]}px`;
+      el.innerHTML = `<i style="transform:rotate(${ang}deg)"></i>`;
+      stage.appendChild(el);
+      void el.offsetWidth;
+      el.style.left = `${B[0]}px`; el.style.top = `${B[1]}px`;
+      setTimeout(() => { el.classList.add('hit'); }, 380);
+      setTimeout(() => el.remove(), 900);
+    }
+    let lastKey = 0;
+    const onKey = (e) => {
+      if (e.altKey || e.ctrlKey || e.metaKey) return;
+      const t = e.target;
+      if (t && (t.closest('input, textarea, select, [contenteditable="true"]') || t.closest('.modal-bg'))) return;
+      if (e.key === 'Escape' && sel) { e.preventDefault(); close(); return; }
+      if (e.key === 'Home') { e.preventDefault(); if (T.start && T.start !== sel) { if (sel) comet(sel, T.start); select(T.start); } return; }
+      const dir = DIRS[e.key];
+      if (!dir) return;
+      e.preventDefault();
+      const now = Date.now();
+      if (now - lastKey < 160) return;   // 너무 빨리 누르면 한 칸씩만
+      lastKey = now;
+      if (!sel) { select(T.start && T.nodes[T.start] ? T.start : ids[0]); return; }
+      const next = pickToward(sel, dir);
+      if (!next) {
+        const b = stage.querySelector(`[data-node="${sel}"]`);
+        if (b) { b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); b.style.setProperty('--bx', `${dir[0] * 7}px`); b.style.setProperty('--by', `${dir[1] * 7}px`); }
+        return;
+      }
+      comet(sel, next);
+      select(next);
+      const nb = stage.querySelector(`[data-node="${next}"]`);
+      if (nb) nb.focus({ preventScroll: true });
+    };
+    document.addEventListener('keydown', onKey);
+
     const onResize = () => fit();
     window.addEventListener('resize', onResize);
     WT.leaveView = () => {
       window.removeEventListener('resize', onResize);
+      document.removeEventListener('keydown', onKey);
       WT.onHashChange = null;
     };
     WT.onHashChange = () => {

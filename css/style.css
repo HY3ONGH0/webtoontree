@@ -229,9 +229,29 @@ button { cursor: pointer; }
 .link.half { background: rgba(232, 198, 106, 0.6); }
 .link.lit { background: var(--gold); box-shadow: 0 0 10px rgba(232, 198, 106, 0.9); }
 .link.flash { animation: lineOn .7s ease-out both; }
-.ldot { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: #0B1230; border: 2px solid rgba(154, 166, 200, 0.28); transition: border-color .5s ease; }
-.ldot.half { border-color: rgba(232, 198, 106, 0.6); }
-.ldot.lit { border-color: var(--gold); }
+/* 방향 표시: 가운데 꺾쇠, 끝 화살촉 */
+.ldot { position: absolute; width: 14px; height: 14px; background: rgba(154, 166, 200, 0.45); clip-path: polygon(15% 8%, 55% 50%, 15% 92%, 40% 92%, 80% 50%, 40% 8%); transition: background .5s ease; }
+.ldot.half { background: rgba(232, 198, 106, 0.8); }
+.ldot.lit { background: var(--gold); }
+.larrow { position: absolute; width: 16px; height: 16px; transform-origin: 100% 50%; background: rgba(154, 166, 200, 0.5); clip-path: polygon(0 0, 100% 50%, 0 100%, 22% 50%); transition: background .5s ease; }
+.larrow.half { background: rgba(232, 198, 106, 0.85); }
+.larrow.lit { background: var(--gold); filter: drop-shadow(0 0 4px rgba(232, 198, 106, 0.9)); }
+.larrow.near, .ldot.near { background: #EAF2FF; }
+/* 고른 웹툰에서 나가는 선: 빛이 앞으로 흘러가요 */
+.link .flow { position: absolute; inset: 0; border-radius: inherit; opacity: 0; overflow: hidden; }
+.link.near .flow { opacity: 1; background: linear-gradient(90deg, transparent 0, transparent 35%, rgba(255, 255, 255, 0.95) 50%, transparent 65%, transparent 100%); background-size: 200% 100%; animation: flowRun 1.4s linear infinite; }
+@keyframes flowRun { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+/* 키보드 이동: 별똥 */
+.comet { position: absolute; z-index: 6; width: 0; height: 0; pointer-events: none; transition: left .42s cubic-bezier(.5, 0, .3, 1), top .42s cubic-bezier(.5, 0, .3, 1); }
+.comet i { position: absolute; right: -9px; top: -4px; width: 70px; height: 8px; border-radius: 8px; transform-origin: calc(100% - 4px) 50%; background: linear-gradient(90deg, transparent, rgba(232, 198, 106, 0.6) 60%, #FFF6D8); box-shadow: 0 0 14px 4px rgba(232, 198, 106, 0.55); }
+.comet.hit i { animation: cometHit .5s ease-out forwards; }
+@keyframes cometHit { to { width: 8px; opacity: 0; box-shadow: 0 0 40px 22px rgba(232, 198, 106, 0); } }
+/* 그 방향에 웹툰이 없으면 살짝 툭 */
+.node.bump { animation: nodeBump .3s ease-out; }
+@keyframes nodeBump { 40% { translate: var(--bx, 0) var(--by, 0); } }
+.kbd-hint { display: inline-flex; align-items: center; gap: 3px; }
+.kbd-hint kbd { font: 700 10px/1 system-ui, sans-serif; padding: 3px 4px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.25); background: rgba(255, 255, 255, 0.06); color: var(--soft); }
+@media (hover: none) { .kbd-hint { display: none; } }
 
 .node-wrap { position: absolute; width: 150px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
 .node-box { position: relative; }
