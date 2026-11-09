@@ -263,6 +263,29 @@ button { cursor: pointer; }
 .panel { flex: 1 1 340px; max-width: 400px; padding: 22px; display: flex; flex-direction: column; gap: 16px; transform-origin: 0 30%; }
 .panel.anim { animation: panelIn .35s cubic-bezier(.2, .9, .3, 1.2) both; }
 .panel-head { display: flex; gap: 16px; align-items: center; }
+/* 상세 창 색: 표지에서 뽑은 색이 표지 쪽에서 번져 나와요 */
+.panel .tone, .panel .bloom { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0; }
+.panel .tone { background: linear-gradient(180deg, var(--p-bg1), var(--p-bg2)); opacity: 0; }
+.panel .bloom { background: radial-gradient(ellipse 75% 42% at 50% 18%, var(--p-glow) 0%, transparent 100%); opacity: 0; }
+.panel.toned .tone { opacity: 1; }
+.panel.toned .bloom { opacity: .2; }
+.panel.toned.blooming .tone { animation: toneIn 1.05s cubic-bezier(.3, .7, .2, 1) both; }
+.panel.toned.blooming .bloom { animation: bloomGlow 1.6s ease-out both; }
+.panel > *:not(.tone):not(.bloom):not(.corner-b) { position: relative; z-index: 1; }
+.panel.toned { border-color: var(--p-border); box-shadow: 0 0 0 4px var(--p-bg2), 0 0 0 5px var(--p-border), 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 60px -12px var(--p-glow); transition: border-color .6s ease, box-shadow .6s ease; }
+.panel.toned::before, .panel.toned::after, .panel.toned > .corner-b::before, .panel.toned > .corner-b::after { background: var(--p-border); }
+.panel.toned .divider { background: linear-gradient(90deg, transparent, var(--p-border), transparent); }
+.panel.toned .cover-rect { border-color: var(--p-border); box-shadow: 0 0 22px -4px var(--p-glow); background: var(--p-bg2); }
+.panel.toned .desc, .panel.toned .box { background: var(--p-box); border-color: rgba(255, 255, 255, 0.14); }
+.panel.toned .box-gold { border-color: var(--p-border); }
+.panel.toned .box-warn { border-color: rgba(255, 178, 122, 0.7); }
+.panel.toned .box-title { color: var(--p-accent); }
+.panel.toned .hint, .panel.toned .meta dt { color: rgba(255, 255, 255, 0.74); }
+.panel.toned .next-btn { background: var(--p-box); }
+.panel.toned .fld { background: rgba(0, 0, 0, 0.32); border-color: rgba(255, 255, 255, 0.2); }
+@keyframes toneIn { from { clip-path: circle(0% at 50% 16%); } to { clip-path: circle(150% at 50% 16%); } }
+@keyframes bloomGlow { 0% { opacity: 0; clip-path: circle(0% at 50% 16%); } 35% { opacity: .95; } 100% { opacity: .2; clip-path: circle(150% at 50% 16%); } }
+
 /* 상세 창 표지: 사각형, 이미지 전체가 잘리지 않게 보여요 */
 .cover-rect {
   position: relative; width: 100%; min-height: 120px; max-height: 300px; border-radius: 4px; overflow: hidden;

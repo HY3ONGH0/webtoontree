@@ -218,7 +218,8 @@
       const nexts = T.links.filter((l) => l.from === id && WT.toon(l.to));
       const genreNames = (w.genres || []).map((x) => (WT.genre(x) || {}).name).filter(Boolean).join(' · ');
       const goLabel = done ? '다시 보러 가기' : e > 0 ? `${e + 1}화 이어 보기` : '1화 보러 가기';
-      return `<aside class="panel rpg anim" aria-label="${esc(w.title)} 정보"><span class="corner-b" aria-hidden="true"></span>
+      const tone = w.color || WT.color.cached(w.cover);
+      return `<aside class="panel rpg anim${tone ? ' toned' : ''}" style="${tone ? WT.color.styleOf(tone) : ''}" aria-label="${esc(w.title)} 정보"><span class="tone" aria-hidden="true"></span><span class="bloom" aria-hidden="true"></span><span class="corner-b" aria-hidden="true"></span>
         <div class="cover-rect${w.cover ? '' : ' empty'}">
           ${w.cover ? `<img src="${esc(w.cover)}" alt="${esc(w.title)} 표지" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add('empty', 'broken'); this.remove()">` : ''}
           <span class="cover-letter${w.cover ? ' fallback' : ''}" aria-hidden="true">${esc(w.title[0] || '?')}</span>
@@ -304,10 +305,29 @@
       </aside>`;
     }
 
+    // 표지 색이 상세 창에 번져요: 저장된 색(관리자 화면에서 자동으로 뽑힘)이 없으면 여기서 뽑아요
+    function bloom(panel) {
+      panel.classList.remove('blooming');
+      void panel.offsetWidth;
+      panel.classList.add('blooming');
+    }
     function renderPanel(animate) {
       if (!sel) { slot.innerHTML = ''; fit(); return; }
       slot.innerHTML = panelHTML(sel);
-      if (!animate) slot.querySelector('.panel').classList.remove('anim');
+      const panel = slot.querySelector('.panel');
+      if (!animate) panel.classList.remove('anim');
+      else if (panel.classList.contains('toned')) bloom(panel);
+      const w = WT.toon(sel);
+      if (!panel.classList.contains('toned') && w.cover) {
+        const id = sel;
+        WT.color.extract(w.cover).then((c) => {
+          const p = slot.querySelector('.panel');
+          if (!c || sel !== id || !p || p.classList.contains('toned')) return;
+          p.setAttribute('style', WT.color.styleOf(c));
+          p.classList.add('toned');
+          bloom(p);
+        });
+      }
       fit();
     }
 

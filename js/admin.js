@@ -75,7 +75,7 @@
     return 'w' + String(D.meta.lastWebtoonId).padStart(3, '0');
   }
   function blankWebtoon(title, gid) {
-    return { id: newWebtoonId(), title: title || '새 웹툰', author: '', platform: '네이버웹툰', url: '', cover: '', genres: gid ? [gid] : [], recommended: false, episodes: 1, status: 'ongoing', days: [], autoCount: true, baseDate: WT.schedule.today(), tags: [], desc: '' };
+    return { id: newWebtoonId(), title: title || '새 웹툰', author: '', platform: '네이버웹툰', url: '', cover: '', genres: gid ? [gid] : [], recommended: false, color: '', episodes: 1, status: 'ongoing', days: [], autoCount: true, baseDate: WT.schedule.today(), tags: [], desc: '' };
   }
   function treesOf(id) { return Object.keys(D.trees).filter((g) => D.trees[g].nodes[id]); }
   function removeFromTree(gid, id) {
@@ -185,6 +185,15 @@
       </div>
       <div class="field"><label for="f-url">보러 가기 링크</label><input id="f-url" class="fld" type="url" data-wf="url" value="${esc(w.url)}" placeholder="https://"></div>
       <div class="field"><label for="f-cover">표지 이미지 주소 (선택)</label><input id="f-cover" class="fld" type="url" data-wf="cover" value="${esc(w.cover)}" placeholder="비워 두면 제목 첫 글자로 표시"><span class="hint">직접 만들었거나 써도 되는 이미지만 넣어 주세요.</span></div>
+      <div class="field"><span style="font-size:14px; color:var(--soft)">상세 창 색 (표지에서 자동으로 뽑아요)</span>
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+          <label class="sr" for="f-color">상세 창 색 직접 고르기</label>
+          <input id="f-color" class="swatch" type="color" data-wf="color" value="${esc(w.color || '#2A3456')}">
+          <span style="width:120px; height:44px; border-radius:6px; border:1px solid ${w.color ? (WT.color.palette(w.color) || {})['--p-border'] : '#2C3763'}; background:${w.color ? `linear-gradient(180deg, ${WT.color.palette(w.color)['--p-bg1']}, ${WT.color.palette(w.color)['--p-bg2']})` : '#121935'}; display:inline-flex; align-items:center; justify-content:center; font-size:12px; color:#fff" aria-hidden="true">${w.color ? '미리보기' : '색 없음'}</span>
+          <button type="button" class="btn btn-sm press" data-a="w-color" data-id="${w.id}" ${w.cover ? '' : 'disabled'}>${ui.colorBusy === w.id ? '뽑는 중…' : '표지에서 다시 뽑기'}</button>
+        </div>
+        <span class="hint">${w.color ? '마음에 안 들면 왼쪽 색 칸을 눌러 직접 고를 수 있어요.' : w.cover ? '표지에서 색을 뽑지 못했어요. 직접 골라 주세요.' : '표지 주소를 넣으면 자동으로 채워져요.'}</span>
+      </div>
       <fieldset style="border:none; margin:0; padding:0"><legend class="hint" style="margin-bottom:6px; font-size:14px; color:var(--soft)">장르 (여러 개 가능)</legend>
         <div class="checks">${D.genres.map((g) => `<label><input type="checkbox" data-wg="${g.id}" ${w.genres.includes(g.id) ? 'checked' : ''}> ${esc(g.name)}</label>`).join('')}</div>
       </fieldset>
@@ -896,6 +905,7 @@
         ui.w = null; ui.g = null; ui.tsel = null; ui.msel = null;
         toast('사이트 데이터로 되돌렸어요'); render();
       } break;
+      case 'w-color': { const w = toon(id); w.color = ''; autoColor(w, true); break; }
       case 'srv-logout': srv.pw = ''; srv.ok = false; srv.users = srv.comments = srv.reports = null; try { sessionStorage.removeItem('webtoontree.adminpw'); } catch (e) { /* 무시 */ } toast('관리자에서 나왔어요'); render(); break;
       case 'srv-connect': srv.pw = document.getElementById('srv-pw').value; srvLoad(); break;
       case 'srv-report-done': srvDo('adminReportDone', { webtoonId: id }, '처리했어요'); break;
@@ -929,6 +939,24 @@
       }
       default: break;
     }
+  }
+
+  /** 표지 색 자동으로 뽑기 (웹툰을 올릴 때마다) */
+  async function autoColor(w, announce) {
+    if (!w || !w.cover) return null;
+    ui.colorBusy = w.id;
+    const c = await WT.color.extract(w.cover);
+    ui.colorBusy = null;
+    if (c) { w.color = c; saveDraft(); }
+    if (ui.tab === 'webtoons' && ui.w === w.id) render();
+    if (announce) toast(c ? '표지에서 상세 창 색을 뽑았어요' : '표지에서 색을 뽑지 못했어요. 직접 골라 주세요');
+    return c;
+  }
+  async function fillMissingColors() {
+    const todo = D.webtoons.filter((w) => w.cover && !w.color);
+    let n = 0;
+    for (const w of todo) { if (await autoColor(w, false)) n++; }
+    if (n) toast(`표지 색 ${n}개를 자동으로 채웠어요. 저장하면 사이트에 반영돼요`);
   }
 
   function setPath(obj, path, val) {
@@ -984,6 +1012,7 @@
       w.genres = el.checked ? Array.from(new Set(w.genres.concat(g))) : w.genres.filter((x) => x !== g);
       saveDraft(); render(); return;
     }
+    if (el.dataset.wf === 'cover') { const w = toon(ui.w); w.color = ''; saveDraft(); autoColor(w, true); render(); return; }
     if (el.dataset.wf || el.dataset.gf) { render(); return; }
     if (el.dataset.aChange === 'g-shape') { if (SHAPES[el.value]) { genre(ui.g).shape = clone(SHAPES[el.value].shape); saveDraft(); render(); } return; }
     if (el.dataset.aChange === 'g-start') { D.trees[ui.g].start = el.value || null; saveDraft(); render(); return; }
@@ -1037,10 +1066,12 @@
       render();
       srvLoad();
       toast('관리자로 들어왔어요');
+      fillMissingColors();
       return;
     }
     render();
     if (draft && isDirty()) toast('이전에 하던 작업을 불러왔어요');
+    fillMissingColors();
   }
   document.addEventListener('DOMContentLoaded', init);
 })();

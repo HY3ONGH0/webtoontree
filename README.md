@@ -40,6 +40,8 @@
 | `js/store.js` | 기록 저장 (브라우저 저장소) |
 | `js/api.js` | 서버(Apps Script) 연결 |
 | `js/schedule.js` | 연재 요일·상태, 화수 자동 계산 |
+| `js/layout.js` | 전체 지도 자동 배치 |
+| `js/color.js` | 표지 색 뽑기, 상세 창 색 만들기 |
 | `admin.html`, `js/admin.js`, `css/admin.css` | 관리자 사이트 |
 | `apps-script/Code.gs` | 서버 코드 (구글 시트에 붙여 써요) |
 | `js/character.js` | 캐릭터 그림 (직접 그린 그림으로 바꿀 곳) |
@@ -70,6 +72,7 @@
 
 - 웹툰 ID(`w001` 같은 값)는 한 번 정하면 바꾸지 않아요. 감상 기록이 ID로 연결돼 있어요
 - `cover`에 이미지 주소를 넣으면 표지가 보이고, 비워 두면 제목 첫 글자가 보여요
+- `color`는 상세 창 배경색이에요. 관리자 화면에서 표지 주소를 넣으면 표지에서 자동으로 뽑아 채워요 (직접 고를 수도 있어요). 비어 있으면 사이트가 표지에서 뽑아 써요. 다른 사이트 이미지는 브라우저가 색을 못 읽게 막아서, 그럴 땐 이미지 중계 서비스(images.weserv.nl)를 거쳐 색만 읽어요
 - `recommended: true`면 관리자 강추 큰 별이 붙어요
 - `status`는 `ongoing`(연재 중) · `hiatus`(휴재) · `completed`(완결), `days`는 올라오는 요일(`mon`~`sun`)이에요
 - `autoCount: true`면 연재 중일 때 `baseDate`(그날의 총 화수가 `episodes`) 다음 날부터 연재 요일마다 총 화수가 1씩 자동으로 늘어나요. 휴재로 어긋나면 관리자 화면에서 총 화수를 다시 적어 주면 돼요
