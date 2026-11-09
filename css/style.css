@@ -46,7 +46,19 @@ button { cursor: pointer; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 :focus-visible { outline: 3px solid var(--gold-hi); outline-offset: 3px; }
 
-#app { min-height: 100vh; display: flex; flex-direction: column; }
+#app { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; }
+/* 배경 별똥별: 가끔 작게 떨어져요 (내용 뒤) */
+.sky { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.meteor { position: absolute; height: 2px; border-radius: 2px; transform-origin: 100% 50%; opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(200, 225, 255, 0.7) 65%, #fff);
+  filter: drop-shadow(0 0 4px rgba(170, 210, 255, 0.95)); animation: meteorFall var(--dur, 1.2s) ease-in forwards; }
+@keyframes meteorFall {
+  0% { opacity: 0; transform: rotate(var(--ang)) translateX(0) scaleX(.3); }
+  15% { opacity: var(--op, .85); transform: rotate(var(--ang)) translateX(calc(var(--dist) * .15)) scaleX(1); }
+  100% { opacity: 0; transform: rotate(var(--ang)) translateX(var(--dist)) scaleX(.6); }
+}
+@media (prefers-reduced-motion: reduce) { .sky { display: none; } }
+body.no-anim .sky { display: none; }
 .view { flex: 1 1 auto; display: flex; flex-direction: column; animation: viewIn .35s ease-out both; }
 
 /* ---------- 공통 ---------- */

@@ -405,6 +405,29 @@
   const GUEST_KEY = 'webtoontree.guestVisit';
   function markGuest() { try { sessionStorage.setItem(GUEST_KEY, '1'); } catch (e) { /* 무시 */ } }
 
+  /** 배경 별똥별: 2~5초마다 하나씩 작게 떨어져요. 탭을 안 보고 있거나 애니메이션을 끄면 쉬어요 */
+  function startMeteors() {
+    if (document.querySelector('.sky')) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const sky = document.createElement('div');
+    sky.className = 'sky';
+    sky.setAttribute('aria-hidden', 'true');
+    document.body.prepend(sky);
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    const spawn = () => {
+      if (!document.hidden && !document.body.classList.contains('no-anim') && sky.childElementCount < 4) {
+        const m = document.createElement('i');
+        m.className = 'meteor';
+        const len = rnd(50, 110), dur = rnd(0.9, 1.5);
+        m.style.cssText = `left:${rnd(20, 98)}vw; top:${rnd(2, 55)}vh; width:${len}px; --ang:${rnd(140, 160)}deg; --dist:${rnd(180, 380)}px; --dur:${dur}s; --op:${rnd(0.7, 1)}`;
+        sky.appendChild(m);
+        setTimeout(() => m.remove(), dur * 1000 + 100);
+      }
+      setTimeout(spawn, rnd(1800, 5000));
+    };
+    setTimeout(spawn, 1200);
+  }
+
   /** 제작진 소개: 검은 화면에 흰 글씨. 누르거나 키를 누르면 건너뛰어요 */
   const CREDITS_KEY = 'webtoontree.creditsSeen';
   const CREDITS = ['김형호', '신효제', '이유섭'];
@@ -498,6 +521,7 @@
       }
       await Promise.race([Promise.all(tasks), new Promise((r) => setTimeout(r, 4000))]);
     }
+    startMeteors();
     // 사이트를 새로 열었을 때: 로그인하지 않았으면 (예전에 둘러보기를 했어도) 로그인 화면부터 보여 줘요
     {
       const S2 = WT.store.state;
