@@ -611,6 +611,57 @@
   ],
   "webtoons": [
     {
+      "id": "w046",
+      "title": "연놈",
+      "author": "상하",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/nVswmJGIFZpKIDIK-1QSoVzblMrgSbW_zjRArE_XJnrsgZOvT09Ea-ti5EDEcDr4O5b5CMx9g2SzHxaL7f2iGZuCgwH0vibyrxpDdHkrVgRyjYPWoYKTtbPvU8weZ2Vf9j7VGLRZ0dQRV8Tdse6T5Q.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 2,
+      "color": "#ffe278",
+      "episodes": 370,
+      "status": "completed",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "학원",
+        "로맨스"
+      ],
+      "desc": "중2 여름, 가지 말라는 말도 좋아했다는 말도 하지 못한 채 보낸 그녀가 3년 만에 나타났다.\n지나버린 시간과 마주한 소년, 그리고 소녀의 이야기."
+    },
+    {
+      "id": "w045",
+      "title": "연애혁명",
+      "author": "232",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/ulwdoFdCwxYT5-0-0tYciRKfNxX6dXSG70FFlzaOB7AtjBwN4B6NbrkwzkRpSkJWcHM8xqwnuESOeOtN9fyoeKZE9Ww8BvZIh5B2NGIScrmNWK00I7CjF4TYd_35sWR4CsgxN8as-EuWJBBoeOlqvw.webp",
+      "genres": [
+        "romance",
+        "daily"
+      ],
+      "recommended": 2,
+      "color": "#ff668a",
+      "episodes": 434,
+      "status": "completed",
+      "days": [
+        "thu"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "감정선",
+        "학원물"
+      ],
+      "desc": "평범하면서 금사빠인 고등학생 순정남 공주영은 까칠하고 차가운 여학생 왕자림을 보고 사랑에 빠져버린다.\n\n너무나도 다른 둘, 괜찮을까?\n"
+    },
+    {
       "id": "w044",
       "title": "저궤도인간",
       "author": "조은영",
@@ -678,7 +729,7 @@
         "romance",
         "daily"
       ],
-      "recommended": false,
+      "recommended": 1,
       "color": "#b1dd8b",
       "episodes": 221,
       "status": "ongoing",
@@ -1435,85 +1486,108 @@
       ]
     },
     "romance": {
-      "start": "w019",
+      "start": "w036",
       "nodes": {
         "w019": [
-          110,
-          280
+          210,
+          350
         ],
         "w020": [
-          305,
-          280
+          500,
+          440
         ],
         "w021": [
-          500,
-          280
+          650,
+          460
         ],
         "w018": [
-          695,
+          440,
           280
         ],
         "w022": [
-          890,
-          280
+          310,
+          260
         ],
         "w032": [
-          890,
-          430
+          350,
+          400
         ],
         "w035": [
-          660,
-          430
+          210,
+          140
         ],
         "w036": [
-          430,
-          430
+          80,
+          280
         ],
         "w041": [
-          200,
-          430
+          370,
+          100
+        ],
+        "w045": [
+          520,
+          100
+        ],
+        "w046": [
+          690,
+          100
         ]
       },
       "links": [
         {
+          "from": "w036",
+          "to": "w035",
+          "why": "편하고 간단하게 볼수있는 로맨스의 정석"
+        },
+        {
+          "from": "w036",
+          "to": "w019",
+          "why": "서사중심 웹툰의 극치"
+        },
+        {
           "from": "w019",
+          "to": "w032",
+          "why": "서사중심 최신웹툰"
+        },
+        {
+          "from": "w035",
+          "to": "w041",
+          "why": "작화 + 킬링타임 정석 로맨스"
+        },
+        {
+          "from": "w035",
+          "to": "w022",
+          "why": "조금더 작화 + 서사 중심"
+        },
+        {
+          "from": "w032",
           "to": "w020",
-          "why": ""
+          "why": "추리물이 살짝 가미된 느낌...?"
+        },
+        {
+          "from": "w032",
+          "to": "w018",
+          "why": "만약에 고민되면 이유섭 찾아오세요 "
+        },
+        {
+          "from": "w022",
+          "to": "w018",
+          "why": "서사, 끝없는 질문과 적절한 코미디"
         },
         {
           "from": "w020",
           "to": "w021",
-          "why": ""
+          "why": "봐도 안봐도 상관 없음"
         },
         {
-          "from": "w021",
-          "to": "w018",
-          "why": ""
+          "from": "w041",
+          "to": "w045",
+          "why": "학원물의 정석이자 전설을 보고싶다?"
         },
         {
-          "from": "w018",
-          "to": "w022",
-          "why": ""
-        },
-        {
-          "from": "w022",
-          "to": "w032",
-          "why": ""
-        },
-        {
-          "from": "w032",
-          "to": "w035",
-          "why": ""
-        },
-        {
-          "from": "w035",
-          "to": "w036",
-          "why": ""
-        },
-        {
-          "from": "w036",
-          "to": "w041",
-          "why": ""
+          "from": "w045",
+          "to": "w046",
+          "why": "연애혁명의 고구마가 답답하다면..."
         }
       ]
     },
@@ -1599,8 +1673,8 @@
       },
       {
         "genre": "romance",
-        "x": 1260,
-        "y": 330
+        "x": 1305,
+        "y": 295
       },
       {
         "genre": "thriller",
@@ -1628,77 +1702,8 @@
         "y": 700
       }
     ],
-    "nodes": {
-      "w028": [
-        680,
-        500
-      ],
-      "w022": [
-        1475,
-        360
-      ],
-      "w029": [
-        685,
-        490
-      ],
-      "w030": [
-        1430,
-        740
-      ],
-      "w031": [
-        2210,
-        580
-      ],
-      "w032": [
-        1490,
-        370
-      ],
-      "w033": [
-        750,
-        500
-      ],
-      "w034": [
-        750,
-        500
-      ],
-      "w035": [
-        1490,
-        370
-      ],
-      "w036": [
-        1490,
-        370
-      ],
-      "w037": [
-        750,
-        500
-      ],
-      "w038": [
-        750,
-        500
-      ],
-      "w039": [
-        1430,
-        740
-      ],
-      "w040": [
-        750,
-        500
-      ],
-      "w041": [
-        1490,
-        370
-      ],
-      "w042": [
-        750,
-        500
-      ],
-      "w044": [
-        1660,
-        1120
-      ]
-    },
-    "links": []
+    "links": [],
+    "pins": {}
   },
   "shop": [
     {
@@ -1796,6 +1801,6 @@
   ],
   "hotToday": [],
   "meta": {
-    "lastWebtoonId": 44
+    "lastWebtoonId": 46
   }
 }
