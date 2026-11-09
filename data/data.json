@@ -611,6 +611,198 @@
   ],
   "webtoons": [
     {
+      "id": "w053",
+      "title": "평행도시",
+      "author": "고다",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/3235.html",
+      "cover": "https://i.namu.wiki/i/mJzefQ7_5u-gkBN58TrETH9PPdLpFi19Qg_yk5fELeAXDAPf-E9OPQ2sRU1gW-9hwQ-k4GXLcaqhRmEJyn2gMZ4cnY8W7no2QhjjvgnHGvUqyHGWf9FWfTygj5ufutnVhdV9NJaZuh4tonkeBmw9Cw.webp",
+      "genres": [
+        "thriller",
+        "action",
+        "fantasy"
+      ],
+      "recommended": 2,
+      "color": "#011d57",
+      "episodes": 150,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "판타지",
+        "성장물",
+        "좀비",
+        "아포칼립스"
+      ],
+      "desc": "날 찾아온 또 다른 나..? 극악무도한 도플갱어의 습격, 그리고 눈 앞에 펼쳐진 끔찍한 평행세계. 다시 예전의 삶으로 돌아갈 수 있을까?"
+    },
+    {
+      "id": "w052",
+      "title": "오버 더 문",
+      "author": "포르토, 이승준",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/3597.html",
+      "cover": "https://i.namu.wiki/i/cNS7tCJyR-YnDdvIrgMM7PzwYCYFlq-5p77E8KieuC9ChzatzEiD6W-E_SXYnNgbZtDG1XPnMiOZDC95Xxkc11b_JW9c-wEYGx3uSCl6t2PszI_927DW0aWuhUBpR-vvZOc9C_SkaIeiP2gDe2UDvA.webp",
+      "genres": [
+        "thriller"
+      ],
+      "recommended": 2,
+      "color": "#011d57",
+      "episodes": 43,
+      "status": "completed",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "스릴러",
+        "서스펜스"
+      ],
+      "desc": "버스에서의 사고 후 잃어버린 2주 동안의 기억.\n하늘에 뜬 푸른 달과 날아드는 수백 건의 달빛을 받으라는 문자들.\n조심해. 너도 달빛을 쐬면 괴물이 되어버릴 테니까."
+    },
+    {
+      "id": "w051",
+      "title": "헬크래프트",
+      "author": "나락, 영기",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/12127.html",
+      "cover": "https://i.namu.wiki/i/nqJCGOuM4DN6QymqhBHjYWjrikA6GHzNxHEe341t38ozfi2xYeWb2ooXzSBoOZBFcQ7zody6V5JK78DW7KXpQXp5bJ56X_YJJQdeVs0IapwhSdc58MBSpAXaNef__yelgSSMhxHonavu-84IoV4oQQ.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 1,
+      "color": "#831100",
+      "episodes": 97,
+      "status": "completed",
+      "days": [
+        "mon"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "판타지",
+        "사이다",
+        "신화",
+        "데스게임",
+        "오컬트",
+        "복수극",
+        "두뇌게임"
+      ],
+      "desc": "세상에 배신당해 방구석으로 도망친 고등학생 염승기.\n새로운 지옥의 주인으로 지목된 대악마 바함무르크.\n바함무르크는 자신의 지옥 제작자로서 염승기를 선택하고,\n지옥 제작의 대가로 염승기에게 수감자를 고를 권리를 준다.\n복수를 위해 악마와 손을 잡은 염승기, 그렇게 윈윈의 관계로 끝날 줄 알았는데...\n갑자기 시작된 데스게임-\n살아남기 위해선 지옥에 보내라!"
+    },
+    {
+      "id": "w050",
+      "title": "별과 사슬이 뜨는 섬",
+      "author": "어패류메기, 훌리",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/17864.html",
+      "cover": "https://i.namu.wiki/i/bengH_FNYm7t5aRaDhmIy4wbf8xvT8yJUyapgLhHdvFl-ztVPp2dxNbXyTLe5SdckmPN4dXcrNNpfYn0MR2s4HnpeJTxBNJROdCaKdgCzOUvRuxwOQ-8vTSGCy7PWZ3vRsU43L8IhViAKST8Sq4_wg.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 2,
+      "color": "#016e8f",
+      "episodes": 88,
+      "status": "ongoing",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "판타지",
+        "배틀",
+        "소년물",
+        "성장물",
+        "이능력배틀물"
+      ],
+      "desc": "헌터의 꿈을 가졌지만 재능은 없는 만년 지망생 '기승현'. 그런 그의 앞에 12년간 혼수상태에 빠져있던 누나 '기소현'이 깨어나게 된다. 누나의 기상과 함께, 정체되어 있던 운명의 수레바퀴가 돌아가기 시작한다."
+    },
+    {
+      "id": "w049",
+      "title": "염라강림",
+      "author": "바른꽃",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/14460.html",
+      "cover": "https://i.namu.wiki/i/NQjyx6XVcD0Lih3HXIZmuJcZEA_mQ2lgmH_faqByw4XpvAWq_ArzoB_T6O3zx5KiKl-MMrTZifiUAhe5xId3XsBDYZruiGvwrOpallR9KcURz7W3MRPLubS77It3L5cqaHhOIVTWelShY8QDxDt_kQ.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 1,
+      "color": "#000000",
+      "episodes": 156,
+      "status": "ongoing",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [],
+      "desc": "\"그 어떤 자도, 내 앞에 설 때는 한낱 죄인이야.\"\n지옥이 망했다. 피가 흘러야 할 황천에는 맑은 물이 흐르고 망자들을 끓이던 솥은 차갑게 식은지 오래다.\n은퇴한 염라대왕은 자신의 행복을 위해 윤회의 길을 택하고자 하지만, 혼란스러워진 지옥과 사라진 자신의 후임 털보로 인해 윤회의 길을 걸을 수 없게 된다.\n염라는 지옥명부의 힘을 빌려 인간을 지키는 ‘장의사’들과 힘을 합쳐 털보를 잡아 세상을 원래대로 돌려놓기 위해 고군분투한다. 과연 염라는 무사히 윤회의 길을 걸을 수 있을까?"
+    },
+    {
+      "id": "w048",
+      "title": "붉은 이정표",
+      "author": "달뜬",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/11374.html",
+      "cover": "https://i.namu.wiki/i/xX0ixvf-Ftth03ColrJXFJ7rzQoPS0MrezXMRuwYtbMV7NSWgFk525nVPjgcJRDmTpcZqqab93M_G-xwz5IStm5BLitPcgIro7SmVpPGsHXgQtGx7rB9sDFVViqld18YfElHLZmx_ZG7lr_dT5QOiw.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 2,
+      "color": "#ff4015",
+      "episodes": 190,
+      "status": "ongoing",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "판타지",
+        "액션",
+        "사이다",
+        "동양",
+        "이능력",
+        "모험",
+        "먼치킨"
+      ],
+      "desc": "세상의 평화를 유지하던 최강의 도깨비 집단 '홍혜.'\n그러던 어느 날 동료의 배신으로 도깨비 '린'은 홍혜와 친구들 모두를 잃게 된다.\n분노로 가득 찬 그는 홍혜의 최강전력 '검은 귀신' 으로서 복수를 향해 길을 떠난다."
+    },
+    {
+      "id": "w047",
+      "title": "나태 공자, 노력 천재 되다",
+      "author": "doip, 도도문, 이등별",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/9878.html",
+      "cover": "https://i.namu.wiki/i/-PmJquAh0Wmq742jZwN3l2DdRGdz3re_K_3DVSRenMcegidJ030KPojXmq5ohjoaQooK0fKqwtUu8buS390T5ZoF6jSCWea9wbBbVXKBWo5--rFvWUiYOmpSTXrh0RHORICXe2TAMfa4wgbC_4C3lw.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 2,
+      "color": "#f5ec00",
+      "episodes": 162,
+      "status": "ongoing",
+      "days": [
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "판타지",
+        "중세",
+        "성장물",
+        "아카데미물",
+        "소설원작"
+      ],
+      "desc": "가문의 게으름뱅이, 마침내 검을 들다!\n\n잠을 도피처로 삼아 온 소년 아이른 파레이라.\n사람들은 그를 나태 공자라 부르며 조롱했지만 그는 변할 생각이 없었다.\n어느 날 어느 검사의 꿈을 꾸기 전까지는...\n그것은 그저 묵묵히 수십 년간 검을 휘두르며 단련하는 한 재능 없는 사내에 관한 꿈이었다.\n"
+    },
+    {
       "id": "w046",
       "title": "연놈",
       "author": "상하",
@@ -1401,40 +1593,60 @@
           280
         ],
         "w024": [
-          340,
+          208,
           280
         ],
         "w025": [
-          570,
-          280
+          305,
+          90
         ],
         "w029": [
-          800,
-          280
+          403,
+          90
         ],
         "w033": [
-          570,
-          150
+          305,
+          470
         ],
         "w034": [
-          800,
-          430
+          500,
+          90
         ],
         "w037": [
-          800,
-          150
+          403,
+          470
         ],
         "w038": [
-          920,
-          150
+          500,
+          470
         ],
         "w040": [
-          920,
-          260
+          598,
+          280
         ],
         "w042": [
-          920,
-          410
+          695,
+          280
+        ],
+        "w047": [
+          793,
+          280
+        ],
+        "w048": [
+          890,
+          280
+        ],
+        "w049": [
+          730,
+          90
+        ],
+        "w050": [
+          793,
+          430
+        ],
+        "w051": [
+          790,
+          180
         ]
       },
       "links": [
@@ -1481,6 +1693,31 @@
         {
           "from": "w040",
           "to": "w042",
+          "why": ""
+        },
+        {
+          "from": "w042",
+          "to": "w047",
+          "why": ""
+        },
+        {
+          "from": "w047",
+          "to": "w048",
+          "why": ""
+        },
+        {
+          "from": "w034",
+          "to": "w049",
+          "why": ""
+        },
+        {
+          "from": "w047",
+          "to": "w050",
+          "why": ""
+        },
+        {
+          "from": "w049",
+          "to": "w051",
           "why": ""
         }
       ]
@@ -1612,9 +1849,28 @@
         "w031": [
           130,
           280
+        ],
+        "w052": [
+          360,
+          280
+        ],
+        "w053": [
+          590,
+          280
         ]
       },
-      "links": []
+      "links": [
+        {
+          "from": "w031",
+          "to": "w052",
+          "why": ""
+        },
+        {
+          "from": "w052",
+          "to": "w053",
+          "why": ""
+        }
+      ]
     },
     "daily": {
       "start": "w026",
@@ -1806,6 +2062,6 @@
   ],
   "hotToday": [],
   "meta": {
-    "lastWebtoonId": 46
+    "lastWebtoonId": 53
   }
 }
