@@ -190,7 +190,7 @@
     return `<section class="ad-form" aria-label="웹툰 정보 수정">
       <div style="display:flex; align-items:center; gap:12px">
         <span class="dotc" style="width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--display); font-size:24px; color:#fff; background:${w.cover ? `url('${esc(w.cover)}') center/cover` : gColor(w)}">${w.cover ? '' : esc(w.title[0] || '?')}</span>
-        <div><b style="font-size:17px">${esc(w.title)}</b><div class="ad-help">${w.id} · 트리: ${esc(inTrees.join(', ') || '없음')} · 전체 지도: ${D.map.pins[w.id] ? '직접 고정' : '자동 배치'}</div></div>
+        <div><b style="font-size:17px">${esc(w.title)}</b><div class="ad-help">${w.id} · 트리: ${esc(inTrees.join(', ') || '없음 (도서관에 꽂혀요)')} · 전체 지도: ${D.map.pins[w.id] ? '직접 고정' : '자동 배치'}</div></div>
       </div>
       <div class="field"><label for="f-title">제목</label><input id="f-title" class="fld" data-wf="title" value="${esc(w.title)}"></div>
       <div class="field"><label for="f-author">작가</label><input id="f-author" class="fld" data-wf="author" value="${esc(w.author)}" placeholder="예: 김작가 글 · 이작가 그림"></div>

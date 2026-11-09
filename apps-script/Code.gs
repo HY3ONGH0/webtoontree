@@ -261,6 +261,34 @@ var ACTIONS = {
     return { hot: hot };
   },
 
+  /** 이번 주(월요일부터) 많이 읽은 웹툰: 읽은 화수, 같으면 본 사람 수 */
+  topWebtoons: function () {
+    var from = weekStart_();
+    var key = 'topw:' + from + ':' + today_();
+    var cached = cacheGet_(key);
+    if (cached) return { from: from, top: cached };
+    var eps = {}, viewers = {}, seen = {};
+    readAll_('coinLog').forEach(function (r) {
+      var l = r.obj;
+      if (l.reason !== 'ep' || String(l.createdAt).slice(0, 10) < from) return;
+      eps[l.ref] = (eps[l.ref] || 0) + Number(l.eps || 0);
+    });
+    readAll_('views').forEach(function (r) {
+      var v = r.obj;
+      if (String(v.date) < from) return;
+      var k = v.webtoonId + '|' + v.viewerId;
+      if (seen[k]) return;
+      seen[k] = 1;
+      viewers[v.webtoonId] = (viewers[v.webtoonId] || 0) + 1;
+    });
+    var idsAll = {};
+    Object.keys(eps).concat(Object.keys(viewers)).forEach(function (id) { idsAll[id] = 1; });
+    var top = Object.keys(idsAll).map(function (id) { return { id: id, eps: eps[id] || 0, viewers: viewers[id] || 0 }; })
+      .sort(function (a, b2) { return (b2.eps - a.eps) || (b2.viewers - a.viewers); }).slice(0, 40);
+    cachePut_(key, top, 300);
+    return { from: from, top: top };
+  },
+
   // ---------- 랭킹 ----------
   ranking: function (b) {
     var period = { week: 1, month: 1, all: 1 }[b.period] ? b.period : 'week';

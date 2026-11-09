@@ -3,19 +3,44 @@
   const esc = WT.esc;
   const STAGE_W = 1000, STAGE_H = 560;   // 기본 판 크기 (웹툰이 많으면 판이 옆으로 넓어져요: WT.treeWidth)
 
-  function view(params) {
+  /** 도서관에 들어가는 웹툰: 어느 장르 트리에도 넣지 않은 웹툰 */
+  function libraryBooks(gid) {
+    const inTree = new Set(Object.values(WT.data.trees || {}).flatMap((t) => Object.keys((t && t.nodes) || {})));
+    return WT.data.webtoons
+      .filter((w) => !inTree.has(w.id) && (gid === 'all' || (w.genres || []).includes(gid)))
+      .sort((a, b) => (WT.recStars(b) - WT.recStars(a)));
+  }
+  WT.libraryBooks = libraryBooks;
+
+  function view(params, lib) {
     const trees = WT.data.trees;
     const live = WT.liveGenres().map((x) => x.id);
     if (!live.length) { document.getElementById('app').innerHTML = '<div class="view" style="align-items:center; justify-content:center; padding:40px; text-align:center"><p>아직 트리가 준비되지 않았어요.</p><a class="btn press" href="#/">홈으로</a></div>'; return; }
-    const gid = live.includes(params[0]) ? params[0] : live[0];
-    const g = WT.genre(gid);
-    const T = trees[gid];
-    const SW = WT.treeWidth(T);   // 판 너비
+    let gid, g, T;
+    if (lib) {
+      // 도서관: 장르별(또는 전체) 남은 웹툰을 책장에. 위치 대신 책 순서만 있어요
+      gid = params[0] === 'all' || live.includes(params[0]) ? params[0] : 'all';
+      g = gid === 'all' ? { id: 'all', name: '전체', color: '#E8C66A', desc: '', constellation: '' } : WT.genre(gid);
+      T = { nodes: Object.fromEntries(libraryBooks(gid).map((w) => [w.id, [0, 0]])), links: [], start: null };
+    } else {
+      gid = live.includes(params[0]) ? params[0] : live[0];
+      g = WT.genre(gid);
+      T = trees[gid];
+    }
+    const BASE = lib ? 'library' : 'tree';
+    // 트리 끝 도서관 자리: 가장 오른쪽 웹툰보다 더 오른쪽
+    const leaves = lib ? [] : Object.keys(T.nodes).filter((id) => WT.toon(id) && !T.links.some((l) => l.from === id && T.nodes[l.to]));
+    const xs = Object.values(T.nodes).map((p) => p[0]);
+    const LIB = lib ? null : (() => {
+      const ly = leaves.length ? leaves.reduce((s, id) => s + T.nodes[id][1], 0) / leaves.length : STAGE_H / 2;
+      return { x: (xs.length ? Math.max(...xs) : 100) + 250, y: Math.max(90, Math.min(STAGE_H - 110, ly)) };
+    })();
+    const SW = lib ? STAGE_W : Math.max(WT.treeWidth(T), LIB.x + 150);   // 판 너비
     const ids = Object.keys(T.nodes).filter((id) => WT.toon(id));
     const S = WT.store.state;
     const rules = WT.settings().coins;
     const labels = WT.settings().labels || {};
-    const hasChar = !!S.profile;
+    const hasChar = !!S.profile && !lib;
 
     let sel = null;
     const server = WT.api.on();
@@ -32,7 +57,7 @@
     const status = (id) => {
       if (isDone(id)) return 'done';
       if (ep(id) > 0) return 'reading';
-      if (id === T.start || S.unlocked[id]) return 'open';
+      if (lib || id === T.start || S.unlocked[id]) return 'open';
       return T.links.some((l) => l.to === id && isDone(l.from)) ? 'open' : 'locked';
     };
     const pct = (id) => Math.round(ep(id) / total(id) * 100);
@@ -62,6 +87,130 @@
         const x = r + R * Math.cos(rad) - s / 2, y = r - R * Math.sin(rad) - s / 2;
         return `<span class="badge-rec" aria-hidden="true" style="left:${x.toFixed(1)}px; top:${y.toFixed(1)}px; width:${s}px; height:${s}px; animation-delay:${i * 0.3}s">${WT.icon.star}</span>`;
       }).join('');
+    }
+
+    // ---------- 트리 끝 도서관 ----------
+    function libNodeHTML() {
+      if (lib) return '';
+      const n = libraryBooks(gid).length;
+      // 끝 웹툰들 → 도서관 점선 화살표
+      const lines = leaves.map((id, i) => {
+        const a = T.nodes[id], b = [LIB.x, LIB.y];
+        const dx = b[0] - a[0], dy = b[1] - a[1], len = Math.hypot(dx, dy) || 1, ux = dx / len, uy = dy / len;
+        const ang = Math.atan2(dy, dx) * 180 / Math.PI;
+        const ra = sizeOf(id) / 2 + 6, rb = 62;
+        const sx = a[0] + ux * ra, sy = a[1] + uy * ra, ex = b[0] - ux * rb, ey = b[1] - uy * rb;
+        return `<div class="link lib-link" data-liblink="${id}" aria-hidden="true" style="left:${sx}px; top:${sy - 1.5}px; width:${Math.max(0, len - ra - rb)}px; transform:rotate(${ang}deg)"></div>
+          <div class="larrow lib-arrow" data-libarrow="${id}" aria-hidden="true" style="left:${ex - 16}px; top:${ey - 8}px; transform:rotate(${ang}deg)"></div>`;
+      }).join('');
+      return `${lines}<div class="lib-wrap" style="left:${LIB.x - 75}px; top:${LIB.y - 56}px">
+          <button type="button" class="lib-node press" data-lib="1" id="lib-node" aria-label="${esc(g.name)} 도서관, 남은 웹툰 ${n}권"></button>
+          <span class="node-label">도서관</span>
+          <span class="node-sub" id="lib-sub"></span>
+        </div>`;
+    }
+    function refreshLib() {
+      const b = document.getElementById('lib-node');
+      if (!b) return;
+      const open = libOpen();
+      b.classList.toggle('open', open);
+      b.classList.toggle('locked', !open);
+      b.innerHTML = `${WT.icon.library}${open ? '' : `<span class="lib-lock" aria-hidden="true">${WT.icon.lockIn}</span>`}`;
+      b.setAttribute('aria-label', `${g.name} 도서관, ${open ? '열림' : '잠김'}, 남은 웹툰 ${libraryBooks(gid).length}권`);
+      document.getElementById('lib-sub').textContent = `${open ? '' : '잠김 · '}웹툰 ${libraryBooks(gid).length}권`;
+      leaves.forEach((id) => {
+        const on = isDone(id);
+        stage.querySelectorAll(`[data-liblink="${id}"], [data-libarrow="${id}"]`).forEach((el) => el.classList.toggle('lit', on));
+      });
+    }
+    function enterLibrary(btn) {
+      if (!libOpen()) {
+        btn.classList.remove('shake'); void btn.offsetWidth; btn.classList.add('shake');
+        const names = leaves.map((id) => WT.toon(id).title).slice(0, 3).join(', ');
+        WT.toast(`트리 끝 웹툰(${names}${leaves.length > 3 ? ' 등' : ''}) 중 하나를 ${labels.done || '완독'}하면 도서관이 열려요`);
+        return;
+      }
+      // 문이 닫혔다가 도서관에서 열려요
+      const d = document.createElement('div');
+      d.className = 'lib-doors';
+      d.setAttribute('aria-hidden', 'true');
+      d.innerHTML = '<i class="l"></i><i class="r"></i><span>도서관</span>';
+      document.body.appendChild(d);
+      btn.classList.add('entering');
+      if (document.body.classList.contains('no-anim')) { d.remove(); location.hash = `#/library/${gid}`; return; }
+      setTimeout(() => { WT.libDoors = d; location.hash = `#/library/${gid}`; }, 520);
+    }
+
+    // ---------- 도서관 화면 ----------
+    const hashN = (s) => { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; } return h; };
+    const LEATHER = ['#6B1F24', '#7A3B1A', '#1F3B5C', '#24452F', '#5A2E4F', '#8A6A1E', '#3C2A1A', '#2D4A55', '#7B2E2E', '#45391F'];
+    function bookInner(id) {
+      const w = WT.toon(id);
+      const st = status(id);
+      const h = hashN(id);
+      const len = w.title.replace(/\s/g, '').length;
+      const bh = Math.min(170, 132 + (h % 26) + Math.max(0, len - 7) * 6), bw = 34 + ((h >>> 5) % 10) + (len > 11 ? 8 : 0);
+      const color = LEATHER[(h >>> 11) % LEATHER.length];
+      const rec = WT.recStars(w);
+      const hot = WT.isHot(id);
+      return `<button type="button" class="book st-${st}${sel === id ? ' is-sel' : ''}${hot ? ' is-hot' : ''}" data-node="${id}" style="--bh:${bh}px; --bw:${bw}px; --bc:${w.color || color}"
+          aria-label="${esc(w.title)}, ${esc(statusText[st])}${st === 'reading' ? ` ${ep(id)}화` : ''}${rec ? `, 관리자 추천 별 ${rec}개` : ''}" title="${esc(w.title)}">
+          <span class="spine-title">${esc(w.title)}</span>
+          ${rec ? `<span class="spine-stars" aria-hidden="true">${'★'.repeat(rec)}</span>` : ''}
+          ${st === 'reading' ? `<span class="ribbon" aria-hidden="true" style="--p:${pct(id)}"></span>` : ''}
+          ${st === 'done' ? '<span class="done-mark" aria-hidden="true">✓</span>' : ''}
+          ${hot ? `<span class="spine-hot" aria-hidden="true">${WT.icon.flame}</span>` : ''}
+        </button>`;
+    }
+    function libraryHTML() {
+      const tabs = [{ id: 'all', name: '전체', color: '#E8C66A' }].concat(WT.liveGenres())
+        .map((x) => ({ x, n: libraryBooks(x.id).length }))
+        .filter(({ x, n }) => x.id === 'all' || n || x.id === gid)
+        .map(({ x, n }) => `<a href="#/library/${x.id}" class="lib-tab press" style="--gc:${x.color}" ${x.id === gid ? 'aria-current="page"' : ''}>${esc(x.name)} <small>${n}</small></a>`).join('');
+      return `<div class="library" id="wrap">
+          <header class="lib-sign">
+            <span class="lib-sign-quote">“별자리의 끝에서, 이제부터는 당신이 고르는 이야기”</span>
+            <h2>${esc(g.name)} 도서관</h2>
+            <span class="lib-sign-sub">트리에 없는 웹툰 ${ids.length}권 · 책등을 누르면 정보를 볼 수 있어요</span>
+          </header>
+          <nav class="lib-tabs" aria-label="도서관 장르">${tabs}</nav>
+          <div class="shelves" id="stage" role="list">
+            ${ids.length ? ids.map((id) => `<div class="book-slot" role="listitem" data-wrap="${id}"></div>`).join('') : '<p class="lib-empty">아직 이 장르 도서관에 꽂힌 웹툰이 없어요. 관리자가 트리에 넣지 않은 웹툰을 올리면 여기에 꽂혀요.</p>'}
+          </div>
+          <section class="lib-rank-wrap" aria-labelledby="lib-rank-h">
+            <h3 id="lib-rank-h">이번 주 많이 읽은 웹툰</h3>
+            <div class="lib-rank" id="lib-rank"><p class="hint">불러오는 중…</p></div>
+          </section>
+        </div>`;
+    }
+    async function loadLibRank() {
+      const box = document.getElementById('lib-rank');
+      const pool = new Set(ids);
+      let list = [];
+      let note = '';
+      if (server) {
+        try {
+          const r = await WT.api.call('topWebtoons', {});
+          list = (r.top || []).filter((x) => pool.has(x.id)).map((x) => ({ id: x.id, label: x.eps ? `${x.eps}화 읽음` : `${x.viewers}명이 봤어요` }));
+        } catch (e) { list = []; }
+      } else {
+        // 서버 없이: 이 기기에서 많이 읽은 순서
+        list = ids.filter((id) => ep(id) > 0).sort((a, b) => ep(b) - ep(a)).map((id) => ({ id, label: `${ep(id)}화 읽음` }));
+        note = '<p class="hint">이 기기에서 읽은 기록이에요.</p>';
+      }
+      if (!document.body.contains(box)) return;
+      list = list.slice(0, 10);
+      if (!list.length) { box.innerHTML = '<p class="hint">이번 주에는 아직 기록이 없어요. 첫 독자가 되어 보세요!</p>'; return; }
+      box.innerHTML = `<ol class="rank-shelf">${list.map((x, i) => {
+        const w = WT.toon(x.id);
+        const h = hashN(x.id);
+        return `<li><button type="button" class="face press" data-pick="${x.id}" style="--bc:${w.color || LEATHER[(h >>> 11) % LEATHER.length]}; animation-delay:${i * 0.05}s">
+            <span class="rank-no${i < 3 ? ' top' : ''}">${i + 1}</span>
+            <span class="face-cover">${w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}<b>${esc(w.title)}</b></span>
+            <span class="face-title">${esc(w.title)}</span>
+            <span class="face-sub">${esc(x.label)}</span>
+          </button></li>`;
+      }).join('')}</ol>${note}`;
     }
 
     function nodeInner(id) {
@@ -122,17 +271,18 @@
     };
 
     const c0 = counts();
-    document.getElementById('app').innerHTML = `<div class="view" style="--gc:${g.color}">
+    const libOpen = () => !lib && (leaves.some(isDone) || !!S.unlocked['lib:' + gid]);
+    document.getElementById('app').innerHTML = `<div class="view${lib ? ' lib-view' : ''}" style="--gc:${g.color}">
       <div class="topbar">
         <div class="left">
-          <a href="#/" class="icon-btn press" aria-label="홈으로">${WT.icon.back}</a>
+          <a href="${lib ? (gid === 'all' ? '#/' : `#/tree/${gid}`) : '#/'}" class="icon-btn press" aria-label="${lib ? '트리로 돌아가기' : '홈으로'}">${WT.icon.back}</a>
           <div class="title-block">
             <div style="display:flex; align-items:baseline; gap:10px; flex-wrap:wrap">
-              <h1 style="color:${g.color}">${esc(g.name)}</h1>
-              <span class="sub">${esc(g.constellation || '')} · ${esc(g.desc)}</span>
+              <h1 style="color:${g.color}">${esc(g.name)}${lib ? ' 도서관' : ''}</h1>
+              <span class="sub">${lib ? '트리 끝에서 만나는, 마음 가는 대로 골라 보는 웹툰' : `${esc(g.constellation || '')} · ${esc(g.desc)}`}</span>
             </div>
             <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
-              <div class="progress" role="progressbar" aria-label="장르 진행률" aria-valuemin="0" aria-valuemax="${ids.length}" aria-valuenow="${c0.d}"><div id="prog-bar" style="width:${c0.d / ids.length * 100}%"></div></div>
+              <div class="progress" role="progressbar" aria-label="장르 진행률" aria-valuemin="0" aria-valuemax="${ids.length}" aria-valuenow="${c0.d}"><div id="prog-bar" style="width:${c0.d / (ids.length || 1) * 100}%"></div></div>
               <span id="prog-text" style="font-size:13px; color:var(--gold); font-weight:700">${c0.d} / ${ids.length} ${esc(labels.done || '완독')} · 보는 중 ${c0.r}</span>
               <span class="legend"><span>${WT.icon.starSmall}관리자 추천</span><span>${WT.icon.flame}오늘 폭주</span><span class="kbd-hint"><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> 키로 이동</span></span>
             </div>
@@ -141,7 +291,7 @@
         ${WT.topRight()}
       </div>
       <main class="tree-main">
-        <div class="stage-wrap stage-anim" id="wrap">
+        ${lib ? libraryHTML() : `<div class="stage-wrap stage-anim" id="wrap">
           <div class="stage-sizer" id="sizer">
           <div class="stage" id="stage" style="width:${SW}px">
             ${T.links.map(linkHTML).join('')}
@@ -149,14 +299,15 @@
               const [x, y] = T.nodes[id];
               return `<div class="node-wrap" data-wrap="${id}" style="left:${x - 75}px; top:${y - sizeOf(id) / 2}px"></div>`;
             }).join('')}
+            ${libNodeHTML()}
             ${hasChar ? `<div class="char" id="char" aria-hidden="true"><div class="hop" id="hop"><div class="flip" id="flip"><div class="bob">${WT.charSVG(WT.currentLook(), 56)}</div></div></div><span class="bubble" id="bubble">어디로 갈까?</span></div>` : ''}
           </div>
           </div>
           <div class="more-hint-row" aria-hidden="true"><span class="more-hint">옆으로 밀어서 더 보기 →</span></div>
-        </div>
+        </div>`}
         <div id="panel-slot"></div>
       </main>
-      ${WT.band(gid)}
+      ${WT.band(lib ? null : gid)}
     </div>`;
 
     const stage = document.getElementById('stage');
@@ -168,8 +319,9 @@
         const sig = [status(id), ep(id), sel === id, WT.isHot(id)].join('|');
         if (!force && sigs[id] === sig) return;
         sigs[id] = sig;
-        stage.querySelector(`[data-wrap="${id}"]`).innerHTML = nodeInner(id);
+        stage.querySelector(`[data-wrap="${id}"]`).innerHTML = lib ? bookInner(id) : nodeInner(id);
       });
+      if (!lib) refreshLib();
       T.links.forEach((l, i) => {
         const both = isDone(l.from) && isDone(l.to);
         const one = isDone(l.from) || isDone(l.to);
@@ -182,13 +334,14 @@
         if (sel && l.from === sel) [ln, dt, ar].forEach((el) => el && el.classList.add('near'));
       });
       const c = counts();
-      document.getElementById('prog-bar').style.width = `${c.d / ids.length * 100}%`;
+      document.getElementById('prog-bar').style.width = `${c.d / (ids.length || 1) * 100}%`;
       document.getElementById('prog-text').textContent = `${c.d} / ${ids.length} ${labels.done || '완독'} · 보는 중 ${c.r}`;
     }
 
     // 판 크기: 기본 너비(1000)를 화면에 맞추고, 웹툰이 많아 판이 넓으면 옆으로 밀어서 봐요
     const sizer = document.getElementById('sizer');
     function fit() {
+      if (lib) return;
       const w = wrap.clientWidth || STAGE_W;
       const sc = Math.min(1, w / STAGE_W);
       stage.style.transform = `scale(${sc})`;
@@ -198,20 +351,21 @@
       edges();
     }
     function edges() {
+      if (lib) return;
       const max = wrap.scrollWidth - wrap.clientWidth;
       wrap.classList.toggle('at-start', wrap.scrollLeft <= 2);
       wrap.classList.toggle('at-end', wrap.scrollLeft >= max - 2);
     }
     /** 고른 웹툰이 화면 밖이면 그쪽으로 부드럽게 이동 */
     function reveal(id, smooth) {
-      if (!wrap.classList.contains('scrolls') || !T.nodes[id]) return;
+      if (lib || !wrap.classList.contains('scrolls') || !T.nodes[id]) return;
       const sc = sizer.clientWidth / SW;
       const x = T.nodes[id][0] * sc;
       const left = wrap.scrollLeft, w = wrap.clientWidth;
       if (x > left + 90 && x < left + w - 90) return;
       wrap.scrollTo({ left: Math.max(0, x - w / 2), behavior: smooth ? 'smooth' : 'auto' });
     }
-    wrap.addEventListener('scroll', () => { edges(); wrap.classList.add('scrolled'); }, { passive: true });
+    if (!lib) wrap.addEventListener('scroll', () => { edges(); wrap.classList.add('scrolled'); }, { passive: true });
     // 마우스로 빈 곳을 끌어도 옆으로 이동 (터치는 손가락으로 그냥 밀면 돼요)
     let pan = null, panned = false;
     wrap.addEventListener('pointerdown', (e) => {
@@ -234,6 +388,7 @@
     function animateNode(id, extra) {
       const btn = stage.querySelector(`[data-node="${id}"]`);
       if (!btn) return;
+      if (lib) { btn.classList.remove('pick'); void btn.offsetWidth; btn.classList.add('pick'); return; }
       btn.classList.remove('pop', 'gold', 'burst');
       void btn.offsetWidth;
       btn.classList.add('pop');
@@ -416,7 +571,7 @@
       if (server) loadSocial(id);
       moveChar(id, true);
       renderPanel(true);
-      if (!o.keepHash) history.replaceState(null, '', `#/tree/${gid}/${id}`);
+      if (!o.keepHash) history.replaceState(null, '', `#/${BASE}/${gid}/${id}`);
       if (window.innerWidth <= 900) {
         const p = slot.querySelector('.panel');
         if (p) p.scrollTop = 0;
@@ -428,7 +583,7 @@
       refreshNodes();
       renderPanel(false);
       moveChar(charAt, false);
-      history.replaceState(null, '', `#/tree/${gid}`);
+      history.replaceState(null, '', `#/${BASE}/${gid}`);
     }
 
     async function loadSocial(id) {
@@ -529,9 +684,19 @@
 
     // ---------- 이벤트 ----------
     stage.addEventListener('click', (e) => {
+      const lb = e.target.closest('[data-lib]');
+      if (lb) { enterLibrary(lb); return; }
       const b = e.target.closest('[data-node]');
       if (b) select(b.dataset.node);
     });
+    if (lib) {
+      document.getElementById('lib-rank').addEventListener('click', (e) => {
+        const b = e.target.closest('[data-pick]');
+        if (b) { select(b.dataset.pick); const el = stage.querySelector(`[data-node="${b.dataset.pick}"]`); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+      });
+      loadLibRank();
+      if (WT.libDoors) { const d = WT.libDoors; WT.libDoors = null; requestAnimationFrame(() => { d.classList.add('opening'); setTimeout(() => d.remove(), 1100); }); }
+    }
     slot.addEventListener('click', (e) => {
       const dc = e.target.closest('[data-delc]');
       if (dc && sel) {
@@ -592,6 +757,7 @@
     const DIRS = { ArrowRight: [1, 0], ArrowLeft: [-1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
     /** 지금 웹툰에서 그 방향에 있는 웹툰 고르기 (이어진 웹툰을 먼저) */
     function pickToward(from, dir) {
+      if (lib) ids.forEach((id) => { const el = stage.querySelector(`[data-node="${id}"]`); if (el) { const r = el.getBoundingClientRect(); T.nodes[id] = [r.left + r.width / 2, r.top + r.height / 2]; } });
       const c = T.nodes[from];
       const linked = new Set(T.links.filter((l) => l.from === from || l.to === from).map((l) => (l.from === from ? l.to : l.from)));
       let best = null, bestScore = Infinity;
@@ -641,12 +807,17 @@
       lastKey = now;
       if (!sel) { select(T.start && T.nodes[T.start] ? T.start : ids[0]); return; }
       const next = pickToward(sel, dir);
+      if (!next && !lib && dir[0] === 1 && leaves.includes(sel)) {
+        const lb = stage.querySelector('[data-lib]');
+        if (lb) { lb.focus({ preventScroll: true }); lb.classList.remove('nudge'); void lb.offsetWidth; lb.classList.add('nudge'); }
+        return;
+      }
       if (!next) {
         const b = stage.querySelector(`[data-node="${sel}"]`);
         if (b) { b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); b.style.setProperty('--bx', `${dir[0] * 7}px`); b.style.setProperty('--by', `${dir[1] * 7}px`); }
         return;
       }
-      comet(sel, next);
+      if (!lib) comet(sel, next);
       select(next);
       const nb = stage.querySelector(`[data-node="${next}"]`);
       if (nb) nb.focus({ preventScroll: true });
@@ -662,7 +833,7 @@
     };
     WT.onHashChange = () => {
       const parts = (location.hash || '').replace(/^#\/?/, '').split('/').filter(Boolean);
-      if (parts[0] === 'tree' && parts[1] === gid) {
+      if (parts[0] === BASE && parts[1] === gid) {
         if (parts[2] && parts[2] !== sel) select(parts[2], { keepHash: true });
         else if (!parts[2] && sel) close();
         return true;
@@ -683,4 +854,5 @@
   }
 
   WT.views.tree = view;
+  WT.views.library = (params) => view(params, true);
 })();
