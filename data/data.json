@@ -611,6 +611,33 @@
   ],
   "webtoons": [
     {
+      "id": "w044",
+      "title": "저궤도인간",
+      "author": "조은영",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/19388.html",
+      "cover": "https://i.namu.wiki/i/abEVTDXmxdo-_SZBdzxJYeTIo_Exsc6N20snq0-jwMljw4Yt4DRiDvGRR7ppsb2L8ssmweyjhO3GZ3ZzZb4GEnbQn8s2vueu8COb_QHMUaFMxY-e-zXsIa31lSMcoXOd1IdO5aFOPBysce96nfAMEg.webp",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 3,
+      "color": "#011d57",
+      "episodes": 43,
+      "status": "hiatus",
+      "days": [
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "드라마",
+        "예술",
+        "현대",
+        "감성"
+      ],
+      "desc": "낮은 곳을 떠도는 불안한 영혼의 생존 일기.\n대학교 시간강사이자 무명작가인 서른 아홉의 주재열.\n궤도에 오르지 못한 삶에 불안이 커져가던 어느 날\n후배의 죽음으로 주인 없는 행운을 쥐게 된다.\n마침내 그도 궤도에 오를 수 있을까."
+    },
+    {
       "id": "w042",
       "title": "아카데미에서 살아남기",
       "author": "기린그린, 코리타",
@@ -1516,9 +1543,19 @@
         "w026": [
           130,
           280
+        ],
+        "w044": [
+          360,
+          280
         ]
       },
-      "links": []
+      "links": [
+        {
+          "from": "w026",
+          "to": "w044",
+          "why": ""
+        }
+      ]
     },
     "sports": {
       "start": "w027",
@@ -1655,6 +1692,10 @@
       "w042": [
         750,
         500
+      ],
+      "w044": [
+        1660,
+        1120
       ]
     },
     "links": []
@@ -1755,6 +1796,6 @@
   ],
   "hotToday": [],
   "meta": {
-    "lastWebtoonId": 42
+    "lastWebtoonId": 44
   }
 }
