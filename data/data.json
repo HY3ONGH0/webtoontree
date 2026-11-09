@@ -458,17 +458,225 @@
       }
     }
   ],
-  "webtoons": [],
+  "webtoons": [
+    {
+      "id": "w023",
+      "title": "나 혼자만 레벨업",
+      "author": "장성락, 추공",
+      "platform": "카카오페이지",
+      "url": "https://blacktoon427.com/webtoon/279.html",
+      "cover": "https://i.namu.wiki/i/yLbUioKY5JCfQ8zCMD5z1wcJnCUQge-mOyaiFrrNdM7Q4J2pHRX8rQEkqqm9yKegJik8KOoX8OD4xv068q5S7ltCeI9agmzngkJBBB90LYmSO9IXiXruYdPNNLD8NyLbPUwcxUFa-4kM9jh8Wz6dIw.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": true,
+      "episodes": 200,
+      "status": "completed",
+      "days": [
+        "thu"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "판타지",
+        "헌터물",
+        "던전",
+        "회귀",
+        "먼치킨",
+        "레벨업",
+        "시스템창"
+      ],
+      "desc": "차원과 연결된 ‘게이트’와 마물을 잡는 ‘헌터’가 존재하는 세상. ‘인류 최약병기’라 불리는 E급 헌터 성진우는 죽음의 위기를 맞이한 이중 던전에서 오직 자신만 볼 수 있는 시스템 퀘스트 창을 얻게 된다. 남들과 달리 홀로 ‘레벨업’할 수 있는 능력을 갖추게 된 그가 최약체에서 최강의 헌터로 거듭나는 이야기."
+    },
+    {
+      "id": "w022",
+      "title": "세림의 철칙",
+      "author": "세윤, 써나",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/19803.html",
+      "cover": "https://i.namu.wiki/i/F84QhNhexU630Ygqs5pRCR6zPmjwlpHWbtpNiIrhHD5gnd-Tfr0ng0vrzs7yBJKNWFdaA_vEt9oM6j7UHjo2s6jJkktlM9c1DrNF3rJZTkbx1Cdq_3t9oym_qCUlQ1h0UDVmTFQ_s1he0uxoTQC5aw.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": true,
+      "episodes": 18,
+      "status": "ongoing",
+      "days": [
+        "mon"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "로맨스",
+        "까칠녀",
+        "학원로맨스",
+        "걸크러시"
+      ],
+      "desc": "조폭이라는 소문으로 모두가 두려워하는 한세림. '엄친아' 강승우는 한세림과 멘토멘티 프로그램을 하게 되고, 늘 그렇듯 완벽하게 해내기 위해 한세림과 친해지려 한다. 그런데 얘... 뭐하는 애지? 내일이 없는 듯 구는 한세림과 인생을 완벽하게 설계하는 강승우의 위험천만 로맨스."
+    },
+    {
+      "id": "w021",
+      "title": "나타나주세요!",
+      "author": "김기현",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/9582.html",
+      "cover": "https://i.namu.wiki/i/h52JN5FxhrhxsiTwaegbbzsgfGx7ulaRURv7HE8iOFmJ-dv9HAKg-331gfiD3Tyq7TKd__QKXKeKvRxshzPAg0RUzrrcXO9elDGBhpBPCKwpjLwDyTrnp_EQvzbvyJqd3yoI6dY9rKgKTRN7c38mbw.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": false,
+      "episodes": 123,
+      "status": "completed",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "로맨스",
+        "다정남",
+        "캠퍼스로맨스",
+        "연상연하"
+      ],
+      "desc": "평소보다 특별했던 어느 날. 평범한 대학생 김지용의 굼속에 정지혜가 나타나기 시작했다. 정지혜에게 첫눈에 반한 김지용은 그녀를 찾아다니기 위해 노력하지만 알고 보니 그녀는.. 2년 전에 자살한 사람이었다?! 그녀를 살리기 위해 고군분투하는 김지용의 달콤살벌 로맨스 나타나주세요. 내 눈앞에!"
+    },
+    {
+      "id": "w020",
+      "title": "이번 생도 잘 부탁해",
+      "author": "이혜",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/4609.html",
+      "cover": "https://i.namu.wiki/i/8RIoQuxjsKntBzjuH4K3vqrrJUKJK0kEuO0u_MJ2iaCE_Kq184W1icZO3ehV2bXVJedZhFsmG7Qsx1u1J39jo0Ls5_gQx6JUTbqpmnzNkmqullE4hj3RLDFKLN77DxW8e-EIwqTKkJ-jHJnndxu6lA.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": true,
+      "episodes": 115,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "로맨스",
+        "재회",
+        "구원서사"
+      ],
+      "desc": "전생을 기억하는 삶은 어떨까? 매번 전생을 기억하는 무료한 삶을 살던 18회차 인생. 윤주원이란 이름으로 살던 12살에 서하를 만나게 된다. 특별할거 없던 그 아이가 무료한 삶을 특별하게 만들어주었지만 교통사고로 18회차 인생이 끝나고 만다. 다시 태어난 19회차 인생. 윤주원에서 반지음이란 이름으로 다시  서하를 만나러 간다."
+    },
+    {
+      "id": "w019",
+      "title": "청춘 블라썸",
+      "author": "홍덕, NEMONE",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/4516.html",
+      "cover": "https://i.namu.wiki/i/JXZeC_7vRrordQ2ZhXYA8kQW_remI6_F0v6Nvi3fL5H4EfkcumPXUfvUIf9O31Z1ZRzidbJO3nn_k-g5wrusrA.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": true,
+      "episodes": 130,
+      "status": "completed",
+      "days": [
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "로맨스",
+        "하이틴",
+        "학원로맨스",
+        "삼각관계",
+        "성장드라마"
+      ],
+      "desc": "“푸르지 않아도 괜찮아!” 이제 막 청춘을 시작하고 있는아이들. 그리고 마냥 아름답지만은 않은 그 시절의 기억들. 봄으로 가기 위한 그들의 성장통. 봄, 여름, 가을, 겨울... 사계절의 빛깔로 담아낸 풋풋하고 알싸한 아이들의 청춘 스토리"
+    },
+    {
+      "id": "w018",
+      "title": "이두나",
+      "author": "민송아",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/3111.html",
+      "cover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDpzeadNAg67dxepMvYrhCyIhpHykqw2R2RF6XqP8Bfw&s=10",
+      "genres": [
+        "romance"
+      ],
+      "recommended": true,
+      "episodes": 154,
+      "status": "completed",
+      "days": [
+        "thu"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "로맨스",
+        "로브코미디",
+        "아이돌",
+        "연상연하",
+        "걸크러시"
+      ],
+      "desc": "논란과 사고로 인해서 연예계 은퇴를 선언한 드림스윗 두나, 그 두나가 아랫집에 산다."
+    }
+  ],
   "trees": {
     "fantasy": {
-      "start": null,
-      "nodes": {},
+      "start": "w023",
+      "nodes": {
+        "w023": [
+          130,
+          280
+        ]
+      },
       "links": []
     },
     "romance": {
-      "start": null,
-      "nodes": {},
-      "links": []
+      "start": "w019",
+      "nodes": {
+        "w019": [
+          110,
+          280
+        ],
+        "w020": [
+          305,
+          280
+        ],
+        "w021": [
+          500,
+          280
+        ],
+        "w018": [
+          695,
+          280
+        ],
+        "w022": [
+          890,
+          280
+        ]
+      },
+      "links": [
+        {
+          "from": "w019",
+          "to": "w020",
+          "why": ""
+        },
+        {
+          "from": "w020",
+          "to": "w021",
+          "why": ""
+        },
+        {
+          "from": "w021",
+          "to": "w018",
+          "why": ""
+        },
+        {
+          "from": "w018",
+          "to": "w022",
+          "why": ""
+        }
+      ]
     },
     "murim": {
       "start": null,
@@ -615,6 +823,6 @@
   ],
   "hotToday": [],
   "meta": {
-    "lastWebtoonId": 17
+    "lastWebtoonId": 23
   }
 }
