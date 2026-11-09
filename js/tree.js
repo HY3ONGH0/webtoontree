@@ -53,9 +53,9 @@
     /** 관리자 추천 별: 원의 왼쪽 위 테두리를 따라 1~3개 */
     function recHTML(n, sz) {
       if (!n) return '';
-      const s = n === 1 ? 40 : 30;
-      const r = sz / 2, R = r + (n === 1 ? 2 : 6);
-      const angles = n === 1 ? [135] : n === 2 ? [150, 118] : [165, 135, 105];
+      const s = n === 1 ? 28 : 22;
+      const r = sz / 2, R = r + 3;
+      const angles = n === 1 ? [135] : n === 2 ? [148, 122] : [160, 135, 110];
       return angles.map((a, i) => {
         const rad = a * Math.PI / 180;
         const x = r + R * Math.cos(rad) - s / 2, y = r - R * Math.sin(rad) - s / 2;
