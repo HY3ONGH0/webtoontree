@@ -611,6 +611,38 @@
   ],
   "webtoons": [
     {
+      "id": "w041",
+      "title": "별이삼샵",
+      "author": "혀노",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/3593.html",
+      "cover": "https://i.namu.wiki/i/6hs7O4YoqhldVCHkl4rOPH3rc0r5a98Tm8QfWz_HmWz4vY2OWZNr9ScVSPzecvnE_MPbTW8VSdkdbR6IhWkIHoBbrZZIFUiH7Ux2aGNJEGm8wtn-3nt2v4IViusmTQwGS7r45agrugzBNkB-qtfwRg.webp",
+      "genres": [
+        "romance",
+        "daily"
+      ],
+      "recommended": false,
+      "color": "#b1dd8b",
+      "episodes": 221,
+      "status": "ongoing",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "드라마",
+        "러브코미디",
+        "우정",
+        "청춘",
+        "레트로",
+        "철벽녀",
+        "하이틴",
+        "학원물"
+      ],
+      "desc": "자니?[2] 발신자 제한번호로 그녀에게 마음을 전했던 이야기 '남과여' 혀노 작가가 담아낸 촌스럽지만 풋풋했던 2000년대 그 시절."
+    },
+    {
       "id": "w040",
       "title": "강남도깨비",
       "author": "이경민, 송준혁",
@@ -1370,6 +1402,10 @@
         "w036": [
           430,
           430
+        ],
+        "w041": [
+          200,
+          430
         ]
       },
       "links": [
@@ -1406,6 +1442,11 @@
         {
           "from": "w035",
           "to": "w036",
+          "why": ""
+        },
+        {
+          "from": "w036",
+          "to": "w041",
           "why": ""
         }
       ]
@@ -1567,6 +1608,10 @@
       "w040": [
         750,
         500
+      ],
+      "w041": [
+        1490,
+        370
       ]
     },
     "links": []
@@ -1667,6 +1712,6 @@
   ],
   "hotToday": [],
   "meta": {
-    "lastWebtoonId": 40
+    "lastWebtoonId": 41
   }
 }
