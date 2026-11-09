@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>서버 코드 복사 · 웹툰트리</title>
+<style>
+  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #0B1024; color: #E8ECFF; font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
+  main { width: min(560px, 92vw); display: flex; flex-direction: column; gap: 16px; padding: 28px; border: 1px solid #3A4A7A; border-radius: 14px; background: #121A38; }
+  h1 { margin: 0; font-size: 22px; }
+  p, li { margin: 0; line-height: 1.6; color: #B9C2E6; font-size: 15px; }
+  ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+  button { min-height: 60px; border: 0; border-radius: 10px; font-size: 18px; font-weight: 700; color: #1A1405; background: linear-gradient(180deg, #FFE08A, #E8B84A); cursor: pointer; }
+  button:disabled { opacity: .6; }
+  #msg { min-height: 1.6em; font-weight: 700; color: #8FE3B0; }
+  #msg.err { color: #FF9BB0; }
+  textarea { width: 100%; box-sizing: border-box; height: 160px; border-radius: 8px; border: 1px solid #3A4A7A; background: #0B1024; color: #B9C2E6; font: 12px/1.4 ui-monospace, monospace; }
+</style>
+</head>
+<body>
+<main>
+  <h1>서버 코드 복사</h1>
+  <p>Apps Script에 붙여 넣을 최신 <b>Code.gs</b>를 복사해요.</p>
+  <button type="button" id="copy" disabled>불러오는 중…</button>
+  <p id="msg" role="status"></p>
+  <ol>
+    <li>위 버튼을 눌러 복사해요.</li>
+    <li>Apps Script의 Code.gs에서 기존 코드를 전부 지우고 붙여 넣어요.</li>
+    <li>저장 → 배포 → 배포 관리 → 연필 → 새 버전 → 배포</li>
+  </ol>
+  <p>버튼이 안 되면 아래 칸을 길게 눌러 [전체 선택] → [복사]해 주세요.</p>
+  <textarea id="code" readonly aria-label="서버 코드"></textarea>
+</main>
+<script>
+(async function () {
+  const btn = document.getElementById('copy'), msg = document.getElementById('msg'), box = document.getElementById('code');
+  let code = '';
+  try {
+    const res = await fetch('apps-script/Code.gs?t=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error(res.status);
+    code = await res.text();
+    box.value = code;
+    btn.disabled = false;
+    btn.textContent = '서버 코드 복사하기 (' + code.split('\n').length + '줄)';
+  } catch (e) {
+    btn.textContent = '불러오지 못했어요';
+    msg.className = 'err';
+    msg.textContent = '잠시 뒤 새로고침해 주세요.';
+    return;
+  }
+  btn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+    } catch (e) {
+      box.focus(); box.select(); box.setSelectionRange(0, code.length);
+      if (!document.execCommand('copy')) { msg.className = 'err'; msg.textContent = '자동 복사가 막혔어요. 아래 칸을 길게 눌러 복사해 주세요.'; return; }
+    }
+    msg.className = '';
+    msg.textContent = '복사했어요! 이제 Apps Script에 붙여 넣어 주세요.';
+  });
+})();
+</script>
+</body>
+</html>
