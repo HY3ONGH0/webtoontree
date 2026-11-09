@@ -611,6 +611,36 @@
   ],
   "webtoons": [
     {
+      "id": "w042",
+      "title": "아카데미에서 살아남기",
+      "author": "기린그린, 코리타",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/14922.html",
+      "cover": "https://i.namu.wiki/i/C--Tjb8w5xHADM-y-dkigVx1KYrSMd9F_5LI8Dm252hKQI9tMucjjQxE8tzK_Z43R1zrbNWSEV1arsptNszc8StTH-4Epzl1VhLmlRoBUH7MtWg8CDt-BVSWL6N61iWZ9Q7brGy9F_8PbqMpnD6mMQ.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": true,
+      "color": "#ffb5af",
+      "episodes": 124,
+      "status": "ongoing",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "판타지",
+        "하렘",
+        "상태창",
+        "생존",
+        "아카데미물",
+        "게임판타지",
+        "빙의"
+      ],
+      "desc": "즐겨하던 게임의 삼류 엑스트라 악역으로 빙의했다.\n야망은 없고 그냥 조용히 살고 싶다. 근데 세상이 참 살아남기 힘들다.\n주인공이 할 수 없는 삼류 악역의 방식으로, 난 이 이야기의 끝을 맞이하기 위해 살아남는다!"
+    },
+    {
       "id": "w041",
       "title": "별이삼샵",
       "author": "혀노",
@@ -1323,6 +1353,10 @@
         "w040": [
           920,
           260
+        ],
+        "w042": [
+          920,
+          410
         ]
       },
       "links": [
@@ -1364,6 +1398,11 @@
         {
           "from": "w038",
           "to": "w040",
+          "why": ""
+        },
+        {
+          "from": "w040",
+          "to": "w042",
           "why": ""
         }
       ]
@@ -1612,6 +1651,10 @@
       "w041": [
         1490,
         370
+      ],
+      "w042": [
+        750,
+        500
       ]
     },
     "links": []
@@ -1712,6 +1755,6 @@
   ],
   "hotToday": [],
   "meta": {
-    "lastWebtoonId": 41
+    "lastWebtoonId": 42
   }
 }
