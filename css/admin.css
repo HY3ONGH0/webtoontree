@@ -78,6 +78,13 @@ body.admin { background: #0B1022; background-image: none; }
   .ad-form .grid2 { grid-template-columns: 1fr; }
 }
 
+/* 세부 장르 */
+.ad-subs { border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 12px 14px; margin: 4px 0; display: flex; flex-direction: column; gap: 8px; }
+.ad-subs legend { padding: 0 6px; font-weight: 700; color: var(--gold); }
+.ad-sub-row { display: flex; align-items: center; gap: 8px; }
+.ad-sub-row .fld { flex: 1 1 140px; min-width: 0; }
+.ad-sub-row .swatch { width: 40px; height: 36px; flex: 0 0 auto; }
+
 /* 여러 관리자 */
 .chip-admin { color: #10162B; background: #8FD3FF; }
 .box-warn-ad { margin: 10px 0; padding: 12px 14px; border: 1px dashed rgba(255, 178, 122, 0.7); border-radius: 8px; background: rgba(255, 178, 122, 0.08); color: #FFD6B5; font-size: 14px; line-height: 1.6; }

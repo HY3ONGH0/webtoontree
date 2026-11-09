@@ -718,3 +718,102 @@ body.no-anim *, body.no-anim *::before, body.no-anim *::after { animation: none 
 .face-title { font-size: 13px; font-weight: 700; text-align: center; line-height: 1.3; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .face-sub { font-size: 11px; color: #C9A86A; }
 @media (max-width: 700px) { .rank-shelf { grid-template-columns: repeat(3, minmax(0, 1fr)); } .shelves { padding: 0 10px 14px; border-width: 10px; } }
+
+/* ================= 마도서 (세부 장르) ================= */
+.tome-shelves { gap: 14px 10px; }
+.tome {
+  position: relative; width: var(--tw); height: var(--th); padding: 0; border: 0; cursor: pointer; color: #F6E7C1; font: inherit;
+  border-radius: 6px 6px 4px 4px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 6px;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.1) 14%, rgba(255, 255, 255, 0.16) 42%, rgba(0, 0, 0, 0.08) 70%, rgba(0, 0, 0, 0.6)),
+    radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--tc) 55%, #2A1606), color-mix(in srgb, var(--tc) 25%, #120804));
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.45), inset 0 0 0 4px rgba(201, 154, 58, 0.55), 3px 0 6px rgba(0, 0, 0, 0.55);
+  transform-origin: 50% 100%; transition: transform .25s cubic-bezier(.3, .8, .3, 1.2), filter .25s ease, box-shadow .25s ease;
+  animation: rise .5s ease-out both;
+}
+.tome::before, .tome::after { content: ''; position: absolute; left: -3px; right: -3px; height: 14px; border-radius: 3px;
+  background: linear-gradient(180deg, #F3D98A, #B8872A 60%, #6A4A14); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); }
+.tome::before { top: 10px; } .tome::after { bottom: 10px; }
+.tome-band { display: none; }
+.tome-sigil { margin-top: 28px; width: 26px; height: 26px; flex: 0 0 auto; color: #F3D98A; filter: drop-shadow(0 0 6px color-mix(in srgb, var(--tc) 80%, #fff)); animation: sigilGlow 3s ease-in-out infinite; }
+.tome-sigil svg { width: 100%; height: 100%; }
+.tome-title { flex: 0 1 auto; min-height: 0; margin-top: 10px; max-width: calc(var(--tw) - 14px); padding: 6px 5px; border-radius: 3px; box-sizing: border-box;
+  font-family: var(--display); font-size: 13px; line-height: 1.3; text-align: center; word-break: keep-all; overflow-wrap: anywhere; overflow: hidden;
+  background: rgba(10, 5, 2, 0.55); box-shadow: inset 0 0 0 1px rgba(232, 198, 106, 0.65); text-shadow: 0 1px 2px #000, 0 0 10px color-mix(in srgb, var(--tc) 70%, transparent); }
+.tome-count { margin: auto 0 28px; padding-top: 4px; font-size: 11px; font-weight: 700; color: #F3D98A; flex: 0 0 auto; }
+.tome-done { position: absolute; top: -10px; right: -8px; min-width: 22px; height: 22px; border-radius: 11px; padding: 0 5px; font-size: 11px; font-weight: 900; line-height: 22px; color: #1A1006; background: radial-gradient(circle at 35% 30%, #FFF1C4, #E8C66A 60%, #B8872A); }
+.tome:hover, .tome:focus-visible { transform: translateY(-10px) rotate(-1.5deg); filter: brightness(1.18); box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.45), inset 0 0 0 4px rgba(243, 217, 138, 0.9), 0 0 30px color-mix(in srgb, var(--tc) 70%, transparent), 0 14px 20px rgba(0, 0, 0, 0.6); }
+.tome.opening { animation: tomeOpen .6s ease-out; }
+@keyframes tomeOpen { 40% { transform: translateY(-26px) scale(1.06); filter: brightness(1.5); } }
+@keyframes sigilGlow { 0%, 100% { opacity: .75; } 50% { opacity: 1; } }
+
+/* 펼친 마도서 */
+.grim-bg { position: fixed; inset: 0; z-index: 800; display: flex; align-items: center; justify-content: center; padding: 18px; background: radial-gradient(ellipse at 50% 40%, rgba(40, 24, 8, 0.75), rgba(3, 4, 10, 0.92)); animation: grimFade .3s ease-out both; }
+.grim-bg.closing { animation: grimFade .28s ease-in reverse both; }
+@keyframes grimFade { from { opacity: 0; } to { opacity: 1; } }
+.grim { width: min(1040px, 100%); max-height: 100%; display: flex; flex-direction: column; gap: 10px; animation: grimIn .5s cubic-bezier(.2, .9, .3, 1.1) both; }
+@keyframes grimIn { from { transform: translateY(30px) scale(.92) rotateX(12deg); opacity: 0; } to { transform: none; opacity: 1; } }
+.grim-top { display: flex; align-items: center; gap: 12px; color: #F3D98A; }
+.grim-name { flex: 1 1 auto; font-family: var(--display); font-size: 22px; text-shadow: 0 0 14px color-mix(in srgb, var(--tc) 70%, transparent); }
+.grim-name small { font-size: 13px; color: #C9A86A; font-family: inherit; }
+.grim-x { flex: 0 0 auto; }
+.grim-book {
+  position: relative; display: grid; grid-template-columns: 1fr 1fr; height: min(600px, calc(100vh - 170px)); min-height: 380px; perspective: 2200px;
+  padding: 14px; border-radius: 12px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--tc) 30%, #2A1606), color-mix(in srgb, var(--tc) 45%, #3A200C) 50%, color-mix(in srgb, var(--tc) 30%, #2A1606));
+  box-shadow: inset 0 0 0 3px rgba(201, 154, 58, 0.6), 0 30px 60px rgba(0, 0, 0, 0.7), 0 0 80px color-mix(in srgb, var(--tc) 35%, transparent);
+}
+.g-page { position: relative; overflow: hidden; color: #3A2412; background: linear-gradient(90deg, #E9D9B4, #F6ECD2 30%, #F3E6C6); }
+.g-page.left { border-radius: 6px 0 0 6px; box-shadow: inset -24px 0 30px -18px rgba(90, 60, 20, 0.55); }
+.g-page.right { border-radius: 0 6px 6px 0; background: linear-gradient(270deg, #E9D9B4, #F6ECD2 30%, #F3E6C6); box-shadow: inset 24px 0 30px -18px rgba(90, 60, 20, 0.55); }
+.g-spine { position: absolute; top: 14px; bottom: 14px; left: 50%; width: 2px; transform: translateX(-1px); background: rgba(90, 60, 20, 0.35); pointer-events: none; }
+.g-page-in { position: absolute; inset: 0; padding: 26px 30px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+.g-toc-h { margin: 0 0 6px; font-family: var(--display); font-size: 22px; color: #6A3E14; text-align: center; letter-spacing: .2em; }
+.g-toc { margin: 0; padding: 0; list-style: none; counter-reset: none; display: flex; flex-direction: column; gap: 2px; }
+.g-toc button { width: 100%; display: flex; align-items: baseline; gap: 6px; padding: 6px 4px; border: 0; border-radius: 4px; background: none; color: #3A2412; font: inherit; font-size: 15px; cursor: pointer; text-align: left; }
+.g-toc button:hover, .g-toc button:focus-visible { background: rgba(160, 110, 40, 0.15); }
+.g-toc-t { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70%; }
+.g-dots { flex: 1 1 auto; border-bottom: 2px dotted rgba(90, 60, 20, 0.35); transform: translateY(-4px); }
+.g-toc-p { font-size: 13px; color: #8A5A24; white-space: nowrap; }
+.g-cover-page { align-items: center; justify-content: center; }
+.g-frame { position: relative; width: min(86%, 300px); aspect-ratio: 3 / 4; border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--tc) 60%, #2A1606), #1A0E06); box-shadow: 0 0 0 6px #C99A3A, 0 0 0 8px #6A4A14, 0 14px 30px rgba(60, 30, 0, 0.5); }
+.g-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.g-cover-fallback { padding: 18px; text-align: center; font-family: var(--display); font-size: 24px; color: #F3D98A; }
+.g-folio { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; font-size: 12px; color: #8A5A24; }
+.g-title { margin: 0; font-family: var(--display); font-size: 26px; color: #4A2A10; line-height: 1.25; }
+.g-meta { margin: 0; font-size: 14px; color: #6A4A24; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.g-meta .node-tag { background: #3A2412; }
+.g-rec { color: #B8872A; font-weight: 700; }
+.g-rate { margin: 2px 0; font-size: 15px; }
+.g-stars { color: #C9871A; letter-spacing: 1px; }
+.g-cnt, .g-norate { color: #8A6A44; font-size: 13px; }
+.g-desc { margin-top: 6px; padding-top: 12px; border-top: 1px solid rgba(120, 80, 30, 0.3); font-size: 15px; line-height: 1.75; color: #3A2412; flex: 1 1 auto; }
+.g-desc::first-letter { font-family: var(--display); font-size: 1.9em; color: #8A3A14; float: left; line-height: 1; margin: 2px 6px 0 0; }
+.g-tags { margin: 0; display: flex; flex-wrap: wrap; gap: 6px; font-size: 13px; color: #8A5A24; }
+.g-mine { margin: 0; font-size: 13px; font-weight: 700; color: #6A3E14; }
+.g-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.g-actions .btn:not(.btn-gold) { color: #3A2412; border-color: rgba(90, 60, 20, 0.5); background: rgba(255, 255, 255, 0.4); }
+.grim-nav { display: flex; align-items: center; justify-content: center; gap: 16px; color: #F3D98A; }
+.grim-at { min-width: 90px; text-align: center; font-weight: 700; }
+/* 넘어가는 종이 */
+.g-leaf { position: absolute; top: 14px; bottom: 14px; width: calc(50% - 14px); transform-style: preserve-3d; z-index: 5; pointer-events: none; }
+.g-leaf.fwd { left: 50%; transform-origin: 0 50%; animation: leafFwd .7s cubic-bezier(.45, .05, .3, 1) forwards; }
+.g-leaf.back { left: 14px; transform-origin: 100% 50%; animation: leafBack .7s cubic-bezier(.45, .05, .3, 1) forwards; }
+.g-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.g-face.back { transform: rotateY(180deg); }
+.g-ornament { align-items: center; justify-content: center; text-align: center; color: #8A5A24; gap: 14px; }
+.g-ornament svg { width: 120px; height: 120px; color: var(--tc); opacity: .55; filter: drop-shadow(0 0 10px color-mix(in srgb, var(--tc) 50%, transparent)); }
+.g-ornament b { font-family: var(--display); font-size: 24px; color: #4A2A10; }
+.g-ornament p { margin: 0; font-size: 14px; line-height: 1.7; }
+@keyframes leafFwd { 0% { transform: rotateY(0); } 100% { transform: rotateY(-180deg); } }
+@keyframes leafBack { 0% { transform: rotateY(0); } 100% { transform: rotateY(180deg); } }
+.g-leaf::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(0, 0, 0, 0.25), transparent); opacity: 0; animation: leafShade .7s ease-in-out; }
+@keyframes leafShade { 50% { opacity: 1; } }
+@media (max-width: 720px) {
+  .grim-book { grid-template-columns: 1fr; grid-template-rows: auto 1fr; height: calc(100vh - 150px); overflow-y: auto; }
+  .g-page { position: relative; min-height: 260px; border-radius: 6px !important; }
+  .g-page-in { position: relative; }
+  .g-spine { display: none; }
+  .grim-sort button { padding: 6px 10px; }
+}

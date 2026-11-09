@@ -261,6 +261,23 @@ var ACTIONS = {
     return { hot: hot };
   },
 
+  /** 웹툰별 평균 별점 (도서관 마도서 별점순 정렬용) */
+  ratingSummary: function () {
+    var cached = cacheGet_('ratesum');
+    if (cached) return { ratings: cached };
+    var sum = {};
+    readAll_('ratings').forEach(function (r) {
+      var v = Number(r.obj.score);
+      if (!v) return;
+      var s = sum[r.obj.webtoonId] || (sum[r.obj.webtoonId] = { t: 0, c: 0 });
+      s.t += v; s.c += 1;
+    });
+    var out = {};
+    Object.keys(sum).forEach(function (id) { out[id] = { avg: Math.round(sum[id].t / sum[id].c * 10) / 10, count: sum[id].c }; });
+    cachePut_('ratesum', out, 120);
+    return { ratings: out };
+  },
+
   /** 이번 주(월요일부터) 많이 읽은 웹툰: 읽은 화수, 같으면 본 사람 수 */
   topWebtoons: function () {
     var from = weekStart_();

@@ -85,6 +85,16 @@
     D.shop = D.shop || [];
     D.hotToday = D.hotToday || [];
     D.genres.forEach((g) => { if (!D.trees[g.id]) D.trees[g.id] = { start: null, nodes: {}, links: [] }; });
+    // 세부 장르 (도서관 마도서): 장르마다 subs, 웹툰마다 subs
+    const allSubs = new Set();
+    D.genres.forEach((g) => { (g.subs || []).forEach((x) => allSubs.add(x.id)); });
+    D.webtoons.forEach((w) => { if (w.subs) { w.subs = w.subs.filter((x) => allSubs.has(x)); if (!w.subs.length) delete w.subs; } });
+  }
+  const subsOf = (gid) => ((genre(gid) || {}).subs || []);
+  function newSubId(g) {
+    let n = (g.subs || []).length + 1;
+    while ((g.subs || []).some((x) => x.id === `${g.id}-${n}`)) n++;
+    return `${g.id}-${n}`;
   }
   function newWebtoonId() {
     D.meta.lastWebtoonId += 1;          // 지운 번호는 다시 쓰지 않아요
@@ -212,6 +222,9 @@
       <fieldset style="border:none; margin:0; padding:0"><legend class="hint" style="margin-bottom:6px; font-size:14px; color:var(--soft)">장르 (여러 개 가능)</legend>
         <div class="checks">${D.genres.map((g) => `<label><input type="checkbox" data-wg="${g.id}" ${w.genres.includes(g.id) ? 'checked' : ''}> ${esc(g.name)}</label>`).join('')}</div>
       </fieldset>
+      ${w.genres.filter((gid) => subsOf(gid).length).map((gid) => `<fieldset style="border:none; margin:0; padding:0"><legend class="hint" style="margin-bottom:6px; font-size:14px; color:var(--soft)">${esc(genre(gid).name)} 세부 장르 (도서관 마도서)</legend>
+        <div class="checks">${subsOf(gid).map((x) => `<label><input type="checkbox" data-ws="${x.id}" ${(w.subs || []).includes(x.id) ? 'checked' : ''}> <span style="color:${esc(x.color)}">◆</span> ${esc(x.name)}</label>`).join('')}</div>
+      </fieldset>`).join('')}
       <div class="checks">
         <div class="field"><label for="f-rec" style="color:var(--coin); font-weight:700">관리자 추천 (원 옆에 별)</label>
           <select id="f-rec" class="fld" data-wf="recommended" style="max-width:220px">${[0, 1, 2, 3, 4, 5].map((n) => `<option value="${n}" ${WT.recStars(w) === n ? 'selected' : ''}>${n ? '★'.repeat(n) + ` 별 ${n}개` : '추천 안 함'}</option>`).join('')}</select></div>
@@ -291,6 +304,19 @@
         <option value="">정하지 않음</option>
         ${Object.keys(T.nodes).map((id) => `<option value="${id}" ${T.start === id ? 'selected' : ''}>${esc((toon(id) || {}).title)}</option>`).join('')}
       </select><span class="hint">트리에 넣은 웹툰 중에서 고를 수 있어요. 트리는 [트리 편집]에서 만들어요.</span></div>
+      <fieldset class="ad-subs"><legend>세부 장르 (도서관의 마도서)</legend>
+        <p class="ad-help">세부 장르를 만들면 이 장르 도서관에 세부 장르별 두꺼운 마도서가 꽂혀요. 마도서를 펴면 그 세부 장르 웹툰을 볼 수 있어요. 웹툰마다 세부 장르는 [웹툰 목록]에서 골라요. (트리에 없는 웹툰만 도서관에 들어가요)</p>
+        ${(g.subs || []).map((x, i) => `<div class="ad-sub-row">
+            <input class="swatch" type="color" data-sf="color" data-sid="${x.id}" value="${esc(x.color)}" aria-label="${esc(x.name)} 색">
+            <input class="fld" data-sf="name" data-sid="${x.id}" value="${esc(x.name)}" maxlength="14" aria-label="세부 장르 이름">
+            <span class="hint" style="white-space:nowrap">웹툰 ${D.webtoons.filter((w) => (w.subs || []).includes(x.id)).length}개</span>
+            <button type="button" class="icon-btn" data-a="sub-up" data-id="${x.id}" aria-label="위로" ${i === 0 ? 'disabled' : ''}>↑</button>
+            <button type="button" class="icon-btn" data-a="sub-down" data-id="${x.id}" aria-label="아래로" ${i === g.subs.length - 1 ? 'disabled' : ''}>↓</button>
+            <button type="button" class="btn btn-sm btn-danger press" data-a="sub-del" data-id="${x.id}">${ui.confirm === 'sub:' + x.id ? '정말 삭제' : '삭제'}</button>
+          </div>`).join('') || '<p class="hint">아직 세부 장르가 없어요. 없으면 도서관에 웹툰이 한 권씩 꽂혀요.</p>'}
+        <div class="ad-actions"><button type="button" class="btn btn-sm btn-gold press" data-a="sub-add">+ 세부 장르 추가</button>
+          ${g.id === 'fantasy' && !(g.subs || []).length ? '<button type="button" class="btn btn-sm press" data-a="sub-preset">판타지 기본 세트 넣기 (회귀·헌터·이세계·아카데미·게임·로판)</button>' : ''}</div>
+      </fieldset>
       <div class="ad-actions">
         <button type="button" class="btn btn-sm press" data-a="go-tree" data-id="${g.id}">이 장르 트리 편집하기</button>
         <button type="button" class="btn btn-sm btn-danger press" data-a="del-g" data-id="${g.id}">${confirming ? '한 번 더 누르면 삭제돼요 (웹툰은 남아요)' : '장르 삭제'}</button>
@@ -985,6 +1011,28 @@
         ui.g = null; saveDraft(); toast('장르를 삭제했어요'); render();
       } break;
       case 'go-tree': ui.tab = 'tree'; ui.tg = id; ui.tsel = null; render(); break;
+      case 'sub-add': {
+        const g = genre(ui.g); g.subs = g.subs || [];
+        const palette = ['#9B7BFF', '#5BB8FF', '#4FD1A5', '#FFB347', '#FF7EB6', '#E8C66A', '#FF6B6B', '#7FD3FF'];
+        g.subs.push({ id: newSubId(g), name: `세부 장르 ${g.subs.length + 1}`, color: palette[g.subs.length % palette.length] });
+        saveDraft(); render(); break;
+      }
+      case 'sub-preset': {
+        const g = genre(ui.g); g.subs = g.subs || [];
+        [['회귀·환생', '#9B7BFF'], ['헌터·게이트', '#FF6B6B'], ['이세계', '#4FD1A5'], ['아카데미', '#5BB8FF'], ['게임 판타지', '#FFB347'], ['로맨스 판타지', '#FF7EB6']]
+          .forEach(([name, color]) => g.subs.push({ id: newSubId(g), name, color }));
+        saveDraft(); toast('판타지 세부 장르 6개를 넣었어요. 이름과 색은 바꿀 수 있어요'); render(); break;
+      }
+      case 'sub-up': case 'sub-down': {
+        const arr = genre(ui.g).subs; const i = arr.findIndex((x) => x.id === id); const j = a === 'sub-up' ? i - 1 : i + 1;
+        if (i >= 0 && j >= 0 && j < arr.length) { [arr[i], arr[j]] = [arr[j], arr[i]]; saveDraft(); render(); }
+        break;
+      }
+      case 'sub-del': if (confirmOnce('sub:' + id)) {
+        const g = genre(ui.g); g.subs = g.subs.filter((x) => x.id !== id);
+        D.webtoons.forEach((w) => { if (w.subs) { w.subs = w.subs.filter((x) => x !== id); if (!w.subs.length) delete w.subs; } });
+        saveDraft(); toast('세부 장르를 지웠어요 (웹툰은 그대로예요)'); render();
+      } break;
       case 'mode': ui.mode = id; ui.from = null; ui.branchFor = null; if (id !== 'branch') ui.pendingChild = null; render(); break;
       case 'auto': autoLayout(); toast('자동으로 정렬했어요'); break;
       case 'natural': { const T = D.trees[ui.tg]; naturalSpacing(T); saveDraft(); toast('연결선 길이와 간격을 자연스럽게 폈어요'); render(); break; }
@@ -1144,6 +1192,7 @@
       return;
     }
     if (el.dataset.gf) { genre(ui.g)[el.dataset.gf] = el.value; saveDraft(); return; }
+    if (el.dataset.sf) { const x = subsOf(ui.g).find((s) => s.id === el.dataset.sid); if (x) { x[el.dataset.sf] = el.dataset.sf === 'name' ? el.value.slice(0, 14) : el.value; saveDraft(); } return; }
     if (el.dataset.why !== undefined) { D.trees[ui.tg].links[Number(el.dataset.why)].why = el.value; saveDraft(); return; }
     if (el.dataset.sf && el.type !== 'checkbox') { setPath(D.settings, el.dataset.sf, el.dataset.num ? Math.max(0, parseInt(el.value, 10) || 0) : el.value); saveDraft(); return; }
     if (el.dataset.shop !== undefined && el.type !== 'checkbox' && el.tagName !== 'SELECT') {
@@ -1170,6 +1219,14 @@
       w.days = el.checked ? Array.from(new Set((w.days || []).concat(d))) : (w.days || []).filter((x) => x !== d);
       saveDraft(); render(); return;
     }
+    if (el.dataset.ws) {
+      const w = toon(ui.w);
+      const sid = el.dataset.ws;
+      w.subs = el.checked ? Array.from(new Set((w.subs || []).concat(sid))) : (w.subs || []).filter((x) => x !== sid);
+      if (!w.subs.length) delete w.subs;
+      saveDraft(); render(); return;
+    }
+    if (el.dataset.sf) { render(); return; }
     if (el.dataset.wg) {
       const w = toon(ui.w);
       const g = el.dataset.wg;

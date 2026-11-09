@@ -41,6 +41,14 @@
     const rules = WT.settings().coins;
     const labels = WT.settings().labels || {};
     const hasChar = !!S.profile && !lib;
+    // 세부 장르 마도서: 장르에 세부 장르가 있으면 도서관에 마도서로 꽂혀요 (세부 장르 없는 웹툰은 '그 밖의 이야기')
+    const tomes = (() => {
+      if (!lib || gid === 'all' || !(g.subs || []).length) return [];
+      const list = g.subs.map((x) => ({ id: x.id, name: x.name, color: x.color, ids: ids.filter((id) => (WT.toon(id).subs || []).includes(x.id)) })).filter((x) => x.ids.length);
+      const rest = ids.filter((id) => !g.subs.some((x) => (WT.toon(id).subs || []).includes(x.id)));
+      if (rest.length) list.push({ id: '_rest', name: '그 밖의 이야기', color: '#9AA6C8', ids: rest });
+      return list;
+    })();
 
     let sel = null;
     const server = WT.api.on();
@@ -171,11 +179,13 @@
           <header class="lib-sign">
             <span class="lib-sign-quote">“별자리의 끝에서, 이제부터는 당신이 고르는 이야기”</span>
             <h2>${esc(g.name)} 도서관</h2>
-            <span class="lib-sign-sub">트리에 없는 웹툰 ${ids.length}권 · 책등을 누르면 정보를 볼 수 있어요</span>
+            <span class="lib-sign-sub">트리에 없는 웹툰 ${ids.length}권 · ${tomes.length ? '마도서를 누르면 펼쳐져요' : '책등을 누르면 정보를 볼 수 있어요'}</span>
           </header>
           <nav class="lib-tabs" aria-label="도서관 장르">${tabs}</nav>
-          <div class="shelves" id="stage" role="list">
-            ${ids.length ? ids.map((id) => `<div class="book-slot" role="listitem" data-wrap="${id}"></div>`).join('') : '<p class="lib-empty">아직 이 장르 도서관에 꽂힌 웹툰이 없어요. 관리자가 트리에 넣지 않은 웹툰을 올리면 여기에 꽂혀요.</p>'}
+          <div class="shelves${tomes.length ? ' tome-shelves' : ''}" id="stage" role="list">
+            ${!ids.length ? '<p class="lib-empty">아직 이 장르 도서관에 꽂힌 웹툰이 없어요. 관리자가 트리에 넣지 않은 웹툰을 올리면 여기에 꽂혀요.</p>'
+              : tomes.length ? tomes.map((t, i) => tomeHTML(t, i)).join('')
+              : ids.map((id) => `<div class="book-slot" role="listitem" data-wrap="${id}"></div>`).join('')}
           </div>
           <section class="lib-rank-wrap" aria-labelledby="lib-rank-h">
             <h3 id="lib-rank-h">이번 주 많이 읽은 웹툰</h3>
@@ -183,6 +193,176 @@
           </section>
         </div>`;
     }
+    // ---------- 마도서 (세부 장르) ----------
+    function tomeHTML(t, i) {
+      const n = t.ids.length;
+      const done = t.ids.filter(isDone).length;
+      return `<div class="book-slot tome-slot" role="listitem"><button type="button" class="tome" data-tome="${esc(t.id)}" style="--tc:${esc(t.color)}; --tw:${Math.min(96, 62 + n * 3)}px; --th:${Math.min(172, 150 + (i % 3) * 8)}px; animation-delay:${i * 0.08}s"
+          aria-label="${esc(t.name)} 마도서, 웹툰 ${n}개${done ? `, ${done}개 완독` : ''}. 펼치기">
+          <span class="tome-band top" aria-hidden="true"></span>
+          <span class="tome-sigil" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" stroke-width="1.6"/><polygon points="20,6 24,16 34,17 26,24 29,34 20,28 11,34 14,24 6,17 16,16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="20" cy="20" r="3" fill="currentColor"/></svg></span>
+          <span class="tome-title">${esc(t.name)}</span>
+          <span class="tome-count">${n}권</span>
+          <span class="tome-band bottom" aria-hidden="true"></span>
+          ${done ? `<span class="tome-done" aria-hidden="true">${done}</span>` : ''}
+        </button></div>`;
+    }
+    let ratingAll = null;   // 웹툰ID → { avg, count }
+    async function loadRatings() {
+      if (ratingAll) return ratingAll;
+      ratingAll = {};
+      if (server) {
+        try { const r = await WT.api.call('ratingSummary', {}); ratingAll = r.ratings || {}; } catch (e) { ratingAll = {}; }
+      }
+      // 서버에 없거나 혼자 모드면 내 별점이라도
+      Object.keys(S.ratings || {}).forEach((id) => { if (!ratingAll[id]) ratingAll[id] = { avg: Number(S.ratings[id]) || 0, count: 1, mine: true }; });
+      return ratingAll;
+    }
+    const byTitle = (a, b) => WT.toon(a).title.localeCompare(WT.toon(b).title, 'ko');
+    const TOC_PER_PAGE = 12;
+    function openTome(tid) {
+      const t = tomes.find((x) => x.id === tid);
+      if (!t) return;
+      let sort = 'title';
+      let order = t.ids.slice().sort(byTitle);
+      let at = 0;   // 펼친 쪽 번호 (0 = 첫 목차 펼침)
+      const bg = document.createElement('div');
+      bg.className = 'grim-bg';
+      bg.setAttribute('role', 'dialog');
+      bg.setAttribute('aria-modal', 'true');
+      bg.setAttribute('aria-label', `${t.name} 마도서`);
+      document.body.appendChild(bg);
+      const tocSpreads = () => Math.max(1, Math.ceil(order.length / (TOC_PER_PAGE * 2)));
+      const total = () => tocSpreads() + order.length;
+      const stars = (v) => { const r = Math.round(v * 2) / 2; return '★'.repeat(Math.floor(r)) + (r % 1 ? '☆' : '') ; };
+      const rateText = (id) => {
+        const r = ratingAll && ratingAll[id];
+        if (!r || !r.count) return '<span class="g-norate">아직 별점이 없어요</span>';
+        return `<span class="g-stars">${stars(r.avg)}</span> <b>${r.avg.toFixed(1)}</b> <span class="g-cnt">${r.mine ? '내 별점' : `(${r.count}명)`}</span>`;
+      };
+      const tocPage = (k) => {
+        const from = k * TOC_PER_PAGE;
+        const part = order.slice(from, from + TOC_PER_PAGE);
+        if (!part.length) {
+          // 목차가 한 쪽에 다 들어가면, 오른쪽은 마도서 문양과 읽는 법
+          return `<div class="g-page-in g-ornament">
+              <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="20" r="13" fill="none" stroke="currentColor" stroke-width="0.6"/><polygon points="20,6 24,16 34,17 26,24 29,34 20,28 11,34 14,24 6,17 16,16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="20" cy="20" r="2.5" fill="currentColor"/></svg>
+              <b>${esc(t.name)}</b>
+              <p>이 마도서에는 웹툰 ${order.length}편이 담겨 있어요.<br>목차에서 제목을 누르거나<br>다음 장(→ 키)으로 한 장씩 넘겨 보세요.</p>
+            </div>`;
+        }
+        return `<div class="g-page-in">
+            ${k % 2 === 0 ? `<h3 class="g-toc-h">${k === 0 ? '목차' : '목차 (이어서)'}</h3>` : '<h3 class="g-toc-h" aria-hidden="true">&nbsp;</h3>'}
+            <ol class="g-toc" start="${from + 1}">${part.map((id, j) => {
+              const w = WT.toon(id);
+              return `<li><button type="button" data-go="${tocSpreads() + from + j}"><span class="g-toc-t">${esc(w.title)}</span><span class="g-dots" aria-hidden="true"></span><span class="g-toc-p">${tocSpreads() + from + j + 1}장</span></button></li>`;
+            }).join('')}</ol>
+          </div>`;
+      };
+      const coverPage = (id) => {
+        const w = WT.toon(id);
+        return `<div class="g-page-in g-cover-page">
+            <div class="g-frame">${w.cover ? `<img src="${esc(w.cover)}" alt="${esc(w.title)} 표지" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}<span class="g-cover-fallback">${esc(w.title)}</span></div>
+            <span class="g-folio">${order.indexOf(id) + 1} / ${order.length}</span>
+          </div>`;
+      };
+      const descPage = (id) => {
+        const w = WT.toon(id);
+        const st = status(id);
+        return `<div class="g-page-in g-desc-page">
+            <h3 class="g-title">${esc(w.title)}</h3>
+            <p class="g-meta">${esc([w.author, w.platform].filter(Boolean).join(' · '))}</p>
+            <p class="g-meta"><span class="node-tag tag-${WT.schedule.status(w)}">${esc(WT.schedule.label(w))}</span> ${WT.recStars(w) ? `<span class="g-rec">${'★'.repeat(WT.recStars(w))} 관리자 추천</span>` : ''}</p>
+            <p class="g-rate">${rateText(id)}</p>
+            <div class="g-desc">${w.desc ? esc(w.desc).replace(/\n/g, '<br>') : '<span class="g-norate">아직 설명이 없어요.</span>'}</div>
+            ${(w.tags || []).length ? `<p class="g-tags">${w.tags.map((x) => `<span>#${esc(x)}</span>`).join('')}</p>` : ''}
+            <p class="g-mine">${st === 'done' ? '✓ 완독했어요' : st === 'reading' ? `${ep(id)}화까지 봤어요 (${pct(id)}%)` : '아직 안 봤어요'}</p>
+            <div class="g-actions">
+              <button type="button" class="btn btn-gold btn-sm press" data-open="${id}">자세히 보기 · 기록하기</button>
+              ${w.url ? `<a class="btn btn-sm press" href="${esc(w.url)}" target="_blank" rel="noopener">보러 가기</a>` : ''}
+            </div>
+          </div>`;
+      };
+      const pages = (k) => (k < tocSpreads() ? [tocPage(k * 2), tocPage(k * 2 + 1)] : [coverPage(order[k - tocSpreads()]), descPage(order[k - tocSpreads()])]);
+      const draw = () => {
+        const [L, Rr] = pages(at);
+        bg.innerHTML = `<div class="grim" style="--tc:${esc(t.color)}">
+            <div class="grim-top">
+              <span class="grim-name">${esc(t.name)} <small>${order.length}권</small></span>
+              <div class="seg grim-sort" role="tablist" aria-label="정렬">
+                <button type="button" role="tab" aria-selected="${sort === 'title'}" data-sort="title">ㄱㄴㄷ순</button>
+                <button type="button" role="tab" aria-selected="${sort === 'rate'}" data-sort="rate">별점순</button>
+              </div>
+              <button type="button" class="icon-btn press grim-x" data-x aria-label="마도서 닫기">✕</button>
+            </div>
+            <div class="grim-book" id="grim-book">
+              <div class="g-page left">${L}</div>
+              <div class="g-page right">${Rr}</div>
+              <span class="g-spine" aria-hidden="true"></span>
+            </div>
+            <div class="grim-nav">
+              <button type="button" class="btn btn-sm press" data-flip="-1" ${at === 0 ? 'disabled' : ''} aria-label="앞 장">◀ 앞 장</button>
+              <span class="grim-at">${at < tocSpreads() ? '목차' : `${at - tocSpreads() + 1} / ${order.length}`}</span>
+              <button type="button" class="btn btn-sm press" data-flip="1" ${at >= total() - 1 ? 'disabled' : ''} aria-label="다음 장">다음 장 ▶</button>
+            </div>
+          </div>`;
+      };
+      const flip = (to) => {
+        to = Math.max(0, Math.min(total() - 1, to));
+        if (to === at) return;
+        const dir = to > at ? 1 : -1;
+        const book = document.getElementById('grim-book');
+        const reduce = document.body.classList.contains('no-anim') || window.innerWidth < 720;
+        if (!book || reduce) { at = to; draw(); return; }
+        const old = pages(at), nw = pages(to);
+        at = to;
+        // 새 펼침면을 아래에 깔고, 넘어가는 종이 한 장을 위에 올려요
+        const leaf = document.createElement('div');
+        leaf.className = `g-leaf ${dir > 0 ? 'fwd' : 'back'}`;
+        leaf.innerHTML = dir > 0
+          ? `<div class="g-face front g-page right">${old[1]}</div><div class="g-face back g-page left">${nw[0]}</div>`
+          : `<div class="g-face front g-page left">${old[0]}</div><div class="g-face back g-page right">${nw[1]}</div>`;
+        const under = dir > 0 ? [old[0], nw[1]] : [nw[0], old[1]];
+        book.querySelector('.g-page.left').innerHTML = under[0];
+        book.querySelector('.g-page.right').innerHTML = under[1];
+        book.appendChild(leaf);
+        leaf.addEventListener('animationend', () => { draw(); }, { once: true });
+      };
+      const onKeyG = (e) => {
+        if (e.key === 'Escape') { e.preventDefault(); shut(); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); flip(at + 1); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); flip(at - 1); }
+      };
+      const shut = (then) => {
+        document.removeEventListener('keydown', onKeyG, true);
+        bg.classList.add('closing');
+        setTimeout(() => { bg.remove(); if (then) then(); else { const b = stage.querySelector(`[data-tome="${CSS.escape(tid)}"]`); if (b) b.focus(); } }, 280);
+      };
+      document.addEventListener('keydown', onKeyG, true);
+      let sx = null;
+      bg.addEventListener('pointerdown', (e) => { sx = e.clientX; });
+      bg.addEventListener('pointerup', (e) => { if (sx !== null && Math.abs(e.clientX - sx) > 60 && e.pointerType !== 'mouse') flip(at + (e.clientX < sx ? 1 : -1)); sx = null; });
+      bg.addEventListener('click', (e) => {
+        if (e.target === bg || e.target.closest('[data-x]')) { shut(); return; }
+        const f = e.target.closest('[data-flip]'); if (f) { flip(at + Number(f.dataset.flip)); return; }
+        const go = e.target.closest('[data-go]'); if (go) { flip(Number(go.dataset.go)); return; }
+        const o = e.target.closest('[data-open]'); if (o) { const id = o.dataset.open; shut(() => select(id)); return; }
+        const s = e.target.closest('[data-sort]');
+        if (s && s.dataset.sort !== sort) {
+          sort = s.dataset.sort;
+          order = t.ids.slice().sort(sort === 'rate'
+            ? (a, b) => ((ratingAll[b] || {}).avg || 0) - ((ratingAll[a] || {}).avg || 0) || ((ratingAll[b] || {}).count || 0) - ((ratingAll[a] || {}).count || 0) || byTitle(a, b)
+            : byTitle);
+          at = Math.min(at, tocSpreads());   // 목차부터 다시
+          at = 0;
+          draw();
+        }
+      });
+      draw();
+      bg.querySelector('[data-x]').focus();
+      loadRatings().then(() => { if (document.body.contains(bg)) draw(); });
+    }
+
     async function loadLibRank() {
       const box = document.getElementById('lib-rank');
       const pool = new Set(ids);
@@ -319,7 +499,8 @@
         const sig = [status(id), ep(id), sel === id, WT.isHot(id)].join('|');
         if (!force && sigs[id] === sig) return;
         sigs[id] = sig;
-        stage.querySelector(`[data-wrap="${id}"]`).innerHTML = lib ? bookInner(id) : nodeInner(id);
+        const slotEl = stage.querySelector(`[data-wrap="${id}"]`);
+        if (slotEl) slotEl.innerHTML = lib ? bookInner(id) : nodeInner(id);
       });
       if (!lib) refreshLib();
       T.links.forEach((l, i) => {
@@ -686,6 +867,8 @@
     stage.addEventListener('click', (e) => {
       const lb = e.target.closest('[data-lib]');
       if (lb) { enterLibrary(lb); return; }
+      const tb = e.target.closest('[data-tome]');
+      if (tb) { tb.classList.add('opening'); setTimeout(() => tb.classList.remove('opening'), 600); openTome(tb.dataset.tome); return; }
       const b = e.target.closest('[data-node]');
       if (b) select(b.dataset.node);
     });
@@ -797,10 +980,11 @@
       if (e.altKey || e.ctrlKey || e.metaKey) return;
       const t = e.target;
       if (t && (t.closest('input, textarea, select, [contenteditable="true"]') || t.closest('.modal-bg'))) return;
+      if (document.querySelector('.grim-bg')) return;
       if (e.key === 'Escape' && sel) { e.preventDefault(); close(); return; }
       if (e.key === 'Home') { e.preventDefault(); if (T.start && T.start !== sel) { if (sel) comet(sel, T.start); select(T.start); } return; }
       const dir = DIRS[e.key];
-      if (!dir) return;
+      if (!dir || (lib && tomes.length)) return;
       e.preventDefault();
       const now = Date.now();
       if (now - lastKey < 160) return;   // 너무 빨리 누르면 한 칸씩만
