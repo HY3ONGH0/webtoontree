@@ -85,13 +85,14 @@
     }
 
     /** 관리자 추천 별: 원의 왼쪽 위 테두리를 따라 1~3개 */
-    function recHTML(n, sz) {
+    function recHTML(n, sz, hasNew) {
       if (!n) return '';
+      const shift = hasNew ? 38 : 0;   // 왼쪽 위에 N이 있으면 별은 조금 아래로 비켜요
       const s = n === 1 ? 28 : n <= 3 ? 22 : 18;
       const r = sz / 2, R = r + (n <= 3 ? 3 : 7);
       const angles = [[135], [148, 122], [160, 135, 110], [178, 152, 126, 100], [190, 164, 138, 112, 86]][n - 1];
       return angles.map((a, i) => {
-        const rad = a * Math.PI / 180;
+        const rad = (a + shift) * Math.PI / 180;
         const x = r + R * Math.cos(rad) - s / 2, y = r - R * Math.sin(rad) - s / 2;
         return `<span class="badge-rec" aria-hidden="true" style="left:${x.toFixed(1)}px; top:${y.toFixed(1)}px; width:${s}px; height:${s}px; animation-delay:${i * 0.3}s">${WT.icon.star}</span>`;
       }).join('');
@@ -162,11 +163,12 @@
       const rec = WT.recStars(w);
       const hot = WT.isHot(id);
       return `<button type="button" class="book st-${st}${sel === id ? ' is-sel' : ''}${hot ? ' is-hot' : ''}" data-node="${id}" style="--bh:${bh}px; --bw:${bw}px; --bc:${w.color || color}"
-          aria-label="${esc(w.title)}, ${esc(statusText[st])}${st === 'reading' ? ` ${ep(id)}화` : ''}${rec ? `, 관리자 추천 별 ${rec}개` : ''}" title="${esc(w.title)}">
+          aria-label="${esc(w.title)}${newEps(id) ? `, 새 화 ${newEps(id)}개` : ''}, ${esc(statusText[st])}${st === 'reading' ? ` ${ep(id)}화` : ''}${rec ? `, 관리자 추천 별 ${rec}개` : ''}" title="${esc(w.title)}">
           <span class="spine-title">${esc(w.title)}</span>
           ${rec ? `<span class="spine-stars" aria-hidden="true">${'★'.repeat(rec)}</span>` : ''}
           ${st === 'reading' ? `<span class="ribbon" aria-hidden="true" style="--p:${pct(id)}"></span>` : ''}
-          ${st === 'done' ? '<span class="done-mark" aria-hidden="true">✓</span>' : ''}
+          ${st === 'done' && !newEps(id) ? '<span class="done-mark" aria-hidden="true">✓</span>' : ''}
+          ${newEps(id) ? '<span class="badge-new book-new" aria-hidden="true">N</span>' : ''}
           ${hot ? `<span class="spine-hot" aria-hidden="true">${WT.icon.flame}</span>` : ''}
         </button>`;
     }
@@ -398,10 +400,11 @@
       const st = status(id);
       const sz = sizeOf(id);
       const hot = WT.isHot(id) && st !== 'locked';
-      let sub = newEps(id) ? `새 화 ${newEps(id)}개` : st === 'reading' ? `${ep(id)}화 · ${pct(id)}%` : statusText[st];
+      const nw = newEps(id);
+      let sub = st === 'reading' ? `${ep(id)}화 · ${pct(id)}%` : statusText[st];
       if (hot) sub = `오늘 폭주 · ${sub}`;
-      // 제목 아래에는 꼭 필요한 것만 (읽는 중 진행률, 새 화, 폭주). 안 봄·잠김·완독은 원 모양으로 보여 줘요
-      const showSub = hot || newEps(id) || st === 'reading';
+      // 제목 아래에는 꼭 필요한 것만 (읽는 중 진행률, 폭주). 새 화는 왼쪽 위 빨간 N, 안 봄·잠김·완독은 원 모양으로 보여 줘요
+      const showSub = hot || st === 'reading';
       const subCls = hot ? 'hot' : st === 'reading' ? 'reading' : st === 'done' ? 'done' : '';
       const cover = w.cover ? `<img class="cover" src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.nextElementSibling.hidden = false; this.remove()">` : '';
       const rec = WT.recStars(w);
@@ -414,12 +417,13 @@
           ${hot ? fireHTML(sz) : ''}
           ${st !== 'locked' ? `<span class="ring" style="--sz:${sz}px; --pct:${pct(id)}%"></span>` : ''}
           <button type="button" class="node st-${st}${hot ? ' is-hot' : ''}${sel === id ? ' is-sel' : ''}" style="--sz:${sz}px" data-node="${id}"
-            aria-label="${esc(w.title)}, ${esc(sub)}, ${esc(WT.schedule.label(w))}${rec ? `, 관리자 추천 별 ${rec}개` : ''}">
+            aria-label="${esc(w.title)}${nw ? `, 새 화 ${nw}개` : ''}, ${esc(sub)}, ${esc(WT.schedule.label(w))}${rec ? `, 관리자 추천 별 ${rec}개` : ''}">
             ${cover}<span class="letter" ${w.cover ? 'hidden' : ''}>${esc(w.title[0])}</span>
             ${st === 'done' ? `<span class="badge-done" aria-hidden="true">${WT.icon.check}</span>` : ''}
             ${st === 'locked' ? `<span class="lock-in" aria-hidden="true">${WT.icon.lockIn}</span>` : ''}
           </button>
-          ${recHTML(rec, sz)}
+          ${recHTML(rec, sz, !!nw)}
+          ${nw ? '<span class="badge-new" aria-hidden="true">N</span>' : ''}
           ${tag}
         </div>
         <span class="node-label${st === 'locked' ? ' dim' : ''}">${esc(w.title)}</span>

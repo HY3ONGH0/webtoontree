@@ -261,6 +261,14 @@ body.no-anim .sky { display: none; }
 /* 그 방향에 웹툰이 없으면 살짝 툭 */
 .node.bump { animation: nodeBump .3s ease-out; }
 @keyframes nodeBump { 40% { translate: var(--bx, 0) var(--by, 0); } }
+.badge-new {
+  position: absolute; z-index: 3; left: -6px; top: -6px; width: 24px; height: 24px; border-radius: 50%; pointer-events: none;
+  display: flex; align-items: center; justify-content: center; font: 900 13px/1 system-ui, sans-serif; color: #fff;
+  background: radial-gradient(circle at 35% 30%, #FF7A7A, #E5262E 60%, #A8121A); border: 2px solid #0B1230;
+  box-shadow: 0 0 10px rgba(255, 60, 60, 0.75); animation: newPulse 1.8s ease-in-out infinite;
+}
+.book-new { left: 50%; top: -12px; margin-left: -12px; width: 22px; height: 22px; font-size: 12px; }
+@keyframes newPulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 8px rgba(255, 60, 60, 0.6); } 50% { transform: scale(1.12); box-shadow: 0 0 16px rgba(255, 60, 60, 0.95); } }
 .kbd-hint { display: inline-flex; align-items: center; gap: 3px; }
 .kbd-hint kbd { font: 700 10px/1 system-ui, sans-serif; padding: 3px 4px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.25); background: rgba(255, 255, 255, 0.06); color: var(--soft); }
 @media (hover: none) { .kbd-hint { display: none; } }
