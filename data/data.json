@@ -611,6 +611,88 @@
   ],
   "webtoons": [
     {
+      "id": "w039",
+      "title": "더 복서",
+      "author": "정지훈",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/3530.html",
+      "cover": "https://i.namu.wiki/i/9ac__9J32xEh7H5Md2lJVA9wBHZXeFndo3WFDGihzuVSLMugAkeNJEQ6HIqAyOCv1m4CBoeoVzlr29bP5g1xatoDkMs6KPuJOqChyj0MIGxS-81EO6fjjU0dVn5LoOEXApHm40YLkhpcQGDKT5U3Uw.webp",
+      "genres": [
+        "action"
+      ],
+      "recommended": true,
+      "color": "#000000",
+      "episodes": 134,
+      "status": "completed",
+      "days": [
+        "thu"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "스포츠",
+        "격투기",
+        "먼치킨"
+      ],
+      "desc": "재능있는 복서를 찾던 전설적인 트레이너 K는 기묘한 소년을 발견한다.\n그의 충격적인 재능은 과연 축복일까, 저주일까?!"
+    },
+    {
+      "id": "w038",
+      "title": "샤MONEY즘",
+      "author": "나락, 영기",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/18421.html",
+      "cover": "https://i.namu.wiki/i/e4e7olsbjvjJyFX4kNMhljgx5a4aEvj8X3SOuJ4H9wVFBFbbITpyJBmmjhEBNk5tOIo84gIhOuWdK8WOmNZMoHnqtGxB3P8l7pmCghkri-bYnslmGkznOJkCVAMi_7IMPQ7BC_qDCDTe77pGJSZflw.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": true,
+      "color": "#b51a00",
+      "episodes": 70,
+      "status": "hiatus",
+      "days": [
+        "mon"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "판타지",
+        "오컬트판타지",
+        "자본주의",
+        "인생역전"
+      ],
+      "desc": "“진짜 일류 무당은 여의도에서 논다.”\n주가의 오르내림을 예측하는 것만으로 수십, 수백 억을 벌 수 있는 여의도의 투자사들은 신통력이 있는 무당들을 고용했고, 그것은 여의도를 일류 무당들의 무대로 만들었다.\n가난한 소년이었던 천지승은 그런 여의도에 살굿으로 주가를 내리는 무당으로 고용되고...\n이 이야기는 그의 일대기를 다룬다."
+    },
+    {
+      "id": "w037",
+      "title": "사람의 탈",
+      "author": "우주돌",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/15352.html",
+      "cover": "https://i.namu.wiki/i/pMNlPjxJI4iuQhVIN_vkl4xsmWaAUnT4HG3AzQvnv-nFiF7h5BeprwtsIPTqtNGTwFQ9u5Mfc7rH2qz28NuP2B2hkdMfoAn-3cbszN02TgC7c77B1E24wMu5I5TA0OS2H0IynavqOLeI3FMjj1dzjA.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": true,
+      "color": "#7a4a00",
+      "episodes": 112,
+      "status": "ongoing",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "판타지",
+        "동양",
+        "소년물",
+        "모험",
+        "동물",
+        "먼치킨"
+      ],
+      "desc": "천대받는 탈춤광대 ‘봉산’은 스승이 남긴 지도를 따라\n왕이 되려는 괴물 호랑이 ‘사풍흑호’를 막기 위해\n전설 속의 '사람의 탈'을 찾아 모험을 떠나게 되는데…"
+    },
+    {
       "id": "w036",
       "title": "이직로그",
       "author": "우시목, 이하안",
@@ -1173,6 +1255,14 @@
         "w034": [
           800,
           430
+        ],
+        "w037": [
+          800,
+          150
+        ],
+        "w038": [
+          920,
+          410
         ]
       },
       "links": [
@@ -1199,6 +1289,16 @@
         {
           "from": "w029",
           "to": "w034",
+          "why": ""
+        },
+        {
+          "from": "w033",
+          "to": "w037",
+          "why": ""
+        },
+        {
+          "from": "w037",
+          "to": "w038",
           "why": ""
         }
       ]
@@ -1323,9 +1423,19 @@
         "w030": [
           130,
           280
+        ],
+        "w039": [
+          360,
+          280
         ]
       },
-      "links": []
+      "links": [
+        {
+          "from": "w030",
+          "to": "w039",
+          "why": ""
+        }
+      ]
     }
   },
   "map": {
@@ -1408,6 +1518,18 @@
       "w036": [
         1490,
         370
+      ],
+      "w037": [
+        750,
+        500
+      ],
+      "w038": [
+        750,
+        500
+      ],
+      "w039": [
+        1430,
+        740
       ]
     },
     "links": []
@@ -1508,6 +1630,6 @@
   ],
   "hotToday": [],
   "meta": {
-    "lastWebtoonId": 36
+    "lastWebtoonId": 39
   }
 }
