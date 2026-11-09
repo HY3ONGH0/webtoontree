@@ -461,7 +461,7 @@
       "id": "sports",
       "name": "스포츠",
       "constellation": "",
-      "color": "#E8C66A",
+      "color": "#38571a",
       "desc": "",
       "shape": {
         "lines": [
@@ -545,9 +545,294 @@
           ]
         ]
       }
+    },
+    {
+      "id": "action",
+      "name": "액션",
+      "constellation": "",
+      "color": "#831100",
+      "desc": "",
+      "shape": {
+        "lines": [
+          [
+            [
+              10,
+              62
+            ],
+            [
+              80,
+              12
+            ]
+          ],
+          [
+            [
+              60,
+              10
+            ],
+            [
+              80,
+              12
+            ],
+            [
+              78,
+              32
+            ]
+          ]
+        ],
+        "stars": [
+          [
+            10,
+            62,
+            3.6
+          ],
+          [
+            45,
+            37,
+            2.8
+          ],
+          [
+            80,
+            12,
+            4.4
+          ],
+          [
+            60,
+            10,
+            3
+          ],
+          [
+            78,
+            32,
+            3
+          ]
+        ]
+      }
     }
   ],
   "webtoons": [
+    {
+      "id": "w036",
+      "title": "이직로그",
+      "author": "우시목, 이하안",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/17956.html",
+      "cover": "https://i.namu.wiki/i/Te9ruwCg2yuCD89_wWBXPMMsH1CIjeZmgv2G0K-KLzUet_oDmvQRkX566d2aakh2BFD3JTOQoQPBZqZe2GKJupmT8HeMl01-ICeSJLgzsnKCAAxTggXvLkCtPkBfOzg-DwjakJbetEqSP1tSkPjE2A.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": true,
+      "color": "#dfeed4",
+      "episodes": 55,
+      "status": "hiatus",
+      "days": [
+        "mon"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "로맨스",
+        "너드남",
+        "러브코미디",
+        "오피스",
+        "능력녀"
+      ],
+      "desc": "스타트업 회사에 재직 중인 '조이'와 '맥스'.\n\n조이는 눈에 띄는 외모와 뛰어난 사교성, 완벽한 실력의 소유자인 반면\n맥스는 존재감 제로에 대인기피증, 혼밥 마스터이다.\n\n그런 두 사람이 한 팀, 바로 옆자리에서 공존하게 되었고\n같은 팀이 된 첫날, 맥스는 조이의 모니터에서 보면 안 될 것을 보고 말았다!\n\n그 순간부터 그의 평온한 회사 생활은 뒤틀리기 시작하는데…!"
+    },
+    {
+      "id": "w035",
+      "title": "내 최애는 막차를 탄다",
+      "author": "직씨",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/17446.html",
+      "cover": "https://i.namu.wiki/i/ONNIcbE4ATbNtH8faSecOxmiGImZxjvVzdtbV-WxmWUKRMIoRSDe7RNpT3AZ5m2BLPJmnCVjMmbfT9Nyf9GFbXswcQaI6T-OvLxo1g3iPAs5pzgMTJPwxeXddDw6zyqwavJIRpd7GZnSGaL6B9Oqkg.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": true,
+      "color": "#96d35f",
+      "episodes": 92,
+      "status": "hiatus",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "로맨스",
+        "러브코미디",
+        "청춘로맨스"
+      ],
+      "desc": "“오늘도 막차에서 만난 그녀, 그녀와 말할 수 있다면!” 대학생 이여운은 늦게까지 일하고 매일 막차를 탄다.\n그때마다 마주치는 기타를 멘 여자 신해인. 우연인 듯 인연인 듯 만나는 두 사람은 서로의 최애가 인디 뮤지션 “긴 오후”라는 걸 알게 되고 점점 가까워지게 된다."
+    },
+    {
+      "id": "w034",
+      "title": "신도림",
+      "author": "오세형",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/737.html",
+      "cover": "https://i.namu.wiki/i/Hk3-FF7-4N3DsI4N5-tZ0CRBthSBk0VPTkZVafV7PUQgacCQ52KxHG1i-0u1Rp5f-k4HrO95lvr3FTmvEHECX2KAC40lSbePsGFJfHc1kEgY3Ll5v4xFGvYVoMyhNkVXQs0JX39JKV8lSzrmN2nOUA.webp",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": true,
+      "color": "#ff6a00",
+      "episodes": 279,
+      "status": "completed",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "판타지",
+        "액션",
+        "아포칼립스",
+        "이능력배틀물"
+      ],
+      "desc": "지옥이 돼 버린 지상. 그리고 희망의 지하도시 신도림.\n지옥에 버려진 사람들의 생존을 위해 강한 녀석들이 간다."
+    },
+    {
+      "id": "w033",
+      "title": "별을 품은 소드마스터",
+      "author": "",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/14169.html",
+      "cover": "https://i.namu.wiki/i/7ltca-yETsh2wiWQXZ3gvmWnFdzwDv4J9lsWYPtS1lizzJaQxHYzkPWIk2EAeWawC0M4ZC_DQt5Pbneu3ABmmYtU11W9BOLQ08iA0PEC1UKRK3UMzeFV-697JwORGlUpNA5_SXCkzFWH124UxfgSww.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": true,
+      "color": "#3a87fe",
+      "episodes": 1,
+      "status": "ongoing",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "판차지",
+        "중세판타지액션",
+        "서양",
+        "소년물",
+        "용사",
+        "액션",
+        "성장물",
+        "소설원작"
+      ],
+      "desc": "기사를 동경하는 슬럼가의 부랑아 블라드.\n검은 벼락을 맞는 사고 이후부터 들리기 시작한 누군가의 목소리와,\n어느 날 갑자기 등장한 푸른 달빛의 기사가 블라드의 세계를 산산조각내면서\n뒷골목 소년의 삶이 송두리째 변하기 시작하는데...\n\n높디높은 밤하늘에 있지 않더라도,\n아무도 보지 못하는 곳에 떨어져 있더라도\n스스로가 빛나기를 원한다면, 그렇다면 그것은\n별일 것이다."
+    },
+    {
+      "id": "w032",
+      "title": "아리도록",
+      "author": "잔디롤빵",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/19430.html",
+      "cover": "https://i.namu.wiki/i/hsx3dNC7X-aVaHMFFpxHNoPC0INHj3fPjjxB_g8Nzp1L2IwI4xL6LE1T9wRsDBiSrr9tkfiOUjnZTw3viCA0Lla7qKozscCmOWzf_LK3d_s7X2H1Hd1CmFvjDP_iBG9Qm6ywQrsEzwC7bw7ikqao_g.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": true,
+      "color": "#fefb41",
+      "episodes": 28,
+      "status": "ongoing",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "로맨스",
+        "순애나",
+        "러브코미디",
+        "첫사랑",
+        "순정남",
+        "학원로맨스",
+        "재회"
+      ],
+      "desc": "5년 만에 다시 만난 첫사랑, 주아린.\n그 애는 왜 이렇게 변해버린 걸까?"
+    },
+    {
+      "id": "w031",
+      "title": "44교시 생존수업",
+      "author": "상C",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/17827.html",
+      "cover": "https://i.namu.wiki/i/VWEud4yXr9-pMnSSWTvPsxJXtGi2ZKzdZh1h8YUN3fuKVIFzjKnnKWYw2quDuApi-2uCiWHA04qSCjjzE-N1IV7_5qaWNWK2vYIDTNIyW9pDR58VKucdSggMonBXC5hEruip-Dg4v0HozXVOiFF2aw.webp",
+      "genres": [
+        "thriller"
+      ],
+      "recommended": true,
+      "color": "#000000",
+      "episodes": 53,
+      "status": "ongoing",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "스릴러",
+        "학교",
+        "서바이벌",
+        "두뇌게임"
+      ],
+      "desc": "갑자기 세상에 ‘검은 원’이라 불리는 구멍들이 생겨나기 시작했다. 검은 원은 미스테리 그 자체. 생긴 원인도, 내부에 뭐가 있는지도 밝힐 수 없었다. 그저 지금까지 검은 원에 빠진 후 돌아온 사람이 단 한 명도 없다는 걸 빼고. \n어느 날 주인공 도윤의 학교에도 검은 원이 생겨났다. 검은 원은 점점 커져 학교를 집어삼켰고 도윤을 포함한 대부분의 학생들이 검은 원 속에 빠지고 만다. 과연 아이들은 출구를 찾아 검은 원에서 탈출할 수 있을까?"
+    },
+    {
+      "id": "w030",
+      "title": "광장",
+      "author": "오세형, 김균태",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/8941.html",
+      "cover": "https://i.namu.wiki/i/Qv2poxPgS-xHfVl-7Gynd4uj9HZUyGSff_XrhYcfZQWry_n30_7_IuUbdwusgca3RehSNwga5IRDU342gwpYA9tb5ycOAN2k33YslB6mid8PAerGn6u-shTAutqADyd-7K7gJj4ZaOrZ016FJcCoWw.webp",
+      "genres": [
+        "action"
+      ],
+      "recommended": true,
+      "color": "#831100",
+      "episodes": 63,
+      "status": "completed",
+      "days": [
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "액션",
+        "사이다",
+        "복수극",
+        "먼치킨"
+      ],
+      "desc": "15년 전, 여의도 국회의사당 광장 앞에서 서울의 패권을 다투는 싸움에서 살아남은 두 조직\n기준은 다른 조직의 행동대장이 되어버린 동생을 위해 스스로 아킬레스건을 자르고 조직을 떠난다.\n15년 후, 동생의 갑작스런 죽음, 기준은 비밀을 파헤치기 시작한다."
+    },
+    {
+      "id": "w029",
+      "title": "갓 오브 하이스쿨",
+      "author": "박용제",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/2959.html",
+      "cover": "https://i.namu.wiki/i/pIjq7anyVuZx4fCwF_ErlEoGzI8M8gRmgHUT5N2w1MxO5agGqSLtZ_TsCoDTOm0gvcGpEo5ONY09_guoXAdicGJRUxGbWMTA2KB_WxUrnlERlHo5gK3jimeBtqYqoyKMouQBvdUGdVTowW-VpbjS7g.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": true,
+      "color": "#ffffff",
+      "episodes": 573,
+      "status": "completed",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-09",
+      "tags": [
+        "판타지",
+        "이능력배틀물",
+        "먼치킨"
+      ],
+      "desc": "전국, 전세계 고등학생 중 가장 쎈 녀석을 뽑는 대회가 열린다. 허구 100% 막장 액션의 끝!! 기대하시라!!!"
+    },
     {
       "id": "w028",
       "title": "화산귀환",
@@ -876,6 +1161,18 @@
         "w025": [
           570,
           280
+        ],
+        "w029": [
+          800,
+          280
+        ],
+        "w033": [
+          570,
+          150
+        ],
+        "w034": [
+          800,
+          430
         ]
       },
       "links": [
@@ -887,6 +1184,21 @@
         {
           "from": "w024",
           "to": "w025",
+          "why": ""
+        },
+        {
+          "from": "w025",
+          "to": "w029",
+          "why": ""
+        },
+        {
+          "from": "w024",
+          "to": "w033",
+          "why": ""
+        },
+        {
+          "from": "w029",
+          "to": "w034",
           "why": ""
         }
       ]
@@ -913,6 +1225,18 @@
         "w022": [
           890,
           280
+        ],
+        "w032": [
+          890,
+          430
+        ],
+        "w035": [
+          660,
+          430
+        ],
+        "w036": [
+          430,
+          430
         ]
       },
       "links": [
@@ -935,6 +1259,21 @@
           "from": "w018",
           "to": "w022",
           "why": ""
+        },
+        {
+          "from": "w022",
+          "to": "w032",
+          "why": ""
+        },
+        {
+          "from": "w032",
+          "to": "w035",
+          "why": ""
+        },
+        {
+          "from": "w035",
+          "to": "w036",
+          "why": ""
         }
       ]
     },
@@ -949,8 +1288,13 @@
       "links": []
     },
     "thriller": {
-      "start": null,
-      "nodes": {},
+      "start": "w031",
+      "nodes": {
+        "w031": [
+          130,
+          280
+        ]
+      },
       "links": []
     },
     "daily": {
@@ -967,6 +1311,16 @@
       "start": "w027",
       "nodes": {
         "w027": [
+          130,
+          280
+        ]
+      },
+      "links": []
+    },
+    "action": {
+      "start": "w030",
+      "nodes": {
+        "w030": [
           130,
           280
         ]
@@ -1007,12 +1361,53 @@
         "genre": "sports",
         "x": 1200,
         "y": 700
+      },
+      {
+        "genre": "action",
+        "x": 1200,
+        "y": 700
       }
     ],
     "nodes": {
       "w028": [
         680,
         500
+      ],
+      "w022": [
+        1475,
+        360
+      ],
+      "w029": [
+        685,
+        490
+      ],
+      "w030": [
+        1430,
+        740
+      ],
+      "w031": [
+        2210,
+        580
+      ],
+      "w032": [
+        1490,
+        370
+      ],
+      "w033": [
+        750,
+        500
+      ],
+      "w034": [
+        750,
+        500
+      ],
+      "w035": [
+        1490,
+        370
+      ],
+      "w036": [
+        1490,
+        370
       ]
     },
     "links": []
@@ -1113,6 +1508,6 @@
   ],
   "hotToday": [],
   "meta": {
-    "lastWebtoonId": 28
+    "lastWebtoonId": 36
   }
 }
