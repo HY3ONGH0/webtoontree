@@ -312,7 +312,9 @@
         <label for="t-genre" class="sr">편집할 장르</label>
         <select id="t-genre" class="fld" style="width:auto; min-width:150px" data-a-change="t-genre">${D.genres.map((x) => `<option value="${x.id}" ${x.id === g.id ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}</select>
         ${modeBtn('select', '선택 · 이동')}${modeBtn('branch', '＋ 가지 내리기')}${modeBtn('link', '연결하기 (A → B)')}
-        <button type="button" class="btn btn-sm press" data-a="auto" ${n ? '' : 'disabled'}>자동 정렬</button>
+        <button type="button" class="btn btn-sm btn-gold press" data-a="natural" ${n > 1 ? '' : 'disabled'} title="지금 모양은 살리고 연결선 길이와 간격만 고르게 펴요">간격 자연스럽게</button>
+        <label class="ad-check" title="가지를 이을 때마다 간격을 자동으로 펴요"><input type="checkbox" data-a="natural-auto" ${D.settings.treeAutoSpacing !== false ? 'checked' : ''}> 이을 때 자동으로</label>
+        <button type="button" class="btn btn-sm press" data-a="auto" ${n ? '' : 'disabled'}>자동 정렬 (처음부터)</button>
         <span class="ad-help">${n}개 · 연결 ${T.links.length}개</span>
       </div>
       <div class="ad-split">
@@ -483,11 +485,65 @@
     for (let x = p[0] + 230; !spot && x < p[0] + 230 * 40; x += 230) spot = [p[1], 280, 140, 420, 90, 470].map((y) => [x, y]).find(free);
     T.nodes[childId] = [Math.round(spot[0]), Math.round(spot[1])];
     T.links.push({ from: parentId, to: childId, why: '' });
+    if (D.settings.treeAutoSpacing !== false) naturalSpacing(T);
     ui.tsel = childId; ui.branchFor = null; ui.mode = 'select';
     saveDraft();
     toast(`${toon(childId).title}을(를) 이었어요`);
     render();
   }
+  /**
+   * 간격 자연스럽게: 지금 배치를 출발점으로
+   * - 이어진 웹툰 사이 선 길이를 LINK 정도로 맞추고 (너무 짧으면 늘리고, 너무 길면 줄이고)
+   * - 이어지지 않은 웹툰끼리는 겹치지 않게 밀어내고
+   * - 앞 웹툰 → 다음 웹툰은 왼쪽 → 오른쪽 흐름을 지켜요
+   * 입문작(시작점)은 제자리에 둬요.
+   */
+  function naturalSpacing(T) {
+    const ids = Object.keys(T.nodes);
+    if (ids.length < 2) return;
+    const LINK = 250, GAP_X = 175, GAP_Y = 135, FLOW = 190;
+    const P = {}; ids.forEach((id) => { P[id] = T.nodes[id].slice(); });
+    const pin = T.start && P[T.start] ? T.start : null;
+    const links = T.links.filter((l) => P[l.from] && P[l.to] && l.from !== l.to);
+    for (let it = 0; it < 500; it++) {
+      const k = 1 - it / 600;   // 점점 차분하게
+      const F = {}; ids.forEach((id) => { F[id] = [0, 0]; });
+      links.forEach((l) => {
+        const a = P[l.from], b = P[l.to];
+        const dx = b[0] - a[0], dy = b[1] - a[1], d = Math.hypot(dx, dy) || 1;
+        const f = (d - LINK) * 0.12;
+        F[l.from][0] += dx / d * f; F[l.from][1] += dy / d * f;
+        F[l.to][0] -= dx / d * f; F[l.to][1] -= dy / d * f;
+        const lack = a[0] + FLOW - b[0];          // 흐름: 다음 웹툰은 오른쪽에
+        if (lack > 0) { F[l.to][0] += lack * 0.25; F[l.from][0] -= lack * 0.1; }
+      });
+      for (let i = 0; i < ids.length; i++) {
+        for (let j = i + 1; j < ids.length; j++) {
+          const a = P[ids[i]], b = P[ids[j]];
+          let nx = (b[0] - a[0]) / GAP_X, ny = (b[1] - a[1]) / GAP_Y;
+          let d = Math.hypot(nx, ny);
+          if (d >= 1.15) continue;
+          if (d < 1e-3) { nx = 0.3; ny = 1; d = Math.hypot(nx, ny); }
+          const push = (1.15 - d) * 0.5;
+          F[ids[i]][0] -= nx / d * push * GAP_X; F[ids[i]][1] -= ny / d * push * GAP_Y;
+          F[ids[j]][0] += nx / d * push * GAP_X; F[ids[j]][1] += ny / d * push * GAP_Y;
+        }
+      }
+      ids.forEach((id) => {
+        if (id === pin) return;
+        const p = P[id];
+        p[0] += Math.max(-40, Math.min(40, F[id][0] * k));
+        p[1] += Math.max(-40, Math.min(40, F[id][1] * k));
+        p[0] = Math.max(90, p[0]);
+        p[1] = Math.max(80, Math.min(TREE_H - 80, p[1]));
+      });
+    }
+    // 판 왼쪽 여백을 맞추고 10 단위로
+    const minX = Math.min(...ids.map((id) => P[id][0]));
+    const sx = pin ? 0 : 110 - minX;
+    ids.forEach((id) => { T.nodes[id] = [Math.round((P[id][0] + sx) / 10) * 10, Math.round(P[id][1] / 10) * 10]; });
+  }
+
   function autoLayout() {
     const T = D.trees[ui.tg];
     const ids = Object.keys(T.nodes);
@@ -931,6 +987,7 @@
       case 'go-tree': ui.tab = 'tree'; ui.tg = id; ui.tsel = null; render(); break;
       case 'mode': ui.mode = id; ui.from = null; ui.branchFor = null; if (id !== 'branch') ui.pendingChild = null; render(); break;
       case 'auto': autoLayout(); toast('자동으로 정렬했어요'); break;
+      case 'natural': { const T = D.trees[ui.tg]; naturalSpacing(T); saveDraft(); toast('연결선 길이와 간격을 자연스럽게 폈어요'); render(); break; }
       case 'first': case 'first-new': {
         const T = D.trees[ui.tg];
         let cid = id;
@@ -1100,6 +1157,7 @@
     const el = e.target;
     if (el.id === 'w-fg') { ui.fg = el.value; render(); return; }
     if (el.id === 'import-file') { importFile(el.files[0]); return; }
+    if (el.dataset.a === 'natural-auto') { D.settings.treeAutoSpacing = el.checked; saveDraft(); toast(el.checked ? '가지를 이을 때 간격을 자동으로 펴요' : '이을 때 자동으로 펴지 않아요'); return; }
     if (el.dataset.wf && el.type === 'checkbox') {
       const w = toon(ui.w);
       if (el.dataset.wf === 'autoCount') { w.episodes = WT.schedule.episodes(w); w.baseDate = WT.schedule.today(); }
