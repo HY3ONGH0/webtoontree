@@ -837,7 +837,7 @@
           ${dot('<span class="node-tag tag-ongoing">연재</span>')}<span><b>연재 상태</b>원 오른쪽 · 연재 중은 파랑(요일 함께), 휴재 주황, 완결 남색</span>
           ${dot(`<span class="badge-lock">${WT.icon.lockIn}</span>`, 'border-style:dashed; opacity:.55')}<span><b>아직 못 여는 웹툰</b>흐린 점선 테두리 + 오른쪽 아래 자물쇠</span>
         </div>
-        <p class="hint" style="margin:0">보는 중이면 원 둘레에 노란 진행 고리가, 새 화가 나오면 왼쪽 위에 N이 붙어요. 추천 별과 본 화수는 제목 아래 한 줄에 있어요.</p>
+        <p class="hint" style="margin:0">보는 중이면 원 둘레에 노란 진행 고리가, 새 화가 나오면 원 왼쪽에 N이 붙어요. 추천 별은 제목 아래에 있어요.</p>
       </aside>`;
     }
 

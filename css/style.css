@@ -1296,3 +1296,8 @@ html[data-theme="light"] .panel.toned { background: var(--p-bg2); }
 html[data-theme="light"] .panel.toned .btn:not(.btn-gold):not(.btn-coin) { background: rgba(255, 255, 255, .08); color: var(--text); border-color: rgba(255, 255, 255, .22); }
 html[data-theme="light"] .panel.toned .btn-line { background: transparent; color: #8FCBFF; border-color: #8FCBFF; }
 html[data-theme="light"] .panel.toned .btn-gold { background: linear-gradient(180deg, #FFE29A, #C9A54C); color: #1A1405; }
+/* 보는 법 안내 칸: 스크롤 없이 한 번에 */
+.tree-main.reserve > #panel-slot .panel.panel-empty { max-height: none; overflow: visible; gap: 12px; padding: 20px 22px; }
+.panel-empty .key-list { gap: 12px 10px; }
+.panel-empty .key-list span { min-width: 0; }
+html[data-theme="light"] .key-dot .node-tag.tag-ongoing { background: #1D6FE8; color: #fff; }
