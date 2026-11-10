@@ -1,6 +1,76 @@
 {
   "webtoons": [
     {
+      "id": "w657563ik",
+      "title": "히어로 킬러",
+      "author": "꿀벌, 벌꿀",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/TYy0nMpK2B9ki6gvwghagTsoReopSH0-JpgRDh-3YCVKhokY11l8yYg-SYKEU7phqu71ranG_uKKoRPeoDqY4tnfQ935JZOMeRZgzrgo5dhfVHPQs9e3IOkQXozUgtkjlKt1EZDrKuPRNKdVsyNj5g.webp",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": 0,
+      "color": "#ff0000",
+      "episodes": 293,
+      "status": "ongoing",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [
+        "판타지",
+        "액션",
+        "사이다",
+        "이능력",
+        "빌런",
+        "범죄",
+        "걸크러시",
+        "복수극"
+      ],
+      "desc": "전쟁은 빌런들의 패배로 막을 내렸다. 이제 세상은 부패한 히어로들이 지배하고 있다. 그리고, 그런 히어로들 중 하나가 이화의 언니를 죽였다. 언니를 죽인 게 누구인지는 모르지만 상관없다. 한 놈씩 죽이다 보면 그중에 있을 테니까. 이화는 매일 밤 영웅들을 사냥하는 빌런, 히어로 킬러가 된다. 한 악당의 지독한 액션 활극. “모조리 죽이고, 빼앗아 주마!”",
+      "subs": [
+        "fantasy-6"
+      ]
+    },
+    {
+      "id": "w657562i",
+      "title": "나 혼자 만렙 뉴비",
+      "author": "",
+      "platform": "네이버웹툰",
+      "url": "WAN.Z, 스윙뱃",
+      "cover": "https://i.namu.wiki/i/ZJrmz5IdnBKJtxMukuGl_Yx95zxHg_dMzwaXgjEY0x7tOcWAJKpu8Ph2Yc859FHEYbCGj46Io1fe3k1eKS1R7umJpM1kWm23G0DhvHaLhffQbfc3MbYVDDNfS7MKbTawNndHQre_ZvmPgS9VuUc9sQ.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 2,
+      "color": "#003cff",
+      "episodes": 284,
+      "status": "ongoing",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [
+        "판타지",
+        "사이다",
+        "탑등반",
+        "게임",
+        "하렘",
+        "상태창",
+        "고인물",
+        "먼치킨",
+        "소설원작"
+      ],
+      "desc": "게임 너튜버로 활동 중인 주인공 진혁은 유일하게\n[시련의 탑]의 엔딩을 봤지만, 게임의 인기가 하락하여\n더 이상 게임 너튜버로서의 삶도 유지하기 힘들어진다.\n\n엔딩을 보았기에 이대로 게임을 마무리하려는 진혁.\n바로 그날, [시련의 탑]은 현실이 되었다.\n게임의 모든 요소를 다 알고 있는 진혁은\n누구보다 빠르게 모든 것을 차지한다!\n\n\"진짜 고인물이 뭔지 보여주지.\"",
+      "subs": [
+        "fantasy-2"
+      ]
+    },
+    {
       "id": "w65755ul",
       "title": "도굴왕",
       "author": "",
@@ -8,7 +78,8 @@
       "url": "",
       "cover": "https://i.namu.wiki/i/lbGPhVfwIMFvS8UxxkE_JyGsbZApYCo1mgM455mkYlMY5i4YT8CGu01PFdiP2ww_gNHKp8lVfJ8xV-eeIH1O1oxi0Rttxe7b9tYGDwLR8btxTKQI6X0PJ6jN3DVbRhnp2LozXoMT6tXsaxA7PBQO4w.webp",
       "genres": [
-        "fantasy"
+        "fantasy",
+        "action"
       ],
       "recommended": 3,
       "color": "#8c00ff",
@@ -20,8 +91,16 @@
       ],
       "autoCount": true,
       "baseDate": "2026-11-10",
-      "tags": [],
-      "desc": "",
+      "tags": [
+        "판타지",
+        "액션",
+        "회귀",
+        "던전",
+        "무덤",
+        "신화",
+        "소설원작"
+      ],
+      "desc": "현대에 출몰한 신의 무덤.\n유물로 영웅의 능력을 쓰게 된 사람들, 부를 얻게 된 사람들.\n\n그리고 그 유물을 털어가는 의문의 도굴꾼이 나타났다.\n\n도굴왕.\n\n“아아씨, 미치겠네. 여기도 또 그자식이 다 털어 갔냐!''.\n\n네 것도 내 것. 내 건 당연히 내 것.\n다시 살아난 도굴꾼, 그가 세상 모든 무덤을 접수하기 시작한다!",
       "subs": [
         "fantasy-1",
         "fantasy-2"
@@ -104,8 +183,7 @@
       "episodes": 110,
       "status": "ongoing",
       "days": [
-        "sat",
-        "tue"
+        "sat"
       ],
       "autoCount": true,
       "baseDate": "2026-11-10",
@@ -2166,8 +2244,8 @@
       "start": "w036",
       "nodes": {
         "w019": [
-          500,
-          440
+          400,
+          310
         ],
         "w020": [
           970,
@@ -2178,36 +2256,36 @@
           190
         ],
         "w022": [
-          400,
-          250
+          380,
+          160
         ],
         "w032": [
-          690,
-          340
+          570,
+          250
         ],
         "w035": [
-          410,
-          110
+          380,
+          50
         ],
         "w036": [
           110,
           280
         ],
         "w041": [
-          790,
-          480
+          710,
+          380
         ],
         "w045": [
-          1070,
-          460
+          920,
+          430
         ],
         "w046": [
-          1330,
-          400
+          1150,
+          500
         ],
         "w062": [
-          300,
-          440
+          100,
+          500
         ],
         "w063": [
           620,
@@ -2222,8 +2300,8 @@
           170
         ],
         "w6575t4": [
-          1330,
-          240
+          1200,
+          340
         ]
       },
       "links": [
@@ -2503,7 +2581,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 65755
+    "lastWebtoonId": 657563
   },
   "version": 1,
   "shop": [
