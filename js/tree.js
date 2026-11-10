@@ -111,11 +111,12 @@
     const newEps = (id) => (S.rewarded[id + ':done'] && ep(id) < total(id) ? total(id) - ep(id) : 0);
     const ep = (id) => Math.min(total(id), S.progress[id] || 0);
     const isDone = (id) => ep(id) >= total(id);
+    const cleared = (id) => isDone(id) || !!S.rewarded[id + ':done'];   // 한 번이라도 끝까지 본 적이 있으면
     const status = (id) => {
-      if (isDone(id)) return 'done';
+      if (cleared(id)) return 'done';
       if (ep(id) > 0) return 'reading';
       if (lib || id === T.start || S.unlocked[id]) return 'open';
-      return T.links.some((l) => l.to === id && isDone(l.from)) ? 'open' : 'locked';
+      return T.links.some((l) => l.to === id && cleared(l.from)) ? 'open' : 'locked';
     };
     const pct = (id) => Math.round(ep(id) / total(id) * 100);
     const sizeOf = (id) => (id === T.start ? NODE_START : NODE);
@@ -177,7 +178,7 @@
       b.setAttribute('aria-label', `${g.name} 도서관, ${open ? '열림' : '잠김'}, 남은 웹툰 ${libraryBooks(gid).length}권`);
       document.getElementById('lib-sub').textContent = `${open ? '' : '잠김 · '}웹툰 ${libraryBooks(gid).length}권`;
       leaves.forEach((id) => {
-        const on = isDone(id);
+        const on = cleared(id);
         stage.querySelectorAll(`[data-liblink="${id}"], [data-libarrow="${id}"]`).forEach((el) => el.classList.toggle('lit', on));
       });
     }
@@ -244,7 +245,7 @@
     // ---------- 마도서 (세부 장르) ----------
     function tomeHTML(t, i) {
       const n = t.ids.length;
-      const done = t.ids.filter(isDone).length;
+      const done = t.ids.filter(cleared).length;
       // 이름을 쉼표·띄어쓰기에서 줄을 나누고, 가장 긴 줄에 맞춰 책 너비와 글자 크기를 정해요
       // 쉼표마다 줄을 나누고, 긴 부분은 띄어쓰기에서 4~5글자씩 묶어요 (그 밖의 / 이야기)
       const lines = [];
@@ -502,7 +503,8 @@
         ? `<span class="node-tag tag-ongoing two" aria-hidden="true">연재 중<small>${esc(days)}</small></span>`
         : `<span class="node-tag tag-${stName}" aria-hidden="true">${esc(WT.schedule.STATUS_KO[stName])}</span>`;
       const isStart = id === T.start;
-      const meta = [st === 'reading' ? `<span class="nm-read">${ep(id)} / ${total(id)}화</span>` : '', rec ? `<span class="nm-stars" aria-hidden="true">${'★'.repeat(rec)}</span>` : ''].filter(Boolean).join('');
+      const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.2l-5.8 3.2 1.2-6.5L2.6 9.4l6.5-.8z"/></svg>';
+      const meta = rec ? `<span class="nm-stars" aria-hidden="true">${STAR.repeat(rec)}</span>` : '';
       // 자리 정하기: 위 가운데 = 관리자 강추(또는 입문작) · 오른쪽 = 연재 상태 · 오른쪽 아래 = 다 봄 체크 / 자물쇠 · 왼쪽 위 = 새 화 N · 아래 = 제목과 한 줄 정보
       return `<div class="node-box${st === 'locked' ? ' is-locked' : ''}${w.pick ? ' is-pick' : ''}" style="--sz:${sz}px">
           ${w.pick ? '<span class="pick-glow" aria-hidden="true"></span><span class="pick-orbit" aria-hidden="true"></span><span class="pick-ring" aria-hidden="true"></span>' : ''}
@@ -543,13 +545,13 @@
     }
 
     const counts = () => {
-      const d = ids.filter(isDone).length;
+      const d = ids.filter(cleared).length;
       const r = ids.filter((id) => status(id) === 'reading').length;
       return { d, r };
     };
 
     const c0 = counts();
-    const libOpen = () => !lib && (leaves.some(isDone) || !!S.unlocked['lib:' + gid]);
+    const libOpen = () => !lib && (leaves.some(cleared) || !!S.unlocked['lib:' + gid]);
     // 도서관에서 장르 탭을 바꿀 땐 화면이 깜박이지 않게 등장 효과를 꺼요
     const noEnter = lib && Date.now() - (WT.libLeftAt || 0) < 1500;
     document.getElementById('app').innerHTML = `<div class="view${lib ? ' lib-view' : ''}${noEnter ? ' no-enter' : ''}" style="--gc:${g.color}">
@@ -604,8 +606,8 @@
       });
       if (!lib) refreshLib();
       T.links.forEach((l, i) => {
-        const both = isDone(l.from) && isDone(l.to);
-        const one = isDone(l.from) || isDone(l.to);
+        const both = cleared(l.from) && cleared(l.to);
+        const one = cleared(l.from) || cleared(l.to);
         const cls = both ? 'lit' : one ? 'half' : '';
         const ln = stage.querySelector(`[data-link="${i}"]`);
         const dt = stage.querySelector(`[data-dot="${i}"]`);

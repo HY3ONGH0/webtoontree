@@ -46,7 +46,7 @@ button { cursor: pointer; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 :focus-visible { outline: 3px solid var(--gold-hi); outline-offset: 3px; }
 
-#app { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; }
+#app { position: relative; z-index: 1; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }
 /* 배경 별똥별: 가끔 작게 떨어져요 (내용 뒤) */
 .sky { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
 .meteor { position: absolute; height: 2px; border-radius: 2px; transform-origin: 100% 50%; opacity: 0;
@@ -1241,3 +1241,50 @@ body.no-anim .fx-ripple, body.no-anim .badge-done { animation: none; }
   .tree-main.reserve > #panel-slot .panel { max-height: 52vh; }
   .panel-empty { display: none !important; }
 }
+
+/* ===== 손보기: 표지 잘림 · 화이트 모드 글씨 · 단색 배경 · 연재 요일 · N 자리 · 별 ===== */
+/* 상세 창이 높이 제한 안에서 표지 칸을 납작하게 줄이지 않게 */
+.panel > * { flex-shrink: 0; }
+/* 블랙 모드 배경도 화이트 모드처럼 단색 (별 무늬·번짐·별똥별 없음) */
+body { background-image: none; }
+html[data-theme="light"] body { background-image: none; }
+.sky { display: none; }
+/* 연재 중 꼬리표: 요일을 크고 또렷하게 */
+.node-box > .node-tag.tag-ongoing { background: #1D6FE8; }
+.node-box > .node-tag.two { font-size: 11px; line-height: 1.2; padding: 3px 9px 4px; }
+.node-box > .node-tag.two small { display: block; margin-top: 1px; font-size: 13px; font-weight: 900; letter-spacing: .04em; color: #fff; opacity: 1; }
+html[data-theme="light"] .node-box > .node-tag.tag-ongoing { background: #1D6FE8; }
+/* 새 화 N: 원 왼쪽 가운데쯤 (위 가운데 강추 표시와 안 겹치게, 오른쪽 연재 꼬리표와 짝) */
+.badge-new { left: -9px; top: calc(var(--sz) * .26); }
+/* 추천 별: 어두운 알약 안에 금빛 별 */
+.node-meta { margin-top: -2px; }
+.node-meta .nm-stars { display: inline-flex; gap: 1px; padding: 2px 7px; border-radius: 999px; background: rgba(7, 11, 26, .78); border: 1px solid rgba(255, 211, 77, .45); box-shadow: 0 2px 6px rgba(0, 0, 0, .35); letter-spacing: 0; }
+.node-meta .nm-stars svg { width: 14px; height: 14px; fill: #FFD34D; stroke: #B07A00; stroke-width: 1.2; stroke-linejoin: round; filter: drop-shadow(0 0 3px rgba(255, 200, 60, .55)); }
+html[data-theme="light"] .node-meta .nm-stars { background: #FFFFFF; border-color: #E8B53A; box-shadow: 0 2px 6px rgba(30, 50, 110, .15); }
+html[data-theme="light"] .node-meta .nm-stars svg { fill: #F5B400; stroke: #8A5E0C; filter: none; }
+/* 화이트 모드: 흐리게 보이던 글씨 또렷하게 */
+html[data-theme="light"] .node-label { color: #111A33; font-weight: 800; text-shadow: 0 0 3px #fff, 0 0 6px #fff, 0 0 10px #fff; }
+html[data-theme="light"] .node-label.dim { color: #4E5A78; }
+html[data-theme="light"] .node-sub { color: #4E5A78; }
+html[data-theme="light"] .node-meta { text-shadow: none; }
+html[data-theme="light"] .node.st-locked .letter { color: #5E6A88; opacity: .8; }
+html[data-theme="light"] .title-block .sub, html[data-theme="light"] .legend, html[data-theme="light"] .hint, html[data-theme="light"] .lib-sign-sub { color: #3E4A6E; }
+html[data-theme="light"] .kbd-hint kbd { color: #3E4A6E; }
+html[data-theme="light"] .more-hint { color: #8A5E0C; border-color: rgba(169, 120, 26, .5); }
+html[data-theme="light"] .panel-empty h2 { color: #8A5E0C; }
+html[data-theme="light"] .key-list { color: #3E4A6E; }
+html[data-theme="light"] .tabs2 button { color: #4E5A78; }
+html[data-theme="light"] .item .price { color: #4E5A78; }
+html[data-theme="light"] .rules .h, html[data-theme="light"] .rules .v { color: #8A5E0C; }
+html[data-theme="light"] .stat b { color: #B07A00; }
+html[data-theme="light"] .mnode-wrap span { color: #111A33; }
+html[data-theme="light"] .region-label { opacity: 1; text-shadow: 0 0 6px #fff, 0 0 12px #fff; }
+html[data-theme="light"] .hc-foot, html[data-theme="light"] .hc-sub { opacity: 1; }
+html[data-theme="light"] #home-pos { color: #3E4A6E; }
+html[data-theme="light"] .region-label { text-shadow: 0 0 6px #fff, 0 0 14px #fff !important; filter: brightness(.72) saturate(1.3); }
+
+/* 홈: 휴대폰·태블릿 주소창 높이까지 계산해서 스크롤이 생기지 않게 */
+body.home-lock { overflow: hidden; height: 100dvh; }
+body.home-lock #app { min-height: 0; height: 100dvh; }
+.home-panel { min-height: 0; }
+html[data-theme="light"] .node-box > .node-tag.two small { color: #fff; }

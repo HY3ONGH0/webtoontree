@@ -322,7 +322,7 @@
       const h = vp.clientHeight, w = vp.clientWidth;
       // 높이: 튀어나온 표지~아래 점까지 약 600 · 너비: 넓은 화면에선 카드가 4장쯤 보이게
       const byH = h / 600, byW = Math.min((w - 40) / 300, w / (308 * 4.2));
-      const sc = Math.max(0.55, Math.min(1.4, byH, Math.max(byW, Math.min(1, (w - 40) / 300))));
+      const sc = Math.max(0.42, Math.min(1.4, byH, Math.max(byW, Math.min(1, (w - 40) / 300))));
       panel.style.setProperty('--s', sc.toFixed(3));
       track.classList.add('fit');
       place(false);
@@ -334,7 +334,9 @@
     window.addEventListener('wheel', onWheel, { passive: false });
     window.addEventListener('resize', onResize);
     document.addEventListener('fullscreenchange', onResize);
+    document.body.classList.add('home-lock');   // 홈은 위아래로 스크롤하지 않아요 (판이 화면 높이에 맞춰져요)
     WT.leaveView = () => {
+      document.body.classList.remove('home-lock');
       document.removeEventListener('fullscreenchange', onResize);
       document.removeEventListener('keydown', onKey);
       window.removeEventListener('pointerup', onUp);
