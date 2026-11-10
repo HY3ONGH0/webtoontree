@@ -196,7 +196,7 @@
           <div class="items-box">
             ${list.map((x) => `<button type="button" class="ad-row${ui.w === x.id ? ' sel' : ''}" data-a="pick-w" data-id="${x.id}">
               <span class="dotc" style="background:${gColor(x)}">${esc(x.title[0] || '?')}</span>
-              <span class="t"><b>${WT.recStars(x) ? '★'.repeat(WT.recStars(x)) + ' ' : ''}${esc(x.title)}</b>${liveOn(x.id)}<span>${x.id} · ${esc(x.genres.map((g) => (genre(g) || {}).name).join(', ') || '장르 없음')} · ${WT.schedule.episodes(x)}화 · ${esc(WT.schedule.label(x))}</span></span>
+              <span class="t"><b>${WT.recStars(x) ? '★'.repeat(WT.recStars(x)) + ' ' : ''}${esc(x.title)}${x.pick ? ' <span class="pick-badge sm">강추</span>' : ''}</b>${liveOn(x.id)}<span>${x.id} · ${esc(x.genres.map((g) => (genre(g) || {}).name).join(', ') || '장르 없음')} · ${WT.schedule.episodes(x)}화 · ${esc(WT.schedule.label(x))}</span></span>
             </button>`).join('') || '<p class="ad-help">찾는 웹툰이 없어요</p>'}
           </div>
         </section>
@@ -237,6 +237,7 @@
       <div class="checks">
         <div class="field"><label for="f-rec" style="color:var(--coin); font-weight:700">관리자 추천 (원 옆에 별)</label>
           <select id="f-rec" class="fld" data-wf="recommended" style="max-width:220px">${[0, 1, 2, 3, 4, 5].map((n) => `<option value="${n}" ${WT.recStars(w) === n ? 'selected' : ''}>${n ? '★'.repeat(n) + ` 별 ${n}개` : '추천 안 함'}</option>`).join('')}</select></div>
+        <label class="ad-check" style="align-self:flex-end"><input type="checkbox" data-wf="pick" ${w.pick ? 'checked' : ''}> <span class="pick-badge">관리자 강추</span> 표시 달기</label>
       </div>
       <div class="grid2">
         <div class="field"><label for="f-status">연재 상태</label><select id="f-status" class="fld" data-wf="status">

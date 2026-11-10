@@ -163,13 +163,14 @@
       const rec = WT.recStars(w);
       const hot = WT.isHot(id);
       return `<button type="button" class="book st-${st}${sel === id ? ' is-sel' : ''}${hot ? ' is-hot' : ''}" data-node="${id}" style="--bh:${bh}px; --bw:${bw}px; --bc:${w.color || color}"
-          aria-label="${esc(w.title)}${newEps(id) ? `, 새 화 ${newEps(id)}개` : ''}, ${esc(statusText[st])}${st === 'reading' ? ` ${ep(id)}화` : ''}${rec ? `, 관리자 추천 별 ${rec}개` : ''}" title="${esc(w.title)}">
+          aria-label="${esc(w.title)}${newEps(id) ? `, 새 화 ${newEps(id)}개` : ''}, ${esc(statusText[st])}${st === 'reading' ? ` ${ep(id)}화` : ''}${rec ? `, 추천 별 ${rec}개` : ''}${w.pick ? ', 관리자 강추' : ''}" title="${esc(w.title)}">
           <span class="spine-title">${esc(w.title)}</span>
           ${rec ? `<span class="spine-stars" aria-hidden="true">${'★'.repeat(rec)}</span>` : ''}
           ${st === 'reading' ? `<span class="ribbon" aria-hidden="true" style="--p:${pct(id)}"></span>` : ''}
           ${st === 'done' && !newEps(id) ? '<span class="done-mark" aria-hidden="true">✓</span>' : ''}
           ${newEps(id) ? '<span class="badge-new book-new" aria-hidden="true">N</span>' : ''}
           ${hot ? `<span class="spine-hot" aria-hidden="true">${WT.icon.flame}</span>` : ''}
+          ${w.pick ? '<span class="pick-badge on-spine" aria-hidden="true">강추</span>' : ''}
         </button>`;
     }
     function libraryHTML() {
@@ -274,7 +275,7 @@
         return `<div class="g-page-in g-desc-page">
             <h3 class="g-title">${esc(w.title)}</h3>
             <p class="g-meta">${esc([w.author, w.platform].filter(Boolean).join(' · '))}</p>
-            <p class="g-meta"><span class="node-tag tag-${WT.schedule.status(w)}">${esc(WT.schedule.label(w))}</span> ${WT.recStars(w) ? `<span class="g-rec">${'★'.repeat(WT.recStars(w))} 관리자 추천</span>` : ''}</p>
+            <p class="g-meta"><span class="node-tag tag-${WT.schedule.status(w)}">${esc(WT.schedule.label(w))}</span> ${WT.recStars(w) ? `<span class="g-rec" aria-label="추천 별 ${WT.recStars(w)}개">${'★'.repeat(WT.recStars(w))}</span>` : ''} ${w.pick ? '<span class="pick-badge">관리자 강추</span>' : ''}</p>
             <p class="g-rate">${rateText(id)}</p>
             <div class="g-desc">${w.desc ? esc(w.desc).replace(/\n/g, '<br>') : '<span class="g-norate">아직 설명이 없어요.</span>'}</div>
             ${(w.tags || []).length ? `<p class="g-tags">${w.tags.map((x) => `<span>#${esc(x)}</span>`).join('')}</p>` : ''}
@@ -418,16 +419,17 @@
           ${hot ? fireHTML(sz) : ''}
           ${st !== 'locked' ? `<span class="ring" style="--sz:${sz}px; --pct:${pct(id)}%"></span>` : ''}
           <button type="button" class="node st-${st}${hot ? ' is-hot' : ''}${sel === id ? ' is-sel' : ''}" style="--sz:${sz}px" data-node="${id}"
-            aria-label="${esc(w.title)}${nw ? `, 새 화 ${nw}개` : ''}, ${esc(sub)}, ${esc(WT.schedule.label(w))}${rec ? `, 관리자 추천 별 ${rec}개` : ''}">
+            aria-label="${esc(w.title)}${nw ? `, 새 화 ${nw}개` : ''}, ${esc(sub)}, ${esc(WT.schedule.label(w))}${rec ? `, 추천 별 ${rec}개` : ''}${w.pick ? ', 관리자 강추' : ''}">
             ${cover}<span class="letter" ${w.cover ? 'hidden' : ''}>${esc(w.title[0])}</span>
             ${st === 'done' ? `<span class="badge-done" aria-hidden="true">${WT.icon.check}</span>` : ''}
             ${st === 'locked' ? `<span class="lock-in" aria-hidden="true">${WT.icon.lockIn}</span>` : ''}
           </button>
           ${recHTML(rec, sz, !!nw)}
           ${nw ? '<span class="badge-new" aria-hidden="true">N</span>' : ''}
+          ${w.pick ? '<span class="pick-badge on-node" aria-hidden="true">관리자 강추</span>' : ''}
           ${tag}
         </div>
-        <span class="node-label${st === 'locked' ? ' dim' : ''}">${esc(w.title)}</span>
+        <span class="node-label${st === 'locked' ? ' dim' : ''}${w.pick ? ' after-pick' : ''}">${esc(w.title)}</span>
         ${showSub ? `<span class="node-sub ${subCls}">${esc(sub)}</span>` : ''}`;
     }
 
@@ -469,7 +471,7 @@
             <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
               <div class="progress" role="progressbar" aria-label="장르 진행률" aria-valuemin="0" aria-valuemax="${ids.length}" aria-valuenow="${c0.d}"><div id="prog-bar" style="width:${c0.d / (ids.length || 1) * 100}%"></div></div>
               <span id="prog-text" style="font-size:13px; color:var(--gold); font-weight:700">${c0.d} / ${ids.length} ${esc(labels.done || '완독')} · 보는 중 ${c0.r}</span>
-              <span class="legend"><span>${WT.icon.starSmall}관리자 추천</span><span>${WT.icon.flame}오늘 폭주</span><span class="kbd-hint"><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> 키로 이동</span></span>
+              <span class="legend"><span>${WT.icon.starSmall}추천</span><span><span class="pick-badge sm">강추</span></span><span>${WT.icon.flame}오늘 폭주</span><span class="kbd-hint"><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> 키로 이동</span></span>
             </div>
           </div>
         </div>
@@ -643,7 +645,8 @@
         <div class="panel-head">
           <div style="display:flex; flex-direction:column; gap:6px; min-width:0">
             <div class="chips">
-              ${WT.recStars(w) ? `<span class="chip chip-rec">${'★'.repeat(WT.recStars(w))} 관리자 추천</span>` : ''}
+              ${w.pick ? '<span class="pick-badge">관리자 강추</span>' : ''}
+              ${WT.recStars(w) ? `<span class="chip chip-rec" aria-label="추천 별 ${WT.recStars(w)}개">${'★'.repeat(WT.recStars(w))}</span>` : ''}
               ${WT.isHot(id) ? '<span class="chip chip-hot">오늘 폭주 중</span>' : ''}
               <span class="chip chip-${st}">${statusText[st]}</span>
               ${newEps(id) ? `<span class="chip chip-new">새 화 ${newEps(id)}개</span>` : ''}

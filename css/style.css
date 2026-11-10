@@ -835,3 +835,10 @@ body.no-anim *, body.no-anim *::before, body.no-anim *::after { animation: none 
   .grim-book { padding: 14px; }
   .grim-sort button { padding: 6px 10px; }
 }
+
+/* 관리자 강추: 붉은 네모에 흰 글씨 */
+.pick-badge { display: inline-block; padding: 2px 7px; border-radius: 2px; font-size: 13px; font-weight: 800; line-height: 1.35; letter-spacing: .02em; color: #fff; background: #E5141B; white-space: nowrap; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35); }
+.pick-badge.sm { font-size: 11px; padding: 1px 5px; }
+.pick-badge.on-node { position: absolute; z-index: 3; left: 50%; bottom: -9px; transform: translateX(-50%); font-size: 11px; padding: 1px 6px; pointer-events: none; }
+.node-label.after-pick { margin-top: 14px; }
+.pick-badge.on-spine { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); font-size: 10px; padding: 1px 3px; writing-mode: horizontal-tb; }
