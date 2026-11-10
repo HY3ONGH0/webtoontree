@@ -841,10 +841,16 @@
       </aside>`;
     }
 
+    let panelFor = null;
     function renderPanel(animate) {
-      if (!sel) { slot.innerHTML = lib ? '' : emptyPanelHTML(); fit(); return; }
+      if (!sel) { panelFor = null; slot.innerHTML = lib ? '' : emptyPanelHTML(); fit(); return; }
+      // 같은 웹툰 창을 다시 그릴 땐(별점·화수·댓글 등을 바꿨을 때) 보던 스크롤 위치를 그대로 지켜요
+      const old = slot.querySelector('.panel');
+      const keep = !animate && panelFor === sel && old ? { top: old.scrollTop, win: window.scrollY } : null;
+      panelFor = sel;
       slot.innerHTML = panelHTML(sel);
       const panel = slot.querySelector('.panel');
+      if (keep) { panel.scrollTop = keep.top; if (window.scrollY !== keep.win) window.scrollTo(0, keep.win); }
       if (!animate) panel.classList.remove('anim');
       else if (panel.classList.contains('toned')) bloom(panel);
       const w = WT.toon(sel);
