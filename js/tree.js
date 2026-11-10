@@ -343,7 +343,9 @@
       };
       const coverPage = (id) => {
         const w = WT.toon(id);
-        return `<div class="g-page-in g-cover-page">
+        const tone = w.color || WT.color.cached(w.cover);
+        // 왼쪽 면도 오른쪽 상세 창과 같은 색 한 가지로 칠해요 (표지 액자만 빼고)
+        return `<div class="g-page-in g-cover-page${tone ? ' toned' : ''}" data-cid="${esc(id)}" style="${tone ? WT.color.styleOf(tone) : ''}">
             <div class="g-frame">${w.cover ? `<img src="${esc(w.cover)}" alt="${esc(w.title)} 표지" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}<span class="g-cover-fallback">${esc(w.title)}</span></div>
             <span class="g-folio">${order.indexOf(id) + 1} / ${order.length}</span>
           </div>`;
@@ -379,6 +381,12 @@
         host.innerHTML = '';
         host.appendChild(slot);
         if (sel !== id) select(id, { keepHash: true }); else renderPanel(false);
+        // 색을 아직 몰랐으면 표지에서 뽑아 왼쪽 면에도 칠해요
+        const w = WT.toon(id);
+        const left = bg.querySelector(`.g-cover-page[data-cid="${CSS.escape(id)}"]`);
+        if (left && !left.classList.contains('toned') && w.cover) {
+          WT.color.extract(w.cover).then((c) => { if (c && left.isConnected) { left.setAttribute('style', WT.color.styleOf(c)); left.classList.add('toned'); } });
+        }
       };
       const draw = () => {
         parkSlot();

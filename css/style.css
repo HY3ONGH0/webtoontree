@@ -896,3 +896,12 @@ body.no-anim .pick-ring, body.no-anim .pick-glow, body.no-anim .pick-orbit, body
 .mnode-wrap.compact:hover, .mnode-wrap.compact:focus-within { z-index: 999 !important; }
 .mnode-wrap.compact:hover .mnode, .mnode-wrap.compact:focus-within .mnode { transform: translateY(-8px) scale(1.15); }
 .mnode-wrap.compact:hover > span, .mnode-wrap.compact:focus-within > span { opacity: 1; transform: none; }
+
+/* 펼친 마도서 웹툰 장: 그라데이션 없이 한 가지 색, 왼쪽 면도 같은 색 (표지 액자만 빼고) */
+.g-host .panel { background: var(--panel-2) !important; }
+.g-host .panel .tone { background: var(--p-bg1) !important; }
+.g-host .panel .bloom { display: none !important; }
+.g-cover-page { background: var(--panel-2); box-shadow: inset -24px 0 30px -18px rgba(0, 0, 0, 0.45); }
+.g-cover-page.toned { background: var(--p-bg1); }
+.g-cover-page .g-folio { color: rgba(255, 255, 255, 0.6); }
+.g-cover-page .g-frame { box-shadow: 0 0 0 6px #C99A3A, 0 0 0 8px #6A4A14, 0 14px 30px rgba(0, 0, 0, 0.55); }
