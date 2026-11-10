@@ -109,39 +109,218 @@
     return close;
   };
 
-  function constellationSVG(g) {
-    const lines = g.shape.lines.map((pts) => `<polyline class="cl" points="${pts.map((p) => p.join(',')).join(' ')}" fill="none" stroke="${g.color}" stroke-width="1.6" stroke-linejoin="round"/>`).join('');
-    const stars = g.shape.stars.map((s, i) => `<circle class="st${i % 3 === 0 ? ' tw' : ''}" cx="${s[0]}" cy="${s[1]}" r="${s[2]}" fill="${i % 2 ? '#FFFFFF' : g.color}"/>`).join('');
-    return `<svg viewBox="0 0 100 72" width="120" height="86" aria-hidden="true">${lines}${stars}</svg>`;
-  }
+  // ---------- 홈: 장르 카드를 좌우로 넘기는 회전목마 (끝없이 돌고, 고른 카드가 가운데) ----------
+  const lum = (hex) => {
+    const m = /^#?([0-9a-f]{6})$/i.exec(hex || '');
+    if (!m) return 0;
+    const n = parseInt(m[1], 16);
+    const c = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  };
+  const shade = (hex, k) => {
+    const m = /^#?([0-9a-f]{6})$/i.exec(hex || '');
+    if (!m) return hex;
+    const n = parseInt(m[1], 16);
+    const f = (v) => Math.max(0, Math.min(255, Math.round(v * k)));
+    return '#' + [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((v) => f(v).toString(16).padStart(2, '0')).join('');
+  };
+  const HOME_ART = {
+    lib: `<span class="hc-art hc-lib" aria-hidden="true"><svg width="210" height="236" viewBox="0 0 210 236">
+<path d="M20 70 L105 18 L190 70 Z" fill="#E8C66A" stroke="#FFF1C4" stroke-width="3" stroke-linejoin="round"/><circle cx="105" cy="52" r="9" fill="#7A4A22"/>
+<rect x="24" y="70" width="162" height="12" rx="3" fill="#C99A3A"/><rect x="30" y="82" width="150" height="132" fill="#3A200C"/>
+<rect x="30" y="82" width="14" height="132" fill="#F3E2B0"/><rect x="166" y="82" width="14" height="132" fill="#F3E2B0"/>
+<rect x="44" y="124" width="122" height="6" fill="#8A5A28"/><rect x="44" y="170" width="122" height="6" fill="#8A5A28"/>
+<rect x="50" y="94" width="11" height="30" rx="2" fill="#C8323A"/><rect x="63" y="99" width="9" height="25" rx="2" fill="#2F5B8E"/><rect x="74" y="92" width="12" height="32" rx="2" fill="#3E7A4A"/><rect x="88" y="98" width="9" height="26" rx="2" fill="#B07A2A"/><rect x="99" y="95" width="11" height="29" rx="2" fill="#6A3F7A"/><rect x="112" y="100" width="9" height="24" rx="2" fill="#5BB8FF"/><rect x="123" y="93" width="12" height="31" rx="2" fill="#FF7EB6"/><rect x="137" y="99" width="9" height="25" rx="2" fill="#E8C66A"/><rect x="148" y="96" width="12" height="28" rx="2" fill="#C8323A"/>
+<rect x="50" y="142" width="10" height="28" rx="2" fill="#E8C66A"/><rect x="62" y="137" width="12" height="33" rx="2" fill="#6A3F7A"/><rect x="76" y="144" width="9" height="26" rx="2" fill="#C8323A"/><rect x="87" y="139" width="11" height="31" rx="2" fill="#3E7A4A"/><rect x="100" y="141" width="12" height="29" rx="2" fill="#2F5B8E"/><rect x="114" y="146" width="9" height="24" rx="2" fill="#FF9A4D"/><rect x="125" y="138" width="11" height="32" rx="2" fill="#5BB8FF"/><rect x="138" y="143" width="10" height="27" rx="2" fill="#B07A2A"/><rect x="150" y="140" width="10" height="30" rx="2" fill="#6BE3A4"/>
+<rect x="50" y="186" width="12" height="28" rx="2" fill="#2F5B8E"/><rect x="64" y="190" width="9" height="24" rx="2" fill="#E8C66A"/><rect x="75" y="184" width="11" height="30" rx="2" fill="#C8323A"/><rect x="88" y="189" width="10" height="25" rx="2" fill="#A97BFF"/><rect x="100" y="185" width="12" height="29" rx="2" fill="#3E7A4A"/><rect x="114" y="188" width="9" height="26" rx="2" fill="#FF7EB6"/><rect x="125" y="183" width="11" height="31" rx="2" fill="#B07A2A"/><rect x="138" y="187" width="12" height="27" rx="2" fill="#5BB8FF"/><rect x="152" y="190" width="8" height="24" rx="2" fill="#E8C66A"/>
+<rect x="18" y="214" width="174" height="10" rx="3" fill="#C99A3A"/><rect x="10" y="224" width="190" height="10" rx="3" fill="#E8C66A"/></svg></span>`,
+    rank: `<span class="hc-art hc-rank" aria-hidden="true"><svg width="200" height="236" viewBox="0 0 200 236">
+<path d="M58 28 H142 V78 C142 108 124 128 100 128 C76 128 58 108 58 78 Z" fill="#FFD34D" stroke="#FFF1C4" stroke-width="3"/>
+<path d="M58 40 H34 C34 72 48 86 62 88" fill="none" stroke="#FFD34D" stroke-width="9" stroke-linecap="round"/><path d="M142 40 H166 C166 72 152 86 138 88" fill="none" stroke="#FFD34D" stroke-width="9" stroke-linecap="round"/>
+<path d="M100 48 L106 62 L121 63 L109 72 L113 87 L100 79 L87 87 L91 72 L79 63 L94 62 Z" fill="#B8872A"/>
+<rect x="90" y="128" width="20" height="22" fill="#E8C66A"/><rect x="72" y="150" width="56" height="12" rx="3" fill="#C99A3A"/>
+<rect x="70" y="170" width="60" height="62" rx="4" fill="#E8C66A"/><rect x="10" y="190" width="58" height="42" rx="4" fill="#B8C3E3"/><rect x="132" y="202" width="58" height="30" rx="4" fill="#C98A4A"/>
+<text x="100" y="212" text-anchor="middle" font-family="Black Han Sans, sans-serif" font-size="30" fill="#3A2A06">1</text><text x="39" y="220" text-anchor="middle" font-family="Black Han Sans, sans-serif" font-size="24" fill="#2A3150">2</text><text x="161" y="225" text-anchor="middle" font-family="Black Han Sans, sans-serif" font-size="20" fill="#3A1E06">3</text></svg></span>`
+  };
+  let homeIndex = 0;   // 다른 화면에 다녀와도 보던 카드에서 다시 시작
 
-  // ---------- 홈 ----------
   function viewHome() {
     const st = WT.settings();
-    const cards = WT.liveGenres().map((g, i) => {
-      const start = WT.toon(WT.data.trees[g.id].start);
-      return `<a class="gcard" href="#/tree/${g.id}" style="--gc:${g.color}; animation-delay:${i * 0.06}s">
-        ${constellationSVG(g)}
-        <span class="gname">${esc(g.name)}<small>${esc(g.constellation || '')}</small></span>
-        <span class="gdesc">${esc(g.desc)}</span>
-        ${start ? `<span class="gstart">입문작 · ${esc(start.title)}</span>` : ''}
-      </a>`;
-    }).join('');
+    const genres = WT.liveGenres();
+    const libN = WT.libraryBooks ? WT.libraryBooks('all').length : 0;
+    const items = genres.map((g) => {
+      const T = WT.data.trees[g.id];
+      const w = WT.toon(T.start);
+      return { kind: 'genre', href: `#/tree/${g.id}`, name: g.name, sub: w ? w.title : '', tag: '입문작', foot: `웹툰 ${Object.keys(T.nodes).length}편`,
+        color: g.color, w, label: `${g.name} 트리로 가기${w ? `, 입문작 ${w.title}` : ''}` };
+    }).concat(genres.length ? [
+      { kind: 'lib', href: '#/library/all', name: '도서관', sub: '마음대로 골라 보기', tag: `${libN}권`, foot: '트리 밖 웹툰', color: '#7A4A22', label: `도서관으로 가기, 트리 밖 웹툰 ${libN}권` },
+      { kind: 'rank', href: '#/top', name: '이번 주 랭킹', sub: '많이 읽은 웹툰', tag: 'TOP 10', foot: '이번 주 조회수 기준', color: '#E8C66A', label: '이번 주 많이 읽은 웹툰 랭킹 보기' }
+    ] : []);
+    const N = items.length, COPIES = 5;
+    const cardHTML = (it, k, real) => {
+      let art = HOME_ART[it.kind] || '';
+      if (it.kind === 'genre') {
+        const tone = (it.w && (it.w.color || (WT.color && WT.color.cached(it.w.cover)))) || shade(it.color, 0.5);
+        const base = typeof tone === 'string' ? tone : (tone && tone.hex) || shade(it.color, 0.5);
+        art = `<span class="hc-art hc-cover" aria-hidden="true" style="background:linear-gradient(160deg, ${shade(base, 1.25)}, ${shade(base, 0.45)})">
+          ${it.w && it.w.cover ? `<img src="${esc(it.w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}
+          <b>${esc(it.sub)}</b></span>`;
+      }
+      return `<a href="${it.href}" class="hcard" data-k="${k}" style="--hc:${it.color}; --ink:${lum(it.color) > 0.42 ? '#10162B' : '#FFFFFF'}"
+        ${real ? `aria-label="${esc(it.label)}"` : 'aria-hidden="true" tabindex="-1"'}>${art}
+        <span class="hc-text"><span class="hc-name">${esc(it.name)}</span>
+          <span class="hc-sub"><span>${esc(it.sub)}</span><span class="hc-tag">${esc(it.tag)}</span></span>
+          <span class="hc-foot">${esc(it.foot)}</span></span></a>`;
+    };
     app().innerHTML = `<div class="view home">
-      <div class="topbar" style="align-self:stretch; justify-content:flex-end">${WT.topRight({ map: false })}</div>
-      ${st.notice ? `<p class="notice">${esc(st.notice)}</p>` : ''}
-      <header>
-        <h1>${esc(st.siteName)}</h1>
-        <p>${esc(st.tagline)}</p>
-      </header>
-      ${cards ? `<section class="genre-grid" aria-label="장르 선택">${cards}</section>` : `<section class="rpg" style="max-width:520px; margin:0 20px; padding:28px; text-align:center; display:flex; flex-direction:column; gap:10px"><span class="corner-b" aria-hidden="true"></span>
-        <h2 style="margin:0; font-family:var(--display); font-weight:400; font-size:24px">웹툰 별자리를 준비하고 있어요</h2>
-        <p class="hint" style="font-size:14px; margin:0">곧 장르별 웹툰 트리가 열려요. 조금만 기다려 주세요!</p></section>`}
-      <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center; align-items:center; padding:0 20px">
-        <a href="#/map" class="pill pill-gold press" style="min-height:52px; padding:0 28px; font-size:17px; border-width:2px">${WT.icon.map}전체 지도 보기</a>
-        <span class="hint" style="font-size:14px">장르가 애매한 웹툰은 전체 지도에서 만날 수 있어요</span>
+      <div class="home-panel">
+        <div class="home-top">
+          <span class="home-logo"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="9" cy="30" r="4" fill="#E8C66A"/><circle cx="20" cy="12" r="5" fill="#FFE29A"/><circle cx="31" cy="26" r="4" fill="#E8C66A"/><path d="M9 30 L20 12 L31 26" fill="none" stroke="#E8C66A" stroke-width="1.6" opacity=".7"/></svg><h1>${esc(st.siteName)}</h1></span>
+          ${WT.topRight({ map: false })}
+        </div>
+        ${st.notice ? `<p class="notice">${esc(st.notice)}</p>` : ''}
+        ${N ? `<div class="home-vp" id="home-vp"><div class="home-track" id="home-track">${
+          Array.from({ length: COPIES }, (_, c) => items.map((it, k) => cardHTML(it, k, c === 2)).join('')).join('')}</div></div>`
+        : `<section class="rpg" style="max-width:520px; margin:40px auto; padding:28px; text-align:center; display:flex; flex-direction:column; gap:10px"><span class="corner-b" aria-hidden="true"></span>
+          <h2 style="margin:0; font-family:var(--display); font-weight:400; font-size:24px">웹툰 별자리를 준비하고 있어요</h2>
+          <p class="hint" style="font-size:14px; margin:0">곧 장르별 웹툰 트리가 열려요. 조금만 기다려 주세요!</p></section>`}
+        <div class="home-foot">
+          <a href="#/map" class="pill pill-gold press">${WT.icon.map}전체 지도</a>
+          ${N ? `<span class="home-nav"><span id="home-pos" aria-live="polite"></span>
+            <button type="button" class="home-btn press" id="home-prev" aria-label="이전 카드"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>이전</button>
+            <button type="button" class="home-btn press" id="home-next" aria-label="다음 카드">다음<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></span>` : ''}
+        </div>
       </div>
     </div>`;
+    if (!N) return;
+
+    const vp = document.getElementById('home-vp'), track = document.getElementById('home-track');
+    const cards = [...track.children], pos = document.getElementById('home-pos');
+    const mod = (a) => ((a % N) + N) % N;
+    let v = 2 * N + mod(homeIndex);
+    const place = (anim) => {
+      const c = cards[v];
+      const tx = vp.clientWidth / 2 - (c.offsetLeft + c.offsetWidth / 2);
+      track.style.transition = anim ? '' : 'none';
+      track.style.transform = `translateX(${tx}px)`;
+      if (!anim) { void track.offsetWidth; track.style.transition = ''; }
+    };
+    const go = (k, anim = true) => {
+      v = k; homeIndex = mod(v);
+      place(anim);
+      cards.forEach((c, n) => c.classList.toggle('is-active', n === v));
+      pos.textContent = `${homeIndex + 1} / ${N}`;
+    };
+    // 움직임이 끝나면 가운데 줄의 같은 카드로 몰래 옮겨 둬서 계속 돌 수 있게
+    track.addEventListener('transitionend', (e) => {
+      if (e.target !== track || (v >= N && v < 4 * N)) return;
+      const nv = 2 * N + mod(v);
+      cards[v].classList.remove('is-active');
+      cards[nv].classList.add('is-active', 'no-pop');
+      v = nv; place(false);
+      setTimeout(() => cards[nv].classList.remove('no-pop'), 50);
+    });
+    // 가운데가 아닌 카드를 누르면 먼저 가운데로, 가운데 카드를 누르면 들어가기
+    let dragged = false;
+    cards.forEach((c, n) => c.addEventListener('click', (e) => {
+      if (dragged || n !== v) { e.preventDefault(); if (!dragged) go(n); }
+    }));
+    document.getElementById('home-prev').addEventListener('click', () => go(v - 1));
+    document.getElementById('home-next').addEventListener('click', () => go(v + 1));
+    const onKey = (e) => {
+      if (e.target.closest && e.target.closest('input, textarea, select, .modal-bg')) return;
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(v - 1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); go(v + 1); }
+      else if (e.key === 'Enter' && !(e.target.closest && e.target.closest('a, button'))) location.hash = items[homeIndex].href;
+    };
+    // 손가락·마우스로 밀기
+    let sx = null;
+    vp.addEventListener('pointerdown', (e) => { sx = e.clientX; dragged = false; });
+    const onUp = (e) => {
+      if (sx === null) return;
+      const dx = e.clientX - sx; sx = null;
+      if (Math.abs(dx) > 40) { dragged = true; go(v + (dx < 0 ? 1 : -1)); setTimeout(() => { dragged = false; }, 0); }
+    };
+    // 크롬북·노트북 터치패드 좌우 스크롤 (작은 값을 모아서 한 칸씩), Shift+휠도
+    let acc = 0, lock = false, idle;
+    const onWheel = (e) => {
+      const dx = Math.abs(e.deltaX) >= Math.abs(e.deltaY) ? e.deltaX : (e.shiftKey ? e.deltaY : 0);
+      if (!dx) return;
+      e.preventDefault();
+      clearTimeout(idle); idle = setTimeout(() => { acc = 0; lock = false; }, 160);
+      if (lock) return;
+      acc += e.deltaMode === 1 ? dx * 16 : dx;
+      if (Math.abs(acc) >= 50) { go(v + (acc > 0 ? 1 : -1)); acc = 0; lock = true; }
+    };
+    const onResize = () => place(false);
+    document.addEventListener('keydown', onKey);
+    window.addEventListener('pointerup', onUp);
+    window.addEventListener('wheel', onWheel, { passive: false });
+    window.addEventListener('resize', onResize);
+    WT.leaveView = () => {
+      document.removeEventListener('keydown', onKey);
+      window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('wheel', onWheel);
+      window.removeEventListener('resize', onResize);
+    };
+    go(v, false);
+    // 글꼴이 늦게 들어오면 카드 위치가 바뀔 수 있어 한 번 더 맞춰요
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (track.isConnected) place(false); });
+  }
+
+  // ---------- 이번 주 많이 읽은 웹툰 (도서관에서 따로 뺀 랭킹) ----------
+  function whereIs(id) {
+    const trees = WT.data.trees || {};
+    const live = WT.liveGenres().map((g) => g.id);
+    const g = live.find((gid) => trees[gid] && trees[gid].nodes && trees[gid].nodes[id]);
+    if (g) return `#/tree/${g}/${id}`;
+    const w = WT.toon(id);
+    const lg = ((w && w.genres) || []).find((x) => live.includes(x)) || 'all';
+    return `#/library/${lg}/${id}`;
+  }
+  function viewTop() {
+    const S = WT.store.state;
+    app().innerHTML = `<div class="view">
+      <div class="topbar">
+        <div class="left">
+          <a href="#/" class="icon-btn press" aria-label="홈으로">${WT.icon.back}</a>
+          <div class="title-block"><h1 style="color:var(--coin)">이번 주 랭킹</h1><span class="sub">이번 주에 많이 읽은 웹툰 TOP 10</span></div>
+        </div>
+        ${WT.topRight()}
+      </div>
+      <div class="top-wrap"><section class="lib-rank-wrap" aria-labelledby="top-h">
+        <h3 id="top-h">이번 주 많이 읽은 웹툰</h3>
+        <div class="lib-rank" id="top-list"><p class="hint">불러오는 중…</p></div>
+      </section></div>
+    </div>`;
+    (async () => {
+      let list = [], note = '';
+      if (WT.api.on()) {
+        try {
+          const r = await WT.api.call('topWebtoons', {});
+          list = (r.top || []).filter((x) => WT.toon(x.id)).map((x) => ({ id: x.id, label: x.eps ? `${x.eps}화 읽음` : `${x.viewers}명이 봤어요` }));
+        } catch (e) { list = []; }
+      } else {
+        const p = S.progress || {};
+        list = Object.keys(p).filter((id) => WT.toon(id) && p[id] > 0).sort((a, b) => p[b] - p[a]).map((id) => ({ id, label: `${p[id]}화 읽음` }));
+        note = '<p class="hint">이 기기에서 읽은 기록이에요.</p>';
+      }
+      const box = document.getElementById('top-list');
+      if (!box) return;
+      list = list.slice(0, 10);
+      if (!list.length) { box.innerHTML = '<p class="hint">이번 주에는 아직 기록이 없어요. 첫 독자가 되어 보세요!</p>'; return; }
+      box.innerHTML = `<ol class="rank-shelf">${list.map((x, i) => {
+        const w = WT.toon(x.id);
+        const g = WT.genre((w.genres || [])[0]);
+        return `<li><a href="${whereIs(x.id)}" class="face press" style="--bc:${w.color || (g && g.color) || '#6A3F1A'}; animation-delay:${i * 0.05}s">
+            <span class="rank-no${i < 3 ? ' top' : ''}">${i + 1}</span>
+            <span class="face-cover">${w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}<b>${esc(w.title)}</b></span>
+            <span class="face-title">${esc(w.title)}</span>
+            <span class="face-sub">${esc(x.label)}</span>
+          </a></li>`;
+      }).join('')}</ol>${note}`;
+    })();
   }
 
   // ---------- 로그인 · 회원가입 ----------
@@ -400,7 +579,7 @@
   }
 
   // ---------- 주소 이동 ----------
-  WT.views = { home: viewHome, login: viewLogin };
+  WT.views = { home: viewHome, login: viewLogin, top: viewTop };
 
   /** 둘러보기는 이번 방문(탭)에서만: 사이트를 새로 열면 다시 로그인 화면부터 */
   const GUEST_KEY = 'webtoontree.guestVisit';

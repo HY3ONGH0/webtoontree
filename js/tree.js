@@ -235,10 +235,6 @@
               : tomes.length ? tomes.map((t, i) => tomeHTML(t, i)).join('')
               : ids.map((id) => `<div class="book-slot" role="listitem" data-wrap="${id}"></div>`).join('')}
           </div>
-          <section class="lib-rank-wrap" aria-labelledby="lib-rank-h">
-            <h3 id="lib-rank-h">이번 주 많이 읽은 웹툰</h3>
-            <div class="lib-rank" id="lib-rank"><p class="hint">불러오는 중…</p></div>
-          </section>
         </div>`;
     }
     // ---------- 마도서 (세부 장르) ----------
@@ -481,36 +477,6 @@
       draw();
       bg.querySelector('[data-x]').focus();
       loadRatings(t.ids).then(() => { if (document.body.contains(bg) && at < tocSpreads()) draw(); });
-    }
-
-    async function loadLibRank() {
-      const box = document.getElementById('lib-rank');
-      const pool = new Set(ids);
-      let list = [];
-      let note = '';
-      if (server) {
-        try {
-          const r = await WT.api.call('topWebtoons', {});
-          list = (r.top || []).filter((x) => pool.has(x.id)).map((x) => ({ id: x.id, label: x.eps ? `${x.eps}화 읽음` : `${x.viewers}명이 봤어요` }));
-        } catch (e) { list = []; }
-      } else {
-        // 서버 없이: 이 기기에서 많이 읽은 순서
-        list = ids.filter((id) => ep(id) > 0).sort((a, b) => ep(b) - ep(a)).map((id) => ({ id, label: `${ep(id)}화 읽음` }));
-        note = '<p class="hint">이 기기에서 읽은 기록이에요.</p>';
-      }
-      if (!document.body.contains(box)) return;
-      list = list.slice(0, 10);
-      if (!list.length) { box.innerHTML = '<p class="hint">이번 주에는 아직 기록이 없어요. 첫 독자가 되어 보세요!</p>'; return; }
-      box.innerHTML = `<ol class="rank-shelf">${list.map((x, i) => {
-        const w = WT.toon(x.id);
-        const h = hashN(x.id);
-        return `<li><button type="button" class="face press" data-pick="${x.id}" style="--bc:${w.color || LEATHER[(h >>> 11) % LEATHER.length]}; animation-delay:${i * 0.05}s">
-            <span class="rank-no${i < 3 ? ' top' : ''}">${i + 1}</span>
-            <span class="face-cover">${w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}<b>${esc(w.title)}</b></span>
-            <span class="face-title">${esc(w.title)}</span>
-            <span class="face-sub">${esc(x.label)}</span>
-          </button></li>`;
-      }).join('')}</ol>${note}`;
     }
 
     function nodeInner(id) {
@@ -1001,11 +967,6 @@
       if (b) select(b.dataset.node);
     });
     if (lib) {
-      document.getElementById('lib-rank').addEventListener('click', (e) => {
-        const b = e.target.closest('[data-pick]');
-        if (b) { select(b.dataset.pick); const el = stage.querySelector(`[data-node="${b.dataset.pick}"]`); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-      });
-      loadLibRank();
       if (WT.libDoors) { const d = WT.libDoors; WT.libDoors = null; requestAnimationFrame(() => { d.classList.add('opening'); setTimeout(() => d.remove(), 1100); }); }
     }
     slot.addEventListener('click', (e) => {
