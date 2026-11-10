@@ -142,6 +142,14 @@
 <rect x="70" y="170" width="60" height="62" rx="4" fill="#E8C66A"/><rect x="10" y="190" width="58" height="42" rx="4" fill="#B8C3E3"/><rect x="132" y="202" width="58" height="30" rx="4" fill="#C98A4A"/>
 <text x="100" y="212" text-anchor="middle" font-family="Black Han Sans, sans-serif" font-size="30" fill="#3A2A06">1</text><text x="39" y="220" text-anchor="middle" font-family="Black Han Sans, sans-serif" font-size="24" fill="#2A3150">2</text><text x="161" y="225" text-anchor="middle" font-family="Black Han Sans, sans-serif" font-size="20" fill="#3A1E06">3</text></svg></span>`
   };
+  /** 전체화면인지: 전체화면 버튼(Fullscreen API) 또는 F11 (브라우저 창이 화면을 꽉 채움) */
+  WT.checkFullscreen = function () {
+    const f = !!document.fullscreenElement
+      || (window.matchMedia && window.matchMedia('(display-mode: fullscreen)').matches)
+      || (window.innerHeight >= screen.height - 2 && window.innerWidth >= screen.width - 2);
+    document.body.classList.toggle('is-fs', f);
+    return f;
+  };
   let homeIndex = 0;   // 다른 화면에 다녀와도 보던 카드에서 다시 시작
 
   function viewHome() {
@@ -187,12 +195,20 @@
           <p class="hint" style="font-size:14px; margin:0">곧 장르별 웹툰 트리가 열려요. 조금만 기다려 주세요!</p></section>`}
         <div class="home-foot">
           <a href="#/map" class="pill pill-gold press">${WT.icon.map}전체 지도</a>
+          ${document.fullscreenEnabled ? `<button type="button" class="home-fs press" id="home-fs" aria-label="전체화면" title="전체화면">
+            <svg class="en" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+            <svg class="ex" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg></button>` : ''}
           ${N ? `<span class="home-nav"><span id="home-pos" aria-live="polite"></span>
             <button type="button" class="home-btn press" id="home-prev" aria-label="이전 카드"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>이전</button>
             <button type="button" class="home-btn press" id="home-next" aria-label="다음 카드">다음<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></span>` : ''}
         </div>
       </div>
     </div>`;
+    const fsBtn = document.getElementById('home-fs');
+    if (fsBtn) fsBtn.addEventListener('click', () => {
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+      else document.documentElement.requestFullscreen().catch(() => {});
+    });
     if (!N) return;
 
     const vp = document.getElementById('home-vp'), track = document.getElementById('home-track');
@@ -253,20 +269,36 @@
       acc += e.deltaMode === 1 ? dx * 16 : dx;
       if (Math.abs(acc) >= 50) { go(v + (acc > 0 ? 1 : -1)); acc = 0; lock = true; }
     };
-    const onResize = () => place(false);
+    // 남은 높이·너비에 맞춰 카드 크기(--s)를 정해요 (튀어나온 표지 + 카드 + 아래 점까지 들어가게)
+    const panel = app().querySelector('.home-panel');
+    const fit = () => {
+      WT.checkFullscreen();
+      const h = vp.clientHeight, w = vp.clientWidth;
+      // 높이: 튀어나온 표지~아래 점까지 약 600 · 너비: 넓은 화면에선 카드가 4장쯤 보이게
+      const byH = h / 600, byW = Math.min((w - 40) / 300, w / (308 * 4.2));
+      const sc = Math.max(0.55, Math.min(1.4, byH, Math.max(byW, Math.min(1, (w - 40) / 300))));
+      panel.style.setProperty('--s', sc.toFixed(3));
+      track.classList.add('fit');
+      place(false);
+      requestAnimationFrame(() => track.classList.remove('fit'));
+    };
+    const onResize = () => fit();
     document.addEventListener('keydown', onKey);
     window.addEventListener('pointerup', onUp);
     window.addEventListener('wheel', onWheel, { passive: false });
     window.addEventListener('resize', onResize);
+    document.addEventListener('fullscreenchange', onResize);
     WT.leaveView = () => {
+      document.removeEventListener('fullscreenchange', onResize);
       document.removeEventListener('keydown', onKey);
       window.removeEventListener('pointerup', onUp);
       window.removeEventListener('wheel', onWheel);
       window.removeEventListener('resize', onResize);
     };
+    fit();
     go(v, false);
     // 글꼴이 늦게 들어오면 카드 위치가 바뀔 수 있어 한 번 더 맞춰요
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (track.isConnected) place(false); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (track.isConnected) fit(); });
   }
 
   // ---------- 이번 주 많이 읽은 웹툰 (도서관에서 따로 뺀 랭킹) ----------
