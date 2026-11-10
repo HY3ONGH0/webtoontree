@@ -1,6 +1,46 @@
 {
   "webtoons": [
     {
+      "id": "w657564279ng",
+      "title": "고수",
+      "author": "류기훈, 문정후",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/596.html",
+      "cover": "https://i.namu.wiki/i/K6NQSKqbi37ZB9RTnSRFqvEgUa36NLmZxwv0J8OuzCVpT_57ta0O4DNi3-n80fLItv643bSUVnVS6s_AIPQg_hn-jbtEvdwGRETajeq2r-SkR_eGIbHZIhOykkuWpDZ-DR73GYXW7bPOi3cue_IMbg.webp",
+      "genres": [
+        "murim"
+      ],
+      "recommended": 4,
+      "color": "#d0dafb",
+      "episodes": 236,
+      "status": "completed",
+      "days": [],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [
+        "고전"
+      ],
+      "desc": "주인공 강룡이 스승을 배신한 배신자를 처단하기 위해 출두함. 그런데... 어라? 이미 죽어버렸네"
+    },
+    {
+      "id": "w657564278",
+      "title": "새 웹툰",
+      "author": "",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "",
+      "genres": [],
+      "recommended": 0,
+      "color": "",
+      "episodes": 1,
+      "status": "ongoing",
+      "days": [],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [],
+      "desc": ""
+    },
+    {
       "id": "w657568td",
       "title": "게임 속 바바리안으로 살아남기",
       "author": "팀 더 지크, MIDNIGHT STUDIO, 정윤강",
@@ -2592,12 +2632,21 @@
         "w054": [
           380,
           280
+        ],
+        "w657564279ng": [
+          790,
+          190
         ]
       },
       "links": [
         {
           "from": "w028",
           "to": "w054",
+          "why": ""
+        },
+        {
+          "from": "w054",
+          "to": "w657564279ng",
           "why": ""
         }
       ]
@@ -2756,7 +2805,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 6575641
+    "lastWebtoonId": 657564279
   },
   "version": 1,
   "shop": [
