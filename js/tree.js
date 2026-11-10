@@ -554,7 +554,7 @@
     const libOpen = () => !lib && (leaves.some(cleared) || !!S.unlocked['lib:' + gid]);
     // 도서관에서 장르 탭을 바꿀 땐 화면이 깜박이지 않게 등장 효과를 꺼요
     const noEnter = lib && Date.now() - (WT.libLeftAt || 0) < 1500;
-    document.getElementById('app').innerHTML = `<div class="view${lib ? ' lib-view' : ''}${noEnter ? ' no-enter' : ''}" style="--gc:${g.color}">
+    document.getElementById('app').innerHTML = `<div class="view${lib ? ' lib-view' : ' tree-view'}${noEnter ? ' no-enter' : ''}" style="--gc:${g.color}">
       <div class="topbar">
         <div class="left">
           <a href="${lib ? (gid === 'all' ? '#/' : `#/tree/${gid}`) : '#/'}" class="icon-btn press" aria-label="${lib ? '트리로 돌아가기' : '홈으로'}">${WT.icon.back}</a>
@@ -628,7 +628,7 @@
       const w = wrap.clientWidth || BW;
       const band = document.querySelector('.band');
       const availH = window.innerHeight - wrap.getBoundingClientRect().top - (band ? band.offsetHeight : 0) - 24 + window.scrollY;
-      const sc = Math.max(0.72, Math.min(1, w / SW, availH > 300 ? availH / BH : 1));
+      const sc = Math.max(0.6, Math.min(1, w / SW, availH > 300 ? availH / BH : 1));
       stage.style.transform = `scale(${sc})`;
       sizer.style.width = `${SW * sc}px`;
       sizer.style.height = `${BH * sc}px`;

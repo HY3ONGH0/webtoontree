@@ -1301,3 +1301,16 @@ html[data-theme="light"] .panel.toned .btn-gold { background: linear-gradient(18
 .panel-empty .key-list { gap: 12px 10px; }
 .panel-empty .key-list span { min-width: 0; }
 html[data-theme="light"] .key-dot .node-tag.tag-ongoing { background: #1D6FE8; color: #fff; }
+/* 트리 화면(넓은 화면): 페이지 전체가 화면 높이에 딱 맞고, 상세 창만 안에서 스크롤 */
+@media (min-width: 901px) {
+  .view.tree-view { height: 100vh; height: 100dvh; min-height: 0; overflow: hidden; }
+  .tree-view .tree-main.reserve { flex: 1 1 auto; min-height: 0; align-items: stretch; padding-bottom: 14px; }
+  .tree-view .tree-main.reserve > .stage-wrap { min-height: 0; }
+  .tree-view .tree-main.reserve > #panel-slot { position: relative; top: 0; min-height: 0; height: 100%; }
+  .tree-view .tree-main.reserve > #panel-slot .panel { height: 100%; max-height: 100%; }
+  .tree-view .tree-main.reserve > #panel-slot .panel.panel-empty { height: auto; max-height: 100%; }
+  .tree-view .band { flex: 0 0 auto; }
+}
+/* 트리 판: 가로 스크롤바는 숨기고(밀거나 끌어서는 그대로 옮길 수 있어요) */
+.stage-wrap.scrolls { scrollbar-width: none; }
+.stage-wrap.scrolls::-webkit-scrollbar { display: none; height: 0; }
