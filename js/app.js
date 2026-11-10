@@ -221,14 +221,14 @@
     app().innerHTML = `<div class="view home">
       <div class="home-panel">
         <div class="home-top">
-          <span class="home-logo"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="9" cy="30" r="4" fill="#E8C66A"/><circle cx="20" cy="12" r="5" fill="#FFE29A"/><circle cx="31" cy="26" r="4" fill="#E8C66A"/><path d="M9 30 L20 12 L31 26" fill="none" stroke="#E8C66A" stroke-width="1.6" opacity=".7"/></svg><h1>${esc(st.siteName)}</h1></span>
+          <span class="home-logo"><span class="au-mark" aria-hidden="true"><i></i><i></i><i></i></span><h1>${esc(st.siteName)}</h1></span>
           ${WT.topRight({ map: false })}
         </div>
         ${st.notice ? `<p class="notice">${esc(st.notice)}</p>` : ''}
         ${N ? `<div class="home-vp" id="home-vp"><div class="home-track" id="home-track">${
           Array.from({ length: COPIES }, (_, c) => items.map((it, k) => cardHTML(it, k, c === 2)).join('')).join('')}</div></div>`
         : `<section class="rpg" style="max-width:520px; margin:40px auto; padding:28px; text-align:center; display:flex; flex-direction:column; gap:10px"><span class="corner-b" aria-hidden="true"></span>
-          <h2 style="margin:0; font-family:var(--display); font-weight:400; font-size:24px">웹툰 별자리를 준비하고 있어요</h2>
+          <h2 style="margin:0; font-family:var(--display); font-weight:400; font-size:24px">장르별 웹툰 트리를 준비하고 있어요</h2>
           <p class="hint" style="font-size:14px; margin:0">곧 장르별 웹툰 트리가 열려요. 조금만 기다려 주세요!</p></section>`}
         <div class="home-foot">
           <a href="#/map" class="pill pill-gold press">${WT.icon.map}전체 지도</a>

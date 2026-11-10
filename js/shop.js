@@ -133,7 +133,7 @@
         <div class="topbar">
           <div class="left">
             <a href="#/" class="icon-btn press" aria-label="홈으로">${WT.icon.back}</a>
-            <div class="title-block"><h1 style="color:var(--coin)">랭킹</h1><span class="sub">누가 웹툰 별자리를 가장 많이 밝혔을까?</span></div>
+            <div class="title-block"><h1 style="color:var(--coin)">랭킹</h1><span class="sub">이번 주에 누가 웹툰을 가장 많이 봤을까?</span></div>
           </div>
           ${WT.topRight()}
         </div>
@@ -199,7 +199,7 @@
       <div class="topbar">
         <div class="left">
           <a href="#/" class="icon-btn press" aria-label="홈으로">${WT.icon.back}</a>
-          <div class="title-block"><h1 style="color:var(--coin)">랭킹</h1><span class="sub">누가 웹툰 별자리를 가장 많이 밝혔을까?</span></div>
+          <div class="title-block"><h1 style="color:var(--coin)">랭킹</h1><span class="sub">이번 주에 누가 웹툰을 가장 많이 봤을까?</span></div>
         </div>
         ${WT.topRight()}
       </div>

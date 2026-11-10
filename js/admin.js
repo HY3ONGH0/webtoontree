@@ -307,22 +307,12 @@
   }
   function genreForm(g) {
     const T = D.trees[g.id];
-    const shapeKey = Object.keys(SHAPES).find((k) => JSON.stringify(SHAPES[k].shape) === JSON.stringify(g.shape)) || 'custom';
     const confirming = ui.confirm === 'g:' + g.id;
-    const lines = g.shape.lines.map((pts) => `<polyline points="${pts.map((p) => p.join(',')).join(' ')}" fill="none" stroke="${g.color}" stroke-width="1.6"/>`).join('');
-    const stars = g.shape.stars.map((s) => `<circle cx="${s[0]}" cy="${s[1]}" r="${s[2]}" fill="${g.color}"/>`).join('');
     return `<section class="ad-form" aria-label="장르 수정">
-      <div style="display:flex; align-items:center; gap:14px"><svg viewBox="0 0 100 72" width="100" height="72" aria-hidden="true">${lines}${stars}</svg><div><b style="font-size:18px; color:${g.color}">${esc(g.name)}</b><div class="ad-help">ID: ${g.id}</div></div></div>
+      <div style="display:flex; align-items:center; gap:14px"><span aria-hidden="true" style="width:56px; height:62px; border-radius:12px; background:${g.color}; box-shadow:inset 0 -14px 20px rgba(0,0,0,.15)"></span><div><b style="font-size:18px; color:${g.color}">${esc(g.name)}</b><div class="ad-help">ID: ${g.id}</div></div></div>
       <div class="grid2">
         <div class="field"><label for="g-name">이름</label><input id="g-name" class="fld" data-gf="name" value="${esc(g.name)}" maxlength="12"></div>
-        <div class="field"><label for="g-con">별자리 이름</label><input id="g-con" class="fld" data-gf="constellation" value="${esc(g.constellation || '')}" placeholder="예: 왕관자리"></div>
-      </div>
-      <div class="grid2">
-        <div class="field"><label for="g-color">대표 색</label><input id="g-color" class="swatch" type="color" data-gf="color" value="${esc(g.color)}"></div>
-        <div class="field"><label for="g-shape">별자리 모양</label><select id="g-shape" class="fld" data-a-change="g-shape">
-          ${Object.keys(SHAPES).map((k) => `<option value="${k}" ${shapeKey === k ? 'selected' : ''}>${SHAPES[k].name}</option>`).join('')}
-          ${shapeKey === 'custom' ? '<option value="custom" selected>직접 만든 모양</option>' : ''}
-        </select></div>
+        <div class="field"><label for="g-color">대표 색 (홈 카드 색)</label><input id="g-color" class="swatch" type="color" data-gf="color" value="${esc(g.color)}"></div>
       </div>
       <div class="field"><label for="g-desc">한 줄 설명</label><input id="g-desc" class="fld" data-gf="desc" value="${esc(g.desc)}"></div>
       <div class="field"><label for="g-start">입문작 (트리의 시작 웹툰)</label><select id="g-start" class="fld" data-a-change="g-start">

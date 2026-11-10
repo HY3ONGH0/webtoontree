@@ -1,4 +1,4 @@
-/* 장르 트리 화면: 별자리 노드, 캐릭터 이동, 상세 창(감상 진행 · 별점 · 댓글), 잠금 해제 */
+/* 장르 트리 화면: 웹툰 노드, 캐릭터 이동, 상세 창(감상 진행 · 별점 · 댓글), 잠금 해제 */
 (function () {
   const esc = WT.esc;
   const STAGE_W = 1000, STAGE_H = 560;   // 기본 판 크기 (웹툰이 많으면 판이 옆으로 넓어져요: WT.treeWidth)
@@ -225,7 +225,7 @@
         .map(({ x, n }) => `<a href="#/library/${x.id}" class="lib-tab press" style="--gc:${x.color}" ${x.id === gid ? 'aria-current="page"' : ''}>${esc(x.name)} <small>${n}</small></a>`).join('');
       return `<div class="library" id="wrap">
           <header class="lib-sign">
-            <span class="lib-sign-quote">“별자리의 끝에서, 이제부터는 당신이 고르는 이야기”</span>
+            <span class="lib-sign-quote">“트리의 끝에서, 이제부터는 내가 고르는 이야기”</span>
             <h2>${esc(g.name)} 도서관</h2>
             <span class="lib-sign-sub">트리에 없는 웹툰 ${ids.length}권 · ${tomes.length ? '마도서를 누르면 펼쳐져요' : '책등을 누르면 정보를 볼 수 있어요'}</span>
           </header>
@@ -551,7 +551,7 @@
           <div class="title-block">
             <div style="display:flex; align-items:baseline; gap:10px; flex-wrap:wrap">
               <h1 style="color:${g.color}">${esc(g.name)}${lib ? ' 도서관' : ''}</h1>
-              <span class="sub">${lib ? '트리 끝에서 만나는, 마음 가는 대로 골라 보는 웹툰' : `${esc(g.constellation || '')} · ${esc(g.desc)}`}</span>
+              <span class="sub">${lib ? '트리 끝에서 만나는, 마음 가는 대로 골라 보는 웹툰' : esc(g.desc || '')}</span>
             </div>
             <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
               <div class="progress" role="progressbar" aria-label="장르 진행률" aria-valuemin="0" aria-valuemax="${ids.length}" aria-valuenow="${c0.d}"><div id="prog-bar" style="width:${c0.d / (ids.length || 1) * 100}%"></div></div>
