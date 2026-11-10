@@ -1,6 +1,75 @@
 {
   "webtoons": [
     {
+      "id": "w657565nh",
+      "title": "사시미 한 자루로 아카데미를 씹어먹음",
+      "author": "GMAN,탕아후루",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/16209.html",
+      "cover": "https://i.namu.wiki/i/9wA4wN2q6P9jt0xqQ0ZxgRJDXe75_C327h-g4fktbUJ0qZEzdbf7Y4m-X93gDIh_ZZr8unKoxCuZqIw0HoGi1vHW02uoE_Y_wxfxR1sbo7SBQ9-hAWL2dnFTismgInzKF5zXhFO8VcaB_NoXSEuF3g.webp",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": 2,
+      "color": "#9ba50e",
+      "episodes": 97,
+      "status": "ongoing",
+      "days": [
+        "thu"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [
+        "판타지",
+        "게임",
+        "상태창",
+        "이능력",
+        "빙의",
+        "먼치킨",
+        "하렘",
+        "소설원작"
+      ],
+      "desc": "‘베면 잘릴 것입니다.’\n\n전국 최고의 칼잡이라고 불리던 내가\n과금 몇 번 해본 모바일 게임에 떨어졌다.\n무려 '검신(劍神)의 가호'를 부여받고⋯!\n\n그런데⋯ 사용할 수 있는 무장이 고작 사시미뿐이라고?\n하루에 단 1분. 나는 사시미로 검성이 된다.\n",
+      "subs": [
+        "fantasy-1",
+        "fantasy-4",
+        "fantasy-6"
+      ]
+    },
+    {
+      "id": "w6575641i",
+      "title": "인간천적",
+      "author": "도국",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/18457.html",
+      "cover": "https://i.namu.wiki/i/Om8HYOyQr12I3y6t6JP6qRRQ9kdJYSuiV5n3ednu_zUZkngGMXlCH2chSHv5HAvJg1uRuNhezbsLn37TwzOX4Dp5aBSm2-Gv1aIjEY7-QGDJHXowNSsDhgQrRkxvStjD9NPhHLCnK1oTDeXbO2ILmA.webp",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": 0,
+      "color": "#5c0701",
+      "episodes": 68,
+      "status": "ongoing",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [
+        "판타지",
+        "액션",
+        "로맨스",
+        "이능력"
+      ],
+      "desc": "최강의 킬러로 불리던 ‘칼토끼’는 은퇴 후, 요리사 ‘고야’라는 이름으로 조용한 삶을 살아간다.\n어느 날, 그는 자신의 레스토랑에 찾아온 소녀 ‘진서누’에게서 말로 설명할 수 없는 황홀한 향기를 느낀다.\n그리고 그녀를 뒤쫓아 나타난 건, 과거의 동료이자 킬러들, ‘천적’.\n임무를 완수하려는 천적들과, 그 향기를 독차지하고 싶은 요리사 고야.\n소녀를 둘러싼 욕망과 본능이 뒤엉키기 시작한다.",
+      "pick": true,
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
       "id": "w657563ik",
       "title": "히어로 킬러",
       "author": "꿀벌, 벌꿀",
@@ -38,9 +107,9 @@
     {
       "id": "w657562i",
       "title": "나 혼자 만렙 뉴비",
-      "author": "",
+      "author": "WAN.Z, 스윙뱃",
       "platform": "네이버웹툰",
-      "url": "WAN.Z, 스윙뱃",
+      "url": "",
       "cover": "https://i.namu.wiki/i/ZJrmz5IdnBKJtxMukuGl_Yx95zxHg_dMzwaXgjEY0x7tOcWAJKpu8Ph2Yc859FHEYbCGj46Io1fe3k1eKS1R7umJpM1kWm23G0DhvHaLhffQbfc3MbYVDDNfS7MKbTawNndHQre_ZvmPgS9VuUc9sQ.webp",
       "genres": [
         "fantasy"
@@ -2586,7 +2655,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657563
+    "lastWebtoonId": 657565
   },
   "version": 1,
   "shop": [
