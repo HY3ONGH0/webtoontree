@@ -416,7 +416,7 @@
         ? `<span class="node-tag tag-ongoing two" aria-hidden="true">연재 중<small>${esc(days)}</small></span>`
         : `<span class="node-tag tag-${stName}" aria-hidden="true">${esc(WT.schedule.STATUS_KO[stName])}</span>`;
       return `<div class="node-box${st === 'locked' ? ' is-locked' : ''}${w.pick ? ' is-pick' : ''}" style="--sz:${sz}px">
-          ${w.pick ? '<span class="pick-glow" aria-hidden="true"></span><span class="pick-ring" aria-hidden="true"></span>' : ''}
+          ${w.pick ? '<span class="pick-glow" aria-hidden="true"></span><span class="pick-orbit" aria-hidden="true"></span><span class="pick-ring" aria-hidden="true"></span>' : ''}
           ${hot ? fireHTML(sz) : ''}
           ${st !== 'locked' ? `<span class="ring" style="--sz:${sz}px; --pct:${pct(id)}%"></span>` : ''}
           <button type="button" class="node st-${st}${hot ? ' is-hot' : ''}${sel === id ? ' is-sel' : ''}" style="--sz:${sz}px" data-node="${id}"
