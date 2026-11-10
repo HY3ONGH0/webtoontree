@@ -75,19 +75,26 @@
       (G.extra = G.extra || []).push(w.id);
       used.add(w.id);
     });
+    const compact = {};
     groups.forEach((G) => {
-      if (G.extra) {
-        const ys = G.members.map((m) => m.p[1]);
-        const baseY = ys.length ? Math.max(...ys) + GAP_Y : 0;
-        const per = Math.max(3, Math.min(5, Math.ceil(Math.sqrt(G.extra.length + G.members.length))));
-        G.extra.forEach((id, i) => {
-          const row = Math.floor(i / per), col = i % per;
-          const inRow = Math.min(per, G.extra.length - row * per);
-          G.members.push({ id, p: [(col - (inRow - 1) / 2) * GAP_X, baseY + row * GAP_Y] });
-        });
-      }
       const pts = G.members.map((m) => m.p);
       relax(pts);
+      if (G.extra) {
+        // 트리에 없는 웹툰(도서관 웹툰): 원을 살짝 겹쳐 무리 아래에 한 줄로 (자리를 덜 차지해요)
+        const ys = G.members.map((m) => m.p[1]);
+        const xs2 = G.members.map((m) => m.p[0]);
+        const baseY = ys.length ? Math.max(...ys) + 110 : 0;
+        const cx = xs2.length ? (Math.min(...xs2) + Math.max(...xs2)) / 2 : 0;
+        const STEP = 38, PER = 14;
+        G.extra.forEach((id, i) => {
+          const row = Math.floor(i / PER), col = i % PER;
+          const inRow = Math.min(PER, G.extra.length - row * PER);
+          const p = [cx + (col - (inRow - 1) / 2) * STEP, baseY + row * 62];
+          G.members.push({ id, p });
+          pts.push(p);
+          compact[id] = true;
+        });
+      }
       // 무리 크기 (가운데를 0,0 으로)
       if (!pts.length) pts.push([0, 0]);
       const x0 = Math.min(...pts.map((p) => p[0])), x1 = Math.max(...pts.map((p) => p[0]));
@@ -175,7 +182,7 @@
     (M.links || []).forEach(([a, b]) => add(a, b));
     Object.values(data.trees || {}).forEach((T) => (T.links || []).forEach((l) => add(l.from, l.to)));
 
-    return { nodes: pos, links, auto, groupOf, regions, shift: [sx, sy], width: Math.round(W), height: Math.round(H) };
+    return { nodes: pos, links, auto, groupOf, compact, regions, shift: [sx, sy], width: Math.round(W), height: Math.round(H) };
   }
 
   /** 장르 트리 판 너비: 기본 1000, 웹툰이 오른쪽으로 더 있으면 그만큼 넓혀요 */

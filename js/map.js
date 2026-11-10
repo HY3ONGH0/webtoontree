@@ -35,7 +35,8 @@
       const [x, y] = L.nodes[id];
       const [c1, c2] = colorOf(w);
       const done = (S.progress[id] || 0) >= WT.eps(w);
-      return `<div class="mnode-wrap" style="left:${x - 90}px; top:${y - 34}px">
+      const cp = L.compact && L.compact[id];   // 트리에 없는 웹툰: 작게, 원을 겹쳐 줄지어 (이름은 올리면 보여요)
+      return `<div class="mnode-wrap${cp ? ' compact' : ''}" style="left:${x - 90}px; top:${y - (cp ? 26 : 34)}px; ${cp ? `z-index:${10 + Math.round(x / 40)}` : ''}">
         <button type="button" class="mnode" data-id="${id}" style="--c1:${c1}; --c2:${c2}" aria-label="${esc(w.title)}${done ? ', 완독' : ''}">${w.cover ? `<img class="mcover" src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" draggable="false" onerror="this.nextElementSibling.hidden = false; this.remove()">` : ''}<span ${w.cover ? 'hidden' : ''}>${esc(w.title[0])}</span></button>
         <span>${esc(w.title)}${done ? ' ✓' : ''}</span>
       </div>`;

@@ -3,7 +3,7 @@
      다른 사이트 이미지는 브라우저가 픽셀을 못 읽게 막아서, 막히면 이미지 중계 서비스(images.weserv.nl)를 거쳐 읽어요.
    - palette(hex): 그 색으로 상세 창 배경·테두리·강조색을 만들어요. 글자가 잘 보이게 어둡고 차분하게 바꿔요. */
 (function () {
-  const CACHE_KEY = 'webtoontree.coverColors';
+  const CACHE_KEY = 'webtoontree.coverColors.v2';   // 색 뽑는 방식이 바뀌면 이름을 바꿔 새로 뽑아요
   let cache = {};
   try { cache = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}'); } catch (e) { cache = {}; }
   const saveCache = () => { try { localStorage.setItem(CACHE_KEY, JSON.stringify(cache)); } catch (e) { /* 무시 */ } };
@@ -34,30 +34,55 @@
   }
   const hex = (r, g, b) => '#' + [r, g, b].map((v) => Math.round(v).toString(16).padStart(2, '0')).join('');
 
-  /** 픽셀에서 대표 색 고르기: 너무 밝거나 어두운 부분은 빼고, 채도 높은 색상 묶음 중 가장 큰 쪽 */
+  /**
+   * 픽셀에서 대표 색 고르기: 표지에서 가장 넓은 면적을 차지하는 색
+   * - 비슷한 색끼리 묶어요 (색 공간을 16단계로 나눠 4096칸)
+   * - 가장 픽셀이 많은 칸의 실제 평균 색을 써요
+   * - 그 칸이 거의 흰색·검은색(여백·배경)이고, 비슷하게 넓은 '색 있는' 칸이 있으면 그쪽을 써요
+   */
   function dominant(data) {
-    const buckets = Array.from({ length: 12 }, () => ({ w: 0, r: 0, g: 0, b: 0 }));
-    let all = { n: 0, r: 0, g: 0, b: 0 };
+    const bins = new Map();
+    let total = 0;
     for (let i = 0; i < data.length; i += 4) {
-      const r = data[i], g = data[i + 1], b = data[i + 2], a = data[i + 3];
-      if (a < 128) continue;
-      all.n++; all.r += r; all.g += g; all.b += b;
-      const [h, s, l] = rgbToHsl(r, g, b);
-      if (s < 0.18 || l < 0.12 || l > 0.9) continue;
-      const w = s * (1 - Math.abs(l - 0.5) * 1.4);
-      const bk = buckets[Math.floor(h / 30) % 12];
-      bk.w += w; bk.r += r * w; bk.g += g * w; bk.b += b * w;
+      if (data[i + 3] < 128) continue;
+      const r = data[i], g = data[i + 1], b = data[i + 2];
+      const key = ((r >> 4) << 8) | ((g >> 4) << 4) | (b >> 4);
+      let x = bins.get(key);
+      if (!x) { x = { n: 0, r: 0, g: 0, b: 0 }; bins.set(key, x); }
+      x.n++; x.r += r; x.g += g; x.b += b;
+      total++;
     }
-    const best = buckets.reduce((m, x) => (x.w > m.w ? x : m), { w: 0 });
-    if (best.w > 2) return hex(best.r / best.w, best.g / best.w, best.b / best.w);
-    if (all.n) return hex(all.r / all.n, all.g / all.n, all.b / all.n);
-    return null;
+    if (!total) return null;
+    // 이웃 칸까지 합쳐 '넓이'를 세요 (그라데이션으로 퍼진 같은 색을 한 덩어리로)
+    const list = Array.from(bins.entries()).map(([key, x]) => ({ key, x }));
+    list.forEach((it) => {
+      const r = it.key >> 8, g = (it.key >> 4) & 15, b = it.key & 15;
+      let area = 0;
+      for (let dr = -1; dr <= 1; dr++) for (let dg = -1; dg <= 1; dg++) for (let db = -1; db <= 1; db++) {
+        const nr = r + dr, ng = g + dg, nb = b + db;
+        if (nr < 0 || ng < 0 || nb < 0 || nr > 15 || ng > 15 || nb > 15) continue;
+        const y = bins.get((nr << 8) | (ng << 4) | nb);
+        if (y) area += y.n * (dr || dg || db ? 0.5 : 1);
+      }
+      it.area = area;
+      const c = it.x;
+      it.hsl = rgbToHsl(c.r / c.n, c.g / c.n, c.b / c.n);
+    });
+    list.sort((a, b) => b.area - a.area);
+    const plain = (it) => it.hsl[1] < 0.12 || it.hsl[2] < 0.07 || it.hsl[2] > 0.95;
+    let best = list[0];
+    if (plain(best)) {
+      const colorful = list.find((it) => !plain(it));
+      if (colorful && colorful.area >= best.area * 0.45) best = colorful;
+    }
+    const c = best.x;
+    return hex(c.r / c.n, c.g / c.n, c.b / c.n);
   }
 
   async function readColor(src) {
     const img = await loadImage(src);
     const c = document.createElement('canvas');
-    const k = Math.min(1, 48 / Math.max(img.naturalWidth || 48, img.naturalHeight || 48));
+    const k = Math.min(1, 72 / Math.max(img.naturalWidth || 72, img.naturalHeight || 72));
     c.width = Math.max(1, Math.round((img.naturalWidth || 48) * k));
     c.height = Math.max(1, Math.round((img.naturalHeight || 48) * k));
     const ctx = c.getContext('2d', { willReadFrequently: true });
@@ -72,7 +97,7 @@
     let color = null;
     try { color = await readColor(url); } catch (e) { color = null; }
     if (!color && /^https?:\/\//.test(url)) {
-      try { color = await readColor(`https://images.weserv.nl/?url=${encodeURIComponent(url)}&w=48&h=48&fit=inside&output=png`); } catch (e) { color = null; }
+      try { color = await readColor(`https://images.weserv.nl/?url=${encodeURIComponent(url)}&w=72&h=72&fit=inside&output=png`); } catch (e) { color = null; }
     }
     if (color) { cache[url] = color; saveCache(); }
     return color;

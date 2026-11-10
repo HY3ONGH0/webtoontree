@@ -880,3 +880,19 @@ body.no-anim .pick-ring, body.no-anim .pick-glow, body.no-anim .pick-orbit, body
 .g-toc-r { flex: 0 0 auto; font-size: 12px; font-weight: 700; color: #B8781A; white-space: nowrap; }
 .g-host .panel.rpg::before, .g-host .panel.rpg::after { display: none; }
 .g-host .panel { color: var(--text, #EAF0FF); }
+
+/* 도서관 장르 탭을 바꿀 땐 깜박임 없이 */
+.view.no-enter, .view.no-enter .library, .view.no-enter .tome, .view.no-enter .face, .view.no-enter .stage-anim { animation: none !important; }
+/* 책 안의 상세 창: 작은 화면의 아래 시트 모양을 쓰지 않아요 (두 번 보이던 문제) */
+.g-host .panel { position: static !important; left: auto; right: auto; bottom: auto; max-height: none !important; overflow: visible !important; z-index: auto !important; border-radius: 0 !important; }
+.g-host .panel .panel-head::before { display: none; }
+.grim-bg { overscroll-behavior: contain; touch-action: pan-y; }
+.g-host, .grim-book { overscroll-behavior: contain; }
+
+/* 전체 지도: 트리에 없는 웹툰은 작은 원을 겹쳐 한 줄로 */
+.mnode-wrap.compact { gap: 2px; pointer-events: none; }
+.mnode-wrap.compact .mnode { pointer-events: auto; width: 52px; height: 52px; font-size: 20px; border-width: 2px; box-shadow: -4px 0 8px rgba(0, 0, 0, 0.55), 0 0 10px var(--c2); }
+.mnode-wrap.compact > span { opacity: 0; transform: translateY(-4px); transition: opacity .15s ease, transform .15s ease; font-size: 13px; padding: 2px 8px; border-radius: 6px; background: rgba(7, 11, 26, 0.9); }
+.mnode-wrap.compact:hover, .mnode-wrap.compact:focus-within { z-index: 999 !important; }
+.mnode-wrap.compact:hover .mnode, .mnode-wrap.compact:focus-within .mnode { transform: translateY(-8px) scale(1.15); }
+.mnode-wrap.compact:hover > span, .mnode-wrap.compact:focus-within > span { opacity: 1; transform: none; }

@@ -305,6 +305,9 @@
       let at = 0;   // 펼친 쪽 번호 (0 = 첫 목차 펼침)
       const bg = document.createElement('div');
       bg.className = 'grim-bg';
+      // 책을 펴 둔 동안 뒤 화면은 스크롤되지 않아요
+      const prevOverflow = [document.documentElement.style.overflow, document.body.style.overflow];
+      document.documentElement.style.overflow = 'hidden'; document.body.style.overflow = 'hidden';
       bg.setAttribute('role', 'dialog');
       bg.setAttribute('aria-modal', 'true');
       bg.setAttribute('aria-label', `${t.name} 마도서`);
@@ -435,6 +438,7 @@
         document.removeEventListener('keydown', onKeyG, true);
         parkSlot();
         if (!then && sel) { sel = null; renderPanel(false); refreshNodes(); history.replaceState(null, '', `#/${BASE}/${gid}`); }
+        document.documentElement.style.overflow = prevOverflow[0]; document.body.style.overflow = prevOverflow[1];
         bg.classList.add('closing');
         setTimeout(() => { bg.remove(); if (then) then(); else { const b = stage.querySelector(`[data-tome="${CSS.escape(tid)}"]`); if (b) b.focus(); } }, 280);
       };
@@ -561,7 +565,9 @@
 
     const c0 = counts();
     const libOpen = () => !lib && (leaves.some(isDone) || !!S.unlocked['lib:' + gid]);
-    document.getElementById('app').innerHTML = `<div class="view${lib ? ' lib-view' : ''}" style="--gc:${g.color}">
+    // 도서관에서 장르 탭을 바꿀 땐 화면이 깜박이지 않게 등장 효과를 꺼요
+    const noEnter = lib && Date.now() - (WT.libLeftAt || 0) < 1500;
+    document.getElementById('app').innerHTML = `<div class="view${lib ? ' lib-view' : ''}${noEnter ? ' no-enter' : ''}" style="--gc:${g.color}">
       <div class="topbar">
         <div class="left">
           <a href="${lib ? (gid === 'all' ? '#/' : `#/tree/${gid}`) : '#/'}" class="icon-btn press" aria-label="${lib ? '트리로 돌아가기' : '홈으로'}">${WT.icon.back}</a>
@@ -1122,6 +1128,7 @@
     const onResize = () => fit();
     window.addEventListener('resize', onResize);
     WT.leaveView = () => {
+      if (lib) WT.libLeftAt = Date.now();
       window.removeEventListener('resize', onResize);
       document.removeEventListener('keydown', onKey);
       WT.onHashChange = null;

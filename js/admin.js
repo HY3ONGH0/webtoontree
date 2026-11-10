@@ -148,8 +148,13 @@
 
   // ---------- 틀 ----------
   const TABS = [['webtoons', '웹툰 목록'], ['genres', '장르 관리'], ['tree', '트리 편집'], ['map', '전체 지도 편집'], ['settings', '디자인 · 코인 설정'], ['shop', '상점 아이템'], ['server', '회원 · 댓글 · 제보'], ['data', '데이터 내보내기']];
+  let lastTab = null;
   function render() {
     const scrollY = window.scrollY;
+    // 스크롤이 칸마다 따로라서, 다시 그려도 각 칸의 스크롤 위치를 지켜요 (탭을 바꾸면 처음부터)
+    const keep = { tab: lastTab, main: 0, nav: 0, lists: [] };
+    const q = (sel) => root().querySelector(sel);
+    if (q('.ad-main')) { keep.main = q('.ad-main').scrollTop; keep.nav = q('.ad-nav').scrollTop; keep.lists = Array.from(root().querySelectorAll('.items-box, .ad-list')).map((x) => x.scrollTop); }
     root().innerHTML = `<header class="ad-head">
         <div class="brand"><b>웹툰트리</b><span class="ad-tag">관리자</span></div>
         <span id="ad-state" class="ad-state" aria-live="polite"></span>
@@ -169,6 +174,14 @@
       </div>`;
     setState();
     liveBadge();
+    const head = q('.ad-head');
+    if (head) document.documentElement.style.setProperty('--adh', `${head.offsetHeight}px`);
+    q('.ad-nav').scrollTop = keep.nav;
+    if (keep.tab === ui.tab) {
+      q('.ad-main').scrollTop = keep.main;
+      root().querySelectorAll('.items-box, .ad-list').forEach((x, i) => { if (keep.lists[i]) x.scrollTop = keep.lists[i]; });
+    }
+    lastTab = ui.tab;
     if (ui.tab === 'tree') mountTree();
     if (ui.tab === 'map') mountMap();
     window.scrollTo(0, scrollY);
@@ -187,6 +200,7 @@
           <button type="button" class="btn btn-gold press" data-a="new-w">+ 새 웹툰</button>
           <label class="sr" for="w-q">웹툰 검색</label>
           <input id="w-q" class="fld" type="search" placeholder="제목, 작가 검색" value="${esc(ui.q)}">
+          <button type="button" class="btn btn-sm press" data-a="recolor-all" title="표지에서 가장 넓게 차지하는 색으로 모든 웹툰의 상세 창 색을 다시 정해요">${ui.recolor ? `표지 색 뽑는 중… ${ui.recolor}` : '표지 색 모두 다시 뽑기'}</button>
           <label class="sr" for="w-fg">장르로 거르기</label>
           <select id="w-fg" class="fld">
             <option value="all">모든 장르</option>
@@ -1099,6 +1113,23 @@
         ui.w = null; ui.g = null; ui.tsel = null; ui.msel = null;
         toast('사이트 데이터로 되돌렸어요'); render();
       } break;
+      case 'recolor-all': {
+        if (ui.recolor) break;
+        const list = D.webtoons.filter((x) => x.cover);
+        let done = 0, fail = 0;
+        ui.recolor = `0/${list.length}`; render();
+        (async () => {
+          for (const x of list) {
+            const c = await WT.color.extract(x.cover);
+            if (c) x.color = c; else fail++;
+            done++; ui.recolor = `${done}/${list.length}`;
+            const b = root().querySelector('[data-a="recolor-all"]'); if (b) b.textContent = `표지 색 뽑는 중… ${ui.recolor}`;
+          }
+          ui.recolor = null; saveDraft(); render();
+          toast(fail ? `${list.length - fail}개 색을 다시 뽑았어요. ${fail}개는 표지를 읽지 못했어요` : `${list.length}개 웹툰 색을 다시 뽑았어요. 바로 저장하면 사이트에 반영돼요`);
+        })();
+        break;
+      }
       case 'w-color': { const w = toon(id); w.color = ''; autoColor(w, true); break; }
       case 'srv-logout': srv.pw = ''; srv.token = ''; srv.ok = false; srv.owner = false; srv.users = srv.comments = srv.reports = null; try { sessionStorage.removeItem('webtoontree.adminpw'); } catch (e) { /* 무시 */ } toast('관리자에서 나왔어요'); render(); break;
       case 'srv-connect': { const f = document.getElementById('srv-pw'); if (f) srv.pw = f.value; srvLoad(); break; }
@@ -1150,6 +1181,7 @@
   // =================== 함께 편집 (실시간) ===================
   // 데이터를 작은 조각(웹툰 하나, 트리 위치 하나, 설정 하나…)으로 나눠 바뀐 조각만 주고받아요.
   // 같은 조각을 동시에 고치면 나중에 고친 사람 것이 남아요.
+  let composing = false;   // 한국어 입력 조합 중
   const live = { on: false, ver: 0, base: 0, shadow: null, busy: false, timer: null, soon: null, who: [], err: '', queued: [], drag: false, lastNote: 0 };
   function units(d) {
     const u = {};
@@ -1381,6 +1413,8 @@
 
   function onInput(e) {
     const el = e.target;
+    // 한국어처럼 글자를 조합하는 중에는 화면을 다시 그리지 않아요 (그리면 조합이 끊겨요). 조합이 끝나면(compositionend) 반영해요
+    if ((el.id === 'w-q' || el.id === 'b-q') && (e.isComposing || composing)) { if (el.id === 'w-q') ui.q = el.value; else ui.bq = el.value; return; }
     if (el.id === 'w-q') { ui.q = el.value; const pos = el.selectionStart; render(); const n = document.getElementById('w-q'); n.focus(); n.setSelectionRange(pos, pos); return; }
     if (el.id === 'b-q') { ui.bq = el.value; const pos = el.selectionStart; render(); const n = document.getElementById('b-q'); n.focus(); n.setSelectionRange(pos, pos); return; }
     if (el.dataset.wf && el.type !== 'checkbox') {
@@ -1486,6 +1520,8 @@
     if (draft && Array.isArray(draft.webtoons)) { D = draft; ensure(); setBase(savedBase || siteHash); } else setBase(siteHash);
     root().addEventListener('click', onClick);
     root().addEventListener('input', onInput);
+    root().addEventListener('compositionstart', () => { composing = true; });
+    root().addEventListener('compositionend', (e) => { composing = false; onInput(e); });
     root().addEventListener('change', onChange);
     if (location.hash === '#server' && (srv.pw || srv.token) && (D.settings.apiUrl || '').trim()) {
       ui.tab = 'server';
