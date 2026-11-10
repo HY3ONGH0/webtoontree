@@ -97,9 +97,21 @@
       <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
     </button>`;
   };
+  // 바꿀 때 화면이 부드럽게 넘어가도록 (움직임 줄이기 설정이면 바로 바꿔요)
+  WT.switchTheme = function () {
+    const next = WT.theme() === 'light' ? 'dark' : 'light';
+    const calm = document.body.classList.contains('no-anim') || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    if (calm) { WT.setTheme(next); return; }
+    if (document.startViewTransition) { document.startViewTransition(() => WT.setTheme(next)); return; }
+    const html = document.documentElement;
+    html.classList.add('theme-fade');
+    WT.setTheme(next);
+    clearTimeout(WT._fadeT);
+    WT._fadeT = setTimeout(() => html.classList.remove('theme-fade'), 800);
+  };
   document.addEventListener('click', (e) => {
     const b = e.target.closest && e.target.closest('[data-theme-toggle]');
-    if (b) WT.setTheme(WT.theme() === 'light' ? 'dark' : 'light');
+    if (b) WT.switchTheme();
   });
 
   WT.topRight = function (opts) {
