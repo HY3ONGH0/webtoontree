@@ -1,6 +1,28 @@
 {
   "webtoons": [
     {
+      "id": "w657564280k5",
+      "title": "비뢰도",
+      "author": "스토리: 오주, 작화: Awin",
+      "platform": "카카오페이지",
+      "url": "https://blacktoon427.com/webtoon/3579.html",
+      "cover": "https://i.namu.wiki/i/TipKtzoQSkpM0-qj8GKYQ-DVljuvWeCxcn5xF6B_1fPiW_CHz5DeHv-pzWhm2Xng8unpTFZYYZz8WgnaS6C_6iII4S-7oNxcyihckbrLzSL_1sxitoul8hWypC5rMQaHUtso5k0YATWNhAKIlpDdvw.webp",
+      "genres": [
+        "murim"
+      ],
+      "recommended": 3,
+      "color": "#fdd654",
+      "episodes": 220,
+      "status": "hiatus",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [],
+      "desc": ""
+    },
+    {
       "id": "w657564279ng",
       "title": "고수",
       "author": "류기훈, 문정후",
@@ -2634,16 +2656,20 @@
           280
         ],
         "w054": [
-          400,
-          160
+          330,
+          120
         ],
         "w657564279ng": [
-          830,
-          260
+          820,
+          250
         ],
         "w657564278": [
-          490,
-          360
+          390,
+          300
+        ],
+        "w657564280k5": [
+          290,
+          460
         ]
       },
       "links": [
@@ -2665,6 +2691,11 @@
         {
           "from": "w054",
           "to": "w657564279ng",
+          "why": ""
+        },
+        {
+          "from": "w028",
+          "to": "w657564280k5",
           "why": ""
         }
       ]
@@ -2823,7 +2854,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564279
+    "lastWebtoonId": 657564280
   },
   "version": 1,
   "shop": [
