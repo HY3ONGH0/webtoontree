@@ -401,75 +401,100 @@
     })();
   }
 
+  // ---------- 로그인 화면 틀: 왼쪽 입력 · 오른쪽 입문작 표지가 일정한 간격으로 넘어가요 ----------
+  const AU_EYE = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>';
+  const auField = (id, label, o = {}) => `<div class="au-field"><label for="${id}">${label}</label><div class="au-input"><input id="${id}" type="${o.pw ? 'password' : 'text'}"${o.max ? ` maxlength="${o.max}"` : ''}${o.ac ? ` autocomplete="${o.ac}"` : ''} autocapitalize="off" spellcheck="false" placeholder="${o.ph || ''}"${o.desc ? ` aria-describedby="${id}-h"` : ''}>${o.pw ? `<button type="button" class="au-eye" data-eye="${id}" aria-label="비밀번호 보기">${AU_EYE}</button>` : ''}</div>${o.hint ? `<span class="au-hint" id="${id}-h">${o.hint}</span>` : ''}</div>`;
+  function authShell(paneHTML) {
+    const st = WT.settings();
+    const covers = WT.liveGenres().map((g) => {
+      const w = WT.toon(WT.data.trees[g.id].start);
+      return w ? { title: w.title, cover: w.cover || '', tone: w.color || (WT.color && WT.color.cached(w.cover)) || shade(g.color, 0.5), glow: g.color } : null;
+    }).filter(Boolean);
+    app().innerHTML = `<div class="view au-view"><main class="au-shell">
+      <section class="au-form-side">
+        <div class="au-top"><span class="au-brand"><span class="au-mark" aria-hidden="true"><i></i><i></i><i></i></span><b>${esc(st.siteName)}</b></span>${WT.themeBtn()}</div>
+        <div class="au-form-wrap" id="au-pane">${paneHTML}</div>
+        <div class="au-foot">© ${esc(st.siteName)} · 제작 김형호, 신효제, 이유섭</div>
+      </section>
+      ${covers.length ? `<section class="au-art" aria-label="장르별 입문작 표지" id="au-art">
+        <div class="au-vp" id="au-vp"><div class="au-track" id="au-track">${Array.from({ length: 5 }, (_, c) => covers.map((x, i) => {
+          const base = /^#[0-9a-f]{6}$/i.test(x.tone) ? x.tone : '#5A4A8A';
+          return `<div class="au-cv" style="--a:${shade(base, 1.25)}; --b:${shade(base, 0.45)}; --r:${i % 2 ? 3 : -3}deg"${c === 2 ? ` title="${esc(x.title)}"` : ' aria-hidden="true"'}>${x.cover ? `<img src="${esc(x.cover)}" alt="${c === 2 ? esc(x.title) + ' 표지' : ''}" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}<b>${esc(x.title)}</b></div>`;
+        }).join('')).join('')}</div></div>
+        <div class="au-dots" id="au-dots" aria-hidden="true">${covers.map(() => '<i></i>').join('')}</div>
+        <div class="au-cap"><h2>처음 보기 좋은 웹툰부터</h2><p>장르마다 고른 입문작으로 가볍게 시작해 보세요.</p></div>
+      </section>` : ''}
+    </main></div>`;
+    if (!covers.length) return;
+    // 표지: 3초마다 한 장씩 끝없이 (마우스를 올리면 멈춰요)
+    const N = covers.length, vp = document.getElementById('au-vp'), track = document.getElementById('au-track'), art = document.getElementById('au-art');
+    const cards = [...track.children], dots = [...document.getElementById('au-dots').children];
+    const mod = (x) => ((x % N) + N) % N;
+    let v = 2 * N;
+    const place = (anim) => {
+      const c = cards[v];
+      track.classList.toggle('fit', !anim);
+      track.style.transform = `translateX(${vp.clientWidth / 2 - (c.offsetLeft + c.offsetWidth / 2)}px)`;
+      if (!anim) { void track.offsetWidth; track.classList.remove('fit'); }
+    };
+    const go = (k) => {
+      if (k < N || k >= 4 * N) { const base = 2 * N + mod(v); k = base + (k - v); cards[v].classList.remove('on'); v = base; place(false); cards[v].classList.add('on'); }
+      v = k; place(true);
+      cards.forEach((c, n) => c.classList.toggle('on', n === v));
+      dots.forEach((d, n) => d.classList.toggle('on', n === mod(v)));
+      art.style.setProperty('--glow', covers[mod(v)].glow);
+    };
+    const fit = () => { if (!vp.clientWidth) return; track.style.setProperty('--w', Math.max(150, Math.min(250, vp.clientWidth * 0.36)).toFixed(0) + 'px'); place(false); };
+    let timer = null;
+    const calm = document.body.classList.contains('no-anim') || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const restart = () => { clearInterval(timer); if (!calm) timer = setInterval(() => go(v + 1), 3000); };
+    cards.forEach((c, n) => c.addEventListener('click', () => { go(n); restart(); }));
+    vp.addEventListener('mouseenter', () => clearInterval(timer));
+    vp.addEventListener('mouseleave', restart);
+    window.addEventListener('resize', fit);
+    WT.leaveView = () => { clearInterval(timer); window.removeEventListener('resize', fit); };
+    fit(); go(v); restart();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (track.isConnected) place(false); });
+  }
+  // 비밀번호 보기 (한 번만 걸어 둬요)
+  document.addEventListener('click', (e) => {
+    const ey = e.target.closest && e.target.closest('[data-eye]');
+    if (!ey) return;
+    const i = document.getElementById(ey.dataset.eye);
+    if (!i) return;
+    i.type = i.type === 'password' ? 'text' : 'password';
+    ey.setAttribute('aria-label', i.type === 'password' ? '비밀번호 보기' : '비밀번호 숨기기');
+  });
+  const auSwap = (html) => { const el = document.getElementById('au-pane'); if (el) el.innerHTML = html; };
+
   // ---------- 로그인 · 회원가입 ----------
   function viewLogin() {
     const s = WT.store.state;
     if (WT.api.on()) return s.profile && s.token ? viewAccountMe() : viewAccount();
     if (s.profile) return viewMe();
-    let tab = 'start';
-    let enter = true;   // 처음 그릴 때만 등장 애니메이션 (탭을 바꿀 땐 안 해요)
-    const draw = () => {
-      app().innerHTML = `<div class="view"><div class="login-theme">${WT.themeBtn()}</div><div class="login${enter ? ' login-enter' : ''}">${enter ? '<span class="shoot" aria-hidden="true"></span>' : ''}
-        <section class="intro">
-          <svg viewBox="0 0 300 150" width="300" height="150" aria-hidden="true" style="max-width:100%">
-            <polyline points="20,120 70,70 120,95 170,40 220,60 280,20" fill="none" stroke="#E8C66A" stroke-width="2"/>
-            <circle cx="20" cy="120" r="9" fill="#5BB8FF"/><circle class="tw" cx="70" cy="70" r="8" fill="#FF7EB6"/>
-            <circle cx="120" cy="95" r="8" fill="#FF9A4D"/><circle class="tw" cx="170" cy="40" r="8" fill="#A97BFF"/>
-            <circle cx="220" cy="60" r="8" fill="#6BE3A4"/><circle class="tw" cx="280" cy="20" r="6" fill="#2A3A6A" stroke="#9AA6C8" stroke-width="2"/>
-          </svg>
-          <h1>${esc(WT.settings().siteName)}</h1>
-          <p>나만의 닉네임으로 웹툰 별자리를 하나씩 밝히고,<br>본 웹툰에 별점과 한 줄 감상을 남겨 보세요.</p>
-        </section>
-        <section class="card rpg" aria-label="시작하기"><span class="corner-b" aria-hidden="true"></span>
-          <div class="tabs2" role="tablist" aria-label="시작 방법">
-            <button type="button" role="tab" aria-selected="${tab === 'start'}" data-tab="start">닉네임으로 시작</button>
-            <button type="button" role="tab" aria-selected="${tab === 'account'}" data-tab="account">로그인 · 회원가입</button>
-          </div>
-          ${tab === 'start' ? `<form class="pane" id="start-form" novalidate>
-            <div class="field">
-              <label for="nick" style="color:var(--gold); font-weight:700">닉네임</label>
-              <input id="nick" class="fld" maxlength="10" placeholder="별점·댓글에 표시될 이름" aria-describedby="nick-help">
-              <span id="nick-help" class="hint">2~10자 · 한글, 영어, 숫자. 지금은 이 기기에만 저장돼요.</span>
-              <p class="err" id="nick-err" role="alert" hidden></p>
-            </div>
-            <button type="submit" class="btn btn-gold press" style="min-height:52px; font-size:17px">시작하기</button>
-          </form>` : `<div class="pane">
-            <div class="soon"><p class="warn">아이디·비밀번호 회원 기능은 준비 중이에요. 열리면 다른 기기에서도 기록을 이어 볼 수 있어요. 그 전까지는 "닉네임으로 시작"을 써 주세요.</p></div>
-            <div class="field"><label for="lid">아이디</label><input id="lid" class="fld" disabled></div>
-            <div class="field"><label for="lpw">비밀번호</label><input id="lpw" class="fld" type="password" disabled></div>
-            <button type="button" class="btn press" disabled>로그인 (준비 중)</button>
-          </div>`}
-          <div class="or">또는</div>
-          <button type="button" class="btn press" id="guest-btn">로그인 없이 둘러보기</button>
-          <span class="hint" style="text-align:center">둘러보기 중에는 캐릭터·코인·별점·댓글을 쓸 수 없어요</span>
-        </section>
-      </div></div>`;
-      enter = false;
-      app().querySelectorAll('[data-tab]').forEach((b) => b.addEventListener('click', () => { tab = b.dataset.tab; draw(); }));
-      const form = document.getElementById('start-form');
-      if (form) form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const v = document.getElementById('nick').value.trim();
-        const err = document.getElementById('nick-err');
-        if (!/^[가-힣a-zA-Z0-9]{2,10}$/.test(v)) {
-          err.hidden = false;
-          err.textContent = '닉네임은 2~10자의 한글, 영어, 숫자로 정해 주세요.';
-          return;
-        }
-        s.profile = { nick: v };
-        s.guest = false;
-        if (!s.coins) s.coins = WT.settings().coins.startCoins || 0;
-        WT.store.save();
-        WT.toast(`${v} 님, 환영해요!`);
-        location.hash = '#/';
-      });
-      document.getElementById('guest-btn').addEventListener('click', () => {
-        s.guest = true; markGuest();
-        WT.store.save();
-        location.hash = '#/';
-      });
-    };
-    draw();
+    // 서버 없이 쓰는 모드: 닉네임만 정하면 이 기기에 기록돼요
+    authShell(`<form class="au-pane" id="start-form" novalidate>
+        <h1>반가워요!</h1>
+        <p class="au-lead">닉네임을 정하면 바로 시작할 수 있어요.</p>
+        ${auField('nick', '닉네임', { max: 10, ph: '별점·댓글에 표시될 이름', hint: '2~10자 · 한글, 영어, 숫자. 지금은 이 기기에만 저장돼요.', desc: true })}
+        <p class="au-err" id="nick-err" role="alert" hidden></p>
+        <button type="submit" class="au-btn au-main">시작하기</button>
+        <button type="button" class="au-btn au-sub" id="guest-btn">로그인 없이 둘러보기</button>
+        <p class="au-note">둘러보기 중에는 캐릭터·코인·별점·댓글을 쓸 수 없어요</p>
+      </form>`);
+    document.getElementById('start-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const v = document.getElementById('nick').value.trim();
+      const err = document.getElementById('nick-err');
+      if (!/^[가-힣a-zA-Z0-9]{2,10}$/.test(v)) { err.hidden = false; err.textContent = '닉네임은 2~10자의 한글, 영어, 숫자로 정해 주세요.'; return; }
+      s.profile = { nick: v };
+      s.guest = false;
+      if (!s.coins) s.coins = WT.settings().coins.startCoins || 0;
+      WT.store.save();
+      WT.toast(`${v} 님, 환영해요!`);
+      location.hash = '#/';
+    });
+    document.getElementById('guest-btn').addEventListener('click', () => { s.guest = true; markGuest(); WT.store.save(); location.hash = '#/'; });
   }
 
   function viewMe() {
@@ -510,57 +535,41 @@
   // ---------- 서버 모드: 아이디·비밀번호 로그인 / 회원가입 ----------
   function viewAccount() {
     const s = WT.store.state;
+    const PANES = {
+      login: `<form class="au-pane" id="acc-form" novalidate>
+          <h1>다시 오신 걸 환영해요</h1>
+          <p class="au-lead">아이디와 비밀번호를 입력해 주세요.</p>
+          ${auField('l-id', '아이디', { ac: 'username', ph: '아이디를 입력해 주세요' })}
+          ${auField('l-pw', '비밀번호', { pw: true, ac: 'current-password', ph: '••••••••' })}
+          <p class="au-err" id="acc-err" role="alert" hidden></p>
+          <button type="submit" class="au-btn au-main">로그인</button>
+          <button type="button" class="au-btn au-sub" id="guest-btn">로그인 없이 둘러보기</button>
+          <p class="au-switch">아직 계정이 없나요? <button type="button" data-tab="signup">회원가입</button></p>
+        </form>`,
+      signup: `<form class="au-pane" id="acc-form" novalidate>
+          <h1>${esc(WT.settings().siteName)} 시작하기</h1>
+          <p class="au-lead">계정을 만들면 어느 기기에서든 이어 볼 수 있어요.</p>
+          ${auField('s-nick', '닉네임', { max: 10, ph: '별점·댓글에 표시될 이름', hint: '2~10자 · 한글, 영어, 숫자 · 다른 사람과 겹칠 수 없어요', desc: true })}
+          ${auField('s-id', '아이디', { max: 16, ac: 'username', ph: '영어 소문자·숫자 4~16자', hint: '가입 후 바꿀 수 없어요', desc: true })}
+          <div class="au-row2">${auField('s-pw', '비밀번호', { pw: true, ac: 'new-password', ph: '8자 이상' })}${auField('s-pw2', '비밀번호 확인', { pw: true, ac: 'new-password', ph: '한 번 더' })}</div>
+          <p class="au-hint" style="margin:-6px 0 12px">다른 사이트에서 쓰는 비밀번호는 사용하지 마세요.</p>
+          <details class="au-terms"><summary>[필수] 개인정보 수집·이용 안내 보기</summary>
+            <p>· 모으는 것: 아이디, 닉네임, 비밀번호(암호화해서 저장)<br>· 쓰는 곳: 로그인, 별점·댓글 표시, 감상 진행·코인 저장<br>· 보관 기간: 탈퇴할 때까지 (탈퇴하면 바로 삭제)<br>· 댓글은 다른 사용자에게 닉네임과 함께 공개돼요.</p></details>
+          <label class="au-check"><input type="checkbox" id="s-agree"> 개인정보 수집·이용 안내를 읽고 동의합니다</label>
+          <p class="au-err" id="acc-err" role="alert" hidden></p>
+          <button type="submit" class="au-btn au-main">가입하고 시작하기</button>
+          <p class="au-switch">이미 계정이 있나요? <button type="button" data-tab="login">로그인</button></p>
+        </form>`
+    };
     let tab = 'login';
-    let enter = true;
-    const draw = () => {
-      app().innerHTML = `<div class="view"><div class="login-theme">${WT.themeBtn()}</div><div class="login${enter ? ' login-enter' : ''}">${enter ? '<span class="shoot" aria-hidden="true"></span>' : ''}
-        <section class="intro">
-          <svg viewBox="0 0 300 150" width="300" height="150" aria-hidden="true" style="max-width:100%">
-            <polyline points="20,120 70,70 120,95 170,40 220,60 280,20" fill="none" stroke="#E8C66A" stroke-width="2"/>
-            <circle cx="20" cy="120" r="9" fill="#5BB8FF"/><circle class="tw" cx="70" cy="70" r="8" fill="#FF7EB6"/>
-            <circle cx="120" cy="95" r="8" fill="#FF9A4D"/><circle class="tw" cx="170" cy="40" r="8" fill="#A97BFF"/>
-            <circle cx="220" cy="60" r="8" fill="#6BE3A4"/><circle class="tw" cx="280" cy="20" r="6" fill="#2A3A6A" stroke="#9AA6C8" stroke-width="2"/>
-          </svg>
-          <h1>${esc(WT.settings().siteName)}</h1>
-          <p>나만의 닉네임으로 웹툰 별자리를 하나씩 밝히고,<br>본 웹툰에 별점과 한 줄 감상을 남겨 보세요.</p>
-        </section>
-        <section class="card rpg" aria-label="계정"><span class="corner-b" aria-hidden="true"></span>
-          <div class="tabs2" role="tablist" aria-label="로그인 또는 회원가입">
-            <button type="button" role="tab" aria-selected="${tab === 'login'}" data-tab="login">로그인</button>
-            <button type="button" role="tab" aria-selected="${tab === 'signup'}" data-tab="signup">회원가입</button>
-          </div>
-          ${tab === 'login' ? `<form class="pane" id="acc-form" novalidate>
-            <div class="field"><label for="l-id">아이디</label><input id="l-id" class="fld" autocomplete="username" autocapitalize="off"></div>
-            <div class="field"><label for="l-pw">비밀번호</label><input id="l-pw" class="fld" type="password" autocomplete="current-password"></div>
-            <p class="err" id="acc-err" role="alert" hidden></p>
-            <button type="submit" class="btn btn-gold press" style="min-height:52px; font-size:17px">로그인</button>
-          </form>` : `<form class="pane" id="acc-form" novalidate>
-            <div class="field"><label for="s-nick" style="color:var(--gold); font-weight:700">닉네임</label><input id="s-nick" class="fld" maxlength="10" placeholder="별점·댓글에 표시될 이름"><span class="hint">2~10자 · 한글, 영어, 숫자 · 다른 사람과 겹칠 수 없어요</span></div>
-            <div class="field"><label for="s-id">아이디</label><input id="s-id" class="fld" maxlength="16" autocomplete="username" autocapitalize="off"><span class="hint">영어 소문자·숫자 4~16자 · 가입 후 바꿀 수 없어요</span></div>
-            <div style="display:flex; gap:10px; flex-wrap:wrap">
-              <div class="field" style="flex:1 1 150px"><label for="s-pw">비밀번호</label><input id="s-pw" class="fld" type="password" autocomplete="new-password"></div>
-              <div class="field" style="flex:1 1 150px"><label for="s-pw2">비밀번호 확인</label><input id="s-pw2" class="fld" type="password" autocomplete="new-password"></div>
-            </div>
-            <p class="warn" style="font-size:12px">8자 이상 · 다른 사이트에서 쓰는 비밀번호는 사용하지 마세요.</p>
-            <div class="soon" style="border-style:solid; border-color:rgba(255,255,255,0.15); background:rgba(0,0,0,0.25)">
-              <p class="hint" style="margin:0; font-size:12px; line-height:1.7; color:var(--soft)"><b style="color:var(--text)">[필수] 개인정보 수집·이용 동의</b><br>
-              · 모으는 것: 아이디, 닉네임, 비밀번호(암호화해서 저장)<br>
-              · 쓰는 곳: 로그인, 별점·댓글 표시, 감상 진행·코인 저장<br>
-              · 보관 기간: 탈퇴할 때까지 (탈퇴하면 바로 삭제)<br>
-              · 댓글은 다른 사용자에게 닉네임과 함께 공개돼요.</p>
-            </div>
-            <label style="display:flex; align-items:center; gap:8px; font-size:14px; min-height:36px"><input type="checkbox" id="s-agree" style="width:18px; height:18px; accent-color:var(--gold)"> 위 내용을 읽고 동의합니다</label>
-            <p class="err" id="acc-err" role="alert" hidden></p>
-            <button type="submit" class="btn btn-gold press" style="min-height:52px; font-size:17px">가입하고 시작하기</button>
-          </form>`}
-          <div class="or">또는</div>
-          <button type="button" class="btn press" id="guest-btn">로그인 없이 둘러보기</button>
-          <span class="hint" style="text-align:center">둘러보기 중에는 캐릭터·코인·별점·댓글을 쓸 수 없어요</span>
-        </section>
-      </div></div>`;
-      enter = false;
-      app().querySelectorAll('[data-tab]').forEach((b) => b.addEventListener('click', () => { tab = b.dataset.tab; draw(); }));
-      document.getElementById('guest-btn').addEventListener('click', () => { s.guest = true; markGuest(); WT.store.save(); location.hash = '#/'; });
+    authShell(PANES.login);
+    const bind = () => {
+      const guest = document.getElementById('guest-btn');
+      if (guest) guest.addEventListener('click', () => { s.guest = true; markGuest(); WT.store.save(); location.hash = '#/'; });
+      document.querySelectorAll('#au-pane [data-tab]').forEach((b) => b.addEventListener('click', () => {
+        tab = b.dataset.tab; auSwap(PANES[tab]); bind();
+        const first = document.querySelector('#au-pane input'); if (first) first.focus();
+      }));
       const form = document.getElementById('acc-form');
       const err = document.getElementById('acc-err');
       const showErr = (m) => { err.hidden = false; err.textContent = m; };
@@ -601,7 +610,7 @@
         }
       });
     };
-    draw();
+    bind();
   }
 
   function viewAccountMe() {
