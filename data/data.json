@@ -24,21 +24,25 @@
     },
     {
       "id": "w657564278",
-      "title": "새 웹툰",
-      "author": "",
+      "title": "태존비록",
+      "author": "각색: 김꿀빨 작화: 레드훅",
       "platform": "네이버웹툰",
-      "url": "",
-      "cover": "",
-      "genres": [],
-      "recommended": 0,
-      "color": "",
-      "episodes": 1,
+      "url": "https://blacktoon427.com/webtoon/18444.html",
+      "cover": "https://i.namu.wiki/i/uLTgull33F38KicloTEaXr9-cZkuf8CJz1XUVEOEk-MlqJGnla7UV3vjEni1puPHqSxf0mXHWg_SyhY3zV1NnaACIan0yI5_ZcbTAeeIrKOP_NCCwTxHoWXL3M2b6pjx21Tgo7Kmbh7Q-lUjPy3fIQ.webp",
+      "genres": [
+        "murim"
+      ],
+      "recommended": 3,
+      "color": "#e5c474",
+      "episodes": 68,
       "status": "ongoing",
-      "days": [],
+      "days": [
+        "sun"
+      ],
       "autoCount": true,
       "baseDate": "2026-11-10",
       "tags": [],
-      "desc": ""
+      "desc": "화산귀환 소설 작가의 다른 작품"
     },
     {
       "id": "w657568td",
@@ -2630,12 +2634,16 @@
           280
         ],
         "w054": [
-          380,
-          280
+          400,
+          160
         ],
         "w657564279ng": [
-          790,
-          190
+          710,
+          200
+        ],
+        "w657564278": [
+          570,
+          340
         ]
       },
       "links": [
@@ -2646,6 +2654,11 @@
         },
         {
           "from": "w054",
+          "to": "w657564278",
+          "why": ""
+        },
+        {
+          "from": "w657564278",
           "to": "w657564279ng",
           "why": ""
         }
