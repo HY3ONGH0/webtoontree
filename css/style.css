@@ -1152,3 +1152,92 @@ html[data-theme="light"] .au-cv.on { box-shadow: 0 26px 50px rgba(20, 30, 60, .3
 .au-cap p { margin: 0; font-size: 14px; color: var(--au-muted); line-height: 1.6; }
 @media (max-width: 900px) { .au-shell { grid-template-columns: 1fr; min-height: 0; } .au-art { display: none; } }
 @media (max-width: 420px) { .au-row2 { grid-template-columns: 1fr; gap: 0; } .au-pane h1 { font-size: 28px; } }
+
+/* ================= 트리 화면 개선: 상세 칸 자리 확보 · 노드 표시 자리 정리 · 큰 원 ================= */
+.tree-main.reserve { display: grid; grid-template-columns: minmax(0, 1fr) clamp(320px, 26vw, 390px); align-items: start; }
+.tree-main.reserve > #panel-slot { position: sticky; top: 12px; min-width: 0; }
+.tree-main.reserve > #panel-slot .panel { max-width: none; width: 100%; max-height: calc(100vh - 150px); overflow-y: auto; }
+.tree-main.reserve .panel.anim { animation: panelFade .3s ease-out both; }
+@keyframes panelFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.panel-empty h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: 22px; color: var(--gold-hi); }
+.key-list { display: grid; grid-template-columns: 64px 1fr; gap: 14px 12px; align-items: center; font-size: 13px; color: var(--soft); line-height: 1.5; }
+.key-list b { display: block; color: var(--text); font-size: 14px; }
+.key-dot { position: relative; justify-self: center; width: 46px; height: 46px; border-radius: 50%; border: 3px solid #fff; background: radial-gradient(circle at 35% 30%, #ffffff55, var(--gc) 45%, #0B1A45 100%); }
+.key-dot .pick-badge.on-node { top: -11px; font-size: 10px; padding: 1px 5px; }
+.key-dot .badge-done, .key-dot .badge-lock { width: 22px; height: 22px; right: -6px; bottom: -6px; border-width: 2px; }
+.key-dot .node-tag { position: absolute; left: 62%; top: 8px; font-size: 10px; padding: 0 5px; }
+
+/* 노드 묶음 */
+.node-wrap { width: 170px; gap: 7px; }
+.node-label { max-width: 166px; font-size: 14.5px; font-weight: 800; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.node-label.after-pick { margin-top: 0; }
+.node-box + .node-label { margin-top: 6px; }
+.node-meta { display: flex; gap: 6px; align-items: center; font-size: 12px; font-weight: 800; color: var(--muted); text-shadow: 0 0 4px var(--bg); margin-top: -3px; }
+.node-meta .nm-stars { color: var(--coin); letter-spacing: 1px; }
+.node-meta .nm-read { color: var(--coin); }
+.badge-rec { display: none; }
+/* 테두리: 볼 수 있음 = 흰 테 + 바깥으로 얇은 물결 · 다 봄 = 금빛 · 잠김 = 흐린 점선 */
+.node.st-open { animation: none; border: 4px solid rgba(255, 255, 255, .9); }
+.fx-ripple { position: absolute; z-index: 0; inset: -3px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .5); pointer-events: none; animation: fxRipple 2.8s ease-out infinite; }
+.fx-ripple.two { animation-delay: 1.4s; }
+@keyframes fxRipple { from { transform: scale(1); opacity: .75; } to { transform: scale(1.3); opacity: 0; } }
+.node.st-done { border: 4px solid var(--gold); box-shadow: 0 0 0 1px rgba(255, 226, 154, .5), 0 0 24px rgba(232, 198, 106, .6); }
+.node.st-reading { border: 4px solid rgba(255, 255, 255, .3); }
+.ring { left: -9px; top: -9px; width: calc(var(--sz) + 18px); height: calc(var(--sz) + 18px); }
+.node.st-locked { border: 3px dashed rgba(154, 166, 200, .6); background: #141C3A; box-shadow: none; }
+.node.st-locked .cover { filter: grayscale(1) brightness(.55); }
+.node.is-sel { outline: 3px solid #fff; outline-offset: 7px; animation: selIn .35s cubic-bezier(.2, .9, .3, 1.4); }
+@keyframes selIn { from { outline-offset: 16px; outline-color: rgba(255, 255, 255, 0); } }
+/* 오른쪽 아래: 다 봄(금색 체크) · 잠김(자물쇠) */
+.badge-done, .badge-lock { position: absolute; z-index: 4; right: -2px; bottom: -2px; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid var(--bg); pointer-events: none; }
+.badge-done { background: linear-gradient(180deg, #FFE29A, #D9A53A); box-shadow: 0 0 12px rgba(232, 198, 106, .8); animation: doneGlint 3s ease-in-out infinite; }
+.badge-done svg { width: 60%; height: 60%; }
+.badge-lock { background: #2A3456; }
+.badge-lock svg { width: 58%; height: 58%; }
+@keyframes doneGlint { 50% { box-shadow: 0 0 20px rgba(255, 226, 154, 1); } }
+.lock-in { display: none; }
+/* 왼쪽 위: 새 화 N */
+.badge-new { left: 2px; top: 2px; width: 26px; height: 26px; }
+/* 위 가운데: 관리자 강추 · 입문작 */
+.pick-badge.on-node { top: -14px; bottom: auto; }
+.start-flag { position: absolute; z-index: 4; left: 50%; top: -13px; transform: translateX(-50%); padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 900; color: #1A1405; background: linear-gradient(180deg, #FFE29A, #E8C66A); white-space: nowrap; box-shadow: 0 2px 6px rgba(0, 0, 0, .45); pointer-events: none; }
+/* 오른쪽: 연재 상태 (연재 중 = 파랑) */
+.node-box > .node-tag { left: calc(var(--sz) * .84); top: calc(var(--sz) * .26); font-size: 12px; font-weight: 900; padding: 1px 9px; border: 0; box-shadow: 0 2px 6px rgba(0, 0, 0, .45); }
+.node-box > .node-tag.two { padding: 2px 9px 3px; border-radius: 9px; }
+.node-box > .node-tag.tag-ongoing, .key-dot .node-tag.tag-ongoing { background: #2F86FF; color: #fff; }
+.node-box > .node-tag.tag-ongoing small { color: #fff; opacity: .92; font-weight: 800; }
+.node-box > .node-tag.tag-hiatus { background: #FF9A4D; color: #2A1405; }
+.node-box > .node-tag.tag-completed { background: #2A3456; color: #D5DCF2; box-shadow: 0 0 0 1px rgba(255, 255, 255, .18), 0 2px 6px rgba(0, 0, 0, .45); }
+html[data-theme="light"] .node-box > .node-tag.tag-ongoing { background: #2F86FF; color: #fff; }
+html[data-theme="light"] .node-box > .node-tag.tag-hiatus { background: #FF9A4D; color: #2A1405; }
+html[data-theme="light"] .node-box > .node-tag.tag-completed { background: #2A3456; color: #EAF0FF; }
+html[data-theme="light"] .badge-done, html[data-theme="light"] .badge-lock { border-color: #EEF3FC; }
+html[data-theme="light"] .badge-lock { background: #8A93A8; }
+html[data-theme="light"] .node.st-locked { border-color: rgba(90, 104, 140, .5); }
+html[data-theme="light"] .fx-ripple { border-color: rgba(60, 80, 130, .45); }
+html[data-theme="light"] .node.st-open { border-color: #fff; box-shadow: 0 0 0 1px rgba(60, 80, 130, .25), 0 4px 14px rgba(30, 50, 110, .18); }
+
+/* 관리자 강추 이펙트 (조금 더 강하게, 그러나 매끈하게)
+   ① 빨강→금 빛 띠 두 개가 원 둘레를 빠르게 돌고 ② 바깥 금빛 점선 궤도가 반대로 천천히 돌고 ③ 붉은 빛이 숨 쉬듯 퍼지고 ④ 표시에 빛이 스쳐요 */
+.pick-ring { z-index: 1; left: -10px; top: -10px; width: calc(var(--sz) + 20px); height: calc(var(--sz) + 20px);
+  background: conic-gradient(from 0deg, rgba(255, 40, 40, 0) 0deg, #FF1F2E 50deg, #FFB43A 105deg, #FFF0B0 120deg, rgba(255, 40, 40, 0) 165deg, rgba(255, 40, 40, 0) 180deg, #FF1F2E 230deg, #FFB43A 285deg, #FFF0B0 300deg, rgba(255, 40, 40, 0) 345deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 5px)); mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 5px));
+  filter: drop-shadow(0 0 6px rgba(255, 60, 40, 1)) drop-shadow(0 0 2px rgba(255, 220, 120, .9)); animation: pickSpin 2.6s linear infinite; }
+.pick-orbit { left: -20px; top: -20px; width: calc(var(--sz) + 40px); height: calc(var(--sz) + 40px); border: 2px dashed rgba(255, 210, 110, .85); filter: drop-shadow(0 0 4px rgba(255, 120, 40, .8)); animation: pickSpin 12s linear infinite reverse; }
+.pick-glow { left: -26px; top: -26px; width: calc(var(--sz) + 52px); height: calc(var(--sz) + 52px);
+  background: radial-gradient(circle, rgba(255, 40, 40, 0) 42%, rgba(255, 50, 40, .7) 56%, rgba(255, 150, 40, 0) 72%); animation: pickBreath 2.2s ease-in-out infinite; }
+@keyframes pickBreath { 0%, 100% { transform: scale(.94); opacity: .55; } 50% { transform: scale(1.08); opacity: 1; } }
+.node-box.is-pick .node { box-shadow: 0 0 0 2px rgba(255, 60, 50, .95), 0 0 26px rgba(255, 50, 40, .75); }
+.node-box.is-pick .node.st-done { border-color: var(--gold); }
+.node-box.is-pick.is-locked .pick-ring { opacity: .75; } .node-box.is-pick.is-locked .pick-glow { opacity: .5; animation: none; }
+.pick-badge.on-node { font-size: 12px; padding: 2px 8px; animation: pickBadge 2.2s ease-in-out infinite; }
+.pick-badge.on-node::after { animation: pickShine 2.8s ease-in-out infinite; }
+body.no-anim .fx-ripple, body.no-anim .badge-done { animation: none; }
+@media (prefers-reduced-motion: reduce) { .fx-ripple, .pick-ring, .pick-orbit, .pick-glow, .pick-badge.on-node, .pick-badge.on-node::after, .badge-done { animation: none !important; } }
+
+@media (max-width: 900px) {
+  .tree-main.reserve { display: flex; }
+  .tree-main.reserve > #panel-slot { position: static; }
+  .tree-main.reserve > #panel-slot .panel { max-height: 52vh; }
+  .panel-empty { display: none !important; }
+}
