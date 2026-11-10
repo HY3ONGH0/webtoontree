@@ -323,7 +323,7 @@ body.no-anim .sky { display: none; }
 .badge-done { background: var(--gold); box-shadow: 0 0 10px rgba(232, 198, 106, 0.8); }
 .badge-rec { position: absolute; z-index: 2; left: -14px; top: -16px; width: 40px; height: 40px; animation: starTw 2.4s ease-in-out infinite; pointer-events: none; }
 .badge-rec svg { width: 100%; height: 100%; display: block; }
-.node-label { font-size: 14px; font-weight: 700; text-align: center; color: #fff; text-shadow: 0 1px 4px #000; }
+.node-label { position: relative; z-index: 2; font-size: 14px; font-weight: 700; text-align: center; color: #fff; text-shadow: 0 0 3px #070B1A, 0 0 6px #070B1A, 0 0 10px #070B1A, 0 1px 4px #000; }
 .node-label.dim { color: #7F8BB0; }
 .node-sub { font-size: 12px; font-weight: 700; color: var(--muted); }
 .node-sub.reading { color: var(--coin); }

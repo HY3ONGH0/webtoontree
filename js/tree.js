@@ -12,6 +12,51 @@
   }
   WT.libraryBooks = libraryBooks;
 
+  /**
+   * 화면에 그릴 때만: 웹툰끼리(원 + 위 표시 + 아래 제목) 겹치면 살짝 떨어뜨려요.
+   * 관리자가 정한 위치 데이터는 그대로예요. 위아래로 판을 넘치면 옆으로 비켜요.
+   */
+  function spread(T0) {
+    const P = {};
+    Object.keys(T0.nodes || {}).forEach((id) => { P[id] = T0.nodes[id].slice(); });
+    const ids = Object.keys(P);
+    const rOf = (id) => (id === T0.start ? 108 : 86) / 2;
+    const foot = (id) => { const [x, y] = P[id]; const r = rOf(id); return [x - 74, y - r - 16, x + 74, y + r + 48]; };
+    const GAP = 10;
+    const maxY = (id) => STAGE_H - rOf(id) - 52;   // 아래 제목이 판 밖으로 잘리지 않게
+    const minY = (id) => rOf(id) + 30;              // 위 표시·캐릭터 자리
+    ids.forEach((id) => { P[id][1] = Math.max(minY(id), Math.min(maxY(id), P[id][1])); });
+    for (let it = 0; it < 200; it++) {
+      let moved = false;
+      for (let i = 0; i < ids.length; i++) {
+        for (let j = i + 1; j < ids.length; j++) {
+          const A = foot(ids[i]), B = foot(ids[j]);
+          const ox = Math.min(A[2], B[2]) - Math.max(A[0], B[0]) + GAP;
+          const oy = Math.min(A[3], B[3]) - Math.max(A[1], B[1]) + GAP;
+          if (ox <= 0 || oy <= 0) continue;
+          moved = true;
+          const pa = P[ids[i]], pb = P[ids[j]];
+          const pinA = ids[i] === T0.start, pinB = ids[j] === T0.start;
+          const fa = pinA ? 0 : pinB ? 1 : 0.5, fb = pinB ? 0 : pinA ? 1 : 0.5;
+          // 덜 겹친 쪽으로 밀어요. 위아래가 판 밖으로 나가면 옆으로
+          const lo = pb[1] >= pa[1] ? [ids[i], pa] : [ids[j], pb], hi = pb[1] >= pa[1] ? [ids[j], pb] : [ids[i], pa];
+          const canY = lo[1][1] - oy * 0.5 >= minY(lo[0]) && hi[1][1] + oy * 0.5 <= maxY(hi[0]);
+          if (oy < ox && canY) {
+            const sgn = pb[1] >= pa[1] ? 1 : -1;
+            pa[1] -= sgn * (oy * fa + 0.5); pb[1] += sgn * (oy * fb + 0.5);
+          } else {
+            const sgn = pb[0] >= pa[0] ? 1 : -1;
+            pa[0] -= sgn * (ox * fa + 0.5); pb[0] += sgn * (ox * fb + 0.5);
+          }
+          [[ids[i], pa], [ids[j], pb]].forEach(([id, p]) => { p[0] = Math.max(80, p[0]); p[1] = Math.max(minY(id), Math.min(maxY(id), p[1])); });
+        }
+      }
+      if (!moved) break;
+    }
+    ids.forEach((id) => { P[id] = [Math.round(P[id][0]), Math.round(P[id][1])]; });
+    return Object.assign({}, T0, { nodes: P });
+  }
+
   function view(params, lib) {
     const trees = WT.data.trees;
     const live = WT.liveGenres().map((x) => x.id);
@@ -25,7 +70,7 @@
     } else {
       gid = live.includes(params[0]) ? params[0] : live[0];
       g = WT.genre(gid);
-      T = trees[gid];
+      T = spread(trees[gid]);
     }
     const BASE = lib ? 'library' : 'tree';
     // 트리 끝 도서관 자리: 가장 오른쪽 웹툰보다 더 오른쪽
