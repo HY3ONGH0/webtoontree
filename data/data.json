@@ -1,6 +1,35 @@
 {
   "webtoons": [
     {
+      "id": "w657564281126",
+      "title": "리턴 투 플레이어",
+      "author": "인덱스",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/IvNZUCzkEclwk4BGHRa6waJy2ZWPlWjFEBqfwcP-45bmhvezkY5VqNX01JV10z0p3jBYbI-QEI0k2BU2zFJ76DoHPp3r7fid1FO_vUdao5YW6cJxMO6b_1yj9n8LrQBRt2bju3sSj9qk5XbVv9ZUgA.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 1,
+      "color": "#1a0a91",
+      "episodes": 253,
+      "status": "completed",
+      "days": [
+        "mon"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [
+        "회귀",
+        "현대 퓨전판타지",
+        "미션"
+      ],
+      "desc": "어느 날, 게임이 되어버린 세상. 갑자기 나타난 몬스터들이 사람들을 죽이고, 사람들은 플레이어가 되어 퀘스트를 달성해야 한다! 인류의 종말에서 회귀한 2회차 플레이어, 김세한. 그는 과연 세상을 이렇게 만든 '시스템'을 쳐부술 수 있을까!",
+      "subs": [
+        "fantasy-1"
+      ]
+    },
+    {
       "id": "w6575642810a",
       "title": "나노마신",
       "author": "각색: 현절무, 작화: 금강불괴",
@@ -2513,64 +2542,64 @@
       "start": "w036",
       "nodes": {
         "w019": [
-          400,
-          310
+          300,
+          370
         ],
         "w020": [
-          970,
-          300
+          850,
+          290
         ],
         "w018": [
-          760,
-          190
+          660,
+          200
         ],
         "w022": [
-          380,
-          160
+          300,
+          210
         ],
         "w032": [
-          570,
-          250
+          470,
+          290
         ],
         "w035": [
-          380,
-          50
+          300,
+          60
         ],
         "w036": [
           110,
           280
         ],
         "w041": [
-          710,
-          380
+          660,
+          430
         ],
         "w045": [
-          920,
+          900,
           430
         ],
         "w046": [
-          1150,
-          500
+          1100,
+          480
         ],
         "w062": [
-          100,
-          500
+          210,
+          490
         ],
         "w063": [
-          620,
-          80
+          570,
+          50
         ],
         "w064ys": [
-          890,
-          90
+          810,
+          60
         ],
         "w6573q": [
-          1100,
-          170
+          1000,
+          120
         ],
         "w6575t4": [
-          1200,
-          340
+          1100,
+          290
         ]
       },
       "links": [
@@ -2896,7 +2925,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 6575642810
+    "lastWebtoonId": 657564281126
   },
   "version": 1,
   "shop": [
