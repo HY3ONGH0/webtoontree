@@ -1291,3 +1291,8 @@ html[data-theme="light"] .node-box > .node-tag.two small { color: #fff; }
 /* 상세 창 색: 스크롤해도 아래까지 같은 색 (그라데이션 대신 한 색으로 창 전체를 칠해요) */
 .panel.toned { background: var(--p-bg2); }
 .panel .tone { background: var(--p-bg2); }
+html[data-theme="light"] .panel.toned { background: var(--p-bg2); }
+/* 화이트 모드에서도 색이 입혀진 상세 창 안 버튼은 어두운 창에 맞게 */
+html[data-theme="light"] .panel.toned .btn:not(.btn-gold):not(.btn-coin) { background: rgba(255, 255, 255, .08); color: var(--text); border-color: rgba(255, 255, 255, .22); }
+html[data-theme="light"] .panel.toned .btn-line { background: transparent; color: #8FCBFF; border-color: #8FCBFF; }
+html[data-theme="light"] .panel.toned .btn-gold { background: linear-gradient(180deg, #FFE29A, #C9A54C); color: #1A1405; }
