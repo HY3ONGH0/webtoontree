@@ -245,11 +245,27 @@
     function tomeHTML(t, i) {
       const n = t.ids.length;
       const done = t.ids.filter(isDone).length;
-      return `<div class="book-slot tome-slot" role="listitem"><button type="button" class="tome" data-tome="${esc(t.id)}" style="--tc:${esc(t.color)}; --tw:${Math.min(96, 62 + n * 3)}px; --th:${Math.min(172, 150 + (i % 3) * 8)}px; animation-delay:${i * 0.08}s"
+      // 이름을 쉼표·띄어쓰기에서 줄을 나누고, 가장 긴 줄에 맞춰 책 너비와 글자 크기를 정해요
+      // 쉼표마다 줄을 나누고, 긴 부분은 띄어쓰기에서 4~5글자씩 묶어요 (그 밖의 / 이야기)
+      const lines = [];
+      String(t.name).split(/\s*,\s*/).filter(Boolean).forEach((part) => {
+        let cur = '';
+        part.split(/\s+/).forEach((word) => {
+          const next = cur ? cur + ' ' + word : word;
+          if (cur && next.length > 5) { lines.push(cur); cur = word; } else cur = next;
+        });
+        if (cur) lines.push(cur);
+      });
+      const longest = Math.max(1, ...lines.map((x) => x.length));
+      const th = 166 + (i % 3) * 4;
+      const tw = Math.max(Math.min(118, longest * 15 + 30), Math.min(104, 66 + n * 3));
+      const plateW = tw - 18, plateH = th - 106;
+      const fs = Math.max(11, Math.min(17, (plateW - 12) / longest, (plateH - 16) / (lines.length * 1.32)));
+      return `<div class="book-slot tome-slot" role="listitem"><button type="button" class="tome" data-tome="${esc(t.id)}" style="--tc:${esc(t.color)}; --tw:${tw}px; --th:${th}px; --fs:${fs.toFixed(1)}px; animation-delay:${i * 0.08}s"
           aria-label="${esc(t.name)} 마도서, 웹툰 ${n}개${done ? `, ${done}개 완독` : ''}. 펼치기">
           <span class="tome-band top" aria-hidden="true"></span>
           <span class="tome-sigil" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" stroke-width="1.6"/><polygon points="20,6 24,16 34,17 26,24 29,34 20,28 11,34 14,24 6,17 16,16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="20" cy="20" r="3" fill="currentColor"/></svg></span>
-          <span class="tome-title">${esc(t.name)}</span>
+          <span class="tome-title">${lines.map((x) => `<span>${esc(x)}</span>`).join('')}</span>
           <span class="tome-count">${n}권</span>
           <span class="tome-band bottom" aria-hidden="true"></span>
           ${done ? `<span class="tome-done" aria-hidden="true">${done}</span>` : ''}
