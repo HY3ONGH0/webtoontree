@@ -905,3 +905,10 @@ body.no-anim .pick-ring, body.no-anim .pick-glow, body.no-anim .pick-orbit, body
 .g-cover-page.toned { background: var(--p-bg1); }
 .g-cover-page .g-folio { color: rgba(255, 255, 255, 0.6); }
 .g-cover-page .g-frame { box-shadow: 0 0 0 6px #C99A3A, 0 0 0 8px #6A4A14, 0 14px 30px rgba(0, 0, 0, 0.55); }
+
+/* 책 안의 상세 창은 번지는 효과 없이 바로 완성된 색으로 */
+.g-host .panel .tone, .g-host .panel.toned .tone, .g-host .panel.toned.blooming .tone { animation: none !important; clip-path: none !important; opacity: 1; }
+.g-host .panel:not(.toned) .tone { opacity: 0; }
+.g-host .panel, .g-host .panel * { animation-delay: 0s !important; }
+.g-host .panel.anim, .g-host .panel .rise { animation: none !important; }
+.grim.no-in { animation: none; }

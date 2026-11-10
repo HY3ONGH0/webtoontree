@@ -388,10 +388,11 @@
           WT.color.extract(w.cover).then((c) => { if (c && left.isConnected) { left.setAttribute('style', WT.color.styleOf(c)); left.classList.add('toned'); } });
         }
       };
+      let drawn = false;   // 책이 떠오르는 효과는 처음 펼칠 때만
       const draw = () => {
         parkSlot();
         const [L, Rr] = pages(at);
-        bg.innerHTML = `<div class="grim" style="--tc:${esc(t.color)}">
+        bg.innerHTML = `<div class="grim${drawn ? ' no-in' : ''}" style="--tc:${esc(t.color)}">
             <div class="grim-top">
               <span class="grim-name">${esc(t.name)} <small>${order.length}권</small></span>
               <div class="seg grim-sort" role="tablist" aria-label="정렬">
@@ -413,6 +414,7 @@
             </div>
           </div>`;
         mountDetail();
+        drawn = true;
       };
       const flip = (to) => {
         to = Math.max(0, Math.min(total() - 1, to));
@@ -421,7 +423,8 @@
         const book = document.getElementById('grim-book');
         const reduce = document.body.classList.contains('no-anim') || window.innerWidth < 720;
         if (!book || reduce) { at = to; draw(); return; }
-        const old = pages(at, slot.parentNode !== home ? slot.innerHTML : ''), nw = pages(to, idAt(to) ? descPage(idAt(to)) : '');
+        // 넘어가는 동안에도 다음 장 오른쪽 면은 완성된 상세 창 모습 그대로 보여요
+        const old = pages(at, slot.parentNode !== home ? slot.innerHTML : ''), nw = pages(to, idAt(to) ? panelHTML(idAt(to)) : '');
         parkSlot();
         at = to;
         // 새 펼침면을 아래에 깔고, 넘어가는 종이 한 장을 위에 올려요
