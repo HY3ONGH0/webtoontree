@@ -297,7 +297,8 @@
               </div>
               <button type="button" class="icon-btn press grim-x" data-x aria-label="마도서 닫기">✕</button>
             </div>
-            <div class="grim-book" id="grim-book">
+            <div class="grim-book" id="grim-book" style="--lt:${(8 + 18 * (total() > 1 ? at / (total() - 1) : 0)).toFixed(1)}px; --rt:${(8 + 18 * (total() > 1 ? 1 - at / (total() - 1) : 1)).toFixed(1)}px">
+              <span class="g-stack l" aria-hidden="true"></span><span class="g-stack r" aria-hidden="true"></span><span class="g-stack b" aria-hidden="true"></span>
               <div class="g-page left">${L}</div>
               <div class="g-page right">${Rr}</div>
               <span class="g-spine" aria-hidden="true"></span>
@@ -610,8 +611,9 @@
       const prev = T.nodes[charAt] || T.nodes[T.start];
       if (x !== prev[0]) facing = x < prev[0] ? -1 : 1;
       charAt = id;
-      el.style.left = `${x + 24}px`;
-      el.style.top = `${y - sizeOf(id) / 2 - 40}px`;
+      // 원 바로 위 가운데에 서요 (오른쪽 위 연재 표시, 왼쪽 위 N·추천 별을 가리지 않게)
+      el.style.left = `${x - 28}px`;
+      el.style.top = `${y - sizeOf(id) / 2 - 62}px`;
       document.getElementById('flip').style.transform = `scaleX(${facing})`;
       const hop = document.getElementById('hop');
       if (jump) { hop.classList.remove('go'); void hop.offsetWidth; hop.classList.add('go'); }
