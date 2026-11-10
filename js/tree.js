@@ -272,12 +272,25 @@
         </button></div>`;
     }
     let ratingAll = null;   // 웹툰ID → { avg, count }
-    async function loadRatings() {
-      if (ratingAll) return ratingAll;
-      ratingAll = {};
+    let ratingsFor = null;
+    async function loadRatings(idsNeeded) {
+      if (ratingAll && ratingsFor === 'all') return ratingAll;
+      ratingAll = ratingAll || {};
       if (server) {
-        try { const r = await WT.api.call('ratingSummary', {}); ratingAll = r.ratings || {}; } catch (e) { ratingAll = {}; }
+        try { const r = await WT.api.call('ratingSummary', {}); ratingAll = r.ratings || {}; ratingsFor = 'all'; }
+        catch (e) {
+          // 서버가 예전 버전이면: 이 마도서 웹툰들의 별점을 하나씩 (3개씩 나눠서) 받아요
+          const need = (idsNeeded || []).filter((id) => !ratingAll[id]);
+          for (let i = 0; i < need.length; i += 3) {
+            await Promise.all(need.slice(i, i + 3).map(async (id) => {
+              if (!social[id]) { try { const r = await WT.api.call('social', { webtoonId: id, token: S.token || '' }); social[id] = r.social; } catch (er) { social[id] = { avg: 0, count: 0, comments: [] }; } }
+              ratingAll[id] = { avg: Number(social[id].avg) || 0, count: Number(social[id].count) || 0 };
+            }));
+          }
+        }
       }
+      // 이미 받아 둔 별점(상세 창)도 합쳐요
+      Object.keys(social).forEach((id) => { if (social[id] && social[id].count) ratingAll[id] = { avg: Number(social[id].avg) || 0, count: Number(social[id].count) || 0 }; });
       // 서버에 없거나 혼자 모드면 내 별점이라도
       Object.keys(S.ratings || {}).forEach((id) => { if (!ratingAll[id]) ratingAll[id] = { avg: Number(S.ratings[id]) || 0, count: 1, mine: true }; });
       return ratingAll;
@@ -319,7 +332,9 @@
             ${k % 2 === 0 ? `<h3 class="g-toc-h">${k === 0 ? '목차' : '목차 (이어서)'}</h3>` : '<h3 class="g-toc-h" aria-hidden="true">&nbsp;</h3>'}
             <ol class="g-toc" start="${from + 1}">${part.map((id, j) => {
               const w = WT.toon(id);
-              return `<li><button type="button" data-go="${tocSpreads() + from + j}"><span class="g-toc-t">${esc(w.title)}</span><span class="g-dots" aria-hidden="true"></span><span class="g-toc-p">${tocSpreads() + from + j + 1}장</span></button></li>`;
+              const rr = ratingAll && ratingAll[id];
+              const rateTag = sort === 'rate' ? `<span class="g-toc-r">${rr && rr.count ? `★ ${rr.avg.toFixed(1)}` : '별점 없음'}</span>` : '';
+              return `<li><button type="button" data-go="${tocSpreads() + from + j}"><span class="g-toc-t">${esc(w.title)}</span>${rateTag}<span class="g-dots" aria-hidden="true"></span><span class="g-toc-p">${tocSpreads() + from + j + 1}장</span></button></li>`;
             }).join('')}</ol>
           </div>`;
       };
@@ -347,8 +362,23 @@
             </div>
           </div>`;
       };
-      const pages = (k) => (k < tocSpreads() ? [tocPage(k * 2), tocPage(k * 2 + 1)] : [coverPage(order[k - tocSpreads()]), descPage(order[k - tocSpreads()])]);
+      // 오른쪽 면에는 상세 창(진행·별점·댓글·버튼) 전체를 그대로 펼쳐요
+      const home = slot.parentNode, homeNext = slot.nextSibling;
+      const parkSlot = () => { if (slot.parentNode !== home) home.insertBefore(slot, homeNext); };
+      const idAt = (k) => (k < tocSpreads() ? null : order[k - tocSpreads()]);
+      const hostHTML = (id, inner) => `<div class="g-page-in g-host" data-host="${id}">${inner || ''}</div>`;
+      const pages = (k, snapshot) => (k < tocSpreads() ? [tocPage(k * 2), tocPage(k * 2 + 1)] : [coverPage(idAt(k)), hostHTML(idAt(k), snapshot)]);
+      const mountDetail = () => {
+        const id = idAt(at);
+        if (!id) { parkSlot(); if (sel) { sel = null; renderPanel(false); refreshNodes(); } return; }
+        const host = bg.querySelector(`[data-host="${CSS.escape(id)}"]`);
+        if (!host) return;
+        host.innerHTML = '';
+        host.appendChild(slot);
+        if (sel !== id) select(id, { keepHash: true }); else renderPanel(false);
+      };
       const draw = () => {
+        parkSlot();
         const [L, Rr] = pages(at);
         bg.innerHTML = `<div class="grim" style="--tc:${esc(t.color)}">
             <div class="grim-top">
@@ -371,6 +401,7 @@
               <button type="button" class="btn btn-sm press" data-flip="1" ${at >= total() - 1 ? 'disabled' : ''} aria-label="다음 장">다음 장 ▶</button>
             </div>
           </div>`;
+        mountDetail();
       };
       const flip = (to) => {
         to = Math.max(0, Math.min(total() - 1, to));
@@ -379,7 +410,8 @@
         const book = document.getElementById('grim-book');
         const reduce = document.body.classList.contains('no-anim') || window.innerWidth < 720;
         if (!book || reduce) { at = to; draw(); return; }
-        const old = pages(at), nw = pages(to);
+        const old = pages(at, slot.parentNode !== home ? slot.innerHTML : ''), nw = pages(to, idAt(to) ? descPage(idAt(to)) : '');
+        parkSlot();
         at = to;
         // 새 펼침면을 아래에 깔고, 넘어가는 종이 한 장을 위에 올려요
         const leaf = document.createElement('div');
@@ -394,12 +426,15 @@
         leaf.addEventListener('animationend', () => { draw(); }, { once: true });
       };
       const onKeyG = (e) => {
+        if (e.key !== 'Escape' && e.target && e.target.closest && e.target.closest('input, textarea, select')) return;   // 화수·댓글 입력 중엔 넘기지 않아요
         if (e.key === 'Escape') { e.preventDefault(); shut(); }
         else if (e.key === 'ArrowRight') { e.preventDefault(); flip(at + 1); }
         else if (e.key === 'ArrowLeft') { e.preventDefault(); flip(at - 1); }
       };
       const shut = (then) => {
         document.removeEventListener('keydown', onKeyG, true);
+        parkSlot();
+        if (!then && sel) { sel = null; renderPanel(false); refreshNodes(); history.replaceState(null, '', `#/${BASE}/${gid}`); }
         bg.classList.add('closing');
         setTimeout(() => { bg.remove(); if (then) then(); else { const b = stage.querySelector(`[data-tome="${CSS.escape(tid)}"]`); if (b) b.focus(); } }, 280);
       };
@@ -412,20 +447,25 @@
         const f = e.target.closest('[data-flip]'); if (f) { flip(at + Number(f.dataset.flip)); return; }
         const go = e.target.closest('[data-go]'); if (go) { flip(Number(go.dataset.go)); return; }
         const o = e.target.closest('[data-open]'); if (o) { const id = o.dataset.open; shut(() => select(id)); return; }
+        if (e.target.closest('.g-host [data-act="close"]')) { e.stopPropagation(); shut(); return; }
         const s = e.target.closest('[data-sort]');
         if (s && s.dataset.sort !== sort) {
           sort = s.dataset.sort;
+          if (sort === 'rate' && !ratingAll) { WT.toast('별점을 불러오는 중이에요'); }
+          (sort === 'rate' ? loadRatings(t.ids) : Promise.resolve()).then(() => {
+          if (!document.body.contains(bg)) return;
+          if (sort === 'rate' && !t.ids.some((id) => ratingAll[id] && ratingAll[id].count)) WT.toast('아직 이 마도서에는 별점이 있는 웹툰이 없어요');
           order = t.ids.slice().sort(sort === 'rate'
             ? (a, b) => ((ratingAll[b] || {}).avg || 0) - ((ratingAll[a] || {}).avg || 0) || ((ratingAll[b] || {}).count || 0) - ((ratingAll[a] || {}).count || 0) || byTitle(a, b)
             : byTitle);
-          at = Math.min(at, tocSpreads());   // 목차부터 다시
-          at = 0;
+          at = 0;   // 목차부터 다시 (바뀐 순서를 목차에서 확인)
           draw();
+          });
         }
       });
       draw();
       bg.querySelector('[data-x]').focus();
-      loadRatings().then(() => { if (document.body.contains(bg)) draw(); });
+      loadRatings(t.ids).then(() => { if (document.body.contains(bg) && at < tocSpreads()) draw(); });
     }
 
     async function loadLibRank() {

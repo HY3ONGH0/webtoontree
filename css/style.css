@@ -869,3 +869,14 @@ body.no-anim *, body.no-anim *::before, body.no-anim *::after { animation: none 
 @keyframes bookPick { 50% { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35), 0 0 0 2px #FFB020, 0 0 22px rgba(255, 60, 40, 0.95); } }
 .cover-rect.is-pick { box-shadow: 0 0 0 3px #FF2A2A, 0 0 24px rgba(255, 40, 40, 0.7); }
 body.no-anim .pick-ring, body.no-anim .pick-glow, body.no-anim .pick-orbit, body.no-anim .pick-badge.on-node, body.no-anim .pick-badge.on-node::after, body.no-anim .book.is-pick { animation: none; }
+
+/* 펼친 마도서 오른쪽 면: 상세 창 전체 */
+.g-host { padding: 0 !important; overflow-y: auto; overflow-x: hidden; }
+.g-host > #panel-slot { display: block; min-height: 100%; }
+.g-host .panel { max-width: none; width: 100%; min-height: 100%; box-sizing: border-box; margin: 0; padding: 20px 22px 24px; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; transform-origin: 50% 0; }
+.g-host .panel.anim { animation: none; }
+.g-host .panel .corner-b, .g-host .panel [class^="corner"], .g-host .panel .cover-rect { display: none; }
+.g-host .panel-head { gap: 10px; }
+.g-toc-r { flex: 0 0 auto; font-size: 12px; font-weight: 700; color: #B8781A; white-space: nowrap; }
+.g-host .panel.rpg::before, .g-host .panel.rpg::after { display: none; }
+.g-host .panel { color: var(--text, #EAF0FF); }
