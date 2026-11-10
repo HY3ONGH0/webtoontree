@@ -124,6 +124,11 @@
           "color": "#FF6B6B"
         },
         {
+          "id": "fantasy-6",
+          "name": "이세계물",
+          "color": "#FF7EB6"
+        },
+        {
           "id": "fantasy-4",
           "name": "아카데미물",
           "color": "#5BB8FF"
@@ -632,6 +637,103 @@
     }
   ],
   "webtoons": [
+    {
+      "id": "w061",
+      "title": "여명의 등불",
+      "author": "구크",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/15316.html",
+      "cover": "https://i.namu.wiki/i/OLimvh3K-Kq6kLdV-9igIlTFrrzQy8KNkqF46p-rIV1ozwVUB1xWf5ugL-lMa2PVo18Oe32Kt_GV3T_3f8FcZvNwrhSCU5p9BXi-U-ZX560FzzlR-uR5a7idwUqfqPZk38MYuw_biVjCX4CHgZ7SNg.webp",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": 0,
+      "color": "#e22400",
+      "episodes": 107,
+      "status": "hiatus",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [
+        "판타지",
+        "모험",
+        "액션",
+        "세계관",
+        "복수극",
+        "먼치킨"
+      ],
+      "desc": "‘태양의 제국’ 소속 전쟁 영웅 ‘버키’ 병장. 그는 황제를 향한 우직한 충심과 뛰어난 무예로 제국 병사들의 귀감이 되고 있지만, 사실 그의 최종 목표는 제국을 몰락시켜 황제에게 복수하는 것이다. 버키는 거대한 제국을 상대로 복수를 완수할 수 있을까?",
+      "subs": [
+        "fantasy-6"
+      ]
+    },
+    {
+      "id": "w060",
+      "title": "어느 마법사의 식당",
+      "author": "차씨, 스튜디오 이너스",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/14591.html",
+      "cover": "https://i.namu.wiki/i/qAlxwCljO0Gy0U1UzPEdy1Lb5hdqOEZvXqFMcUn0PYWdl_L-StFo038mHUT1JicIVyhD5NCzN_UBwQcu6cvTu_AOjpCkXMjQCugLz54tybezYUtYiCwSXXSS_LEMGt00SjQ9loGFbrrR5Tugq5Pr5A.webp",
+      "genres": [
+        "fantasy",
+        "daily"
+      ],
+      "recommended": 1,
+      "color": "#5a1c00",
+      "episodes": 152,
+      "status": "ongoing",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [
+        "판타지",
+        "마법",
+        "힐링",
+        "힘순찐",
+        "이세계",
+        "음식&요리"
+      ],
+      "desc": "요리사를 꿈꾸던 내가 사고로 이세계에 떨어졌다.\n몬스터와 마법이 넘쳐나는 판타지 세계이지만 여기라고 식당을 못할 건 없잖아?\n그러나 전쟁으로 인해 이세계에 들어오자마자 군대에 끌려가게 되고,\n15년간의 고생 끝에 드디어 나만의 식당을 열게 되는데...",
+      "subs": [
+        "fantasy-1",
+        "fantasy-6"
+      ]
+    },
+    {
+      "id": "w059",
+      "title": "아카데미에 위장취업당했다",
+      "author": "타나, WAG, Sharen",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/11660.html",
+      "cover": "https://i.namu.wiki/i/CK5gjQXS1hPpBMGnZImInqvjeMYzI-xr0gX5ZktoVsB9RDqATRbqpVwKEu2DIpoY7jAqM53XKA_RZZ5VisgSCcbroYgs1mKV3y6h6KVbgyWLYwughxwrWdkNv4eqxIFkwgwRPXgja4lYO3zMpYzefA.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#fdc700",
+      "episodes": 171,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [
+        "판타지",
+        "아카데미물",
+        "소설원작"
+      ],
+      "desc": "제국에서 제일가는 마법 아카데미의 교사가 되었다. …다른 사람과 착각당해서. 그 어느 쪽에도 정체를 들켜선 안 되는 상황. 이 아슬아슬한 외줄 타기의 끝은 어디일까.",
+      "subs": [
+        "fantasy-1",
+        "fantasy-4"
+      ]
+    },
     {
       "id": "w058",
       "title": "투신전생기",
@@ -2212,6 +2314,6 @@
   ],
   "hotToday": [],
   "meta": {
-    "lastWebtoonId": 58
+    "lastWebtoonId": 61
   }
 }
