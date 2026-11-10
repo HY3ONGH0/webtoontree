@@ -638,6 +638,58 @@
   ],
   "webtoons": [
     {
+      "id": "w063",
+      "title": "속아주고싶어",
+      "author": "케냠",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/AUXzx0mCbVG-ch_snrZFYeU7ETGucEMiKnXG8u0iI1VcLuItUdxVd94F1UJwEWW47xvfGJfmkWBb5WeL70Ku26X4AFx5Bk7f_bZPHK1oOrGGGtmXNIdAnWr08IBLzL5F_dCK_rmw0co4lxZc6f41mg.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 3,
+      "color": "#2c30a0",
+      "episodes": 46,
+      "status": "hiatus",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [
+        "로맨스",
+        "복선"
+      ],
+      "desc": "\n\"내가 너랑 사귀고 싶어했다고? 언제.\"\n\n자발적 아싸 도수정 앞에 나타난, 수상하지만 매력적인 고단수 여우 차승현.\n\n진심일수록 무서워지는 두 사람의, 속아주고 싶을 만큼 중독적인 도파민 밀당 로맨스!"
+    },
+    {
+      "id": "w062",
+      "title": "낮에 뜨는 달",
+      "author": "혜윰",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/l97EBTUm5BGJ1ctpd12H35-SXC7J-7b_5G-pbkRrdL0912A3nAO3ilIcQ7c68kjMe81S4OmBA3wNFAOVaFETw9z7WJkMXU8mhao1Uoe3YQuGvYaYJKMTtkpeeENcJDHyMZwaNJt50AlLUgccjZ56SA.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 5,
+      "color": "#ca0202",
+      "episodes": 206,
+      "status": "completed",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [
+        "로맨스릴러",
+        "사극",
+        "드라마",
+        "후유증"
+      ],
+      "desc": "시간이 멈춘 남자와 흘러가는 여자. 과거와 현재를 오가는 갈등에 대한 이야기.\n나는 아직 그 순간에 고여있건만\n시간은 한없이 흘러가는구나..."
+    },
+    {
       "id": "w061",
       "title": "여명의 등불",
       "author": "구크",
@@ -1081,7 +1133,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "color": "#ffe278",
       "episodes": 370,
       "status": "completed",
@@ -1107,7 +1159,7 @@
         "romance",
         "daily"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "color": "#ff668a",
       "episodes": 434,
       "status": "completed",
@@ -1190,7 +1242,7 @@
         "romance",
         "daily"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "color": "#b1dd8b",
       "episodes": 221,
       "status": "ongoing",
@@ -1327,7 +1379,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "color": "#dfeed4",
       "episodes": 55,
       "status": "hiatus",
@@ -1440,7 +1492,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "color": "#fefb41",
       "episodes": 28,
       "status": "ongoing",
@@ -1726,7 +1778,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "episodes": 18,
       "status": "ongoing",
       "days": [
@@ -1780,7 +1832,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "episodes": 115,
       "status": "completed",
       "days": [
@@ -1806,7 +1858,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 3,
+      "recommended": 5,
       "episodes": 130,
       "status": "completed",
       "days": [
@@ -1834,7 +1886,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 3,
+      "recommended": 5,
       "episodes": 154,
       "status": "completed",
       "days": [
@@ -1968,31 +2020,31 @@
       "start": "w036",
       "nodes": {
         "w019": [
-          480,
+          490,
           430
         ],
         "w020": [
-          880,
-          250
+          910,
+          290
         ],
         "w021": [
-          1070,
-          90
+          1100,
+          130
         ],
         "w018": [
-          750,
-          140
+          740,
+          210
         ],
         "w022": [
-          380,
+          400,
           240
         ],
         "w032": [
           650,
-          330
+          350
         ],
         "w035": [
-          420,
+          400,
           100
         ],
         "w036": [
@@ -2000,16 +2052,24 @@
           280
         ],
         "w041": [
-          720,
+          740,
           480
         ],
         "w045": [
-          960,
-          390
+          990,
+          430
         ],
         "w046": [
-          1190,
+          1230,
           480
+        ],
+        "w062": [
+          300,
+          450
+        ],
+        "w063": [
+          640,
+          60
         ]
       },
       "links": [
@@ -2076,6 +2136,21 @@
         {
           "from": "w019",
           "to": "w032",
+          "why": ""
+        },
+        {
+          "from": "w036",
+          "to": "w062",
+          "why": ""
+        },
+        {
+          "from": "w035",
+          "to": "w063",
+          "why": ""
+        },
+        {
+          "from": "w022",
+          "to": "w063",
           "why": ""
         }
       ]
@@ -2319,6 +2394,6 @@
   ],
   "hotToday": [],
   "meta": {
-    "lastWebtoonId": 61
+    "lastWebtoonId": 63
   }
 }
