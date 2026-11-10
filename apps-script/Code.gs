@@ -25,6 +25,7 @@ var SHEETS = {
   comments: ['commentId', 'webtoonId', 'userId', 'text', 'createdAt', 'hidden'],
   views: ['date', 'webtoonId', 'viewerId'],
   coinLog: ['logId', 'userId', 'amount', 'reason', 'ref', 'eps', 'createdAt'],
+  live: ['ver', 'at', 'by', 'name', 'ops'],
   reports: ['reportId', 'webtoonId', 'viewerId', 'note', 'createdAt', 'done']
 };
 var JSON_COLS = { progress: 1, rewarded: 1, daily: 1, owned: 1, equip: 1, unlocked: 1 };
@@ -259,6 +260,46 @@ var ACTIONS = {
       .sort(function (a, b2) { return count[b2] - count[a]; }).slice(0, Number(rules.topN));
     cachePut_('hot:' + day, hot, 300);
     return { hot: hot };
+  },
+
+  // ---------- 관리자 함께 편집 (실시간) ----------
+  /** 처음 들어올 때: 마지막으로 사이트에 올린 데이터 + 그 뒤 함께 고친 내용 */
+  liveJoin: function (b) {
+    var me = who_(b);
+    var st = liveState_();
+    var cur = githubFile_(github_());
+    if (!cur) fail_('GitHub에서 data.json을 읽지 못했어요.');
+    var data = JSON.parse(cur.text);
+    livePresence_(me, b.here);
+    return { version: st.ver, baseVersion: st.base, base: data, baseHash: hash_(JSON.stringify(data)), batches: liveOps_(st.base, st.ver), who: livePresence_(null) };
+  },
+
+  /** 몇 초마다: 내 변경 올리기 + 다른 관리자 변경 받기 + 누가 있는지 */
+  liveSync: function (b) {
+    var me = who_(b);
+    var since = Number(b.since) || 0;
+    var myVer = null;
+    if (b.ops && b.ops.length) {
+      var text = JSON.stringify(b.ops);
+      if (text.length > 90000) fail_('한 번에 고친 내용이 너무 커요. 조금씩 나눠서 고쳐 주세요.');
+      var lock = LockService.getScriptLock();
+      lock.waitLock(15000);
+      try {
+        var st0 = liveState_();
+        myVer = st0.ver + 1;
+        var row = { ver: myVer, at: now_(), by: me.userId, name: me.name, ops: text };
+        CacheService.getScriptCache().put('live:op:' + myVer, JSON.stringify(row), 21600);
+        appendRow_('live', row);
+        PropertiesService.getScriptProperties().setProperty('LIVE_VER', String(myVer));
+      } finally { lock.releaseLock(); }
+    }
+    var st = liveState_();
+    if (since < st.base) return { rejoin: true, version: st.ver };
+    livePresence_(me, b.here);
+    return {
+      version: st.ver, myVer: myVer, batches: since < st.ver ? liveOps_(since, st.ver) : [],
+      who: livePresence_(null), base: { version: st.base, hash: st.baseHash }
+    };
   },
 
   /** 웹툰별 평균 별점 (도서관 마도서 별점순 정렬용) */
@@ -515,6 +556,7 @@ var ACTIONS = {
     if (b.role === 'admin' && hit.obj.status === 'banned') fail_('이용 정지된 회원은 관리자로 지정할 수 없어요.');
     hit.obj.role = b.role === 'admin' ? 'admin' : '';
     updateRow_('users', hit.row, hit.obj);
+    readAll_('sessions').forEach(function (r) { if (r.obj.userId === hit.obj.userId) cacheDel_('who:' + r.obj.token); });
     return {};
   },
 
@@ -535,6 +577,11 @@ var ACTIONS = {
     var cur = githubFile_(g);
     // 내가 고치기 시작한 뒤에 다른 관리자가 먼저 저장했으면, 덮어쓰기 전에 알려 줘요
     if (cur && b.baseHash && !b.force && hash_(JSON.stringify(JSON.parse(cur.text))) !== b.baseHash) return { conflict: true };
+    var liveSt = null;
+    if (b.liveVersion !== undefined && b.liveVersion !== null) {
+      liveSt = liveState_();
+      if (Number(b.liveVersion) !== liveSt.ver) return { behind: true, version: liveSt.ver };
+    }
     var text = JSON.stringify(data, null, 2) + '\n';
     var who = me.owner ? '최종 관리자' : me.name + ' (' + me.userId + ')';
     var res = UrlFetchApp.fetch(g.api, {
@@ -544,7 +591,15 @@ var ACTIONS = {
     if (res.getResponseCode() === 409) return { conflict: true };
     if (res.getResponseCode() >= 300) fail_('GitHub에 저장하지 못했어요 (' + res.getResponseCode() + '). 토큰 권한을 확인해 주세요.');
     cacheDel_('site');
-    return { savedAt: now_(), hash: hash_(JSON.stringify(data)) };
+    var savedHash = hash_(JSON.stringify(data));
+    if (liveSt) {
+      // 함께 편집: 여기까지 사이트에 올렸어요. 그 전 기록은 정리해요
+      var props = PropertiesService.getScriptProperties();
+      props.setProperty('LIVE_BASE', String(liveSt.ver));
+      props.setProperty('LIVE_BASE_HASH', savedHash);
+      livePrune_(liveSt.ver);
+    }
+    return { savedAt: now_(), hash: savedHash };
   }
 };
 
@@ -675,9 +730,15 @@ function who_(b) {
     return { owner: true, userId: adminId_(), name: '최종 관리자' };
   }
   if (b.token) {
+    var memo = cacheGet_('who:' + b.token);
+    if (memo) return memo;
     var s = findRow_('sessions', 'token', String(b.token));
     var u = s && new Date(s.obj.expiresAt).getTime() >= Date.now() ? findRow_('users', 'userId', s.obj.userId) : null;
-    if (u && u.obj.status !== 'banned' && u.obj.role === 'admin') return { owner: false, userId: u.obj.userId, name: u.obj.nickname };
+    if (u && u.obj.status !== 'banned' && u.obj.role === 'admin') {
+      var meAdmin = { owner: false, userId: u.obj.userId, name: u.obj.nickname };
+      cachePut_('who:' + b.token, meAdmin, 60);
+      return meAdmin;
+    }
     if (u) fail_('관리자 권한이 없는 계정이에요. 최종 관리자에게 권한을 받아 주세요.');
   }
   fail_('관리자로 로그인해 주세요.');
@@ -709,6 +770,52 @@ function githubFile_(g) {
   var j = JSON.parse(res.getContentText());
   var text = Utilities.newBlob(Utilities.base64Decode(String(j.content || '').replace(/\s/g, ''))).getDataAsString('UTF-8');
   return { sha: j.sha, text: text };
+}
+function liveState_() {
+  var p = PropertiesService.getScriptProperties();
+  return { ver: Number(p.getProperty('LIVE_VER') || 0), base: Number(p.getProperty('LIVE_BASE') || 0), baseHash: p.getProperty('LIVE_BASE_HASH') || '' };
+}
+/** since 다음부터 upto 까지의 변경 묶음 (캐시에 없으면 시트에서) */
+function liveOps_(since, upto) {
+  if (upto <= since) return [];
+  var cache = CacheService.getScriptCache();
+  var keys = [];
+  for (var v = since + 1; v <= upto; v++) keys.push('live:op:' + v);
+  var got = {};
+  for (var i = 0; i < keys.length; i += 100) {
+    var part = cache.getAll(keys.slice(i, i + 100));
+    Object.keys(part).forEach(function (k) { got[k] = JSON.parse(part[k]); });
+  }
+  var rows = keys.map(function (k) { return got[k]; });
+  if (rows.some(function (r) { return !r; })) {
+    var byVer = {};
+    readAll_('live').forEach(function (r) { byVer[Number(r.obj.ver)] = r.obj; });
+    rows = [];
+    for (var w = since + 1; w <= upto; w++) if (byVer[w]) rows.push(byVer[w]);
+  }
+  return rows.map(function (r) { return { ver: Number(r.ver), by: r.by, name: r.name, ops: typeof r.ops === 'string' ? JSON.parse(r.ops) : r.ops }; });
+}
+/** 사이트에 올린 지점까지의 기록은 시트에서 지워요 */
+function livePrune_(upto) {
+  var sh = sheet_('live');
+  var last = sh.getLastRow();
+  if (last < 2) return;
+  var vals = sh.getRange(2, 1, last - 1, 1).getValues();
+  var keep = 0;
+  for (var i = 0; i < vals.length; i++) if (Number(vals[i][0]) <= upto) keep = i + 1;
+  if (keep > 0) sh.deleteRows(2, keep);
+}
+/** 지금 관리자 화면에 있는 사람들 (me 를 주면 내 위치를 갱신) */
+function livePresence_(me, here) {
+  var map = cacheGet_('live:who') || {};
+  var nowMs = Date.now();
+  if (me) {
+    var h = here || {};
+    map[me.userId] = { name: me.name, owner: !!me.owner, at: nowMs, tab: String(h.tab || ''), w: String(h.w || ''), g: String(h.g || '') };
+  }
+  Object.keys(map).forEach(function (k) { if (nowMs - map[k].at > 20000) delete map[k]; });
+  if (me) cachePut_('live:who', map, 120);
+  return Object.keys(map).map(function (k) { var x = map[k]; return { userId: k, name: x.name, owner: x.owner, tab: x.tab, w: x.w, g: x.g }; });
 }
 function publicMe_(u) {
   var ratings = {};

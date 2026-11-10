@@ -90,3 +90,12 @@ body.admin { background: #0B1022; background-image: none; }
 .box-warn-ad { margin: 10px 0; padding: 12px 14px; border: 1px dashed rgba(255, 178, 122, 0.7); border-radius: 8px; background: rgba(255, 178, 122, 0.08); color: #FFD6B5; font-size: 14px; line-height: 1.6; }
 .box-warn-ad .ad-actions { margin-top: 10px; }
 .ad-scroll .ad-node { touch-action: none; }
+
+/* 함께 편집 */
+.ad-live { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 13px; color: var(--soft); }
+.ad-live:empty { display: none; }
+.live-dot { width: 9px; height: 9px; border-radius: 50%; background: #4FD18B; box-shadow: 0 0 8px #4FD18B; animation: liveBlink 2s ease-in-out infinite; }
+.live-dot.off { background: #FF8A8A; box-shadow: 0 0 6px #FF8A8A; animation: none; }
+@keyframes liveBlink { 50% { opacity: .45; } }
+.live-who { padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; color: #10162B; background: #8FD3FF; white-space: nowrap; max-width: 260px; overflow: hidden; text-overflow: ellipsis; }
+.live-tag { display: inline-block; margin-left: 6px; padding: 0 6px; border-radius: 999px; font-size: 11px; font-weight: 700; color: #10162B; background: #8FD3FF; vertical-align: middle; }

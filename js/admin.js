@@ -49,13 +49,16 @@
   function saveDraft() {
     try { localStorage.setItem(DRAFT, JSON.stringify(D)); } catch (e) { /* 저장 공간 없음 */ }
     setState();
+    if (live.on) livePushSoon();
   }
   function isDirty() { return JSON.stringify(D) !== siteJSON; }
   function setState() {
     const el = document.getElementById('ad-state');
     if (!el) return;
     const d = isDirty();
-    el.textContent = d ? '사이트에 아직 안 올린 변경이 있어요 → [데이터] 탭에서 내보내기' : '사이트 데이터와 같아요';
+    el.textContent = live.on
+      ? (d ? '함께 편집 중 · 사이트에 아직 안 올린 변경이 있어요 → [데이터] 탭의 바로 저장' : '함께 편집 중 · 사이트 데이터와 같아요')
+      : (d ? '사이트에 아직 안 올린 변경이 있어요 → [데이터] 탭에서 내보내기' : '사이트 데이터와 같아요');
     el.classList.toggle('dirty', d);
   }
   function toast(msg) {
@@ -98,7 +101,11 @@
   }
   function newWebtoonId() {
     D.meta.lastWebtoonId += 1;          // 지운 번호는 다시 쓰지 않아요
-    return 'w' + String(D.meta.lastWebtoonId).padStart(3, '0');
+    let id = 'w' + String(D.meta.lastWebtoonId).padStart(3, '0');
+    // 함께 편집 중이면 다른 관리자와 같은 번호가 되지 않게 꼬리표를 붙여요
+    if (live.on) id += Math.random().toString(36).slice(2, 4);
+    while (D.webtoons.some((w) => w.id === id)) id += Math.random().toString(36).slice(2, 3);
+    return id;
   }
   function blankWebtoon(title, gid) {
     return { id: newWebtoonId(), title: title || '새 웹툰', author: '', platform: '네이버웹툰', url: '', cover: '', genres: gid ? [gid] : [], recommended: 0, color: '', episodes: 1, status: 'ongoing', days: [], autoCount: true, baseDate: WT.schedule.today(), tags: [], desc: '' };
@@ -146,6 +153,7 @@
     root().innerHTML = `<header class="ad-head">
         <div class="brand"><b>웹툰트리</b><span class="ad-tag">관리자</span></div>
         <span id="ad-state" class="ad-state" aria-live="polite"></span>
+        <span id="ad-live" class="ad-live"></span>
         <div class="ad-actions">
           <a class="btn btn-sm press" href="index.html?preview=1" target="_blank" rel="noopener">사이트 미리보기</a>
           <button type="button" class="btn btn-gold btn-sm press" data-a="export">data.json 내보내기</button>
@@ -160,6 +168,7 @@
         <main class="ad-main" id="ad-main">${({ webtoons: tabWebtoons, genres: tabGenres, tree: tabTree, map: tabMap, settings: tabSettings, shop: tabShop, server: tabServer, data: tabData })[ui.tab]()}</main>
       </div>`;
     setState();
+    liveBadge();
     if (ui.tab === 'tree') mountTree();
     if (ui.tab === 'map') mountMap();
     window.scrollTo(0, scrollY);
@@ -187,7 +196,7 @@
           <div class="items-box">
             ${list.map((x) => `<button type="button" class="ad-row${ui.w === x.id ? ' sel' : ''}" data-a="pick-w" data-id="${x.id}">
               <span class="dotc" style="background:${gColor(x)}">${esc(x.title[0] || '?')}</span>
-              <span class="t"><b>${WT.recStars(x) ? '★'.repeat(WT.recStars(x)) + ' ' : ''}${esc(x.title)}</b><span>${x.id} · ${esc(x.genres.map((g) => (genre(g) || {}).name).join(', ') || '장르 없음')} · ${WT.schedule.episodes(x)}화 · ${esc(WT.schedule.label(x))}</span></span>
+              <span class="t"><b>${WT.recStars(x) ? '★'.repeat(WT.recStars(x)) + ' ' : ''}${esc(x.title)}</b>${liveOn(x.id)}<span>${x.id} · ${esc(x.genres.map((g) => (genre(g) || {}).name).join(', ') || '장르 없음')} · ${WT.schedule.episodes(x)}화 · ${esc(WT.schedule.label(x))}</span></span>
             </button>`).join('') || '<p class="ad-help">찾는 웹툰이 없어요</p>'}
           </div>
         </section>
@@ -307,8 +316,8 @@
       <fieldset class="ad-subs"><legend>세부 장르 (도서관의 마도서)</legend>
         <p class="ad-help">세부 장르를 만들면 이 장르 도서관에 세부 장르별 두꺼운 마도서가 꽂혀요. 마도서를 펴면 그 세부 장르 웹툰을 볼 수 있어요. 웹툰마다 세부 장르는 [웹툰 목록]에서 골라요. (트리에 없는 웹툰만 도서관에 들어가요)</p>
         ${(g.subs || []).map((x, i) => `<div class="ad-sub-row">
-            <input class="swatch" type="color" data-sf="color" data-sid="${x.id}" value="${esc(x.color)}" aria-label="${esc(x.name)} 색">
-            <input class="fld" data-sf="name" data-sid="${x.id}" value="${esc(x.name)}" maxlength="14" aria-label="세부 장르 이름">
+            <input class="swatch" type="color" data-subf="color" data-sid="${x.id}" value="${esc(x.color)}" aria-label="${esc(x.name)} 색">
+            <input class="fld" data-subf="name" data-sid="${x.id}" value="${esc(x.name)}" maxlength="14" aria-label="세부 장르 이름">
             <span class="hint" style="white-space:nowrap">웹툰 ${D.webtoons.filter((w) => (w.subs || []).includes(x.id)).length}개</span>
             <button type="button" class="icon-btn" data-a="sub-up" data-id="${x.id}" aria-label="위로" ${i === 0 ? 'disabled' : ''}>↑</button>
             <button type="button" class="icon-btn" data-a="sub-down" data-id="${x.id}" aria-label="아래로" ${i === g.subs.length - 1 ? 'disabled' : ''}>↓</button>
@@ -829,6 +838,8 @@
       const c = await api('adminCheck');
       srv.ok = true; srv.github = c.github; srv.owner = !!c.owner; srv.name = c.adminName || '';
       if (srv.pw) { try { sessionStorage.setItem('webtoontree.adminpw', srv.pw); } catch (e) { /* 무시 */ } }
+      srv.uid = c.adminUserId || '';
+      if (!live.on && c.github) liveJoin();
       const [u, cm, rp] = await Promise.all([api('adminUsers'), api('adminComments'), api('adminReports')]);
       srv.users = u.users; srv.comments = cm.comments; srv.reports = rp.reports;
     } catch (e) {
@@ -918,7 +929,8 @@
       </section>
       ${(D.settings.apiUrl || '').trim() ? `<section class="ad-card"><h3>서버로 바로 저장</h3>
         <p class="ad-help">Apps Script에 GitHub 토큰을 넣어 두면 파일을 올리지 않고 이 버튼으로 바로 반영돼요. 관리자 연결은 [회원 · 댓글 · 제보] 탭에서 해요.</p>
-        <p class="ad-help">여러 관리자가 같이 고칠 때: 내가 고치는 사이에 다른 관리자가 먼저 저장했으면, 덮어쓰기 전에 알려 줘요. 시작하기 전에 [최신 내용 불러오기]를 누르면 더 안전해요.</p>
+        ${live.on ? '<p class="ad-help"><b>함께 편집 중이에요.</b> 관리자들이 고친 내용은 몇 초 안에 서로의 화면에 반영돼요. 바로 저장을 누르면 모두가 함께 고친 내용이 사이트에 올라가요.</p>'
+          : '<p class="ad-help">여러 관리자가 같이 고칠 때: 내가 고치는 사이에 다른 관리자가 먼저 저장했으면, 덮어쓰기 전에 알려 줘요. 시작하기 전에 [최신 내용 불러오기]를 누르면 더 안전해요.</p>'}
         ${srv.conflict ? `<div class="box-warn-ad" role="alert"><b>다른 관리자가 그사이 사이트에 먼저 저장했어요.</b><br>지금 내 내용으로 저장하면 그 사람이 고친 내용이 사라져요.
           <div class="ad-actions">
             <button type="button" class="btn btn-sm press" data-a="export">내 작업 파일로 백업</button>
@@ -926,7 +938,7 @@
             <button type="button" class="btn btn-danger btn-sm press" data-a="srv-force">${ui.confirm === 'srv-force' ? '한 번 더 누르면 덮어써요' : '그래도 내 내용으로 덮어쓰기'}</button>
           </div></div>` : ''}
         <div class="ad-actions"><button type="button" class="btn btn-gold press" data-a="srv-save" ${srv.ok ? '' : 'disabled'}>${srv.ok ? '지금 내용으로 사이트에 바로 저장' : '먼저 [회원 · 댓글 · 제보]에서 관리자로 연결해 주세요'}</button>
-          ${srv.ok ? `<button type="button" class="btn press" data-a="srv-latest">${isDirty() && ui.confirm !== 'srv-latest' ? '최신 내용 불러오기' : ui.confirm === 'srv-latest' ? '한 번 더 누르면 내 변경을 버리고 불러와요' : '최신 내용 불러오기'}</button>` : ''}</div>
+          ${srv.ok && !live.on ? `<button type="button" class="btn press" data-a="srv-latest">${isDirty() && ui.confirm !== 'srv-latest' ? '최신 내용 불러오기' : ui.confirm === 'srv-latest' ? '한 번 더 누르면 내 변경을 버리고 불러와요' : '최신 내용 불러오기'}</button>` : ''}</div>
         ${srv.ok && !srv.github ? '<p class="warn">서버에 GitHub 토큰(GITHUB_TOKEN)이 없어서 바로 저장은 아직 안 돼요. 설치방법.md의 6단계를 봐 주세요.</p>' : ''}
       </section>` : ''}
       <section class="ad-card"><h3>확인할 것 ${list.length ? `(${list.length})` : ''}</h3>
@@ -934,7 +946,7 @@
       </section>
       <section class="ad-card"><h3>불러오기 · 되돌리기</h3>
         <div class="field"><label for="import-file">data.json 불러오기 (백업 복원)</label><input id="import-file" type="file" accept="application/json,.json"></div>
-        <button type="button" class="btn btn-danger press" data-a="revert">${ui.confirm === 'revert' ? '한 번 더 누르면 지금 작업이 사라지고 사이트 데이터로 돌아가요' : '사이트에 올라가 있는 데이터로 되돌리기'}</button>
+        <button type="button" class="btn btn-danger press" data-a="revert">${ui.confirm === 'revert' ? (live.on ? '한 번 더 누르면 함께 고친 내용이 모두에게서 사라져요' : '한 번 더 누르면 지금 작업이 사라지고 사이트 데이터로 돌아가요') : (live.on ? '함께 고친 내용 모두 되돌리기 (사이트 데이터로)' : '사이트에 올라가 있는 데이터로 되돌리기')}</button>
         <p class="ad-help">고친 내용은 이 브라우저에 초안으로 자동 저장돼요. 다른 컴퓨터에서 이어서 하려면 내보낸 파일을 불러오면 돼요.</p>
       </section>`;
   }
@@ -1133,10 +1145,198 @@
     }
   }
 
+  // =================== 함께 편집 (실시간) ===================
+  // 데이터를 작은 조각(웹툰 하나, 트리 위치 하나, 설정 하나…)으로 나눠 바뀐 조각만 주고받아요.
+  // 같은 조각을 동시에 고치면 나중에 고친 사람 것이 남아요.
+  const live = { on: false, ver: 0, base: 0, shadow: null, busy: false, timer: null, soon: null, who: [], err: '', queued: [], drag: false, lastNote: 0 };
+  function units(d) {
+    const u = {};
+    const put = (k, v) => { u[k] = JSON.stringify(v === undefined ? null : v); };
+    (d.webtoons || []).forEach((w) => put('w:' + w.id, w));
+    put('o:w', (d.webtoons || []).map((w) => w.id));
+    (d.genres || []).forEach((g) => put('g:' + g.id, g));
+    put('o:g', (d.genres || []).map((g) => g.id));
+    Object.keys(d.trees || {}).forEach((gid) => {
+      const T = d.trees[gid];
+      put('ts:' + gid, T.start || null);
+      put('tl:' + gid, T.links || []);
+      Object.keys(T.nodes || {}).forEach((id) => put('tn:' + gid + ':' + id, T.nodes[id]));
+    });
+    const M = d.map || {};
+    put('m:size', [M.width || 2400, M.height || 1400]);
+    put('m:regions', M.regions || []);
+    put('m:links', M.links || []);
+    Object.keys(M.pins || {}).forEach((id) => put('mp:' + id, M.pins[id]));
+    Object.keys(d.settings || {}).forEach((k) => put('s:' + k, d.settings[k]));
+    Object.keys(d).forEach((k) => { if (!['webtoons', 'genres', 'trees', 'map', 'settings', 'meta'].includes(k)) put('x:' + k, d[k]); });
+    return u;
+  }
+  function fromUnits(u, meta) {
+    const get = (k) => JSON.parse(u[k]);
+    const keyed = (prefix, orderKey) => {
+      const items = {};
+      Object.keys(u).forEach((k) => { if (k.startsWith(prefix)) items[k.slice(prefix.length)] = get(k); });
+      const order = u[orderKey] ? get(orderKey) : [];
+      const out = order.filter((id) => items[id]).map((id) => items[id]);
+      Object.keys(items).sort().forEach((id) => { if (!order.includes(id)) out.push(items[id]); });
+      return out;
+    };
+    const d = { webtoons: keyed('w:', 'o:w'), genres: keyed('g:', 'o:g'), trees: {}, map: {}, settings: {}, meta: meta || {} };
+    Object.keys(u).forEach((k) => {
+      if (k.startsWith('ts:')) { const gid = k.slice(3); d.trees[gid] = d.trees[gid] || { start: null, nodes: {}, links: [] }; d.trees[gid].start = get(k); }
+    });
+    Object.keys(u).forEach((k) => {
+      if (k.startsWith('tl:')) { const gid = k.slice(3); d.trees[gid] = d.trees[gid] || { start: null, nodes: {}, links: [] }; d.trees[gid].links = get(k); }
+      else if (k.startsWith('tn:')) { const rest = k.slice(3); const i = rest.indexOf(':'); const gid = rest.slice(0, i); d.trees[gid] = d.trees[gid] || { start: null, nodes: {}, links: [] }; d.trees[gid].nodes[rest.slice(i + 1)] = get(k); }
+      else if (k.startsWith('mp:')) { d.map.pins = d.map.pins || {}; d.map.pins[k.slice(3)] = get(k); }
+      else if (k.startsWith('s:')) d.settings[k.slice(2)] = get(k);
+      else if (k.startsWith('x:')) d[k.slice(2)] = get(k);
+    });
+    const size = u['m:size'] ? get('m:size') : [2400, 1400];
+    d.map.width = size[0]; d.map.height = size[1];
+    d.map.regions = u['m:regions'] ? get('m:regions') : [];
+    d.map.links = u['m:links'] ? get('m:links') : [];
+    d.map.pins = d.map.pins || {};
+    return d;
+  }
+  function diffUnits(a, b) {
+    const ops = [];
+    Object.keys(b).forEach((k) => { if (a[k] !== b[k]) ops.push({ k, v: b[k] }); });
+    Object.keys(a).forEach((k) => { if (!(k in b)) ops.push({ k, v: null }); });
+    return ops;
+  }
+  function applyUnits(u, ops) { ops.forEach((o) => { if (o.v === null) delete u[o.k]; else u[o.k] = o.v; }); return u; }
+
+  /** 함께 편집 시작: 마지막으로 올린 데이터 + 그 뒤 모두가 고친 내용, 그 위에 이 기기에서 하던 작업 */
+  async function liveJoin() {
+    let r;
+    try { r = await api('liveJoin', { here: liveHere() }); } catch (e) { live.err = e.message; liveBadge(); return; }
+    const before = JSON.parse(siteJSON);               // 이 화면을 열 때 받은 사이트 데이터
+    let savedBase = '';
+    try { savedBase = localStorage.getItem(BASE) || ''; } catch (e) { savedBase = ''; }
+    const mineOk = !savedBase || savedBase === siteHash; // 예전 사이트 기준으로 만든 초안은 섞지 않아요
+    const mine = mineOk ? diffUnits(units(before), units(D)) : [];
+    if (!mineOk && isDirty()) {
+      try { localStorage.setItem('webtoontree.admin.oldDraft', JSON.stringify(D)); } catch (e) { /* 무시 */ }
+      toast('이 기기에 예전 초안이 있었는데 사이트가 그 뒤로 바뀌어서 함께 편집에 섞지 않았어요');
+    }
+    const meta = D.meta;
+    D = r.base; ensure();
+    siteJSON = JSON.stringify(D);
+    setBase(r.baseHash);
+    let u = units(D);
+    r.batches.forEach((bt) => applyUnits(u, bt.ops));
+    live.shadow = Object.assign({}, u);
+    applyUnits(u, mine);
+    D = fromUnits(u, meta); ensure();
+    live.on = true; live.ver = r.version; live.base = r.baseVersion; live.who = r.who || []; live.err = '';
+    try { localStorage.setItem(DRAFT, JSON.stringify(D)); } catch (e) { /* 무시 */ }
+    if (mine.length) toast(`함께 편집에 연결됐어요. 이 기기에서 하던 변경 ${mine.length}곳을 같이 올려요`);
+    else toast('함께 편집에 연결됐어요. 다른 관리자가 고친 내용이 몇 초 안에 보여요');
+    liveRender();
+    liveLoop();
+  }
+  function liveHere() { return { tab: ui.tab, w: ui.tab === 'webtoons' ? (ui.w || '') : '', g: ui.tab === 'tree' ? (ui.tg || '') : ui.tab === 'genres' ? (ui.g || '') : '' }; }
+  function liveLoop() {
+    clearTimeout(live.timer);
+    live.timer = setTimeout(async () => { await liveTick(); liveLoop(); }, document.hidden ? 8000 : 2000);
+  }
+  function livePushSoon() { clearTimeout(live.soon); live.soon = setTimeout(() => liveTick(), 500); }
+  async function liveFlush() { for (let i = 0; i < 3; i++) { await liveTick(); if (!diffUnits(live.shadow, units(D)).length) break; } }
+  async function liveTick() {
+    if (!live.on) return;
+    if (live.busy) { await new Promise((ok) => setTimeout(ok, 300)); if (live.busy) return; }
+    live.busy = true;
+    try {
+      const ops = diffUnits(live.shadow, units(D));
+      const r = await api('liveSync', { since: live.ver, ops: ops.length ? ops : undefined, here: liveHere() });
+      if (r.rejoin) { live.on = false; live.busy = false; await liveJoin(); return; }
+      if (ops.length) applyUnits(live.shadow, ops);
+      const remote = (r.batches || []).filter((bt) => bt.ver !== r.myVer);
+      if (remote.length) liveReceive(remote);
+      live.ver = r.version;
+      live.who = r.who || [];
+      if (r.base && r.base.version !== live.base) {
+        // 다른 관리자가 사이트에 올렸어요
+        live.base = r.base.version;
+        if (r.base.hash) setBase(r.base.hash);
+        if (live.base === live.ver && !diffUnits(live.shadow, units(D)).length) siteJSON = JSON.stringify(D);
+        setState();
+      }
+      live.err = '';
+    } catch (e) {
+      live.err = e.message;
+    }
+    live.busy = false;
+    liveBadge();
+  }
+  /** 다른 관리자 변경 받기: 내가 아직 안 보낸 조각은 내 것을 지켜요 */
+  function liveReceive(batches) {
+    const mineNow = units(D);
+    const pending = new Set(diffUnits(live.shadow, mineNow).map((o) => o.k));
+    let changed = 0;
+    const names = new Set();
+    batches.forEach((bt) => {
+      applyUnits(live.shadow, bt.ops);
+      bt.ops.forEach((o) => { if (!pending.has(o.k)) { if (o.v === null) delete mineNow[o.k]; else mineNow[o.k] = o.v; changed++; } });
+      names.add(bt.name);
+    });
+    if (!changed) return;
+    D = fromUnits(mineNow, D.meta); ensure();
+    try { localStorage.setItem(DRAFT, JSON.stringify(D)); } catch (e) { /* 무시 */ }
+    if (ui.w && !toon(ui.w)) ui.w = null;
+    if (ui.g && !genre(ui.g)) ui.g = null;
+    if (Date.now() - live.lastNote > 6000) { live.lastNote = Date.now(); toast(`${Array.from(names).join(', ')}님이 고친 내용이 반영됐어요`); }
+    liveRender();
+  }
+  /** 화면 다시 그리기: 쓰던 칸과 커서, 끌던 것은 지켜요 */
+  function liveRender() {
+    if (live.drag) { live.queued.push(1); return; }
+    const a = document.activeElement;
+    let sel = null, start = null, end = null;
+    if (a && a !== document.body && root().contains(a)) {
+      sel = a.id ? '#' + CSS.escape(a.id) : ['data-wf', 'data-gf', 'data-subf', 'data-sid', 'data-sf', 'data-why', 'data-shop', 'data-k', 'data-wg', 'data-ws', 'data-a', 'data-id'].filter((x) => a.hasAttribute(x)).map((x) => `[${x}="${CSS.escape(a.getAttribute(x))}"]`).join('');
+      try { start = a.selectionStart; end = a.selectionEnd; } catch (e) { start = null; }
+    }
+    render();
+    if (sel) {
+      const n = root().querySelector(sel);
+      if (n) { n.focus({ preventScroll: true }); try { if (start !== null) n.setSelectionRange(start, end); } catch (e) { /* 무시 */ } }
+    }
+  }
+  function liveBadge() {
+    const el = document.getElementById('ad-live');
+    if (!el) return;
+    if (!live.on) { el.innerHTML = live.err ? `<span class="live-dot off"></span>함께 편집 연결 안 됨` : ''; el.title = live.err || ''; return; }
+    const others = live.who.filter((x) => x.userId !== srv.uid);
+    const tabName = (t) => (TABS.find((x) => x[0] === t) || [])[1] || '';
+    el.title = live.err ? `연결이 잠시 끊겼어요: ${live.err}` : '다른 관리자가 고친 내용이 몇 초 안에 보여요';
+    // 웹툰 목록의 '보는 중' 표시도 바로 고쳐요
+    root().querySelectorAll('[data-a="pick-w"]').forEach((row) => {
+      row.querySelectorAll('.live-tag').forEach((t) => t.remove());
+      const t = row.querySelector('b');
+      if (t) t.insertAdjacentHTML('beforeend', liveOn(row.dataset.id));
+    });
+    el.innerHTML = `<span class="live-dot${live.err ? ' off' : ''}"></span>함께 편집 ${others.length ? '' : '· 나 혼자'}
+      ${others.map((x) => `<span class="live-who" title="${esc(tabName(x.tab))}${x.w && toon(x.w) ? ` · ${esc(toon(x.w).title)}` : ''}">${esc(x.name)}${x.w && toon(x.w) ? ` · ${esc(toon(x.w).title)}` : x.tab ? ` · ${esc(tabName(x.tab))}` : ''}</span>`).join('')}`;
+  }
+  function liveOn(id) {
+    if (!live.on) return '';
+    const xs = live.who.filter((x) => x.userId !== srv.uid && x.w === id);
+    return xs.map((x) => `<span class="live-tag">${esc(x.name)} 보는 중</span>`).join('');
+  }
+  // 트리·지도에서 끄는 동안은 화면을 다시 그리지 않아요
+  document.addEventListener('pointerdown', (e) => { if (e.target.closest && e.target.closest('#t-canvas, #m-canvas')) live.drag = true; }, true);
+  document.addEventListener('pointerup', () => { if (!live.drag) return; live.drag = false; if (live.queued.length) { live.queued = []; setTimeout(liveRender, 50); } }, true);
+  document.addEventListener('visibilitychange', () => { if (live.on && !document.hidden) { liveTick(); liveLoop(); } });
+
   /** 바로 저장: 다른 관리자가 먼저 저장했으면 멈추고 물어봐요 (force = 그래도 덮어쓰기) */
-  function saveToServer(force) {
-    api('adminSaveData', { data: D, baseHash: base, force: !!force }).then((r) => {
+  async function saveToServer(force, retried) {
+    if (live.on) { await liveFlush(); }
+    api('adminSaveData', { data: D, baseHash: base, force: !!force, liveVersion: live.on ? live.ver : undefined }).then(async (r) => {
       ui.confirm = null;
+      if (r.behind && !retried) { await liveFlush(); saveToServer(force, true); return; }
+      if (r.behind) { toast('다른 관리자의 변경을 받는 중이에요. 잠시 뒤 다시 눌러 주세요'); render(); return; }
       if (r.conflict) {
         srv.conflict = true; ui.tab = 'data';
         toast('다른 관리자가 먼저 저장했어요. [데이터] 탭에서 어떻게 할지 골라 주세요');
@@ -1145,6 +1345,7 @@
       }
       siteJSON = JSON.stringify(D); srv.conflict = false;
       if (r.hash) setBase(r.hash);
+      if (live.on) live.base = live.ver;
       try { localStorage.removeItem(DRAFT); } catch (e) { /* 무시 */ }
       toast('사이트에 저장했어요. 1~2분 뒤 반영돼요');
       render();
@@ -1192,7 +1393,7 @@
       return;
     }
     if (el.dataset.gf) { genre(ui.g)[el.dataset.gf] = el.value; saveDraft(); return; }
-    if (el.dataset.sf) { const x = subsOf(ui.g).find((s) => s.id === el.dataset.sid); if (x) { x[el.dataset.sf] = el.dataset.sf === 'name' ? el.value.slice(0, 14) : el.value; saveDraft(); } return; }
+    if (el.dataset.subf) { const x = subsOf(ui.g).find((s) => s.id === el.dataset.sid); if (x) { x[el.dataset.subf] = el.dataset.subf === 'name' ? el.value.slice(0, 14) : el.value; saveDraft(); } return; }
     if (el.dataset.why !== undefined) { D.trees[ui.tg].links[Number(el.dataset.why)].why = el.value; saveDraft(); return; }
     if (el.dataset.sf && el.type !== 'checkbox') { setPath(D.settings, el.dataset.sf, el.dataset.num ? Math.max(0, parseInt(el.value, 10) || 0) : el.value); saveDraft(); return; }
     if (el.dataset.shop !== undefined && el.type !== 'checkbox' && el.tagName !== 'SELECT') {
@@ -1226,7 +1427,7 @@
       if (!w.subs.length) delete w.subs;
       saveDraft(); render(); return;
     }
-    if (el.dataset.sf) { render(); return; }
+    if (el.dataset.subf) { render(); return; }
     if (el.dataset.wg) {
       const w = toon(ui.w);
       const g = el.dataset.wg;
