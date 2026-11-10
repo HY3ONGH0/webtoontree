@@ -78,12 +78,37 @@
     return `<a href="#/login" class="pill press" aria-label="내 정보"><span class="avatar" aria-hidden="true">${esc((s.profile ? s.profile.nick : '?')[0])}</span>${esc(nick)}</a>`;
   };
 
+  // ---------- 블랙 모드 · 화이트 모드 ----------
+  const THEME_KEY = 'webtoontree.theme';
+  WT.theme = () => (document.documentElement.dataset.theme === 'light' ? 'light' : 'dark');
+  WT.setTheme = function (t) {
+    if (t === 'light') document.documentElement.dataset.theme = 'light';
+    else delete document.documentElement.dataset.theme;
+    try { localStorage.setItem(THEME_KEY, t); } catch (e) { /* 저장 못 해도 이번엔 바뀌어요 */ }
+    document.querySelectorAll('.theme-btn').forEach((b) => {
+      b.setAttribute('aria-label', t === 'light' ? '블랙 모드로 바꾸기' : '화이트 모드로 바꾸기');
+      b.title = t === 'light' ? '블랙 모드' : '화이트 모드';
+    });
+  };
+  WT.themeBtn = function () {
+    const light = WT.theme() === 'light';
+    return `<button type="button" class="pill press theme-btn" data-theme-toggle aria-label="${light ? '블랙 모드로 바꾸기' : '화이트 모드로 바꾸기'}" title="${light ? '블랙 모드' : '화이트 모드'}">
+      <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg>
+      <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+    </button>`;
+  };
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest && e.target.closest('[data-theme-toggle]');
+    if (b) WT.setTheme(WT.theme() === 'light' ? 'dark' : 'light');
+  });
+
   WT.topRight = function (opts) {
     const o = opts || {};
     return `<div class="right">
       ${o.map === false ? '' : `<a href="#/map" class="pill pill-gold press">${WT.icon.map}전체 지도</a>`}
       ${WT.coinPill()}
       <a href="#/ranking" class="pill press">${WT.icon.trophy}랭킹</a>
+      ${WT.themeBtn()}
       ${WT.userChip()}
     </div>`;
   };
@@ -223,6 +248,15 @@
       if (!anim) { void track.offsetWidth; track.style.transition = ''; }
     };
     const go = (k, anim = true) => {
+      // 빠르게 계속 눌러도 끝이 없게: 가운데 줄에서 너무 멀어지면 같은 카드(가운데 줄)로 먼저 몰래 옮겨요
+      if (k < N || k >= 4 * N) {
+        const base = 2 * N + mod(v);
+        k = base + (k - v);
+        cards[v].classList.remove('is-active');
+        v = base; place(false);
+        cards[v].classList.add('is-active', 'no-pop');
+        setTimeout(() => cards[base].classList.remove('no-pop'), 50);
+      }
       v = k; homeIndex = mod(v);
       place(anim);
       cards.forEach((c, n) => c.classList.toggle('is-active', n === v));
@@ -363,7 +397,7 @@
     let tab = 'start';
     let enter = true;   // 처음 그릴 때만 등장 애니메이션 (탭을 바꿀 땐 안 해요)
     const draw = () => {
-      app().innerHTML = `<div class="view"><div class="login${enter ? ' login-enter' : ''}">${enter ? '<span class="shoot" aria-hidden="true"></span>' : ''}
+      app().innerHTML = `<div class="view"><div class="login-theme">${WT.themeBtn()}</div><div class="login${enter ? ' login-enter' : ''}">${enter ? '<span class="shoot" aria-hidden="true"></span>' : ''}
         <section class="intro">
           <svg viewBox="0 0 300 150" width="300" height="150" aria-hidden="true" style="max-width:100%">
             <polyline points="20,120 70,70 120,95 170,40 220,60 280,20" fill="none" stroke="#E8C66A" stroke-width="2"/>
@@ -428,7 +462,7 @@
 
   function viewMe() {
     const s = WT.store.state;
-    app().innerHTML = `<div class="view"><div class="login">
+    app().innerHTML = `<div class="view"><div class="login-theme">${WT.themeBtn()}</div><div class="login">
       <section class="card rpg" aria-label="내 정보"><span class="corner-b" aria-hidden="true"></span>
         <div style="display:flex; align-items:center; gap:16px">
           <div>${WT.charSVG(WT.currentLook(), 72)}</div>
@@ -467,7 +501,7 @@
     let tab = 'login';
     let enter = true;
     const draw = () => {
-      app().innerHTML = `<div class="view"><div class="login${enter ? ' login-enter' : ''}">${enter ? '<span class="shoot" aria-hidden="true"></span>' : ''}
+      app().innerHTML = `<div class="view"><div class="login-theme">${WT.themeBtn()}</div><div class="login${enter ? ' login-enter' : ''}">${enter ? '<span class="shoot" aria-hidden="true"></span>' : ''}
         <section class="intro">
           <svg viewBox="0 0 300 150" width="300" height="150" aria-hidden="true" style="max-width:100%">
             <polyline points="20,120 70,70 120,95 170,40 220,60 280,20" fill="none" stroke="#E8C66A" stroke-width="2"/>
@@ -560,7 +594,7 @@
 
   function viewAccountMe() {
     const s = WT.store.state;
-    app().innerHTML = `<div class="view"><div class="login">
+    app().innerHTML = `<div class="view"><div class="login-theme">${WT.themeBtn()}</div><div class="login">
       <section class="card rpg" aria-label="내 정보"><span class="corner-b" aria-hidden="true"></span>
         <div style="display:flex; align-items:center; gap:16px">
           <div>${WT.charSVG(WT.currentLook(), 72)}</div>
