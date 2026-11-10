@@ -262,12 +262,12 @@ body.no-anim .sky { display: none; }
 .node.bump { animation: nodeBump .3s ease-out; }
 @keyframes nodeBump { 40% { translate: var(--bx, 0) var(--by, 0); } }
 .badge-new {
-  position: absolute; z-index: 3; left: -6px; top: -6px; width: 24px; height: 24px; border-radius: 50%; pointer-events: none;
+  position: absolute; z-index: 4; left: calc(50% - 12px); top: -14px; width: 24px; height: 24px; border-radius: 50%; pointer-events: none;
   display: flex; align-items: center; justify-content: center; font: 900 13px/1 system-ui, sans-serif; color: #fff;
   background: radial-gradient(circle at 35% 30%, #FF7A7A, #E5262E 60%, #A8121A); border: 2px solid #0B1230;
   box-shadow: 0 0 10px rgba(255, 60, 60, 0.75); animation: newPulse 1.8s ease-in-out infinite;
 }
-.book-new { left: 50%; top: -12px; margin-left: -12px; width: 22px; height: 22px; font-size: 12px; }
+.book-new { left: 50%; top: -12px; margin-left: -11px; width: 22px; height: 22px; font-size: 12px; }
 @keyframes newPulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 8px rgba(255, 60, 60, 0.6); } 50% { transform: scale(1.12); box-shadow: 0 0 16px rgba(255, 60, 60, 0.95); } }
 .kbd-hint { display: inline-flex; align-items: center; gap: 3px; }
 .kbd-hint kbd { font: 700 10px/1 system-ui, sans-serif; padding: 3px 4px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.25); background: rgba(255, 255, 255, 0.06); color: var(--soft); }
@@ -842,3 +842,24 @@ body.no-anim *, body.no-anim *::before, body.no-anim *::after { animation: none 
 .pick-badge.on-node { position: absolute; z-index: 3; left: 50%; bottom: -9px; transform: translateX(-50%); font-size: 11px; padding: 1px 6px; pointer-events: none; }
 .node-label.after-pick { margin-top: 14px; }
 .pick-badge.on-spine { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); font-size: 10px; padding: 1px 3px; writing-mode: horizontal-tb; }
+
+/* 관리자 강추 효과: 붉은·금빛 고리가 돌고, 바깥으로 빛이 번져요 */
+.pick-ring, .pick-glow { position: absolute; left: -8px; top: -8px; width: calc(var(--sz) + 16px); height: calc(var(--sz) + 16px); border-radius: 50%; pointer-events: none; }
+.pick-ring { z-index: 1;
+  background: conic-gradient(#FF1F2E, #FF8A1F 18%, #FFE07A 25%, #FF8A1F 32%, #FF1F2E 50%, #B3000F 68%, #FF1F2E 75%, #FFE07A 82%, #FF1F2E 100%);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 4px)); mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 4px));
+  filter: drop-shadow(0 0 6px rgba(255, 40, 40, 0.9)); animation: pickSpin 2.6s linear infinite; }
+.pick-glow { z-index: 0; background: radial-gradient(circle, rgba(255, 40, 40, 0.0) 52%, rgba(255, 50, 40, 0.55) 62%, rgba(255, 120, 40, 0.0) 74%); animation: pickPulse 1.8s ease-out infinite; }
+.node-box.is-pick .node { z-index: 2; }
+.node-box.is-pick .node:not(.st-locked) { box-shadow: 0 0 0 2px rgba(255, 60, 50, 0.9), 0 0 26px rgba(255, 50, 40, 0.65); }
+.node-box.is-pick.is-locked .pick-ring { opacity: .75; }
+@keyframes pickSpin { to { transform: rotate(360deg); } }
+@keyframes pickPulse { 0% { transform: scale(.92); opacity: 1; } 100% { transform: scale(1.45); opacity: 0; } }
+.pick-badge.on-node { z-index: 5; overflow: hidden; font-size: 11.5px; padding: 2px 7px; border: 1px solid #FFD0A0; box-shadow: 0 0 10px rgba(255, 40, 40, 0.85), 0 2px 4px rgba(0, 0, 0, 0.5); animation: pickBadge 1.8s ease-in-out infinite; }
+.pick-badge.on-node::after { content: ''; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent); transform: skewX(-20deg); animation: pickShine 2.4s ease-in-out infinite; }
+@keyframes pickBadge { 0%, 100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.08); } }
+@keyframes pickShine { 0%, 55% { left: -60%; } 100% { left: 130%; } }
+.book.is-pick { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35), 0 0 0 2px #FF2A2A, 0 0 14px rgba(255, 40, 40, 0.75); animation: bookPick 1.8s ease-in-out infinite; }
+@keyframes bookPick { 50% { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35), 0 0 0 2px #FFB020, 0 0 22px rgba(255, 60, 40, 0.95); } }
+.cover-rect.is-pick { box-shadow: 0 0 0 3px #FF2A2A, 0 0 24px rgba(255, 40, 40, 0.7); }
+body.no-anim .pick-ring, body.no-anim .pick-glow, body.no-anim .pick-badge.on-node, body.no-anim .pick-badge.on-node::after, body.no-anim .book.is-pick { animation: none; }
