@@ -450,8 +450,8 @@
       const nw = newEps(id);
       let sub = st === 'reading' ? `${ep(id)}화 · ${pct(id)}%` : statusText[st];
       if (hot) sub = `오늘 폭주 · ${sub}`;
-      // 제목 아래에는 꼭 필요한 것만 (읽는 중 진행률, 폭주). 새 화는 왼쪽 위 빨간 N, 안 봄·잠김·완독은 원 모양으로 보여 줘요
-      const showSub = hot || st === 'reading';
+      // 원 아래에는 제목만. 진행은 원 둘레 띠, 새 화는 N, 폭주는 불꽃, 잠김·완독은 원 모양으로 보여 줘요 (화면 읽기용 글은 aria-label 에)
+      const showSub = false;
       const subCls = hot ? 'hot' : st === 'reading' ? 'reading' : st === 'done' ? 'done' : '';
       const cover = w.cover ? `<img class="cover" src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.nextElementSibling.hidden = false; this.remove()">` : '';
       const rec = w.pick ? 0 : WT.recStars(w);   // 관리자 강추면 별 대신 강추 표시
