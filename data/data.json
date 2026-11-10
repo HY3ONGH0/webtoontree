@@ -111,7 +111,29 @@
             3.2
           ]
         ]
-      }
+      },
+      "subs": [
+        {
+          "id": "fantasy-1",
+          "name": "회귀, 빙의, 환생",
+          "color": "#9B7BFF"
+        },
+        {
+          "id": "fantasy-2",
+          "name": "헌터·게이트",
+          "color": "#FF6B6B"
+        },
+        {
+          "id": "fantasy-4",
+          "name": "아카데미물",
+          "color": "#5BB8FF"
+        },
+        {
+          "id": "fantasy-5",
+          "name": "그외",
+          "color": "#FFB347"
+        }
+      ]
     },
     {
       "id": "romance",
@@ -610,6 +632,97 @@
     }
   ],
   "webtoons": [
+    {
+      "id": "w058",
+      "title": "투신전생기",
+      "author": "https://blacktoon427.com/webtoon/10043.html",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/10043.html",
+      "cover": "https://i.namu.wiki/i/IgxB3J_etypRxwMtmuOWTKlDDcST1FqPyWTRHeOX7vnt1sAamOR0fbcYkMtSosJHEZ1-GQ_NtydCvRGA8AL1csG0Q3YKG7HwfrVM_kfJYMbSLS2xElK1Rkakprcy3EZDN3aM1FhYte7gMzNbxGuZJQ.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 1,
+      "color": "#01c7fc",
+      "episodes": 101,
+      "status": "hiatus",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [
+        "판타지",
+        "액션",
+        "회귀",
+        "이능력배틀물",
+        "복수극",
+        "먼치킨"
+      ],
+      "desc": "인류 최강자의 회귀 액션 판타지.\n\"역겨운 신들이 줬다고 해도 기회는 기회. 뒈지고 싶다는데 죽여 줘야지.\"\n인류 최후의 생존자 제피르. 마신과의 고독한 싸움은 패배로 끝났으나, 신들이 준 기회로 10년 전으로 돌아왔다.\n모든 것을 빼앗아갔던 마신과 인간을 구경거리 취급한 신들. 이번에는 내가 너희를 물어뜯겠다.",
+      "subs": [
+        "fantasy-1"
+      ]
+    },
+    {
+      "id": "w057",
+      "title": "플레이어",
+      "author": "박종석, 오현준",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/4528.html",
+      "cover": "https://i.namu.wiki/i/asvqEIQR-KClqGBRC1ruON7LwUuC9GysRIcb3YbnbTxVb4ETrmTubtOd9mLq4Wzwi1tk8EnqYuw8MQ29aSns_43dMVEpWaZ-W-wnCvAqlbgu99rovaerxKK3sF_4C-HqPYfUU2OnCbBJW6DICUhCUw.webp",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": 0,
+      "color": "#0056d6",
+      "episodes": 1,
+      "status": "completed",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [
+        "판타지",
+        "액션",
+        "소년물",
+        "성장물",
+        "힘순찐",
+        "빙의"
+      ],
+      "desc": "베댓 공약으로 어쩌다 웹툰 속 주인공이 되었다!\n"
+    },
+    {
+      "id": "w056",
+      "title": "작두",
+      "author": "232, POGO",
+      "platform": "네이버웹툰",
+      "url": "https://blacktoon427.com/webtoon/16019.html",
+      "cover": "https://i.namu.wiki/i/GjI0ZmaJP6Xxn5bGC2T8-gZ3z3t9CzJ74NTGX75BcRo-8bE-u5PZJSE_-8LVPKc-Jo10UyqcPzyCxukXq7EMx20_kjPXCV-Sp5ldgsHKZu28ZmLhkr9aFtLeESSLzuul4DWxd3wrJmzgW7gRPWUsTg.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 1,
+      "color": "#ffffff",
+      "episodes": 120,
+      "status": "ongoing",
+      "days": [
+        "thu"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [
+        "판타지",
+        "동양",
+        "신화",
+        "이능력",
+        "액션",
+        "성장물"
+      ],
+      "desc": "미신 따윈 믿지 않는 주인공 '권용진'. 그의 만 16세의 생일이 지나자 눈 앞에 펼쳐진 믿을 수 없는 일들."
+    },
     {
       "id": "w055",
       "title": "용사 출연 마왕 연출",
@@ -2099,6 +2212,6 @@
   ],
   "hotToday": [],
   "meta": {
-    "lastWebtoonId": 55
+    "lastWebtoonId": 58
   }
 }
