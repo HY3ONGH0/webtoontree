@@ -1,6 +1,61 @@
 {
   "webtoons": [
     {
+      "id": "w65755ul",
+      "title": "도굴왕",
+      "author": "",
+      "platform": "카카오페이지",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/lbGPhVfwIMFvS8UxxkE_JyGsbZApYCo1mgM455mkYlMY5i4YT8CGu01PFdiP2ww_gNHKp8lVfJ8xV-eeIH1O1oxi0Rttxe7b9tYGDwLR8btxTKQI6X0PJ6jN3DVbRhnp2LozXoMT6tXsaxA7PBQO4w.webp",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 3,
+      "color": "#8c00ff",
+      "episodes": 411,
+      "status": "completed",
+      "days": [
+        "tue",
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [],
+      "desc": "",
+      "subs": [
+        "fantasy-1",
+        "fantasy-2"
+      ]
+    },
+    {
+      "id": "w6575t4",
+      "title": "소꿉친구 컴플렉스",
+      "author": "은하이",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/8rHZndNVPLbjcdHDxCAmGhuwMnDviSPURdGhNWTlRF2hga1S89_MH5sRsJYQdghSCrDFcVXcgQwtueTw-_QlQN3zkqlUvQHF_rfZqJfbVjzAmK5H-wXPayMZOkuKCjldhAfhYvw_B8coNZCBvYRoDg.webp",
+      "genres": [
+        "romance",
+        "daily"
+      ],
+      "recommended": 3,
+      "color": "#66ffc4",
+      "episodes": 1,
+      "status": "hiatus",
+      "days": [
+        "thu"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-10",
+      "tags": [
+        "로맨스",
+        "일상",
+        "캠퍼스물",
+        "코미디"
+      ],
+      "desc": "20살에 20년지기, 평생을 함께한 소꿉친구 하늘과 민철.\n그런 소꿉친구의 알고 싶지 않은 은밀한 사정을 알아버렸다?!\n\n서로를 이성으로 생각한 적이 결코 없는 두사람이지만,\n오해가 오해를 낳고 착각이 착각을 낳는 상황들 속에서 점점\n서로가 의식되기 시작한다.\n\n서로를 너무 잘 알기 때문에 오히려 고난을 겪는 두 남녀의\n술래잡기 같은 로맨스 코미디!\n"
+    },
+    {
       "id": "w6574dz",
       "title": "SSS급 죽어야 사는 헌터",
       "author": "네이다, Bill K",
@@ -19,11 +74,18 @@
       ],
       "autoCount": true,
       "baseDate": "2026-11-10",
-      "tags": [],
+      "tags": [
+        "판타지",
+        "죽음",
+        "탑등반",
+        "상태창",
+        "소설원작"
+      ],
       "desc": "F급 말단 헌터 '김공자'.\n\n랭킹 1위 '염제'를 부러워하던 어느 날, 무려 S+급 스킬을 얻는다.\n\n하지만 기쁨도 잠시, 어째 스킬 내용이 이상하다?!\n\n상대의 스킬 중 1개를 복사한다, 까지는 좋은데...\n\n''뭐? 내가 죽어야만 발동된다고?!''",
       "subs": [
         "fantasy-6",
-        "fantasy-1"
+        "fantasy-1",
+        "fantasy-2"
       ]
     },
     {
@@ -1473,7 +1535,7 @@
         },
         {
           "id": "fantasy-2",
-          "name": "헌터, 게이트",
+          "name": "헌터, 게이트, 탑",
           "color": "#FF6B6B"
         },
         {
@@ -2108,20 +2170,20 @@
           440
         ],
         "w020": [
-          940,
-          340
+          970,
+          300
         ],
         "w018": [
           760,
-          180
+          190
         ],
         "w022": [
           400,
           250
         ],
         "w032": [
-          670,
-          350
+          690,
+          340
         ],
         "w035": [
           410,
@@ -2132,16 +2194,16 @@
           280
         ],
         "w041": [
-          760,
+          790,
           480
         ],
         "w045": [
-          1020,
-          480
+          1070,
+          460
         ],
         "w046": [
-          1270,
-          480
+          1330,
+          400
         ],
         "w062": [
           300,
@@ -2152,12 +2214,16 @@
           80
         ],
         "w064ys": [
-          900,
-          80
+          890,
+          90
         ],
         "w6573q": [
-          1150,
-          80
+          1100,
+          170
+        ],
+        "w6575t4": [
+          1330,
+          240
         ]
       },
       "links": [
@@ -2250,6 +2316,16 @@
           "from": "w064ys",
           "to": "w6573q",
           "why": "숨막힘의 극치로."
+        },
+        {
+          "from": "w6573q",
+          "to": "w6575t4",
+          "why": "조금 덜 숨막히는 성인웹툰!"
+        },
+        {
+          "from": "w045",
+          "to": "w6575t4",
+          "why": "나도 19나 먹어볼까?"
         }
       ]
     },
@@ -2427,7 +2503,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 6574
+    "lastWebtoonId": 65755
   },
   "version": 1,
   "shop": [
