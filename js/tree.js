@@ -624,7 +624,8 @@
     const libOpen = () => !lib && (leaves.some(cleared) || !!S.unlocked['lib:' + gid]);
     // 도서관에서 장르 탭을 바꿀 땐 화면이 깜박이지 않게 등장 효과를 꺼요
     const noEnter = lib && Date.now() - (WT.libLeftAt || 0) < 1500;
-    document.getElementById('app').innerHTML = lib ? lbHTML() : `<div class="view${lib ? ' lib-view' : ' tree-view'}${noEnter ? ' no-enter' : ''}" style="--gc:${g.color}">
+    document.getElementById('app').innerHTML = lib ? lbHTML() : `<div class="view${lib ? ' lib-view' : ' tree-view side-view'}${noEnter ? ' no-enter' : ''}" style="--gc:${g.color}">
+      <div class="tv-frame">
       <div class="topbar">
         <div class="left">
           <a href="${lib ? (gid === 'all' ? '#/' : `#/tree/${gid}`) : '#/'}" class="icon-btn press" aria-label="${lib ? '트리로 돌아가기' : '홈으로'}">${WT.icon.back}</a>
@@ -636,7 +637,7 @@
             <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
               <div class="progress" role="progressbar" aria-label="장르 진행률" aria-valuemin="0" aria-valuemax="${ids.length}" aria-valuenow="${c0.d}"><div id="prog-bar" style="width:${c0.d / (ids.length || 1) * 100}%"></div></div>
               <span id="prog-text" style="font-size:13px; color:var(--gold); font-weight:700">${c0.d} / ${ids.length} ${esc(labels.done || '완독')} · 보는 중 ${c0.r}</span>
-              <span class="legend"><span>${WT.icon.starSmall}추천</span><span><span class="pick-badge sm">강추</span></span><span>${WT.icon.flame}오늘 폭주</span><span class="kbd-hint"><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> 키로 이동</span></span>
+              <span class="legend"><span>${WT.icon.starSmall}추천</span><span><span class="pick-badge sm">강추</span></span><span>${WT.icon.flame}오늘 폭주</span><span class="kbd-hint"><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> 키로 이동</span><button type="button" class="guide-btn" id="guide-btn" aria-label="트리 보는 법">?</button></span>
             </div>
           </div>
         </div>
@@ -657,9 +658,10 @@
           </div>
           <div class="more-hint-row" aria-hidden="true"><span class="more-hint">옆으로 밀어서 더 보기 →</span></div>
         </div>`}
-        <div id="panel-slot"></div>
       </main>
       ${WT.band(lib ? null : gid)}
+      </div>
+      <div id="panel-slot" class="lb-drawer tv-drawer"></div>
     </div>`;
 
     const stage = document.getElementById('stage');
@@ -779,7 +781,9 @@
       if (lib) return;
       const w = wrap.clientWidth || BW;
       const band = document.querySelector('.band');
-      const availH = window.innerHeight - wrap.getBoundingClientRect().top - (band ? band.offsetHeight : 0) - 24 + window.scrollY;
+      const fr = wrap.closest('.tv-frame');
+      const bottom = fr && window.innerWidth > 860 ? fr.getBoundingClientRect().bottom : window.innerHeight;
+      const availH = bottom - wrap.getBoundingClientRect().top - (band ? band.offsetHeight : 0) - 24 + (fr && window.innerWidth > 860 ? 0 : window.scrollY);
       const sc = Math.max(0.6, Math.min(1, w / SW, availH > 300 ? availH / BH : 1));
       stage.style.transform = `scale(${sc})`;
       sizer.style.width = `${SW * sc}px`;
@@ -981,8 +985,9 @@
     function emptyPanelHTML() {
       const dot = (inner, style) => `<span class="key-dot" style="${style || ''}">${inner}</span>`;
       return `<aside class="panel rpg panel-empty" aria-label="트리 보는 법"><span class="corner-b" aria-hidden="true"></span>
-        <h2>웹툰을 눌러 보세요</h2>
-        <p class="hint" style="font-size:14px; margin:0">원을 누르면 이 자리에 줄거리와 감상 기록이 떠요.</p>
+        <button type="button" class="guide-x" aria-label="보는 법 닫기">${WT.icon.close || '×'}</button>
+        <h2>트리 보는 법</h2>
+        <p class="hint" style="font-size:14px; margin:0">원을 누르면 이 자리에 줄거리와 감상 기록이 떠요. 위쪽 ? 버튼으로 이 안내를 다시 열 수 있어요.</p>
         <div class="key-list">
           ${dot('<span class="pick-badge on-node" style="animation:none">강추</span>')}<span><b>관리자 강추</b>원 위 가운데 빨간 표시와 빛나는 고리</span>
           ${dot(`<span class="badge-done">${WT.icon.check}</span>`, 'border-color:var(--gold)')}<span><b>다 본 웹툰</b>금색 테두리 + 오른쪽 아래 금색 체크</span>
@@ -995,7 +1000,7 @@
 
     let panelFor = null;
     function renderPanel(animate) {
-      if (!sel) { panelFor = null; slot.innerHTML = lib ? '' : emptyPanelHTML(); fit(); return; }
+      if (!sel) { panelFor = null; slot.innerHTML = ''; fit(); return; }
       // 같은 웹툰 창을 다시 그릴 땐(별점·화수·댓글 등을 바꿨을 때) 보던 스크롤 위치를 그대로 지켜요
       const old = slot.querySelector('.panel');
       const keep = !animate && panelFor === sel && old ? { top: old.scrollTop, win: window.scrollY } : null;
@@ -1292,8 +1297,22 @@
 
     const onResize = () => { fit(); if (lib) lbShow(); };
     window.addEventListener('resize', onResize);
+    // 옆에 상세 창이 열리고 닫히며 판 너비가 바뀌어도 다시 맞춰요
+    let roW = wrap ? wrap.clientWidth : 0, roF = 0;
+    const ro = window.ResizeObserver && wrap ? new ResizeObserver(() => {
+      if (wrap.clientWidth === roW) return;
+      roW = wrap.clientWidth; cancelAnimationFrame(roF); roF = requestAnimationFrame(onResize);
+    }) : null;
+    if (ro) ro.observe(wrap);
+    const gb = document.getElementById('guide-btn');
+    if (gb) gb.addEventListener('click', () => {
+      if (sel) { close(); slot.innerHTML = emptyPanelHTML(); return; }
+      slot.innerHTML = slot.innerHTML ? '' : emptyPanelHTML();
+    });
+    slot.addEventListener('click', (e) => { if (!sel && e.target.closest('.guide-x')) slot.innerHTML = ''; });
     WT.leaveView = () => {
       if (lib) WT.libLeftAt = Date.now();
+      if (ro) ro.disconnect();
       window.removeEventListener('resize', onResize);
       document.removeEventListener('keydown', onKey);
       WT.onHashChange = null;
