@@ -1,26 +1,6 @@
 {
   "webtoons": [
     {
-      "id": "w657564281137n2",
-      "title": "새 웹툰",
-      "author": "",
-      "platform": "네이버웹툰",
-      "url": "",
-      "cover": "",
-      "genres": [
-        "romance"
-      ],
-      "recommended": 0,
-      "color": "",
-      "episodes": 1,
-      "status": "ongoing",
-      "days": [],
-      "autoCount": true,
-      "baseDate": "2026-11-11",
-      "tags": [],
-      "desc": ""
-    },
-    {
       "id": "w657564281136nf",
       "title": "중간에서 만나",
       "author": "조흰 글 윤김 그림",
