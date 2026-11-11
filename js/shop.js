@@ -35,10 +35,12 @@
         <div class="topbar">
           <div class="left">
             <a href="#/" class="icon-btn press" aria-label="홈으로">${WT.icon.back}</a>
-            <div class="title-block"><h1 style="color:var(--coin)">캐릭터 상점</h1><span class="sub">웹툰을 보고 모은 코인으로 내 캐릭터를 꾸며 보세요</span></div>
+            <div class="title-block"><h1 style="color:var(--coin)">내 프로필</h1><span class="sub">웹툰을 보고 모은 코인으로 내 캐릭터를 꾸며 보세요</span></div>
           </div>
           ${WT.topRight()}
         </div>
+        ${S.profile ? `<div class="profile-wrap">${WT.profileCard()}</div>` : ''}
+        <h2 class="shop-h">캐릭터 꾸미기</h2>
         <main class="shop-main">
           <section class="preview rpg" aria-label="미리보기"><span class="corner-b" aria-hidden="true"></span>
             <span style="font-size:13px; color:var(--muted); font-weight:700; align-self:flex-start">${S.profile ? esc(S.profile.nick) + ' 님의 캐릭터' : '캐릭터 미리보기'}</span>
@@ -83,6 +85,7 @@
       </div>`;
 
       const app = document.getElementById('app');
+      if (S.profile) WT.bindProfileCard(() => draw(false));
       app.querySelectorAll('[data-tab]').forEach((b) => b.addEventListener('click', () => { tab = b.dataset.tab; draw(false); }));
       app.querySelectorAll('[data-item]').forEach((b) => b.addEventListener('click', () => { preview = b.dataset.item; draw(true); }));
       document.getElementById('shop-act').addEventListener('click', async () => {
@@ -134,6 +137,7 @@
           <div class="left">
             <a href="#/" class="icon-btn press" aria-label="홈으로">${WT.icon.back}</a>
             <div class="title-block"><h1 style="color:var(--coin)">랭킹</h1><span class="sub">이번 주에 누가 웹툰을 가장 많이 봤을까?</span></div>
+          <nav class="rank-switch" aria-label="랭킹 종류"><a href="#/top">웹툰 랭킹</a><a href="#/ranking" aria-current="page">독자 랭킹</a></nav>
           </div>
           ${WT.topRight()}
         </div>
@@ -200,6 +204,7 @@
         <div class="left">
           <a href="#/" class="icon-btn press" aria-label="홈으로">${WT.icon.back}</a>
           <div class="title-block"><h1 style="color:var(--coin)">랭킹</h1><span class="sub">이번 주에 누가 웹툰을 가장 많이 봤을까?</span></div>
+          <nav class="rank-switch" aria-label="랭킹 종류"><a href="#/top">웹툰 랭킹</a><a href="#/ranking" aria-current="page">독자 랭킹</a></nav>
         </div>
         ${WT.topRight()}
       </div>
@@ -223,5 +228,7 @@
   }
 
   WT.views.shop = viewShop;
+  // 프로필 = 내 정보 + 캐릭터 꾸미기 (닉네임이 없으면 로그인 화면으로)
+  WT.views.me = (params) => (WT.store.state.profile ? viewShop(params) : (location.replace('#/login')));
   WT.views.ranking = viewRanking;
 })();

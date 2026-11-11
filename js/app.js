@@ -57,7 +57,7 @@
   /** 코인 표시 + 떠오르는 숫자 */
   WT.coinPill = function () {
     if (!WT.store.state.profile) return '';
-    return `<a href="#/shop" class="pill pill-coin press" id="coin-pill" aria-label="내 코인 ${WT.store.state.coins}개, 상점으로"><span class="coin" aria-hidden="true">C</span><span id="coin-num">${WT.store.state.coins}</span></a>`;
+    return `<a href="#/me" class="pill pill-coin press" id="coin-pill" aria-label="내 코인 ${WT.store.state.coins}개, 캐릭터 꾸미기로"><span class="coin" aria-hidden="true">C</span><span id="coin-num">${WT.store.state.coins}</span></a>`;
   };
   WT.popCoin = function (label) {
     const num = document.getElementById('coin-num');
@@ -75,7 +75,7 @@
   WT.userChip = function () {
     const s = WT.store.state;
     const nick = s.profile ? s.profile.nick : '둘러보기 중';
-    return `<a href="#/login" class="pill press" aria-label="내 정보"><span class="avatar" aria-hidden="true">${esc((s.profile ? s.profile.nick : '?')[0])}</span>${esc(nick)}</a>`;
+    return `<a href="${s.profile ? '#/me' : '#/login'}" class="pill press" aria-label="프로필"><span class="avatar" aria-hidden="true">${esc((s.profile ? s.profile.nick : '?')[0])}</span>${esc(nick)}</a>`;
   };
 
   // ---------- 블랙 모드 · 화이트 모드 ----------
@@ -114,12 +114,35 @@
     if (b) WT.switchTheme();
   });
 
+  // ---------- 모든 화면 공통 왼쪽 메뉴: 홈 · 트리 · 도서관 · 랭킹 · 프로필 ----------
+  const RAIL_IC = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">${d}</svg>`;
+  WT.lastTree = function (gid) {
+    try { if (gid) localStorage.setItem('webtoontree.lastTree', gid); return localStorage.getItem('webtoontree.lastTree'); } catch (e) { return gid || null; }
+  };
+  WT.renderRail = function (name) {
+    let el = document.getElementById('app-rail');
+    if (!el) { el = document.createElement('nav'); el.id = 'app-rail'; el.className = 'app-rail'; el.setAttribute('aria-label', '메뉴'); document.body.insertBefore(el, document.getElementById('app')); }
+    const live = WT.liveGenres().map((g) => g.id);
+    const last = WT.lastTree();
+    const treeId = live.includes(last) ? last : live[0];
+    const s = WT.store.state;
+    const on = { home: 'home', tree: 'tree', map: 'tree', library: 'library', top: 'rank', ranking: 'rank', me: 'me', shop: 'me', login: 'me' }[name] || 'home';
+    const items = [
+      ['home', '#/', '홈', '<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>'],
+      ['tree', treeId ? `#/tree/${treeId}` : '#/map', '트리', '<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.6 7.9l3.2 7.8M16.4 7.9l-3.2 7.8"/>'],
+      ['library', '#/library/all', '도서관', '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v18"/>'],
+      ['rank', '#/top', '랭킹', '<path d="M7 4h10v5a5 5 0 0 1-10 0z M7 6H4a3 3 0 0 0 3 4 M17 6h3a3 3 0 0 1-3 4 M12 14v4 M8 21h8"/>'],
+      ['me', s.profile ? '#/me' : '#/login', '프로필', '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>']
+    ];
+    el.innerHTML = `<a href="#/" class="rail-mark" aria-label="${esc(WT.settings().siteName)} 홈"><span class="au-mark" aria-hidden="true"><i></i><i></i><i></i></span></a>
+      <div class="rail-items">${items.map(([k, href, label, d]) => `<a href="${href}" class="rail-item${on === k ? ' on' : ''}" ${on === k ? 'aria-current="page"' : ''} title="${label}">${RAIL_IC(d)}<span>${label}</span></a>`).join('')}</div>`;
+  };
+
   WT.topRight = function (opts) {
     const o = opts || {};
     return `<div class="right">
       ${o.map === false ? '' : `<a href="#/map" class="pill pill-gold press">${WT.icon.map}전체 지도</a>`}
       ${WT.coinPill()}
-      <a href="#/ranking" class="pill press">${WT.icon.trophy}랭킹</a>
       ${WT.themeBtn()}
       ${WT.userChip()}
     </div>`;
@@ -366,6 +389,7 @@
         <div class="left">
           <a href="#/" class="icon-btn press" aria-label="홈으로">${WT.icon.back}</a>
           <div class="title-block"><h1 style="color:var(--coin)">이번 주 랭킹</h1><span class="sub">이번 주에 많이 읽은 웹툰 TOP 10</span></div>
+          <nav class="rank-switch" aria-label="랭킹 종류"><a href="#/top" aria-current="page">웹툰 랭킹</a><a href="#/ranking">독자 랭킹</a></nav>
         </div>
         ${WT.topRight()}
       </div>
@@ -499,40 +523,73 @@
     document.getElementById('guest-btn').addEventListener('click', () => { s.guest = true; markGuest(); WT.store.save(); location.hash = '#/'; });
   }
 
-  function viewMe() {
+  function viewMe() { history.replaceState(null, '', '#/me'); WT.views.me(); }
+  /** 프로필 화면 위쪽 카드: 이름·기록, 닉네임 바꾸기, 계정 관리 (아래에는 캐릭터 꾸미기가 이어져요) */
+  WT.profileCard = function () {
     const s = WT.store.state;
-    app().innerHTML = `<div class="view"><div class="login-theme">${WT.themeBtn()}</div><div class="login">
-      <section class="card rpg" aria-label="내 정보"><span class="corner-b" aria-hidden="true"></span>
-        <div style="display:flex; align-items:center; gap:16px">
-          <div>${WT.charSVG(WT.currentLook(), 72)}</div>
-          <div class="title-block"><h1 style="font-size:26px">${esc(s.profile.nick)} 님</h1><span class="sub">코인 ${s.coins}개 · 완독 ${WT.store.stats().done}개</span></div>
+    const server = WT.api.on() && !!s.token;
+    const st = WT.store.stats();
+    return `<section class="card rpg profile-card" aria-label="내 프로필"><span class="corner-b" aria-hidden="true"></span>
+        <div class="pf-who">
+          <span class="pf-av" aria-hidden="true">${WT.charSVG(WT.currentLook(), 64)}</span>
+          <div class="title-block"><h1>${esc(s.profile.nick)} 님</h1>
+            <span class="sub">${server ? `아이디 ${esc(s.profile.userId || '')} · ` : ''}코인 ${s.coins}개 · 완독 ${st.done}개</span></div>
         </div>
-        <form class="pane" id="nick-form" novalidate>
-          <div class="field"><label for="nick2">닉네임 바꾸기</label><input id="nick2" class="fld" maxlength="10" value="${esc(s.profile.nick)}"><p class="err" id="nick2-err" role="alert" hidden></p></div>
-          <button type="submit" class="btn btn-gold press">저장</button>
+        <form class="pf-nick" id="nick-form" novalidate>
+          <label for="nick2">닉네임</label>
+          <input id="nick2" class="fld" maxlength="10" value="${esc(s.profile.nick)}">
+          <button type="submit" class="btn btn-gold press">바꾸기</button>
+          <p class="err" id="nick2-err" role="alert" hidden></p>
         </form>
-        <p class="hint">지금은 이 기기(브라우저)에만 기록이 저장돼요. 회원 기능이 열리면 계정으로 옮길 수 있어요.</p>
-        <div class="or">기록 관리</div>
-        <button type="button" class="btn press" id="reset-btn" style="border-color:#7A3045; color:#FF9BB0">이 기기의 기록 모두 지우기</button>
-        <a href="#/" class="btn press">홈으로</a>
-      </section>
-    </div></div>`;
-    document.getElementById('nick-form').addEventListener('submit', (e) => {
+        <div class="pf-acts">
+          ${server ? '<button type="button" class="btn press" id="logout-btn">로그아웃</button>' : '<button type="button" class="btn press pf-danger" id="reset-btn">이 기기의 기록 모두 지우기</button>'}
+          ${server && s.role === 'admin' ? '<a href="admin.html#server" class="btn btn-gold press">관리자 화면 열기</a>' : ''}
+        </div>
+        ${server ? `<details class="pf-del"><summary>회원 탈퇴</summary>
+          <form class="pane" id="del-form" style="margin-top:12px" novalidate>
+            <p class="warn">탈퇴하면 계정, 감상 기록, 코인, 별점이 바로 지워져요. 댓글은 "탈퇴한 사용자"로 남아요.</p>
+            <div class="field"><label for="del-pw">비밀번호 확인</label><input id="del-pw" class="fld" type="password" autocomplete="current-password"></div>
+            <p class="err" id="del-err" role="alert" hidden></p>
+            <button type="submit" class="btn press pf-danger">탈퇴하기</button>
+          </form></details>` : '<p class="hint" style="margin:0">지금은 이 기기(브라우저)에만 기록이 저장돼요.</p>'}
+      </section>`;
+  };
+  WT.bindProfileCard = function (redraw) {
+    const s = WT.store.state;
+    const server = WT.api.on() && !!s.token;
+    document.getElementById('nick-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const v = document.getElementById('nick2').value.trim();
       const err = document.getElementById('nick2-err');
       if (!/^[가-힣a-zA-Z0-9]{2,10}$/.test(v)) { err.hidden = false; err.textContent = '닉네임은 2~10자의 한글, 영어, 숫자로 정해 주세요.'; return; }
-      s.profile.nick = v; WT.store.save(); WT.toast('닉네임을 바꿨어요'); viewMe();
+      if (server) {
+        try { const r = await WT.api.authed('nick', { nickname: v }); WT.api.applyMe(r.me); } catch (x) { err.hidden = false; err.textContent = x.message; return; }
+      } else { s.profile.nick = v; WT.store.save(); }
+      WT.toast('닉네임을 바꿨어요'); redraw();
     });
-    let armed = false;
     const rb = document.getElementById('reset-btn');
-    rb.addEventListener('click', () => {
-      if (!armed) { armed = true; rb.textContent = '한 번 더 누르면 정말 지워져요'; return; }
-      WT.store.reset(); WT.toast('기록을 모두 지웠어요'); location.hash = '#/login';
-      viewLogin();
+    if (rb) {
+      let armed = false;
+      rb.addEventListener('click', () => {
+        if (!armed) { armed = true; rb.textContent = '한 번 더 누르면 정말 지워져요'; return; }
+        WT.store.reset(); WT.toast('기록을 모두 지웠어요'); location.hash = '#/login';
+      });
+    }
+    const lo = document.getElementById('logout-btn');
+    if (lo) lo.addEventListener('click', async () => {
+      try { await WT.api.call('logout', { token: s.token }); } catch (x) { /* 이미 풀렸어도 괜찮아요 */ }
+      WT.store.reset(); WT.toast('로그아웃했어요'); location.hash = '#/login';
     });
-  }
-
+    const df = document.getElementById('del-form');
+    if (df) df.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const err = document.getElementById('del-err');
+      try {
+        await WT.api.authed('deleteAccount', { password: document.getElementById('del-pw').value });
+        WT.store.reset(); WT.toast('탈퇴했어요. 그동안 고마웠어요'); location.hash = '#/login';
+      } catch (x) { err.hidden = false; err.textContent = x.message; }
+    });
+  };
 
   // ---------- 서버 모드: 아이디·비밀번호 로그인 / 회원가입 ----------
   function viewAccount() {
@@ -615,57 +672,8 @@
     bind();
   }
 
-  function viewAccountMe() {
-    const s = WT.store.state;
-    app().innerHTML = `<div class="view"><div class="login-theme">${WT.themeBtn()}</div><div class="login">
-      <section class="card rpg" aria-label="내 정보"><span class="corner-b" aria-hidden="true"></span>
-        <div style="display:flex; align-items:center; gap:16px">
-          <div>${WT.charSVG(WT.currentLook(), 72)}</div>
-          <div class="title-block"><h1 style="font-size:26px">${esc(s.profile.nick)} 님</h1><span class="sub">아이디 ${esc(s.profile.userId || '')} · 코인 ${s.coins}개</span></div>
-        </div>
-        <form class="pane" id="nick-form" novalidate>
-          <div class="field"><label for="nick2">닉네임 바꾸기</label><input id="nick2" class="fld" maxlength="10" value="${esc(s.profile.nick)}"><p class="err" id="nick2-err" role="alert" hidden></p></div>
-          <button type="submit" class="btn btn-gold press">저장</button>
-        </form>
-        <div class="row2"><a href="#/" class="btn press">홈으로</a><button type="button" class="btn press" id="logout-btn">로그아웃</button></div>
-        ${s.role === 'admin' ? '<a href="admin.html#server" class="btn btn-gold press">관리자 화면 열기</a><span class="hint" style="text-align:center">최종 관리자에게 관리자 권한을 받은 계정이에요</span>' : ''}
-        <details style="border-top:1px dashed rgba(255,255,255,0.16); padding-top:12px">
-          <summary style="cursor:pointer; font-size:14px; color:var(--muted)">회원 탈퇴</summary>
-          <form class="pane" id="del-form" style="margin-top:12px" novalidate>
-            <p class="warn">탈퇴하면 계정, 감상 기록, 코인, 별점이 바로 지워져요. 댓글은 "탈퇴한 사용자"로 남아요.</p>
-            <div class="field"><label for="del-pw">비밀번호 확인</label><input id="del-pw" class="fld" type="password" autocomplete="current-password"></div>
-            <p class="err" id="del-err" role="alert" hidden></p>
-            <button type="submit" class="btn btn-danger press" style="border:1px solid #7A3045; color:#FF9BB0; background:transparent">탈퇴하기</button>
-          </form>
-        </details>
-      </section>
-    </div></div>`;
-    document.getElementById('nick-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const v = document.getElementById('nick2').value.trim();
-      const err = document.getElementById('nick2-err');
-      try { const r = await WT.api.authed('nick', { nickname: v }); WT.api.applyMe(r.me); WT.toast('닉네임을 바꿨어요'); viewAccountMe(); }
-      catch (x) { err.hidden = false; err.textContent = x.message; }
-    });
-    document.getElementById('logout-btn').addEventListener('click', async () => {
-      try { await WT.api.call('logout', { token: s.token }); } catch (x) { /* 이미 풀렸어도 괜찮아요 */ }
-      WT.store.reset();
-      WT.toast('로그아웃했어요');
-      location.hash = '#/login';
-      viewAccount();
-    });
-    document.getElementById('del-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const err = document.getElementById('del-err');
-      try {
-        await WT.api.authed('deleteAccount', { password: document.getElementById('del-pw').value });
-        WT.store.reset();
-        WT.toast('탈퇴했어요. 그동안 고마웠어요');
-        location.hash = '#/login';
-        viewAccount();
-      } catch (x) { err.hidden = false; err.textContent = x.message; }
-    });
-  }
+  function viewAccountMe() { history.replaceState(null, '', '#/me'); WT.views.me(); }
+
 
   // ---------- 주소 이동 ----------
   WT.views = { home: viewHome, login: viewLogin, top: viewTop };
@@ -737,6 +745,9 @@
     if (WT.leaveView) { WT.leaveView(); WT.leaveView = null; }
     window.scrollTo(0, 0);
     view(parts.slice(1));
+    const showRail = !document.querySelector('#app .au-view');
+    document.body.classList.toggle('has-rail', showRail);
+    if (showRail) WT.renderRail(name);
     document.title = `${WT.settings().siteName}`;
   }
 

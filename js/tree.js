@@ -75,6 +75,7 @@
       gid = live.includes(params[0]) ? params[0] : live[0];
       g = WT.genre(gid);
       T = spread(scaleTree(trees[gid]));
+      WT.lastTree(gid);
     }
     const BASE = lib ? 'library' : 'tree';
     // 트리 끝 도서관 자리: 가장 오른쪽 웹툰보다 더 오른쪽
@@ -277,17 +278,6 @@
       const ic = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">${d}</svg>`;
       return `<div class="view lib-view lb-view">
         <main class="lb-shell">
-          <aside class="lb-rail">
-            <a href="#/" class="lb-mark" aria-label="${esc(st.siteName)} 홈"><span class="au-mark" aria-hidden="true"><i></i><i></i><i></i></span></a>
-            <nav class="lb-nav" aria-label="메뉴">
-              <a href="#/" title="홈" aria-label="홈">${ic('<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>')}</a>
-              <a href="#/library/${gid}" class="on" aria-current="page" title="도서관" aria-label="도서관">${ic('<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v18"/>')}</a>
-              <a href="${gid === 'all' ? '#/map' : `#/tree/${gid}`}" title="${gid === 'all' ? '전체 지도' : '트리로 돌아가기'}" aria-label="${gid === 'all' ? '전체 지도' : '트리로 돌아가기'}">${ic('<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z M9 4v14 M15 6v14"/>')}</a>
-              <a href="#/top" title="이번 주 랭킹" aria-label="이번 주 랭킹">${ic('<path d="M7 4h10v5a5 5 0 0 1-10 0z M7 6H4a3 3 0 0 0 3 4 M17 6h3a3 3 0 0 1-3 4 M12 14v4 M8 21h8"/>')}</a>
-              <a href="#/login" title="내 정보" aria-label="내 정보">${ic('<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>')}</a>
-            </nav>
-            <a href="#/shop" class="lb-more" title="상점" aria-label="상점">${ic('<path d="M5 7h14M5 12h10M5 17h14"/>')}</a>
-          </aside>
           <section class="lb-main" id="lb-main">
             <div class="lb-top">
               <label class="lb-search">${WT.icon.search}<input id="lb-q" placeholder="웹툰 제목, 작가 검색" autocomplete="off" aria-label="도서관에서 검색"></label>

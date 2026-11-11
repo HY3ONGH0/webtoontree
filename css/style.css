@@ -1436,3 +1436,68 @@ html[data-theme="light"] .lb-cover { box-shadow: 0 1px 1px rgba(0, 0, 0, .1), 14
 .lb-top { min-width: 0; }
 @media (max-width: 860px) { .lb-view { padding: 8px; } .lb-shell { max-width: 100%; } .lb-me .user-chip span, .lb-me .pill span:not(.av) { display: none; } }
 @media (max-width: 860px) { .lb-me .user-chip, .lb-me a.pill { white-space: nowrap; } .lb-me .user-chip > span:last-child, .lb-me a.pill > span:not(:first-child) { display: none; } }
+
+/* ================= 모든 화면 공통 왼쪽 메뉴 ================= */
+:root { --rail-w: 0px; --rail-h: 0px; }
+body.has-rail { --rail-w: 80px; }
+.app-rail { display: none; }
+body.has-rail .app-rail { display: flex; position: fixed; z-index: 40; left: 0; top: 0; bottom: 0; width: var(--rail-w); flex-direction: column; align-items: center; padding: 22px 0 18px;
+  background: var(--panel); border-right: 1px solid var(--line); }
+body.has-rail #app { padding-left: var(--rail-w); }
+.rail-mark { display: block; padding: 4px; }
+.rail-mark .au-mark { display: block; }
+.rail-items { display: flex; flex-direction: column; gap: 10px; margin: auto 0; }
+.rail-item { width: 58px; min-height: 58px; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 800; transition: background .2s ease, color .2s ease; }
+.rail-item svg { width: 22px; height: 22px; }
+.rail-item:hover { background: rgba(255, 255, 255, .06); color: var(--text); }
+.rail-item.on { background: #E0565B; color: #fff; box-shadow: 0 8px 18px -6px rgba(224, 86, 91, .7); }
+html[data-theme="light"] .app-rail { background: #FFFFFF; border-right-color: rgba(24, 33, 63, .1); }
+html[data-theme="light"] .rail-item { color: #5C6889; }
+html[data-theme="light"] .rail-item:hover { background: rgba(24, 33, 63, .05); color: #18213F; }
+html[data-theme="light"] .rail-item.on { color: #fff; }
+/* 도서관 카드는 이제 메뉴 없이 */
+.lb-shell { grid-template-columns: minmax(0, 1fr); }
+/* 랭킹 두 종류 오가기 */
+.rank-switch { display: flex; gap: 4px; padding: 3px; border-radius: 999px; background: rgba(255, 255, 255, .06); border: 1px solid var(--line); margin-left: 6px; }
+.rank-switch a { padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 800; color: var(--muted); text-decoration: none; }
+.rank-switch a[aria-current="page"] { background: var(--gold); color: #1A1405; }
+/* 프로필 카드 (캐릭터 꾸미기 위) */
+.profile-wrap { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; }
+.profile-card { max-width: none; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px 24px; padding: 18px 22px; }
+.pf-who { display: flex; align-items: center; gap: 14px; }
+.pf-who h1 { margin: 0; font-size: 24px; }
+.pf-av { width: 64px; height: 64px; display: grid; place-items: center; }
+.pf-nick { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.pf-nick label { font-size: 13px; font-weight: 800; color: var(--muted); }
+.pf-nick .fld { width: 160px; min-height: 44px; }
+.pf-nick .err { flex-basis: 100%; margin: 0; }
+.pf-acts { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+.pf-danger { border-color: #7A3045 !important; color: #FF9BB0 !important; background: transparent !important; }
+.pf-del { grid-column: 1 / -1; border-top: 1px dashed var(--line); padding-top: 10px; }
+.pf-del summary { cursor: pointer; font-size: 13px; color: var(--muted); }
+.profile-card > .hint { grid-column: 1 / -1; }
+.shop-h { width: 100%; max-width: 1100px; margin: 18px auto 0; padding: 0 20px; box-sizing: border-box; font-family: var(--display); font-weight: 400; font-size: 22px; color: var(--gold-hi); }
+html[data-theme="light"] .shop-h { color: #8A5E0C; }
+@media (max-width: 900px) { .profile-card { grid-template-columns: 1fr; } .pf-acts { justify-content: flex-start; } }
+
+/* 휴대폰·좁은 화면: 메뉴는 아래쪽 막대로 */
+@media (max-width: 760px) {
+  body.has-rail { --rail-w: 0px; --rail-h: 64px; }
+  body.has-rail .app-rail { top: auto; right: 0; width: auto; height: var(--rail-h); flex-direction: row; padding: 0 6px; padding-bottom: env(safe-area-inset-bottom); border-right: 0; border-top: 1px solid var(--line); }
+  .rail-mark { display: none; }
+  .rail-items { flex-direction: row; justify-content: space-around; width: 100%; margin: 0; gap: 0; }
+  .rail-item { width: auto; flex: 1; min-height: 52px; border-radius: 12px; }
+  body.has-rail #app { padding-left: 0; padding-bottom: var(--rail-h); }
+  body.has-rail .band { bottom: var(--rail-h); }
+  body.has-rail .panel { bottom: var(--rail-h); }
+}
+/* 화면 높이에 맞추는 화면들은 아래 메뉴 높이만큼 빼요 */
+.home-panel { height: calc(100dvh - var(--rail-h) - 2 * clamp(10px, 2.4vh, 28px)); }
+body.home-lock #app { height: 100dvh; box-sizing: border-box; }
+@media (min-width: 901px) { .view.tree-view { height: calc(100dvh - var(--rail-h)); } }
+.lb-shell { height: calc(100dvh - var(--rail-h) - 2 * clamp(10px, 2.6vw, 36px)); }
+.profile-wrap { padding: 4px 24px 0; }
+.profile-wrap .profile-card { margin: 6px 6px 0; }
+.shop-h { margin: 26px auto 14px; padding: 0 30px; max-width: none; }
+.home-logo .au-mark { display: none; }
+.profile-wrap { max-width: none; }
