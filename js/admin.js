@@ -52,14 +52,15 @@
     setState();
     if (live.on) livePushSoon();
   }
+  function srvSaveReady() { return !!((D.settings.apiUrl || '').trim() && srv.ok && srv.github); }
   function isDirty() { return JSON.stringify(D) !== siteJSON; }
   function setState() {
     const el = document.getElementById('ad-state');
     if (!el) return;
     const d = isDirty();
     el.textContent = live.on
-      ? (d ? '함께 편집 중 · 사이트에 아직 안 올린 변경이 있어요 → [데이터] 탭의 바로 저장' : '함께 편집 중 · 사이트 데이터와 같아요')
-      : (d ? '사이트에 아직 안 올린 변경이 있어요 → [데이터] 탭에서 내보내기' : '사이트 데이터와 같아요');
+      ? (d ? '함께 편집 중 · 아직 사이트에 저장 안 된 변경이 있어요' : '함께 편집 중 · 사이트와 같아요')
+      : (d ? (srvSaveReady() ? '아직 사이트에 저장 안 된 변경이 있어요 → 오른쪽 [사이트에 바로 저장]' : '아직 사이트에 올리지 않은 변경이 있어요 → [저장 · 백업] 탭') : '사이트와 같아요');
     el.classList.toggle('dirty', d);
   }
   function toast(msg) {
@@ -148,7 +149,7 @@
   }
 
   // ---------- 틀 ----------
-  const TABS = [['webtoons', '웹툰 목록'], ['genres', '장르 관리'], ['tree', '트리 편집'], ['map', '전체 지도 편집'], ['settings', '디자인 · 코인 설정'], ['shop', '상점 아이템'], ['server', '회원 · 댓글 · 제보'], ['data', '데이터 내보내기']];
+  const TABS = [['webtoons', '웹툰 목록'], ['genres', '장르 관리'], ['tree', '트리 편집'], ['map', '전체 지도 편집'], ['settings', '디자인 · 코인 설정'], ['shop', '상점 아이템'], ['server', '회원 · 댓글 · 제보'], ['data', '저장 · 백업']];
   let lastTab = null;
   function render() {
     const scrollY = window.scrollY;
@@ -162,7 +163,7 @@
         <span id="ad-live" class="ad-live"></span>
         <div class="ad-actions">
           <a class="btn btn-sm press" href="index.html?preview=1" target="_blank" rel="noopener">사이트 미리보기</a>
-          <button type="button" class="btn btn-gold btn-sm press" data-a="export">data.json 내보내기</button>
+          ${srvSaveReady() ? '<button type="button" class="btn btn-gold btn-sm press" data-a="srv-save">사이트에 바로 저장</button>' : '<button type="button" class="btn btn-gold btn-sm press" data-a="export">data.json 내보내기</button>'}
         </div>
       </header>
       <div class="ad-body">
@@ -441,6 +442,8 @@
   /** 편집 판 너비: 사이트 판 너비 + 오른쪽에 끌어다 놓을 여유 */
   function treeEditW(T) { return WT.treeWidth(T) + 260; }
 
+  // 편집 화면의 원: 사이트처럼 표지를 넣고, 표지가 없거나 안 열리면 첫 글자
+  const nodeFace = (w) => `<i class="ini">${esc((w.title || '?')[0])}</i>${w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" draggable="false" onerror="this.remove()">` : ''}`;
   function mountTree() {
     const g = genre(ui.tg);
     const T = D.trees[g.id];
@@ -456,7 +459,7 @@
         const [x, y] = T.nodes[id];
         const cls = [T.start === id ? 'start' : '', ui.tsel === id ? 'sel' : '', ui.from === id ? 'from' : ''].join(' ');
         return `<div class="ad-node ${cls}" data-n="${id}" style="--gc:${gColor(w)}; left:${x}px; top:${y - (T.start === id ? 45 : 36)}px" role="button" tabindex="0" aria-label="${esc(w.title)}">
-          <div class="c">${esc(w.title[0] || '?')}${ui.tsel === id && ui.mode === 'select' ? '<span class="plus" data-plus="1" aria-hidden="true">+</span>' : ''}</div>
+          <div class="c">${nodeFace(w)}${ui.tsel === id && ui.mode === 'select' ? '<span class="plus" data-plus="1" aria-hidden="true">+</span>' : ''}</div>
           <span>${WT.recStars(w) ? '★'.repeat(WT.recStars(w)) + ' ' : ''}${esc(w.title)}</span>${T.start === id ? '<span class="start-tag">입문작</span>' : ''}
         </div>`;
       }).join('');
@@ -678,7 +681,7 @@
       Object.keys(L.nodes).filter((id) => toon(id)).map((id) => {
         const w = toon(id);
         const [x, y] = L.nodes[id];
-        return `<div class="ad-node${ui.msel === id ? ' sel' : ''}${ui.mfrom === id ? ' from' : ''}" data-n="${id}" style="--gc:${gColor(w)}; left:${x}px; top:${y - 36}px; ${L.auto[id] ? 'opacity:.8' : ''}" role="button" tabindex="0" aria-label="${esc(w.title)}${L.auto[id] ? ' (자동 배치)' : ' (고정)'}"><div class="c">${esc(w.title[0])}</div><span>${L.auto[id] ? '' : '📌 '}${esc(w.title)}</span></div>`;
+        return `<div class="ad-node${ui.msel === id ? ' sel' : ''}${ui.mfrom === id ? ' from' : ''}" data-n="${id}" style="--gc:${gColor(w)}; left:${x}px; top:${y - 36}px; ${L.auto[id] ? 'opacity:.8' : ''}" role="button" tabindex="0" aria-label="${esc(w.title)}${L.auto[id] ? ' (자동 배치)' : ' (고정)'}"><div class="c">${nodeFace(w)}</div><span>${L.auto[id] ? '' : '📌 '}${esc(w.title)}</span></div>`;
       }).join('');
     const drawLinks = () => L.links.forEach(([a, b], i) => {
       const el = cv.querySelector(`[data-l="${i}"]`);
@@ -785,7 +788,10 @@
       </section>
       <section class="ad-card"><h3>문구</h3>
         ${f('siteName', '사이트 이름', 'text', 'maxlength="20"')}
-        ${f('tagline', '홈 소개 문구', 'text')}
+        ${f('hero.line1', '홈 슬로건 첫 줄', 'text', 'maxlength="30" placeholder="볼 건 많고, 시간은 없고?"')}
+        ${f('hero.line2', '홈 슬로건 둘째 줄', 'text', 'maxlength="30" placeholder="*트리*가 골라 줄게요."')}
+        <span class="hint">*별표*로 감싼 글자는 강조색으로 보여요. 예: *트리*가 골라 줄게요.</span>
+        ${f('hero.sub', '슬로건 아래 설명', 'text', 'maxlength="80" placeholder="수많은 웹툰 중에 진짜 볼 만한 것만. 순서대로 따라가기만 하면 돼요."')}
         ${f('notice', '홈 공지 띠 (비우면 안 보여요)', 'text', 'placeholder="예: 새 웹툰 3개 추가!"')}
         <div class="ad-form" style="padding:0; border:none; background:none"><div class="grid2">
           ${f('labels.done', '"완독" 대신 쓸 말', 'text')}
@@ -938,23 +944,23 @@
   // ---------- 데이터 ----------
   function tabData() {
     const list = issues();
-    return `<h2>데이터 내보내기</h2>
-      <section class="ad-card"><h3>사이트에 반영하는 방법</h3>
-        <ol>
-          <li>아래 [data.json 내보내기]를 눌러 파일을 받아요.</li>
+    const hasApi = !!(D.settings.apiUrl || '').trim();
+    const fileWay = `<ol>
+          <li>[data.json 내보내기]를 눌러 파일을 받아요.</li>
           <li>GitHub의 <a href="https://github.com/hy3ongh0/webtoontree/tree/main/data" target="_blank" rel="noopener">webtoontree 저장소 → data 폴더</a>로 가요.</li>
           <li>오른쪽 위 Add file → Upload files를 누르고 받은 data.json을 끌어다 놓아요.</li>
           <li>아래쪽 Commit changes를 누르면 1~2분 뒤 사이트에 반영돼요.</li>
         </ol>
         <div class="ad-actions">
-          <button type="button" class="btn btn-gold press" data-a="export">data.json 내보내기</button>
+          <button type="button" class="btn ${hasApi ? '' : 'btn-gold '}press" data-a="export">data.json 내보내기</button>
           <a class="btn press" href="index.html?preview=1" target="_blank" rel="noopener">올리기 전에 미리보기</a>
-        </div>
-      </section>
-      ${(D.settings.apiUrl || '').trim() ? `<section class="ad-card"><h3>서버로 바로 저장</h3>
-        <p class="ad-help">Apps Script에 GitHub 토큰을 넣어 두면 파일을 올리지 않고 이 버튼으로 바로 반영돼요. 관리자 연결은 [회원 · 댓글 · 제보] 탭에서 해요.</p>
-        ${live.on ? '<p class="ad-help"><b>함께 편집 중이에요.</b> 관리자들이 고친 내용은 몇 초 안에 서로의 화면에 반영돼요. 바로 저장을 누르면 모두가 함께 고친 내용이 사이트에 올라가요.</p>'
-          : '<p class="ad-help">여러 관리자가 같이 고칠 때: 내가 고치는 사이에 다른 관리자가 먼저 저장했으면, 덮어쓰기 전에 알려 줘요. 시작하기 전에 [최신 내용 불러오기]를 누르면 더 안전해요.</p>'}
+        </div>`;
+    return `<h2>저장 · 백업</h2>
+      <p class="ad-help">${isDirty() ? '<b>아직 사이트에 저장하지 않은 변경이 있어요.</b> ' : '지금 내용은 사이트와 같아요. '}고친 내용은 이 브라우저에 초안으로 자동으로 남아 있어요.</p>
+      ${hasApi ? `<section class="ad-card"><h3>사이트에 바로 저장</h3>
+        <p class="ad-help">버튼 하나로 사이트에 반영돼요(1~2분). 맨 위 오른쪽 [사이트에 바로 저장] 버튼과 같아요.</p>
+        ${live.on ? '<p class="ad-help"><b>함께 편집 중이에요.</b> 관리자들이 고친 내용은 몇 초 안에 서로의 화면에 반영되고, 저장하면 모두가 함께 고친 내용이 올라가요.</p>'
+          : '<p class="ad-help">다른 관리자가 그사이 먼저 저장했으면, 덮어쓰기 전에 알려 줘요. 시작하기 전에 [최신 내용 불러오기]를 누르면 더 안전해요.</p>'}
         ${srv.conflict ? `<div class="box-warn-ad" role="alert"><b>다른 관리자가 그사이 사이트에 먼저 저장했어요.</b><br>지금 내 내용으로 저장하면 그 사람이 고친 내용이 사라져요.
           <div class="ad-actions">
             <button type="button" class="btn btn-sm press" data-a="export">내 작업 파일로 백업</button>
@@ -962,9 +968,12 @@
             <button type="button" class="btn btn-danger btn-sm press" data-a="srv-force">${ui.confirm === 'srv-force' ? '한 번 더 누르면 덮어써요' : '그래도 내 내용으로 덮어쓰기'}</button>
           </div></div>` : ''}
         <div class="ad-actions"><button type="button" class="btn btn-gold press" data-a="srv-save" ${srv.ok ? '' : 'disabled'}>${srv.ok ? '지금 내용으로 사이트에 바로 저장' : '먼저 [회원 · 댓글 · 제보]에서 관리자로 연결해 주세요'}</button>
-          ${srv.ok && !live.on ? `<button type="button" class="btn press" data-a="srv-latest">${isDirty() && ui.confirm !== 'srv-latest' ? '최신 내용 불러오기' : ui.confirm === 'srv-latest' ? '한 번 더 누르면 내 변경을 버리고 불러와요' : '최신 내용 불러오기'}</button>` : ''}</div>
-        ${srv.ok && !srv.github ? '<p class="warn">서버에 GitHub 토큰(GITHUB_TOKEN)이 없어서 바로 저장은 아직 안 돼요. 설치방법.md의 6단계를 봐 주세요.</p>' : ''}
-      </section>` : ''}
+          ${srv.ok && !live.on ? `<button type="button" class="btn press" data-a="srv-latest">${ui.confirm === 'srv-latest' ? '한 번 더 누르면 내 변경을 버리고 불러와요' : '최신 내용 불러오기'}</button>` : ''}</div>
+        ${srv.ok && !srv.github ? '<p class="warn">서버에 GitHub 토큰(GITHUB_TOKEN)이 없어서 바로 저장은 아직 안 돼요. 설치방법.md의 6단계를 봐 주세요. 그전까지는 아래 파일로 올리는 방법을 써 주세요.</p>' : ''}
+      </section>
+      <section class="ad-card"><details class="ad-more"><summary>서버 없이 파일로 올리는 방법 (바로 저장이 안 될 때)</summary>${fileWay}</details></section>`
+      : `<section class="ad-card"><h3>사이트에 반영하는 방법</h3>${fileWay}
+        <p class="ad-help">[디자인 · 코인 설정]에 Apps Script 주소를 넣고 관리자로 연결하면, 파일을 올리지 않고 버튼 하나로 바로 저장할 수 있어요.</p></section>`}
       <section class="ad-card"><h3>확인할 것 ${list.length ? `(${list.length})` : ''}</h3>
         ${list.length ? `<ul class="ad-issues">${list.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p class="ad-help">문제없어요.</p>'}
       </section>

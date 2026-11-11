@@ -216,8 +216,11 @@
   let homeIndex = 0;   // 다른 화면에 다녀와도 보던 카드에서 다시 시작
 
   // ---------- 홈: 슬로건 하나와 시작 버튼 ----------
+  // 슬로건 한 줄: *별표*로 감싼 글자는 강조색
+  const heroLine = (t, def) => esc((t || '').trim() || def).replace(/\*([^*]+)\*/g, '<b>$1</b>');
   function viewHomeHero() {
     const st = WT.settings();
+    const hero = st.hero || {};
     const s = WT.store.state;
     const live = WT.liveGenres().map((g) => g.id);
     const last = WT.lastTree();
@@ -254,8 +257,8 @@
         <div class="topbar hm-top"><div class="left"><b class="hm-name">${esc(st.siteName)}</b></div>${WT.topRight()}</div>
         <section class="hm-hero">
           ${st.notice ? `<p class="hm-notice">${esc(st.notice)}</p>` : ''}
-          <h1 class="hm-h1"><span>볼 건 많고, 시간은 없고?</span><span><b>트리</b>가 골라 줄게요.</span></h1>
-          <p class="hm-sub">수많은 웹툰 중에 진짜 볼 만한 것만. 순서대로 따라가기만 하면 돼요.</p>
+          <h1 class="hm-h1"><span>${heroLine(hero.line1, '볼 건 많고, 시간은 없고?')}</span><span>${heroLine(hero.line2, '*트리*가 골라 줄게요.')}</span></h1>
+          <p class="hm-sub">${esc((hero.sub || '').trim() || '수많은 웹툰 중에 진짜 볼 만한 것만. 순서대로 따라가기만 하면 돼요.')}</p>
           ${cont || `<a href="${href}" class="hm-cta">${began ? '다음 웹툰 고르기' : '첫 웹툰 고르기'}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>`}
         </section>
       </div>`;

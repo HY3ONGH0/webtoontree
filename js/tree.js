@@ -690,6 +690,7 @@
       const wide = window.innerWidth > 860;
       wrap.style.height = wide ? `${h}px` : '';
       const bw = wide ? Math.max(64, Math.min(190, (h - 96) / 1.417 / 1.3)) : 120;
+      const lv = main.closest('.lb-view'); if (lv) lv.classList.toggle('small-books', wide && bw < 120);
       // 크기는 칸(.lb-slot)에 걸어 둬요 → 책을 다시 그려도(진행 기록 등) 크기가 유지돼요
       [...stage.querySelectorAll('.lb-slot')].forEach((el, i) => { el.style.setProperty('--bw', `${Math.round(i === LB.idx ? bw * 1.3 : bw)}px`); el.classList.toggle('on', i === LB.idx); });
       const gap = wide ? 44 : 22;
