@@ -244,6 +244,7 @@
         <span class="dotc" style="width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family: var(--display); font-weight: 800; font-size:24px; color:#fff; background:${w.cover ? `url('${esc(w.cover)}') center/cover` : gColor(w)}">${w.cover ? '' : esc(w.title[0] || '?')}</span>
         <div><b style="font-size:17px">${esc(w.title)}</b><div class="ad-help">${w.id} · 트리: ${esc(inTrees.join(', ') || '없음 (도서관에 꽂혀요)')} · 전체 지도: ${D.map.pins[w.id] ? '직접 고정' : '자동 배치'}</div></div>
       </div>
+      ${fetchBox(w)}
       <div class="field"><label for="f-title">제목</label><input id="f-title" class="fld" data-wf="title" value="${esc(w.title)}"></div>
       <div class="field"><label for="f-author">작가</label><input id="f-author" class="fld" data-wf="author" value="${esc(w.author)}" placeholder="예: 김작가 글 · 이작가 그림"></div>
       <div class="grid2">
@@ -291,6 +292,81 @@
         <button type="button" class="btn btn-sm btn-danger press" data-a="del-w" data-id="${w.id}">${confirming ? '한 번 더 누르면 삭제돼요 (트리·지도에서도 빠져요)' : '웹툰 삭제'}</button>
       </div>
     </section>`;
+  }
+
+  // ---------- 링크로 정보 채우기 ----------
+  const FETCH_KEYS = [['title', '제목'], ['author', '작가'], ['platform', '플랫폼'], ['url', '보러 가기 링크'], ['cover', '표지'], ['episodes', '총 화수'], ['status', '연재 상태'], ['days', '올라오는 요일'], ['tags', '태그'], ['desc', '설명']];
+  const fetchShow = (k, v) => {
+    if (v == null || v === '' || (Array.isArray(v) && !v.length)) return '';
+    if (k === 'status') return WT.schedule.STATUS_KO[v] || v;
+    if (k === 'days') return v.map((d) => WT.schedule.DAY_KO[d]).join(', ');
+    if (k === 'tags') return v.join(', ');
+    if (k === 'episodes') return `${v}화`;
+    return String(v);
+  };
+  const fetchCur = (w, k) => (k === 'episodes' ? WT.schedule.episodes(w) : k === 'status' ? WT.schedule.status(w) : w[k]);
+  function fetchBox(w) {
+    const f = ui.fetch && ui.fetch.id === w.id ? ui.fetch : null;
+    const ready = !!(D.settings.apiUrl || '').trim() && srv.ok;
+    let body = '';
+    if (f && f.busy) body = '<p class="ad-help">가져오는 중…</p>';
+    else if (f && f.error) body = `<p class="warn" role="alert">${esc(f.error)}</p>`;
+    else if (f && f.info) {
+      const rows = FETCH_KEYS.map(([k, name]) => {
+        const nv = fetchShow(k, f.info[k]);
+        if (!nv) return '';
+        const same = fetchShow(k, fetchCur(w, k)) === nv;
+        return `<label class="fx-row${same ? ' same' : ''}"><input type="checkbox" data-fx="${k}" ${f.skip[k] || same ? '' : 'checked'} ${same ? 'disabled' : ''}>
+          <b>${name}</b><span class="fx-v">${k === 'cover' ? `<img src="${esc(nv)}" alt="" referrerpolicy="no-referrer" onerror="this.replaceWith(document.createTextNode('표지 주소'))">` : esc(nv.length > 90 ? nv.slice(0, 90) + '…' : nv)}${same ? ' <i>지금과 같아요</i>' : ''}</span></label>`;
+      }).join('');
+      const miss = FETCH_KEYS.filter(([k]) => !fetchShow(k, f.info[k])).map(([, n]) => n);
+      body = `<p class="ad-help"><b>${esc(f.source || '')}</b>에서 가져왔어요. 넣을 항목만 골라 [넣기]를 눌러 주세요.${miss.length ? ` 못 가져온 것: ${esc(miss.join(', '))} (직접 입력해 주세요)` : ''}</p>
+        <div class="fx-rows">${rows}</div>
+        <div class="ad-actions"><button type="button" class="btn btn-gold btn-sm press" data-a="fx-apply" data-id="${w.id}">고른 항목 넣기</button><button type="button" class="btn btn-sm press" data-a="fx-cancel">닫기</button></div>`;
+    }
+    return `<div class="fx-box">
+      <label for="fx-url" class="fx-h">링크로 정보 채우기 <span>네이버 웹툰 · 카카오페이지</span></label>
+      <div class="fx-in"><input id="fx-url" class="fld" type="url" placeholder="작품 페이지 링크를 붙여 넣으세요" value="${esc((f && f.url) || '')}" ${ready ? '' : 'disabled'}>
+        <button type="button" class="btn btn-sm press" data-a="fx-get" data-id="${w.id}" ${ready ? '' : 'disabled'}>가져오기</button></div>
+      ${ready ? '' : '<span class="hint">서버(Apps Script)에 관리자로 연결하면 쓸 수 있어요. [회원 · 댓글 · 제보] 탭에서 연결해 주세요.</span>'}
+      ${body}
+    </div>`;
+  }
+  async function fetchGet(w) {
+    const input = document.getElementById('fx-url');
+    const url = ((input && input.value) || '').trim();
+    if (!/^https?:\/\//i.test(url)) { toast('http로 시작하는 작품 링크를 넣어 주세요'); return; }
+    ui.fetch = { id: w.id, url, busy: true, skip: {} };
+    render();
+    try {
+      const r = await api('adminFetchInfo', { url });
+      if (!ui.fetch || ui.fetch.id !== w.id) return;
+      ui.fetch = { id: w.id, url, info: r.info || {}, source: r.source, skip: {} };
+    } catch (e) {
+      if (!ui.fetch || ui.fetch.id !== w.id) return;
+      ui.fetch = { id: w.id, url, error: /알 수 없는 요청/.test(e.message) ? '서버 코드가 예전 버전이에요. 새 Code.gs를 붙여 넣고 새 버전으로 다시 배포해 주세요.' : e.message, skip: {} };
+    }
+    render();
+  }
+  function fetchApply(w) {
+    const f = ui.fetch;
+    if (!f || !f.info) return;
+    const on = (k) => { const c = document.querySelector(`[data-fx="${k}"]`); return c && c.checked && !c.disabled; };
+    const I = f.info;
+    const done = [];
+    ['title', 'author', 'platform', 'url', 'desc'].forEach((k) => { if (on(k) && I[k]) { w[k] = String(I[k]).slice(0, k === 'desc' ? 300 : 200); done.push(k); } });
+    if (on('tags') && (I.tags || []).length) { w.tags = I.tags.slice(0, 8); done.push('tags'); }
+    const coverNew = on('cover') && I.cover && I.cover !== w.cover;
+    if (coverNew) { w.cover = I.cover; done.push('cover'); }
+    if (on('status') && I.status) { w.episodes = WT.schedule.episodes(w); w.baseDate = WT.schedule.today(); w.status = I.status; delete w.ongoing; done.push('status'); }
+    if (on('days') && (I.days || []).length) { w.days = I.days.slice(); done.push('days'); }
+    if (on('episodes') && I.episodes) { w.episodes = Math.max(1, Number(I.episodes) || 1); w.baseDate = WT.schedule.today(); done.push('episodes'); }
+    if (WT.schedule.status(w) === 'ongoing' && (w.days || []).length && (done.includes('episodes') || done.includes('days'))) w.autoCount = true;   // 연재 요일마다 화수가 저절로 늘어나게
+    ui.fetch = null;
+    saveDraft();
+    if (coverNew) { w.color = ''; autoColor(w, true); }
+    render();
+    toast(done.length ? `${done.length}개 항목을 넣었어요. 확인한 뒤 저장해 주세요` : '넣을 항목을 고르지 않았어요');
   }
 
   // ---------- 장르 ----------
@@ -1148,6 +1224,9 @@
         })();
         break;
       }
+      case 'fx-get': fetchGet(toon(id)); break;
+      case 'fx-apply': fetchApply(toon(id)); break;
+      case 'fx-cancel': ui.fetch = null; render(); break;
       case 'w-color': { const w = toon(id); w.color = ''; autoColor(w, true); break; }
       case 'srv-logout': srv.pw = ''; srv.token = ''; srv.ok = false; srv.owner = false; srv.users = srv.comments = srv.reports = null; try { sessionStorage.removeItem('webtoontree.adminpw'); } catch (e) { /* 무시 */ } toast('관리자에서 나왔어요'); render(); break;
       case 'srv-connect': { const f = document.getElementById('srv-pw'); if (f) srv.pw = f.value; srvLoad(); break; }
@@ -1537,6 +1616,7 @@
     try { savedBase = localStorage.getItem(BASE) || ''; } catch (e) { savedBase = ''; }
     if (draft && Array.isArray(draft.webtoons)) { D = draft; ensure(); setBase(savedBase || siteHash); } else setBase(siteHash);
     root().addEventListener('click', onClick);
+    root().addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target.id === 'fx-url') { e.preventDefault(); const w = toon(ui.w); if (w) fetchGet(w); } });
     root().addEventListener('input', onInput);
     root().addEventListener('compositionstart', () => { composing = true; });
     root().addEventListener('compositionend', (e) => { composing = false; onInput(e); });

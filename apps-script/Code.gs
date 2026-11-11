@@ -453,6 +453,22 @@ var ACTIONS = {
   },
 
   // ---------- 관리자 ----------
+  // 링크로 웹툰 정보 가져오기 (관리자만) — 네이버 웹툰 · 카카오페이지 · 그 밖의 사이트는 소개 정보(og)만
+  adminFetchInfo: function (b) {
+    who_(b);
+    var url = String(b.url || '').trim();
+    if (!/^https?:\/\//i.test(url)) fail_('http로 시작하는 링크를 넣어 주세요.');
+    var key = 'info:' + sha256_(url).slice(0, 32);
+    var memo = cacheGet_(key);
+    if (memo) return memo;
+    var r;
+    if (/comic\.naver\.com/i.test(url)) r = naverInfo_(url);
+    else if (/page\.kakao\.com/i.test(url)) r = kakaoPageInfo_(url);
+    else r = ogInfo_(url, '');
+    cachePut_(key, r, 600);
+    return r;
+  },
+
   adminCheck: function (b) {
     var me = who_(b);
     var p = PropertiesService.getScriptProperties();
@@ -651,6 +667,99 @@ function weeklyDigest() {
 // ======================================================================
 // 도우미
 // ======================================================================
+// ---------- 링크로 정보 가져오기 ----------
+var DAY_EN_ = { MONDAY: 'mon', TUESDAY: 'tue', WEDNESDAY: 'wed', THURSDAY: 'thu', FRIDAY: 'fri', SATURDAY: 'sat', SUNDAY: 'sun' };
+var DAY_KO_ = { '월': 'mon', '화': 'tue', '수': 'wed', '목': 'thu', '금': 'fri', '토': 'sat', '일': 'sun' };
+function get_(url, json) {
+  var res = UrlFetchApp.fetch(url, {
+    muteHttpExceptions: true, followRedirects: true,
+    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36', 'Accept-Language': 'ko-KR,ko;q=0.9', 'Referer': url }
+  });
+  if (res.getResponseCode() >= 400) fail_('그 페이지를 열지 못했어요 (응답 ' + res.getResponseCode() + '). 링크를 확인해 주세요.');
+  var text = res.getContentText('UTF-8');
+  if (!json) return text;
+  try { return JSON.parse(text); } catch (e) { fail_('받은 정보를 읽지 못했어요.'); }
+}
+function clean_(s) { return String(s == null ? '' : s).replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/\r/g, '').replace(/\n{3,}/g, '\n\n').trim(); }
+function uniq_(a) { var seen = {}; return a.filter(function (x) { x = String(x || '').trim(); if (!x || seen[x]) return false; seen[x] = 1; return true; }); }
+function daysKo_(s) { var out = []; String(s || '').replace(/[월화수목금토일]/g, function (c) { if (out.indexOf(DAY_KO_[c]) < 0) out.push(DAY_KO_[c]); return c; }); return out; }
+function meta_(html, prop) {
+  var m = html.match(new RegExp('<meta[^>]+(?:property|name)=["\']' + prop + '["\'][^>]*content=["\']([^"\']*)["\']', 'i')) ||
+          html.match(new RegExp('<meta[^>]+content=["\']([^"\']*)["\'][^>]*(?:property|name)=["\']' + prop + '["\']', 'i'));
+  return m ? clean_(m[1]) : '';
+}
+
+function naverInfo_(url) {
+  var m = url.match(/titleId=(\d+)/);
+  if (!m) fail_('네이버 웹툰 링크에서 작품 번호(titleId)를 찾지 못했어요. 작품 목록 페이지 링크를 넣어 주세요.');
+  var id = m[1];
+  var j = get_('https://comic.naver.com/api/article/list/info?titleId=' + id, true);
+  if (!j || !j.titleName) fail_('네이버 웹툰에서 작품 정보를 찾지 못했어요.');
+  var info = {
+    title: j.titleName,
+    author: uniq_((j.communityArtists || []).slice().sort(function (x, y) { return (/WRITER/.test((y.artistTypeList || []).join()) ? 1 : 0) - (/WRITER/.test((x.artistTypeList || []).join()) ? 1 : 0); }).map(function (a) { return a.name; })).join(', '),   // 글 작가 먼저
+    platform: '네이버웹툰',
+    url: 'https://comic.naver.com/webtoon/list?titleId=' + id,
+    cover: j.thumbnailUrl || j.sharedThumbnailUrl || '',
+    desc: clean_(j.synopsis || ''),
+    status: j.finished ? 'completed' : j.rest ? 'hiatus' : 'ongoing',
+    days: (j.publishDayOfWeekList || []).map(function (d) { return DAY_EN_[String(d).toUpperCase()]; }).filter(Boolean),
+    tags: uniq_((j.curationTagList || []).map(function (t) { return t.tagName; })).slice(0, 8)
+  };
+  try {
+    var l = get_('https://comic.naver.com/api/article/list?titleId=' + id + '&page=1&sort=DESC', true);
+    if (l && l.totalCount) info.episodes = Number(l.totalCount);
+  } catch (e) { /* 화수는 못 가져와도 괜찮아요 */ }
+  return { info: info, source: '네이버 웹툰' };
+}
+
+function kakaoPageInfo_(url) {
+  var m = url.match(/content\/(\d+)/);
+  if (!m) fail_('카카오페이지 링크에서 작품 번호를 찾지 못했어요. page.kakao.com/content/숫자 모양의 링크를 넣어 주세요.');
+  var id = m[1];
+  var link = 'https://page.kakao.com/content/' + id;
+  var html = get_(link, false);
+  var r = ogInfo_(link, html);
+  var info = r.info;
+  info.platform = '카카오페이지';
+  info.url = link;
+  info.title = info.title.replace(/\s*[-|]\s*(웹툰|웹소설|책)?\s*\|?\s*카카오페이지\s*$/, '').replace(/\s*-\s*(웹툰|웹소설)\s*$/, '').trim();
+  // 페이지 안 데이터(__NEXT_DATA__)에서 작가 · 연재 요일 · 상태 · 화수를 찾아요
+  var nd = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
+  var hit = null;
+  if (nd) {
+    try {
+      var walk = function (o, d) {
+        if (!o || typeof o !== 'object' || d > 18 || hit) return;
+        if (String(o.seriesId || o.id || '') === id && (o.title || o.authors)) { hit = o; return; }
+        for (var k in o) walk(o[k], d + 1);
+      };
+      walk(JSON.parse(nd[1]), 0);
+    } catch (e) { hit = null; }
+  }
+  var text = clean_(html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ')).replace(/\s+/g, ' ');
+  var pick = function (re) { var x = html.match(re); return x ? x[1] : ''; };
+  var authors = (hit && (hit.authors || hit.author)) || pick(/"authors"\s*:\s*"([^"]+)"/);
+  if (authors) info.author = uniq_(String(authors).split(/\s*,\s*/)).join(', ');
+  var period = (hit && (hit.pubPeriod || hit.publishPeriod)) || pick(/"pubPeriod"\s*:\s*"([^"]*)"/) || ((text.match(/([월화수목금토일](?:\s*[,·]\s*[월화수목금토일])*)\s*연재/) || [])[1] || '');
+  if (period) info.days = daysKo_(period);
+  var issue = String((hit && (hit.onIssue || hit.status)) || pick(/"onIssue"\s*:\s*"([^"]*)"/) || '');
+  if (/end|complete|완결/i.test(issue) || /\s완결\s/.test(' ' + text.slice(0, 400) + ' ')) info.status = 'completed';
+  else if (/rest|휴재/i.test(issue)) info.status = 'hiatus';
+  else if (period || /ongoing/i.test(issue)) info.status = 'ongoing';
+  if (hit && hit.description) info.desc = clean_(hit.description);
+  var total = text.match(/전체\s*([\d,]+)/);
+  if (total) info.episodes = Number(total[1].replace(/,/g, ''));
+  return { info: info, source: '카카오페이지' };
+}
+
+function ogInfo_(url, html) {
+  html = html || get_(url, false);
+  var title = meta_(html, 'og:title') || clean_((html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1] || '');
+  if (!title) fail_('이 페이지에서 작품 정보를 찾지 못했어요.');
+  return { info: { title: title, desc: meta_(html, 'og:description') || meta_(html, 'description'), cover: meta_(html, 'og:image'), url: url }, source: '페이지 소개 정보' };
+}
+
 function out_(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
 }
