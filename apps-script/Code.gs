@@ -453,24 +453,43 @@ var ACTIONS = {
   },
 
   // ---------- 관리자 ----------
+  // 제목으로 작품 찾기 (관리자만): 네이버 웹툰 + 카카오페이지 후보
+  adminSearch: function (b) {
+    who_(b);
+    var q = String(b.q || '').trim();
+    if (q.length < 1) fail_('찾을 제목을 넣어 주세요.');
+    var key = 'search:' + sha256_(q).slice(0, 32);
+    var memo = cacheGet_(key);
+    if (memo) return memo;
+    var list = [];
+    try { list = list.concat(naverSearch_(q)); } catch (e) { console.warn('naver search', e); }
+    try { list = list.concat(kakaoSearch_(q)); } catch (e) { console.warn('kakao search', e); }
+    var r = { items: list.slice(0, 12) };
+    cachePut_(key, r, 1800);
+    return r;
+  },
+
+  // 연결된 웹툰들의 자동 정보 한꺼번에 다시 가져오기 (관리자만, 한 번에 25개까지)
+  adminRefreshInfo: function (b) {
+    who_(b);
+    var out = {};
+    (b.items || []).slice(0, 25).forEach(function (x) {
+      try { out[x.id] = infoFor_(String(x.source || ''), true); } catch (e) { out[x.id] = { error: e.userMessage || '가져오지 못했어요' }; }
+    });
+    return { infos: out };
+  },
+
   // 링크로 웹툰 정보 가져오기 (관리자만) — 네이버 웹툰 · 카카오페이지 · 그 밖의 사이트는 소개 정보(og)만
   adminFetchInfo: function (b) {
     who_(b);
     var url = String(b.url || '').trim();
     if (!/^https?:\/\//i.test(url)) fail_('http로 시작하는 링크를 넣어 주세요.');
-    var key = 'info:' + sha256_(url).slice(0, 32);
-    var memo = cacheGet_(key);
-    if (memo) return memo;
-    var r;
-    if (/comic\.naver\.com/i.test(url)) r = naverInfo_(url);
-    else if (/page\.kakao\.com/i.test(url)) r = kakaoPageInfo_(url);
-    else r = ogInfo_(url, '');
-    cachePut_(key, r, 600);
-    return r;
+    return infoFor_(url, false);
   },
 
   adminCheck: function (b) {
     var me = who_(b);
+    try { ensureAutoTrigger_(); } catch (e) { console.warn('trigger', e); }
     var p = PropertiesService.getScriptProperties();
     return { github: !!p.getProperty('GITHUB_TOKEN'), email: p.getProperty('ADMIN_EMAIL') || '', owner: me.owner, adminName: me.name, adminUserId: me.userId };
   },
@@ -628,10 +647,11 @@ function setup() {
     if (t.getHandlerFunction() === 'weeklyDigest') ScriptApp.deleteTrigger(t);
   });
   ScriptApp.newTrigger('weeklyDigest').timeBased().onWeekDay(ScriptApp.WeekDay.MONDAY).atHour(9).inTimezone(TZ).create();
+  ensureAutoTrigger_();
   if (!PropertiesService.getScriptProperties().getProperty('ADMIN_PASSWORD')) {
     console.warn('스크립트 속성 ADMIN_PASSWORD 를 꼭 넣어 주세요.');
   }
-  return '완료: 시트 탭과 매주 월요일 9시 알림을 만들었어요.';
+  return '완료: 시트 탭, 매주 월요일 9시 알림, 매일 웹툰 정보 자동 갱신을 만들었어요.';
 }
 
 /** 매주 월요일 아침: 확인할 연재 중 웹툰 + 새 화 제보를 관리자 메일로 보내요. 오래된 조회 기록도 정리해요. */
@@ -668,6 +688,104 @@ function weeklyDigest() {
 // 도우미
 // ======================================================================
 // ---------- 링크로 정보 가져오기 ----------
+function infoFor_(url, fresh) {
+  var key = 'info:' + sha256_(url).slice(0, 32);
+  var memo = fresh ? null : cacheGet_(key);
+  if (memo) return memo;
+  var r;
+  if (/comic\.naver\.com/i.test(url)) r = naverInfo_(url);
+  else if (/page\.kakao\.com/i.test(url)) r = kakaoPageInfo_(url);
+  else r = ogInfo_(url, '');
+  r.info.source = r.info.url;   // 정보를 가져오는 공식 작품 주소 (보러 가기 링크와는 따로)
+  cachePut_(key, r, 3600);
+  return r;
+}
+/** 가져온 정보를 웹툰에 반영 (보러 가기 링크 · 장르 · 추천은 건드리지 않아요). 바뀐 게 있으면 true */
+function applyInfo_(w, info, day) {
+  var before = JSON.stringify(w);
+  ['title', 'author', 'platform', 'desc'].forEach(function (k) { if (info[k]) w[k] = String(info[k]).slice(0, k === 'desc' ? 300 : 200); });
+  if ((info.tags || []).length) w.tags = info.tags.slice(0, 8);
+  if (info.status) { if (w.status !== info.status) { w.episodes = episodes_(w, day); w.baseDate = day; } w.status = info.status; delete w.ongoing; }
+  if ((info.days || []).length) w.days = info.days.slice();
+  if (info.episodes && Number(info.episodes) !== episodes_(w, day)) { w.episodes = Math.max(1, Number(info.episodes)); w.baseDate = day; }
+  if (info.cover && (!w.cover || w.coverAuto)) { if (w.cover !== info.cover) w.color = ''; w.cover = info.cover; w.coverAuto = true; }
+  w.autoCount = w.status === 'ongoing' && (w.days || []).length > 0;
+  var changed = JSON.stringify(w) !== before;
+  w.autoAt = day;
+  return changed;
+}
+function naverSearch_(q) {
+  var j = get_('https://comic.naver.com/api/search/all?keyword=' + encodeURIComponent(q), true);
+  var found = [], seen = {};
+  (function walk(o, d) {
+    if (!o || typeof o !== 'object' || d > 8) return;
+    if (o.titleId && o.titleName && !seen[o.titleId]) {
+      seen[o.titleId] = 1;
+      found.push({ title: clean_(o.titleName), author: clean_(o.displayAuthor || o.author || (o.writers || []).map(function (a) { return a.name; }).join(', ') || ''), platform: '네이버웹툰',
+        cover: o.thumbnailUrl || '', source: 'https://comic.naver.com/webtoon/list?titleId=' + o.titleId, finished: !!o.finished });
+      return;
+    }
+    for (var k in o) walk(o[k], d + 1);
+  })(j, 0);
+  return found.slice(0, 8);
+}
+function kakaoSearch_(q) {
+  var html = get_('https://page.kakao.com/search/result?keyword=' + encodeURIComponent(q), false);
+  var found = [], seen = {};
+  var nd = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
+  if (nd) {
+    (function walk(o, d) {
+      if (!o || typeof o !== 'object' || d > 18 || found.length >= 6) return;
+      var sid = o.seriesId || (/^\d+$/.test(String(o.id || '')) && o.title && (o.thumbnail || o.authors) ? o.id : null);
+      if (sid && o.title && !seen[sid] && !/소설|책/.test(String(o.category || o.subcategory || ''))) {
+        seen[sid] = 1;
+        found.push({ title: clean_(o.title), author: clean_(o.authors || ''), platform: '카카오페이지', cover: o.thumbnail ? (/^\/\//.test(o.thumbnail) ? 'https:' + o.thumbnail : o.thumbnail) : '', source: 'https://page.kakao.com/content/' + sid });
+        return;
+      }
+      for (var k in o) walk(o[k], d + 1);
+    })(JSON.parse(nd[1]), 0);
+  }
+  return found;
+}
+
+// ---------- 매일 한 번 자동 갱신 (새벽 4시 이후 첫 번째로 조용할 때) ----------
+function ensureAutoTrigger_() {
+  var has = ScriptApp.getProjectTriggers().some(function (t) { return t.getHandlerFunction() === 'autoRefresh'; });
+  if (!has) ScriptApp.newTrigger('autoRefresh').timeBased().everyHours(1).create();
+}
+function autoRefresh() {
+  var p = PropertiesService.getScriptProperties();
+  var day = today_();
+  if (p.getProperty('AUTO_DAY') === day) return '오늘은 이미 갱신했어요';
+  if (Number(Utilities.formatDate(new Date(), TZ, 'H')) < 4) return '새벽 4시 이후에 해요';
+  if (!p.getProperty('GITHUB_TOKEN')) return 'GitHub 토큰이 없어요';
+  // 관리자가 편집 중이거나, 함께 고친 내용이 아직 저장 전이면 다음 시간으로 미뤄요
+  if (livePresence_(null).length) return '관리자가 편집 중이라 다음에 해요';
+  var live = liveState_();
+  if (live.ver > live.base) return '아직 저장 안 된 함께 편집 내용이 있어서 다음에 해요';
+  var g = github_();
+  var cur = githubFile_(g);
+  if (!cur) return 'data.json을 읽지 못했어요';
+  var data = JSON.parse(cur.text);
+  var start = Date.now(), changed = [], fails = 0;
+  data.webtoons.forEach(function (w) {
+    if (!w.source || Date.now() - start > 270000) return;   // 5분 안에 끝내요
+    try { if (applyInfo_(w, infoFor_(w.source, true).info, day)) changed.push(w.title); } catch (e) { fails++; }
+  });
+  p.setProperty('AUTO_DAY', day);
+  if (!changed.length) return '바뀐 게 없어요' + (fails ? ' (못 가져온 웹툰 ' + fails + '개)' : '');
+  var text = JSON.stringify(data, null, 2) + '\n';
+  var res = UrlFetchApp.fetch(g.api, {
+    method: 'put', headers: g.headers, contentType: 'application/json', muteHttpExceptions: true,
+    payload: JSON.stringify({ message: '자동 정보 갱신 - ' + changed.length + '개 (' + changed.slice(0, 5).join(', ') + (changed.length > 5 ? ' 외' : '') + ')', content: Utilities.base64Encode(text, Utilities.Charset.UTF_8), sha: cur.sha, branch: g.branch })
+  });
+  if (res.getResponseCode() >= 300) { p.deleteProperty('AUTO_DAY'); return 'GitHub 저장 실패 ' + res.getResponseCode(); }
+  cacheDel_('site');
+  // 함께 편집 기준도 새 데이터로 맞춰요 (저장 버튼을 누른 것과 같아요)
+  p.setProperty('LIVE_BASE', String(live.ver));
+  p.setProperty('LIVE_BASE_HASH', hash_(JSON.stringify(data)));
+  return changed.length + '개 갱신했어요';
+}
 var DAY_EN_ = { MONDAY: 'mon', TUESDAY: 'tue', WEDNESDAY: 'wed', THURSDAY: 'thu', FRIDAY: 'fri', SATURDAY: 'sat', SUNDAY: 'sun' };
 var DAY_KO_ = { '월': 'mon', '화': 'tue', '수': 'wed', '목': 'thu', '금': 'fri', '토': 'sat', '일': 'sun' };
 function get_(url, json) {
