@@ -686,10 +686,10 @@
       // 선반 높이 = 본문에서 위·아래 줄을 뺀 나머지 → 책 크기를 화면 높이에 맞춰요 (고른 책은 1.3배)
       const cs = getComputedStyle(main);
       const used = [...main.children].filter((c) => c !== wrap).reduce((a, c) => a + c.offsetHeight, 0) + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + 14;
-      const h = Math.max(250, main.clientHeight - used);
+      const h = Math.max(180, main.clientHeight - used);
       const wide = window.innerWidth > 860;
       wrap.style.height = wide ? `${h}px` : '';
-      const bw = wide ? Math.max(90, Math.min(190, (h - 96) / 1.417 / 1.3)) : 120;
+      const bw = wide ? Math.max(64, Math.min(190, (h - 96) / 1.417 / 1.3)) : 120;
       // 크기는 칸(.lb-slot)에 걸어 둬요 → 책을 다시 그려도(진행 기록 등) 크기가 유지돼요
       [...stage.querySelectorAll('.lb-slot')].forEach((el, i) => { el.style.setProperty('--bw', `${Math.round(i === LB.idx ? bw * 1.3 : bw)}px`); el.classList.toggle('on', i === LB.idx); });
       const gap = wide ? 44 : 22;
@@ -784,7 +784,9 @@
       const fr = wrap.closest('.tv-frame');
       const bottom = fr && window.innerWidth > 860 ? fr.getBoundingClientRect().bottom : window.innerHeight;
       const availH = bottom - wrap.getBoundingClientRect().top - (band ? band.offsetHeight : 0) - 24 + (fr && window.innerWidth > 860 ? 0 : window.scrollY);
-      const sc = Math.max(0.6, Math.min(1, w / SW, availH > 300 ? availH / BH : 1));
+      const framed = !!(fr && window.innerWidth > 860);
+      // 판 안에서는 창이 작아져도 트리 전체가 보이도록 더 작게 줄여요 (너무 작아지면 가로로 넘겨 봐요)
+      const sc = Math.max(framed ? 0.42 : 0.6, Math.min(1, w / SW, availH > (framed ? 160 : 300) ? availH / BH : 1));
       stage.style.transform = `scale(${sc})`;
       sizer.style.width = `${SW * sc}px`;
       sizer.style.height = `${BH * sc}px`;
@@ -1304,6 +1306,14 @@
       roW = wrap.clientWidth; cancelAnimationFrame(roF); roF = requestAnimationFrame(onResize);
     }) : null;
     if (ro) ro.observe(wrap);
+    // 도서관: 판 높이가 바뀌면(메뉴가 붙거나 창 높이가 바뀌면) 책 크기를 다시 맞춰요
+    let roH = 0;
+    const lbMain = lib ? document.getElementById('lb-main') : null;
+    const ro2 = window.ResizeObserver && lbMain ? new ResizeObserver(() => {
+      if (lbMain.clientHeight === roH) return;
+      roH = lbMain.clientHeight; requestAnimationFrame(() => { if (document.getElementById('lb-main') === lbMain) lbShow(); });
+    }) : null;
+    if (ro2) ro2.observe(lbMain);
     const gb = document.getElementById('guide-btn');
     if (gb) gb.addEventListener('click', () => {
       if (sel) { close(); slot.innerHTML = emptyPanelHTML(); return; }
@@ -1313,6 +1323,7 @@
     WT.leaveView = () => {
       if (lib) WT.libLeftAt = Date.now();
       if (ro) ro.disconnect();
+      if (ro2) ro2.disconnect();
       window.removeEventListener('resize', onResize);
       document.removeEventListener('keydown', onKey);
       WT.onHashChange = null;

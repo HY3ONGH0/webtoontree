@@ -1481,7 +1481,7 @@ html[data-theme="light"] .shop-h { color: #8A5E0C; }
 @media (max-width: 900px) { .profile-card { grid-template-columns: 1fr; } .pf-acts { justify-content: flex-start; } }
 
 /* 휴대폰·좁은 화면: 메뉴는 아래쪽 막대로 */
-@media (max-width: 760px) {
+@media (max-width: 860px) {
   body.has-rail { --rail-w: 0px; --rail-h: 64px; }
   body.has-rail .app-rail { top: auto; right: 0; width: auto; height: var(--rail-h); flex-direction: row; padding: 0 6px; padding-bottom: env(safe-area-inset-bottom); border-right: 0; border-top: 1px solid var(--line); }
   .rail-mark { display: none; }
@@ -1639,7 +1639,7 @@ html[data-theme="light"] { --frame-bg: #F7F5EE; --frame-shadow: 0 30px 80px rgba
 
 /* ================= 메뉴를 위쪽 가운데로 (넓은 화면) ================= */
 .rail-mark b, .rail-av, .rail-item .nk, .rail-tools, .rail-item.k-map { display: none; }
-@media (min-width: 761px) {
+@media (min-width: 861px) {
   body.has-rail { --rail-w: 0px; --rail-h: 66px; --ft: 4px; --frame-h: calc(100dvh - var(--rail-h) - var(--ft) - var(--fp)); }
   body.has-rail #app { padding-left: 0; padding-top: var(--rail-h); min-height: 100dvh; box-sizing: border-box; }
   body.has-rail .app-rail { top: 10px; bottom: auto; left: 50%; right: auto; transform: translateX(-50%); width: auto; max-width: calc(100vw - 24px); height: 48px; flex-direction: row; align-items: center; gap: 2px; padding: 5px 5px 5px 16px;
@@ -1677,7 +1677,6 @@ html[data-theme="light"] { --frame-bg: #F7F5EE; --frame-shadow: 0 30px 80px rgba
   body.has-rail #app > .view.side-view { height: calc(100dvh - var(--rail-h)); margin: 0; padding: var(--ft) var(--fp) var(--fp); align-items: flex-start; }
   body.has-rail .side-view .tv-frame { height: var(--frame-h); }
 }
-@media (min-width: 761px) and (max-width: 860px) { body.has-rail .lb-shell { height: auto; } }
 
 /* ================= 새 홈: 슬로건과 시작 버튼 ================= */
 .hm-view { position: relative; overflow: hidden; align-items: center; justify-content: center; min-height: calc(100dvh - var(--rail-h) - 24px); }
@@ -1706,7 +1705,7 @@ html[data-theme="light"] .hm-cta { color: #1F2128; background: rgba(255, 255, 25
 @keyframes hmRise { from { opacity: 0; transform: translateY(14px); } }
 @media (prefers-reduced-motion: reduce) { .hm-glow, .hm-h1 span, .hm-sub, .hm-cta { animation: none; } }
 @media (min-width: 861px) { body.has-rail .mp-view { padding: var(--ft) var(--fp) var(--fp); } }
-@media (min-width: 761px) {
+@media (min-width: 861px) {
   .hm-top { display: none; }
   .rail-item.k-me.on-d, html[data-theme="light"] .rail-item.k-me.on-d { background: #23252E; color: #fff; border-radius: 999px; box-shadow: 0 0 0 2px #E0565B; }
   html:not([data-theme="light"]) .rail-item.k-me.on-d { background: #F2E7C9; color: #1A1405; }
@@ -1736,3 +1735,20 @@ html.vt-same::view-transition-old(wt-nav), html.vt-same::view-transition-new(wt-
 .lb-info > * { animation: lbInfoIn .3s ease both; }
 @keyframes lbInfoIn { from { opacity: 0; transform: translateY(4px); } }
 @media (prefers-reduced-motion: reduce) { .lb-info > * { animation: none; } }
+
+@media (max-width: 860px) { .hm-view { min-height: calc(100dvh - var(--rail-h)); } }
+
+/* 창 높이가 낮을 때(브라우저 창을 줄였을 때): 위쪽 글을 줄여 책장이 잘리지 않게 */
+@media (min-width: 861px) and (max-height: 760px) {
+  .lb-lead { display: none; }
+  .lb-hero { margin-top: 8px; gap: 28px; }
+  .lb-h1 { font-size: 26px; margin-bottom: 14px; }
+  .lb-quote { -webkit-line-clamp: 2; line-clamp: 2; min-height: calc(14.5px * 1.8 * 2); margin: 8px 0; }
+  .lb-filters { margin-top: 12px; }
+  .lb-main { padding-top: 16px; padding-bottom: 12px; }
+}
+@media (min-width: 861px) and (max-height: 620px) {
+  .lb-ctas { display: none; }
+  .lb-foot { display: none; }
+  .lb-h1 { margin-bottom: 4px; }
+}
