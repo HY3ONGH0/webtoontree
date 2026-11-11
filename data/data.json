@@ -3228,8 +3228,8 @@
           80
         ],
         "w657564279ng": [
-          540,
-          280
+          680,
+          240
         ],
         "w657564278": [
           320,
@@ -3412,7 +3412,12 @@
       }
     ],
     "links": [],
-    "pins": {}
+    "pins": {
+      "w657562i": [
+        580,
+        656
+      ]
+    }
   },
   "settings": {
     "siteName": "웹툰트리",
@@ -3449,7 +3454,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 65756428114101
+    "lastWebtoonId": 657564281141007
   },
   "version": 1,
   "shop": [
