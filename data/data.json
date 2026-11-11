@@ -1,6 +1,32 @@
 {
   "webtoons": [
     {
+      "id": "w657564281127jw",
+      "title": "괴력 난신",
+      "author": "한중월야",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/7PvbuzgY1NdA9OTVoNLDQ2sdNnQAVsp3baWM0kVOKX3xSDSGT51uJeJx23ID41FAXj8mUapWHidpHnIQPRguZTa7ImwcZeqElQ6-Fa7arDJfZRA9XOrklm2iLGlTgSt_Z4vzU9RAHJ5ASu4DaeFn-g.webp",
+      "genres": [
+        "murim"
+      ],
+      "recommended": 3,
+      "color": "#c10606",
+      "episodes": 124,
+      "status": "ongoing",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-11",
+      "tags": [
+        "무협",
+        "한중월야",
+        "나노마신 세계관"
+      ],
+      "desc": "살인에서 삶의 즐거움을 느끼는 '겸살귀', 정(正).\n대 연목검장의 셋째공자 목경운과 똑같이 생긴 얼굴을 가졌는데...\n\"나의 대역이 되어라. 그러면 옥에서 나갈 수 있게 해 주마.\"\n\"그 기회. 제게 주시겠습니까?\"\n\n'촤악-!!!'\n\n셋째공자를 죽여버린다. 그리고 본인이 '진짜'가 되어 살아가고자 한다.\n가짜 목경운은 진짜 목경운으로서 살아남을 수 있을까?\n연쇄살인마, 대 연목검장의 셋째공자로서 새로운 삶을 시작한다."
+    },
+    {
       "id": "w657564281126",
       "title": "리턴 투 플레이어",
       "author": "인덱스",
@@ -2713,23 +2739,27 @@
           280
         ],
         "w054": [
-          310,
+          350,
           80
         ],
         "w657564279ng": [
-          800,
-          250
+          540,
+          280
         ],
         "w657564278": [
-          370,
+          320,
           220
         ],
         "w657564280k5": [
-          350,
+          380,
           350
         ],
         "w6575642810a": [
-          300,
+          320,
+          480
+        ],
+        "w657564281127jw": [
+          570,
           480
         ]
       },
@@ -2767,6 +2797,11 @@
         {
           "from": "w6575642810a",
           "to": "w657564279ng",
+          "why": ""
+        },
+        {
+          "from": "w6575642810a",
+          "to": "w657564281127jw",
           "why": ""
         }
       ]
@@ -2925,7 +2960,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281126
+    "lastWebtoonId": 657564281127
   },
   "version": 1,
   "shop": [
