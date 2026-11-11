@@ -1238,8 +1238,8 @@
     },
     {
       "id": "w057",
-      "title": "인생게임플레이어",
-      "author": "wnsd****",
+      "title": "플레이어",
+      "author": "박종석, 오현준",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/4528.html",
       "cover": "https://i.namu.wiki/i/asvqEIQR-KClqGBRC1ruON7LwUuC9GysRIcb3YbnbTxVb4ETrmTubtOd9mLq4Wzwi1tk8EnqYuw8MQ29aSns_43dMVEpWaZ-W-wnCvAqlbgu99rovaerxKK3sF_4C-HqPYfUU2OnCbBJW6DICUhCUw.webp",
@@ -1249,23 +1249,25 @@
       ],
       "recommended": 0,
       "color": "#0056d6",
-      "episodes": 3,
-      "status": "ongoing",
+      "episodes": 266,
+      "status": "completed",
       "days": [
         "fri"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-11",
       "tags": [
-        "판타지",
         "액션",
+        "액션판타지",
         "소년물",
-        "성장물",
-        "힘순찐",
-        "빙의"
+        "판타지",
+        "가벼운",
+        "게임판타지",
+        "힘숨찐",
+        "하이틴"
       ],
-      "desc": ".",
-      "source": "https://comic.naver.com/webtoon/list?titleId=463068",
+      "desc": "베댓 공약으로 어쩌다 웹툰 속 주인공이 되었다!",
+      "source": "https://comic.naver.com/webtoon/list?titleId=745876",
       "autoAt": "2026-11-11"
     },
     {
@@ -2600,7 +2602,7 @@
     },
     {
       "id": "w65756428114101al",
-      "title": "아티펙트 먹는 플레이어",
+      "title": "아티팩트 먹는 플레이어",
       "author": "벤티, 기인",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/17801.html",
@@ -2611,25 +2613,29 @@
       ],
       "recommended": 0,
       "color": "#286efe",
-      "episodes": 1,
-      "status": "ongoing",
+      "episodes": 53,
+      "status": "hiatus",
       "days": [
         "fri"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-11",
       "tags": [
         "판타지",
         "사이다",
+        "액션판타지",
+        "게임판타지",
         "먼치킨",
         "소설원작"
       ],
-      "desc": "내가 강해지는 방법은 정말 간단했다.\n그저, 먹는 것.\n\n열심히 아티팩트를 먹으면 됐다.\n회귀도 했으니 이제는 원없이 먹어치워볼까?",
+      "desc": "내가 강해지는 방법은 정말 간단했다.\n\n그저, 먹는 것.\n열심히 아티팩트를 먹으면 됐다.\n\n회귀도 했으니 이제는 원없이 먹어치워볼까?",
       "subs": [
         "fantasy-1",
         "fantasy-6",
         "fantasy-2"
-      ]
+      ],
+      "source": "https://comic.naver.com/webtoon/list?titleId=836683",
+      "autoAt": "2026-11-11"
     }
   ],
   "genres": [
