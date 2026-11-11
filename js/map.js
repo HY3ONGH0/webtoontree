@@ -15,34 +15,67 @@
     const done = (id) => { const w = WT.toon(id); return !!w && ((S.progress[id] || 0) >= WT.eps(w) || !!(S.rewarded || {})[id + ':done']); };
 
     // ---------- 구역 배치: 트리 모양을 줄여 상자에 담고, 상자를 줄 맞춰 쌓아요 ----------
-    const K = 0.42, PAD = 34, HEAD = 56, GAP = 40, MAXW = 1500;
+    const K = 0.42, PAD = 34, HEAD = 56, GAP = 40;
     const regions = genres.map((g) => {
       const T = trees[g.id];
       const ids = Object.keys(T.nodes).filter((id) => WT.toon(id));
       const xs = ids.map((id) => T.nodes[id][0]), ys = ids.map((id) => T.nodes[id][1]);
       const minx = Math.min(...xs), maxx = Math.max(...xs), miny = Math.min(...ys), maxy = Math.max(...ys);
       const w = Math.max(240, (maxx - minx) * K) + PAD * 2;
-      const perRow = Math.max(4, Math.floor((w - PAD * 2) / 22) + 1);
+      const perRow = Math.max(6, Math.floor((w - PAD * 2 - 20) / 11) + 1);   // 11px 간격으로 겹쳐 놓아요
       const extra = WT.data.webtoons.filter((x) => !inTree.has(x.id) && (x.genres || [])[0] === g.id).map((x) => x.id);
       const exRows = extra.length ? Math.ceil(extra.length / perRow) : 0;
-      const h = HEAD + Math.max(60, (maxy - miny) * K) + PAD + 26 + exRows * 24 + (exRows ? 18 : 0);
-      return { g, T, ids, minx, miny, w, h, perRow, extra, exRows, links: (T.links || []).filter((l) => T.nodes[l.from] && T.nodes[l.to] && WT.toon(l.from) && WT.toon(l.to)) };
+      const h = HEAD + Math.max(60, (maxy - miny) * K) + PAD + 26 + exRows * 16 + (exRows ? 14 : 0);
+      return { g, T, ids, minx, miny, maxx, maxy, w, h, w0: w, h0: h, perRow, extra, exRows, links: (T.links || []).filter((l) => T.nodes[l.from] && T.nodes[l.to] && WT.toon(l.from) && WT.toon(l.to)) };
     });
-    const rows = [];
-    regions.slice().sort((a, b) => b.w * b.h - a.w * a.h).forEach((r) => {
-      let row = rows.find((x) => x.w + GAP + r.w <= MAXW);
-      if (!row) { row = { items: [], w: -GAP, h: 0 }; rows.push(row); }
-      row.items.push(r); row.w += GAP + r.w; row.h = Math.max(row.h, r.h);
-    });
-    let yy = 0, WW = 0;
-    rows.forEach((row) => { let x = (MAXW - row.w) / 2; row.items.forEach((r) => { r.x = x; r.y = yy + (row.h - r.h) / 2; x += r.w + GAP; }); yy += row.h + GAP; WW = Math.max(WW, row.w); });
-    const WH = Math.max(1, yy - GAP);
+    let rows = [], WW = 0, WH = 1, MAXW = 1500;
+    function pack(maxw) {
+      const rs = [];
+      regions.forEach((r) => { r.w = r.w0; r.h = r.h0; });
+      regions.slice().sort((a, b) => b.w * b.h - a.w * a.h).forEach((r) => {
+        let row = rs.find((x) => x.w + GAP + r.w <= maxw);
+        if (!row) { row = { items: [], w: -GAP, h: 0 }; rs.push(row); }
+        row.items.push(r); row.w += GAP + r.w; row.h = Math.max(row.h, r.h);
+      });
+      const w = Math.max(...rs.map((x) => x.w)), h = rs.reduce((a, x) => a + x.h, 0) + GAP * (rs.length - 1);
+      return { rs, w, h };
+    }
+    function layout(aspect) {
+      // 여러 폭으로 쌓아 보고, 판(가로/세로) 안에 가장 크게 들어가는 배치를 골라요
+      const widest = Math.max(...regions.map((r) => r.w));
+      const total = regions.reduce((a, r) => a + r.w + GAP, 0);
+      let best = null;
+      for (let mw = widest; mw <= total + 1; mw += 40) {
+        const p = pack(mw), k = Math.min(aspect / p.w, 1 / p.h);
+        if (!best || k > best.k + 1e-9) best = { ...p, k, mw };
+      }
+      rows = best.rs;
+      // 판 비율에 맞춰 남는 자리를 구역들이 나눠 가져요 (가로는 줄마다 끝까지, 세로는 줄 높이 비율대로)
+      WW = Math.max(best.w, aspect * best.h); WH = Math.max(best.h, best.w / aspect); MAXW = WW;
+      const extraH = WH - best.h;
+      let yy = 0;
+      rows.forEach((row) => {
+        const rh = row.h + extraH * (row.h / (best.h - GAP * (rows.length - 1)));
+        const sumW = row.items.reduce((a, r) => a + r.w0, 0), free = WW - GAP * (row.items.length - 1);
+        let x = 0;
+        row.items.forEach((r) => { r.w = free * (r.w0 / sumW); r.h = rh; r.x = x; r.y = yy; x += r.w + GAP; });
+        yy += rh + GAP;
+      });
+    }
+    layout(1.9);
     const P = {};
-    regions.forEach((r) => {
-      r.ids.forEach((id) => { const p = r.T.nodes[id]; P[id] = { x: r.x + PAD + (p[0] - r.minx) * K, y: r.y + HEAD + (p[1] - r.miny) * K, r, tree: true }; });
-      r.exY = r.y + r.h - 22 - (r.exRows - 1) * 24;
-      r.extra.forEach((id, i) => { P[id] = { x: r.x + PAD + (i % r.perRow) * 22, y: r.exY + Math.floor(i / r.perRow) * 24, r, tree: false }; });
+    const place = () => regions.forEach((r) => {
+      const exH = r.extra.length ? 14 + r.exRows * 16 : 0;
+      const bx = r.x + PAD, by = r.y + HEAD, bw = r.w - PAD * 2, bh = r.h - HEAD - PAD - 12 - exH;
+      const sx = r.maxx > r.minx ? Math.min(bw / (r.maxx - r.minx), K * 2.2) : 0, sy = r.maxy > r.miny ? Math.min(bh / (r.maxy - r.miny), K * 2.2) : 0;
+      const ox = bx + (bw - (r.maxx - r.minx) * sx) / 2, oy = by + (bh - (r.maxy - r.miny) * sy) / 2;
+      r.ids.forEach((id) => { const p = r.T.nodes[id]; P[id] = { x: ox + (p[0] - r.minx) * sx, y: oy + (p[1] - r.miny) * sy, r, tree: true }; });
+      r.perRow = Math.max(6, Math.floor((bw - 20) / 11) + 1);
+      r.exRows = r.extra.length ? Math.ceil(r.extra.length / r.perRow) : 0;
+      r.exY = r.y + r.h - 22 - (r.exRows - 1) * 16;
+      r.extra.forEach((id, i) => { P[id] = { x: bx + (i % r.perRow) * 11, y: r.exY + Math.floor(i / r.perRow) * 16, r, tree: false }; });
     });
+    place();
     const allTree = regions.flatMap((r) => r.ids);
     const prog = (ids) => [ids.filter(done).length, ids.length];
 
@@ -93,7 +126,7 @@
           <circle cx="${r.x + 26}" cy="${r.y + 28}" r="6" fill="${c}"/><text class="mp-rname" x="${r.x + 40}" y="${r.y + 35}" fill="${nameColor(c)}">${esc(r.g.name)}</text>
           <text class="mp-rsub" x="${r.x + r.w - 18}" y="${r.y + 26}" text-anchor="end">트리 진행 ${d} / ${n}${r.extra.length ? ` · 트리 밖 ${r.extra.length}` : ''}</text>
           <rect x="${r.x + r.w - 118}" y="${r.y + 34}" width="100" height="6" rx="3" fill="${c}" fill-opacity=".18"/><rect x="${r.x + r.w - 118}" y="${r.y + 34}" width="${Math.max(d ? 6 : 0, 100 * d / n)}" height="6" rx="3" fill="${c}"/>
-          ${r.extra.length && showExtra ? `<line x1="${r.x + 18}" x2="${r.x + r.w - 18}" y1="${r.exY - 22}" y2="${r.exY - 22}" stroke="${c}" stroke-opacity=".3" stroke-dasharray="2 5"/>` : ''}</g>`;
+          ${r.extra.length && showExtra ? `<line x1="${r.x + 18}" x2="${r.x + r.w - 18}" y1="${r.exY - 18}" y2="${r.exY - 18}" stroke="${c}" stroke-opacity=".3" stroke-dasharray="2 5"/>` : ''}</g>`;
       });
       regions.forEach((r) => {
         const dim = only !== 'all' && only !== r.g.id;
@@ -102,17 +135,17 @@
       Object.entries(P).forEach(([id, p]) => {
         if (!p.tree && !showExtra) return;
         const w = WT.toon(id), dim = only !== 'all' && only !== p.r.g.id;
-        const base = hex6(w.color) || p.r.g.color, rad = p.tree ? (id === p.r.T.start ? 15 : 12) : 8;
+        const base = hex6(w.color) || p.r.g.color, rad = p.tree ? (id === p.r.T.start ? 15 : 12) : 9;
         const dn = done(id), ring = dn ? '#E8B53A' : w.pick ? '#E5141B' : '#fff';
         const clip = `mpc-${id}`;
-        if (w.cover && p.tree) defs += `<clipPath id="${clip}"><circle cx="${p.x}" cy="${p.y}" r="${rad}"/></clipPath>`;
+        if (w.cover) defs += `<clipPath id="${clip}"><circle cx="${p.x}" cy="${p.y}" r="${rad}"/></clipPath>`;
         const title = w.title.length > 10 ? w.title.slice(0, 9) + '…' : w.title;
         s += `<g class="mp-nd${p.tree ? '' : ' extra'}${dim ? ' dim' : ''}${sel === id ? ' sel' : ''}${hits.has(id) ? ' hit' : ''}" data-id="${id}" tabindex="0" role="button" aria-label="${esc(w.title)}${dn ? ', 다 봤어요' : ''}${w.pick ? ', 관리자 강추' : ''}">
           <circle class="ring" cx="${p.x}" cy="${p.y}" r="${rad + 7}" fill="none" stroke="#E0565B" stroke-width="3"/>
           <circle class="disc" cx="${p.x}" cy="${p.y}" r="${rad}" fill="${base}"/>
           ${p.tree ? `<text class="ini" x="${p.x}" y="${p.y + rad * .36}" text-anchor="middle" font-size="${rad * 1.0}" fill="${lum(base) > .62 ? '#1F2128' : '#fff'}">${esc(w.title[0])}</text>` : ''}
-          ${w.cover && p.tree ? `<image href="${esc(w.cover)}" x="${p.x - rad}" y="${p.y - rad}" width="${rad * 2}" height="${rad * 2}" preserveAspectRatio="xMidYMin slice" clip-path="url(#${clip})" referrerpolicy="no-referrer"/>` : ''}
-          <circle cx="${p.x}" cy="${p.y}" r="${rad}" fill="none" stroke="${ring}" stroke-width="${w.pick || dn ? 3 : 2}"/>
+          ${w.cover ? `<image href="${esc(w.cover)}" x="${p.x - rad}" y="${p.y - rad}" width="${rad * 2}" height="${rad * 2}" preserveAspectRatio="xMidYMin slice" clip-path="url(#${clip})" referrerpolicy="no-referrer"/>` : ''}
+          <circle cx="${p.x}" cy="${p.y}" r="${rad}" fill="none" stroke="${p.tree ? ring : (dn || w.pick ? ring : 'var(--mp-bg)')}" stroke-width="${w.pick || dn ? 3 : 2}"/>
           ${dn ? `<circle cx="${p.x + rad * .75}" cy="${p.y + rad * .75}" r="5" fill="#E8B53A" stroke="#fff" stroke-width="1.5"/>` : ''}
           ${p.tree ? `<text class="lbl" x="${p.x}" y="${p.y + rad + 14}" text-anchor="middle">${esc(title)}</text>` : ''}
         </g>`;
@@ -124,14 +157,22 @@
 
     // ---------- 확대 · 이동 ----------
     let v = { k: 1, x: 0, y: 0 };
-    const apply = () => { world.setAttribute('transform', `translate(${v.x} ${v.y}) scale(${v.k})`); document.getElementById('mp-zv').textContent = Math.round(v.k * 100) + '%'; canvas.classList.toggle('small', v.k < .75); moveMini(); };
+    let fitK = 1;
+    const apply = () => { world.setAttribute('transform', `translate(${v.x} ${v.y}) scale(${v.k})`); document.getElementById('mp-zv').textContent = Math.round(v.k * 100) + '%'; canvas.classList.toggle('small', v.k < .75); canvas.classList.toggle('zoomed', v.k > fitK * 1.08); moveMini(); };
     const to = (t, anim) => {
       if (!anim || document.body.classList.contains('no-anim')) { v = t; apply(); return; }
       const a = { ...v }, t0 = performance.now();
       const step = (now) => { const e = Math.min(1, (now - t0) / 450), q = 1 - Math.pow(1 - e, 3); v = { k: a.k + (t.k - a.k) * q, x: a.x + (t.x - a.x) * q, y: a.y + (t.y - a.y) * q }; apply(); if (e < 1) requestAnimationFrame(step); };
       requestAnimationFrame(step);
     };
-    const fitAll = (anim) => { const cw = canvas.clientWidth, ch = canvas.clientHeight; if (!cw) return; const k = Math.min(cw / (WW + 60), ch / (WH + 60)); to({ k, x: (cw - MAXW * k) / 2, y: (ch - WH * k) / 2 }, anim); };
+    let lastAspect = 0;   // 전체 보기 배율 (그보다 확대했을 때만 미니 지도를 보여요)
+    const fitAll = (anim) => {
+      const cw = canvas.clientWidth, ch = canvas.clientHeight; if (!cw) return;
+      const aspect = (cw - 40) / Math.max(1, ch - 40);
+      if (Math.abs(aspect - lastAspect) > .05) { lastAspect = aspect; layout(aspect); place(); draw(); }
+      const k = Math.min((cw - 30) / WW, (ch - 30) / WH); fitK = k;
+      to({ k, x: (cw - WW * k) / 2, y: (ch - WH * k) / 2 }, anim);
+    };
     const zoomAt = (f, cx, cy) => { const k = Math.max(.3, Math.min(3, v.k * f)); v = { k, x: cx - (cx - v.x) * (k / v.k), y: cy - (cy - v.y) * (k / v.k) }; apply(); };
     const focus = (id) => { const p = P[id], k = Math.max(v.k, 1.4); to({ k, x: canvas.clientWidth / 2 - p.x * k, y: canvas.clientHeight / 2 - p.y * k }, true); };
     const focusRegion = (gid) => { const r = regions.find((x) => x.g.id === gid); if (!r) return; const cw = canvas.clientWidth, ch = canvas.clientHeight, k = Math.min(2, cw / (r.w + 80), ch / (r.h + 80)); to({ k, x: cw / 2 - (r.x + r.w / 2) * k, y: ch / 2 - (r.y + r.h / 2) * k }, true); };

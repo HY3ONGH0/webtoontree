@@ -1582,3 +1582,20 @@ html[data-theme="light"] .mp-nd .lbl { stroke: #EFEBE1; }
   .mp-filters { margin: 10px 0 8px; }
   .mp-main { grid-template-rows: auto auto auto minmax(260px, 1fr); }
 }
+/* 지도: 넓은 화면에선 카드를 끝까지 넓혀 여백을 줄여요 */
+.mp-view .lb-shell { max-width: none; }
+.mp-view { padding: clamp(8px, 1.6vw, 24px); }
+.mp-view .lb-shell { height: calc(100dvh - var(--rail-h) - 2 * clamp(8px, 1.6vw, 24px)); }
+.mp-main { padding: 16px 26px 16px; }
+.mp-hero { margin-top: 8px; }
+.mp-hero .lb-lead { margin: 6px 0 0; }
+.mp-stats { margin-top: 8px; }
+.mp-filters { margin: 10px 0 10px; flex-wrap: nowrap; }
+.mp-chips { flex-wrap: wrap; flex: 1 1 auto; min-width: 0; }
+.mp-zoom { flex: 0 0 auto; }
+.mp-canvas { --mp-bg: color-mix(in srgb, var(--lb-shell) 82%, #000 6%); }
+html[data-theme="light"] .mp-canvas { --mp-bg: #EFEBE1; }
+@media (max-width: 1100px) { .mp-filters { flex-wrap: wrap; } }
+.mp-mini { opacity: 0; pointer-events: none; transition: opacity .25s ease; }
+.mp-canvas.zoomed .mp-mini { opacity: 1; pointer-events: auto; }
+.mp-toggle { white-space: nowrap; }
