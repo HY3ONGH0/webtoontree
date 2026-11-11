@@ -287,7 +287,7 @@
             </div>
             <div class="lb-hero">
               <div>
-                <h1 class="lb-h1">모든 웹툰이 꽂힌 곳, 이제는 내가 고르는 이야기..</h1>
+                <h1 class="lb-h1 one-line">모든 웹툰이 꽂힌 곳, 내가 고르는 이야기</h1>
                 <p class="lb-lead">트리에 있는 웹툰도, 트리 밖 웹툰도 모두 여기 있어요. 장르와 세부 장르를 골라 마음에 드는 표지를 넘겨 보고, 끌리는 웹툰을 바로 시작해 보세요.</p>
                 <div class="lb-ctas"><a class="lb-cta" id="lb-go" target="_blank" rel="noopener">1화 보러 가기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
                   <button type="button" class="lb-cta ghost" id="lb-more">기록 · 별점 · 댓글</button></div>

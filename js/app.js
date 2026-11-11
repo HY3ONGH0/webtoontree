@@ -200,7 +200,7 @@
 <path d="M100 48 L106 62 L121 63 L109 72 L113 87 L100 79 L87 87 L91 72 L79 63 L94 62 Z" fill="#B8872A"/>
 <rect x="90" y="128" width="20" height="22" fill="#E8C66A"/><rect x="72" y="150" width="56" height="12" rx="3" fill="#C99A3A"/>
 <rect x="70" y="170" width="60" height="62" rx="4" fill="#E8C66A"/><rect x="10" y="190" width="58" height="42" rx="4" fill="#B8C3E3"/><rect x="132" y="202" width="58" height="30" rx="4" fill="#C98A4A"/>
-<text x="100" y="212" text-anchor="middle" font-family="Black Han Sans, sans-serif" font-size="30" fill="#3A2A06">1</text><text x="39" y="220" text-anchor="middle" font-family="Black Han Sans, sans-serif" font-size="24" fill="#2A3150">2</text><text x="161" y="225" text-anchor="middle" font-family="Black Han Sans, sans-serif" font-size="20" fill="#3A1E06">3</text></svg></span>`
+<text x="100" y="212" text-anchor="middle" font-family="Noto Sans KR, sans-serif" font-weight="900" font-size="30" fill="#3A2A06">1</text><text x="39" y="220" text-anchor="middle" font-family="Noto Sans KR, sans-serif" font-weight="900" font-size="24" fill="#2A3150">2</text><text x="161" y="225" text-anchor="middle" font-family="Noto Sans KR, sans-serif" font-weight="900" font-size="20" fill="#3A1E06">3</text></svg></span>`
   };
   /** 전체화면인지: 전체화면 버튼(Fullscreen API) 또는 F11 (브라우저 창이 화면을 꽉 채움) */
   WT.checkFullscreen = function () {
@@ -251,7 +251,7 @@
         ${N ? `<div class="home-vp" id="home-vp"><div class="home-track" id="home-track">${
           Array.from({ length: COPIES }, (_, c) => items.map((it, k) => cardHTML(it, k, c === 2)).join('')).join('')}</div></div>`
         : `<section class="rpg" style="max-width:520px; margin:40px auto; padding:28px; text-align:center; display:flex; flex-direction:column; gap:10px"><span class="corner-b" aria-hidden="true"></span>
-          <h2 style="margin:0; font-family:var(--display); font-weight:400; font-size:24px">장르별 웹툰 트리를 준비하고 있어요</h2>
+          <h2 style="margin:0; font-family:var(--display); font-weight:800; font-size:24px">장르별 웹툰 트리를 준비하고 있어요</h2>
           <p class="hint" style="font-size:14px; margin:0">곧 장르별 웹툰 트리가 열려요. 조금만 기다려 주세요!</p></section>`}
         <div class="home-foot">
           <a href="#/map" class="pill pill-gold press">${WT.icon.map}전체 지도</a>

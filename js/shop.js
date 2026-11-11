@@ -51,7 +51,7 @@
               <div class="${animPreview ? 'preview-anim' : ''}"><div style="animation:bob 1.4s ease-in-out infinite">${WT.charSVG(lookWith(item), 150, item.name + ' 미리보기')}</div></div>
             </div>
             <div style="display:flex; flex-direction:column; align-items:center; gap:4px; text-align:center">
-              <span style="font-family:var(--display); font-size:24px">${esc(item.name)}</span>
+              <span style="font-family: var(--display); font-weight: 800; font-size:24px">${esc(item.name)}</span>
               <span class="hint" style="font-size:13px">${esc(item.desc)}</span>
             </div>
             <button type="button" class="btn ${btnCls} press" id="shop-act" style="align-self:stretch; min-height:52px; font-size:16px" ${disabled ? 'disabled' : ''}>${btnLabel}</button>
@@ -168,11 +168,11 @@
           <div style="animation:bob 1.4s ease-in-out infinite">${WT.charSVG(look(u.equip), i === 0 ? 76 : 60)}</div>
           <span style="font-size:16px; font-weight:700">${esc(u.nickname)}</span>
           <span style="font-size:14px; font-weight:700; color:var(--coin)">${fmt(u)}</span>
-          <div style="align-self:stretch; height:${h}px; border-radius:8px 8px 0 0; background:${bg}; display:flex; justify-content:center; padding-top:10px; transform-origin:50% 100%; animation:rise .6s cubic-bezier(.2,.9,.3,1.2) ${i * 0.1}s both"><span style="font-family:var(--display); font-size:34px; color:#2A2410">${i + 1}</span></div>
+          <div style="align-self:stretch; height:${h}px; border-radius:8px 8px 0 0; background:${bg}; display:flex; justify-content:center; padding-top:10px; transform-origin:50% 100%; animation:rise .6s cubic-bezier(.2,.9,.3,1.2) ${i * 0.1}s both"><span style="font-family: var(--display); font-weight: 800; font-size:34px; color:#2A2410">${i + 1}</span></div>
         </div>`;
       }).join('');
       const rest = r.top.slice(3).map((u, k) => `<li class="stat" style="flex-direction:row; align-items:center; gap:12px; animation-delay:${k * 0.05}s">
-          <span style="width:32px; text-align:center; font-family:var(--display); font-size:20px; color:var(--muted)">${u.rank}</span>
+          <span style="width:32px; text-align:center; font-family: var(--display); font-weight: 800; font-size:20px; color:var(--muted)">${u.rank}</span>
           ${WT.charSVG(look(u.equip), 36)}
           <span style="flex:1 1 auto; font-weight:700">${esc(u.nickname)}</span>
           <span style="font-size:13px; color:var(--muted)">${metric === 'eps' ? `완독 ${u.done}개` : `${u.eps}화 감상`}</span>
@@ -211,7 +211,7 @@
       <div class="rank-wrap">
         <section class="rpg" style="padding:24px; display:flex; flex-direction:column; gap:16px; align-items:center; text-align:center"><span class="corner-b" aria-hidden="true"></span>
           <svg width="60" height="44" viewBox="0 0 40 30" aria-hidden="true" style="animation:starTw 2.4s ease-in-out infinite"><polygon points="4,28 6,8 14,16 20,4 26,16 34,8 36,28" fill="#FFD34D" stroke="#FFF4C2" stroke-width="1.5" stroke-linejoin="round"/></svg>
-          <h2 style="margin:0; font-family:var(--display); font-weight:400; font-size:24px">친구들과의 랭킹은 곧 열려요</h2>
+          <h2 style="margin:0; font-family:var(--display); font-weight:800; font-size:24px">친구들과의 랭킹은 곧 열려요</h2>
           <p class="hint" style="font-size:14px; max-width:460px; margin:0">회원 기능(Apps Script)이 연결되면 이번 주·이번 달·전체 기간으로 "많이 본 화수"와 "완독 수" 순위를 보여 드려요. 그 전까지는 내 기록을 모아 둘게요.</p>
         </section>
         <h2 style="margin:6px 0 0; font-size:16px; color:var(--gold)">${S.profile ? esc(S.profile.nick) + ' 님의 기록' : '이 기기의 기록'}</h2>
