@@ -56,5 +56,8 @@
   window.WT = window.WT || {};
   WT.schedule = { DAYS, DAY_KO, STATUS_KO, today, status, countDays, episodes, daysLabel, label };
   /** 관리자 추천 별 개수 0~5 (예전 데이터의 true 는 1개) */
-  WT.recStars = (w) => Math.max(0, Math.min(5, w && w.recommended === true ? 1 : Math.round(Number(w && w.recommended) || 0)));
+  // 관리자 강추로 고른 웹툰은 별을 보여 주지 않아요 (강추 표시가 대신해요)
+  WT.recStars = (w) => (w && w.pick ? 0 : Math.max(0, Math.min(5, w && w.recommended === true ? 1 : Math.round(Number(w && w.recommended) || 0))));
+  /** 추천순 정렬 점수: 관리자 강추 > 별 5 > 별 4 > … */
+  WT.recRank = (w) => (w && w.pick ? 6 : WT.recStars(w));
 })();

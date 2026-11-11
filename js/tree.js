@@ -14,7 +14,7 @@
   function libraryBooks(gid) {
     return WT.data.webtoons
       .filter((w) => (gid === 'all' || (w.genres || []).includes(gid)))
-      .sort((a, b) => (WT.recStars(b) - WT.recStars(a)));
+      .sort((a, b) => (WT.recRank(b) - WT.recRank(a)));
   }
   WT.libraryBooks = libraryBooks;
 
@@ -670,7 +670,7 @@
     function lbBuild() {
       const q = LB.q;
       LB.list = ids.filter((id) => { const w = WT.toon(id); return (LB.sub === 'all' || (w.subs || []).includes(LB.sub)) && (!q || (w.title + (w.author || '')).toLowerCase().includes(q)); });
-      LB.list.sort(LB.sort === 'star' ? (a, b) => (WT.recStars(WT.toon(b)) - WT.recStars(WT.toon(a))) || WT.toon(a).title.localeCompare(WT.toon(b).title, 'ko') : (a, b) => WT.toon(a).title.localeCompare(WT.toon(b).title, 'ko'));
+      LB.list.sort(LB.sort === 'star' ? (a, b) => (WT.recRank(WT.toon(b)) - WT.recRank(WT.toon(a))) || WT.toon(a).title.localeCompare(WT.toon(b).title, 'ko') : (a, b) => WT.toon(a).title.localeCompare(WT.toon(b).title, 'ko'));
       LB.idx = Math.min(LB.idx, Math.max(0, LB.list.length - 1));
       stage.innerHTML = LB.list.length ? LB.list.map((id) => `<div class="lb-slot" data-wrap="${id}"></div>`).join('')
         : `<p class="lb-empty">${ids.length ? '조건에 맞는 웹툰이 없어요.' : '아직 이 장르 도서관에 꽂힌 웹툰이 없어요.'}</p>`;
