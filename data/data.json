@@ -38,22 +38,20 @@
       "days": [
         "sat"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-11",
       "tags": [
         "판타지",
-        "SF",
-        "고어",
-        "로맨스",
-        "스릴러",
-        "코미디",
-        "액션",
-        "이딴 장르를 만드는것도 능력이다"
+        "몰아보기",
+        "먼치킨",
+        "완결판타지"
       ],
-      "desc": "내게 날아온 달콤살벌한 선물 나노. 안드로이드들의 비밀을 밝혀라!",
+      "desc": "내게 날아온 달콤살벌한 선물 나노 \n안드로이드들의 비밀을 밝혀라!",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "source": "https://comic.naver.com/webtoon/list?titleId=670150",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657564281139wo",
@@ -68,17 +66,25 @@
       "recommended": 2,
       "color": "",
       "episodes": 61,
-      "status": "ongoing",
+      "status": "completed",
       "days": [
         "thu"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-11",
       "tags": [
         "로맨스",
-        "성인"
+        "러브코미디",
+        "리얼로맨스",
+        "자극적인",
+        "고자극로맨스",
+        "로맨스코미디",
+        "하이틴",
+        "하이퍼리얼리즘"
       ],
-      "desc": "어느 날 갑자기 나의 평온한 일상을 깨뜨린 그녀. 그런데 미소녀다? 그리고 나를 조...좋아한다고? 아니, 사랑한다고....?\n문제는 앞집으로 이사 왔다는 '나리'가 싫지 않다는 것. <이두나!> 민송아 작가의 18금 두근두근 러브 코미디!"
+      "desc": "어느 날 갑자기 나의 평온한 일상을 깨뜨린 그녀. 그런데 미소녀다? 그리고 나를 조...좋아한다고? 아니, 사랑한다고....?\n문제는, 나와 결혼하기 위해 앞집으로 이사 왔다는 '나리'가 싫지 않다는 것.  민송아 작가의 18금 두근두근 러브코미디.",
+      "source": "https://comic.naver.com/webtoon/list?titleId=802293",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657564281138bq",
@@ -92,7 +98,7 @@
       ],
       "recommended": 2,
       "color": "",
-      "episodes": 61,
+      "episodes": 62,
       "status": "ongoing",
       "days": [
         "wed"
@@ -101,17 +107,18 @@
       "baseDate": "2026-11-11",
       "tags": [
         "로맨스",
-        "타임슬립",
-        "몰입감",
-        "치밀함",
-        "학원물"
+        "감성적인",
+        "소심녀",
+        "타임슬립"
       ],
-      "desc": "아름다울 미 고울 연. 이름처럼 아름답게 자란 19살 ‘미연’은 화려한 외모와 달리 소심한 성격의 소녀다. 그러던 어느 날, 수업 중 잠이 든 미연은 돌연 6년 뒤 미래에서 눈을 뜨게 된다. 배우가 된 자신과 어딘가 익숙한 얼굴의 매니저. 미연은 낯설기만 한 미래에서 얼어붙은 기억 속 진실을 찾아 앞으로 나아갈 수 있을까?"
+      "desc": "아름다울 미 고울 연. 이름처럼 아름답게 자란 19살 ‘미연’은 화려한 외모와 달리 소심한 성격의 소녀다. \n그러던 어느 날, 수업 중 잠이 든 미연은 돌연 6년 뒤 미래에서 눈을 뜨게 된다. 배우가 된 자신과 어딘가 익숙한 얼굴의 매니저. \n미연은 낯설기만 한 미래에서 얼어붙은 기억 속 진실을 찾아 앞으로 나아갈 수 있을까?",
+      "source": "https://comic.naver.com/webtoon/list?titleId=837864",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657564281136nf",
       "title": "중간에서 만나",
-      "author": "조흰 글 윤김 그림",
+      "author": "조흰, 윤김",
       "platform": "네이버웹툰",
       "url": "",
       "cover": "https://i.namu.wiki/i/BzqpJps_Lq8uPqlJFO37pQyCouVRnZptcdfhi0SCYlzceR0OEannfiVUcH68UR4XkMu7RUMy09nIujH9F2f6zhDHo2xTuCv7Z14ybYAhtUK7jPjDziLiE4ymJVDV4GZx1_93a0GJ9xMgTz_9pyr1UQ.webp",
@@ -125,19 +132,26 @@
       "days": [
         "wed"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-11",
       "tags": [
         "로맨스",
-        "연상녀",
-        "비밀"
+        "리얼로맨스",
+        "미친작화",
+        "햇살캐",
+        "폭스남",
+        "로맨스코미디",
+        "청춘로맨스",
+        "연상연하"
       ],
-      "desc": "\"내가 재밌게 해줄 수 있는데.\"\n서른 살, 노잼 인생을 살고 있는 여름 앞에\n어느 날 나타난 미스테리 연하남!\n앞뒤 가리지 않고 직진하는 모습이 그저 귀엽다가도,\n어딘가 세하고 어딘가 집착적인데?\n\n대체 너 나한테 원하는 게 뭐니?!\n두근두근 쌍방사기 로맨스 코미디!"
+      "desc": "\"내가 재밌게 해줄 수 있는데.\"\n서른 살, 노잼 인생을 살고 있는 여름 앞에\n어느 날 나타난 미스테리 연하남!\n앞뒤 가리지 않고 직진하는 모습이 그저 귀엽다가도,  \n어딘가 세하고 어딘가 집착적인데?\n \n대체 너 나한테 원하는 게 뭐니?!\n두근두근 쌍방사기 로맨스 코미디!",
+      "source": "https://comic.naver.com/webtoon/list?titleId=808455",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657564281135pr",
       "title": "헤어지면 죽음",
-      "author": "봄소희 글 KYMA 그림",
+      "author": "봄소희, KYMA",
       "platform": "네이버웹툰",
       "url": "",
       "cover": "https://i.namu.wiki/i/vjOnLGoAM3ooaOGFe_UmgTJutwM_sRXm1uZmxbp1bAX90UiNHeo3YgnXzJX4zskyd1lctTfva4qbt4b3SBK-jhIUwaALQX1BiDFVnEValua0ND4I1BShih5Sv_rawJidveFJUHDjZP-WxTer7jLuwQ.webp",
@@ -151,13 +165,19 @@
       "days": [
         "wed"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-11",
       "tags": [
         "로맨스",
-        "반전"
+        "몰아보기",
+        "러브코미디",
+        "레드스트링",
+        "인플루언서",
+        "완결로맨스"
       ],
-      "desc": "완벽한 인플루언서의 삶. 좋아하는 여자와의 썸.\n고백만이 남았는데 황당한 테러 사건에 휘말렸다?!\n\"집착이 아니라 진짜로 우리..! 헤어지면 죽어!!\""
+      "desc": "완벽한 인플루언서의 삶. 좋아하는 여자와의 썸.\n고백만이 남았는데 황당한 테러 사건에 휘말렸다?!\n\"집착이 아니라 진짜로 우리..! 헤어지면 죽어!!\"",
+      "source": "https://comic.naver.com/webtoon/list?titleId=783861",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657564281134ws",
@@ -176,13 +196,17 @@
       "days": [
         "tue"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-11",
       "tags": [
         "로맨스",
-        "정석"
+        "짝사랑",
+        "하이틴",
+        "완결로맨스"
       ],
-      "desc": "고백 성공률 0%의 짝사랑마스터 해리.\n굴욕적인 19번째 실연장면을 우연히 예찬에게 들키고 만다.\n다시는 아무도 안 좋아하겠다고 다짐했지만, 또 짝사랑을 시작해버린 해리는\n20번째 실연을 막기 위해 예찬의 도움을 받기로 하는데...\n과연 이번 사랑은 성공할 수 있을까?"
+      "desc": "고백 성공률 0%의 짝사랑마스터 해리.\n굴욕적인 19번째 실연장면을 우연히 예찬에게 들키고 만다.\n다시는 아무도 안 좋아하겠다고 다짐했지만, 또 짝사랑을 시작해버린 해리는 \n20번째 실연을 막기 위해 예찬의 도움을 받기로 하는데...\n과연 이번 사랑은 성공할 수 있을까?",
+      "source": "https://comic.naver.com/webtoon/list?titleId=789682",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w6575642811339m",
@@ -204,10 +228,18 @@
       "autoCount": true,
       "baseDate": "2026-11-11",
       "tags": [
-        "정석",
-        "로맨스"
+        "로맨스",
+        "순진남",
+        "리얼로맨스",
+        "설렘폭발",
+        "소심남",
+        "외유내강녀",
+        "직진녀",
+        "연애/결혼공감"
       ],
-      "desc": "혼밥, 혼영, 혼술 모든 것이 혼자가 편했던 백사랑.\n손해를 보면서까지 타인과 어울리길 원하는 유평화.\n상반되는 삶을 살아온 사랑과 평화는 서로를 만나 새로운 삶의 방식을 알게 된다.\n생각보다 어른스럽고, 생각보다 유치한 어딘가 공감가는 현실 로맨스"
+      "desc": "혼밥, 혼영, 혼술 모든 것이 혼자가 편했던 백사랑.\n손해를 보면서까지 타인과 어울리길 원하는 유평화.\n상반되는 삶을 살아온 사랑과 평화는 서로를 만나 새로운 삶의 방식을 알게 된다. \n생각보다 어른스럽고, 생각보다 유치한 어딘가 공감가는 현실 로맨스",
+      "source": "https://comic.naver.com/webtoon/list?titleId=843450",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657564281132p5",
@@ -226,13 +258,21 @@
       "days": [
         "sun"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-11",
       "tags": [
         "로맨스",
-        "사이비"
+        "청춘",
+        "로맨틱코미디",
+        "하이틴",
+        "학원로맨스",
+        "학원물",
+        "청춘로맨스",
+        "친구>연인"
       ],
-      "desc": "사이비 교주 아들과의 아슬아슬하고 위험천만한 동거가 시작됐다! 철석같이 믿었던 외삼촌에게 사기를 당한 청아네. 부모님은 행방불명된 외삼촌을 쫓는다며 사라지고, 청아는 갑작스레 빈 집에 혼자 살게 된다. 그런데 사기당한 가족이 청아네만이 아니었으니! 자치구에서 가장 큰 사이비, '천년재림교'도 외삼촌에게 제대로 속았다. 그리고 청아네 집에 찾아온 교주의 아들 '요한'. 무작정 짐을 끌고 쳐들어오는데...! 신이시여, 이 동거 괜찮을까요?"
+      "desc": "사이비 교주 아들과의 아슬아슬하고 위험천만한 동거가 시작됐다! 철석같이 믿었던 외삼촌에게 사기를 당한 청아네. 부모님은 행방불명된 외삼촌을 쫓는다며 사라지고, 청아는 갑작스레 빈 집에 혼자 살게 된다. 그런데 사기당한 가족이 청아네만이 아니었으니! 자치구에서 가장 큰 사이비, ‘천년재림교’도 외삼촌에게 제대로 속았다. 그리고 청아네 집에 찾아온 교주의 아들 ‘요한’. 무작정 짐을 끌고 쳐들어오는데...! 신이시여, 이 동거 괜찮을까요?",
+      "source": "https://comic.naver.com/webtoon/list?titleId=802079",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657564281131uc",
@@ -251,13 +291,18 @@
       "days": [
         "mon"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-11",
       "tags": [
-        "러브코미디",
-        "거짓말같이 남자친구 등장"
+        "로맨스",
+        "로맨스코미디",
+        "연예계",
+        "삼각관계",
+        "완결로맨스"
       ],
-      "desc": "하루에 무려 쓰리잡.\n\n스물 다섯 지언의 일과 끝에 남는 건\n갑질에 시달린 스트레스와\n돼지우리같은 집구석 뿐이다.\n\n그러다 어느날 얻게 된 인형 한 개.\n이것만 있으면 대한민국의 탑 배우\n남도윤을 가정부로 부려먹을 수있다...?!"
+      "desc": "하루에 무려 쓰리잡. \n스물 다섯 지언의 일과 끝에 남는 건 갑질에 시달린 스트레스와 돼지우리같은 집구석 뿐이다. \n그러다 어느날 얻게 된 인형 한 개. 이것만 있으면 대한민국의 탑 배우 남도윤을 가정부로 부려먹을 수있다...?!\n2017 최강자전 대상 수상작  슈안 작가의 차기작!",
+      "source": "https://comic.naver.com/webtoon/list?titleId=761461",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657564281130jz",
@@ -271,24 +316,31 @@
       ],
       "recommended": 0,
       "color": "",
-      "episodes": 133,
+      "episodes": 140,
       "status": "completed",
       "days": [
         "wed"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-11",
       "tags": [
         "로맨스",
-        "학원",
-        "성장"
+        "설렘폭발",
+        "청춘",
+        "사연남",
+        "공식미녀",
+        "철벽녀",
+        "인소감성",
+        "성장물"
       ],
-      "desc": "스킨십 공포증이 있는 유라의 곁엔 오로지\n소꿉친구인 해원이뿐이었지만 고인우와 권미인\n그리고 다양한 사람들과 만나게 되면서\n새로운 감정을 알아가고 진정한 인간관계를 쌓아간다."
+      "desc": "스킨십 공포증이 있는 유라의 곁엔 오로지 소꿉친구인 해원이뿐이었지만 고인우와 권미인 그리고 다양한 사람들과 만나게 되면서 새로운 감정을 알아가고 진정한 인간관계를 쌓아간다.",
+      "source": "https://comic.naver.com/webtoon/list?titleId=789652",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w6575642811296e",
       "title": "오로지 너를 이기고 싶어",
-      "author": "아마도지 글 사삭 그림",
+      "author": "아마도지, 사삭",
       "platform": "네이버웹툰",
       "url": "",
       "cover": "https://i.namu.wiki/i/7AVlcxTSkkqDR0RM7j_oP84_XNzQ-C8CSVBVknBEDvMD4wbDK4qKGsLzQeqFkp-oQ9vE1zrUuwksZ_I38B42hwHsj9rgZjSLK7FqiOEobZdwGG-RK11VgvtMbog0cJYdsjaVRkdRNGr_WjbEseU_xA.webp",
@@ -302,19 +354,24 @@
       "days": [
         "sun"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-11",
       "tags": [
         "로맨스",
         "러브코미디",
-        "일상",
-        "학원"
+        "4컷만화",
+        "로맨스코미디",
+        "하이틴",
+        "학원로맨스",
+        "완결로맨스"
       ],
-      "desc": "태어나서 단 한번도 패배해본 적 없는 남주 '이기고'\n그런 이기고를 처음으로 패배하게 만든 여주 '오로지'\n과연 이 '내기'의 승자는 누가 될 것인가?"
+      "desc": "태어나서 단 한번도 패배해본 적 없는 남주 '이기고'\n그런 이기고를 처음으로 패배하게 만든 여주 '오로지'\n과연 이 '내기'의 승자는 누가 될 것인가?",
+      "source": "https://comic.naver.com/webtoon/list?titleId=730657",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657564281128y7",
-      "title": "백투더 찬비",
+      "title": "백투더찬비",
       "author": "장사휘",
       "platform": "네이버웹툰",
       "url": "",
@@ -329,18 +386,26 @@
       "days": [
         "thu"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-11",
       "tags": [
-        "학교",
-        "로맨스"
+        "로맨스",
+        "청춘",
+        "순정남",
+        "명랑녀",
+        "로맨틱코미디",
+        "가벼운",
+        "러블리",
+        "짝사랑"
       ],
-      "desc": "쌍방 사랑의 행운을 만끽하는 18세 강견오. 그 상대는 같은 반의 초미녀 백찬비.\n항상 먼저 직진해오는 찬비와의 썸을 즐기던 것도 잠시, 찬비는 사고로\n최근 1년의 기억을 잃게 되고 견오를 좋아했다는 기억까지 잃게 된다!\n순식간에 짝사랑이 돼버린 견오. 과연 예전의 쌍방 사랑의 시기로 돌아갈 수 있을까?\n…근데 우리 서로 좋아한 거 확실하지?"
+      "desc": "쌍방 사랑의 행운을 만끽하는 18세 강견오. 그 상대는 같은 반의 초미녀 백찬비. \n항상 먼저 직진해오는 찬비와의 썸을 즐기던 것도 잠시, 찬비는 사고로\n최근 1년의 기억을 잃게 되고 견오를 좋아했다는 기억까지 잃게 된다!\n순식간에 짝사랑이 돼버린 견오. 과연 예전의 쌍방 사랑의 시기로 돌아갈 수 있을까?\n…근데 우리 서로 좋아한 거 확실하지?",
+      "source": "https://comic.naver.com/webtoon/list?titleId=826322",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657564281127jw",
       "title": "괴력 난신",
-      "author": "한중월야",
+      "author": "매드버드, 김태형, 한중월야",
       "platform": "네이버웹툰",
       "url": "",
       "cover": "https://i.namu.wiki/i/7PvbuzgY1NdA9OTVoNLDQ2sdNnQAVsp3baWM0kVOKX3xSDSGT51uJeJx23ID41FAXj8mUapWHidpHnIQPRguZTa7ImwcZeqElQ6-Fa7arDJfZRA9XOrklm2iLGlTgSt_Z4vzU9RAHJ5ASu4DaeFn-g.webp",
@@ -357,16 +422,23 @@
       "autoCount": true,
       "baseDate": "2026-11-11",
       "tags": [
-        "무협",
-        "한중월야",
-        "나노마신 세계관"
+        "무협/사극",
+        "레드아이스 스튜디오",
+        "천마",
+        "액션",
+        "세계관",
+        "오컬트",
+        "동양풍판타지",
+        "판무"
       ],
-      "desc": "살인에서 삶의 즐거움을 느끼는 '겸살귀', 정(正).\n대 연목검장의 셋째공자 목경운과 똑같이 생긴 얼굴을 가졌는데...\n\"나의 대역이 되어라. 그러면 옥에서 나갈 수 있게 해 주마.\"\n\"그 기회. 제게 주시겠습니까?\"\n\n'촤악-!!!'\n\n셋째공자를 죽여버린다. 그리고 본인이 '진짜'가 되어 살아가고자 한다.\n가짜 목경운은 진짜 목경운으로서 살아남을 수 있을까?\n연쇄살인마, 대 연목검장의 셋째공자로서 새로운 삶을 시작한다."
+      "desc": "살인에서 삶의 즐거움을 느끼는 '겸살귀', 정(正).\n대 연목검장의 셋째공자 목경운과 똑같이 생긴 얼굴을 가졌는데...\n\"나의 대역이 되어라. 그러면 옥에서 나갈 수 있게 해 주마.\"\n\"그 기회. 제게 주시겠습니까?\"\n\n'촤악-!!!'\n\n셋째공자를 죽여버린다. 그리고 본인이 '진짜'가 되어 살아가고자 한다.\n가짜 목경운은 진짜 목경운으로서 살아남을 수 있을까?\n연쇄살인마, 대 연목검장의 셋째공자로서 새로운 삶을 시작한다.",
+      "source": "https://comic.naver.com/webtoon/list?titleId=821597",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657564281126",
       "title": "리턴 투 플레이어",
-      "author": "인덱스",
+      "author": "레포, 세혼, 인덱스",
       "platform": "네이버웹툰",
       "url": "",
       "cover": "https://i.namu.wiki/i/IvNZUCzkEclwk4BGHRa6waJy2ZWPlWjFEBqfwcP-45bmhvezkY5VqNX01JV10z0p3jBYbI-QEI0k2BU2zFJ76DoHPp3r7fid1FO_vUdao5YW6cJxMO6b_1yj9n8LrQBRt2bju3sSj9qk5XbVv9ZUgA.webp",
@@ -380,22 +452,29 @@
       "days": [
         "mon"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-10",
       "tags": [
+        "판타지",
+        "신화",
+        "게임",
+        "배틀",
+        "아포칼립스",
+        "게임판타지",
         "회귀",
-        "현대 퓨전판타지",
-        "미션"
+        "SF"
       ],
-      "desc": "어느 날, 게임이 되어버린 세상. 갑자기 나타난 몬스터들이 사람들을 죽이고, 사람들은 플레이어가 되어 퀘스트를 달성해야 한다! 인류의 종말에서 회귀한 2회차 플레이어, 김세한. 그는 과연 세상을 이렇게 만든 '시스템'을 쳐부술 수 있을까!",
+      "desc": "어느 날, 게임이 되어버린 세상.\n갑자기 나타난 몬스터들이 사람들을 죽이고, 사람들은 플레이어가 되어  퀘스트를 달성해야 한다!\n인류의 종말에서 회귀한 2회차 플레이어, 김세한.\n그는 과연 세상을 이렇게 만든 '시스템'을 쳐부술 수 있을까!",
       "subs": [
         "fantasy-1"
-      ]
+      ],
+      "source": "https://comic.naver.com/webtoon/list?titleId=752414",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w6575642810a",
       "title": "나노마신",
-      "author": "각색: 현절무, 작화: 금강불괴",
+      "author": "현절무, 금강불괴, 한중월야",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/4614.html",
       "cover": "https://i.namu.wiki/i/oucs4zljkyRpVv344feeX4QO66nDuj96noPCEYG3Qb86KRqlqtmbAzgfB2QSni_zWkf6WVol7TgeDqZwX1HvtqrqEHle5Q6spfmAGg1R4OgsGXOFh5amSnXs4uka5wxaHfzd2KlECYFqLawLMQxWBw.webp",
@@ -404,17 +483,26 @@
       ],
       "recommended": 3,
       "color": "",
-      "episodes": 330,
+      "episodes": 337,
       "status": "ongoing",
       "days": [
         "thu"
       ],
       "autoCount": true,
-      "baseDate": "2026-11-10",
+      "baseDate": "2026-11-11",
       "tags": [
+        "무협/사극",
+        "레드아이스 스튜디오",
+        "사이다",
+        "천마",
+        "게임",
+        "상태창",
+        "참교육",
         "SF"
       ],
-      "desc": ""
+      "desc": "갖은 멸시와 목숨의 위협을 받던 마교의 사생아 천여운, \n미래에서 나타난 후손이 천여운의 몸에 나노 머신을 주입한 후 그의 인생이 송두리째 바뀐다.\n마교를 넘어 무림 최고의 자리에 오르기 위한 천여운의 거침없는 이야기가 시작된다!",
+      "source": "https://comic.naver.com/webtoon/list?titleId=747271",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657564280k5",
@@ -441,7 +529,7 @@
     {
       "id": "w657564279ng",
       "title": "고수",
-      "author": "류기훈, 문정후",
+      "author": "류기운, 문정후",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/596.html",
       "cover": "https://i.namu.wiki/i/K6NQSKqbi37ZB9RTnSRFqvEgUa36NLmZxwv0J8OuzCVpT_57ta0O4DNi3-n80fLItv643bSUVnVS6s_AIPQg_hn-jbtEvdwGRETajeq2r-SkR_eGIbHZIhOykkuWpDZ-DR73GYXW7bPOi3cue_IMbg.webp",
@@ -452,13 +540,22 @@
       "color": "#d0dafb",
       "episodes": 236,
       "status": "completed",
-      "days": [],
-      "autoCount": true,
+      "days": [
+        "wed"
+      ],
+      "autoCount": false,
       "baseDate": "2026-11-10",
       "tags": [
-        "고전"
+        "판타지",
+        "몰아보기",
+        "명작",
+        "복수극",
+        "먼치킨",
+        "완결판타지"
       ],
-      "desc": "주인공 강룡이 스승을 배신한 배신자를 처단하기 위해 출두함. 그런데... 어라? 이미 죽어버렸네"
+      "desc": "최강의 콤비가 무협의 전설을 다시 쓰다! \n천하제일의 고수 강룡. 그리고 수많은 다른 고수들의 이야기.",
+      "source": "https://comic.naver.com/webtoon/list?titleId=662774",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657564278",
