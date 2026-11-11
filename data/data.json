@@ -1,6 +1,59 @@
 {
   "webtoons": [
     {
+      "id": "w657564281139wo",
+      "title": "앞집나리",
+      "author": "민송아",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/eb7-4xbo5bmBqXc5qzi90GETpPJeKqXOnixiSvUfEIdIS5-4598hRHjJRU4eEYfdN-D1OQYm6qMl7lSMG79UYXm0H08zDu_JRr0_7gSXBxoCwk2BCd_-nLrgcPWkkk524WGubMZPdf-6fL7ynNdHxw.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 2,
+      "color": "",
+      "episodes": 61,
+      "status": "ongoing",
+      "days": [
+        "thu"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-11",
+      "tags": [
+        "로맨스",
+        "성인"
+      ],
+      "desc": "어느 날 갑자기 나의 평온한 일상을 깨뜨린 그녀. 그런데 미소녀다? 그리고 나를 조...좋아한다고? 아니, 사랑한다고....?\n문제는 앞집으로 이사 왔다는 '나리'가 싫지 않다는 것. <이두나!> 민송아 작가의 18금 두근두근 러브 코미디!"
+    },
+    {
+      "id": "w657564281138bq",
+      "title": "미연",
+      "author": "서녜",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/_36TFVpyGMLyv_wfI81eKcHI91b7AQSbOwO_IXQHFHHmSgfba_QMyOxBvXk4R9aTAhQDPpPVlrr0d6UtTGVSFW1aMLwTsWt04VAgOmYhFXEMlShLOr6kDcgP0IBoinRCjOVnZPQBQZOjq-8A94OPHg.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 2,
+      "color": "",
+      "episodes": 61,
+      "status": "ongoing",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-11",
+      "tags": [
+        "로맨스",
+        "타임슬립",
+        "몰입감",
+        "치밀함",
+        "학원물"
+      ],
+      "desc": "아름다울 미 고울 연. 이름처럼 아름답게 자란 19살 ‘미연’은 화려한 외모와 달리 소심한 성격의 소녀다. 그러던 어느 날, 수업 중 잠이 든 미연은 돌연 6년 뒤 미래에서 눈을 뜨게 된다. 배우가 된 자신과 어딘가 익숙한 얼굴의 매니저. 미연은 낯설기만 한 미래에서 얼어붙은 기억 속 진실을 찾아 앞으로 나아갈 수 있을까?"
+    },
+    {
       "id": "w657564281136nf",
       "title": "중간에서 만나",
       "author": "조흰 글 윤김 그림",
@@ -3189,7 +3242,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281137
+    "lastWebtoonId": 657564281139
   },
   "version": 1,
   "shop": [
