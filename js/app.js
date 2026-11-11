@@ -222,8 +222,33 @@
     const live = WT.liveGenres().map((g) => g.id);
     const last = WT.lastTree();
     const gid = live.includes(last) ? last : live[0];
-    const began = Object.keys(s.progress || {}).some((id) => s.progress[id] > 0);   // 한 화라도 기록한 적이 있으면 이어 보기
     const href = gid ? `#/tree/${gid}` : '#/library/all';
+    // 이어 볼 웹툰: 가장 최근에 화수를 기록한 웹툰 중 아직 다 안 본 것 (없으면 아직 다 안 본 아무 웹툰)
+    const P = s.progress || {};
+    const epOf = (id) => Math.min(WT.eps(WT.toon(id)), P[id] || 0);
+    const unfinished = (id) => WT.toon(id) && epOf(id) > 0 && epOf(id) < WT.eps(WT.toon(id));
+    let cur = null;
+    for (let i = (s.log || []).length - 1; i >= 0 && !cur; i--) { const e = s.log[i]; if (e.t === 'ep' && unfinished(e.w)) cur = e.w; }
+    if (!cur) cur = Object.keys(P).find(unfinished) || null;
+    const began = Object.keys(P).some((id) => P[id] > 0);
+    let cont = '';
+    if (cur) {
+      const w = WT.toon(cur);
+      const tg = live.find((g) => WT.data.trees[g] && WT.data.trees[g].nodes && WT.data.trees[g].nodes[cur]);
+      const tot = WT.eps(w), e = epOf(cur);
+      let where = '도서관', link = `#/library/${((w.genres || []).find((x) => live.includes(x))) || 'all'}/${cur}`;
+      if (tg) {
+        const ids = Object.keys(WT.data.trees[tg].nodes);
+        const done = ids.filter((id) => WT.toon(id) && (epOf(id) >= WT.eps(WT.toon(id)) || (s.rewarded || {})[id + ':done'])).length;
+        where = `${esc((WT.genre(tg) || {}).name || '')} 트리 ${done} / ${ids.length} 완독`;
+        link = `#/tree/${tg}/${cur}`;
+      }
+      cont = `<a href="${link}" class="hm-cont" aria-label="${esc(w.title)} ${e + 1}화부터 이어 보기">
+          <span class="ci"><span class="ct"><em>이어 보기</em>${esc(w.title)}</span>
+          <span class="cb">${where}<span class="bar" style="--p:${Math.round(e / tot * 100)}%"><b></b></span>${e} / ${tot}화</span></span>
+          <span class="cgo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>`;
+    }
     app().innerHTML = `<div class="view hm-view">
         <span class="hm-glow" aria-hidden="true"></span><span class="hm-glow b" aria-hidden="true"></span>
         <div class="topbar hm-top"><div class="left"><b class="hm-name">${esc(st.siteName)}</b></div>${WT.topRight()}</div>
@@ -231,7 +256,7 @@
           ${st.notice ? `<p class="hm-notice">${esc(st.notice)}</p>` : ''}
           <h1 class="hm-h1"><span>볼 건 많고, 시간은 없고?</span><span><b>트리</b>가 골라 줄게요.</span></h1>
           <p class="hm-sub">수많은 웹툰 중에 진짜 볼 만한 것만. 순서대로 따라가기만 하면 돼요.</p>
-          <a href="${href}" class="hm-cta">${began ? '이어 보기' : '첫 웹툰 고르기'}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          ${cont || `<a href="${href}" class="hm-cta">${began ? '다음 웹툰 고르기' : '첫 웹툰 고르기'}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>`}
         </section>
       </div>`;
   }

@@ -1791,3 +1791,22 @@ html[data-theme="light"] .panel.toned { box-shadow: 0 18px 44px rgba(30, 30, 50,
 .stat b, html[data-theme="light"] .stat b { color: var(--text); }
 .stat:first-child b { color: #E0565B; }
 .rank-switch a[aria-current="page"] { background: var(--text); color: var(--frame-bg); }
+
+/* 홈: 이어 보기 (버튼 + 지금 보던 웹툰) */
+.hm-cont { display: inline-flex; align-items: center; gap: 14px; max-width: 100%; padding: 9px 9px 9px 20px; border-radius: 999px; text-decoration: none; text-align: left; color: #EEF1F8; background: rgba(255, 255, 255, .07); border: 1px solid #222B45; backdrop-filter: blur(12px); transition: transform .2s, box-shadow .2s; animation: hmRise .8s .34s cubic-bezier(.2, .8, .2, 1) both; }
+html[data-theme="light"] .hm-cont { color: #1F2128; background: rgba(255, 255, 255, .8); border-color: #E2DED3; }
+.hm-cont:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0, 0, 0, .2); }
+.hm-cont:active { transform: scale(.98); }
+.hm-cont .ci { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.hm-cont .ct { font-size: 14.5px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hm-cont .ct em { font-style: normal; color: #FF7A7E; margin-right: 6px; }
+html[data-theme="light"] .hm-cont .ct em { color: #E0565B; }
+.hm-cont .cb { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; color: #8D95AE; white-space: nowrap; }
+html[data-theme="light"] .hm-cont .cb { color: #85888F; }
+.hm-cont .bar { width: 64px; height: 3px; border-radius: 3px; background: rgba(127, 127, 127, .25); overflow: hidden; }
+.hm-cont .bar b { display: block; height: 100%; width: var(--p); border-radius: inherit; background: #E0565B; }
+.hm-cont .cgo { flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: #F2E7C9; color: #1A1405; }
+html[data-theme="light"] .hm-cont .cgo { background: #23252E; color: #fff; }
+.hm-cont .cgo svg { transition: transform .2s; }
+.hm-cont:hover .cgo svg { transform: translateX(2px); }
+@media (prefers-reduced-motion: reduce) { .hm-cont { animation: none; } }
