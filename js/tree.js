@@ -92,7 +92,7 @@
     const hasChar = !!S.profile && !lib;
     // 세부 장르 마도서: 장르에 세부 장르가 있으면 도서관에 마도서로 꽂혀요 (세부 장르 없는 웹툰은 '그 밖의 이야기')
     const tomes = (() => {
-      if (!lib || gid === 'all' || !(g.subs || []).length) return [];
+      if (!lib || lib) return [];   // 새 도서관은 세부 장르를 칩으로 골라요 (마도서 없음)
       const list = g.subs.map((x) => ({ id: x.id, name: x.name, color: x.color, ids: ids.filter((id) => (WT.toon(id).subs || []).includes(x.id)) })).filter((x) => x.ids.length);
       const rest = ids.filter((id) => !g.subs.some((x) => (WT.toon(id).subs || []).includes(x.id)));
       if (rest.length) list.push({ id: '_rest', name: '그 밖의 이야기', color: '#9AA6C8', ids: rest });
@@ -242,6 +242,84 @@
           </div>
         </div>`;
     }
+    // ---------- 새 도서관 화면: 책 표지를 가로로 넘겨 보는 서재 ----------
+    const LB = { sub: 'all', sort: 'abc', q: '', idx: 0, list: [] };
+    const DAYK = { mon: '월', tue: '화', wed: '수', thu: '목', fri: '금', sat: '토', sun: '일' };
+    const hex6 = (c) => (/^#[0-9a-f]{6}$/i.test(c || '') ? c : null);
+    const shadeC = (h, k) => { const n = parseInt(h.slice(1), 16); const c = (v) => Math.max(0, Math.min(255, Math.round(v * k))).toString(16).padStart(2, '0'); return '#' + c(n >> 16 & 255) + c(n >> 8 & 255) + c(n & 255); };
+    const lumC = (h) => { const n = parseInt(h.slice(1), 16); return (0.299 * (n >> 16 & 255) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)) / 255; };
+    function lbTone(w) {
+      let base = hex6(w.color) || hex6(WT.color && WT.color.cached(w.cover)) || (WT.genre((w.genres || [])[0]) || g).color || '#6A5ACD';
+      if (lumC(base) > .86) base = shadeC(base, .78);
+      if (lumC(base) < .06) base = '#22252E';
+      return { c1: shadeC(base, 1.18), c2: shadeC(base, .55), ink: lumC(base) > .62 ? '#1F2128' : '#FFFFFF', base };
+    }
+    function lbBook(id) {
+      const w = WT.toon(id), t = lbTone(w), st = status(id), nw = newEps(id);
+      const tf = w.title.length <= 4 ? .2 : w.title.length <= 7 ? .15 : w.title.length <= 11 ? .12 : .1;
+      return `<button type="button" class="lb-book" data-book="${id}" aria-label="${esc(w.title)}${nw ? `, 새 화 ${nw}개` : ''}${w.pick ? ', 관리자 강추' : ''}">
+          <span class="lb-cover" style="--c1:${t.c1}; --c2:${t.c2}; --ci:${t.ink}; --tf:${tf}">
+            <span class="lb-cv-in"><span class="lb-orn"></span><span class="lb-cv-top">WEBTOON TREE</span><span class="lb-cv-title">${esc(w.title)}</span><span class="lb-cv-rule"></span><span class="lb-cv-author">${esc(w.author || w.platform || '')}</span></span>
+            ${w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}
+            ${w.pick ? '<span class="lb-pick">관리자 강추</span>' : ''}
+            ${nw ? '<span class="lb-new">N</span>' : ''}
+            ${st === 'done' ? `<span class="lb-done">${WT.icon.check}</span>` : ''}
+          </span>
+          <span class="lb-t">${esc(w.title)}<i>${esc(w.platform || '')}</i></span>
+        </button>`;
+    }
+    function lbHTML() {
+      const st = WT.settings();
+      const tabs = [{ id: 'all', name: '전체' }].concat(WT.liveGenres()).map((x) => ({ x, n: libraryBooks(x.id).length }))
+        .filter(({ x, n }) => x.id === 'all' || n || x.id === gid)
+        .map(({ x, n }) => `<a href="#/library/${x.id}" class="lb-tab" ${x.id === gid ? 'aria-current="page"' : ''}>${esc(x.name)} <small>${n}</small></a>`).join('');
+      const subs = gid !== 'all' && (g.subs || []).length ? [{ id: 'all', name: '전체' }].concat(g.subs) : [];
+      const ic = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">${d}</svg>`;
+      return `<div class="view lib-view lb-view">
+        <main class="lb-shell">
+          <aside class="lb-rail">
+            <a href="#/" class="lb-mark" aria-label="${esc(st.siteName)} 홈"><span class="au-mark" aria-hidden="true"><i></i><i></i><i></i></span></a>
+            <nav class="lb-nav" aria-label="메뉴">
+              <a href="#/" title="홈" aria-label="홈">${ic('<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>')}</a>
+              <a href="#/library/${gid}" class="on" aria-current="page" title="도서관" aria-label="도서관">${ic('<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v18"/>')}</a>
+              <a href="${gid === 'all' ? '#/map' : `#/tree/${gid}`}" title="${gid === 'all' ? '전체 지도' : '트리로 돌아가기'}" aria-label="${gid === 'all' ? '전체 지도' : '트리로 돌아가기'}">${ic('<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z M9 4v14 M15 6v14"/>')}</a>
+              <a href="#/top" title="이번 주 랭킹" aria-label="이번 주 랭킹">${ic('<path d="M7 4h10v5a5 5 0 0 1-10 0z M7 6H4a3 3 0 0 0 3 4 M17 6h3a3 3 0 0 1-3 4 M12 14v4 M8 21h8"/>')}</a>
+              <a href="#/login" title="내 정보" aria-label="내 정보">${ic('<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>')}</a>
+            </nav>
+            <a href="#/shop" class="lb-more" title="상점" aria-label="상점">${ic('<path d="M5 7h14M5 12h10M5 17h14"/>')}</a>
+          </aside>
+          <section class="lb-main" id="lb-main">
+            <div class="lb-top">
+              <label class="lb-search">${WT.icon.search}<input id="lb-q" placeholder="웹툰 제목, 작가 검색" autocomplete="off" aria-label="도서관에서 검색"></label>
+              <div class="lb-me">${WT.themeBtn()}${WT.userChip()}</div>
+            </div>
+            <div class="lb-hero">
+              <div>
+                <h1 class="lb-h1">트리 밖에서, 이제는 내가 고르는 이야기..</h1>
+                <p class="lb-lead">웹툰 트리를 끝까지 따라왔다면 여기서부터는 자유예요. 장르와 세부 장르를 골라 마음에 드는 표지를 넘겨 보고, 끌리는 웹툰을 바로 시작해 보세요.</p>
+                <div class="lb-ctas"><a class="lb-cta" id="lb-go" target="_blank" rel="noopener">1화 보러 가기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+                  <button type="button" class="lb-cta ghost" id="lb-more">기록 · 별점 · 댓글</button></div>
+              </div>
+              <div class="lb-info" id="lb-info" aria-live="polite"></div>
+            </div>
+            <div class="lb-filters">
+              <nav class="lb-tabs" aria-label="도서관 장르">${tabs}</nav>
+              ${subs.length ? `<div class="lb-subs" role="group" aria-label="세부 장르">${subs.map((x) => `<button type="button" data-sub="${x.id}" aria-pressed="${x.id === 'all'}">${esc(x.name)}</button>`).join('')}</div>` : ''}
+              <div class="lb-sort" role="group" aria-label="정렬"><button type="button" data-sort="abc" aria-pressed="true">ㄱㄴㄷ순</button><button type="button" data-sort="star" aria-pressed="false">추천순</button></div>
+            </div>
+            <div class="lb-shelf" id="wrap"><div class="lb-track" id="stage"></div></div>
+            <div class="lb-foot">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>
+              <span>이번 주에 사람들이 가장 많이 읽은 웹툰이 궁금하다면 <a href="#/top">이번 주 랭킹</a>을 확인해 보세요.</span>
+              <span class="lb-count" id="lb-count"></span>
+            </div>
+          </section>
+        </main>
+        <div class="lb-dim" id="lb-dim" hidden></div>
+        <div id="panel-slot" class="lb-drawer"></div>
+      </div>`;
+    }
+
     // ---------- 마도서 (세부 장르) ----------
     function tomeHTML(t, i) {
       const n = t.ids.length;
@@ -554,7 +632,7 @@
     const libOpen = () => !lib && (leaves.some(cleared) || !!S.unlocked['lib:' + gid]);
     // 도서관에서 장르 탭을 바꿀 땐 화면이 깜박이지 않게 등장 효과를 꺼요
     const noEnter = lib && Date.now() - (WT.libLeftAt || 0) < 1500;
-    document.getElementById('app').innerHTML = `<div class="view${lib ? ' lib-view' : ' tree-view'}${noEnter ? ' no-enter' : ''}" style="--gc:${g.color}">
+    document.getElementById('app').innerHTML = lib ? lbHTML() : `<div class="view${lib ? ' lib-view' : ' tree-view'}${noEnter ? ' no-enter' : ''}" style="--gc:${g.color}">
       <div class="topbar">
         <div class="left">
           <a href="${lib ? (gid === 'all' ? '#/' : `#/tree/${gid}`) : '#/'}" class="icon-btn press" aria-label="${lib ? '트리로 돌아가기' : '홈으로'}">${WT.icon.back}</a>
@@ -596,13 +674,94 @@
     const wrap = document.getElementById('wrap');
     const slot = document.getElementById('panel-slot');
 
+    // ---------- 새 도서관: 고르기 · 거르기 · 넘기기 ----------
+    function lbBuild() {
+      const q = LB.q;
+      LB.list = ids.filter((id) => { const w = WT.toon(id); return (LB.sub === 'all' || (w.subs || []).includes(LB.sub)) && (!q || (w.title + (w.author || '')).toLowerCase().includes(q)); });
+      LB.list.sort(LB.sort === 'star' ? (a, b) => (WT.recStars(WT.toon(b)) - WT.recStars(WT.toon(a))) || WT.toon(a).title.localeCompare(WT.toon(b).title, 'ko') : (a, b) => WT.toon(a).title.localeCompare(WT.toon(b).title, 'ko'));
+      LB.idx = Math.min(LB.idx, Math.max(0, LB.list.length - 1));
+      stage.innerHTML = LB.list.length ? LB.list.map((id) => `<div class="lb-slot" data-wrap="${id}"></div>`).join('')
+        : `<p class="lb-empty">${ids.length ? '조건에 맞는 웹툰이 없어요.' : '아직 이 장르 도서관에 꽂힌 웹툰이 없어요. 관리자가 트리에 넣지 않은 웹툰을 올리면 여기에 꽂혀요.'}</p>`;
+      Object.keys(sigs).forEach((k) => delete sigs[k]);
+      refreshNodes(true);
+      lbShow();
+    }
+    function lbShow() {
+      const main = document.getElementById('lb-main');
+      if (!main) return;
+      // 선반 높이 = 본문에서 위·아래 줄을 뺀 나머지 → 책 크기를 화면 높이에 맞춰요 (고른 책은 1.3배)
+      const cs = getComputedStyle(main);
+      const used = [...main.children].filter((c) => c !== wrap).reduce((a, c) => a + c.offsetHeight, 0) + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + 14;
+      const h = Math.max(250, main.clientHeight - used);
+      const wide = window.innerWidth > 860;
+      wrap.style.height = wide ? `${h}px` : '';
+      const bw = wide ? Math.max(90, Math.min(190, (h - 96) / 1.417 / 1.3)) : 120;
+      // 크기는 칸(.lb-slot)에 걸어 둬요 → 책을 다시 그려도(진행 기록 등) 크기가 유지돼요
+      [...stage.querySelectorAll('.lb-slot')].forEach((el, i) => { el.style.setProperty('--bw', `${Math.round(i === LB.idx ? bw * 1.3 : bw)}px`); el.classList.toggle('on', i === LB.idx); });
+      const gap = wide ? 44 : 22;
+      const shift = Math.max(0, LB.idx * (bw + gap) - (wide ? bw + gap : 0));
+      stage.style.transform = `translateX(${-shift}px)`;
+      document.getElementById('lb-count').innerHTML = LB.list.length ? `<b>${String(LB.idx + 1).padStart(2, '0')}</b> / ${LB.list.length}권` : '0권';
+      lbInfo();
+    }
+    function lbInfo() {
+      const box = document.getElementById('lb-info'), go = document.getElementById('lb-go'), more = document.getElementById('lb-more');
+      const id = LB.list[LB.idx];
+      if (!id) { box.innerHTML = ''; go.hidden = true; more.hidden = true; return; }
+      const w = WT.toon(id), t = lbTone(w), st = status(id), rec = w.pick ? 0 : WT.recStars(w);
+      const gs = (w.genres || []).map((x) => WT.genre(x)).filter(Boolean);
+      const state = w.status === 'completed' ? '<span>완결</span>' : w.status === 'hiatus' ? '<span class="pause">휴재</span>' : `<span class="on">연재 중${(w.days || []).length ? ' · ' + w.days.map((d) => DAYK[d] || d).join('·') : ''}</span>`;
+      box.innerHTML = `<div class="lb-head"><span class="lb-av" style="background:linear-gradient(150deg, ${t.c1}, ${t.c2})">${esc((w.author || w.title)[0])}</span>
+          <span class="lb-who"><b>${esc(w.author || '작가 미상')}</b><small>작가 · ${esc(w.platform || '웹툰')}</small></span>
+          <span class="lb-arrows"><button type="button" data-step="-1" aria-label="이전 책">←</button><button type="button" data-step="1" aria-label="다음 책">→</button></span></div>
+        <blockquote class="lb-quote">“<b>${esc(w.title)}</b>” ${esc(w.desc || '줄거리를 준비하고 있어요.')}</blockquote>
+        <div class="lb-metas">${w.pick ? '<span class="pick">관리자 강추</span>' : ''}${state}${rec ? `<span class="star">${'★'.repeat(rec)}</span>` : ''}${total(id) ? `<span>${total(id)}화</span>` : ''}${st === 'done' ? '<span class="done">✓ 다 봤어요</span>' : st === 'reading' ? `<span class="done">${ep(id)}화까지 봤어요</span>` : ''}${gs.map((x) => `<span>${esc(x.name)}</span>`).join('')}</div>`;
+      const e = ep(id), done = st === 'done';
+      go.hidden = !w.url; if (w.url) go.href = w.url;
+      go.firstChild.textContent = done ? '다시 보러 가기 ' : e > 0 ? `${e + 1}화 이어 보기 ` : '1화 보러 가기 ';
+      more.hidden = false;
+    }
+    function lbRefresh() { if (lib && document.getElementById('lb-info')) lbInfo(); }
+    function lbStep(d) { if (!LB.list.length) return; LB.idx = Math.max(0, Math.min(LB.list.length - 1, LB.idx + d)); lbShow(); }
+    function lbOpen(id) { select(id); document.getElementById('lb-dim').hidden = false; }
+    if (lib) {
+      const main = document.getElementById('lb-main');
+      main.addEventListener('click', (e) => {
+        const st = e.target.closest('[data-step]'); if (st) { lbStep(+st.dataset.step); return; }
+        const sb = e.target.closest('[data-sub]');
+        if (sb) { LB.sub = sb.dataset.sub; LB.idx = 0; main.querySelectorAll('[data-sub]').forEach((x) => x.setAttribute('aria-pressed', x === sb)); lbBuild(); return; }
+        const so = e.target.closest('[data-sort]');
+        if (so) { LB.sort = so.dataset.sort; LB.idx = 0; main.querySelectorAll('[data-sort]').forEach((x) => x.setAttribute('aria-pressed', x === so)); lbBuild(); return; }
+        const bk = e.target.closest('[data-book]');
+        if (bk) { const i = LB.list.indexOf(bk.dataset.book); if (i === LB.idx) lbOpen(bk.dataset.book); else { LB.idx = i; lbShow(); } return; }
+        if (e.target.closest('#lb-more')) { const id = LB.list[LB.idx]; if (id) lbOpen(id); }
+      });
+      let comp = false;
+      const qi = document.getElementById('lb-q');
+      qi.addEventListener('compositionstart', () => { comp = true; });
+      qi.addEventListener('compositionend', () => { comp = false; LB.q = qi.value.trim().toLowerCase(); LB.idx = 0; lbBuild(); });
+      qi.addEventListener('input', () => { if (comp) return; LB.q = qi.value.trim().toLowerCase(); LB.idx = 0; lbBuild(); });
+      // 밀기 · 터치패드 좌우 스크롤로 넘기기
+      let sx = null, acc = 0, lockW = false, tW;
+      wrap.addEventListener('pointerdown', (e) => { sx = e.clientX; });
+      wrap.addEventListener('pointerup', (e) => { if (sx === null) return; const dx = e.clientX - sx; sx = null; if (Math.abs(dx) > 50) lbStep(dx < 0 ? 1 : -1); });
+      wrap.addEventListener('wheel', (e) => {
+        const dx = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : (e.shiftKey ? e.deltaY : 0);
+        if (!dx) return;
+        e.preventDefault(); clearTimeout(tW); tW = setTimeout(() => { acc = 0; lockW = false; }, 160);
+        if (lockW) return; acc += dx; if (Math.abs(acc) > 50) { lbStep(acc > 0 ? 1 : -1); acc = 0; lockW = true; }
+      }, { passive: false });
+      document.getElementById('lb-dim').addEventListener('click', () => close());
+      lbBuild();
+    }
+
     function refreshNodes(force) {
       ids.forEach((id) => {
         const sig = [status(id), ep(id), sel === id, WT.isHot(id)].join('|');
         if (!force && sigs[id] === sig) return;
         sigs[id] = sig;
         const slotEl = stage.querySelector(`[data-wrap="${id}"]`);
-        if (slotEl) slotEl.innerHTML = lib ? bookInner(id) : nodeInner(id);
+        if (slotEl) slotEl.innerHTML = lib ? lbBook(id) : nodeInner(id);
       });
       if (!lib) refreshLib();
       T.links.forEach((l, i) => {
@@ -617,6 +776,7 @@
         if (sel && l.from === sel) [ln, dt, ar].forEach((el) => el && el.classList.add('near'));
       });
       const c = counts();
+      if (!document.getElementById('prog-bar')) { if (lib) lbRefresh(); return; }
       document.getElementById('prog-bar').style.width = `${c.d / (ids.length || 1) * 100}%`;
       document.getElementById('prog-text').textContent = `${c.d} / ${ids.length} ${labels.done || '완독'} · 보는 중 ${c.r}`;
     }
@@ -888,6 +1048,7 @@
 
     function close() {
       sel = null;
+      const dim = document.getElementById('lb-dim'); if (dim) dim.hidden = true;
       refreshNodes();
       renderPanel(false);
       moveChar(charAt, false);
@@ -1103,6 +1264,13 @@
       const t = e.target;
       if (t && (t.closest('input, textarea, select, [contenteditable="true"]') || t.closest('.modal-bg'))) return;
       if (document.querySelector('.grim-bg')) return;
+      if (lib) {
+        if (e.key === 'Escape' && sel) { e.preventDefault(); close(); return; }
+        if (sel) return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); lbStep(e.key === 'ArrowRight' ? 1 : -1); }
+        else if (e.key === 'Enter' && !(t && t.closest('a, button'))) { const id = LB.list[LB.idx]; if (id) lbOpen(id); }
+        return;
+      }
       if (e.key === 'Escape' && sel) { e.preventDefault(); close(); return; }
       if (e.key === 'Home') { e.preventDefault(); if (T.start && T.start !== sel) { if (sel) comet(sel, T.start); select(T.start); } return; }
       const dir = DIRS[e.key];
@@ -1130,7 +1298,7 @@
     };
     document.addEventListener('keydown', onKey);
 
-    const onResize = () => fit();
+    const onResize = () => { fit(); if (lib) lbShow(); };
     window.addEventListener('resize', onResize);
     WT.leaveView = () => {
       if (lib) WT.libLeftAt = Date.now();
@@ -1157,7 +1325,8 @@
       void el.offsetWidth;
       el.style.transition = '';
     }
-    if (params[1] && T.nodes[params[1]]) select(params[1], { keepHash: true });
+    if (lib && params[1] && LB.list.includes(params[1])) { LB.idx = LB.list.indexOf(params[1]); lbShow(); }
+    if (params[1] && T.nodes[params[1]]) { select(params[1], { keepHash: true }); if (lib) document.getElementById('lb-dim').hidden = false; }
     else if (!lib) renderPanel(false);
   }
 
