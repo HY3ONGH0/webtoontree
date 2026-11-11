@@ -652,7 +652,9 @@
       "pick": true,
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "source": "https://comic.naver.com/webtoon/list?titleId=840508",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657563ik",
