@@ -1752,3 +1752,42 @@ html.vt-same::view-transition-old(wt-nav), html.vt-same::view-transition-new(wt-
   .lb-foot { display: none; }
   .lb-h1 { margin-bottom: 4px; }
 }
+
+/* ================= 톤 통일: 예전 RPG 장식(금색 마름모 모서리·네온 테두리·나무 책장)을 걷어내고 판 디자인에 맞춰요 ================= */
+:root { --card-bg: #141B33; --card-line: rgba(255, 255, 255, .08); --card-shadow: 0 12px 30px rgba(0, 0, 0, .28); }
+html[data-theme="light"] { --card-bg: #FFFFFF; --card-line: #E6E1D5; --card-shadow: 0 10px 28px rgba(60, 50, 30, .08); }
+/* 카드 틀 */
+.rpg, html[data-theme="light"] .rpg { background: var(--card-bg); border: 1px solid var(--card-line); border-radius: 16px; box-shadow: var(--card-shadow); }
+.rpg::before, .rpg::after, .rpg > .corner-b::before, .rpg > .corner-b::after { display: none; }
+/* 페이지 제목: 금색 → 기본 글자색 */
+.title-block h1[style*="--coin"] { color: var(--text) !important; }
+/* 트리 · 도서관 상세 창: 표지 색 배경은 그대로, 이중 네온 테두리와 번짐 빛은 걷어내요 */
+.panel.toned, html[data-theme="light"] .panel.toned { border: 1px solid rgba(255, 255, 255, .1); border-radius: 16px; box-shadow: 0 18px 44px rgba(0, 0, 0, .3); }
+html[data-theme="light"] .panel.toned { box-shadow: 0 18px 44px rgba(30, 30, 50, .18); }
+.panel.toned .bloom, .panel.toned.blooming .bloom { opacity: .1; }
+.panel .cover-rect, .panel.toned .cover-rect { border: 0; border-radius: 12px; box-shadow: 0 12px 26px rgba(0, 0, 0, .3); }
+.panel.toned .divider { background: rgba(255, 255, 255, .14); }
+.panel.toned .desc, .panel.toned .box { border-radius: 12px; }
+.lb-drawer .panel, .tv-drawer .panel { border-radius: 16px; }
+.panel.panel-empty, html[data-theme="light"] .panel.panel-empty { border-radius: 16px; }
+/* 프로필: 꾸미기 아이템 */
+.item, html[data-theme="light"] .item { background: var(--card-bg); border: 1px solid var(--card-line); border-radius: 14px; }
+.item.sel, html[data-theme="light"] .item.sel { background: var(--card-bg); border: 2px solid #E0565B; box-shadow: 0 8px 20px -8px rgba(224, 86, 91, .55); }
+.shop-h, html[data-theme="light"] .shop-h { color: var(--text); }
+.preview-stage { background: radial-gradient(circle, rgba(224, 86, 91, .14) 0%, rgba(91, 140, 255, .06) 55%, transparent 70%); }
+/* 랭킹: 나무 책장 → 깔끔한 카드 */
+.lib-rank-wrap { padding: 20px 22px 22px; border-radius: 16px; background: var(--card-bg); border: 1px solid var(--card-line); box-shadow: var(--card-shadow); }
+.lib-rank-wrap h3 { text-align: left; font-size: 17px; letter-spacing: -.01em; color: var(--text); margin-bottom: 16px; }
+.lib-rank .hint { color: var(--muted); padding: 24px 0; }
+.rank-shelf li::after { display: none; }
+.rank-shelf li { padding-bottom: 0; }
+.face { color: var(--text); }
+.face-cover { border-radius: 8px; transform: none; box-shadow: 0 10px 20px -8px rgba(0, 0, 0, .45); background: linear-gradient(160deg, color-mix(in srgb, var(--bc) 88%, #fff 12%), color-mix(in srgb, var(--bc) 55%, #05070F)); }
+.face:hover .face-cover, .face:focus-visible .face-cover { transform: translateY(-4px); }
+.face-sub { color: var(--muted); }
+.rank-no { color: var(--text); background: var(--card-bg); border: 1px solid var(--card-line); top: 6px; left: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, .25); }
+.rank-no.top { color: #fff; background: #E0565B; border-color: #E0565B; }
+.stat, html[data-theme="light"] .stat { background: var(--card-bg); border: 1px solid var(--card-line); border-radius: 14px; }
+.stat b, html[data-theme="light"] .stat b { color: var(--text); }
+.stat:first-child b { color: #E0565B; }
+.rank-switch a[aria-current="page"] { background: var(--text); color: var(--frame-bg); }

@@ -210,11 +210,11 @@
       </div>
       <div class="rank-wrap">
         <section class="rpg" style="padding:24px; display:flex; flex-direction:column; gap:16px; align-items:center; text-align:center"><span class="corner-b" aria-hidden="true"></span>
-          <svg width="60" height="44" viewBox="0 0 40 30" aria-hidden="true" style="animation:starTw 2.4s ease-in-out infinite"><polygon points="4,28 6,8 14,16 20,4 26,16 34,8 36,28" fill="#FFD34D" stroke="#FFF4C2" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#E0565B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M12 14v4M8 20h8"/></svg>
           <h2 style="margin:0; font-family:var(--display); font-weight:800; font-size:24px">친구들과의 랭킹은 곧 열려요</h2>
           <p class="hint" style="font-size:14px; max-width:460px; margin:0">회원 기능(Apps Script)이 연결되면 이번 주·이번 달·전체 기간으로 "많이 본 화수"와 "완독 수" 순위를 보여 드려요. 그 전까지는 내 기록을 모아 둘게요.</p>
         </section>
-        <h2 style="margin:6px 0 0; font-size:16px; color:var(--gold)">${S.profile ? esc(S.profile.nick) + ' 님의 기록' : '이 기기의 기록'}</h2>
+        <h2 style="margin:6px 0 0; font-size:16px; color:var(--text)">${S.profile ? esc(S.profile.nick) + ' 님의 기록' : '이 기기의 기록'}</h2>
         <div class="stat-grid">
           <div class="stat"><b>${week.eps.toLocaleString()}화</b><span>이번 주 본 화수</span></div>
           <div class="stat" style="animation-delay:.05s"><b>${all.eps.toLocaleString()}화</b><span>지금까지 본 화수</span></div>
