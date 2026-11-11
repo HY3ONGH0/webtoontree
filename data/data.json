@@ -560,7 +560,7 @@
     {
       "id": "w657564278",
       "title": "태존비록",
-      "author": "각색: 김꿀빨 작화: 레드훅",
+      "author": "김꿀빨, 레드훅, 비가",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/18444.html",
       "cover": "https://i.namu.wiki/i/uLTgull33F38KicloTEaXr9-cZkuf8CJz1XUVEOEk-MlqJGnla7UV3vjEni1puPHqSxf0mXHWg_SyhY3zV1NnaACIan0yI5_ZcbTAeeIrKOP_NCCwTxHoWXL3M2b6pjx21Tgo7Kmbh7Q-lUjPy3fIQ.webp",
@@ -569,15 +569,20 @@
       ],
       "recommended": 3,
       "color": "#e5c474",
-      "episodes": 68,
+      "episodes": 72,
       "status": "ongoing",
       "days": [
         "sun"
       ],
       "autoCount": true,
-      "baseDate": "2026-11-10",
-      "tags": [],
-      "desc": "화산귀환 소설 작가의 다른 작품"
+      "baseDate": "2026-11-11",
+      "tags": [
+        "무협/사극",
+        "소설원작"
+      ],
+      "desc": "『태존비록』\n\n천하의 겁난을 종식시킨 위대한 무인.\n광휘무존(光輝武尊) 위연호(魏衍澔).\n\n그는 군자(君子)였으며, 대인(大人)이었고, 대협(大俠)이었…….\n\n\"그 인간, 그거 완전 인간 말종이거든.\"\n\n차마 세상에 알릴 수 없는 진실.\n고금제일대협의 실체가 낱낱이 밝혀진다!",
+      "source": "https://comic.naver.com/webtoon/list?titleId=840687",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657568td",
@@ -591,31 +596,35 @@
       ],
       "recommended": 1,
       "color": "#583300",
-      "episodes": 163,
+      "episodes": 169,
       "status": "ongoing",
       "days": [
         "thu"
       ],
       "autoCount": true,
-      "baseDate": "2026-11-10",
+      "baseDate": "2026-11-11",
       "tags": [
         "판타지",
         "게임",
         "생존",
         "액션",
-        "빙의",
-        "소설원작"
+        "지금추천작",
+        "서바이벌",
+        "차원이동",
+        "게임판타지"
       ],
       "desc": "지금껏 아무도 클리어하지 못한 게임 [던전 앤 스톤]을 9년간 플레이한 끝에 최종 보스 스테이지에 도달한 이한수.\n그러나 보스 방에 입장함과 동시에, 튜토리얼 완료라는 멘트와 함께 [던전 앤 스톤] 속 바바리안 '비요른 얀델'에 빙의하게 된다.\n\n도시에서 부과하는 막대한 세금을 내지 못하면 '하층민'으로 사형당한다.\n빙의한 사실을 들키면 '악령'이라고 판단되어 살해당한다.\n살아남을 수 있는 유일한 길은 미궁에 들어가 목숨을 걸고 싸우는 것뿐.\n\n9년간 쌓아온 공략법과 무식하게 강한 바바리안의 육체로, 반드시 이 게임에서 살아남겠다!",
       "subs": [
         "fantasy-1",
         "fantasy-6"
-      ]
+      ],
+      "source": "https://comic.naver.com/webtoon/list?titleId=808482",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657567no",
       "title": "내가 키운 S급들",
-      "author": "비완, 근서, seri",
+      "author": "seri, 비완, 근서",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/10662.html",
       "cover": "https://i.namu.wiki/i/IVqNqmudYOiF4O2DY0Nn4odHPNS0hUUDHJayWjbK5vwU5h4AMuGvb889W1JhrYfVA8RvtEr-KG7g5Wx5oT8iRZItD-UdLsKHLzRzN1admG12LXV07xmjcBcuhyhPe25qQx6zYKYiw8sI65ipVWz3Gg.webp",
@@ -624,27 +633,30 @@
       ],
       "recommended": 1,
       "color": "#01c7fc",
-      "episodes": 182,
+      "episodes": 192,
       "status": "ongoing",
       "days": [
         "tue"
       ],
       "autoCount": true,
-      "baseDate": "2026-11-10",
+      "baseDate": "2026-11-11",
       "tags": [
         "판타지",
+        "현대판타지",
+        "현대",
         "상태창",
-        "회귀",
         "크리처",
-        "헌터물",
-        "먼치킨",
-        "소설원작"
+        "우정",
+        "던전물",
+        "세계관"
       ],
-      "desc": "F급 헌터.\n그것도 잘나가는 S급 동생 발목이나 잡는 쓸모없고 찌질한 F급 형.\n개판된 인생 대충 살다가 결국 동생 목숨까지 잡아먹고 회귀한 내게 주어진 칭호, '완벽한 양육자'.\n그래, 이번에는 나대지 말고 얌전히 잘난놈들 뒷바라지나 해 주자.\n라고 생각했는데, S급들이 좀 이상하다.",
+      "desc": "F급 헌터.\n그것도 잘나가는 S급 동생 발목이나 잡는 쓸모없고 찌질한 F급 형.\n개판된 인생 대충 살다가 결국 동생 목숨까지 잡아먹고 회귀한 내게 주어진 칭호,\n'완벽한 양육자'.\n그래, 이번에는 나대지 말고 얌전히 잘난놈들 뒷바라지나 해 주자.\n라고 생각했는데, S급들이 좀 이상하다.",
       "subs": [
         "fantasy-1",
         "fantasy-2"
-      ]
+      ],
+      "source": "https://comic.naver.com/webtoon/list?titleId=784248",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657566kt",
@@ -659,31 +671,34 @@
       ],
       "recommended": 1,
       "color": "#450d59",
-      "episodes": 1,
+      "episodes": 236,
       "status": "ongoing",
       "days": [
         "sat"
       ],
       "autoCount": true,
-      "baseDate": "2026-11-10",
+      "baseDate": "2026-11-11",
       "tags": [
         "판타지",
+        "사이다",
         "게임",
+        "유혹녀",
+        "명랑녀",
+        "능력녀",
         "병맛",
-        "개그",
-        "고인물",
-        "힘순찐",
-        "먼치킨"
+        "개그"
       ],
-      "desc": "약육강식이 진리인 가상 현실 게임 '크로노 라이프'\n허접이라며 무시만 당하던 '나'는 우연히 얻은 초보용 기본 무기 '나무 뭉둥이' 를 +99 강화까지 성공하게 되고,\n본인을 무시하던 놈들을 찾아다니며 몽둥이로 무자비하게 패기 시작하는데..!\n막장 스케일 사이다 액션 스타트!!",
+      "desc": "약육강식이 진리인 가상 현실 게임 '크로노 라이프'.\n허접이라며 무시만 당하던 '나'는 우연히 얻은 초보용 기본 무기 '나무 뭉둥이' 를 +99 강화까지 성공하게 되고, \n본인을 무시하던 놈들을 찾아다니며 몽둥이로 무자비하게 패기 시작하는데..!\n막장 스케일 사이다 액션 스타트!!",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "source": "https://comic.naver.com/webtoon/list?titleId=792651",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657565nh",
       "title": "사시미 한 자루로 아카데미를 씹어먹음",
-      "author": "GMAN,탕아후루",
+      "author": "GMAN, 탕아후루",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/16209.html",
       "cover": "https://i.namu.wiki/i/9wA4wN2q6P9jt0xqQ0ZxgRJDXe75_C327h-g4fktbUJ0qZEzdbf7Y4m-X93gDIh_ZZr8unKoxCuZqIw0HoGi1vHW02uoE_Y_wxfxR1sbo7SBQ9-hAWL2dnFTismgInzKF5zXhFO8VcaB_NoXSEuF3g.webp",
@@ -693,29 +708,31 @@
       ],
       "recommended": 2,
       "color": "#9ba50e",
-      "episodes": 97,
+      "episodes": 105,
       "status": "ongoing",
       "days": [
         "thu"
       ],
       "autoCount": true,
-      "baseDate": "2026-11-10",
+      "baseDate": "2026-11-11",
       "tags": [
         "판타지",
         "게임",
         "상태창",
         "이능력",
-        "빙의",
-        "먼치킨",
-        "하렘",
-        "소설원작"
+        "소년물",
+        "아카데미물",
+        "성장물",
+        "세계관"
       ],
-      "desc": "‘베면 잘릴 것입니다.’\n\n전국 최고의 칼잡이라고 불리던 내가\n과금 몇 번 해본 모바일 게임에 떨어졌다.\n무려 '검신(劍神)의 가호'를 부여받고⋯!\n\n그런데⋯ 사용할 수 있는 무장이 고작 사시미뿐이라고?\n하루에 단 1분. 나는 사시미로 검성이 된다.\n",
+      "desc": "‘베면 잘릴 것입니다.’\n\n전국 최고의 칼잡이라고 불리던 내가\n과금 몇 번 해본 모바일 게임에 떨어졌다.\n무려 '검신(劍神)의 가호'를 부여받고⋯!\n\n그런데⋯ 사용할 수 있는 무장이 고작 사시미뿐이라고?\n하루에 단 1분. 나는 사시미로 검성이 된다.",
       "subs": [
         "fantasy-1",
         "fantasy-4",
         "fantasy-6"
-      ]
+      ],
+      "source": "https://comic.naver.com/webtoon/list?titleId=829875",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w6575641i",
@@ -766,32 +783,34 @@
       ],
       "recommended": 0,
       "color": "#ff0000",
-      "episodes": 293,
+      "episodes": 298,
       "status": "ongoing",
       "days": [
         "fri"
       ],
       "autoCount": true,
-      "baseDate": "2026-11-10",
+      "baseDate": "2026-11-11",
       "tags": [
-        "판타지",
         "액션",
         "사이다",
+        "현대판타지",
+        "자극적인",
+        "현대",
         "이능력",
-        "빌런",
-        "범죄",
-        "걸크러시",
-        "복수극"
+        "악역이주인공",
+        "빌런"
       ],
-      "desc": "전쟁은 빌런들의 패배로 막을 내렸다. 이제 세상은 부패한 히어로들이 지배하고 있다. 그리고, 그런 히어로들 중 하나가 이화의 언니를 죽였다. 언니를 죽인 게 누구인지는 모르지만 상관없다. 한 놈씩 죽이다 보면 그중에 있을 테니까. 이화는 매일 밤 영웅들을 사냥하는 빌런, 히어로 킬러가 된다. 한 악당의 지독한 액션 활극. “모조리 죽이고, 빼앗아 주마!”",
+      "desc": "전쟁은 빌런들의 패배로 막을 내렸다.\n이제 세상은 부패한 히어로들이 지배하고 있다.\n그리고, 그런 히어로들 중 하나가 이화의 언니를 죽였다.\n언니를 죽인 게 누구인지는 모르지만 상관없다.\n한 놈씩 죽이다 보면 그중에 있을 테니까.\n이화는 매일 밤 영웅들을 사냥하는 빌런, 히어로 킬러가 된다. \n​\n한 악당의 지독한 액션 활극.\n“모조리 죽이고, 빼앗아 주마!”",
       "subs": [
         "fantasy-6"
-      ]
+      ],
+      "source": "https://comic.naver.com/webtoon/list?titleId=766563",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w657562i",
       "title": "나 혼자 만렙 뉴비",
-      "author": "WAN.Z, 스윙뱃",
+      "author": "WAN.Z, 스윙뱃, 메슬로우",
       "platform": "네이버웹툰",
       "url": "",
       "cover": "https://i.namu.wiki/i/ZJrmz5IdnBKJtxMukuGl_Yx95zxHg_dMzwaXgjEY0x7tOcWAJKpu8Ph2Yc859FHEYbCGj46Io1fe3k1eKS1R7umJpM1kWm23G0DhvHaLhffQbfc3MbYVDDNfS7MKbTawNndHQre_ZvmPgS9VuUc9sQ.webp",
@@ -800,28 +819,29 @@
       ],
       "recommended": 2,
       "color": "#003cff",
-      "episodes": 284,
+      "episodes": 285,
       "status": "ongoing",
       "days": [
         "fri"
       ],
       "autoCount": true,
-      "baseDate": "2026-11-10",
+      "baseDate": "2026-11-11",
       "tags": [
         "판타지",
+        "레드아이스 스튜디오",
         "사이다",
         "탑등반",
-        "게임",
         "하렘",
+        "게임",
         "상태창",
-        "고인물",
-        "먼치킨",
-        "소설원작"
+        "고인물"
       ],
-      "desc": "게임 너튜버로 활동 중인 주인공 진혁은 유일하게\n[시련의 탑]의 엔딩을 봤지만, 게임의 인기가 하락하여\n더 이상 게임 너튜버로서의 삶도 유지하기 힘들어진다.\n\n엔딩을 보았기에 이대로 게임을 마무리하려는 진혁.\n바로 그날, [시련의 탑]은 현실이 되었다.\n게임의 모든 요소를 다 알고 있는 진혁은\n누구보다 빠르게 모든 것을 차지한다!\n\n\"진짜 고인물이 뭔지 보여주지.\"",
+      "desc": "게임 너튜버로 활동 중인 주인공 진혁은 유일하게 \n[시련의 탑]의 엔딩을 봤지만, 게임의 인기가 하락하며 \n더 이상 게임 너튜버로서의 삶도 유지하기 힘들어진다.\n\n엔딩을 보았기에 이대로 게임을 마무리하려는 진혁. \n바로 그날, [시련의 탑]은 현실이 되었다.\n게임의 모든 요소를 다 알고 있는 진혁은 \n누구보다 빠르게 모든 것을 차지한다!\n\n\"진짜 고인물이 뭔지 보여주지.\"",
       "subs": [
         "fantasy-2"
-      ]
+      ],
+      "source": "https://comic.naver.com/webtoon/list?titleId=773797",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w65755ul",
@@ -877,15 +897,21 @@
       "days": [
         "thu"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-10",
       "tags": [
         "로맨스",
-        "일상",
-        "캠퍼스물",
-        "코미디"
+        "리얼로맨스",
+        "설렘폭발",
+        "능글남",
+        "나쁜남자",
+        "명랑녀",
+        "로맨틱코미디",
+        "가벼운"
       ],
-      "desc": "20살에 20년지기, 평생을 함께한 소꿉친구 하늘과 민철.\n그런 소꿉친구의 알고 싶지 않은 은밀한 사정을 알아버렸다?!\n\n서로를 이성으로 생각한 적이 결코 없는 두사람이지만,\n오해가 오해를 낳고 착각이 착각을 낳는 상황들 속에서 점점\n서로가 의식되기 시작한다.\n\n서로를 너무 잘 알기 때문에 오히려 고난을 겪는 두 남녀의\n술래잡기 같은 로맨스 코미디!\n"
+      "desc": "20살에 20년지기, 평생을 함께한 소꿉친구 하늘과 민철.\n그런 소꿉친구의 알고 싶지 않은 은밀한 사정을 알아버렸다?!\n서로를 이성으로 생각한 적이 결코 없는 두사람이지만,\n오해가 오해를 낳고 착각이 착각을 낳는 상황들 속에서 점점 서로가 의식되기 시작한다.\n서로를 너무 잘 알기 때문에 오히려 고난을 겪는 두 남녀의 술래잡기 같은 로맨스 코미디!",
+      "source": "https://comic.naver.com/webtoon/list?titleId=822640",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w6574dz",
@@ -941,11 +967,18 @@
       "autoCount": true,
       "baseDate": "2026-11-10",
       "tags": [
-        "성인",
         "로맨스",
-        "스릴러"
+        "자극적인",
+        "치명적인",
+        "헌신남",
+        "유혹남",
+        "계략남",
+        "연하남",
+        "외유내강녀"
       ],
-      "desc": "남편이 불륜을 저질렀다.\n\n엄청난 빚을 떠안기고, 아이를 잃게 한 것으로 모자라,\n한참 어린 여자와 내 눈앞에서 몸을 섞었다.\n\n상처 입은 삶은 볼품 없이 시들어 버려질 예정이었다.\n그런데-,\n\n\"어른의 사랑을 가르쳐 주세요.\"\n\n나해수의 삶에 불쑥 끼어든 수상한 연하남.\n위태롭고 순종적인 그가 나해수를 뒤흔들기 시작한다."
+      "desc": "남편이 불륜을 저질렀다. \n엄청난 빚을 떠안기고, 아이를 잃게 한 것으로 모자라, \n한참 어린 여자와 제 눈앞에서 몸을 섞었다. \n상처 입은 삶은 볼품 없이 시들어 버려질 예정이었다. \n그런데-, \"어른의 사랑을 가르쳐 주세요.\"\n나해수의 삶에 불쑥 끼어든 수상한 연하남. \n위태롭고 순종적인 그가 나해수를 뒤흔들기 시작한다.",
+      "source": "https://comic.naver.com/webtoon/list?titleId=827190",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w065q6",
@@ -984,7 +1017,7 @@
     {
       "id": "w064ys",
       "title": "오피스 누나 이야기",
-      "author": "팔메이로",
+      "author": "김자네, 와삭바삭, 팔메이로",
       "platform": "네이버웹툰",
       "url": "",
       "cover": "https://i.namu.wiki/i/EGQsYf9DoNSeY11OvvAia4YPQAKZ0yMIYnYKYTnBV1lLZPAoeOGMIPGqwjYdrD6hL68r3-vz2m7zjhjXj7RWuCIA8BDKKx9j0ITchOj8yR7NQXBMVjLru_8Or33DtttMlgeRUCXezOSnlBGeJrb9Vg.webp",
@@ -999,14 +1032,21 @@
       "days": [
         "tue"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-10",
       "tags": [
         "로맨스",
-        "오피스",
-        "유부녀"
+        "레드아이스 스튜디오",
+        "리얼로맨스",
+        "사연녀",
+        "요즘핫한추천작",
+        "짝사랑",
+        "연상연하",
+        "오피스로맨스"
       ],
-      "desc": "대기업 책임(과장급)인 작가는, 회사 TF팀에서 성숙하고 매력적인 연상의 여자 안책임님을 만나게 된다.\n현명하고, 배려심 깊고, 그래서 끌리는……\n하지만, 아이가 있는 여자."
+      "desc": "회사 TF팀에서 만난 성숙하고 매력적인 연상의 여자 안책임님.\n현명하고, 배려심 깊고, 그래서 끌리는……하지만, 아이가 있는 여자.",
+      "source": "https://comic.naver.com/webtoon/list?titleId=755694",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w063",
@@ -1025,18 +1065,26 @@
       "days": [
         "sun"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-10",
       "tags": [
         "로맨스",
-        "복선"
+        "설렘폭발",
+        "치명적인",
+        "캠퍼스",
+        "현대",
+        "혐관",
+        "공식미남",
+        "사연남"
       ],
-      "desc": "\n\"내가 너랑 사귀고 싶어했다고? 언제.\"\n\n자발적 아싸 도수정 앞에 나타난, 수상하지만 매력적인 고단수 여우 차승현.\n\n진심일수록 무서워지는 두 사람의, 속아주고 싶을 만큼 중독적인 도파민 밀당 로맨스!"
+      "desc": "“내가 너랑 사귀고 싶어했다고? 언제.” \n자발적 아싸 도수정 앞에 나타난, 수상하지만 매력적인 고단수 여우 차승현.\n진심일수록 무서워지는 두 사람의, 속아주고 싶을 만큼 중독적인 도파민 폭발 밀당 로맨스!",
+      "source": "https://comic.naver.com/webtoon/list?titleId=840114",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w062",
       "title": "낮에 뜨는 달",
-      "author": "혜윰",
+      "author": "헤윰",
       "platform": "네이버웹툰",
       "url": "",
       "cover": "https://i.namu.wiki/i/l97EBTUm5BGJ1ctpd12H35-SXC7J-7b_5G-pbkRrdL0912A3nAO3ilIcQ7c68kjMe81S4OmBA3wNFAOVaFETw9z7WJkMXU8mhao1Uoe3YQuGvYaYJKMTtkpeeENcJDHyMZwaNJt50AlLUgccjZ56SA.webp",
@@ -1050,16 +1098,20 @@
       "days": [
         "fri"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-10",
       "tags": [
-        "로맨스릴러",
-        "사극",
-        "드라마",
-        "후유증"
+        "로맨스",
+        "몰아보기",
+        "혐관로맨스",
+        "계약연애",
+        "구원서사",
+        "완결로맨스"
       ],
-      "desc": "시간이 멈춘 남자와 흘러가는 여자. 과거와 현재를 오가는 갈등에 대한 이야기.\n나는 아직 그 순간에 고여있건만\n시간은 한없이 흘러가는구나...",
-      "pick": true
+      "desc": "시간이 멈춘 남자와 흘러가는 여자.\n\n과거와 현재를 오가는 갈등에 대한 이야기.",
+      "pick": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=551649",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w061",
@@ -1079,7 +1131,7 @@
       "days": [
         "wed"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-10",
       "tags": [
         "판타지",
@@ -1087,12 +1139,15 @@
         "액션",
         "세계관",
         "복수극",
-        "먼치킨"
+        "먼치킨",
+        "다크판타지"
       ],
-      "desc": "‘태양의 제국’ 소속 전쟁 영웅 ‘버키’ 병장. 그는 황제를 향한 우직한 충심과 뛰어난 무예로 제국 병사들의 귀감이 되고 있지만, 사실 그의 최종 목표는 제국을 몰락시켜 황제에게 복수하는 것이다. 버키는 거대한 제국을 상대로 복수를 완수할 수 있을까?",
+      "desc": "‘태양의 제국’ 소속 전쟁 영웅 ‘버키’ 병장. \n그는 황제를 향한 우직한 충심과 뛰어난 무예로 제국 병사들의 귀감이 되고 있지만,\n사실 그의 최종 목표는 제국을 몰락시켜 황제에게 복수하는 것이다.\n버키는 거대한 제국을 상대로 복수를 완수할 수 있을까?",
       "subs": [
         "fantasy-6"
-      ]
+      ],
+      "source": "https://comic.naver.com/webtoon/list?titleId=822109",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w060",
@@ -1107,31 +1162,35 @@
       ],
       "recommended": 1,
       "color": "#5a1c00",
-      "episodes": 152,
+      "episodes": 159,
       "status": "ongoing",
       "days": [
         "wed"
       ],
       "autoCount": true,
-      "baseDate": "2026-11-10",
+      "baseDate": "2026-11-11",
       "tags": [
         "판타지",
         "마법",
+        "요즘핫한추천작",
         "힐링",
-        "힘순찐",
-        "이세계",
-        "음식&요리"
+        "차원이동",
+        "게임판타지",
+        "힘숨찐",
+        "이세계"
       ],
-      "desc": "요리사를 꿈꾸던 내가 사고로 이세계에 떨어졌다.\n몬스터와 마법이 넘쳐나는 판타지 세계이지만 여기라고 식당을 못할 건 없잖아?\n그러나 전쟁으로 인해 이세계에 들어오자마자 군대에 끌려가게 되고,\n15년간의 고생 끝에 드디어 나만의 식당을 열게 되는데...",
+      "desc": "요리사를 꿈꾸던 내가 사고로 이세계에 떨어졌다. \n\n몬스터와 마법이 넘쳐나는 판타지 세계이지만 여기라고 식당을 못할 건 없잖아?\n\n그러나 전쟁으로 인해 이세계에 들어오자마자 군대에 끌려가게 되고, \n\n15년간의 고생 끝에 드디어 나만의 식당을 열게 되는데...",
       "subs": [
         "fantasy-1",
         "fantasy-6"
-      ]
+      ],
+      "source": "https://comic.naver.com/webtoon/list?titleId=818888",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w059",
       "title": "아카데미에 위장취업당했다",
-      "author": "타나, WAG, Sharen",
+      "author": "타나, WAG, sayren",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/11660.html",
       "cover": "https://i.namu.wiki/i/CK5gjQXS1hPpBMGnZImInqvjeMYzI-xr0gX5ZktoVsB9RDqATRbqpVwKEu2DIpoY7jAqM53XKA_RZZ5VisgSCcbroYgs1mKV3y6h6KVbgyWLYwughxwrWdkNv4eqxIFkwgwRPXgja4lYO3zMpYzefA.webp",
@@ -1145,23 +1204,27 @@
       "days": [
         "sun"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-10",
       "tags": [
         "판타지",
         "아카데미물",
-        "소설원작"
+        "소설원작",
+        "완결무료",
+        "완결판타지"
       ],
-      "desc": "제국에서 제일가는 마법 아카데미의 교사가 되었다. …다른 사람과 착각당해서. 그 어느 쪽에도 정체를 들켜선 안 되는 상황. 이 아슬아슬한 외줄 타기의 끝은 어디일까.",
+      "desc": "제국에서 제일가는 마법 아카데미의 교사가 되었다.\n…다른 사람과 착각당해서.\n그 어느 쪽에도 정체를 들켜선 안 되는 상황.\n이 아슬아슬한 외줄 타기의 끝은 어디일까.",
       "subs": [
         "fantasy-1",
         "fantasy-4"
-      ]
+      ],
+      "source": "https://comic.naver.com/webtoon/list?titleId=795529",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w058",
       "title": "투신전생기",
-      "author": "https://blacktoon427.com/webtoon/10043.html",
+      "author": "청담",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/10043.html",
       "cover": "https://i.namu.wiki/i/IgxB3J_etypRxwMtmuOWTKlDDcST1FqPyWTRHeOX7vnt1sAamOR0fbcYkMtSosJHEZ1-GQ_NtydCvRGA8AL1csG0Q3YKG7HwfrVM_kfJYMbSLS2xElK1Rkakprcy3EZDN3aM1FhYte7gMzNbxGuZJQ.webp",
@@ -1175,25 +1238,26 @@
       "days": [
         "sun"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-10",
       "tags": [
-        "판타지",
         "액션",
         "회귀",
         "이능력배틀물",
         "복수극",
         "먼치킨"
       ],
-      "desc": "인류 최강자의 회귀 액션 판타지.\n\"역겨운 신들이 줬다고 해도 기회는 기회. 뒈지고 싶다는데 죽여 줘야지.\"\n인류 최후의 생존자 제피르. 마신과의 고독한 싸움은 패배로 끝났으나, 신들이 준 기회로 10년 전으로 돌아왔다.\n모든 것을 빼앗아갔던 마신과 인간을 구경거리 취급한 신들. 이번에는 내가 너희를 물어뜯겠다.",
+      "desc": "인류 최강자의 회귀 액션 판타지.\n\"역겨운 신들이 줬다고 해도 기회는 기회. 뒈지고 싶다는데 죽여 줘야지.\"\n인류 최후의 생존자 제피르.  마신과의 고독한 싸움은 패배로 끝났으나, 신들이 준 기회로 10년 전으로 돌아왔다. \n모든 것을 빼앗아갔던 마신과 인간을 구경거리 취급한 신들. 이번에는 내가 너희를 물어뜯겠다.",
       "subs": [
         "fantasy-1"
-      ]
+      ],
+      "source": "https://comic.naver.com/webtoon/list?titleId=774044",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w057",
-      "title": "플레이어",
-      "author": "박종석, 오현준",
+      "title": "인생게임플레이어",
+      "author": "wnsd****",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/4528.html",
       "cover": "https://i.namu.wiki/i/asvqEIQR-KClqGBRC1ruON7LwUuC9GysRIcb3YbnbTxVb4ETrmTubtOd9mLq4Wzwi1tk8EnqYuw8MQ29aSns_43dMVEpWaZ-W-wnCvAqlbgu99rovaerxKK3sF_4C-HqPYfUU2OnCbBJW6DICUhCUw.webp",
@@ -1203,13 +1267,13 @@
       ],
       "recommended": 0,
       "color": "#0056d6",
-      "episodes": 1,
-      "status": "completed",
+      "episodes": 3,
+      "status": "ongoing",
       "days": [
         "fri"
       ],
       "autoCount": true,
-      "baseDate": "2026-11-10",
+      "baseDate": "2026-11-11",
       "tags": [
         "판타지",
         "액션",
@@ -1218,7 +1282,9 @@
         "힘순찐",
         "빙의"
       ],
-      "desc": "베댓 공약으로 어쩌다 웹툰 속 주인공이 되었다!\n"
+      "desc": ".",
+      "source": "https://comic.naver.com/webtoon/list?titleId=463068",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w056",
@@ -1232,22 +1298,26 @@
       ],
       "recommended": 1,
       "color": "#ffffff",
-      "episodes": 120,
+      "episodes": 126,
       "status": "ongoing",
       "days": [
         "thu"
       ],
       "autoCount": true,
-      "baseDate": "2026-11-10",
+      "baseDate": "2026-11-11",
       "tags": [
         "판타지",
         "동양",
         "신화",
         "이능력",
         "액션",
-        "성장물"
+        "미친작화",
+        "성장물",
+        "세계관"
       ],
-      "desc": "미신 따윈 믿지 않는 주인공 '권용진'. 그의 만 16세의 생일이 지나자 눈 앞에 펼쳐진 믿을 수 없는 일들."
+      "desc": "미신따윈 믿지않는 주인공 '권용진'. 그의 만 16세의 생일이 지나자 눈 앞에 펼쳐진 믿을 수 없는 일들.",
+      "source": "https://comic.naver.com/webtoon/list?titleId=828294",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w055",
@@ -1261,19 +1331,21 @@
       ],
       "recommended": 1,
       "color": "#450d59",
-      "episodes": 39,
+      "episodes": 44,
       "status": "ongoing",
       "days": [
         "sat"
       ],
       "autoCount": true,
-      "baseDate": "2026-11-09",
+      "baseDate": "2026-11-11",
       "tags": [
         "판타지",
         "액션판타지",
         "판타지개그"
       ],
-      "desc": "도미니언 대륙을 위협하는 존재, 마왕 크라드.\n자신의 힘에 대항할 호적수와의 결전을 꿈꾸며 마왕성에 앉아 하염없이 용사들을 기다린다.\n그렇게 수천 년간 호적수를 기다리다 지쳐버린 크라드는 우연히 인간의 대중문화에 입문하게 된다.\n그런데 세상을 멸할 힘을 가진 절대자라는 자가 가장 좋아하는 장르가...?"
+      "desc": "도미니언 대륙을 위협하는 존재, 마왕 크라드.\n자신의 힘에 대항할 호적수와의 결전을 꿈꾸며 마왕성에 앉아 하염없이 용사들을 기다린다.\n\n그렇게 수천 년간 호적수를 기다리다 지쳐버린 크라드는 우연히 인간의 대중문화에 입문하게 된다.\n그런데 세상을 멸할 힘을 가진 절대자라는 자가 가장 좋아하는 장르가...?",
+      "source": "https://comic.naver.com/webtoon/list?titleId=847812",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w054",
@@ -1287,21 +1359,26 @@
       ],
       "recommended": 2,
       "color": "#831100",
-      "episodes": 29,
+      "episodes": 34,
       "status": "ongoing",
       "days": [
         "sun"
       ],
       "autoCount": true,
-      "baseDate": "2026-11-09",
+      "baseDate": "2026-11-11",
       "tags": [
-        "무협",
+        "무협/사극",
+        "레드아이스 스튜디오",
+        "액션판타지",
         "소년물",
+        "동양풍판타지",
         "회귀",
-        "먼치킨",
-        "소설원작"
+        "판무",
+        "먼치킨"
       ],
-      "desc": "모든걸 기억하는 삼류무사 진소운. 30년 전 마교가 재림하기 전으로 회귀하다.\n과거로 돌아온 사실이, 딱히 날더러 세상을 구하라는 신호로는 보이진 않는다.\n‘그랬다면 최소한 뭔가 특별한 능력을 주거나 장삼봉 조사의 영혼 같은 거라도 붙여줘야 했을 테니까?’\n답 없는 삼류 문파인 사문.\n미천하기 그지없는 무의 재능.\n되돌아왔다는 걸 기뻐하기엔 원체 가진 패가 너무 약하다.\n\"망했군.\"\n정해진 미래의 절망을 바꾸기 위한 진소운의 발악이 시작된다."
+      "desc": "모든걸 기억하는 삼류무사 진소운. 30년 전 마교가 재림하기 전으로 회귀하다.\n\n과거로 돌아온 사실이, 딱히 날더러 세상을 구하라는 신호로는 보이진 않는다.\n\n‘그랬다면 최소한 뭔가 특별한 능력을 주거나 장삼봉 조사의 영혼 같은 거라도 붙여줘야 했을 테니까?’\n\n답 없는 삼류 문파인 사문.\n미천하기 그지없는 무의 재능.\n되돌아왔다는 걸 기뻐하기엔 원체 가진 패가 너무 약하다.\n\n\"망했군.\"\n\n정해진 미래의 절망을 바꾸기 위한 진소운의 발악이 시작된다.",
+      "source": "https://comic.naver.com/webtoon/list?titleId=849611",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w053",
@@ -1322,19 +1399,23 @@
       "days": [
         "sun"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-09",
       "tags": [
         "판타지",
+        "몰아보기",
         "성장물",
+        "아포칼립스",
         "좀비",
-        "아포칼립스"
+        "완결판타지"
       ],
-      "desc": "날 찾아온 또 다른 나..? 극악무도한 도플갱어의 습격, 그리고 눈 앞에 펼쳐진 끔찍한 평행세계. 다시 예전의 삶으로 돌아갈 수 있을까?"
+      "desc": "날 찾아온 또 다른 나..?\n극악무도한 도플갱어의 습격,\n그리고 눈 앞에 펼쳐진 끔찍한 평행세계.\n다시 예전의 삶으로 돌아갈 수 있을까?",
+      "source": "https://comic.naver.com/webtoon/list?titleId=730607",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w052",
-      "title": "오버 더 문",
+      "title": "오버더문",
       "author": "포르토, 이승준",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/3597.html",
@@ -1349,13 +1430,17 @@
       "days": [
         "wed"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-09",
       "tags": [
         "스릴러",
-        "서스펜스"
+        "서스펜스",
+        "완결무료",
+        "완결스릴러"
       ],
-      "desc": "버스에서의 사고 후 잃어버린 2주 동안의 기억.\n하늘에 뜬 푸른 달과 날아드는 수백 건의 달빛을 받으라는 문자들.\n조심해. 너도 달빛을 쐬면 괴물이 되어버릴 테니까."
+      "desc": "버스에서의 사고 후 잃어버린 2주 동안의 기억.\n하늘에 뜬 푸른 달과 날아드는 수백 건의 달빛을 받으라는 문자들.\n조심해. 너도 달빛을 쐬면 괴물이 되어버릴 테니까.",
+      "source": "https://comic.naver.com/webtoon/list?titleId=737836",
+      "autoAt": "2026-11-11"
     },
     {
       "id": "w051",
