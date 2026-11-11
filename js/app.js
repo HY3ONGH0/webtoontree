@@ -802,7 +802,9 @@
     html.classList.remove('vt-page', 'vt-same');
     html.classList.add(same ? 'vt-same' : 'vt-page');
     let vt;
-    try { vt = document.startViewTransition(() => routeNow()); } catch (e) { html.classList.remove('vt-page', 'vt-same'); routeNow(); return; }
+    // 새 화면 자체의 나타나기 효과는 끄고(전환이 대신해요), 전환이 끝난 뒤에 다시 켜지며 깜빡이지 않게 화면에 직접 꺼 둬요
+    const run = () => { routeNow(); const v = document.querySelector('#app > .view'); if (v) v.style.animation = 'none'; };
+    try { vt = document.startViewTransition(run); } catch (e) { html.classList.remove('vt-page', 'vt-same'); routeNow(); return; }
     routeVT = vt;
     const done = () => { if (routeVT === vt) { routeVT = null; html.classList.remove('vt-page', 'vt-same'); } };
     vt.finished.then(done, done);

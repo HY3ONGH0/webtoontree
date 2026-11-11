@@ -650,7 +650,7 @@
             ${T.links.map(linkHTML).join('')}
             ${ids.map((id) => {
               const [x, y] = T.nodes[id];
-              return `<div class="node-wrap" data-wrap="${id}" style="left:${x - 85}px; top:${y - sizeOf(id) / 2}px"></div>`;
+              return `<div class="node-wrap" data-wrap="${id}" style="left:${x - 85}px; top:${y - sizeOf(id) / 2}px; --oy:${sizeOf(id) / 2}px"></div>`;
             }).join('')}
             ${libNodeHTML()}
             ${hasChar ? `<div class="char" id="char" aria-hidden="true"><div class="hop" id="hop"><div class="flip" id="flip"><div class="bob">${WT.charSVG(WT.currentLook(), 56)}</div></div></div><span class="bubble" id="bubble">어디로 갈까?</span></div>` : ''}
@@ -689,10 +689,10 @@
       const h = Math.max(180, main.clientHeight - used);
       const wide = window.innerWidth > 860;
       wrap.style.height = wide ? `${h}px` : '';
-      const bw = wide ? Math.max(64, Math.min(190, (h - 96) / 1.417 / 1.3)) : 120;
+      const bw = wide ? Math.max(64, Math.min(210, (h - 86) / 1.417 / 1.18)) : 120;
       const lv = main.closest('.lb-view'); if (lv) lv.classList.toggle('small-books', wide && bw < 120);
       // 크기는 칸(.lb-slot)에 걸어 둬요 → 책을 다시 그려도(진행 기록 등) 크기가 유지돼요
-      [...stage.querySelectorAll('.lb-slot')].forEach((el, i) => { el.style.setProperty('--bw', `${Math.round(i === LB.idx ? bw * 1.3 : bw)}px`); el.classList.toggle('on', i === LB.idx); });
+      [...stage.querySelectorAll('.lb-slot')].forEach((el, i) => { el.style.setProperty('--bw', `${Math.round(i === LB.idx ? bw * 1.18 : bw)}px`); el.classList.toggle('on', i === LB.idx); });
       const gap = wide ? 44 : 22;
       const shift = Math.max(0, LB.idx * (bw + gap) - (wide ? bw + gap : 0));
       stage.style.transform = `translateX(${-shift}px)`;
@@ -702,6 +702,9 @@
     function lbInfo() {
       const box = document.getElementById('lb-info'), go = document.getElementById('lb-go'), more = document.getElementById('lb-more');
       const id = LB.list[LB.idx];
+      // 책을 바꿨을 때만 소개가 살짝 바뀌는 효과 (같은 책을 다시 그릴 땐 깜빡이지 않게)
+      box.classList.toggle('swap', !!box.dataset.id && box.dataset.id !== id);
+      box.dataset.id = id || '';
       if (!id) { box.innerHTML = ''; go.hidden = true; more.hidden = true; return; }
       const w = WT.toon(id), t = lbTone(w), st = status(id), rec = w.pick ? 0 : WT.recStars(w);
       const gs = (w.genres || []).map((x) => WT.genre(x)).filter(Boolean);
@@ -787,10 +790,14 @@
       const availH = bottom - wrap.getBoundingClientRect().top - (band ? band.offsetHeight : 0) - 24 + (fr && window.innerWidth > 860 ? 0 : window.scrollY);
       const framed = !!(fr && window.innerWidth > 860);
       // 판 안에서는 창이 작아져도 트리 전체가 보이도록 더 작게 줄여요 (너무 작아지면 가로로 넘겨 봐요)
-      const sc = Math.max(framed ? 0.42 : 0.6, Math.min(1, w / SW, availH > (framed ? 160 : 300) ? availH / BH : 1));
+      let sc = Math.max(framed ? 0.42 : 0.6, Math.min(1, w / SW, availH > (framed ? 160 : 300) ? availH / BH : 1));
+      // 창이 작아 트리가 줄어들면, 원과 이름만 조금 덜 줄여서 표지가 잘 보이게 해요 (자리는 그대로)
+      const nk = framed ? Math.max(1, Math.min(1.28, 0.92 / sc)) : 1;
+      if (nk > 1 && availH > 160) sc = Math.max(0.42, Math.min(sc, availH / (BH + (nk - 1) * 170)));   // 커진 원·이름이 아래로 잘리지 않게
       stage.style.transform = `scale(${sc})`;
+      stage.style.setProperty('--nk', nk.toFixed(3));
       sizer.style.width = `${SW * sc}px`;
-      sizer.style.height = `${BH * sc}px`;
+      sizer.style.height = `${(BH + (nk - 1) * 120) * sc}px`;   // 커진 원 아래 별까지 보이게
       wrap.classList.toggle('scrolls', SW * sc > w + 2);
       edges();
     }
@@ -1002,8 +1009,20 @@
     }
 
     let panelFor = null;
+    // 옆 상세 창 닫기: 넓은 화면에서는 부드럽게 접힌 뒤 비워요
+    let closeT = 0;
+    function clearSlot() {
+      clearTimeout(closeT);
+      if (!slot.innerHTML) return;
+      if (window.innerWidth <= 860 || document.body.classList.contains('no-anim')) { slot.innerHTML = ''; slot.classList.remove('closing'); return; }
+      slot.classList.add('closing');
+      closeT = setTimeout(() => { slot.classList.remove('closing'); if (!sel) slot.innerHTML = ''; }, 300);
+    }
     function renderPanel(animate) {
-      if (!sel) { panelFor = null; slot.innerHTML = ''; fit(); return; }
+      if (!sel) { panelFor = null; clearSlot(); fit(); return; }
+      clearTimeout(closeT); slot.classList.remove('closing');
+      const swap = animate === 'swap' || (animate && !!slot.querySelector('.panel:not(.panel-empty)'));   // 이미 열린 창에서 다른 웹툰으로
+      if (animate === 'swap') animate = true;
       // 같은 웹툰 창을 다시 그릴 땐(별점·화수·댓글 등을 바꿨을 때) 보던 스크롤 위치를 그대로 지켜요
       const old = slot.querySelector('.panel');
       const keep = !animate && panelFor === sel && old ? { top: old.scrollTop, win: window.scrollY } : null;
@@ -1012,7 +1031,7 @@
       const panel = slot.querySelector('.panel');
       if (keep) { panel.scrollTop = keep.top; if (window.scrollY !== keep.win) window.scrollTo(0, keep.win); }
       if (!animate) panel.classList.remove('anim');
-      else if (panel.classList.contains('toned')) bloom(panel);
+      panel.classList.toggle('swap', !!(animate && swap));
       const w = WT.toon(sel);
       if (!panel.classList.contains('toned') && w.cover) {
         const id = sel;
@@ -1021,7 +1040,6 @@
           if (!c || sel !== id || !p || p.classList.contains('toned')) return;
           p.setAttribute('style', WT.color.styleOf(c));
           p.classList.add('toned');
-          bloom(p);
         });
       }
       fit();
@@ -1038,7 +1056,7 @@
       WT.api.fire('view', { webtoonId: id, viewerId: WT.api.viewerId() });
       if (server) loadSocial(id);
       moveChar(id, true);
-      renderPanel(true);
+      renderPanel(o.swap ? 'swap' : true);
       if (!o.keepHash) history.replaceState(null, '', `#/${BASE}/${gid}/${id}`);
       if (window.innerWidth <= 900) {
         const p = slot.querySelector('.panel');
@@ -1266,9 +1284,15 @@
       if (document.querySelector('.grim-bg')) return;
       if (lib) {
         if (e.key === 'Escape' && sel) { e.preventDefault(); close(); return; }
-        if (sel) return;
-        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); lbStep(e.key === 'ArrowRight' ? 1 : -1); }
-        else if (e.key === 'Enter' && !(t && t.closest('a, button'))) { const id = LB.list[LB.idx]; if (id) lbOpen(id); }
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const before = LB.idx;
+          lbStep(e.key === 'ArrowRight' ? 1 : -1);
+          if (sel && LB.idx !== before && LB.list[LB.idx]) select(LB.list[LB.idx], { swap: true });   // 상세 창이 열려 있으면 같이 바꿔요
+        } else if (e.key === 'Enter' && !(t && t.closest('a, button, .panel'))) {
+          e.preventDefault();
+          if (sel) close(); else { const id = LB.list[LB.idx]; if (id) lbOpen(id); }
+        }
         return;
       }
       if (e.key === 'Escape' && sel) { e.preventDefault(); close(); return; }
@@ -1318,9 +1342,9 @@
     const gb = document.getElementById('guide-btn');
     if (gb) gb.addEventListener('click', () => {
       if (sel) { close(); slot.innerHTML = emptyPanelHTML(); return; }
-      slot.innerHTML = slot.innerHTML ? '' : emptyPanelHTML();
+      if (slot.innerHTML && !slot.classList.contains('closing')) clearSlot(); else { clearTimeout(closeT); slot.classList.remove('closing'); slot.innerHTML = emptyPanelHTML(); }
     });
-    slot.addEventListener('click', (e) => { if (!sel && e.target.closest('.guide-x')) slot.innerHTML = ''; });
+    slot.addEventListener('click', (e) => { if (!sel && e.target.closest('.guide-x')) clearSlot(); });
     WT.leaveView = () => {
       if (lib) WT.libLeftAt = Date.now();
       if (ro) ro.disconnect();

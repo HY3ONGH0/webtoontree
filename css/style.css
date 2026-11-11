@@ -1715,7 +1715,7 @@ html[data-theme="light"] .hm-cta { color: #1F2128; background: rgba(255, 255, 25
 
 /* ================= 화면 전환 애니메이션 (과하지 않게) ================= */
 .app-rail { view-transition-name: wt-nav; }
-html.vt-page .view, html.vt-same .view { animation: none; }   /* 전환 효과와 겹치지 않게 */
+
 html.vt-page::view-transition-old(root) { animation: vtOut .16s ease-in both; }
 html.vt-page::view-transition-new(root) { animation: vtIn .34s cubic-bezier(.2, .8, .2, 1) .06s both; }
 html.vt-same::view-transition-old(root) { animation: vtFadeOut .2s ease both; }
@@ -1732,7 +1732,7 @@ html.vt-same::view-transition-old(wt-nav), html.vt-same::view-transition-new(wt-
 .rail-item:active { transform: scale(.96); }
 .lb-tab, .lb-subs button, .lb-sort button, .mp-chips button, .band a { transition: color .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .15s ease; }
 .lb-subs button:active, .mp-chips button:active, .band a:active, .lb-cta:active, .hm-cta:active { transform: scale(.97); }
-.lb-info > * { animation: lbInfoIn .3s ease both; }
+.lb-info.swap > * { animation: lbInfoIn .3s ease both; }
 @keyframes lbInfoIn { from { opacity: 0; transform: translateY(4px); } }
 @media (prefers-reduced-motion: reduce) { .lb-info > * { animation: none; } }
 
@@ -1827,3 +1827,50 @@ html[data-theme="light"] .profile-card .btn-gold, html[data-theme="light"] .prev
 .item .tag.eq { color: #fff; background: #E0565B; }
 .rules .h, html[data-theme="light"] .rules .h { color: var(--text); }
 .items .seg button[aria-selected="true"], html[data-theme="light"] .items .seg button[aria-selected="true"] { background: var(--text); color: var(--frame-bg); border-color: var(--text); box-shadow: none; }
+
+/* ================= 화면 전환: 깜빡임 없이 (앞 화면은 그대로 두고 새 화면만 살짝 겹쳐 떠올라요) ================= */
+/* 앞·뒤 화면을 똑같은 속도로 맞바꿔 섞어요(plus-lighter): 판·배경처럼 같은 부분은 그대로라 깜빡이지 않아요 */
+html.vt-page::view-transition-old(root), html.vt-same::view-transition-old(root) { mix-blend-mode: plus-lighter; animation: vtFadeOut .24s linear both; }
+html.vt-page::view-transition-new(root), html.vt-same::view-transition-new(root) { mix-blend-mode: plus-lighter; animation: vtFadeIn .24s linear both; }
+html.vt-same::view-transition-old(root), html.vt-same::view-transition-new(root) { animation-duration: .16s; }
+/* 위쪽 메뉴는 전환에 끼지 않고 바로 바뀌어요 (버튼이 깜빡이지 않게) */
+html.vt-page::view-transition-group(wt-nav), html.vt-same::view-transition-group(wt-nav),
+html.vt-page::view-transition-new(wt-nav), html.vt-same::view-transition-new(wt-nav) { animation: none; }
+html.vt-page::view-transition-old(wt-nav), html.vt-same::view-transition-old(wt-nav) { display: none; }
+.rail-tools .coin, .app-rail .coin { animation: none; }
+
+/* ================= 옆 상세 창: 판은 부드럽게 좁아지고, 창은 오른쪽에서 미끄러져 들어와요 ================= */
+@media (min-width: 861px) {
+  .lb-drawer:not(:empty) { --dw: min(400px, 30vw); flex: 0 0 var(--dw); margin-left: 20px; overflow: hidden; display: flex; justify-content: flex-end; border-radius: 16px; animation: dwOpen .42s cubic-bezier(.22, .8, .24, 1) both; }
+  .lb-drawer.closing:not(:empty) { animation: dwClose .3s cubic-bezier(.4, 0, .6, 1) both; }
+  .lb-drawer > .panel { flex: 0 0 var(--dw); width: var(--dw); max-width: none; box-sizing: border-box; }
+  .lb-drawer > .panel.anim { animation: dwPanel .46s .06s cubic-bezier(.22, .8, .24, 1) both; }
+  .lb-drawer > .panel.anim.swap { animation: dwSwap .26s ease-out both; }
+  .lb-drawer.closing > .panel { animation: dwPanelOut .24s ease-in both; }
+  .tv-drawer:has(.panel-empty) { align-items: center; }
+}
+@keyframes dwOpen { from { flex-basis: 0; margin-left: 0; } }
+@keyframes dwClose { to { flex-basis: 0; margin-left: 0; } }
+@keyframes dwPanel { from { opacity: 0; transform: translateX(28px); } }
+@keyframes dwPanelOut { to { opacity: 0; transform: translateX(28px); } }
+@keyframes dwSwap { from { opacity: .35; transform: translateY(6px); } }
+/* 표지 색은 원형으로 번지지 않고 조용히 바뀌어요 */
+.panel.toned { transition: background-color .35s ease, border-color .35s ease; }
+.panel.toned .tone, .panel.toned.blooming .tone { animation: none; opacity: 1; clip-path: none; }
+.panel.toned .bloom, .panel.toned.blooming .bloom { animation: none; opacity: .08; clip-path: none; }
+
+/* ================= 트리: 창이 작을 때 원·이름을 덜 줄여요 ================= */
+.tree-view .node-wrap { transform: scale(var(--nk, 1)); transform-origin: 85px var(--oy, 54px); transition: transform .3s ease; }
+
+/* ================= 웹툰 고르기 효과: 튀지 않고 차분하게 ================= */
+@keyframes pop2 { 0% { transform: scale(1); } 45% { transform: scale(1.07); } 100% { transform: scale(1); } }
+.node.pop { animation: pop2 .32s cubic-bezier(.3, .7, .3, 1); }
+.node.pop.gold { animation: pop2 .32s cubic-bezier(.3, .7, .3, 1), gold 1s ease-out; }
+.node.pop.burst { animation: pop2 .32s cubic-bezier(.3, .7, .3, 1), burst .9s ease-out; }
+.ripple { animation: ripple .55s ease-out both; }
+@keyframes ripple { from { transform: scale(1); opacity: .55; } to { transform: scale(1.55); opacity: 0; } }
+.node.is-sel { animation: selIn .28s ease-out; }
+@keyframes selIn { from { outline-offset: 2px; outline-color: transparent; } }
+.lb-track { transition: transform .5s cubic-bezier(.25, .8, .25, 1); }
+.lb-book { transition: width .5s cubic-bezier(.25, .8, .25, 1); }
+.lb-slot { transition: none; }
