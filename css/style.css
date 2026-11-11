@@ -1599,3 +1599,21 @@ html[data-theme="light"] .mp-canvas { --mp-bg: #EFEBE1; }
 .mp-mini { opacity: 0; pointer-events: none; transition: opacity .25s ease; }
 .mp-canvas.zoomed .mp-mini { opacity: 1; pointer-events: auto; }
 .mp-toggle { white-space: nowrap; }
+
+/* ================= 모든 화면을 도서관과 같은 크기의 판 하나로 ================= */
+:root { --frame-bg: #0E1426; --frame-shadow: 0 30px 80px rgba(0, 0, 0, .5); --fp: clamp(10px, 2.6vw, 36px); }
+html[data-theme="light"] { --frame-bg: #F7F5EE; --frame-shadow: 0 30px 80px rgba(60, 50, 30, .16); }
+@media (min-width: 861px) {
+  body.has-rail #app > .view:not(.lb-view) { width: calc(100% - 2 * var(--fp)); max-width: 1280px; height: calc(100dvh - 2 * var(--fp)); min-height: 0; margin: var(--fp) auto; flex: 0 0 auto;
+    box-sizing: border-box; border-radius: 16px; background: var(--frame-bg); box-shadow: var(--frame-shadow); overflow-x: hidden; overflow-y: auto; position: relative; scrollbar-width: thin; }
+  body.has-rail.home-lock #app { height: auto; }
+  .mp-view .lb-shell { max-width: 1280px; height: calc(100dvh - 2 * var(--fp)); }
+  /* 도서관 상세: 판을 왼쪽으로 밀고, 오른쪽에 생긴 자리에 상세 창 */
+  .lb-view { flex-direction: row; }
+  .lb-view .lb-shell { flex: 0 1 1280px; width: auto; min-width: 0; }
+  .lb-view .lb-dim { display: none; }
+  .lb-drawer:not(:empty) { position: relative; inset: auto; z-index: 2; flex: 0 0 min(400px, 30vw); width: auto; height: calc(100dvh - 2 * var(--fp)); margin-left: 20px; animation: drawerGrow .45s cubic-bezier(.2, .8, .2, 1) both; }
+  .lb-drawer .panel { overflow-x: hidden; border-radius: 16px; animation: none; }
+  .lb-drawer .panel > * { max-width: 100%; }
+}
+@keyframes drawerGrow { from { flex-basis: 0; margin-left: 0; opacity: 0; } 60% { opacity: 1; } }

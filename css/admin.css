@@ -109,3 +109,34 @@ body.admin { background: #0B1022; background-image: none; }
 @keyframes liveBlink { 50% { opacity: .45; } }
 .live-who { padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; color: #10162B; background: #8FD3FF; white-space: nowrap; max-width: 260px; overflow: hidden; text-overflow: ellipsis; }
 .live-tag { display: inline-block; margin-left: 6px; padding: 0 6px; border-radius: 999px; font-size: 11px; font-weight: 700; color: #10162B; background: #8FD3FF; vertical-align: middle; }
+
+/* 웹툰 목록: 표지 4개씩 한 줄 */
+.ad-list.wide { flex: 0 1 500px; max-width: 500px; }
+.ad-lbar { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); }
+.ad-lbar > span { margin-right: auto; }
+.ad-seg { display: flex; padding: 2px; border-radius: 9px; background: #0A0F25; border: 1px solid #2C3763; }
+.ad-seg button { border: 0; background: none; padding: 5px 10px; border-radius: 7px; font-size: 12.5px; font-weight: 700; color: var(--muted); cursor: pointer; }
+.ad-seg button[aria-pressed="true"] { background: #232C5C; color: #fff; }
+.ad-list .items-box.ad-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px 8px; align-content: start; }
+.ad-tile { display: flex; flex-direction: column; gap: 5px; min-width: 0; padding: 5px; border-radius: 10px; border: 1px solid transparent; background: none; color: var(--text); text-align: left; cursor: pointer; transition: background .15s; }
+.ad-tile:hover { background: #121935; }
+.ad-tile.sel { background: #1A2350; border-color: var(--gold); }
+.ad-cv { position: relative; display: block; aspect-ratio: 3 / 4; border-radius: 7px; overflow: hidden; background: var(--c); box-shadow: 0 3px 10px rgba(0, 0, 0, .35); transition: transform .18s, box-shadow .18s; }
+.ad-tile:hover .ad-cv { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0, 0, 0, .45); }
+.ad-cv img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ad-cv::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 40%; background: linear-gradient(transparent, rgba(5, 8, 22, .85)); pointer-events: none; }
+.ad-ini { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 5px; padding: 8px 8px 20px; color: #fff; text-shadow: 0 1px 6px rgba(0, 0, 0, .35);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--c) 85%, #fff 15%), color-mix(in srgb, var(--c) 55%, #070B1E)); }
+.ad-ini i { font-style: normal; font-size: 8px; letter-spacing: .14em; opacity: .7; font-weight: 700; }
+.ad-ini em { font-style: normal; font-size: 14px; font-weight: 900; line-height: 1.2; word-break: keep-all; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.ad-ini small { font-size: 9px; opacity: .8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ad-pick { position: absolute; top: 5px; left: 5px; z-index: 2; padding: 2px 6px; border-radius: 5px; background: #FF5A5F; color: #fff; font-size: 10.5px; font-weight: 800; box-shadow: 0 2px 6px rgba(255, 90, 95, .5); }
+.ad-st { position: absolute; left: 6px; bottom: 4px; z-index: 2; color: var(--gold); font-size: 11px; letter-spacing: -1px; text-shadow: 0 1px 3px #000; }
+.ad-on { position: absolute; right: 5px; bottom: 5px; z-index: 2; padding: 1px 5px; border-radius: 5px; background: rgba(91, 184, 255, .95); color: #04122A; font-size: 10px; font-weight: 800; }
+.ad-live { position: absolute; top: 5px; right: 5px; z-index: 3; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; max-width: calc(100% - 10px); }
+.ad-live .live-tag { margin: 0; background: #FF9C5B; font-size: 10px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ad-tile:has(.live-tag) .ad-cv { outline: 2.5px solid #FF9C5B; outline-offset: -2.5px; }
+.ad-tile:has(.live-tag) .ad-pick { top: auto; bottom: 22px; }
+.ad-tt { font-size: 12.5px; font-weight: 700; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; word-break: keep-all; }
+.ad-mt { font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: -2px; }
+@media (max-width: 700px) { .ad-list.wide { max-width: none; flex-basis: 100%; } .ad-list .items-box.ad-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }

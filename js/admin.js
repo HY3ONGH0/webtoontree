@@ -38,8 +38,9 @@
     return ('0000000' + h.toString(16)).slice(-8) + ':' + str.length;
   }
   function setBase(h) { base = h; try { localStorage.setItem(BASE, h); } catch (e) { /* 무시 */ } }
+  const DAYK = { mon: '월', tue: '화', wed: '수', thu: '목', fri: '금', sat: '토', sun: '일' };
   const ui = {
-    tab: 'webtoons', w: null, q: '', fg: 'all', confirm: null,
+    tab: 'webtoons', w: null, q: '', fg: 'all', confirm: null, wview: (() => { try { return localStorage.getItem('webtoontree.adminWView') || 'grid'; } catch (e) { return 'grid'; } })(),
     g: null, newGenre: false,
     tg: null, tsel: null, mode: 'select', from: null, branchFor: null, bq: '',
     msel: null, mmode: 'select', mfrom: null, mq: ''
@@ -196,7 +197,7 @@
     return `<h2>웹툰 목록 <span class="ad-help" style="display:inline">${D.webtoons.length}개</span></h2>
       <p class="ad-help">웹툰을 추가하고 고쳐요. 웹툰 ID(w001 같은 값)는 자동으로 정해지고 바뀌지 않아요. 감상 기록이 ID로 연결돼 있어요.</p>
       <div class="ad-split">
-        <section class="ad-list" aria-label="웹툰 목록">
+        <section class="ad-list${ui.wview === 'rows' ? '' : ' wide'}" aria-label="웹툰 목록">
           <button type="button" class="btn btn-gold press" data-a="new-w">+ 새 웹툰</button>
           <label class="sr" for="w-q">웹툰 검색</label>
           <input id="w-q" class="fld" type="search" placeholder="제목, 작가 검색" value="${esc(ui.q)}">
@@ -207,12 +208,29 @@
             ${D.genres.map((g) => `<option value="${g.id}" ${ui.fg === g.id ? 'selected' : ''}>${esc(g.name)}</option>`).join('')}
             <option value="none" ${ui.fg === 'none' ? 'selected' : ''}>장르 없음</option>
           </select>
-          <div class="items-box">
+          <div class="ad-lbar"><span>${list.length}개 보는 중</span>
+            <div class="ad-seg" role="group" aria-label="보기 방식"><button type="button" data-a="wview" data-id="grid" aria-pressed="${ui.wview !== 'rows'}">표지</button><button type="button" data-a="wview" data-id="rows" aria-pressed="${ui.wview === 'rows'}">목록</button></div></div>
+          ${ui.wview === 'rows' ? `<div class="items-box">
             ${list.map((x) => `<button type="button" class="ad-row${ui.w === x.id ? ' sel' : ''}" data-a="pick-w" data-id="${x.id}">
               <span class="dotc" style="background:${gColor(x)}">${esc(x.title[0] || '?')}</span>
               <span class="t"><b>${!x.pick && WT.recStars(x) ? '★'.repeat(WT.recStars(x)) + ' ' : ''}${esc(x.title)}${x.pick ? ' <span class="pick-badge sm">강추</span>' : ''}</b>${liveOn(x.id)}<span>${x.id} · ${esc(x.genres.map((g) => (genre(g) || {}).name).join(', ') || '장르 없음')} · ${WT.schedule.episodes(x)}화 · ${esc(WT.schedule.label(x))}</span></span>
             </button>`).join('') || '<p class="ad-help">찾는 웹툰이 없어요</p>'}
-          </div>
+          </div>` : `<div class="items-box ad-grid">
+            ${list.map((x) => {
+              const rs = !x.pick && WT.recStars(x);
+              const on = x.status === 'ongoing' && (x.days || []).length ? x.days.map((d) => DAYK[d] || '').join('') : '';
+              return `<button type="button" class="ad-tile${ui.w === x.id ? ' sel' : ''}" data-a="pick-w" data-id="${x.id}" title="${esc(x.title)}&#10;${x.id}">
+                <span class="ad-cv" style="--c:${esc(x.color || gColor(x))}">
+                  <span class="ad-ini"><i>WEBTOON</i><em>${esc(x.title)}</em><small>${esc(x.author || '')}</small></span>
+                  ${x.cover ? `<img src="${esc(x.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}
+                  ${x.pick ? '<span class="ad-pick">강추</span>' : ''}${rs ? `<span class="ad-st">${'★'.repeat(rs)}</span>` : ''}${on ? `<span class="ad-on">${on}</span>` : ''}
+                  <span class="ad-live">${liveOn(x.id)}</span>
+                </span>
+                <span class="ad-tt">${esc(x.title)}</span>
+                <span class="ad-mt">${esc(x.genres.map((g) => (genre(g) || {}).name).join(', ') || '장르 없음')} · ${WT.schedule.episodes(x)}화 · ${x.status === 'ongoing' ? '연재 중' : '완결'}</span>
+              </button>`;
+            }).join('') || '<p class="ad-help">찾는 웹툰이 없어요</p>'}
+          </div>`}
         </section>
         ${w ? webtoonForm(w) : '<section class="ad-form"><div class="ad-empty">왼쪽에서 웹툰을 고르거나 [+ 새 웹툰]을 눌러 주세요</div></section>'}
       </div>`;
@@ -979,6 +997,7 @@
       case 'tab': ui.tab = id; ui.confirm = null; ui.branchFor = null; ui.from = null; ui.mfrom = null; render(); break;
       case 'export': exportJSON(); break;
       case 'pick-w': ui.w = id; ui.confirm = null; render(); break;
+      case 'wview': ui.wview = id; try { localStorage.setItem('webtoontree.adminWView', id); } catch (er) { /* 없음 */ } render(); break;
       case 'new-w': {
         const gid = ui.fg !== 'all' && ui.fg !== 'none' ? ui.fg : null;
         const w = blankWebtoon('새 웹툰', gid);
@@ -1338,7 +1357,7 @@
     // 웹툰 목록의 '보는 중' 표시도 바로 고쳐요
     root().querySelectorAll('[data-a="pick-w"]').forEach((row) => {
       row.querySelectorAll('.live-tag').forEach((t) => t.remove());
-      const t = row.querySelector('b');
+      const t = row.querySelector('.ad-live') || row.querySelector('b');
       if (t) t.insertAdjacentHTML('beforeend', liveOn(row.dataset.id));
     });
     el.innerHTML = `<span class="live-dot${live.err ? ' off' : ''}"></span>함께 편집 ${others.length ? '' : '· 나 혼자'}
