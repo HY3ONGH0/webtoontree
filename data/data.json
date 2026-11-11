@@ -1,6 +1,43 @@
 {
   "webtoons": [
     {
+      "id": "w6575642811408p",
+      "title": "나노리스트",
+      "author": "민송아",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/dBoFWRvjI6xRab869Blz8T_k9Hs2Ksyks1HZUC7xTyABr2LN7O-2BhDgMmEbOydwJKyQEqpyFRqjTZ-mGLn9Cdzt2COVK4BOBUDYOpKpIhkP-uyHss_uBfQywnXrZgO1dxFhc0MezyKfsfnYABdP7w.webp",
+      "genres": [
+        "fantasy",
+        "thriller",
+        "action",
+        "romance"
+      ],
+      "recommended": 2,
+      "color": "",
+      "episodes": 149,
+      "status": "completed",
+      "days": [
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-11",
+      "tags": [
+        "판타지",
+        "SF",
+        "고어",
+        "로맨스",
+        "스릴러",
+        "코미디",
+        "액션",
+        "이딴 장르를 만드는것도 능력이다"
+      ],
+      "desc": "내게 날아온 달콤살벌한 선물 나노. 안드로이드들의 비밀을 밝혀라!",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
       "id": "w657564281139wo",
       "title": "앞집나리",
       "author": "민송아",
@@ -3242,7 +3279,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281139
+    "lastWebtoonId": 657564281140
   },
   "version": 1,
   "shop": [
