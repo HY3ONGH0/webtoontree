@@ -1501,3 +1501,4 @@ body.home-lock #app { height: 100dvh; box-sizing: border-box; }
 .shop-h { margin: 26px auto 14px; padding: 0 30px; max-width: none; }
 .home-logo .au-mark { display: none; }
 .profile-wrap { max-width: none; }
+.lb-metas .intree { background: rgba(91, 184, 255, .16); color: #8FCBFF; } html[data-theme="light"] .lb-metas .intree { background: #E3F0FF; color: #1F5E9A; }

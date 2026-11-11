@@ -222,7 +222,7 @@
       return { kind: 'genre', href: `#/tree/${g.id}`, name: g.name, sub: w ? w.title : '', tag: '입문작', foot: `웹툰 ${Object.keys(T.nodes).length}편`,
         color: g.color, w, label: `${g.name} 트리로 가기${w ? `, 입문작 ${w.title}` : ''}` };
     }).concat(genres.length ? [
-      { kind: 'lib', href: '#/library/all', name: '도서관', sub: '마음대로 골라 보기', tag: `${libN}권`, foot: '트리 밖 웹툰', color: '#7A4A22', label: `도서관으로 가기, 트리 밖 웹툰 ${libN}권` },
+      { kind: 'lib', href: '#/library/all', name: '도서관', sub: '마음대로 골라 보기', tag: `${libN}권`, foot: '모든 웹툰', color: '#7A4A22', label: `도서관으로 가기, 웹툰 ${libN}권` },
       { kind: 'rank', href: '#/top', name: '이번 주 랭킹', sub: '많이 읽은 웹툰', tag: 'TOP 10', foot: '이번 주 조회수 기준', color: '#E8C66A', label: '이번 주 많이 읽은 웹툰 랭킹 보기' }
     ] : []);
     const N = items.length, COPIES = 5;

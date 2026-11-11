@@ -8,10 +8,12 @@
   const scaleTree = (T0) => Object.assign({}, T0, { nodes: Object.fromEntries(Object.entries(T0.nodes || {}).map(([id, p]) => [id, [p[0] * KX, p[1] * KY]])) });
 
   /** 도서관에 들어가는 웹툰: 어느 장르 트리에도 넣지 않은 웹툰 */
+  // 도서관에는 모든 웹툰이 꽂혀요 (트리에 있는 웹툰도 함께)
+  const inTreeSet = () => new Set(Object.values(WT.data.trees || {}).flatMap((t) => Object.keys((t && t.nodes) || {})));
+  WT.inTree = (id) => inTreeSet().has(id);
   function libraryBooks(gid) {
-    const inTree = new Set(Object.values(WT.data.trees || {}).flatMap((t) => Object.keys((t && t.nodes) || {})));
     return WT.data.webtoons
-      .filter((w) => !inTree.has(w.id) && (gid === 'all' || (w.genres || []).includes(gid)))
+      .filter((w) => (gid === 'all' || (w.genres || []).includes(gid)))
       .sort((a, b) => (WT.recStars(b) - WT.recStars(a)));
   }
   WT.libraryBooks = libraryBooks;
@@ -285,8 +287,8 @@
             </div>
             <div class="lb-hero">
               <div>
-                <h1 class="lb-h1">트리 밖에서, 이제는 내가 고르는 이야기..</h1>
-                <p class="lb-lead">웹툰 트리를 끝까지 따라왔다면 여기서부터는 자유예요. 장르와 세부 장르를 골라 마음에 드는 표지를 넘겨 보고, 끌리는 웹툰을 바로 시작해 보세요.</p>
+                <h1 class="lb-h1">모든 웹툰이 꽂힌 곳, 이제는 내가 고르는 이야기..</h1>
+                <p class="lb-lead">트리에 있는 웹툰도, 트리 밖 웹툰도 모두 여기 있어요. 장르와 세부 장르를 골라 마음에 드는 표지를 넘겨 보고, 끌리는 웹툰을 바로 시작해 보세요.</p>
                 <div class="lb-ctas"><a class="lb-cta" id="lb-go" target="_blank" rel="noopener">1화 보러 가기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
                   <button type="button" class="lb-cta ghost" id="lb-more">기록 · 별점 · 댓글</button></div>
               </div>
@@ -671,7 +673,7 @@
       LB.list.sort(LB.sort === 'star' ? (a, b) => (WT.recStars(WT.toon(b)) - WT.recStars(WT.toon(a))) || WT.toon(a).title.localeCompare(WT.toon(b).title, 'ko') : (a, b) => WT.toon(a).title.localeCompare(WT.toon(b).title, 'ko'));
       LB.idx = Math.min(LB.idx, Math.max(0, LB.list.length - 1));
       stage.innerHTML = LB.list.length ? LB.list.map((id) => `<div class="lb-slot" data-wrap="${id}"></div>`).join('')
-        : `<p class="lb-empty">${ids.length ? '조건에 맞는 웹툰이 없어요.' : '아직 이 장르 도서관에 꽂힌 웹툰이 없어요. 관리자가 트리에 넣지 않은 웹툰을 올리면 여기에 꽂혀요.'}</p>`;
+        : `<p class="lb-empty">${ids.length ? '조건에 맞는 웹툰이 없어요.' : '아직 이 장르 도서관에 꽂힌 웹툰이 없어요.'}</p>`;
       Object.keys(sigs).forEach((k) => delete sigs[k]);
       refreshNodes(true);
       lbShow();
@@ -705,7 +707,7 @@
           <span class="lb-who"><b>${esc(w.author || '작가 미상')}</b><small>작가 · ${esc(w.platform || '웹툰')}</small></span>
           <span class="lb-arrows"><button type="button" data-step="-1" aria-label="이전 책">←</button><button type="button" data-step="1" aria-label="다음 책">→</button></span></div>
         <blockquote class="lb-quote">“<b>${esc(w.title)}</b>” ${esc(w.desc || '줄거리를 준비하고 있어요.')}</blockquote>
-        <div class="lb-metas">${w.pick ? '<span class="pick">관리자 강추</span>' : ''}${state}${rec ? `<span class="star">${'★'.repeat(rec)}</span>` : ''}${total(id) ? `<span>${total(id)}화</span>` : ''}${st === 'done' ? '<span class="done">✓ 다 봤어요</span>' : st === 'reading' ? `<span class="done">${ep(id)}화까지 봤어요</span>` : ''}${gs.map((x) => `<span>${esc(x.name)}</span>`).join('')}</div>`;
+        <div class="lb-metas">${w.pick ? '<span class="pick">관리자 강추</span>' : ''}${state}${rec ? `<span class="star">${'★'.repeat(rec)}</span>` : ''}${total(id) ? `<span>${total(id)}화</span>` : ''}${st === 'done' ? '<span class="done">✓ 다 봤어요</span>' : st === 'reading' ? `<span class="done">${ep(id)}화까지 봤어요</span>` : ''}${gs.map((x) => `<span>${esc(x.name)}</span>`).join('')}${WT.inTree(id) ? '<span class="intree">트리 웹툰</span>' : ''}</div>`;
       const e = ep(id), done = st === 'done';
       go.hidden = !w.url; if (w.url) go.href = w.url;
       go.firstChild.textContent = done ? '다시 보러 가기 ' : e > 0 ? `${e + 1}화 이어 보기 ` : '1화 보러 가기 ';
