@@ -60,9 +60,8 @@
     return `<a href="#/me" class="pill pill-coin press" id="coin-pill" aria-label="내 코인 ${WT.store.state.coins}개, 캐릭터 꾸미기로"><span class="coin" aria-hidden="true">C</span><span id="coin-num">${WT.store.state.coins}</span></a>`;
   };
   WT.popCoin = function (label) {
-    const num = document.getElementById('coin-num');
-    if (num) num.textContent = WT.store.state.coins;
-    const pill = document.getElementById('coin-pill');
+    document.querySelectorAll('[id="coin-num"]').forEach((n) => { n.textContent = WT.store.state.coins; });
+    const pill = Array.from(document.querySelectorAll('[id="coin-pill"]')).find((x) => x.offsetParent) || null;   // 보이는 코인 칸에 띄워요
     if (!pill || !label) return;
     const p = document.createElement('span');
     p.className = 'coin-pop';
@@ -134,8 +133,12 @@
       ['rank', '#/top', '랭킹', '<path d="M7 4h10v5a5 5 0 0 1-10 0z M7 6H4a3 3 0 0 0 3 4 M17 6h3a3 3 0 0 1-3 4 M12 14v4 M8 21h8"/>'],
       ['me', s.profile ? '#/me' : '#/login', '프로필', '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>']
     ];
-    el.innerHTML = `<a href="#/" class="rail-mark" aria-label="${esc(WT.settings().siteName)} 홈"><span class="au-mark" aria-hidden="true"><i></i><i></i><i></i></span></a>
-      <div class="rail-items">${items.map(([k, href, label, d]) => `<a href="${href}" class="rail-item${on === k ? ' on' : ''}" ${on === k ? 'aria-current="page"' : ''} title="${label}">${RAIL_IC(d)}<span>${label}</span></a>`).join('')}</div>`;
+    items.splice(4, 0, ['map', '#/map', '전체 지도', '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z M9 4v14 M15 6v14"/>']);
+    const onD = name === 'map' ? 'map' : on;   // 위쪽 메뉴에서는 전체 지도가 따로 있어요
+    const nick = s.profile ? s.profile.nick : '둘러보기 중';
+    el.innerHTML = `<a href="#/" class="rail-mark" aria-label="${esc(WT.settings().siteName)} 홈"><span class="au-mark" aria-hidden="true"><i></i><i></i><i></i></span><b>${esc(WT.settings().siteName)}</b></a>
+      <div class="rail-items">${items.map(([k, href, label, d]) => `<a href="${href}" class="rail-item k-${k}${on === k ? ' on' : ''}${onD === k ? ' on-d' : ''}" ${on === k ? 'aria-current="page"' : ''} title="${label}">${RAIL_IC(d)}<span class="lb">${label}</span>${k === 'me' ? `<i class="rail-av" aria-hidden="true">${esc((s.profile ? s.profile.nick : '?')[0])}</i><span class="nk">${esc(nick)}</span>` : ''}</a>`).join('')}</div>
+      <div class="rail-tools">${WT.coinPill ? WT.coinPill() : ''}${WT.themeBtn()}</div>`;
   };
 
   WT.topRight = function (opts) {
@@ -211,6 +214,27 @@
     return f;
   };
   let homeIndex = 0;   // 다른 화면에 다녀와도 보던 카드에서 다시 시작
+
+  // ---------- 홈: 슬로건 하나와 시작 버튼 ----------
+  function viewHomeHero() {
+    const st = WT.settings();
+    const s = WT.store.state;
+    const live = WT.liveGenres().map((g) => g.id);
+    const last = WT.lastTree();
+    const gid = live.includes(last) ? last : live[0];
+    const began = Object.keys(s.progress || {}).some((id) => s.progress[id] > 0);   // 한 화라도 기록한 적이 있으면 이어 보기
+    const href = gid ? `#/tree/${gid}` : '#/library/all';
+    app().innerHTML = `<div class="view hm-view">
+        <span class="hm-glow" aria-hidden="true"></span><span class="hm-glow b" aria-hidden="true"></span>
+        <div class="topbar hm-top"><div class="left"><b class="hm-name">${esc(st.siteName)}</b></div>${WT.topRight()}</div>
+        <section class="hm-hero">
+          ${st.notice ? `<p class="hm-notice">${esc(st.notice)}</p>` : ''}
+          <h1 class="hm-h1"><span>볼 건 많고, 시간은 없고?</span><span><b>트리</b>가 골라 줄게요.</span></h1>
+          <p class="hm-sub">수많은 웹툰 중에 진짜 볼 만한 것만. 순서대로 따라가기만 하면 돼요.</p>
+          <a href="${href}" class="hm-cta">${began ? '이어 보기' : '첫 웹툰 고르기'}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </section>
+      </div>`;
+  }
 
   function viewHome() {
     const st = WT.settings();
@@ -676,7 +700,7 @@
 
 
   // ---------- 주소 이동 ----------
-  WT.views = { home: viewHome, login: viewLogin, top: viewTop };
+  WT.views = { home: viewHomeHero, login: viewLogin, top: viewTop };
 
   /** 둘러보기는 이번 방문(탭)에서만: 사이트를 새로 열면 다시 로그인 화면부터 */
   const GUEST_KEY = 'webtoontree.guestVisit';
@@ -741,7 +765,7 @@
     const name = parts[0] || 'home';
     const s = WT.store.state;
     if (!s.profile && !s.guest && name !== 'login') { location.replace('#/login'); return; }
-    const view = WT.views[name] || viewHome;
+    const view = WT.views[name] || viewHomeHero;
     if (WT.leaveView) { WT.leaveView(); WT.leaveView = null; }
     window.scrollTo(0, 0);
     view(parts.slice(1));
