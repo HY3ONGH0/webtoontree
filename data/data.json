@@ -1,6 +1,230 @@
 {
   "webtoons": [
     {
+      "id": "w657564281137n2",
+      "title": "새 웹툰",
+      "author": "",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 0,
+      "color": "",
+      "episodes": 1,
+      "status": "ongoing",
+      "days": [],
+      "autoCount": true,
+      "baseDate": "2026-11-11",
+      "tags": [],
+      "desc": ""
+    },
+    {
+      "id": "w657564281136nf",
+      "title": "중간에서 만나",
+      "author": "조흰 글 윤김 그림",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/BzqpJps_Lq8uPqlJFO37pQyCouVRnZptcdfhi0SCYlzceR0OEannfiVUcH68UR4XkMu7RUMy09nIujH9F2f6zhDHo2xTuCv7Z14ybYAhtUK7jPjDziLiE4ymJVDV4GZx1_93a0GJ9xMgTz_9pyr1UQ.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 2,
+      "color": "",
+      "episodes": 140,
+      "status": "completed",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-11",
+      "tags": [
+        "로맨스",
+        "연상녀",
+        "비밀"
+      ],
+      "desc": "\"내가 재밌게 해줄 수 있는데.\"\n서른 살, 노잼 인생을 살고 있는 여름 앞에\n어느 날 나타난 미스테리 연하남!\n앞뒤 가리지 않고 직진하는 모습이 그저 귀엽다가도,\n어딘가 세하고 어딘가 집착적인데?\n\n대체 너 나한테 원하는 게 뭐니?!\n두근두근 쌍방사기 로맨스 코미디!"
+    },
+    {
+      "id": "w657564281135pr",
+      "title": "헤어지면 죽음",
+      "author": "봄소희 글 KYMA 그림",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/vjOnLGoAM3ooaOGFe_UmgTJutwM_sRXm1uZmxbp1bAX90UiNHeo3YgnXzJX4zskyd1lctTfva4qbt4b3SBK-jhIUwaALQX1BiDFVnEValua0ND4I1BShih5Sv_rawJidveFJUHDjZP-WxTer7jLuwQ.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 1,
+      "color": "",
+      "episodes": 96,
+      "status": "completed",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-11",
+      "tags": [
+        "로맨스",
+        "반전"
+      ],
+      "desc": "완벽한 인플루언서의 삶. 좋아하는 여자와의 썸.\n고백만이 남았는데 황당한 테러 사건에 휘말렸다?!\n\"집착이 아니라 진짜로 우리..! 헤어지면 죽어!!\""
+    },
+    {
+      "id": "w657564281134ws",
+      "title": "짝사랑의 마침표",
+      "author": "숭어",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/hGmbMjj7CDuXQSDaomBbXnGw0CDp20rS39EZh8DvWiWSKa6X7JthjsYbEiCb4HQFghIHmrL0C7mVBCxT2EHemRgiop5GKteOyUk3GBXuMnctKwnxdFwwtTNc3691X1fdvx6cVZmfJT_UC9Ax5usd2g.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 1,
+      "color": "",
+      "episodes": 91,
+      "status": "completed",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-11",
+      "tags": [
+        "로맨스",
+        "정석"
+      ],
+      "desc": "고백 성공률 0%의 짝사랑마스터 해리.\n굴욕적인 19번째 실연장면을 우연히 예찬에게 들키고 만다.\n다시는 아무도 안 좋아하겠다고 다짐했지만, 또 짝사랑을 시작해버린 해리는\n20번째 실연을 막기 위해 예찬의 도움을 받기로 하는데...\n과연 이번 사랑은 성공할 수 있을까?"
+    },
+    {
+      "id": "w6575642811339m",
+      "title": "터닝포인트",
+      "author": "숭어",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/9kNZ-o5VGI9-zMxAyJUyoNQKrC_lQbh04TXXxdl3eI6op5-ayGi7mh53GFbWa9ciX93AoqY3Ml2YD0q2tUCrTvzDXRhOAQqmHhR1YkM7WnnlGrfHZsxeVnabE-t-Sb2INcxfrkCB6IrZJIcZOsP5tg.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 0,
+      "color": "",
+      "episodes": 59,
+      "status": "ongoing",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-11",
+      "tags": [
+        "정석",
+        "로맨스"
+      ],
+      "desc": "혼밥, 혼영, 혼술 모든 것이 혼자가 편했던 백사랑.\n손해를 보면서까지 타인과 어울리길 원하는 유평화.\n상반되는 삶을 살아온 사랑과 평화는 서로를 만나 새로운 삶의 방식을 알게 된다.\n생각보다 어른스럽고, 생각보다 유치한 어딘가 공감가는 현실 로맨스"
+    },
+    {
+      "id": "w657564281132p5",
+      "title": "청춘계시록",
+      "author": "한서",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/Rt4zMag5PDgbvfwOlW33Wfj1yja63ux9lGU5S_dJ-ALN1qzX6ScWqGXSJ6yXYzjX0_b5iLhVT3cxpQOZ5Xo-mnXHTNl6P4YkZOphCiJ03COxCB5h1y-CKDEBo7Y9k3jdfzgpvVDaurx_imQppXokWA.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 1,
+      "color": "",
+      "episodes": 136,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-11",
+      "tags": [
+        "로맨스",
+        "사이비"
+      ],
+      "desc": "사이비 교주 아들과의 아슬아슬하고 위험천만한 동거가 시작됐다! 철석같이 믿었던 외삼촌에게 사기를 당한 청아네. 부모님은 행방불명된 외삼촌을 쫓는다며 사라지고, 청아는 갑작스레 빈 집에 혼자 살게 된다. 그런데 사기당한 가족이 청아네만이 아니었으니! 자치구에서 가장 큰 사이비, '천년재림교'도 외삼촌에게 제대로 속았다. 그리고 청아네 집에 찾아온 교주의 아들 '요한'. 무작정 짐을 끌고 쳐들어오는데...! 신이시여, 이 동거 괜찮을까요?"
+    },
+    {
+      "id": "w657564281131uc",
+      "title": "순정말고 순종",
+      "author": "슈안",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/fyJBEcSIFhYZHxkkoZNh-ImX5t2XiiUpmV8t1clFwImKp9sjplY9FrL_oeulvaoPCAfOW3RL2LUKa4h7Vywx9K0BWqp9rT8Q5VUEX6p1i53pOtTKncxIcZpMlr01Uab-bUpcHklmg_mwbyqt8RNXrA.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 0,
+      "color": "",
+      "episodes": 151,
+      "status": "completed",
+      "days": [
+        "mon"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-11",
+      "tags": [
+        "러브코미디",
+        "거짓말같이 남자친구 등장"
+      ],
+      "desc": "하루에 무려 쓰리잡.\n\n스물 다섯 지언의 일과 끝에 남는 건\n갑질에 시달린 스트레스와\n돼지우리같은 집구석 뿐이다.\n\n그러다 어느날 얻게 된 인형 한 개.\n이것만 있으면 대한민국의 탑 배우\n남도윤을 가정부로 부려먹을 수있다...?!"
+    },
+    {
+      "id": "w657564281130jz",
+      "title": "인과관계",
+      "author": "강환영",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/79m6wQAekcmYMviDBmTgicB3vQ_VRq2mhjHGcw73BgbPmbD6ixQ2bwLQbGfl2ODyln-VjlKlNarhv7hVncbsvomOeggYXjChgB8Phrlm0L9nX6DreYuvWKxArC0azNn8tMQLZ1phwnswRU6bWOXaZQ.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 0,
+      "color": "",
+      "episodes": 133,
+      "status": "completed",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-11",
+      "tags": [
+        "로맨스",
+        "학원",
+        "성장"
+      ],
+      "desc": "스킨십 공포증이 있는 유라의 곁엔 오로지\n소꿉친구인 해원이뿐이었지만 고인우와 권미인\n그리고 다양한 사람들과 만나게 되면서\n새로운 감정을 알아가고 진정한 인간관계를 쌓아간다."
+    },
+    {
+      "id": "w6575642811296e",
+      "title": "오로지 너를 이기고 싶어",
+      "author": "아마도지 글 사삭 그림",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/7AVlcxTSkkqDR0RM7j_oP84_XNzQ-C8CSVBVknBEDvMD4wbDK4qKGsLzQeqFkp-oQ9vE1zrUuwksZ_I38B42hwHsj9rgZjSLK7FqiOEobZdwGG-RK11VgvtMbog0cJYdsjaVRkdRNGr_WjbEseU_xA.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 2,
+      "color": "",
+      "episodes": 236,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-11",
+      "tags": [
+        "로맨스",
+        "러브코미디",
+        "일상",
+        "학원"
+      ],
+      "desc": "태어나서 단 한번도 패배해본 적 없는 남주 '이기고'\n그런 이기고를 처음으로 패배하게 만든 여주 '오로지'\n과연 이 '내기'의 승자는 누가 될 것인가?"
+    },
+    {
       "id": "w657564281128y7",
       "title": "백투더 찬비",
       "author": "장사휘",
@@ -12,7 +236,7 @@
       ],
       "recommended": 0,
       "color": "",
-      "episodes": 1,
+      "episodes": 102,
       "status": "completed",
       "days": [
         "thu"
@@ -2985,7 +3209,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 6575642811287
+    "lastWebtoonId": 657564281137
   },
   "version": 1,
   "shop": [
