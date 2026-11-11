@@ -1,6 +1,31 @@
 {
   "webtoons": [
     {
+      "id": "w657564281128y7",
+      "title": "백투더 찬비",
+      "author": "장사휘",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "https://i.namu.wiki/i/k8fawt-eDG76H-zgSdK_sO3WpawWNOvLIXAp8AtNWhM258GD55z_movCvBWC3HExdijnULEwAvFjzw9oQUk0Q6dBx9lid9DLyJzwYSgy3HikZDw0G2wCE2Hx7JXSoLEIwPnVwRrY28Lx1cc-Wn-LRg.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 0,
+      "color": "",
+      "episodes": 1,
+      "status": "completed",
+      "days": [
+        "thu"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-11",
+      "tags": [
+        "학교",
+        "로맨스"
+      ],
+      "desc": "쌍방 사랑의 행운을 만끽하는 18세 강견오. 그 상대는 같은 반의 초미녀 백찬비.\n항상 먼저 직진해오는 찬비와의 썸을 즐기던 것도 잠시, 찬비는 사고로\n최근 1년의 기억을 잃게 되고 견오를 좋아했다는 기억까지 잃게 된다!\n순식간에 짝사랑이 돼버린 견오. 과연 예전의 쌍방 사랑의 시기로 돌아갈 수 있을까?\n…근데 우리 서로 좋아한 거 확실하지?"
+    },
+    {
       "id": "w657564281127jw",
       "title": "괴력 난신",
       "author": "한중월야",
@@ -1843,7 +1868,7 @@
         "걸크러시"
       ],
       "desc": "논란과 사고로 인해서 연예계 은퇴를 선언한 드림스윗 두나, 그 두나가 아랫집에 산다.",
-      "color": "#8d1e1a",
+      "color": "#270303",
       "pick": true
     }
   ],
@@ -2960,7 +2985,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281127
+    "lastWebtoonId": 6575642811287
   },
   "version": 1,
   "shop": [
