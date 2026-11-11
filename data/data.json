@@ -1,24 +1,6 @@
 {
   "webtoons": [
     {
-      "id": "w65756428114097v",
-      "title": "",
-      "author": "",
-      "platform": "네이버웹툰",
-      "url": "",
-      "cover": "",
-      "genres": [],
-      "recommended": 0,
-      "color": "",
-      "episodes": 1,
-      "status": "ongoing",
-      "days": [],
-      "autoCount": true,
-      "baseDate": "2026-11-11",
-      "tags": [],
-      "desc": ""
-    },
-    {
       "id": "w6575642811408p",
       "title": "나노리스트",
       "author": "민송아",
@@ -3626,7 +3608,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141007
+    "lastWebtoonId": 657564281141008
   },
   "version": 1,
   "shop": [
@@ -3721,17 +3703,6 @@
       "body": "#C9B8FF",
       "feet": "#8E74E6",
       "acc": "none"
-    },
-    {
-      "id": "itemmwbujmhb",
-      "kind": "acc",
-      "name": "새 장식",
-      "desc": "",
-      "price": 100,
-      "body": "#CDEBFF",
-      "feet": "#7FB8F0",
-      "acc": "crown",
-      "isNew": true
     }
   ],
   "hotToday": []
