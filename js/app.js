@@ -760,7 +760,26 @@
     document.addEventListener('keydown', finish);
   }
 
+  // 화면이 바뀔 때: 앞 화면은 살짝 물러나고 새 화면이 아래에서 떠올라요 (같은 종류 화면끼리는 가볍게 겹쳐 바뀌어요)
+  let lastRoute = null, routeVT = null;
   function route() {
+    const name = (location.hash || '#/').replace(/^#\/?/, '').split('/').filter(Boolean)[0] || 'home';
+    const calm = document.body.classList.contains('no-anim') || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const first = lastRoute === null;
+    const same = lastRoute === name;
+    lastRoute = name;
+    if (first || calm || !document.startViewTransition || document.hidden) { routeNow(); return; }
+    const html = document.documentElement;
+    if (routeVT) { try { routeVT.skipTransition(); } catch (e) { /* 이미 끝남 */ } }
+    html.classList.remove('vt-page', 'vt-same');
+    html.classList.add(same ? 'vt-same' : 'vt-page');
+    let vt;
+    try { vt = document.startViewTransition(() => routeNow()); } catch (e) { html.classList.remove('vt-page', 'vt-same'); routeNow(); return; }
+    routeVT = vt;
+    const done = () => { if (routeVT === vt) { routeVT = null; html.classList.remove('vt-page', 'vt-same'); } };
+    vt.finished.then(done, done);
+  }
+  function routeNow() {
     const parts = (location.hash || '#/').replace(/^#\/?/, '').split('/').filter(Boolean);
     const name = parts[0] || 'home';
     const s = WT.store.state;

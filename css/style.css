@@ -1713,3 +1713,26 @@ html[data-theme="light"] .hm-cta { color: #1F2128; background: rgba(255, 255, 25
 }
 .hm-top { position: absolute; top: 0; left: 0; right: 0; z-index: 3; }
 .hm-name { font-family: var(--display); font-weight: 900; font-size: 20px; color: var(--text); }
+
+/* ================= 화면 전환 애니메이션 (과하지 않게) ================= */
+.app-rail { view-transition-name: wt-nav; }
+html.vt-page .view, html.vt-same .view { animation: none; }   /* 전환 효과와 겹치지 않게 */
+html.vt-page::view-transition-old(root) { animation: vtOut .16s ease-in both; }
+html.vt-page::view-transition-new(root) { animation: vtIn .34s cubic-bezier(.2, .8, .2, 1) .06s both; }
+html.vt-same::view-transition-old(root) { animation: vtFadeOut .2s ease both; }
+html.vt-same::view-transition-new(root) { animation: vtFadeIn .2s ease both; }
+html.vt-page::view-transition-group(wt-nav), html.vt-same::view-transition-group(wt-nav) { animation-duration: .25s; }
+html.vt-page::view-transition-old(wt-nav), html.vt-page::view-transition-new(wt-nav),
+html.vt-same::view-transition-old(wt-nav), html.vt-same::view-transition-new(wt-nav) { animation-duration: .25s; }
+@keyframes vtOut { to { opacity: 0; transform: scale(.992); } }
+@keyframes vtIn { from { opacity: 0; transform: translateY(10px); } }
+@keyframes vtFadeOut { to { opacity: 0; } }
+@keyframes vtFadeIn { from { opacity: 0; } }
+/* 메뉴 · 버튼의 작은 반응 */
+.rail-item { transition: background .2s ease, color .2s ease, box-shadow .25s ease, transform .15s ease; }
+.rail-item:active { transform: scale(.96); }
+.lb-tab, .lb-subs button, .lb-sort button, .mp-chips button, .band a { transition: color .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .15s ease; }
+.lb-subs button:active, .mp-chips button:active, .band a:active, .lb-cta:active, .hm-cta:active { transform: scale(.97); }
+.lb-info > * { animation: lbInfoIn .3s ease both; }
+@keyframes lbInfoIn { from { opacity: 0; transform: translateY(4px); } }
+@media (prefers-reduced-motion: reduce) { .lb-info > * { animation: none; } }
