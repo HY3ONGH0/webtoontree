@@ -1874,3 +1874,5 @@ html.vt-page::view-transition-old(wt-nav), html.vt-same::view-transition-old(wt-
 .lb-track { transition: transform .5s cubic-bezier(.25, .8, .25, 1); }
 .lb-book { transition: width .5s cubic-bezier(.25, .8, .25, 1); }
 .lb-slot { transition: none; }
+/* 전체 지도(장르 카드 화면): 코인·모드·이름은 위쪽 메뉴에 있으니 판 안에서는 숨겨요 */
+@media (min-width: 861px) { body.has-rail .home-top > .right, body.has-rail .home-top > :last-child:not(:first-child) { display: none; } }

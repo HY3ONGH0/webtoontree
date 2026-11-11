@@ -125,7 +125,7 @@
     const last = WT.lastTree();
     const treeId = live.includes(last) ? last : live[0];
     const s = WT.store.state;
-    const on = { home: 'home', tree: 'tree', map: 'tree', library: 'library', top: 'rank', ranking: 'rank', me: 'me', shop: 'me', login: 'me' }[name] || 'home';
+    const on = { home: 'home', tree: 'tree', map: 'tree', worlds: 'tree', library: 'library', top: 'rank', ranking: 'rank', me: 'me', shop: 'me', login: 'me' }[name] || 'home';
     const items = [
       ['home', '#/', '홈', '<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>'],
       ['tree', treeId ? `#/tree/${treeId}` : '#/map', '트리', '<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.6 7.9l3.2 7.8M16.4 7.9l-3.2 7.8"/>'],
@@ -133,8 +133,8 @@
       ['rank', '#/top', '랭킹', '<path d="M7 4h10v5a5 5 0 0 1-10 0z M7 6H4a3 3 0 0 0 3 4 M17 6h3a3 3 0 0 1-3 4 M12 14v4 M8 21h8"/>'],
       ['me', s.profile ? '#/me' : '#/login', '프로필', '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>']
     ];
-    items.splice(4, 0, ['map', '#/map', '전체 지도', '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z M9 4v14 M15 6v14"/>']);
-    const onD = name === 'map' ? 'map' : on;   // 위쪽 메뉴에서는 전체 지도가 따로 있어요
+    items.splice(4, 0, ['map', '#/worlds', '전체 지도', '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z M9 4v14 M15 6v14"/>']);
+    const onD = (name === 'map' || name === 'worlds') ? 'map' : on;   // 위쪽 메뉴에서는 전체 지도가 따로 있어요
     const nick = s.profile ? s.profile.nick : '둘러보기 중';
     el.innerHTML = `<a href="#/" class="rail-mark" aria-label="${esc(WT.settings().siteName)} 홈"><span class="au-mark" aria-hidden="true"><i></i><i></i><i></i></span><b>${esc(WT.settings().siteName)}</b></a>
       <div class="rail-items">${items.map(([k, href, label, d]) => `<a href="${href}" class="rail-item k-${k}${on === k ? ' on' : ''}${onD === k ? ' on-d' : ''}" ${on === k ? 'aria-current="page"' : ''} title="${label}">${RAIL_IC(d)}<span class="lb">${label}</span>${k === 'me' ? `<i class="rail-av" aria-hidden="true">${esc((s.profile ? s.profile.nick : '?')[0])}</i><span class="nk">${esc(nick)}</span>` : ''}</a>`).join('')}</div>
@@ -728,7 +728,7 @@
 
 
   // ---------- 주소 이동 ----------
-  WT.views = { home: viewHomeHero, login: viewLogin, top: viewTop };
+  WT.views = { home: viewHomeHero, login: viewLogin, top: viewTop, worlds: viewHome };
 
   /** 둘러보기는 이번 방문(탭)에서만: 사이트를 새로 열면 다시 로그인 화면부터 */
   const GUEST_KEY = 'webtoontree.guestVisit';
