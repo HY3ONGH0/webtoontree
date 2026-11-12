@@ -465,7 +465,7 @@
       n += part.length; ui.refreshing = `${n} / ${list.length}`; render();
     }
     ui.refreshing = null; saveDraft(); render();
-    toast(`${changed}개가 바뀌었어요${fail ? ` · ${fail}개는 가져오지 못했어요` : ''}. 확인한 뒤 저장해 주세요`);
+    toast(`${changed}개가 바뀌었어요 · 작가 정보 ${Object.keys(D.authorInfo || {}).length}명${fail ? ` · ${fail}개는 가져오지 못했어요` : ''}. 확인한 뒤 저장해 주세요`);
   }
 
   // ---------- 장르 ----------

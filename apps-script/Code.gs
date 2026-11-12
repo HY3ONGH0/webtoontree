@@ -351,15 +351,28 @@ var ACTIONS = {
   // 작가 소식: 네이버 웹툰 작가 홈의 최근 게시글 목록 (누구나, 1시간 동안 기억)
   // 글 전체를 옮겨 오지 않고 제목 · 짧은 미리보기 · 날짜 · 원문 링크만 보여 줘요
   authorPosts: function (b) {
+    var name = String(b.name || '').trim();
     var url = String(b.url || '').trim();
-    if (!/^https:\/\/comic\.naver\.com\/community\//.test(url)) return { posts: [], reason: 'not-naver' };
+    var artist = null;
+    // 작가 홈 주소 · 프로필 사진을 모르면, 그 작가의 네이버 웹툰 작품 정보에서 찾아요
+    if (name) {
+      (b.sources || []).slice(0, 3).forEach(function (src) {
+        if (artist || !/comic\.naver\.com/.test(String(src))) return;
+        try {
+          var inf = infoFor_(String(src), false).info;
+          (inf.artists || []).forEach(function (a) { if (!artist && String(a.name).trim().toLowerCase() === name.toLowerCase()) artist = a; });
+        } catch (e) { /* 다음 작품 */ }
+      });
+    }
+    if (artist && artist.url && !/^https:\/\/comic\.naver\.com\/community\//.test(url)) url = artist.url;
+    var out = { posts: [], url: url, artist: artist ? { img: artist.img || '', url: artist.url || '', bio: artist.bio || '' } : null };
+    if (!/^https:\/\/comic\.naver\.com\/community\//.test(url)) { out.reason = 'no-home'; return out; }
     var key = 'posts:' + sha256_(url).slice(0, 32);
     var memo = cacheGet_(key);
-    if (memo) return memo;
-    var r = { posts: [], url: url };
-    try { r.posts = naverPosts_(url); } catch (e) { r.reason = String(e.message || e).slice(0, 120); }
-    cachePut_(key, r, r.posts.length ? 3600 : 600);
-    return r;
+    if (memo) { out.posts = memo.posts; out.reason = memo.reason; return out; }
+    try { out.posts = naverPosts_(url); } catch (e) { out.reason = String(e.message || e).slice(0, 120); }
+    cachePut_(key, { posts: out.posts, reason: out.reason }, out.posts.length ? 3600 : 600);
+    return out;
   },
 
   ranking: function (b) {

@@ -2079,3 +2079,20 @@ html[data-theme="light"] .ap-view { --ap-accent: #E8A13A; }
 .ap-pall { display: block; padding: 14px; text-align: center; font-size: 13.5px; font-weight: 800; text-decoration: none; }
 .ap-post { cursor: pointer; }
 .ap-post:active { transform: scale(.995); }
+/* 작가 프로필: 오른쪽은 비워 두고, 실제 프로필 사진(없으면 단색) */
+.ap-empty-r { min-height: 1px; }
+.ap-back2 { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--card-line); background: var(--card-bg); color: var(--text); font-size: 18px; cursor: pointer; }
+.ap-back2:hover { border-color: var(--ap-accent); }
+.ap-photo { position: relative; display: block; width: 112px; height: 112px; margin-top: 70px; border-radius: 50%; overflow: hidden; background: #DADCE3; box-shadow: 0 16px 34px -14px rgba(0, 0, 0, .45); }
+html:not([data-theme="light"]) .ap-photo { background: #2A3150; }
+.ap-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ap-photo.plain { background: hsl(var(--h) 38% 62%); }
+html:not([data-theme="light"]) .ap-photo.plain { background: hsl(var(--h) 30% 38%); }
+.ap-photo + .ap-kind { margin-top: 22px; }
+.ap-hero { min-height: 0; }
+.ap-hl { padding-top: 24px; padding-bottom: 34px; }
+.ap-band { gap: 20px; }
+@media (max-width: 760px) { .ap-photo { width: 88px; height: 88px; margin-top: 64px; } .ap-empty-r { display: none; } }
+.ap-pav { background: #2A3150; color: transparent; }
+.ap-pav.plain { background: hsl(var(--h) 30% 45%); }
+.ap-view > * { flex-shrink: 0; }

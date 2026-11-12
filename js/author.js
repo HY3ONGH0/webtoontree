@@ -62,7 +62,8 @@
     const related = [...all.values()].filter((o) => { const k = key(o.name); return k !== k0 && k0.length >= 2 && k.length >= 2 && (k.includes(k0) || k0.includes(k)); });
     const studio = /studio|스튜디오/i.test(me.name);
     const h = hue(me.name);
-    const info = (WT.data.authorInfo || {})[key(me.name)] || {};
+    const info = Object.assign({}, (WT.data.authorInfo || {})[key(me.name)] || {});
+    const naverSrc = works.map((x) => x.w.source).filter((u) => /comic\.naver\.com/.test(u || ''));
     // 네이버 웹툰의 다른 작품 중 웹툰트리에 없는 것
     const have = new Set((WT.data.webtoons || []).map((w) => (w.source || '') + '|' + key(w.title)));
     const tkey = (t) => key(t).replace(/[^0-9a-z가-힣]/g, '');   // 느낌표 · 띄어쓰기 차이는 같은 작품으로 봐요
@@ -72,24 +73,23 @@
     app.innerHTML = `<div class="view ap-view">
       <section class="ap-hero" style="--h:${h}">
         <div class="ap-hl">
-          <div class="ap-mark-row"><button type="button" class="ap-mark" id="ap-back" aria-label="뒤로">${esc(me.name[0])}</button></div>
+          <div class="ap-mark-row"><button type="button" class="ap-back2" id="ap-back" aria-label="뒤로">←</button></div>
+          <span class="ap-photo${info.img ? '' : ' plain'}" style="--h:${h}">${info.img ? `<img src="${esc(info.img)}" alt="${esc(me.name)} 프로필" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('plain'); this.remove()">` : ''}</span>
           <span class="ap-kind">${studio ? 'STUDIO' : 'ARTIST'}${counts ? ` · ${counts}` : ''}</span>
           <h1 class="ap-name">${esc(me.name)}</h1>
           <p class="ap-lead">${info.bio ? esc(info.bio) : `${esc(me.name)}${studio ? '의 작품' : ' 작가의 웹툰'} ${works.length}편이 웹툰트리에 있어요.${plats.length ? ` ${esc(plats.join(', '))}에서 볼 수 있어요.` : ''}`}</p>
           ${info.url ? `<a class="ap-more" href="${esc(info.url)}" target="_blank" rel="noopener">작가 페이지 보기 <i aria-hidden="true">→</i></a>` : ''}
-          <div class="ap-now"><span class="ap-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="ap-dash" aria-hidden="true"></span><a id="ap-now" href="#"></a></div>
           ${mates.size ? `<p class="ap-mates"><span>함께 만든</span>${[...mates.values()].map((n) => `<a class="ap-chip" href="${WT.authorHref(n)}">${esc(n)}</a>`).join('')}</p>` : ''}
         </div>
-        <a class="ap-figure" id="ap-fig" href="#" aria-label="작품 보기"></a>
+        <div class="ap-empty-r" aria-hidden="true"></div>
         <div class="ap-band">
           <button type="button" class="ap-down" id="ap-down" aria-label="작품 목록으로">↓</button>
-          <span class="ap-nav"><button type="button" id="ap-prev" aria-label="이전 작품">‹</button><button type="button" id="ap-next" aria-label="다음 작품">›</button></span>
-          <span class="ap-count" id="ap-count"></span>
+          <span class="ap-count">웹툰 ${works.length}편</span>
         </div>
       </section>
       <nav class="ap-tabs" role="tablist">
         <button type="button" role="tab" aria-selected="true" data-tab="works">작품 <em>${works.length}</em></button>
-        ${/comic\.naver\.com\/community\//.test(info.url || '') ? `<button type="button" role="tab" aria-selected="false" data-tab="posts">작가 소식</button>` : ''}
+        ${naverSrc.length || /comic\.naver\.com\/community\//.test(info.url || '') ? `<button type="button" role="tab" aria-selected="false" data-tab="posts">작가 소식</button>` : ''}
         ${outside.length ? `<button type="button" role="tab" aria-selected="false" data-tab="out">다른 작품 <em>${outside.length}</em></button>` : ''}
         ${related.length ? `<button type="button" role="tab" aria-selected="false" data-tab="rel">${studio ? '소속 작가' : '스튜디오 · 관련'} <em>${related.reduce((n, o) => n + o.works.length, 0)}</em></button>` : ''}
       </nav>
@@ -103,47 +103,51 @@
           <div class="ap-grid">${o.works.map(card).join('')}</div></div>`).join('')}</section>` : ''}
     </div>`;
     document.getElementById('ap-back').addEventListener('click', () => { if (history.length > 1) history.back(); else location.hash = '#/library/all'; });
-    // 오른쪽 큰 표지: ‹ › 로 작품을 넘겨 봐요
-    let cur = 0;
-    const fig = document.getElementById('ap-fig'), now = document.getElementById('ap-now'), cnt = document.getElementById('ap-count');
-    const show = (i, dir) => {
-      cur = (i + works.length) % works.length;
-      const w = works[cur].w, roles = (works[cur].roles || []).map((r) => ROLE[r]).filter(Boolean).join(' · ');
-      fig.href = libHref(w);
-      fig.setAttribute('aria-label', `${w.title} 보기`);
-      fig.style.setProperty('--c', w.color || ((WT.genre((w.genres || [])[0]) || {}).color) || '#55607F');
-      fig.innerHTML = `<span class="ap-fcv${dir ? (dir > 0 ? ' in-r' : ' in-l') : ''}"><span class="ap-fini">${esc(w.title)}</span>${w.cover ? `<img src="${esc(w.cover)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}${w.pick ? '<span class="ap-pick">관리자 강추</span>' : ''}</span>`;
-      now.href = libHref(w);
-      now.innerHTML = `<b>${esc(w.title)}</b>${roles ? `<span>${roles}</span>` : ''}`;
-      cnt.textContent = `${cur + 1} / ${works.length}`;
-    };
-    show(0);
+
     // 작가 소식: 네이버 웹툰 작가 홈의 최근 글 (제목 · 미리보기 · 원문 링크)
-    let postsLoaded = false;
+    let postsLoaded = false, fetched = null;
+    const home = () => fetched && fetched.url ? fetched.url : info.url || '';
+    const linkOut = () => (home() ? ` <a href="${esc(home())}" target="_blank" rel="noopener">네이버 웹툰 작가 홈에서 보기 ↗</a>` : '');
+    // 프로필 사진 · 작가 홈 · 소식을 서버에서 한 번에 가져와요 (네이버 작품이 있는 작가만)
+    const fetchAuthor = () => {
+      if (fetched || !WT.api || !WT.api.on() || !(naverSrc.length || info.url)) return Promise.resolve(fetched);
+      fetched = WT.api.call('authorPosts', { name: me.name, url: info.url || '', sources: naverSrc }).then((r) => { fetched = r; return r; }, () => { fetched = { posts: [], error: true }; return fetched; });
+      return fetched;
+    };
+    const applyPhoto = (r) => {
+      const a = r && r.artist;
+      if (!a) return;
+      const ph = app.querySelector('.ap-photo');
+      if (a.img && ph && !ph.querySelector('img')) { ph.classList.remove('plain'); ph.innerHTML = `<img src="${esc(a.img)}" alt="${esc(me.name)} 프로필" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('plain'); this.remove()">`; }
+      const lead = app.querySelector('.ap-lead');
+      if (a.bio && lead && !info.bio) lead.textContent = a.bio;
+      if (a.url && !app.querySelector('.ap-more')) { const l = app.querySelector('.ap-lead'); if (l) l.insertAdjacentHTML('afterend', `<a class="ap-more" href="${esc(a.url)}" target="_blank" rel="noopener">작가 페이지 보기 <i aria-hidden="true">→</i></a>`); }
+    };
+    if (!info.img || !info.url) Promise.resolve(fetchAuthor()).then(applyPhoto);
     async function loadPosts() {
       if (postsLoaded) return;
       postsLoaded = true;
       const box = document.getElementById('ap-posts');
-      if (!WT.api || !WT.api.on()) { box.innerHTML = `<p class="ap-note">서버가 연결되어 있지 않아 소식을 불러오지 못했어요. <a href="${esc(info.url)}" target="_blank" rel="noopener">네이버 웹툰 작가 홈에서 보기 ↗</a></p>`; return; }
-      try {
-        const r = await WT.api.call('authorPosts', { url: info.url });
-        const ps = r.posts || [];
-        box.innerHTML = ps.length ? ps.map((x) => `<a class="ap-post" href="${esc(x.url)}" target="_blank" rel="noopener">
-            <span class="ap-pav">${info.img ? `<img src="${esc(info.img)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}${esc(me.name[0])}</span>
+      if (!WT.api || !WT.api.on()) { box.innerHTML = `<p class="ap-note">서버가 연결되어 있지 않아 소식을 불러오지 못했어요.${linkOut()}</p>`; return; }
+      const r = await fetchAuthor();
+      applyPhoto(r);
+      const ps = (r && r.posts) || [];
+      const img = (r && r.artist && r.artist.img) || info.img || '';
+      if (ps.length) {
+        box.innerHTML = ps.map((x) => `<a class="ap-post" href="${esc(x.url)}" target="_blank" rel="noopener">
+            <span class="ap-pav${img ? '' : ' plain'}" style="--h:${h}">${img ? `<img src="${esc(img)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}</span>
             <span class="ap-pbody"><span class="ap-phead"><b>${esc(me.name)}</b>${x.date ? `<small>${esc(x.date)}</small>` : ''}</span>
               ${x.title ? `<strong>${esc(x.title)}</strong>` : ''}${x.excerpt ? `<p>${esc(x.excerpt)}</p>` : ''}
               ${x.img ? `<span class="ap-pimg"><img src="${esc(x.img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></span>` : ''}
               <span class="ap-pfoot">${x.likes ? `<i>♡ ${x.likes}</i>` : ''}${x.comments ? `<i>💬 ${x.comments}</i>` : ''}<em>원문 보기 ↗</em></span></span></a>`).join('')
-          + `<a class="ap-pall" href="${esc(info.url)}" target="_blank" rel="noopener">작가 홈에서 모든 글 보기 ↗</a>`
-          : `<p class="ap-note">아직 가져온 소식이 없어요. <a href="${esc(info.url)}" target="_blank" rel="noopener">네이버 웹툰 작가 홈에서 보기 ↗</a></p>`;
-      } catch (e) {
-        box.innerHTML = `<p class="ap-note">소식을 불러오지 못했어요. <a href="${esc(info.url)}" target="_blank" rel="noopener">네이버 웹툰 작가 홈에서 보기 ↗</a></p>`;
+          + (home() ? `<a class="ap-pall" href="${esc(home())}" target="_blank" rel="noopener">작가 홈에서 모든 글 보기 ↗</a>` : '');
+      } else {
+        const why = !r || r.error ? '소식을 불러오지 못했어요. 서버 코드가 예전 버전일 수 있어요.' : r.reason === 'no-home' ? '이 작가의 네이버 웹툰 작가 홈을 찾지 못했어요.' : '아직 가져온 소식이 없어요.';
+        box.innerHTML = `<p class="ap-note">${why}${linkOut()}</p>`;
       }
     }
-    document.getElementById('ap-prev').addEventListener('click', () => show(cur - 1, -1));
-    document.getElementById('ap-next').addEventListener('click', () => show(cur + 1, 1));
     document.getElementById('ap-down').addEventListener('click', () => { const t = app.querySelector('.ap-tabs'); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
-    if (works.length < 2) app.querySelector('.ap-nav').hidden = true;
+
     app.querySelectorAll('.ap-tabs button').forEach((b) => b.addEventListener('click', () => {
       app.querySelectorAll('.ap-tabs button').forEach((x) => x.setAttribute('aria-selected', x === b));
       app.querySelectorAll('.ap-pane').forEach((p) => { p.hidden = p.dataset.pane !== b.dataset.tab; });
