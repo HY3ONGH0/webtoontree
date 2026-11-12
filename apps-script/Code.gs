@@ -859,6 +859,43 @@ function naverPosts_(url) {
   return found.slice(0, 20);
 }
 
+// ---------- 진단: 편집기에서 debugNaver를 골라 [실행]하고, 실행 로그를 복사해 Claude에게 보내 주세요 ----------
+// (비밀번호 · 토큰은 로그에 나오지 않아요)
+function debugNaver() {
+  var titleId = '670150';   // 나노리스트 (다른 작품으로 보려면 이 숫자를 바꿔요)
+  var UA = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36', 'Accept-Language': 'ko-KR,ko;q=0.9' };
+  var peek = function (label, url) {
+    try {
+      var r = UrlFetchApp.fetch(url, { muteHttpExceptions: true, followRedirects: true, headers: UA });
+      var t = r.getContentText('UTF-8');
+      console.log('▶ ' + label + '\n' + url + '\n코드 ' + r.getResponseCode() + ' · 길이 ' + t.length + '\n' + t.slice(0, 1500).replace(/\s+/g, ' '));
+      return t;
+    } catch (e) { console.log('▶ ' + label + ' 실패: ' + e); return ''; }
+  };
+  var info = peek('작품 정보', 'https://comic.naver.com/api/article/list/info?titleId=' + titleId);
+  var arts = [];
+  try { arts = JSON.parse(info).communityArtists || []; } catch (e) { /* */ }
+  console.log('▶ communityArtists 원본\n' + JSON.stringify(arts).slice(0, 2000));
+  arts.slice(0, 2).forEach(function (a) {
+    var ids = [a.communityId, a.artistId, a.id, a.userId, a.writerId].filter(Boolean);
+    console.log('▶ ' + a.name + ' 의 번호 후보: ' + JSON.stringify(ids));
+    ids.slice(0, 2).forEach(function (id) {
+      var html = peek(a.name + ' 작가 홈', 'https://comic.naver.com/community/u/' + id);
+      if (html) {
+        var nd = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
+        console.log('__NEXT_DATA__ ' + (nd ? '있음 (' + nd[1].length + '자): ' + nd[1].slice(0, 1500) : '없음'));
+        var apis = (html.match(/https?:\/\/[a-z0-9.-]*naver\.com\/[a-z0-9_\/.-]*api[a-z0-9_\/.-]*/gi) || []).slice(0, 15);
+        console.log('페이지 안 API 주소들: ' + JSON.stringify(apis));
+        var scripts = (html.match(/<script[^>]+src="[^"]+"/g) || []).slice(0, 10);
+        console.log('스크립트들: ' + JSON.stringify(scripts));
+      }
+      peek(a.name + ' API 후보 1', 'https://comic.naver.com/api/community/v1/posts?userId=' + id + '&page=1&size=5');
+      peek(a.name + ' API 후보 2', 'https://comic.naver.com/community/api/v1/user/' + id + '/posts?page=1&size=5');
+      peek(a.name + ' API 후보 3', 'https://comic.naver.com/api/community/v2/posts?communityId=' + id + '&page=1&pageSize=5');
+    });
+  });
+}
+
 // 작가 정보를 사이트 데이터(authorInfo)에 모아 둬요
 function applyArtists_(data, artists) {
   if (!(artists || []).length) return false;
