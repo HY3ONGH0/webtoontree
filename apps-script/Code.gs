@@ -348,6 +348,20 @@ var ACTIONS = {
   },
 
   // ---------- 랭킹 ----------
+  // 작가 소식: 네이버 웹툰 작가 홈의 최근 게시글 목록 (누구나, 1시간 동안 기억)
+  // 글 전체를 옮겨 오지 않고 제목 · 짧은 미리보기 · 날짜 · 원문 링크만 보여 줘요
+  authorPosts: function (b) {
+    var url = String(b.url || '').trim();
+    if (!/^https:\/\/comic\.naver\.com\/community\//.test(url)) return { posts: [], reason: 'not-naver' };
+    var key = 'posts:' + sha256_(url).slice(0, 32);
+    var memo = cacheGet_(key);
+    if (memo) return memo;
+    var r = { posts: [], url: url };
+    try { r.posts = naverPosts_(url); } catch (e) { r.reason = String(e.message || e).slice(0, 120); }
+    cachePut_(key, r, r.posts.length ? 3600 : 600);
+    return r;
+  },
+
   ranking: function (b) {
     var period = { week: 1, month: 1, all: 1 }[b.period] ? b.period : 'week';
     var metric = b.metric === 'done' ? 'done' : 'eps';
@@ -783,6 +797,55 @@ function naverArtists_(list, people, titleId) {
     return r;
   }).filter(Boolean);
 }
+// 작가 홈 게시글: 페이지에 들어 있는 데이터(__NEXT_DATA__ 등)나 커뮤니티 API에서 글 목록을 찾아요
+function naverPosts_(url) {
+  var uid = (url.match(/\/community\/u\/([^/?#]+)/) || [])[1] || '';
+  var found = [];
+  var seen = {};
+  var add = function (o) {
+    var title = clean_(o.title || o.subject || '');
+    var body = clean_(o.contents || o.content || o.text || o.body || o.summary || '');
+    if (!title && !body) return;
+    var id = String(o.postId || o.articleId || o.id || o.postNo || title + body.slice(0, 20));
+    if (seen[id]) return;
+    seen[id] = 1;
+    var link = o.postUrl || o.url || o.link || (o.postId || o.id ? url.replace(/\/?(\?.*)?$/, '') + '/p/' + (o.postId || o.id) : url);
+    if (/^\//.test(link)) link = 'https://comic.naver.com' + link;
+    var img = '';
+    var imgs = o.imageList || o.images || o.attachments || o.thumbnails || [];
+    if (Array.isArray(imgs) && imgs.length) img = typeof imgs[0] === 'string' ? imgs[0] : (imgs[0].url || imgs[0].imageUrl || imgs[0].thumbnailUrl || '');
+    img = img || o.thumbnailUrl || o.imageUrl || o.thumbnail || '';
+    var date = String(o.createdAt || o.createdDate || o.registerDate || o.regDate || o.writeDate || o.postedAt || '');
+    if (/^\d{12,}$/.test(date)) date = Utilities.formatDate(new Date(Number(date)), TZ, 'yyyy-MM-dd');
+    found.push({ title: title.slice(0, 80), excerpt: body.slice(0, 120) + (body.length > 120 ? '…' : ''), date: date.slice(0, 10), url: link, img: img,
+      likes: Number(o.likeCount || o.reactionCount || o.sympathyCount || 0) || 0, comments: Number(o.commentCount || 0) || 0 });
+  };
+  var walk = function (o, d) {
+    if (!o || typeof o !== 'object' || d > 14 || found.length >= 20) return;
+    if (Array.isArray(o)) { o.forEach(function (x) { walk(x, d + 1); }); return; }
+    if ((o.postId || o.articleId || o.postNo) && (o.contents || o.content || o.title || o.text || o.body)) { add(o); return; }
+    for (var k in o) walk(o[k], d + 1);
+  };
+  // 1) 커뮤니티 글 목록 API (있으면)
+  var apis = uid ? ['https://comic.naver.com/api/community/v1/posts?userId=' + encodeURIComponent(uid) + '&page=1&size=20',
+                   'https://comic.naver.com/community/api/v1/user/' + encodeURIComponent(uid) + '/posts?page=1&size=20'] : [];
+  for (var i = 0; i < apis.length && !found.length; i++) {
+    try { walk(get_(apis[i], true), 0); } catch (e) { /* 다음 방법 */ }
+  }
+  // 2) 작가 홈 페이지 안의 데이터
+  if (!found.length) {
+    var html = get_(url, false);
+    var blocks = [];
+    var nd = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
+    if (nd) blocks.push(nd[1]);
+    var re = /<script[^>]*type="application\/(?:ld\+)?json"[^>]*>([\s\S]*?)<\/script>/g, m;
+    while ((m = re.exec(html))) blocks.push(m[1]);
+    blocks.forEach(function (t) { try { walk(JSON.parse(t), 0); } catch (e) { /* 건너뛰어요 */ } });
+  }
+  if (!found.length) throw new Error('게시글을 찾지 못했어요');
+  return found.slice(0, 20);
+}
+
 // 작가 정보를 사이트 데이터(authorInfo)에 모아 둬요
 function applyArtists_(data, artists) {
   if (!(artists || []).length) return false;

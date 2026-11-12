@@ -89,10 +89,12 @@
       </section>
       <nav class="ap-tabs" role="tablist">
         <button type="button" role="tab" aria-selected="true" data-tab="works">작품 <em>${works.length}</em></button>
+        ${/comic\.naver\.com\/community\//.test(info.url || '') ? `<button type="button" role="tab" aria-selected="false" data-tab="posts">작가 소식</button>` : ''}
         ${outside.length ? `<button type="button" role="tab" aria-selected="false" data-tab="out">다른 작품 <em>${outside.length}</em></button>` : ''}
         ${related.length ? `<button type="button" role="tab" aria-selected="false" data-tab="rel">${studio ? '소속 작가' : '스튜디오 · 관련'} <em>${related.reduce((n, o) => n + o.works.length, 0)}</em></button>` : ''}
       </nav>
       <section class="ap-pane" data-pane="works"><div class="ap-grid">${works.map(card).join('')}</div></section>
+      <section class="ap-pane" data-pane="posts" hidden><div id="ap-posts" class="ap-posts"><p class="ap-note">불러오는 중…</p></div></section>
       ${outside.length ? `<section class="ap-pane" data-pane="out" hidden><p class="ap-note">웹툰트리에는 아직 없는 작품이에요. 누르면 네이버 웹툰에서 열려요.</p><div class="ap-grid">${outside.map((x) => `<a class="ap-card" href="${esc(x.source)}" target="_blank" rel="noopener">
           <span class="ap-cv" style="--c:#55607F"><span class="ap-ini">${esc(x.title)}</span>${x.cover ? `<img src="${esc(x.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}<span class="ap-role">↗</span></span>
           <b>${esc(x.title)}</b><small>네이버웹툰${x.finished ? ' · 완결' : ''}</small></a>`).join('')}</div></section>` : ''}
@@ -116,6 +118,28 @@
       cnt.textContent = `${cur + 1} / ${works.length}`;
     };
     show(0);
+    // 작가 소식: 네이버 웹툰 작가 홈의 최근 글 (제목 · 미리보기 · 원문 링크)
+    let postsLoaded = false;
+    async function loadPosts() {
+      if (postsLoaded) return;
+      postsLoaded = true;
+      const box = document.getElementById('ap-posts');
+      if (!WT.api || !WT.api.on()) { box.innerHTML = `<p class="ap-note">서버가 연결되어 있지 않아 소식을 불러오지 못했어요. <a href="${esc(info.url)}" target="_blank" rel="noopener">네이버 웹툰 작가 홈에서 보기 ↗</a></p>`; return; }
+      try {
+        const r = await WT.api.call('authorPosts', { url: info.url });
+        const ps = r.posts || [];
+        box.innerHTML = ps.length ? ps.map((x) => `<a class="ap-post" href="${esc(x.url)}" target="_blank" rel="noopener">
+            <span class="ap-pav">${info.img ? `<img src="${esc(info.img)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}${esc(me.name[0])}</span>
+            <span class="ap-pbody"><span class="ap-phead"><b>${esc(me.name)}</b>${x.date ? `<small>${esc(x.date)}</small>` : ''}</span>
+              ${x.title ? `<strong>${esc(x.title)}</strong>` : ''}${x.excerpt ? `<p>${esc(x.excerpt)}</p>` : ''}
+              ${x.img ? `<span class="ap-pimg"><img src="${esc(x.img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></span>` : ''}
+              <span class="ap-pfoot">${x.likes ? `<i>♡ ${x.likes}</i>` : ''}${x.comments ? `<i>💬 ${x.comments}</i>` : ''}<em>네이버 웹툰에서 전체 보기 ↗</em></span></span></a>`).join('')
+          + `<a class="ap-pall" href="${esc(info.url)}" target="_blank" rel="noopener">작가 홈에서 모든 글 보기 ↗</a>`
+          : `<p class="ap-note">아직 가져온 소식이 없어요. <a href="${esc(info.url)}" target="_blank" rel="noopener">네이버 웹툰 작가 홈에서 보기 ↗</a></p>`;
+      } catch (e) {
+        box.innerHTML = `<p class="ap-note">소식을 불러오지 못했어요. <a href="${esc(info.url)}" target="_blank" rel="noopener">네이버 웹툰 작가 홈에서 보기 ↗</a></p>`;
+      }
+    }
     document.getElementById('ap-prev').addEventListener('click', () => show(cur - 1, -1));
     document.getElementById('ap-next').addEventListener('click', () => show(cur + 1, 1));
     document.getElementById('ap-down').addEventListener('click', () => { const t = app.querySelector('.ap-tabs'); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
@@ -123,6 +147,7 @@
     app.querySelectorAll('.ap-tabs button').forEach((b) => b.addEventListener('click', () => {
       app.querySelectorAll('.ap-tabs button').forEach((x) => x.setAttribute('aria-selected', x === b));
       app.querySelectorAll('.ap-pane').forEach((p) => { p.hidden = p.dataset.pane !== b.dataset.tab; });
+      if (b.dataset.tab === 'posts') loadPosts();
     }));
   }
   if (WT.views) WT.views.author = view;
