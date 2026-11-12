@@ -749,6 +749,53 @@ function kakaoSearch_(q) {
   return found;
 }
 
+// 네이버 작가 정보: 프로필 사진 · 소개 · 작가 페이지 · 네이버 웹툰의 다른 작품 (하루 동안 기억해 둬요)
+function pickKey_(o, re) { for (var k in o) { if (re.test(k) && typeof o[k] === 'string' && o[k]) return o[k]; } return ''; }
+function naverArtists_(list, people, titleId) {
+  return list.slice(0, 4).map(function (a) {
+    var name = String(a.name || '').trim();
+    if (!name) return null;
+    var key = 'artist:' + sha256_(name).slice(0, 24);
+    var memo = cacheGet_(key);
+    if (memo) return Object.assign({}, memo, { roles: people[name] || [] });
+    var r = { name: name, roles: people[name] || [] };
+    r.img = pickKey_(a, /image|thumbnail|profileImg/i);
+    r.url = pickKey_(a, /url|link/i);
+    if (r.url && /^\//.test(r.url)) r.url = 'https://comic.naver.com' + r.url;
+    var cid = a.communityId || a.artistId || a.id;
+    if (!r.url && a.communityId) r.url = 'https://comic.naver.com/community/u/' + a.communityId;
+    // 작가 페이지의 소개 문구
+    if (r.url) {
+      try {
+        var html = get_(r.url, false);
+        var bio = meta_(html, 'og:description') || meta_(html, 'description');
+        if (bio && !/네이버 웹툰|NAVER Webtoon/i.test(bio.slice(0, 20))) r.bio = bio.slice(0, 300);
+        if (!r.img) { var im = meta_(html, 'og:image'); if (im && !/og_image|default/i.test(im)) r.img = im; }
+      } catch (e) { /* 작가 페이지는 없어도 괜찮아요 */ }
+    }
+    // 같은 이름으로 검색한 네이버 웹툰의 작품들
+    try {
+      r.works = naverSearch_(name).filter(function (x) { return x.author && x.author.indexOf(name) >= 0 && x.source.indexOf('titleId=' + titleId) < 0; })
+        .slice(0, 12).map(function (x) { return { title: x.title, source: x.source, cover: x.cover, finished: x.finished }; });
+    } catch (e) { r.works = []; }
+    var keep = Object.assign({}, r); delete keep.roles;
+    cachePut_(key, keep, 21600);
+    return r;
+  }).filter(Boolean);
+}
+// 작가 정보를 사이트 데이터(authorInfo)에 모아 둬요
+function applyArtists_(data, artists) {
+  if (!(artists || []).length) return false;
+  data.authorInfo = data.authorInfo || {};
+  var before = JSON.stringify(data.authorInfo);
+  artists.forEach(function (a) {
+    var k = String(a.name).trim().toLowerCase().replace(/\s+/g, ' ');
+    var cur = data.authorInfo[k] || {};
+    data.authorInfo[k] = { name: a.name, img: a.img || cur.img || '', bio: a.bio || cur.bio || '', url: a.url || cur.url || '', works: (a.works && a.works.length ? a.works : cur.works) || [] };
+  });
+  return JSON.stringify(data.authorInfo) !== before;
+}
+
 // ---------- 매일 한 번 자동 갱신 (새벽 4시 이후 첫 번째로 조용할 때) ----------
 function ensureAutoTrigger_() {
   var has = ScriptApp.getProjectTriggers().some(function (t) { return t.getHandlerFunction() === 'autoRefresh'; });
@@ -771,7 +818,11 @@ function autoRefresh() {
   var start = Date.now(), changed = [], fails = 0;
   data.webtoons.forEach(function (w) {
     if (!w.source || Date.now() - start > 270000) return;   // 5분 안에 끝내요
-    try { if (applyInfo_(w, infoFor_(w.source, true).info, day)) changed.push(w.title); } catch (e) { fails++; }
+    try {
+      var inf = infoFor_(w.source, true).info;
+      var c1 = applyInfo_(w, inf, day), c2 = applyArtists_(data, inf.artists);
+      if (c1 || c2) changed.push(w.title);
+    } catch (e) { fails++; }
   });
   p.setProperty('AUTO_DAY', day);
   if (!changed.length) return '바뀐 게 없어요' + (fails ? ' (못 가져온 웹툰 ' + fails + '개)' : '');
@@ -829,6 +880,7 @@ function naverInfo_(url) {
     days: (j.publishDayOfWeekList || []).map(function (d) { return DAY_EN_[String(d).toUpperCase()]; }).filter(Boolean),
     tags: uniq_((j.curationTagList || []).map(function (t) { return t.tagName; })).slice(0, 8)
   };
+  try { info.artists = naverArtists_(j.communityArtists || [], people, id); } catch (e) { console.warn('artists', e); }
   try {
     var l = get_('https://comic.naver.com/api/article/list?titleId=' + id + '&page=1&sort=DESC', true);
     if (l && l.totalCount) info.episodes = Number(l.totalCount);

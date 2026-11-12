@@ -230,3 +230,7 @@ body.admin .chip-admin { background: #5BB8FF; }
 .au-x:hover { background: #E0565B; }
 .au-in { flex: 1 1 160px; min-width: 140px; max-width: 240px; padding: 8px 12px; border-radius: 999px !important; }
 .fx-au i { font-style: normal; font-size: 11px; color: var(--muted); margin-left: 3px; }
+.au-info { margin-top: 10px; }
+.au-info[open] { display: flex; flex-direction: column; gap: 14px; }
+.au-info-row { display: flex; flex-direction: column; gap: 6px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, .06); }
+.au-info-row b { font-size: 14px; }

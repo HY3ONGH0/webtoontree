@@ -308,7 +308,14 @@
       <div class="au-ed">${list.map((a, i) => `<span class="au-chip"><b>${esc(a.name)}</b>
           ${Object.keys(AROLE).map((r) => `<button type="button" class="au-r${(a.roles || []).includes(r) ? ' on' : ''}" data-a="au-role" data-id="${w.id}" data-i="${i}" data-r="${r}" aria-pressed="${(a.roles || []).includes(r)}">${AROLE[r]}</button>`).join('')}
           <button type="button" class="au-x" data-a="au-del" data-id="${w.id}" data-i="${i}" aria-label="${esc(a.name)} 빼기">×</button></span>`).join('')}
-        <input id="f-au-new" class="fld au-in" placeholder="작가 이름 넣고 Enter" maxlength="40"></div></div>`;
+        <input id="f-au-new" class="fld au-in" placeholder="작가 이름 넣고 Enter" maxlength="40"></div>
+      ${list.length ? `<details class="ad-more au-info"><summary>작가 프로필 고치기 (소개 · 사진 · 작가 페이지)</summary>
+        ${list.map((a) => { const k = a.name.trim().toLowerCase().replace(/\s+/g, ' '); const I = (D.authorInfo || {})[k] || {}; return `<div class="au-info-row">
+          <b>${esc(a.name)}</b>${(I.works || []).length ? `<span class="hint">네이버 웹툰의 다른 작품 ${I.works.length}개를 가져왔어요</span>` : ''}
+          <textarea class="fld" rows="2" maxlength="300" data-ai="${esc(k)}|bio" data-name="${esc(a.name)}" placeholder="작가 소개 (작품 연결 때 네이버 작가 페이지에서 가져와요)">${esc(I.bio || '')}</textarea>
+          <div class="grid2"><input class="fld" type="url" data-ai="${esc(k)}|img" data-name="${esc(a.name)}" value="${esc(I.img || '')}" placeholder="프로필 사진 주소">
+          <input class="fld" type="url" data-ai="${esc(k)}|url" data-name="${esc(a.name)}" value="${esc(I.url || '')}" placeholder="작가 페이지 · SNS 링크"></div></div>`; }).join('')}
+      </details>` : ''}</div>`;
   }
   function setAuthors(w, list) {
     w.authors = list.filter((a) => a.name).slice(0, 8);
@@ -325,6 +332,13 @@
     ['title', 'author', 'platform', 'desc'].forEach((k) => { if (I[k]) w[k] = String(I[k]).slice(0, k === 'desc' ? 300 : 200); });
     if ((I.tags || []).length) w.tags = I.tags.slice(0, 8);
     if ((I.authors || []).length) { w.authors = I.authors.slice(0, 8); w.author = w.authors.map((a) => a.name).join(', '); }
+    // 작가 정보(프로필 사진 · 소개 · 다른 작품)는 사이트 데이터의 authorInfo에 모아 둬요
+    (I.artists || []).forEach((x) => {
+      const k = String(x.name).trim().toLowerCase().replace(/\s+/g, ' ');
+      const cur = (D.authorInfo || {})[k] || {};
+      D.authorInfo = D.authorInfo || {};
+      D.authorInfo[k] = { name: x.name, img: x.img || cur.img || '', bio: x.bio || cur.bio || '', url: x.url || cur.url || '', works: (x.works && x.works.length ? x.works : cur.works) || [] };
+    });
     if (I.status) { if (w.status !== I.status) { w.episodes = WT.schedule.episodes(w); w.baseDate = day; } w.status = I.status; delete w.ongoing; }
     if ((I.days || []).length) w.days = I.days.slice();
     if (I.episodes && Number(I.episodes) !== WT.schedule.episodes(w)) { w.episodes = Math.max(1, Number(I.episodes)); w.baseDate = day; }
@@ -1604,6 +1618,15 @@
     if ((el.id === 'w-q' || el.id === 'b-q') && (e.isComposing || composing)) { if (el.id === 'w-q') ui.q = el.value; else ui.bq = el.value; return; }
     if (el.id === 'w-q') { ui.q = el.value; const pos = el.selectionStart; render(); const n = document.getElementById('w-q'); n.focus(); n.setSelectionRange(pos, pos); return; }
     if (el.id === 'b-q') { ui.bq = el.value; const pos = el.selectionStart; render(); const n = document.getElementById('b-q'); n.focus(); n.setSelectionRange(pos, pos); return; }
+    if (el.dataset.ai) {   // 작가 정보 직접 고치기 (다시 그리지 않고 저장만)
+      const [k, f] = el.dataset.ai.split('|');
+      D.authorInfo = D.authorInfo || {};
+      const cur = D.authorInfo[k] || { name: el.dataset.name || k, img: '', bio: '', url: '', works: [] };
+      cur[f] = el.value.slice(0, f === 'bio' ? 300 : 300);
+      D.authorInfo[k] = cur;
+      saveDraft();
+      return;
+    }
     if (el.dataset.wf && el.type !== 'checkbox') {
       const w = toon(ui.w);
       const k = el.dataset.wf;

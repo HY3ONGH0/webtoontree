@@ -62,21 +62,34 @@
     const related = [...all.values()].filter((o) => { const k = key(o.name); return k !== k0 && k0.length >= 2 && k.length >= 2 && (k.includes(k0) || k0.includes(k)); });
     const studio = /studio|스튜디오/i.test(me.name);
     const h = hue(me.name);
+    const info = (WT.data.authorInfo || {})[key(me.name)] || {};
+    // 네이버 웹툰의 다른 작품 중 웹툰트리에 없는 것
+    const have = new Set((WT.data.webtoons || []).map((w) => (w.source || '') + '|' + key(w.title)));
+    const tkey = (t) => key(t).replace(/[^0-9a-z가-힣]/g, '');   // 느낌표 · 띄어쓰기 차이는 같은 작품으로 봐요
+    const haveTitle = new Set((WT.data.webtoons || []).map((w) => tkey(w.title)));
+    const outside = (info.works || []).filter((x) => !haveTitle.has(tkey(x.title)) && !have.has(x.source + '|' + key(x.title)));
     const counts = [['writer', '글'], ['painter', '그림'], ['original', '원작']].map(([r, n]) => (count(r) ? `${n} ${count(r)}` : '')).filter(Boolean).join(' · ');
     app.innerHTML = `<div class="view ap-view">
       <div class="ap-top"><button type="button" class="ap-back" id="ap-back" aria-label="뒤로">←</button><div><b>${esc(me.name)}</b><small>웹툰 ${works.length}편</small></div></div>
       <div class="ap-banner" style="--h:${h}"></div>
       <section class="ap-head">
-        <span class="ap-av" style="--h:${h}">${studio ? '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V9l5 3V9l5 3V6l8 5v9z"/></svg>' : esc(me.name[0])}</span>
+        <span class="ap-av" style="--h:${h}">${info.img ? `<img src="${esc(info.img)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}${studio ? '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V9l5 3V9l5 3V6l8 5v9z"/></svg>' : esc(me.name[0])}</span>
         <h1>${esc(me.name)}${studio ? ' <span class="ap-badge">스튜디오</span>' : ''}</h1>
+        ${info.url ? `<a class="ap-follow" href="${esc(info.url)}" target="_blank" rel="noopener">작가 페이지 ↗</a>` : ''}
         <p class="ap-sub">웹툰 ${works.length}편${counts ? ' · ' + counts : ''}${plats.length ? ' · ' + esc(plats.join(', ')) : ''}</p>
+        ${info.bio ? `<p class="ap-bio">${esc(info.bio)}</p>` : ''}
+        <p class="ap-stats"><span><b>${works.length}</b> 웹툰트리 작품</span>${outside.length ? `<span><b>${outside.length}</b> 다른 작품</span>` : ''}${works.filter((x) => x.w.pick).length ? `<span><b>${works.filter((x) => x.w.pick).length}</b> 관리자 강추</span>` : ''}${works.filter((x) => WT.inTree && WT.inTree(x.w.id)).length ? `<span><b>${works.filter((x) => WT.inTree(x.w.id)).length}</b> 트리 웹툰</span>` : ''}</p>
         ${mates.size ? `<p class="ap-mates"><span>함께 만든 작가</span>${[...mates.values()].map((n) => `<a class="ap-chip" href="${WT.authorHref(n)}">${esc(n)}</a>`).join('')}</p>` : ''}
       </section>
       <nav class="ap-tabs" role="tablist">
         <button type="button" role="tab" aria-selected="true" data-tab="works">작품 <em>${works.length}</em></button>
+        ${outside.length ? `<button type="button" role="tab" aria-selected="false" data-tab="out">다른 작품 <em>${outside.length}</em></button>` : ''}
         ${related.length ? `<button type="button" role="tab" aria-selected="false" data-tab="rel">${studio ? '소속 작가' : '스튜디오 · 관련'} <em>${related.reduce((n, o) => n + o.works.length, 0)}</em></button>` : ''}
       </nav>
       <section class="ap-pane" data-pane="works"><div class="ap-grid">${works.map(card).join('')}</div></section>
+      ${outside.length ? `<section class="ap-pane" data-pane="out" hidden><p class="ap-note">웹툰트리에는 아직 없는 작품이에요. 누르면 네이버 웹툰에서 열려요.</p><div class="ap-grid">${outside.map((x) => `<a class="ap-card" href="${esc(x.source)}" target="_blank" rel="noopener">
+          <span class="ap-cv" style="--c:#55607F"><span class="ap-ini">${esc(x.title)}</span>${x.cover ? `<img src="${esc(x.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}<span class="ap-role">↗</span></span>
+          <b>${esc(x.title)}</b><small>네이버웹툰${x.finished ? ' · 완결' : ''}</small></a>`).join('')}</div></section>` : ''}
       ${related.length ? `<section class="ap-pane" data-pane="rel" hidden>${related.map((o) => `
         <div class="ap-rel"><a class="ap-rel-h" href="${WT.authorHref(o.name)}"><span class="ap-av sm" style="--h:${hue(o.name)}">${esc(o.name[0])}</span><b>${esc(o.name)}</b><small>웹툰 ${o.works.length}편 ›</small></a>
           <div class="ap-grid">${o.works.map(card).join('')}</div></div>`).join('')}</section>` : ''}
