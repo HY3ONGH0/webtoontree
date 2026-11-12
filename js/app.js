@@ -125,7 +125,7 @@
     const last = WT.lastTree();
     const treeId = live.includes(last) ? last : live[0];
     const s = WT.store.state;
-    const on = { home: 'home', tree: 'tree', map: 'tree', worlds: 'tree', library: 'library', author: 'library', top: 'rank', ranking: 'rank', me: 'me', shop: 'me', login: 'me' }[name] || 'home';
+    const on = { home: 'home', tree: 'tree', map: 'tree', worlds: 'tree', library: 'library', books: 'library', author: 'library', top: 'rank', ranking: 'rank', me: 'me', shop: 'me', login: 'me' }[name] || 'home';
     const items = [
       ['home', '#/', '홈', '<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>'],
       ['tree', treeId ? `#/tree/${treeId}` : (WT.liveGenres()[0] ? `#/tree/${WT.liveGenres()[0].id}` : '#/worlds'), '트리', '<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.6 7.9l3.2 7.8M16.4 7.9l-3.2 7.8"/>'],

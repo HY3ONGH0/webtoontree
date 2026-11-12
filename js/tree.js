@@ -298,6 +298,7 @@
               <nav class="lb-tabs" aria-label="도서관 장르">${tabs}</nav>
               ${subs.length ? `<div class="lb-subs" role="group" aria-label="세부 장르">${subs.map((x) => `<button type="button" data-sub="${x.id}" aria-pressed="${x.id === 'all'}">${esc(x.name)}</button>`).join('')}</div>` : ''}
               <div class="lb-sort" role="group" aria-label="정렬"><button type="button" data-sort="abc" aria-pressed="true">ㄱㄴㄷ순</button><button type="button" data-sort="star" aria-pressed="false">추천순</button></div>
+              <a class="lb-listbtn" href="#/books" title="표지를 4개씩 쭉 보기"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg>목록</a>
             </div>
             <div class="lb-shelf" id="wrap"><div class="lb-track" id="stage"></div></div>
             <div class="lb-foot">
