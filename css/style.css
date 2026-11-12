@@ -2077,3 +2077,5 @@ html[data-theme="light"] .ap-view { --ap-accent: #E8A13A; }
 .ap-pfoot i { font-style: normal; }
 .ap-pfoot em { font-style: normal; margin-left: auto; color: var(--ap-accent); font-weight: 700; }
 .ap-pall { display: block; padding: 14px; text-align: center; font-size: 13.5px; font-weight: 800; text-decoration: none; }
+.ap-post { cursor: pointer; }
+.ap-post:active { transform: scale(.995); }

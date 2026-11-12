@@ -133,7 +133,7 @@
             <span class="ap-pbody"><span class="ap-phead"><b>${esc(me.name)}</b>${x.date ? `<small>${esc(x.date)}</small>` : ''}</span>
               ${x.title ? `<strong>${esc(x.title)}</strong>` : ''}${x.excerpt ? `<p>${esc(x.excerpt)}</p>` : ''}
               ${x.img ? `<span class="ap-pimg"><img src="${esc(x.img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></span>` : ''}
-              <span class="ap-pfoot">${x.likes ? `<i>♡ ${x.likes}</i>` : ''}${x.comments ? `<i>💬 ${x.comments}</i>` : ''}<em>네이버 웹툰에서 전체 보기 ↗</em></span></span></a>`).join('')
+              <span class="ap-pfoot">${x.likes ? `<i>♡ ${x.likes}</i>` : ''}${x.comments ? `<i>💬 ${x.comments}</i>` : ''}<em>원문 보기 ↗</em></span></span></a>`).join('')
           + `<a class="ap-pall" href="${esc(info.url)}" target="_blank" rel="noopener">작가 홈에서 모든 글 보기 ↗</a>`
           : `<p class="ap-note">아직 가져온 소식이 없어요. <a href="${esc(info.url)}" target="_blank" rel="noopener">네이버 웹툰 작가 홈에서 보기 ↗</a></p>`;
       } catch (e) {
@@ -150,5 +150,22 @@
       if (b.dataset.tab === 'posts') loadPosts();
     }));
   }
+  // 작가 소식 글: 사이트 위에 작은 창으로 네이버 원문을 열어요 (창이 막히면 새 탭)
+  WT.openPost = (url) => {
+    const w = Math.min(560, screen.availWidth - 40), h = Math.min(820, screen.availHeight - 60);
+    const left = Math.round((window.screenX || 0) + Math.max(0, (window.outerWidth - w) / 2));
+    const top = Math.round((window.screenY || 0) + Math.max(0, (window.outerHeight - h) / 2));
+    let win = null;
+    if (window.innerWidth > 760) { try { win = window.open(url, 'wt-post', `popup=yes,width=${w},height=${h},left=${left},top=${top}`); } catch (e) { win = null; } }
+    if (!win) win = window.open(url, '_blank', 'noopener');
+    if (win) { try { win.focus(); } catch (e) { /* 다른 창 */ } }
+    return !!win;
+  };
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a.ap-post, a.ap-pall');
+    if (!a || e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
+    e.preventDefault();
+    WT.openPost(a.href);
+  });
   if (WT.views) WT.views.author = view;
 })();
