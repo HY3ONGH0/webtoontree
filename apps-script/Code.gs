@@ -831,43 +831,63 @@ function naverInfo_(url) {
   return { info: info, source: '네이버 웹툰' };
 }
 
+// 카카오페이지: 페이지가 쓰는 GraphQL로 작품 정보(제목 · 작가 · 연재 요일 · 상태 · 설명)와 총 화수를 가져와요.
+// 실패하면 페이지 소개 정보(og)로 제목 · 설명 · 표지만이라도 가져와요.
+function kakaoGql_(query, vars, referer) {
+  var res = UrlFetchApp.fetch('https://page.kakao.com/graphql', {
+    method: 'post', contentType: 'application/json', muteHttpExceptions: true,
+    headers: { 'Accept': 'application/graphql+json, application/json', 'Origin': 'https://page.kakao.com', 'Referer': referer,
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36' },
+    payload: JSON.stringify({ query: query, variables: vars })
+  });
+  var code = res.getResponseCode();
+  var j = null;
+  try { j = JSON.parse(res.getContentText('UTF-8')); } catch (e) { /* 아래에서 처리 */ }
+  if (code >= 400 || !j || !j.data) throw new Error('gql ' + code + ' ' + (j && j.errors ? JSON.stringify(j.errors).slice(0, 200) : ''));
+  return j.data;
+}
+function kakaoImg_(u) { u = String(u || ''); return /^\/\//.test(u) ? 'https:' + u : u; }
 function kakaoPageInfo_(url) {
-  var m = url.match(/content\/(\d+)/);
+  var m = url.match(/content\/(\d+)/) || url.match(/seriesId=(\d+)/);
   if (!m) fail_('카카오페이지 링크에서 작품 번호를 찾지 못했어요. page.kakao.com/content/숫자 모양의 링크를 넣어 주세요.');
   var id = m[1];
   var link = 'https://page.kakao.com/content/' + id;
-  var html = get_(link, false);
-  var r = ogInfo_(link, html);
-  var info = r.info;
-  info.platform = '카카오페이지';
-  info.url = link;
-  info.title = info.title.replace(/\s*[-|]\s*(웹툰|웹소설|책)?\s*\|?\s*카카오페이지\s*$/, '').replace(/\s*-\s*(웹툰|웹소설)\s*$/, '').trim();
-  // 페이지 안 데이터(__NEXT_DATA__)에서 작가 · 연재 요일 · 상태 · 화수를 찾아요
-  var nd = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
-  var hit = null;
-  if (nd) {
+  var info = { platform: '카카오페이지', url: link, title: '' };
+  var notes = [];
+  // 1) 작품 정보
+  var fieldsList = ['title authors pubPeriod onIssue thumbnail description', 'title authors pubPeriod onIssue thumbnail', 'title authors thumbnail'];
+  for (var i = 0; i < fieldsList.length && !info.title; i++) {
     try {
-      var walk = function (o, d) {
-        if (!o || typeof o !== 'object' || d > 18 || hit) return;
-        if (String(o.seriesId || o.id || '') === id && (o.title || o.authors)) { hit = o; return; }
-        for (var k in o) walk(o[k], d + 1);
-      };
-      walk(JSON.parse(nd[1]), 0);
-    } catch (e) { hit = null; }
+      var d = kakaoGql_('query contentHomeOverview($seriesId: Long!) { contentHomeOverview(seriesId: $seriesId) { content { ' + fieldsList[i] + ' } } }', { seriesId: Number(id) }, link);
+      var c = d && d.contentHomeOverview && d.contentHomeOverview.content;
+      if (c && c.title) {
+        info.title = clean_(c.title);
+        if (c.authors) info.author = uniq_(String(c.authors).split(/\s*,\s*/)).join(', ');
+        if (c.thumbnail) info.cover = kakaoImg_(c.thumbnail);
+        if (c.description) info.desc = clean_(c.description);
+        if (c.pubPeriod) info.days = daysKo_(c.pubPeriod);
+        var issue = String(c.onIssue || '');
+        info.status = /end|complete/i.test(issue) ? 'completed' : /rest|pause|stop/i.test(issue) ? 'hiatus' : (issue || c.pubPeriod) ? 'ongoing' : undefined;
+      }
+    } catch (e) { notes.push(String(e.message || e)); }
   }
-  var text = clean_(html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ')).replace(/\s+/g, ' ');
-  var pick = function (re) { var x = html.match(re); return x ? x[1] : ''; };
-  var authors = (hit && (hit.authors || hit.author)) || pick(/"authors"\s*:\s*"([^"]+)"/);
-  if (authors) info.author = uniq_(String(authors).split(/\s*,\s*/)).join(', ');
-  var period = (hit && (hit.pubPeriod || hit.publishPeriod)) || pick(/"pubPeriod"\s*:\s*"([^"]*)"/) || ((text.match(/([월화수목금토일](?:\s*[,·]\s*[월화수목금토일])*)\s*연재/) || [])[1] || '');
-  if (period) info.days = daysKo_(period);
-  var issue = String((hit && (hit.onIssue || hit.status)) || pick(/"onIssue"\s*:\s*"([^"]*)"/) || '');
-  if (/end|complete|완결/i.test(issue) || /\s완결\s/.test(' ' + text.slice(0, 400) + ' ')) info.status = 'completed';
-  else if (/rest|휴재/i.test(issue)) info.status = 'hiatus';
-  else if (period || /ongoing/i.test(issue)) info.status = 'ongoing';
-  if (hit && hit.description) info.desc = clean_(hit.description);
-  var total = text.match(/전체\s*([\d,]+)/);
-  if (total) info.episodes = Number(total[1].replace(/,/g, ''));
+  // 2) 총 화수
+  try {
+    var d2 = kakaoGql_('query contentHomeProductList($seriesId: Long!, $first: Int) { contentHomeProductList(seriesId: $seriesId, first: $first) { totalCount } }', { seriesId: Number(id), first: 1 }, link);
+    var tc = d2 && d2.contentHomeProductList && d2.contentHomeProductList.totalCount;
+    if (tc) info.episodes = Number(tc);
+  } catch (e) { notes.push(String(e.message || e)); }
+  // 3) 모자란 건 페이지 소개 정보(og)로 채워요
+  if (!info.title || !info.desc || !info.cover) {
+    try {
+      var o = ogInfo_(link, '').info;
+      if (!info.title) info.title = String(o.title || '').replace(/\s*[-|]\s*(웹툰|웹소설|책)?\s*\|?\s*카카오페이지\s*$/, '').replace(/\s*-\s*(웹툰|웹소설)\s*$/, '').trim();
+      if (!info.desc && o.desc && !/카카오페이지/.test(o.desc.slice(0, 12))) info.desc = o.desc;
+      if (!info.cover && o.cover) info.cover = o.cover;
+    } catch (e) { notes.push('og ' + (e.userMessage || e.message || e)); }
+  }
+  if (!info.title) { console.warn('kakao', id, notes.join(' / ')); fail_('카카오페이지에서 작품 정보를 가져오지 못했어요. (' + (notes[0] || '응답 없음').slice(0, 120) + ')'); }
+  if (notes.length) console.warn('kakao partial', id, notes.join(' / '));
   return { info: info, source: '카카오페이지' };
 }
 

@@ -353,7 +353,7 @@
       <div class="fx-in"><input id="fx-q" class="fld" placeholder="예: 화산귀환" value="${esc((L && L.q) || (w.title !== '새 웹툰' ? w.title : ''))}">
         <button type="button" class="btn btn-gold btn-sm press" data-a="lk-find" data-id="${w.id}">찾기</button>
         ${L && L.relink ? `<button type="button" class="btn btn-sm press" data-a="lk-cancel">취소</button>` : ''}</div>
-      <span class="hint">연결하면 작가 · 화수 · 연재 요일 · 설명 · 태그를 채우고, 그 뒤로는 매일 자동으로 맞춰요. 보러 가기 링크와 표지만 직접 넣으면 돼요.</span>
+      <span class="hint">연결하면 작가 · 화수 · 연재 요일 · 설명 · 태그를 채우고, 그 뒤로는 매일 자동으로 맞춰요. 보러 가기 링크와 표지만 직접 넣으면 돼요. <b>카카오페이지 작품</b>은 제목 검색이 잘 안 될 수 있어서, 작품 페이지 링크(page.kakao.com/content/숫자)를 붙여 넣는 게 가장 정확해요.</span>
       ${body}
     </div>`;
   }
