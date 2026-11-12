@@ -669,7 +669,7 @@
     // ---------- 새 도서관: 고르기 · 거르기 · 넘기기 ----------
     function lbBuild() {
       const q = LB.q;
-      LB.list = ids.filter((id) => { const w = WT.toon(id); return (LB.sub === 'all' || (w.subs || []).includes(LB.sub)) && (!q || (w.title + (w.author || '')).toLowerCase().includes(q)); });
+      LB.list = ids.filter((id) => { const w = WT.toon(id); return (LB.sub === 'all' || (w.subs || []).includes(LB.sub)) && (!q || (w.title + WT.authorsOf(w).map((a) => a.name).join(' ') + (w.author || '')).toLowerCase().includes(q)); });
       LB.list.sort(LB.sort === 'star' ? (a, b) => (WT.recRank(WT.toon(b)) - WT.recRank(WT.toon(a))) || WT.toon(a).title.localeCompare(WT.toon(b).title, 'ko') : (a, b) => WT.toon(a).title.localeCompare(WT.toon(b).title, 'ko'));
       LB.idx = Math.min(LB.idx, Math.max(0, LB.list.length - 1));
       stage.innerHTML = LB.list.length ? LB.list.map((id) => `<div class="lb-slot" data-wrap="${id}"></div>`).join('')
@@ -707,8 +707,8 @@
       const w = WT.toon(id), t = lbTone(w), st = status(id), rec = w.pick ? 0 : WT.recStars(w);
       const gs = (w.genres || []).map((x) => WT.genre(x)).filter(Boolean);
       const state = w.status === 'completed' ? '<span>완결</span>' : w.status === 'hiatus' ? '<span class="pause">휴재</span>' : `<span class="on">연재 중${(w.days || []).length ? ' · ' + w.days.map((d) => DAYK[d] || d).join('·') : ''}</span>`;
-      box.innerHTML = `<div class="lb-head"><span class="lb-av" style="background:linear-gradient(150deg, ${t.c1}, ${t.c2})">${esc((w.author || w.title)[0])}</span>
-          <span class="lb-who"><b>${esc(w.author || '작가 미상')}</b><small>작가 · ${esc(w.platform || '웹툰')}</small></span>
+      box.innerHTML = `<div class="lb-head"><span class="lb-av" style="background:linear-gradient(150deg, ${t.c1}, ${t.c2})">${esc(((WT.authorsOf(w)[0] || {}).name || w.title)[0])}</span>
+          <span class="lb-who"><b>${WT.authorLinks(w)}</b><small>작가 · ${esc(w.platform || '웹툰')}</small></span>
           <span class="lb-arrows"><button type="button" data-step="-1" aria-label="이전 책">←</button><button type="button" data-step="1" aria-label="다음 책">→</button></span></div>
         <blockquote class="lb-quote">“<b>${esc(w.title)}</b>” ${esc(w.desc || '줄거리를 준비하고 있어요.')}</blockquote>
         <div class="lb-metas">${w.pick ? '<span class="pick">관리자 강추</span>' : ''}${state}${rec ? `<span class="star">${'★'.repeat(rec)}</span>` : ''}${total(id) ? `<span>${total(id)}화</span>` : ''}${st === 'done' ? '<span class="done">✓ 다 봤어요</span>' : st === 'reading' ? `<span class="done">${ep(id)}화까지 봤어요</span>` : ''}${gs.map((x) => `<span>${esc(x.name)}</span>`).join('')}${WT.inTree(id) ? '<span class="intree">트리 웹툰</span>' : ''}</div>`;
@@ -919,7 +919,7 @@
         </div>
         <div class="divider"></div>
         <dl class="meta">
-          <dt>작가</dt><dd>${esc(w.author)}</dd>
+          <dt>작가</dt><dd>${WT.authorLinks(w)}</dd>
           <dt>플랫폼</dt><dd>${esc(w.platform)}</dd>
           <dt>연재</dt><dd><span class="node-tag tag-${WT.schedule.status(w)}" style="font-size:13px">${esc(WT.schedule.label(w))}</span></dd>
           <dt>장르</dt><dd>${esc(genreNames)}</dd>

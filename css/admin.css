@@ -219,3 +219,14 @@ body.admin .chip-admin { background: #5BB8FF; }
 .fx-manual summary { font-size: 14px; color: var(--muted); }
 .fx-manual[open] { display: flex; flex-direction: column; gap: 14px; }
 .ad-nolink { position: absolute; left: 5px; bottom: 22px; z-index: 2; padding: 1px 6px; border-radius: 5px; font-size: 10px; font-weight: 800; background: rgba(14, 20, 38, .85); color: #FFB27A; }
+
+/* 작가 칩 */
+.au-ed { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.au-chip { display: inline-flex; align-items: center; gap: 4px; padding: 4px 4px 4px 12px; border-radius: 999px; background: var(--a-card2, #1A2240); border: 1px solid rgba(255, 255, 255, .12); }
+.au-chip b { font-size: 13.5px; margin-right: 4px; }
+.au-r { border: 1px solid rgba(255, 255, 255, .14); background: none; color: var(--muted); border-radius: 999px; padding: 2px 8px; font-size: 11.5px; font-weight: 700; cursor: pointer; }
+.au-r.on { background: #E0565B; border-color: #E0565B; color: #fff; }
+.au-x { width: 24px; height: 24px; border-radius: 50%; border: 0; background: rgba(255, 255, 255, .08); color: #fff; cursor: pointer; font-size: 14px; line-height: 1; }
+.au-x:hover { background: #E0565B; }
+.au-in { flex: 1 1 160px; min-width: 140px; max-width: 240px; padding: 8px 12px; border-radius: 999px !important; }
+.fx-au i { font-style: normal; font-size: 11px; color: var(--muted); margin-left: 3px; }

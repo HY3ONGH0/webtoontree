@@ -273,7 +273,7 @@
       </div>
       <details class="ad-more fx-manual" ${w.source ? '' : 'open'}><summary>${w.source ? '자동 정보 직접 고치기 (가져온 정보가 틀렸을 때만)' : '작품 정보 직접 입력 (작품을 연결하지 않을 때만)'}</summary>
       <div class="field"><label for="f-title">제목</label><input id="f-title" class="fld" data-wf="title" value="${esc(w.title)}"></div>
-      <div class="field"><label for="f-author">작가</label><input id="f-author" class="fld" data-wf="author" value="${esc(w.author)}" placeholder="예: 김작가 글 · 이작가 그림"></div>
+      ${authorEditor(w)}
       <div class="grid2">
         <div class="field"><label for="f-plat">플랫폼</label><input id="f-plat" class="fld" data-wf="platform" list="plat-list" value="${esc(w.platform)}"><datalist id="plat-list">${PLATFORMS.map((p) => `<option value="${p}">`).join('')}</datalist></div>
         <div class="field"><label for="f-ep">총 화수 (오늘 기준)</label><input id="f-ep" class="fld" type="number" min="1" data-wf="episodes" value="${WT.schedule.episodes(w)}"></div>
@@ -300,6 +300,22 @@
     </section>`;
   }
 
+  // ---------- 작가: 한 명씩 칩으로 (역할: 글 · 그림 · 원작) ----------
+  const AROLE = { writer: '글', painter: '그림', original: '원작' };
+  function authorEditor(w) {
+    const list = WT.authorsOf(w);
+    return `<div class="field"><span style="font-size:14px; color:var(--soft)">작가 (한 명씩 넣어요 · 이름을 누르면 사이트에서 그 작가의 웹툰을 모아 봐요)</span>
+      <div class="au-ed">${list.map((a, i) => `<span class="au-chip"><b>${esc(a.name)}</b>
+          ${Object.keys(AROLE).map((r) => `<button type="button" class="au-r${(a.roles || []).includes(r) ? ' on' : ''}" data-a="au-role" data-id="${w.id}" data-i="${i}" data-r="${r}" aria-pressed="${(a.roles || []).includes(r)}">${AROLE[r]}</button>`).join('')}
+          <button type="button" class="au-x" data-a="au-del" data-id="${w.id}" data-i="${i}" aria-label="${esc(a.name)} 빼기">×</button></span>`).join('')}
+        <input id="f-au-new" class="fld au-in" placeholder="작가 이름 넣고 Enter" maxlength="40"></div></div>`;
+  }
+  function setAuthors(w, list) {
+    w.authors = list.filter((a) => a.name).slice(0, 8);
+    w.author = w.authors.map((a) => a.name).join(', ');
+    saveDraft(); render();
+  }
+
   // ---------- 작품 연결: 제목이나 공식 링크로 찾아 연결하면 작가 · 화수 · 연재 · 설명 · 태그를 자동으로 채우고, 매일 새벽 서버가 다시 가져와요 ----------
   const srvReady = () => !!(D.settings.apiUrl || '').trim() && srv.ok;
   const srcName = (u) => (/comic\.naver\.com/.test(u) ? '네이버 웹툰' : /page\.kakao\.com/.test(u) ? '카카오페이지' : '공식 페이지');
@@ -308,6 +324,7 @@
     const day = WT.schedule.today();
     ['title', 'author', 'platform', 'desc'].forEach((k) => { if (I[k]) w[k] = String(I[k]).slice(0, k === 'desc' ? 300 : 200); });
     if ((I.tags || []).length) w.tags = I.tags.slice(0, 8);
+    if ((I.authors || []).length) { w.authors = I.authors.slice(0, 8); w.author = w.authors.map((a) => a.name).join(', '); }
     if (I.status) { if (w.status !== I.status) { w.episodes = WT.schedule.episodes(w); w.baseDate = day; } w.status = I.status; delete w.ongoing; }
     if ((I.days || []).length) w.days = I.days.slice();
     if (I.episodes && Number(I.episodes) !== WT.schedule.episodes(w)) { w.episodes = Math.max(1, Number(I.episodes)); w.baseDate = day; }
@@ -329,7 +346,7 @@
         <div class="fx-top"><b class="fx-h">작품 연결됨 <span>${esc(srcName(w.source))}</span></b>
           <div class="ad-actions"><button type="button" class="btn btn-sm press" data-a="lk-refresh" data-id="${w.id}" ${L && L.busy ? 'disabled' : ''}>${L && L.busy ? '가져오는 중…' : '지금 다시 가져오기'}</button><button type="button" class="btn btn-sm press" data-a="lk-change" data-id="${w.id}">다른 작품으로</button></div></div>
         <div class="fx-sum">
-          <span><b>작가</b>${esc(w.author || '-')}</span><span><b>화수</b>${WT.schedule.episodes(w)}화</span>
+          <span class="fx-au"><b>작가</b>${WT.authorsOf(w).map((a) => `${esc(a.name)}${(a.roles || []).length ? `<i>${a.roles.map((r) => AROLE[r]).join('·')}</i>` : ''}`).join(', ') || '-'}</span><span><b>화수</b>${WT.schedule.episodes(w)}화</span>
           <span><b>연재</b>${esc(WT.schedule.STATUS_KO[st] || st)}${st === 'ongoing' && (w.days || []).length ? ' · ' + w.days.map((d) => WT.schedule.DAY_KO[d]).join('·') : ''}</span>
           <span><b>태그</b>${esc((w.tags || []).join(', ') || '-')}</span>
         </div>
@@ -1292,6 +1309,8 @@
         })();
         break;
       }
+      case 'au-del': { const w = toon(id); const l = WT.authorsOf(w).map((x) => Object.assign({}, x)); l.splice(i, 1); setAuthors(w, l); break; }
+      case 'au-role': { const w = toon(id); const l = WT.authorsOf(w).map((x) => Object.assign({ roles: [] }, x, { roles: (x.roles || []).slice() })); const r = t.dataset.r; const rs = l[i].roles; const k = rs.indexOf(r); if (k >= 0) rs.splice(k, 1); else rs.push(r); setAuthors(w, l); break; }
       case 'lk-find': linkFind(toon(id)); break;
       case 'lk-pick': linkPick(toon(id), i); break;
       case 'lk-refresh': linkRefresh(toon(id)); break;
@@ -1687,7 +1706,12 @@
     try { savedBase = localStorage.getItem(BASE) || ''; } catch (e) { savedBase = ''; }
     if (draft && Array.isArray(draft.webtoons)) { D = draft; ensure(); setBase(savedBase || siteHash); } else setBase(siteHash);
     root().addEventListener('click', onClick);
-    root().addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target.id === 'fx-q') { e.preventDefault(); const w = toon(ui.w); if (w) linkFind(w); } });
+    root().addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target.id === 'fx-q') { e.preventDefault(); const w = toon(ui.w); if (w) linkFind(w); }
+      if (e.key === 'Enter' && e.target.id === 'f-au-new' && !e.isComposing) {
+        e.preventDefault();
+        const w = toon(ui.w); const n = e.target.value.trim();
+        if (w && n) { const l = WT.authorsOf(w).map((x) => Object.assign({}, x)); if (!l.some((x) => x.name === n)) l.push({ name: n, roles: [] }); setAuthors(w, l); setTimeout(() => { const el = document.getElementById('f-au-new'); if (el) el.focus(); }, 0); }
+      } });
     root().addEventListener('input', onInput);
     root().addEventListener('compositionstart', () => { composing = true; });
     root().addEventListener('compositionend', (e) => { composing = false; onInput(e); });

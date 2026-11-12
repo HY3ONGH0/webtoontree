@@ -1883,3 +1883,48 @@ html.vt-page::view-transition-old(wt-nav), html.vt-same::view-transition-old(wt-
 .lb-metas span { flex: 0 0 auto; white-space: nowrap; }
 .lb-foot { justify-content: flex-end; }
 @media (min-width: 861px) and (max-height: 760px) { .lb-quote { height: calc(14.5px * 1.8 * 2); } }
+
+/* ================= 작가 프로필 (#/author/이름) ================= */
+.ap-view { padding: 0 0 40px; color: var(--text); }
+.ap-top { position: sticky; top: 0; z-index: 3; display: flex; align-items: center; gap: 16px; padding: 12px 24px; background: color-mix(in srgb, var(--frame-bg) 88%, transparent); backdrop-filter: blur(12px); }
+.ap-top b { display: block; font-size: 17px; }
+.ap-top small { font-size: 12.5px; color: var(--muted); }
+.ap-back { width: 38px; height: 38px; border-radius: 50%; border: 0; background: transparent; color: var(--text); font-size: 20px; cursor: pointer; }
+.ap-back:hover { background: color-mix(in srgb, var(--text) 8%, transparent); }
+.ap-banner { height: 150px; margin: 0 24px; border-radius: 16px; background: linear-gradient(120deg, hsl(var(--h) 55% 42%), hsl(calc(var(--h) + 40) 60% 30%)); }
+html[data-theme="light"] .ap-banner { background: linear-gradient(120deg, hsl(var(--h) 60% 72%), hsl(calc(var(--h) + 40) 55% 62%)); }
+.ap-head { position: relative; padding: 0 44px 8px; }
+.ap-av { display: grid; place-items: center; width: 116px; height: 116px; margin-top: -58px; border-radius: 50%; border: 5px solid var(--frame-bg); background: linear-gradient(150deg, hsl(var(--h) 60% 55%), hsl(calc(var(--h) + 30) 55% 35%)); color: #fff; font-size: 44px; font-weight: 800; box-sizing: border-box; }
+.ap-av.sm { width: 36px; height: 36px; margin: 0; border-width: 0; font-size: 15px; }
+.ap-head h1 { margin: 12px 0 4px; font-size: 26px; letter-spacing: -.03em; display: flex; align-items: center; gap: 10px; }
+.ap-badge { font-size: 12px; font-weight: 800; padding: 3px 9px; border-radius: 999px; background: #E0565B; color: #fff; letter-spacing: 0; }
+.ap-sub { margin: 0; color: var(--muted); font-size: 14px; }
+.ap-mates { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 14px 0 0; }
+.ap-mates > span { font-size: 13px; color: var(--muted); margin-right: 4px; }
+.ap-chip { padding: 5px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: var(--text); text-decoration: none; background: var(--card-bg); border: 1px solid var(--card-line); }
+.ap-chip:hover { border-color: #E0565B; }
+.ap-tabs { display: flex; gap: 4px; margin: 20px 24px 0; border-bottom: 1px solid var(--card-line); }
+.ap-tabs button { position: relative; padding: 14px 18px; border: 0; background: none; color: var(--muted); font-size: 15px; font-weight: 700; cursor: pointer; }
+.ap-tabs button em { font-style: normal; font-weight: 500; font-size: 12.5px; margin-left: 4px; }
+.ap-tabs button[aria-selected="true"] { color: var(--text); }
+.ap-tabs button[aria-selected="true"]::after { content: ""; position: absolute; left: 18px; right: 18px; bottom: -1px; height: 3px; border-radius: 3px; background: #E0565B; }
+.ap-pane { padding: 22px 24px 0; }
+.ap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 22px 16px; }
+.ap-card { display: flex; flex-direction: column; gap: 6px; min-width: 0; color: var(--text); text-decoration: none; }
+.ap-card b { font-size: 14px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.ap-card small { font-size: 12px; color: var(--muted); }
+.ap-cv { position: relative; aspect-ratio: 3 / 4; border-radius: 10px; overflow: hidden; background: linear-gradient(160deg, color-mix(in srgb, var(--c) 85%, #fff 15%), color-mix(in srgb, var(--c) 55%, #070B1E)); box-shadow: 0 10px 22px -10px rgba(0, 0, 0, .5); transition: transform .2s ease; }
+.ap-card:hover .ap-cv { transform: translateY(-3px); }
+.ap-cv img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ap-ini { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 10px; color: #fff; font-weight: 800; font-size: 14px; line-height: 1.25; word-break: keep-all; }
+.ap-role { position: absolute; left: 6px; bottom: 6px; z-index: 2; padding: 2px 7px; border-radius: 6px; font-size: 11px; font-weight: 800; background: rgba(10, 14, 30, .78); color: #fff; }
+.ap-pick { position: absolute; top: 6px; left: 6px; z-index: 2; padding: 2px 7px; border-radius: 5px; font-size: 11px; font-weight: 800; background: #E5141B; color: #fff; }
+.ap-rel + .ap-rel { margin-top: 30px; }
+.ap-rel-h { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; color: var(--text); text-decoration: none; }
+.ap-rel-h b { font-size: 16px; color: var(--text); }
+.ap-rel-h small { color: var(--muted); font-size: 12.5px; }
+.ap-empty { padding: 60px 24px; text-align: center; color: var(--muted); }
+/* 상세 · 도서관 소개의 작가 이름 → 프로필 링크 */
+.au-link { color: inherit; text-decoration: none; border-bottom: 1px dashed currentColor; }
+.au-link:hover { color: #E0565B; border-bottom-style: solid; }
+@media (max-width: 760px) { .ap-head { padding: 0 20px 8px; } .ap-banner { margin: 0 12px; height: 110px; } .ap-av { width: 92px; height: 92px; margin-top: -46px; font-size: 36px; } .ap-tabs, .ap-pane { margin-left: 12px; margin-right: 12px; padding-left: 0; padding-right: 0; } .ap-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 10px; } }

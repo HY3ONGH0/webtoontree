@@ -705,6 +705,7 @@ function applyInfo_(w, info, day) {
   var before = JSON.stringify(w);
   ['title', 'author', 'platform', 'desc'].forEach(function (k) { if (info[k]) w[k] = String(info[k]).slice(0, k === 'desc' ? 300 : 200); });
   if ((info.tags || []).length) w.tags = info.tags.slice(0, 8);
+  if ((info.authors || []).length) { w.authors = info.authors.slice(0, 8); w.author = w.authors.map(function (a) { return a.name; }).join(', '); }
   if (info.status) { if (w.status !== info.status) { w.episodes = episodes_(w, day); w.baseDate = day; } w.status = info.status; delete w.ongoing; }
   if ((info.days || []).length) w.days = info.days.slice();
   if (info.episodes && Number(info.episodes) !== episodes_(w, day)) { w.episodes = Math.max(1, Number(info.episodes)); w.baseDate = day; }
@@ -813,7 +814,11 @@ function naverInfo_(url) {
   var id = m[1];
   var j = get_('https://comic.naver.com/api/article/list/info?titleId=' + id, true);
   if (!j || !j.titleName) fail_('네이버 웹툰에서 작품 정보를 찾지 못했어요.');
+  var roleOf = function (a) { var t = (a.artistTypeList || []).join(','); var r = []; if (/WRITER/.test(t)) r.push('writer'); if (/PAINTER/.test(t)) r.push('painter'); if (/ORIGIN/.test(t)) r.push('original'); return r; };
+  var people = {};
+  (j.communityArtists || []).forEach(function (a) { var n = String(a.name || '').trim(); if (!n) return; people[n] = (people[n] || []).concat(roleOf(a)).filter(function (x, i, arr) { return arr.indexOf(x) === i; }); });
   var info = {
+    authors: Object.keys(people).map(function (n) { return { name: n, roles: people[n] }; }),
     title: j.titleName,
     author: uniq_((j.communityArtists || []).slice().sort(function (x, y) { return (/WRITER/.test((y.artistTypeList || []).join()) ? 1 : 0) - (/WRITER/.test((x.artistTypeList || []).join()) ? 1 : 0); }).map(function (a) { return a.name; })).join(', '),   // 글 작가 먼저
     platform: '네이버웹툰',
@@ -862,7 +867,7 @@ function kakaoPageInfo_(url) {
       var c = d && d.contentHomeOverview && d.contentHomeOverview.content;
       if (c && c.title) {
         info.title = clean_(c.title);
-        if (c.authors) info.author = uniq_(String(c.authors).split(/\s*,\s*/)).join(', ');
+        if (c.authors) { info.author = uniq_(String(c.authors).split(/\s*,\s*/)).join(', '); info.authors = info.author.split(', ').map(function (n) { return { name: n, roles: [] }; }); }
         if (c.thumbnail) info.cover = kakaoImg_(c.thumbnail);
         if (c.description) info.desc = clean_(c.description);
         if (c.pubPeriod) info.days = daysKo_(c.pubPeriod);
