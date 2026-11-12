@@ -128,7 +128,7 @@
     const on = { home: 'home', tree: 'tree', map: 'tree', worlds: 'tree', library: 'library', top: 'rank', ranking: 'rank', me: 'me', shop: 'me', login: 'me' }[name] || 'home';
     const items = [
       ['home', '#/', '홈', '<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>'],
-      ['tree', treeId ? `#/tree/${treeId}` : '#/map', '트리', '<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.6 7.9l3.2 7.8M16.4 7.9l-3.2 7.8"/>'],
+      ['tree', treeId ? `#/tree/${treeId}` : (WT.liveGenres()[0] ? `#/tree/${WT.liveGenres()[0].id}` : '#/worlds'), '트리', '<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.6 7.9l3.2 7.8M16.4 7.9l-3.2 7.8"/>'],
       ['library', '#/library/all', '도서관', '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v18"/>'],
       ['rank', '#/top', '랭킹', '<path d="M7 4h10v5a5 5 0 0 1-10 0z M7 6H4a3 3 0 0 0 3 4 M17 6h3a3 3 0 0 1-3 4 M12 14v4 M8 21h8"/>'],
       ['me', s.profile ? '#/me' : '#/login', '프로필', '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>']
@@ -144,7 +144,7 @@
   WT.topRight = function (opts) {
     const o = opts || {};
     return `<div class="right">
-      ${o.map === false ? '' : `<a href="#/map" class="pill pill-gold press">${WT.icon.map}전체 지도</a>`}
+      ${o.map === false ? '' : `<a href="#/worlds" class="pill pill-gold press">${WT.icon.map}전체 지도</a>`}
       ${WT.coinPill()}
       ${WT.themeBtn()}
       ${WT.userChip()}
@@ -154,7 +154,7 @@
   WT.band = function (current) {
     const items = WT.liveGenres().map((g) =>
       `<a href="#/tree/${g.id}" style="--gc:${g.color}" ${current === g.id ? 'aria-current="page"' : ''} class="press"><span class="dot" aria-hidden="true"></span>${esc(g.name)}</a>`).join('');
-    return `<nav class="band" aria-label="장르 선택"><a href="#/map" style="--gc:#E8C66A" ${current === 'map' ? 'aria-current="page"' : ''} class="press">전체</a>${items}</nav>`;
+    return `<nav class="band" aria-label="장르 선택"><a href="#/worlds" style="--gc:#E8C66A" class="press">전체</a>${items}</nav>`;
   };
 
   WT.modal = function (html, onBind) {
@@ -306,7 +306,7 @@
           <h2 style="margin:0; font-family:var(--display); font-weight:800; font-size:24px">장르별 웹툰 트리를 준비하고 있어요</h2>
           <p class="hint" style="font-size:14px; margin:0">곧 장르별 웹툰 트리가 열려요. 조금만 기다려 주세요!</p></section>`}
         <div class="home-foot">
-          <a href="#/map" class="pill pill-gold press">${WT.icon.map}전체 지도</a>
+          <a href="#/" class="pill pill-gold press"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20h-5v-6H9v6H4z"/></svg>홈</a>
           ${document.fullscreenEnabled ? `<button type="button" class="home-fs press" id="home-fs" aria-label="전체화면" title="전체화면">
             <svg class="en" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
             <svg class="ex" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg></button>` : ''}
@@ -806,11 +806,13 @@
     const run = () => { routeNow(); const v = document.querySelector('#app > .view'); if (v) v.style.animation = 'none'; };
     try { vt = document.startViewTransition(run); } catch (e) { html.classList.remove('vt-page', 'vt-same'); routeNow(); return; }
     routeVT = vt;
+    vt.ready.catch(() => {}); vt.updateCallbackDone.catch(() => {});   // 빠르게 넘기면 건너뛴 전환은 조용히 끝내요
     const done = () => { if (routeVT === vt) { routeVT = null; html.classList.remove('vt-page', 'vt-same'); } };
     vt.finished.then(done, done);
   }
   function routeNow() {
     const parts = (location.hash || '#/').replace(/^#\/?/, '').split('/').filter(Boolean);
+    if (parts[0] === 'map') { location.replace('#/worlds'); return; }   // 장르 구역 지도는 없앴어요
     const name = parts[0] || 'home';
     const s = WT.store.state;
     if (!s.profile && !s.guest && name !== 'login') { location.replace('#/login'); return; }
