@@ -33,7 +33,13 @@
         "fantasy-5"
       ],
       "source": "https://comic.naver.com/webtoon/list?titleId=670150",
-      "autoAt": "2026-11-11"
+      "autoAt": "2026-11-11",
+      "authors": [
+        {
+          "roles": [],
+          "name": "민송아"
+        }
+      ]
     },
     {
       "id": "w657564281139wo",
