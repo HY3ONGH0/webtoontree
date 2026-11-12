@@ -301,8 +301,6 @@
             </div>
             <div class="lb-shelf" id="wrap"><div class="lb-track" id="stage"></div></div>
             <div class="lb-foot">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>
-              <span>이번 주에 사람들이 가장 많이 읽은 웹툰이 궁금하다면 <a href="#/top">이번 주 랭킹</a>을 확인해 보세요.</span>
               <span class="lb-count" id="lb-count"></span>
             </div>
           </section>
