@@ -70,16 +70,22 @@
     const outside = (info.works || []).filter((x) => !haveTitle.has(tkey(x.title)) && !have.has(x.source + '|' + key(x.title)));
     const counts = [['writer', '글'], ['painter', '그림'], ['original', '원작']].map(([r, n]) => (count(r) ? `${n} ${count(r)}` : '')).filter(Boolean).join(' · ');
     app.innerHTML = `<div class="view ap-view">
-      <div class="ap-top"><button type="button" class="ap-back" id="ap-back" aria-label="뒤로">←</button><div><b>${esc(me.name)}</b><small>웹툰 ${works.length}편</small></div></div>
-      <div class="ap-banner" style="--h:${h}"></div>
-      <section class="ap-head">
-        <span class="ap-av" style="--h:${h}">${info.img ? `<img src="${esc(info.img)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}${studio ? '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V9l5 3V9l5 3V6l8 5v9z"/></svg>' : esc(me.name[0])}</span>
-        <h1>${esc(me.name)}${studio ? ' <span class="ap-badge">스튜디오</span>' : ''}</h1>
-        ${info.url ? `<a class="ap-follow" href="${esc(info.url)}" target="_blank" rel="noopener">작가 페이지 ↗</a>` : ''}
-        <p class="ap-sub">웹툰 ${works.length}편${counts ? ' · ' + counts : ''}${plats.length ? ' · ' + esc(plats.join(', ')) : ''}</p>
-        ${info.bio ? `<p class="ap-bio">${esc(info.bio)}</p>` : ''}
-        <p class="ap-stats"><span><b>${works.length}</b> 웹툰트리 작품</span>${outside.length ? `<span><b>${outside.length}</b> 다른 작품</span>` : ''}${works.filter((x) => x.w.pick).length ? `<span><b>${works.filter((x) => x.w.pick).length}</b> 관리자 강추</span>` : ''}${works.filter((x) => WT.inTree && WT.inTree(x.w.id)).length ? `<span><b>${works.filter((x) => WT.inTree(x.w.id)).length}</b> 트리 웹툰</span>` : ''}</p>
-        ${mates.size ? `<p class="ap-mates"><span>함께 만든 작가</span>${[...mates.values()].map((n) => `<a class="ap-chip" href="${WT.authorHref(n)}">${esc(n)}</a>`).join('')}</p>` : ''}
+      <section class="ap-hero" style="--h:${h}">
+        <div class="ap-hl">
+          <div class="ap-mark-row"><button type="button" class="ap-mark" id="ap-back" aria-label="뒤로">${esc(me.name[0])}</button></div>
+          <span class="ap-kind">${studio ? 'STUDIO' : 'ARTIST'}${counts ? ` · ${counts}` : ''}</span>
+          <h1 class="ap-name">${esc(me.name)}</h1>
+          <p class="ap-lead">${info.bio ? esc(info.bio) : `${esc(me.name)}${studio ? '의 작품' : ' 작가의 웹툰'} ${works.length}편이 웹툰트리에 있어요.${plats.length ? ` ${esc(plats.join(', '))}에서 볼 수 있어요.` : ''}`}</p>
+          ${info.url ? `<a class="ap-more" href="${esc(info.url)}" target="_blank" rel="noopener">작가 페이지 보기 <i aria-hidden="true">→</i></a>` : ''}
+          <div class="ap-now"><span class="ap-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="ap-dash" aria-hidden="true"></span><a id="ap-now" href="#"></a></div>
+          ${mates.size ? `<p class="ap-mates"><span>함께 만든</span>${[...mates.values()].map((n) => `<a class="ap-chip" href="${WT.authorHref(n)}">${esc(n)}</a>`).join('')}</p>` : ''}
+        </div>
+        <a class="ap-figure" id="ap-fig" href="#" aria-label="작품 보기"></a>
+        <div class="ap-band">
+          <button type="button" class="ap-down" id="ap-down" aria-label="작품 목록으로">↓</button>
+          <span class="ap-nav"><button type="button" id="ap-prev" aria-label="이전 작품">‹</button><button type="button" id="ap-next" aria-label="다음 작품">›</button></span>
+          <span class="ap-count" id="ap-count"></span>
+        </div>
       </section>
       <nav class="ap-tabs" role="tablist">
         <button type="button" role="tab" aria-selected="true" data-tab="works">작품 <em>${works.length}</em></button>
@@ -95,6 +101,25 @@
           <div class="ap-grid">${o.works.map(card).join('')}</div></div>`).join('')}</section>` : ''}
     </div>`;
     document.getElementById('ap-back').addEventListener('click', () => { if (history.length > 1) history.back(); else location.hash = '#/library/all'; });
+    // 오른쪽 큰 표지: ‹ › 로 작품을 넘겨 봐요
+    let cur = 0;
+    const fig = document.getElementById('ap-fig'), now = document.getElementById('ap-now'), cnt = document.getElementById('ap-count');
+    const show = (i, dir) => {
+      cur = (i + works.length) % works.length;
+      const w = works[cur].w, roles = (works[cur].roles || []).map((r) => ROLE[r]).filter(Boolean).join(' · ');
+      fig.href = libHref(w);
+      fig.setAttribute('aria-label', `${w.title} 보기`);
+      fig.style.setProperty('--c', w.color || ((WT.genre((w.genres || [])[0]) || {}).color) || '#55607F');
+      fig.innerHTML = `<span class="ap-fcv${dir ? (dir > 0 ? ' in-r' : ' in-l') : ''}"><span class="ap-fini">${esc(w.title)}</span>${w.cover ? `<img src="${esc(w.cover)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}${w.pick ? '<span class="ap-pick">관리자 강추</span>' : ''}</span>`;
+      now.href = libHref(w);
+      now.innerHTML = `<b>${esc(w.title)}</b>${roles ? `<span>${roles}</span>` : ''}`;
+      cnt.textContent = `${cur + 1} / ${works.length}`;
+    };
+    show(0);
+    document.getElementById('ap-prev').addEventListener('click', () => show(cur - 1, -1));
+    document.getElementById('ap-next').addEventListener('click', () => show(cur + 1, 1));
+    document.getElementById('ap-down').addEventListener('click', () => { const t = app.querySelector('.ap-tabs'); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    if (works.length < 2) app.querySelector('.ap-nav').hidden = true;
     app.querySelectorAll('.ap-tabs button').forEach((b) => b.addEventListener('click', () => {
       app.querySelectorAll('.ap-tabs button').forEach((x) => x.setAttribute('aria-selected', x === b));
       app.querySelectorAll('.ap-pane').forEach((p) => { p.hidden = p.dataset.pane !== b.dataset.tab; });
