@@ -1,6 +1,278 @@
 {
   "webtoons": [
     {
+      "id": "w657564281141057",
+      "title": "하우스키퍼",
+      "author": "채용택, 유현",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=723046",
+      "cover": "https://image-comic.pstatic.net/webtoon/723046/thumbnail/thumbnail_IMAG21_c9dc9f1e-6e34-4ae8-9ea3-e94dda2dbef5.jpg",
+      "genres": [
+        "action"
+      ],
+      "recommended": 3,
+      "color": "#353648",
+      "episodes": 201,
+      "status": "completed",
+      "days": [
+        "tue"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "SF액션",
+        "시리어스",
+        "크리처",
+        "액션",
+        "슈퍼스트링",
+        "아포칼립스",
+        "SF"
+      ],
+      "desc": "'A.I가 인간에게 반역하는 것은 인간을 위해서이다.'\nA.I 혁명이 일어난 세계에서 사상 최악의 바이러스가 창궐하고 하스티의 주인 네빌은 좀비화가 된다.\n세계연합정부는 환자들의 치료를 포기하고 감염확산을 막기 위해 좀비 학살 정책을 벌인다.\n인간이 인간을 포기한 최악의 상황에서도 하스티는 주인인 네빌을 포기할 수 없었다.\n좀비가 된 주인을 지키기 위한 A.I들의 처절한 사투가 시작된다.",
+      "authors": [
+        {
+          "name": "채용택",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "유현",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=723046",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w657564281141056",
+      "title": "구구까까",
+      "author": "혜니",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=684435",
+      "cover": "https://image-comic.pstatic.net/webtoon/684435/thumbnail/thumbnail_IMAG21_7221301422420406626.jpg",
+      "genres": [
+        "romance",
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#ddc5ab",
+      "episodes": 140,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "몰아보기",
+        "완결로맨스"
+      ],
+      "desc": "원시시대로 넘어간 청담 핫걸 이나의\n부족 생활 적응기",
+      "authors": [
+        {
+          "name": "혜니",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=684435",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w657564281141055",
+      "title": "치즈인더트랩",
+      "author": "순끼",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=720121",
+      "cover": "https://image-comic.pstatic.net/webtoon/720121/thumbnail/thumbnail_IMAG21_7221302526240580196.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 1,
+      "color": "#c7b9a7",
+      "episodes": 312,
+      "status": "completed",
+      "days": [
+        "mon",
+        "wed",
+        "sat"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "몰아보기",
+        "로맨스릴러",
+        "명작",
+        "드라마&영화 원작웹툰",
+        "캠퍼스로맨스",
+        "삼각관계",
+        "완결로맨스"
+      ],
+      "desc": "평범한 여대생 홍설, 그리고 어딘가 수상한 선배 유정.\n미묘한 관계의 이들이 펼쳐나가는 이야기.",
+      "authors": [
+        {
+          "name": "순끼",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=720121",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141054",
+      "title": "신을 죽이는 방법",
+      "author": "나락, 바밤",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=714886",
+      "cover": "https://image-comic.pstatic.net/webtoon/714886/thumbnail/thumbnail_IMAG21_3761460289161344097.JPEG",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 1,
+      "color": "#262749",
+      "episodes": 89,
+      "status": "completed",
+      "days": [
+        "mon"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "완결판타지"
+      ],
+      "desc": "믿음이 사라진 시대, 마지막 신화",
+      "authors": [
+        {
+          "name": "나락",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "바밤",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=714886",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w657564281141053",
+      "title": "천재, 만재, 백재!",
+      "author": "심모람",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=835244",
+      "cover": "https://image-comic.pstatic.net/webtoon/835244/thumbnail/thumbnail_IMAG21_057dfde9-4183-49b2-8fc5-84782986447b.jpg",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 3,
+      "color": "#f7c991",
+      "episodes": 51,
+      "status": "completed",
+      "days": [
+        "tue"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "드라마",
+        "일상개그힐링",
+        "가족",
+        "감성",
+        "일상",
+        "가벼운",
+        "무해한",
+        "햇살캐"
+      ],
+      "desc": "성격도 취향도 극과 극인 남매, '천재'와 '만재'.\n친화력 만렙인 천재와 달리 만재의 유일한 친구는 고양이 막내 '백재'뿐.\n\"만날 사람 하나 없이 책만 보니 공부를 잘할 수밖에!\"\n천재는 만재에게 친구를 붙일 궁리를 하고, 백재는 이를 하찮게 지켜보는데...\n고양이 하나, 사람 둘. 삼남매가 펼치는 소란스럽고 유쾌한 일상!",
+      "authors": [
+        {
+          "name": "심모람",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=835244",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141052",
+      "title": "잉여특공대",
+      "author": "물꾹, 찰떡",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=740387",
+      "cover": "https://image-comic.pstatic.net/webtoon/740387/thumbnail/thumbnail_IMAG21_3991658442404213553.jpg",
+      "genres": [
+        "fantasy",
+        "daily"
+      ],
+      "recommended": 3,
+      "color": "#fcca09",
+      "episodes": 85,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "완결판타지"
+      ],
+      "desc": "뽀짝이 특공대원들의 슈퍼히어로맨스!",
+      "authors": [
+        {
+          "name": "물꾹",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "찰떡",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=740387",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
       "id": "w657564281141051",
       "title": "피와 나비",
       "author": "레민",
@@ -6817,7 +7089,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141051
+    "lastWebtoonId": 657564281141057
   },
   "version": 1,
   "shop": [
@@ -7846,7 +8118,44 @@
       "img": "https://kw-wcommunity-phinf.pstatic.net/20231109_180/1699507948294NMoR6_PNG/1000009720.png",
       "bio": "나락입니다.",
       "url": "https://comic.naver.com/community/u/narack",
-      "works": []
+      "works": [
+        {
+          "title": "신을 죽이는 방법",
+          "source": "https://comic.naver.com/webtoon/list?titleId=714886",
+          "cover": "https://image-comic.pstatic.net/webtoon/714886/thumbnail/thumbnail_IMAG21_3761460289161344097.JPEG",
+          "finished": true
+        },
+        {
+          "title": "용사가 돌아왔다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=773459",
+          "cover": "https://image-comic.pstatic.net/webtoon/773459/thumbnail/thumbnail_IMAG21_f551d244-0865-499d-b222-93873e57cf11.jpg",
+          "finished": false
+        },
+        {
+          "title": "샤MONEY즘",
+          "source": "https://comic.naver.com/webtoon/list?titleId=840014",
+          "cover": "https://image-comic.pstatic.net/webtoon/840014/thumbnail/thumbnail_IMAG21_d0d4b1c4-bfe7-43e5-8f02-0a911652e2dc.jpg",
+          "finished": false
+        },
+        {
+          "title": "학교정벌",
+          "source": "https://comic.naver.com/webtoon/list?titleId=739097",
+          "cover": "https://image-comic.pstatic.net/webtoon/739097/thumbnail/thumbnail_IMAG21_3977013157137037158.jpg",
+          "finished": true
+        },
+        {
+          "title": "헬크래프트",
+          "source": "https://comic.naver.com/webtoon/list?titleId=800034",
+          "cover": "https://image-comic.pstatic.net/webtoon/800034/thumbnail/thumbnail_IMAG21_df4c9ca5-a954-4c14-b03b-8716f5eea843.jpg",
+          "finished": true
+        },
+        {
+          "title": "암살청과",
+          "source": "https://comic.naver.com/webtoon/list?titleId=823070",
+          "cover": "https://image-comic.pstatic.net/webtoon/823070/thumbnail/thumbnail_IMAG21_9f385606-5ab7-43c7-a9fc-2eeee33f7cc6.jpg",
+          "finished": true
+        }
+      ]
     },
     "영기": {
       "name": "영기",
@@ -9335,6 +9644,146 @@
           "finished": true
         }
       ]
+    },
+    "물꾹": {
+      "name": "물꾹",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "찰떡": {
+      "name": "찰떡",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "바라건대, 당신의 자비를",
+          "source": "https://comic.naver.com/webtoon/list?titleId=833236",
+          "cover": "https://image-comic.pstatic.net/webtoon/833236/thumbnail/thumbnail_IMAG21_c85e0c7d-2d88-44f3-b9f7-84c09d96f2fe.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "심모람": {
+      "name": "심모람",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "차린 건 없지만",
+          "source": "https://comic.naver.com/webtoon/list?titleId=835170",
+          "cover": "https://image-comic.pstatic.net/webtoon/835170/thumbnail/thumbnail_IMAG21_02bc0723-0dbb-40f6-922f-c9ed42c9d536.jpg",
+          "finished": true
+        },
+        {
+          "title": "멍멍냠냠",
+          "source": "https://comic.naver.com/webtoon/list?titleId=838203",
+          "cover": "https://image-comic.pstatic.net/webtoon/838203/thumbnail/thumbnail_IMAG21_1a3cbf5e-dbab-4b75-9b76-8e325cdce53a.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "바밤": {
+      "name": "바밤",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20241217_131/1734437346779OziEn_PNG/dffgh.png",
+      "bio": "babababam9400@gmail.com",
+      "url": "https://comic.naver.com/community/u/bamm",
+      "works": [
+        {
+          "title": "살인예정자",
+          "source": "https://comic.naver.com/webtoon/list?titleId=834765",
+          "cover": "https://image-comic.pstatic.net/webtoon/834765/thumbnail/thumbnail_IMAG21_953083d0-ec0a-4293-83d2-d0369e54130a.jpg",
+          "finished": true
+        },
+        {
+          "title": "네 것이었던 것",
+          "source": "https://comic.naver.com/webtoon/list?titleId=802751",
+          "cover": "https://image-comic.pstatic.net/webtoon/802751/thumbnail/thumbnail_IMAG21_fb1ccdf4-244c-4614-9642-c1d6051a68c3.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "순끼": {
+      "name": "순끼",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20240622_251/1719011546630BcvDS_PNG/IMG_6264.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_vsk4g",
+      "works": [
+        {
+          "title": "세기말 풋사과 보습학원",
+          "source": "https://comic.naver.com/webtoon/list?titleId=761722",
+          "cover": "https://image-comic.pstatic.net/webtoon/761722/thumbnail/thumbnail_IMAG21_47b5d901-5671-403a-bb20-ab9a2fe95883.jpg",
+          "finished": false
+        },
+        {
+          "title": "쿠키히어로",
+          "source": "https://comic.naver.com/webtoon/list?titleId=687126",
+          "cover": "https://image-comic.pstatic.net/webtoon/687126/thumbnail/thumbnail_IMAG21_3833181630246446385.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "혜니": {
+      "name": "혜니",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "철벽! 연애 시뮬레이션",
+          "source": "https://comic.naver.com/webtoon/list?titleId=652122",
+          "cover": "https://image-comic.pstatic.net/webtoon/652122/thumbnail/thumbnail_IMAG21_4049405909806429489.jpg",
+          "finished": true
+        },
+        {
+          "title": "버림받은 왕녀의 은밀한 침실",
+          "source": "https://comic.naver.com/webtoon/list?titleId=796867",
+          "cover": "https://image-comic.pstatic.net/webtoon/796867/thumbnail/thumbnail_IMAG21_fc03c47f-5289-4c54-b3eb-718592ce8309.jpg",
+          "finished": false
+        },
+        {
+          "title": "힙한남자",
+          "source": "https://comic.naver.com/webtoon/list?titleId=758619",
+          "cover": "https://image-comic.pstatic.net/webtoon/758619/thumbnail/thumbnail_IMAG21_3545236929582883942.jpg",
+          "finished": true
+        },
+        {
+          "title": "당신에게 끌리는 올바른 이유",
+          "source": "https://comic.naver.com/webtoon/list?titleId=730980",
+          "cover": "https://image-comic.pstatic.net/webtoon/730980/thumbnail/thumbnail_IMAG21_4049406982655914293.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "채용택": {
+      "name": "채용택",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "부활남",
+          "source": "https://comic.naver.com/webtoon/list?titleId=670139",
+          "cover": "https://image-comic.pstatic.net/webtoon/670139/thumbnail/thumbnail_IMAG21_9052edf0-7d54-4dcd-bf73-2d8f0d160c5b.jpg",
+          "finished": true
+        },
+        {
+          "title": "참교육",
+          "source": "https://comic.naver.com/webtoon/list?titleId=758037",
+          "cover": "https://image-comic.pstatic.net/webtoon/758037/thumbnail/thumbnail_IMAG21_6323d62f-2b2d-4668-9373-156f16487568.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "유현": {
+      "name": "유현",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
     }
   }
 }
