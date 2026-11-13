@@ -336,7 +336,7 @@
   // 가져온 정보를 웹툰에 넣어요 (서버의 applyInfo_와 같은 규칙: 보러 가기 링크 · 장르 · 추천은 그대로)
   function applyInfo(w, I) {
     const day = WT.schedule.today();
-    ['title', 'author', 'platform', 'desc'].forEach((k) => { if (k === 'platform' && I.partial && /카카오\s*페이지/.test(w.platform || '')) return;   // 카카오페이지 작품을 카카오웹툰 링크로 연결하면 플랫폼 이름은 그대로 if (I[k]) w[k] = String(I[k]).slice(0, k === 'desc' ? 300 : 200); });
+    ['title', 'author', 'platform', 'desc'].forEach((k) => { if (k === 'platform' && I.partial && /카카오\s*페이지/.test(w.platform || '')) return; if (I[k]) w[k] = String(I[k]).slice(0, k === 'desc' ? 300 : 200); });
     if ((I.tags || []).length) w.tags = I.tags.slice(0, 8);
     if ((I.authors || []).length) { w.authors = I.authors.slice(0, 8); w.author = w.authors.map((a) => a.name).join(', '); }
     // 작가 정보(프로필 사진 · 소개 · 다른 작품)는 사이트 데이터의 authorInfo에 모아 둬요
