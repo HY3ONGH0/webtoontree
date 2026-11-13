@@ -5638,7 +5638,7 @@
         "action",
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "color": "#011d57",
       "episodes": 150,
       "status": "completed",
@@ -5678,7 +5678,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "color": "#011d57",
       "episodes": 43,
       "status": "completed",
@@ -5815,7 +5815,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "color": "#000000",
       "episodes": 162,
       "status": "ongoing",
@@ -6059,7 +6059,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "pick": true
     },
     {
       "id": "w042",
@@ -6204,7 +6205,7 @@
       "genres": [
         "action"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "color": "#000000",
       "episodes": 134,
       "status": "completed",
@@ -6770,7 +6771,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "pick": true
     },
     {
       "id": "w026",
