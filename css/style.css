@@ -2105,6 +2105,11 @@ html:not([data-theme="light"]) .ap-photo.plain { background: hsl(var(--h) 30% 38
 /* 플랫폼 아이콘: 앱 아이콘 느낌의 작은 네모 */
 .pf { display: inline-block; flex: 0 0 auto; width: 18px; height: 18px; line-height: 0; border-radius: 27%; vertical-align: -3px; box-shadow: 0 1px 3px rgba(0, 0, 0, .28); }
 .pf svg { display: block; width: 100%; height: 100%; }
+.pf { overflow: hidden; }
+.pf img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* 네이버웹툰 공식 아이콘은 바탕이 투명해서 흰 네모 위에 올려요 */
+.pf-naver { background: #fff; }
+.pf-naver img { object-fit: contain; padding: 6%; box-sizing: border-box; }
 .pf-in { width: 16px; height: 16px; margin-right: 5px; }
 .pf-cv { position: absolute; right: 8px; bottom: 8px; z-index: 2; width: 22px; height: 22px; box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .85), 0 3px 8px rgba(0, 0, 0, .4); }
 .ap-cv .pf-cv { right: 6px; bottom: 6px; width: 20px; height: 20px; }
