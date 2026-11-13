@@ -4,7 +4,7 @@
    - 이 화면은 서버에 아무것도 바꾸지 않아요. 실제 수정 권한은 GitHub 저장소가 가져요. */
 (function () {
   const DRAFT = 'webtoontree.admin.draft';
-  const NEED_SERVER = 11;   // 이 화면이 필요로 하는 서버 코드 판 번호 (apps-script/Code.gs 의 SERVER_VERSION)
+  const NEED_SERVER = 12;   // 이 화면이 필요로 하는 서버 코드 판 번호 (apps-script/Code.gs 의 SERVER_VERSION)
   const root = () => document.getElementById('admin');
   const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -330,11 +330,13 @@
 
   // ---------- 작품 연결: 제목이나 공식 링크로 찾아 연결하면 작가 · 화수 · 연재 · 설명 · 태그를 자동으로 채우고, 매일 새벽 서버가 다시 가져와요 ----------
   const srvReady = () => !!(D.settings.apiUrl || '').trim() && srv.ok;
-  const srcName = (u) => (/comic\.naver\.com/.test(u) ? '네이버웹툰' : '공식 페이지');
+  const srcName = (u) => (/comic\.naver\.com/.test(u) ? '네이버웹툰' : /webtoon\.kakao\.com/.test(u) ? '카카오웹툰' : ((String(u || '').match(/^https?:\/\/(?:www\.)?([^/]+)/) || [])[1] || '작품 페이지'));
+  // 화수 · 연재 요일 · 상태까지 가져오는 곳은 네이버 웹툰뿐이에요. 다른 플랫폼은 제목 · 작가 · 설명 · 표지만
+  const fullSource = (u) => /comic\.naver\.com/.test(u || '');
   // 가져온 정보를 웹툰에 넣어요 (서버의 applyInfo_와 같은 규칙: 보러 가기 링크 · 장르 · 추천은 그대로)
   function applyInfo(w, I) {
     const day = WT.schedule.today();
-    ['title', 'author', 'platform', 'desc'].forEach((k) => { if (I[k]) w[k] = String(I[k]).slice(0, k === 'desc' ? 300 : 200); });
+    ['title', 'author', 'platform', 'desc'].forEach((k) => { if (k === 'platform' && I.partial && /카카오\s*페이지/.test(w.platform || '')) return;   // 카카오페이지 작품을 카카오웹툰 링크로 연결하면 플랫폼 이름은 그대로 if (I[k]) w[k] = String(I[k]).slice(0, k === 'desc' ? 300 : 200); });
     if ((I.tags || []).length) w.tags = I.tags.slice(0, 8);
     if ((I.authors || []).length) { w.authors = I.authors.slice(0, 8); w.author = w.authors.map((a) => a.name).join(', '); }
     // 작가 정보(프로필 사진 · 소개 · 다른 작품)는 사이트 데이터의 authorInfo에 모아 둬요
@@ -356,7 +358,11 @@
   }
   // 보러 가기 링크가 공식 작품 페이지인지 (연결한 작품과 같은 번호의 네이버 웹툰 주소)
   const titleIdOf = (u) => (/(^|[/.])comic\.naver\.com\//.test(u || '') ? ((u || '').match(/[?&]titleId=(\d+)/) || [])[1] || '' : '');
-  const isOfficial = (w) => !!w.source && !!w.url && titleIdOf(w.url) === titleIdOf(w.source);
+  const sameWork = (a, b) => !!a && !!b && (titleIdOf(a) || titleIdOf(b) ? titleIdOf(a) === titleIdOf(b) : String(a).replace(/[?#].*$/, '').replace(/\/$/, '') === String(b).replace(/[?#].*$/, '').replace(/\/$/, ''));
+  const isOfficial = (w) => sameWork(w.url, w.source);
+  // 연결할 플랫폼: 네이버 웹툰(제목 검색) · 카카오웹툰(링크) · 그 밖(링크)
+  const LINK_PF = [['naver', '네이버웹툰'], ['kakaow', '카카오웹툰'], ['etc', '그 밖의 플랫폼']];
+  const linkPf = (w) => (ui.linkPf && ui.linkPf.id === w.id ? ui.linkPf.pf : /카카오/.test(w.platform || '') ? 'kakaow' : !w.platform || /네이버/.test(w.platform) || w.title === '새 웹툰' ? 'naver' : 'etc');
   const notOfficial = () => D.webtoons.filter((x) => x.source && !isOfficial(x));
   function linkBox(w) {
     const L = ui.link && ui.link.id === w.id ? ui.link : null;
@@ -382,7 +388,7 @@
           </div>
         </div>
         ${isOfficial(w) ? '' : `<div class="fx-warn"><span>${w.url ? '보러 가기 링크가 공식 작품 페이지가 아니에요.' : '보러 가기 링크가 비어 있어요.'}</span><button type="button" class="btn btn-sm press" data-a="lk-official" data-id="${w.id}">공식 페이지로 ${w.url ? '바꾸기' : '채우기'}</button></div>`}
-        <span class="hint">매일 새벽 서버가 화수 · 연재 상태 · 요일 · 설명 · 작가 정보를 다시 가져와 사이트에 반영해요${w.autoAt ? ` · 마지막 갱신 ${esc(w.autoAt)}` : ''}. <a href="${esc(w.source)}" target="_blank" rel="noopener">공식 페이지 열기 ↗</a></span>
+        <span class="hint">${fullSource(w.source) ? '매일 새벽 서버가 화수 · 연재 상태 · 요일 · 설명 · 작가 정보를 다시 가져와 사이트에 반영해요' : '이 플랫폼은 제목 · 작가 · 설명 · 표지만 가져와요 (매일 새벽 다시 맞춰요). <b>화수 · 연재 요일 · 상태는 아래 [자동 정보 직접 고치기]에서 적어 주세요</b>'}${w.autoAt ? ` · 마지막 갱신 ${esc(w.autoAt)}` : ''}. <a href="${esc(w.source)}" target="_blank" rel="noopener">공식 페이지 열기 ↗</a></span>
         ${L && L.error ? `<p class="warn" role="alert">${esc(L.error)}</p>` : ''}
       </div>`;
     }
@@ -391,7 +397,7 @@
     else if (L && L.error) body = `<p class="warn" role="alert">${esc(L.error)}</p>`;
     else if (L && L.items) {
       body = L.items.length ? `<div class="fx-cands">${L.items.map((x, i) => {
-          const dup = D.webtoons.find((o) => o.id !== w.id && o.source && titleIdOf(o.source) === titleIdOf(x.source));
+          const dup = D.webtoons.find((o) => o.id !== w.id && o.source && sameWork(o.source, x.source));
           const state = x.finished ? '완결' : x.rest ? '휴재' : '연재 중';
           return `<button type="button" class="fx-cand press${dup ? ' dup' : ''}" data-a="lk-pick" data-id="${w.id}" data-i="${i}" ${dup ? 'disabled' : ''}>
           <span class="fx-cv">${x.cover ? `<img src="${esc(x.cover)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}</span>
@@ -400,13 +406,22 @@
           <span class="fx-go">${dup ? `이미 등록됨<small>${esc(dup.title)}</small>` : '연결'}</span></button>`; }).join('')}</div>`
         : '<p class="ad-help">네이버 웹툰 정식 연재작 가운데 찾는 작품이 없어요. 제목을 조금 바꾸거나, 작품 페이지 링크(comic.naver.com/webtoon/list?titleId=숫자)를 붙여 넣어 주세요.</p>';
     }
+    const pf = linkPf(w);
+    const qv = (L && L.q) || (pf === 'naver' && w.title !== '새 웹툰' ? w.title : '');
+    const t = w.title && w.title !== '새 웹툰' ? w.title : '';
+    const how = {
+      naver: '제목이나 작가 이름으로 찾아요. 제목 · 작가 · 화수 · 연재 요일 · 상태 · 설명 · 태그 · 표지를 채우고, 그 뒤로는 매일 자동으로 맞춰요.',
+      kakaow: `카카오웹툰은 제목으로 찾을 수 없어요. <a href="https://webtoon.kakao.com/search?keyword=${encodeURIComponent(t)}" target="_blank" rel="noopener">카카오웹툰에서 작품 찾기 ↗</a>를 눌러 작품 페이지를 열고, 그 주소를 복사해 붙여 넣어 주세요. 제목 · 작가 · 설명 · 표지를 채워요. 화수 · 연재 요일 · 상태는 아래 [자동 정보 직접 고치기]에서 적어 주세요. <b>카카오페이지 작품</b>도 카카오웹툰에 같은 작품이 있으면 이 방법으로 연결할 수 있어요 (플랫폼 이름은 적어 둔 그대로 둬요).`,
+      etc: '작품 페이지 주소를 붙여 넣으면, 그 페이지가 공개해 둔 제목 · 설명 · 표지를 채워요. 작가 · 화수 · 연재 요일 · 상태는 직접 적어 주세요. 카카오페이지 작품 페이지는 공개 정보가 없어서 연결할 수 없어요.'
+    }[pf];
     return `<div class="fx-box">
-      <label for="fx-q" class="fx-h">${WT.platform.icon('네이버웹툰', 'pf-in')}작품 연결 <span>네이버 웹툰 제목 · 작가 이름 · 작품 링크</span></label>
-      <div class="fx-in"><input id="fx-q" class="fld" placeholder="예: 화산귀환" value="${esc((L && L.q) || (w.title !== '새 웹툰' ? w.title : ''))}" autocomplete="off">
-        <button type="button" class="btn btn-gold btn-sm press" data-a="lk-find" data-id="${w.id}" ${L && L.busy ? 'disabled' : ''}>찾기</button>
+      <span class="fx-h">작품 연결 <span>어느 플랫폼에서 연재하나요?</span></span>
+      <div class="fx-pf" role="group" aria-label="연재 플랫폼">${LINK_PF.map(([k, n]) => `<button type="button" data-a="lk-pf" data-id="${w.id}" data-pf="${k}" aria-pressed="${pf === k}">${k === 'etc' ? '' : WT.platform.icon(n, 'pf-in')}${n}</button>`).join('')}</div>
+      <div class="fx-in"><label class="sr" for="fx-q">${pf === 'naver' ? '제목, 작가 이름 또는 작품 링크' : '작품 페이지 주소'}</label><input id="fx-q" class="fld" placeholder="${pf === 'naver' ? '예: 화산귀환' : pf === 'kakaow' ? 'https://webtoon.kakao.com/content/…' : 'https://…'}" value="${esc(qv)}" autocomplete="off" ${pf === 'naver' ? '' : 'inputmode="url"'}>
+        <button type="button" class="btn btn-gold btn-sm press" data-a="lk-find" data-id="${w.id}" ${L && L.busy ? 'disabled' : ''}>${pf === 'naver' ? '찾기' : '연결'}</button>
         ${L && L.relink ? `<button type="button" class="btn btn-sm press" data-a="lk-cancel">취소</button>` : ''}</div>
       ${body}
-      <span class="hint">연결하면 제목 · 작가 · 화수 · 연재 요일 · 설명 · 태그 · 표지를 채우고, 보러 가기 링크가 비어 있으면 공식 페이지로 넣어요. 그 뒤로는 매일 자동으로 맞춰요. 네이버 웹툰이 아닌 작품은 아래 [작품 정보 직접 입력]에 적어 주세요.</span>
+      <span class="hint">${how} 보러 가기 링크가 비어 있으면 공식 페이지로 넣어요.</span>
     </div>`;
   }
   const apiErr = (e) => (/알 수 없는 요청/.test(e.message) ? '서버 코드가 예전 버전이에요. 새 Code.gs를 붙여 넣고 새 버전으로 다시 배포해 주세요.' : e.message);
@@ -418,12 +433,12 @@
     render();
     try {
       if (/^https?:\/\//i.test(q) || /^\d{3,9}$/.test(q)) {
-        if (/^https?:/i.test(q) && !titleIdOf(q)) throw new Error('네이버 웹툰 작품 링크만 연결할 수 있어요. comic.naver.com 의 작품 링크를 넣어 주세요.');
         const r = await api('adminFetchInfo', { url: q });
         if (!ui.link || ui.link.id !== w.id) return;
         linkApply(w, r.info || {});
         return;
       }
+      if (linkPf(w) !== 'naver') throw new Error('이 플랫폼은 제목으로 찾을 수 없어요. 작품 페이지를 열어 주소(https://…)를 복사해 붙여 넣어 주세요.');
       const r = await api('adminSearch', { q });
       if (!ui.link || ui.link.id !== w.id) return;
       ui.link = { id: w.id, q, items: r.items || [], relink };
@@ -445,7 +460,7 @@
   }
   function linkApply(w, I) {
     if (!I.title) { ui.link = { id: w.id, error: '작품 정보를 가져오지 못했어요.' }; render(); return; }
-    const dup = D.webtoons.find((o) => o.id !== w.id && o.source && I.source && titleIdOf(o.source) === titleIdOf(I.source));
+    const dup = D.webtoons.find((o) => o.id !== w.id && o.source && I.source && sameWork(o.source, I.source));
     if (dup) { ui.link = { id: w.id, q: (ui.link || {}).q, error: `이미 "${dup.title}"에 연결된 작품이에요.`, relink: !!(ui.link && ui.link.relink) }; render(); return; }
     const coverNew = applyInfo(w, I);
     const filled = !w.url && !!(I.url || I.source);
@@ -1360,6 +1375,7 @@
       case 'lk-refresh': linkRefresh(toon(id)); break;
       case 'lk-change': ui.link = { id, relink: true, q: toon(id).title }; render(); break;
       case 'lk-cancel': ui.link = null; render(); break;
+      case 'lk-pf': ui.linkPf = { id, pf: t.dataset.pf }; if (ui.link && ui.link.id === id) ui.link = { id, relink: !!ui.link.relink }; render(); break;
       case 'live-retry': live.tries = 0; live.joining = false; clearTimeout(live.retry); liveJoin(); break;
       case 'lk-unlink': if (confirmOnce('unlink:' + id)) { const w = toon(id); delete w.source; delete w.autoAt; w.autoCount = false; ui.link = null; saveDraft(); toast('연결을 끊었어요. 이제 자동으로 바뀌지 않아요'); render(); } break;
       case 'lk-official': { const w = toon(id); w.url = w.source; saveDraft(); toast('보러 가기 링크를 공식 페이지로 바꿨어요'); render(); break; }
