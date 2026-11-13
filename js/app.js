@@ -25,6 +25,17 @@
     search: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA6C8" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>'
   };
 
+  // ---------- 로고: 세로 스크롤 웹툰 화면 속 나무 + 알약 모양 이름 ----------
+  const LOGO = '<svg viewBox="0 0 120 120" aria-hidden="true"><rect x="6" y="6" width="108" height="108" rx="26" fill="#E0565B"/><rect x="31" y="12" width="58" height="96" rx="12" fill="#fff"/>'
+    + '<path d="M37 25a7 7 0 0 1 7-7h32a7 7 0 0 1 7 7v23l-46 7z" fill="#1F2128"/><path d="M37 60l46-7v22l-46 6z" fill="#FFB648"/><path d="M37 86l46-6v15a7 7 0 0 1-7 7H44a7 7 0 0 1-7-7z" fill="#5BB8FF"/>'
+    + '<g stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"><path d="M60 50V33M60 41l-9-8M60 38l9-8"/></g><circle cx="50" cy="31" r="4" fill="#fff"/><circle cx="70" cy="28.5" r="4" fill="#fff"/><circle cx="60" cy="27" r="4.5" fill="#E0565B"/>'
+    + '<path d="M44 62.5h18a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3h-6l-3 3.5v-3.5h-9a3 3 0 0 1-3-3v-5a3 3 0 0 1 3-3z" fill="#fff"/><path d="M46 91h22M46 97h14" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/></svg>';
+  WT.logo = {
+    mark: () => `<span class="wt-mark" aria-hidden="true">${LOGO}</span>`,
+    /** 사이트 이름을 알약 모양으로. "웹툰트리"면 가운데에 점(트리의 노드)을 넣어요 */
+    word: (name) => { const n = String(name || ''); return `<b class="wt-word">${n === '웹툰트리' ? '웹툰<i></i>트리' : WT.esc(n)}</b>`; }
+  };
+
   // ---------- 관심 웹툰 ----------
   const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg>';
   WT.fav = {
@@ -166,7 +177,7 @@
     items.splice(5, 0, ['map', '#/worlds', '전체 지도', '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z M9 4v14 M15 6v14"/>']);
     const onD = (name === 'map' || name === 'worlds') ? 'map' : on;   // 위쪽 메뉴에서는 전체 지도가 따로 있어요
     const nick = s.profile ? s.profile.nick : '둘러보기 중';
-    el.innerHTML = `<a href="#/" class="rail-mark" aria-label="${esc(WT.settings().siteName)} 홈"><span class="au-mark" aria-hidden="true"><i></i><i></i><i></i></span><b>${esc(WT.settings().siteName)}</b></a>
+    el.innerHTML = `<a href="#/" class="rail-mark" aria-label="${esc(WT.settings().siteName)} 홈">${WT.logo.mark()}${WT.logo.word(WT.settings().siteName)}</a>
       <div class="rail-items">${items.map(([k, href, label, d]) => `<a href="${href}" class="rail-item k-${k}${on === k ? ' on' : ''}${onD === k ? ' on-d' : ''}" ${on === k ? 'aria-current="page"' : ''} title="${label}">${RAIL_IC(d)}<span class="lb">${label}</span>${k === 'me' ? `<i class="rail-av" aria-hidden="true">${esc((s.profile ? s.profile.nick : '?')[0])}</i><span class="nk">${esc(nick)}</span>` : ''}</a>`).join('')}</div>
       <div class="rail-tools">${WT.coinPill ? WT.coinPill() : ''}${WT.themeBtn()}</div>`;
   };
@@ -284,7 +295,7 @@
     }
     app().innerHTML = `<div class="view hm-view">
         <span class="hm-glow" aria-hidden="true"></span><span class="hm-glow b" aria-hidden="true"></span>
-        <div class="topbar hm-top"><div class="left"><b class="hm-name">${esc(st.siteName)}</b></div>${WT.topRight()}</div>
+        <div class="topbar hm-top"><div class="left"><span class="hm-name">${WT.logo.mark()}${WT.logo.word(st.siteName)}</span></div>${WT.topRight()}</div>
         <section class="hm-hero">
           ${st.notice ? `<p class="hm-notice">${esc(st.notice)}</p>` : ''}
           <h1 class="hm-h1"><span>${heroLine(hero.line1, '볼 건 많고, 시간은 없고?')}</span><span>${heroLine(hero.line2, '*트리*가 골라 줄게요.')}</span></h1>
@@ -326,7 +337,7 @@
     app().innerHTML = `<div class="view home">
       <div class="home-panel">
         <div class="home-top">
-          <span class="home-logo"><span class="au-mark" aria-hidden="true"><i></i><i></i><i></i></span><h1>${esc(st.siteName)}</h1></span>
+          <span class="home-logo">${WT.logo.mark()}<h1>${WT.logo.word(st.siteName)}</h1></span>
           ${WT.topRight({ map: false })}
         </div>
         ${st.notice ? `<p class="notice">${esc(st.notice)}</p>` : ''}
@@ -520,7 +531,7 @@
     }).filter(Boolean);
     app().innerHTML = `<div class="view au-view"><main class="au-shell">
       <section class="au-form-side">
-        <div class="au-top"><span class="au-brand"><span class="au-mark" aria-hidden="true"><i></i><i></i><i></i></span><b>${esc(st.siteName)}</b></span>${WT.themeBtn()}</div>
+        <div class="au-top"><span class="au-brand">${WT.logo.mark()}${WT.logo.word(st.siteName)}</span>${WT.themeBtn()}</div>
         <div class="au-form-wrap" id="au-pane">${paneHTML}</div>
         <div class="au-foot">© ${esc(st.siteName)} · 제작 김형호, 신효제, 이유섭</div>
       </section>
