@@ -1,6 +1,210 @@
 {
   "webtoons": [
     {
+      "id": "w657564281141083",
+      "title": "캐슬2:만인지상",
+      "author": "정연, 박만사",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=807178",
+      "cover": "https://image-comic.pstatic.net/webtoon/807178/thumbnail/thumbnail_IMAG21_28fcfb22-aae7-41b4-8767-05f6dd176b03.jpg",
+      "genres": [
+        "action"
+      ],
+      "recommended": 3,
+      "color": "#9b7973",
+      "episodes": 136,
+      "status": "completed",
+      "days": [
+        "wed"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "액션",
+        "사이다",
+        "시리어스",
+        "요즘핫한추천작",
+        "지금추천작",
+        "범죄",
+        "복수극",
+        "먼치킨"
+      ],
+      "desc": "뒷세계 절대권력 '캐슬'을 무너뜨리기 위하여 전국의 남자들을 모아 '백의'를 조직한 특급킬러 '김신'은 \n그렇게 캐슬 내부로 들어가 적과의 동침을 시작하는데.. 과연 김신은 자신이 염원하던대로 캐슬을 무너뜨리고 복수를 완성할수 있을까.",
+      "authors": [
+        {
+          "name": "정연",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        },
+        {
+          "name": "박만사",
+          "roles": [
+            "writer"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=807178",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141082",
+      "title": "캐슬",
+      "author": "정연",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=736744",
+      "cover": "https://image-comic.pstatic.net/webtoon/736744/thumbnail/thumbnail_IMAG21_3905519414961792355.jpg",
+      "genres": [
+        "action"
+      ],
+      "recommended": 2,
+      "color": "#0e1319",
+      "episodes": 121,
+      "status": "completed",
+      "days": [
+        "wed"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "액션",
+        "복수극",
+        "느와르",
+        "완결액션"
+      ],
+      "desc": "복수를 위해 칼을 갈아온 특급 킬러 '김신',\n뒷세계 '절대권력'과의 목숨 건 한판 승부!",
+      "authors": [
+        {
+          "name": "정연",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=736744",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141081",
+      "title": "드래곤 여친이 귀환했다",
+      "author": "LICO, 뚠딴, 세칸",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=855153",
+      "cover": "https://image-comic.pstatic.net/webtoon/855153/thumbnail/thumbnail_IMAG21_2cfe672e-bfc7-4a0b-9b76-0466100004f9.jpg",
+      "genres": [
+        "romance",
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#fbe7eb",
+      "episodes": 13,
+      "status": "ongoing",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "러브코미디",
+        "판타지개그",
+        "설렘폭발",
+        "유혹녀",
+        "로맨틱코미디",
+        "로맨스",
+        "로맨스코미디"
+      ],
+      "desc": "게이트 브레이크에 휘말려 죽은 줄 알았던 여자친구 시아가 1년 만에 드래곤이 되어 돌아왔다.\n하지만 기쁨도 잠시, 시아와 스킨십을 할수록 민준의 생명은 위험해지는데.\n살아남고 사랑을 이어가기 위한 유일한 방법은 드래곤의 힘을 온전히 다루는 것뿐이라고?\n과연 민준은 종족의 한계를 뛰어넘고 시아와의 뜨거운 사랑을 지켜낼 수 있을까.",
+      "authors": [
+        {
+          "name": "LICO",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "뚠딴",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "세칸",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=855153",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-1",
+        "fantasy-2"
+      ]
+    },
+    {
+      "id": "w657564281141080",
+      "title": "내가 죽인 드래곤과 결혼했다",
+      "author": "만둣불, 젤링, 분재나무",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=852628",
+      "cover": "https://image-comic.pstatic.net/webtoon/852628/thumbnail/thumbnail_IMAG21_99ad167a-79c7-4326-86bc-c9839cf123f6.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#271617",
+      "episodes": 23,
+      "status": "ongoing",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "액션판타지",
+        "마법",
+        "소년물",
+        "액션",
+        "세계관",
+        "회귀",
+        "소설원작"
+      ],
+      "desc": "반신의 경지라 불리는 9서클.\n그 마지막 열쇠는 레드 드래곤, 발드로바의 심장이었다.\n\n“설마 짐의 약혼자가 짐을 죽이러 올 줄이야.”\n\n어째서인지, 발드로바는 저항 없이 스스로 심장을 내어주었다.\n\n\"... 뭐냐, 이 감정은. 어째서 이토록 찝찝한 거냐?\"\n\n아아, 나는 보고 말았다.\n내 증오 따위와 비교할 수 없는 발드로바의 깊고 오래된 절망을.",
+      "authors": [
+        {
+          "name": "만둣불",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "젤링",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "분재나무",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=852628",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-1"
+      ]
+    },
+    {
       "id": "w657564281141079",
       "title": "천재는 평범하게 살기로 했더",
       "author": "비단가리비, 아티, 자손e",
@@ -2133,7 +2337,8 @@
       "cover": "https://image-comic.pstatic.net/webtoon/826321/thumbnail/thumbnail_IMAG21_6f758997-16a2-49a9-abf9-d28611b38a2e.jpg",
       "genres": [
         "fantasy",
-        "action"
+        "action",
+        "apocalyps"
       ],
       "recommended": 1,
       "color": "#181d23",
@@ -4497,7 +4702,8 @@
       "cover": "https://i.namu.wiki/i/lbGPhVfwIMFvS8UxxkE_JyGsbZApYCo1mgM455mkYlMY5i4YT8CGu01PFdiP2ww_gNHKp8lVfJ8xV-eeIH1O1oxi0Rttxe7b9tYGDwLR8btxTKQI6X0PJ6jN3DVbRhnp2LozXoMT6tXsaxA7PBQO4w.webp",
       "genres": [
         "fantasy",
-        "action"
+        "action",
+        "apocalyps"
       ],
       "recommended": 3,
       "color": "#8c00ff",
@@ -5988,7 +6194,8 @@
       "cover": "https://i.namu.wiki/i/Hk3-FF7-4N3DsI4N5-tZ0CRBthSBk0VPTkZVafV7PUQgacCQ52KxHG1i-0u1Rp5f-k4HrO95lvr3FTmvEHECX2KAC40lSbePsGFJfHc1kEgY3Ll5v4xFGvYVoMyhNkVXQs0JX39JKV8lSzrmN2nOUA.webp",
       "genres": [
         "fantasy",
-        "action"
+        "action",
+        "apocalyps"
       ],
       "recommended": 3,
       "color": "#ff6a00",
@@ -6436,7 +6643,8 @@
       "url": "https://blacktoon427.com/webtoon/4279.html",
       "cover": "https://i.namu.wiki/i/hctZcawovPWWqUJIBtPBE8Y2xEa10m9amRGwYbHx60s95WLdcCCpH0pMjV1boEHYomAOZf22bw78avxZwHbA5uXorldONML8NhwKQ9zWBBNDeTEbey4Uk3H8KDSEud5Q4JxthGNbcumhJAs6al4fUw.webp",
       "genres": [
-        "fantasy"
+        "fantasy",
+        "apocalyps"
       ],
       "recommended": 5,
       "episodes": 313,
@@ -6490,7 +6698,9 @@
       "url": "https://blacktoon427.com/webtoon/279.html",
       "cover": "https://i.namu.wiki/i/yLbUioKY5JCfQ8zCMD5z1wcJnCUQge-mOyaiFrrNdM7Q4J2pHRX8rQEkqqm9yKegJik8KOoX8OD4xv068q5S7ltCeI9agmzngkJBBB90LYmSO9IXiXruYdPNNLD8NyLbPUwcxUFa-4kM9jh8Wz6dIw.webp",
       "genres": [
-        "fantasy"
+        "fantasy",
+        "apocalyps",
+        "action"
       ],
       "recommended": 4,
       "episodes": 200,
@@ -6849,7 +7059,8 @@
       "cover": "https://i.namu.wiki/i/NvLAABcgkPVw_mz881P3PROFTg5mlQaoo9HvW-vHcVo67DwBZET61NDyP6xTaOMUeuYZvWr4tPJLoiUl_Xv2Y0n-uqswO48egsTVL_TGucMYKt_tlo2wGSJt7Pqcn02a0bMwjyoobrWGmji2-RWT0w.webp",
       "genres": [
         "fantasy",
-        "action"
+        "action",
+        "apocalyps"
       ],
       "recommended": 2,
       "color": "#d8665a",
@@ -8179,7 +8390,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141079
+    "lastWebtoonId": 657564281141083
   },
   "version": 1,
   "shop": [
@@ -9648,6 +9859,12 @@
       "url": "",
       "works": [
         {
+          "title": "화산귀환",
+          "source": "https://comic.naver.com/webtoon/list?titleId=769209",
+          "cover": "https://image-comic.pstatic.net/webtoon/769209/thumbnail/thumbnail_IMAG21_3511dcdd-6e33-4171-8839-598d6d266215.jpg",
+          "finished": false
+        },
+        {
           "title": "내 남편과 결혼해줘",
           "source": "https://comic.naver.com/webtoon/list?titleId=783769",
           "cover": "https://image-comic.pstatic.net/webtoon/783769/thumbnail/thumbnail_IMAG21_fc14e4e2-e62f-4d77-8f46-9fb05cffa77a.jpeg",
@@ -9670,6 +9887,36 @@
           "source": "https://comic.naver.com/webtoon/list?titleId=832566",
           "cover": "https://image-comic.pstatic.net/webtoon/832566/thumbnail/thumbnail_IMAG21_1a6c6340-d9da-4a50-9327-3d91a5388d9f.jpg",
           "finished": false
+        },
+        {
+          "title": "화양연화 Pt.0 ＜SAVE ME＞",
+          "source": "https://comic.naver.com/webtoon/list?titleId=722382",
+          "cover": "https://image-comic.pstatic.net/webtoon/722382/thumbnail/thumbnail_IMAG21_7003722154494943545.jpg",
+          "finished": true
+        },
+        {
+          "title": "사랑하는 나의 억압자",
+          "source": "https://comic.naver.com/webtoon/list?titleId=822080",
+          "cover": "https://image-comic.pstatic.net/webtoon/822080/thumbnail/thumbnail_IMAG21_8a75410b-eef3-4feb-977c-721d3c64963b.jpg",
+          "finished": true
+        },
+        {
+          "title": "악당들의 후원자가 되었다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=844063",
+          "cover": "https://image-comic.pstatic.net/webtoon/844063/thumbnail/thumbnail_IMAG21_07fca44b-55a8-4bae-bdcf-0740d8655274.jpg",
+          "finished": false
+        },
+        {
+          "title": "흑화한 노예남을 길들였다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=808994",
+          "cover": "https://image-comic.pstatic.net/webtoon/808994/thumbnail/thumbnail_IMAG21_e53c2e67-9ad0-455e-8177-c8de56374880.jpg",
+          "finished": true
+        },
+        {
+          "title": "사소한 냐냐",
+          "source": "https://comic.naver.com/webtoon/list?titleId=730811",
+          "cover": "https://image-comic.pstatic.net/webtoon/730811/thumbnail/thumbnail_IMAG21_3616500874495801441.jpg",
+          "finished": true
         }
       ]
     },
@@ -11407,6 +11654,129 @@
       "bio": "",
       "url": "",
       "works": []
+    },
+    "만둣불": {
+      "name": "만둣불",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_gk9dq",
+      "works": []
+    },
+    "젤링": {
+      "name": "젤링",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_7150m9",
+      "works": []
+    },
+    "분재나무": {
+      "name": "분재나무",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "뚠딴": {
+      "name": "뚠딴",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20261103_211/1793693681475ljOqf_PNG/%C7%C1%B7%CE%C7%CA2.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_l9wbqx",
+      "works": []
+    },
+    "세칸": {
+      "name": "세칸",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "정연": {
+      "name": "정연",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_bbout",
+      "works": [
+        {
+          "title": "캐슬2:만인지상",
+          "source": "https://comic.naver.com/webtoon/list?titleId=807178",
+          "cover": "https://image-comic.pstatic.net/webtoon/807178/thumbnail/thumbnail_IMAG21_28fcfb22-aae7-41b4-8767-05f6dd176b03.jpg",
+          "finished": true
+        },
+        {
+          "title": "귀인",
+          "source": "https://comic.naver.com/webtoon/list?titleId=724817",
+          "cover": "https://image-comic.pstatic.net/webtoon/724817/thumbnail/thumbnail_IMAG21_3979320834478257253.JPEG",
+          "finished": true
+        },
+        {
+          "title": "신이 되겠다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=826667",
+          "cover": "https://image-comic.pstatic.net/webtoon/826667/thumbnail/thumbnail_IMAG21_e9a98238-17ec-428e-88ba-f5e1e6b88eb2.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "박만사": {
+      "name": "박만사",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20250311_293/1741670110725O3XVu_PNG/PTJCOMICS_%C7%C1%B7%CE%C7%CA.png",
+      "bio": "박태준만화회사 https://litt.ly/ptjcomics",
+      "url": "https://comic.naver.com/community/u/ptjcomics",
+      "works": [
+        {
+          "title": "싸움독학",
+          "source": "https://comic.naver.com/webtoon/list?titleId=736277",
+          "cover": "https://image-comic.pstatic.net/webtoon/736277/thumbnail/thumbnail_IMAG21_bbbe3f76-021e-4dbc-830a-4358c1abec0c.jpg",
+          "finished": true
+        },
+        {
+          "title": "김부장",
+          "source": "https://comic.naver.com/webtoon/list?titleId=783053",
+          "cover": "https://image-comic.pstatic.net/webtoon/783053/thumbnail/thumbnail_IMAG21_1135578a-87ec-48ba-b2c5-c7b93b21f91c.jpg",
+          "finished": false
+        },
+        {
+          "title": "퀘스트지상주의",
+          "source": "https://comic.naver.com/webtoon/list?titleId=783052",
+          "cover": "https://image-comic.pstatic.net/webtoon/783052/thumbnail/thumbnail_IMAG21_800f4c56-26ac-419e-9ed0-baf322311dea.jpg",
+          "finished": true
+        },
+        {
+          "title": "백XX",
+          "source": "https://comic.naver.com/webtoon/list?titleId=804862",
+          "cover": "https://image-comic.pstatic.net/webtoon/804862/thumbnail/thumbnail_IMAG21_16a25137-072a-4a83-acc5-211b47546595.jpeg",
+          "finished": false
+        },
+        {
+          "title": "촉법소년",
+          "source": "https://comic.naver.com/webtoon/list?titleId=808198",
+          "cover": "https://image-comic.pstatic.net/webtoon/808198/thumbnail/thumbnail_IMAG21_f0d0007b-1edf-40a0-ade4-b850c22bb0b1.jpg",
+          "finished": true
+        },
+        {
+          "title": "사형소년",
+          "source": "https://comic.naver.com/webtoon/list?titleId=795262",
+          "cover": "https://image-comic.pstatic.net/webtoon/795262/thumbnail/thumbnail_IMAG21_6904a7bd-e806-4f49-9b00-ee882a86fd4b.jpg",
+          "finished": true
+        },
+        {
+          "title": "왕따가 격투기를 너무 잘함",
+          "source": "https://comic.naver.com/webtoon/list?titleId=806888",
+          "cover": "https://image-comic.pstatic.net/webtoon/806888/thumbnail/thumbnail_IMAG21_6af519b3-7a50-4843-a4ad-19caf995ee96.jpeg",
+          "finished": false
+        },
+        {
+          "title": "보스였음",
+          "source": "https://comic.naver.com/webtoon/list?titleId=802833",
+          "cover": "https://image-comic.pstatic.net/webtoon/802833/thumbnail/thumbnail_IMAG21_5503b6c5-cedb-4bfa-acab-c44ae7e1c7e6.jpg",
+          "finished": false
+        },
+        {
+          "title": "욕망일기",
+          "source": "https://comic.naver.com/webtoon/list?titleId=762071",
+          "cover": "https://image-comic.pstatic.net/webtoon/762071/thumbnail/thumbnail_IMAG21_4050535111651111523.jpg",
+          "finished": true
+        }
+      ]
     }
   }
 }
