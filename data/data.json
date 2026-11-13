@@ -1,6 +1,48 @@
 {
   "webtoons": [
     {
+      "id": "w657564281141088zk",
+      "title": "마음의소리",
+      "author": "조석",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=20853",
+      "cover": "https://image-comic.pstatic.net/webtoon/20853/thumbnail/thumbnail_IMAG21_a715d0bd-fe55-4658-a573-669e0c0261f6.jpg",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 4,
+      "color": "#fbeb22",
+      "episodes": 1238,
+      "status": "completed",
+      "days": [
+        "tue"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "개그",
+        "몰아보기",
+        "명작",
+        "드라마&영화 원작웹툰",
+        "4차원",
+        "완결개그"
+      ],
+      "desc": "솔직 담백 최강의 개그 만화 \n날 가져요 엉엉",
+      "authors": [
+        {
+          "name": "조석",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=20853",
+      "autoAt": "2026-11-13",
+      "pick": false
+    },
+    {
       "id": "w657564281141087ah",
       "title": "신과함께",
       "author": "주호민",
@@ -8649,7 +8691,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141087
+    "lastWebtoonId": 657564281141088
   },
   "authorInfo": {
     "232": {
@@ -12075,6 +12117,68 @@
           "title": "검협전기",
           "source": "https://comic.naver.com/webtoon/list?titleId=680107",
           "cover": "https://image-comic.pstatic.net/webtoon/680107/thumbnail/thumbnail_IMAG21_7075547957740845366.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "조석": {
+      "name": "조석",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230913_138/1694604081575GPUuM_PNG/3472521771865383500_20230828194905947.png",
+      "bio": "안녕하세요 조석입니다 절 보러왔군요",
+      "url": "https://comic.naver.com/community/u/morningevening",
+      "works": [
+        {
+          "title": "조석축구만화",
+          "source": "https://comic.naver.com/webtoon/list?titleId=652466",
+          "cover": "https://image-comic.pstatic.net/webtoon/652466/thumbnail/thumbnail_IMAG21_3616783448228968760.jpg",
+          "finished": true
+        },
+        {
+          "title": "조의 영역",
+          "source": "https://comic.naver.com/webtoon/list?titleId=697656",
+          "cover": "https://image-comic.pstatic.net/webtoon/697656/thumbnail/thumbnail_IMAG21_7306590557355194677.jpg",
+          "finished": true
+        },
+        {
+          "title": "자율공상축구탐구만화",
+          "source": "https://comic.naver.com/webtoon/list?titleId=164320",
+          "cover": "https://image-comic.pstatic.net/webtoon/164320/thumbnail/thumbnail_IMAG21_3977858454804052274.jpg",
+          "finished": true
+        },
+        {
+          "title": "문유",
+          "source": "https://comic.naver.com/webtoon/list?titleId=679544",
+          "cover": "https://image-comic.pstatic.net/webtoon/679544/thumbnail/thumbnail_IMAG21_4122029949915247460.jpg",
+          "finished": true
+        },
+        {
+          "title": "N의등대-busted",
+          "source": "https://comic.naver.com/webtoon/list?titleId=26460",
+          "cover": "https://image-comic.pstatic.net/webtoon/26460/thumbnail/thumbnail_IMAG21_3474022656651846497.jpg",
+          "finished": true
+        },
+        {
+          "title": "취업의소리",
+          "source": "https://comic.naver.com/webtoon/list?titleId=26144",
+          "cover": "https://image-comic.pstatic.net/webtoon/26144/thumbnail/thumbnail_IMAG21_3762534494875574884.jpg",
+          "finished": true
+        },
+        {
+          "title": "풋볼 데이브레이커",
+          "source": "https://comic.naver.com/webtoon/list?titleId=577830",
+          "cover": "https://image-comic.pstatic.net/webtoon/577830/thumbnail/thumbnail_IMAG21_7161117261207594084.jpg",
+          "finished": true
+        },
+        {
+          "title": "이름을 불러주세요",
+          "source": "https://comic.naver.com/webtoon/list?titleId=713334",
+          "cover": "https://image-comic.pstatic.net/webtoon/713334/thumbnail/thumbnail_IMAG21_3689964760283298145.jpg",
+          "finished": true
+        },
+        {
+          "title": "마음의소리(였던 것)",
+          "source": "https://comic.naver.com/webtoon/list?titleId=821793",
+          "cover": "https://image-comic.pstatic.net/webtoon/821793/thumbnail/thumbnail_IMAG21_c5c798a7-dadf-487b-9bea-485928755332.jpg",
           "finished": true
         }
       ]
