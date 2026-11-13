@@ -34,7 +34,7 @@ var JSON_COLS = { progress: 1, rewarded: 1, daily: 1, owned: 1, equip: 1, unlock
 // 웹 요청 입구
 // ======================================================================
 function doGet() {
-  return out_({ ok: true, name: 'webtoontree', time: now_() });
+  return out_({ ok: true, name: 'webtoontree', version: SERVER_VERSION, time: now_() });
 }
 
 function doPost(e) {
@@ -66,6 +66,9 @@ function doPost(e) {
     if (lock) lock.releaseLock();
   }
 }
+
+// 서버 코드 판 번호: 관리자 화면이 이 숫자를 보고 "서버 코드가 예전 버전"인지 알려 줘요. 서버 코드를 고치면 1씩 올려요
+var SERVER_VERSION = 11;
 
 var WRITE_ACTIONS = {
   signup: 1, login: 1, logout: 1, nick: 1, deleteAccount: 1, progress: 1, rate: 1, comment: 1, deleteComment: 1,
@@ -539,7 +542,7 @@ var ACTIONS = {
     var me = who_(b);
     try { ensureAutoTrigger_(); } catch (e) { console.warn('trigger', e); }
     var p = PropertiesService.getScriptProperties();
-    return { github: !!p.getProperty('GITHUB_TOKEN'), email: p.getProperty('ADMIN_EMAIL') || '', owner: me.owner, adminName: me.name, adminUserId: me.userId };
+    return { serverVersion: SERVER_VERSION, github: !!p.getProperty('GITHUB_TOKEN'), email: p.getProperty('ADMIN_EMAIL') || '', owner: me.owner, adminName: me.name, adminUserId: me.userId };
   },
 
   adminUsers: function (b) {
@@ -675,6 +678,7 @@ var ACTIONS = {
     if (res.getResponseCode() >= 300) fail_('GitHub에 저장하지 못했어요 (' + res.getResponseCode() + '). 토큰 권한을 확인해 주세요.');
     cacheDel_('site');
     var savedHash = hash_(JSON.stringify(data));
+    if (!liveSt && b.resetLive) liveSt = liveState_();   // 함께 편집에 연결하지 못한 관리자가 저장: 지금 내용을 새 기준으로
     if (liveSt) {
       // 함께 편집: 여기까지 사이트에 올렸어요. 그 전 기록은 정리해요
       var props = PropertiesService.getScriptProperties();

@@ -260,3 +260,7 @@ body.admin .chip-admin { background: #5BB8FF; }
 .ad-head > #ad-live { position: static; order: 9; flex: 1 0 100%; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 8px; max-width: none; text-align: center; }
 .ad-head > #ad-live:empty { display: none; }
 .ad-head > #ad-live .live-why { flex-basis: 100%; max-width: none; text-align: center; }
+/* 서버 코드가 예전 버전일 때의 안내 */
+.ad-old { order: 10; flex: 1 0 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 12px; padding: 10px 14px; border-radius: 12px; font-size: 13.5px; text-align: center; background: rgba(255, 154, 77, .14); border: 1px solid rgba(255, 154, 77, .55); color: #FFD9B8; }
+.ad-old a { color: #fff; font-weight: 800; }
+.ad-old span { flex-basis: 100%; font-size: 12.5px; opacity: .9; }

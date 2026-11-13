@@ -4,6 +4,7 @@
    - 이 화면은 서버에 아무것도 바꾸지 않아요. 실제 수정 권한은 GitHub 저장소가 가져요. */
 (function () {
   const DRAFT = 'webtoontree.admin.draft';
+  const NEED_SERVER = 11;   // 이 화면이 필요로 하는 서버 코드 판 번호 (apps-script/Code.gs 의 SERVER_VERSION)
   const root = () => document.getElementById('admin');
   const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -161,6 +162,9 @@
         <div class="brand">${WT.logo.mark()}${WT.logo.word((D.settings || {}).siteName || '웹툰트리')}<span class="ad-tag">관리자</span></div>
         <span id="ad-state" class="ad-state" aria-live="polite"></span>
         <span id="ad-live" class="ad-live"></span>
+        ${srv.ok && srv.old ? `<div class="ad-old" role="alert"><b>서버 코드가 예전 버전이에요.</b> 함께 편집 같은 새 기능이 안 될 수 있어요.
+          <a href="server-code.html" target="_blank" rel="noopener">새 서버 코드 복사하기 ↗</a>
+          <span>복사한 코드를 Apps Script의 Code.gs에 전부 바꿔 붙이고 저장 → <b>배포 → 배포 관리 → 연필 → 버전: 새 버전 → 배포</b> ("새 배포"가 아니에요)</span></div>` : ''}
         <div class="ad-actions">
           <a class="btn btn-sm press" href="index.html?preview=1" target="_blank" rel="noopener">사이트 미리보기</a>
           ${srvSaveReady() ? '<button type="button" class="btn btn-gold btn-sm press" data-a="srv-save">사이트에 바로 저장</button>' : '<button type="button" class="btn btn-gold btn-sm press" data-a="export">data.json 내보내기</button>'}
@@ -1067,6 +1071,7 @@
     try {
       const c = await api('adminCheck');
       srv.ok = true; srv.github = c.github; srv.owner = !!c.owner; srv.name = c.adminName || '';
+      srv.old = (Number(c.serverVersion) || 0) < NEED_SERVER;   // 서버(Apps Script) 코드가 이 화면보다 예전 버전인지
       if (srv.pw) { try { sessionStorage.setItem('webtoontree.adminpw', srv.pw); } catch (e) { /* 무시 */ } }
       srv.uid = c.adminUserId || '';
       if (!live.on && c.github) liveJoin();
@@ -1644,7 +1649,7 @@
   /** 바로 저장: 다른 관리자가 먼저 저장했으면 멈추고 물어봐요 (force = 그래도 덮어쓰기) */
   async function saveToServer(force, retried) {
     if (live.on) { await liveFlush(); }
-    api('adminSaveData', { data: D, baseHash: base, force: !!force, liveVersion: live.on ? live.ver : undefined }).then(async (r) => {
+    api('adminSaveData', { data: D, baseHash: base, force: !!force, liveVersion: live.on ? live.ver : undefined, resetLive: !live.on && !!live.err }).then(async (r) => {
       ui.confirm = null;
       if (r.behind && !retried) { await liveFlush(); saveToServer(force, true); return; }
       if (r.behind) { toast('다른 관리자의 변경을 받는 중이에요. 잠시 뒤 다시 눌러 주세요'); render(); return; }
@@ -1655,6 +1660,7 @@
         return;
       }
       siteJSON = JSON.stringify(D); srv.conflict = false;
+      if (!live.on && live.err) { live.tries = 0; live.joining = false; clearTimeout(live.retry); liveJoin(); }   // 저장으로 기록을 정리했으니 다시 연결해 봐요
       if (r.hash) setBase(r.hash);
       if (live.on) live.base = live.ver;
       try { localStorage.removeItem(DRAFT); } catch (e) { /* 무시 */ }
