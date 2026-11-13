@@ -4439,7 +4439,7 @@
     {
       "id": "w657564280k5",
       "title": "비뢰도",
-      "author": "스토리: 오주, 작화: Awin",
+      "author": "오주, Awin, 검류혼",
       "platform": "카카오페이지",
       "url": "https://blacktoon427.com/webtoon/3579.html",
       "cover": "https://i.namu.wiki/i/TipKtzoQSkpM0-qj8GKYQ-DVljuvWeCxcn5xF6B_1fPiW_CHz5DeHv-pzWhm2Xng8unpTFZYYZz8WgnaS6C_6iII4S-7oNxcyihckbrLzSL_1sxitoul8hWypC5rMQaHUtso5k0YATWNhAKIlpDdvw.webp",
@@ -4453,10 +4453,38 @@
       "days": [
         "fri"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-10",
-      "tags": [],
-      "desc": ""
+      "tags": [
+        "액션",
+        "무협",
+        "웃기는",
+        "통쾌한",
+        "캠퍼스물"
+      ],
+      "desc": "홀로 길러주신 아버지를 잃고 10세에 혈혈단신이 된 비류연. 조각가였던 아버지에게 배운 기술로 부모님의 조각상을 만들어 두 분 묘 앞에 세워뒀더니, 지나가던 노인이 그걸 보고는 천하제일 무공을 가르쳐주겠다고 한다. 수상쩍지만 달리 갈 곳도 없고, 그럴듯해 보인 무공에 혹해 비류연은 그만 그 노인을 사부로 삼고 만다.\n \n그러나 그날부터 사부는 본색을 드러내 비류연을 노예처럼 부려먹으며 말도 안 되는 무공들을 전수하기 시작하고…! 그 와중에 만났던 최초의 친구 ‘린’과의 추억을 제외하면 그의 삶을 점철한 것은 무식한 가사노동과 과로사",
+      "authors": [
+        {
+          "name": "오주",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "Awin",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "검류혼",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "source": "https://webtoon.kakao.com/content/%EB%B9%84%EB%A2%B0%EB%8F%84/2355",
+      "autoAt": "2026-11-13"
     },
     {
       "id": "w657564279ng",
@@ -4924,9 +4952,9 @@
     {
       "id": "w65755ul",
       "title": "도굴왕",
-      "author": "",
+      "author": "윤쓰(Redice Studio), 3B2S, 산지직송",
       "platform": "카카오페이지",
-      "url": "",
+      "url": "https://webtoon.kakao.com/content/%EB%8F%84%EA%B5%B4%EC%99%95/2340",
       "cover": "https://i.namu.wiki/i/lbGPhVfwIMFvS8UxxkE_JyGsbZApYCo1mgM455mkYlMY5i4YT8CGu01PFdiP2ww_gNHKp8lVfJ8xV-eeIH1O1oxi0Rttxe7b9tYGDwLR8btxTKQI6X0PJ6jN3DVbRhnp2LozXoMT6tXsaxA7PBQO4w.webp",
       "genres": [
         "fantasy",
@@ -4941,22 +4969,42 @@
         "tue",
         "fri"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-10",
       "tags": [
+        "학원",
         "판타지",
-        "액션",
-        "회귀",
-        "던전",
-        "무덤",
-        "신화",
-        "소설원작"
+        "통쾌한",
+        "몰입되는",
+        "복수물"
       ],
-      "desc": "현대에 출몰한 신의 무덤.\n유물로 영웅의 능력을 쓰게 된 사람들, 부를 얻게 된 사람들.\n\n그리고 그 유물을 털어가는 의문의 도굴꾼이 나타났다.\n\n도굴왕.\n\n“아아씨, 미치겠네. 여기도 또 그자식이 다 털어 갔냐!''.\n\n네 것도 내 것. 내 건 당연히 내 것.\n다시 살아난 도굴꾼, 그가 세상 모든 무덤을 접수하기 시작한다!",
+      "desc": "현대에 출몰한 신의 무덤.\n유물로 영웅의 능력을 쓰게 된 사람들, 부를 얻게 된 사람들.\n \n그리고 그 유물을 털어가는 의문의 도굴꾼이 나타났다.\n \n도굴왕.\n \n\"아이씨, 미치겠네. 여기도 또 그자식이 다 털어 갔냐!\"\n \n네 것도 내 것. 내 건 당연히 내 것.\n다시 살아난 도굴꾼, 그가 세상 모든 무덤을 접수하기 시작한다!",
       "subs": [
         "fantasy-1",
         "fantasy-2"
-      ]
+      ],
+      "authors": [
+        {
+          "name": "윤쓰(Redice Studio)",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "3B2S",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "산지직송",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "source": "https://webtoon.kakao.com/content/%EB%8F%84%EA%B5%B4%EC%99%95/2340",
+      "autoAt": "2026-11-13"
     },
     {
       "id": "w6575t4",
@@ -5004,35 +5052,57 @@
     {
       "id": "w6574dz",
       "title": "SSS급 죽어야 사는 헌터",
-      "author": "네이다, Bill K",
+      "author": "네이다, Bill K, 신노아",
       "platform": "카카오페이지",
-      "url": "",
+      "url": "https://webtoon.kakao.com/content/SSS%EA%B8%89-%EC%A3%BD%EC%96%B4%EC%95%BC-%EC%82%AC%EB%8A%94-%ED%97%8C%ED%84%B0/2454",
       "cover": "https://i.namu.wiki/i/hmEfCm0zu9C1Be5nmJf-X9Kd4C3Pbhe84NkqhG66Q9D7N_cb5Co8oKsJg7MSgUQZfFngD9W8qX_x6-McDWmInELXj7O9iGROpmfcEe6R2sMowr6WeWPcrVQ3wxDb6GuJgC9iqmlTidpj0b97lCfXWw.webp",
       "genres": [
         "fantasy"
       ],
       "recommended": 4,
       "color": "#00aaff",
-      "episodes": 158,
-      "status": "ongoing",
+      "episodes": 159,
+      "status": "hiatus",
       "days": [
-        "thu"
+        "fri"
       ],
-      "autoCount": true,
-      "baseDate": "2026-11-10",
+      "autoCount": false,
+      "baseDate": "2026-11-13",
       "tags": [
+        "학원",
         "판타지",
-        "죽음",
-        "탑등반",
-        "상태창",
-        "소설원작"
+        "역동적인",
+        "가슴 먹먹한",
+        "회귀물"
       ],
-      "desc": "F급 말단 헌터 '김공자'.\n\n랭킹 1위 '염제'를 부러워하던 어느 날, 무려 S+급 스킬을 얻는다.\n\n하지만 기쁨도 잠시, 어째 스킬 내용이 이상하다?!\n\n상대의 스킬 중 1개를 복사한다, 까지는 좋은데...\n\n''뭐? 내가 죽어야만 발동된다고?!''",
+      "desc": "F급 말단 헌터 ‘김공자‘.\n랭킹 1위 ‘염제‘를 부러워하던 어느 날, 무려 S+급 스킬을 얻는다.\n하지만 기쁨도 잠시, 어째 스킬 내용이 이상하다?!\n \n상대의 스킬 중 1개를 복사한다,까지는 좋은데…\n \n\"뭐? 내가 죽어야만 발동된다고?!\"\n \n죽어야 사는 헌터의 인간찬가",
       "subs": [
         "fantasy-6",
         "fantasy-1",
         "fantasy-2"
-      ]
+      ],
+      "authors": [
+        {
+          "name": "네이다",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "Bill K",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "신노아",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "source": "https://webtoon.kakao.com/content/SSS%EA%B8%89-%EC%A3%BD%EC%96%B4%EC%95%BC-%EC%82%AC%EB%8A%94-%ED%97%8C%ED%84%B0/2454",
+      "autoAt": "2026-11-13"
     },
     {
       "id": "w6573q",
@@ -5080,36 +5150,55 @@
     {
       "id": "w065q6",
       "title": "무한의 마법사",
-      "author": "kiraz(REDICE STUDIO), 아디티",
+      "author": "kiraz(REDICE STUDIO), 아디티, 김치우",
       "platform": "카카오페이지",
-      "url": "",
+      "url": "https://webtoon.kakao.com/content/%EB%AC%B4%ED%95%9C%EC%9D%98-%EB%A7%88%EB%B2%95%EC%82%AC/3211",
       "cover": "https://i.namu.wiki/i/_KMA7Higg2WuRbdZjzNXpGzw-dKb7ikaUTuqy0I0dxgPA3GXpCZJOFu0oO4eDmHXHL3Rump_uEDfKCI3D8zGDkRKxQdAt5Gf63qGhOysZRAtGIXNBKJNIHqarToJKmBiM687Tup-wF0DBM0o8hJFZg.webp",
       "genres": [
         "fantasy"
       ],
       "recommended": 4,
       "color": "#ffe770",
-      "episodes": 192,
-      "status": "ongoing",
+      "episodes": 193,
+      "status": "hiatus",
       "days": [
         "wed"
       ],
-      "autoCount": true,
-      "baseDate": "2026-11-10",
+      "autoCount": false,
+      "baseDate": "2026-11-13",
       "tags": [
+        "학원",
         "판타지",
-        "마법",
-        "이세계물",
-        "아카데미물",
-        "성장물",
-        "소년물",
-        "아카데미",
-        "소설원작"
+        "궁금하게 하는",
+        "몰입되는",
+        "성공성장물"
       ],
-      "desc": "마굿간에 버려져 평민으로 키워진 아이, 시로네.\n\n타고난 통찰력으로 글까지 깨우친 아이는,\n도시로 나간 어느 날, 그토록 궁금해하던 마법을 경험한다.\n\n그 길로 마법사를 꿈꾸게 된 시로네.\n하지만 신분의 장벽이 두터운 이 곳은 아이에게 냉혹하고,\n그는 채 어른이 되기도 전에 이 세상의 이면을 알아버리는데….\n\n어딘가 비틀어진 이 세계에서\n그는 자신이 꿈꾸던 마법사가 될 수 있을까?",
+      "desc": "마굿간에 버려져 평민으로 키워진 아이, 시로네.\n\n \n\n타고난 통찰력으로 글까지 깨우친 아이는\n\n도시로 나간 어느 날 그토록 궁금해하던 마법을 경험한다.\n\n \n\n그 길로 마법사를 꿈꾸게 된 시로네.\n\n하지만 신분의 장벽이 두터운 이 곳은 아이에게 냉혹하고,\n\n그는 채 어른이 되기도 전에 이 세상의 이면을 알아버리는데···.\n\n \n\n어딘가 비틀어진 이 세계에서\n\n그는 자신이 꿈꾸던 마법사가 될 수 있을까?",
       "subs": [
         "fantasy-6"
-      ]
+      ],
+      "authors": [
+        {
+          "name": "kiraz(REDICE STUDIO)",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "아디티",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "김치우",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "source": "https://webtoon.kakao.com/content/%EB%AC%B4%ED%95%9C%EC%9D%98-%EB%A7%88%EB%B2%95%EC%82%AC/3211",
+      "autoAt": "2026-11-13"
     },
     {
       "id": "w064ys",
@@ -6923,7 +7012,7 @@
     {
       "id": "w023",
       "title": "나 혼자만 레벨업",
-      "author": "장성락, 추공",
+      "author": "현군, 장성락(REDICE STUDIO), 추공",
       "platform": "카카오페이지",
       "url": "https://blacktoon427.com/webtoon/279.html",
       "cover": "https://i.namu.wiki/i/yLbUioKY5JCfQ8zCMD5z1wcJnCUQge-mOyaiFrrNdM7Q4J2pHRX8rQEkqqm9yKegJik8KOoX8OD4xv068q5S7ltCeI9agmzngkJBBB90LYmSO9IXiXruYdPNNLD8NyLbPUwcxUFa-4kM9jh8Wz6dIw.webp",
@@ -6938,19 +7027,39 @@
       "days": [
         "thu"
       ],
-      "autoCount": true,
+      "autoCount": false,
       "baseDate": "2026-11-09",
       "tags": [
+        "학원",
         "판타지",
-        "헌터물",
-        "던전",
-        "회귀",
-        "먼치킨",
-        "레벨업",
-        "시스템창"
+        "통쾌한",
+        "압도되는",
+        "레벨업물"
       ],
-      "desc": "차원과 연결된 ‘게이트’와 마물을 잡는 ‘헌터’가 존재하는 세상. ‘인류 최약병기’라 불리는 E급 헌터 성진우는 죽음의 위기를 맞이한 이중 던전에서 오직 자신만 볼 수 있는 시스템 퀘스트 창을 얻게 된다. 남들과 달리 홀로 ‘레벨업’할 수 있는 능력을 갖추게 된 그가 최약체에서 최강의 헌터로 거듭나는 이야기.",
-      "color": "#61187c"
+      "desc": "10여 년 전, \n다른 차원과 이쪽 세계를 이어 주는 통로 ‘게이트’가 열리고 \n평범한 이들 중 각성한 자들이 생겨났다.\n \n게이트 안의 던전에서 마물을 사냥하는 각성자.\n그들을 일컬어 ‘헌터’라 부른다.\n \n그러나 모든 헌터가 강한 것은 아니다.\n \n내 이름은 성진우.\nE급 헌터다. \n \n저급 던전에서조차 죽을 고비를 넘겨야 하는\n‘인류 최약병기’. \n \n무엇 하나 내세울 것 없는 형편에\n저급 던전으로 근근이 생계를 이어가던 그는,\nD급 던전 속에 숨겨진 \n최악의 난이도의 이중 던전을 만난다.\n \n그리고 결국… 죽음을 맞이하려던 ",
+      "color": "#61187c",
+      "authors": [
+        {
+          "name": "현군",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "장성락(REDICE STUDIO)",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "추공",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "source": "https://webtoon.kakao.com/content/%EB%82%98-%ED%98%BC%EC%9E%90%EB%A7%8C-%EB%A0%88%EB%B2%A8%EC%97%85/2320",
+      "autoAt": "2026-11-13"
     },
     {
       "id": "w022",
