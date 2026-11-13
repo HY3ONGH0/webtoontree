@@ -1,6 +1,95 @@
 {
   "webtoons": [
     {
+      "id": "w657564281141030",
+      "title": "앵클 브레이커",
+      "author": "하하영, 민영",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=842261",
+      "cover": "https://image-comic.pstatic.net/webtoon/842261/thumbnail/thumbnail_IMAG21_0728999c-2b0e-4f05-8dfb-6cf762d0f559.jpg",
+      "genres": [
+        "sports"
+      ],
+      "recommended": 3,
+      "color": "#76575a",
+      "episodes": 46,
+      "status": "hiatus",
+      "days": [
+        "fri"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "스포츠",
+        "학원액션",
+        "열혈",
+        "우정",
+        "라이벌",
+        "청춘",
+        "미친작화",
+        "요즘핫한추천작"
+      ],
+      "desc": "167.8cm 단신 가드의 등장! \n\"농구는 키 작으면 절대 안 된다고? \n2m, 3m 다 데리고 와 보라 그래. \n아무리 키 커도 넘어뜨리면 나보다 다 아래야.\" \n주인공 강휘는 런 앤 건으로 대회 우승을 꿈꾸는 전광고 농구부의 마지막 퍼즐이 될 수 있을까?",
+      "authors": [
+        {
+          "name": "하하영",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "민영",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=842261",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141029",
+      "title": "용이산다",
+      "author": "초",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=568986",
+      "cover": "https://image-comic.pstatic.net/webtoon/568986/thumbnail/thumbnail_IMAG21_4064044811088834611.jpg",
+      "genres": [
+        "fantasy",
+        "daily"
+      ],
+      "recommended": 0,
+      "color": "#fcede2",
+      "episodes": 197,
+      "status": "completed",
+      "days": [
+        "sat"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "드라마",
+        "완결드라마"
+      ],
+      "desc": "드래곤이든 인간이든 그저 평범한 판타지 일상물.\n새로운 용(?)물 등장!",
+      "authors": [
+        {
+          "name": "초",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=568986",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
       "id": "w657564281141028",
       "title": "체크포인트",
       "author": "송가, 은소",
@@ -5589,17 +5678,26 @@
       "start": "w027",
       "nodes": {
         "w027": [
-          130,
+          110,
           280
         ],
         "w657564281141027": [
-          380,
+          510,
+          280
+        ],
+        "w657564281141030": [
+          310,
           280
         ]
       },
       "links": [
         {
           "from": "w027",
+          "to": "w657564281141030",
+          "why": ""
+        },
+        {
+          "from": "w657564281141030",
           "to": "w657564281141027",
           "why": ""
         }
@@ -5713,7 +5811,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141028
+    "lastWebtoonId": 657564281141030
   },
   "version": 1,
   "shop": [
@@ -7694,6 +7792,54 @@
           "title": "데스포인트",
           "source": "https://comic.naver.com/webtoon/list?titleId=843007",
           "cover": "https://image-comic.pstatic.net/webtoon/843007/thumbnail/thumbnail_IMAG21_0b36b041-ab48-45f1-813d-1cc60fe58dff.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "초": {
+      "name": "초",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "쌉초의 난",
+          "source": "https://comic.naver.com/webtoon/list?titleId=823195",
+          "cover": "https://image-comic.pstatic.net/webtoon/823195/thumbnail/thumbnail_IMAG21_5a92d1bb-bfc1-4f46-aff6-9131d1b20b07.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "하하영": {
+      "name": "하하영",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20241121_289/1732168524038umEin_PNG/1000008739.png",
+      "bio": "인스타: ha_hayeong 안녕하세요! 와주셔서 감사합니다. 다양한 소식 많이 전달해 드릴게요~",
+      "url": "https://comic.naver.com/community/u/_c1jxda",
+      "works": [
+        {
+          "title": "빅맨",
+          "source": "https://comic.naver.com/webtoon/list?titleId=753839",
+          "cover": "https://image-comic.pstatic.net/webtoon/753839/thumbnail/thumbnail_IMAG21_3835153067459896165.jpg",
+          "finished": true
+        },
+        {
+          "title": "티키타카",
+          "source": "https://comic.naver.com/webtoon/list?titleId=833244",
+          "cover": "https://image-comic.pstatic.net/webtoon/833244/thumbnail/thumbnail_IMAG21_8dab2510-1384-418c-a60d-8e4ceac45422.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "민영": {
+      "name": "민영",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20250909_204/1757428878021p7Flp_PNG/%B0%AD%C8%D6%C0%CF%B7%CF.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/ivy9410",
+      "works": [
+        {
+          "title": "주욱 같은 하루",
+          "source": "https://comic.naver.com/webtoon/list?titleId=774300",
+          "cover": "https://image-comic.pstatic.net/webtoon/774300/thumbnail/thumbnail_IMAG21_4050196432125387569.jpg",
           "finished": true
         }
       ]
