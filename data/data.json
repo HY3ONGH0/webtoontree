@@ -283,7 +283,10 @@
       "platform": "네이버웹툰",
       "url": "https://comic.naver.com/webtoon/list?titleId=703845",
       "cover": "https://image-comic.pstatic.net/webtoon/703845/thumbnail/thumbnail_IMAG21_4120902941892752226.JPEG",
-      "genres": [],
+      "genres": [
+        "daily",
+        "fantasy"
+      ],
       "recommended": 0,
       "color": "#040404",
       "episodes": 34,
@@ -317,7 +320,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=703845",
       "autoAt": "2026-11-13",
-      "pick": true
+      "pick": true,
+      "subs": [
+        "fantasy-5"
+      ]
     },
     {
       "id": "w657564281141072",
