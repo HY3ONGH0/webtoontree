@@ -78,7 +78,7 @@
           <span class="ap-kind">${studio ? 'STUDIO' : 'ARTIST'}${counts ? ` · ${counts}` : ''}</span>
           <h1 class="ap-name">${esc(me.name)}</h1>
           <p class="ap-lead">${info.bio ? esc(info.bio) : `${esc(me.name)}${studio ? '의 작품' : ' 작가의 웹툰'} ${works.length}편이 웹툰트리에 있어요.${plats.length ? ` ${esc(plats.join(', '))}에서 볼 수 있어요.` : ''}`}</p>
-          ${info.url ? `<a class="ap-more" href="${esc(info.url)}" target="_blank" rel="noopener">작가 페이지 보기 <i aria-hidden="true">→</i></a>` : ''}
+          <div class="ap-acts">${info.url ? `<a class="ap-more ap-home" href="${esc(info.url)}" target="_blank" rel="noopener">작가 홈 · 소식 보기 <i aria-hidden="true">→</i></a>` : ''}</div>
           ${mates.size ? `<p class="ap-mates"><span>함께 만든</span>${[...mates.values()].map((n) => `<a class="ap-chip" href="${WT.authorHref(n)}">${esc(n)}</a>`).join('')}</p>` : ''}
         </div>
         <div class="ap-empty-r" aria-hidden="true"></div>
@@ -89,12 +89,11 @@
       </section>
       <nav class="ap-tabs" role="tablist">
         <button type="button" role="tab" aria-selected="true" data-tab="works">작품 <em>${works.length}</em></button>
-        ${naverSrc.length || /comic\.naver\.com\/community\//.test(info.url || '') ? `<button type="button" role="tab" aria-selected="false" data-tab="posts">작가 소식</button>` : ''}
         ${outside.length ? `<button type="button" role="tab" aria-selected="false" data-tab="out">다른 작품 <em>${outside.length}</em></button>` : ''}
         ${related.length ? `<button type="button" role="tab" aria-selected="false" data-tab="rel">${studio ? '소속 작가' : '스튜디오 · 관련'} <em>${related.reduce((n, o) => n + o.works.length, 0)}</em></button>` : ''}
       </nav>
       <section class="ap-pane" data-pane="works"><div class="ap-grid">${works.map(card).join('')}</div></section>
-      <section class="ap-pane" data-pane="posts" hidden><div id="ap-posts" class="ap-posts"><p class="ap-note">불러오는 중…</p></div></section>
+
       ${outside.length ? `<section class="ap-pane" data-pane="out" hidden><p class="ap-note">웹툰트리에는 아직 없는 작품이에요. 누르면 네이버 웹툰에서 열려요.</p><div class="ap-grid">${outside.map((x) => `<a class="ap-card" href="${esc(x.source)}" target="_blank" rel="noopener">
           <span class="ap-cv" style="--c:#55607F"><span class="ap-ini">${esc(x.title)}</span>${x.cover ? `<img src="${esc(x.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}<span class="ap-role">↗</span></span>
           <b>${esc(x.title)}</b><small>네이버웹툰${x.finished ? ' · 완결' : ''}</small></a>`).join('')}</div></section>` : ''}
@@ -121,7 +120,8 @@
       if (a.img && ph && !ph.querySelector('img')) { ph.classList.remove('plain'); ph.innerHTML = `<img src="${esc(a.img)}" alt="${esc(me.name)} 프로필" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('plain'); this.remove()">`; }
       const lead = app.querySelector('.ap-lead');
       if (a.bio && lead && !info.bio) lead.textContent = a.bio;
-      if (a.url && !app.querySelector('.ap-more')) { const l = app.querySelector('.ap-lead'); if (l) l.insertAdjacentHTML('afterend', `<a class="ap-more" href="${esc(a.url)}" target="_blank" rel="noopener">작가 페이지 보기 <i aria-hidden="true">→</i></a>`); }
+      const acts = app.querySelector('.ap-acts');
+      if (a.url && acts && !acts.querySelector('.ap-home')) acts.innerHTML = `<a class="ap-more ap-home" href="${esc(a.url)}" target="_blank" rel="noopener">작가 홈 · 소식 보기 <i aria-hidden="true">→</i></a>`;
     };
     if (!info.img || !info.url) Promise.resolve(fetchAuthor()).then(applyPhoto);
     async function loadPosts() {
@@ -151,7 +151,7 @@
     app.querySelectorAll('.ap-tabs button').forEach((b) => b.addEventListener('click', () => {
       app.querySelectorAll('.ap-tabs button').forEach((x) => x.setAttribute('aria-selected', x === b));
       app.querySelectorAll('.ap-pane').forEach((p) => { p.hidden = p.dataset.pane !== b.dataset.tab; });
-      if (b.dataset.tab === 'posts') loadPosts();
+
     }));
   }
   // 작가 소식 글: 사이트 위에 작은 창으로 네이버 원문을 열어요 (창이 막히면 새 탭)
@@ -166,7 +166,7 @@
     return !!win;
   };
   document.addEventListener('click', (e) => {
-    const a = e.target.closest('a.ap-post, a.ap-pall');
+    const a = e.target.closest('a.ap-post, a.ap-pall, a.ap-home');
     if (!a || e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
     e.preventDefault();
     WT.openPost(a.href);

@@ -367,6 +367,8 @@ var ACTIONS = {
     if (artist && artist.url && !/^https:\/\/comic\.naver\.com\/community\//.test(url)) url = artist.url;
     var out = { posts: [], url: url, artist: artist ? { img: artist.img || '', url: artist.url || '', bio: artist.bio || '' } : null };
     if (!/^https:\/\/comic\.naver\.com\/community\//.test(url)) { out.reason = 'no-home'; return out; }
+    // 작가 홈 글은 네이버 앱 전용 열쇠가 있어야 받을 수 있어서 가져오지 않아요 (작가 홈 링크로 안내)
+    return out;
     var key = 'posts:' + sha256_(url).slice(0, 32);
     var memo = cacheGet_(key);
     if (memo) { out.posts = memo.posts; out.reason = memo.reason; return out; }

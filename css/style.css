@@ -2096,3 +2096,5 @@ html:not([data-theme="light"]) .ap-photo.plain { background: hsl(var(--h) 30% 38
 .ap-pav { background: #2A3150; color: transparent; }
 .ap-pav.plain { background: hsl(var(--h) 30% 45%); }
 .ap-view > * { flex-shrink: 0; }
+.ap-acts { display: flex; gap: 10px; margin-left: 4px; min-height: 18px; }
+.ap-acts .ap-more { margin-left: 0; }
