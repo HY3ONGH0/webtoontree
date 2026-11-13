@@ -367,7 +367,7 @@ var ACTIONS = {
     if (artist && artist.url && !/^https:\/\/comic\.naver\.com\/community\//.test(url)) url = artist.url;
     var out = { posts: [], url: url, artist: artist ? { img: artist.img || '', url: artist.url || '', bio: artist.bio || '' } : null };
     if (!/^https:\/\/comic\.naver\.com\/community\//.test(url)) { out.reason = 'no-home'; return out; }
-    var key = 'posts2:' + sha256_(url).slice(0, 32);
+    var key = 'posts3:' + sha256_(url).slice(0, 32);
     var memo = cacheGet_(key);
     if (memo) { out.posts = memo.posts; out.reason = memo.reason; return out; }
     try { out.posts = naverPosts_(url); } catch (e) { out.reason = String(e.message || e).slice(0, 120); }
@@ -813,10 +813,22 @@ function naverArtists_(list, people, titleId) {
 // 작가 홈 게시글: 네이버 웹툰 작가 홈이 웹에서 쓰는 공개 글 목록에서 최근 글을 가져와요 (로그인 없이 보이는 글만)
 function naverPosts_(url) {
   var handle = (url.match(/\/community\/u\/([^/?#]+)/) || [])[1] || '';
-  var pageId = handle.replace(/^_/, '');   // 주소의 _3i1sk → 글 목록에서는 3i1sk
-  if (!pageId) throw new Error('작가 홈 주소가 아니에요');
+  if (!handle) throw new Error('작가 홈 주소가 아니에요');
+  var pageId = naverPageId_(handle);
   var j = get_('https://comic.naver.com/community/api/v2/posts?pageId=' + encodeURIComponent(pageId) + '&nextSize=20&cursor=&childPreviewCount=0&pinRepresentation=distinct', true);
   return naverPostList_((j && j.result) || {}, 'https://comic.naver.com/community/u/' + handle);
+}
+// 글 목록에 쓰는 작가 번호: 주소가 _3i1sk 꼴이면 3i1sk, 직접 정한 주소(232inthe 등)면 작가 홈 페이지 안에서 찾아요
+function naverPageId_(handle) {
+  if (/^_/.test(handle)) return handle.slice(1);
+  var key = 'cuid:' + sha256_(handle).slice(0, 24);
+  var memo = cacheGet_(key);
+  if (memo && memo.id) return memo.id;
+  var html = get_('https://comic.naver.com/community/u/' + encodeURIComponent(handle), false);
+  var m = html.match(/creatorId\\*"\s*:\s*\\*"([0-9a-z]+)/i) || html.match(/cuid\\*"\s*:\s*\\*"([0-9a-z]+)/i);
+  if (!m) throw new Error('작가 번호를 찾지 못했어요');
+  cachePut_(key, { id: m[1] }, 21600);
+  return m[1];
 }
 function naverPostList_(r, home) {
   var seen = {};

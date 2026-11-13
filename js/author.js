@@ -143,7 +143,7 @@
               <span class="ap-pfoot">${x.likes ? `<i>♡ ${x.likes}</i>` : ''}${x.comments ? `<i>💬 ${x.comments}</i>` : ''}<em>원문 보기 ↗</em></span></span></a>`).join('')
           + (home() ? `<a class="ap-pall" href="${esc(home())}" target="_blank" rel="noopener">작가 홈에서 모든 글 보기 ↗</a>` : '');
       } else {
-        const why = !r || r.error ? '소식을 불러오지 못했어요. 서버 코드가 예전 버전일 수 있어요.' : r.reason === 'no-home' ? '이 작가의 네이버 웹툰 작가 홈을 찾지 못했어요.' : '아직 가져온 소식이 없어요.';
+        const why = !r || r.error ? '소식을 불러오지 못했어요. 서버 코드가 예전 버전일 수 있어요.' : r.reason === 'no-home' ? '이 작가는 네이버 웹툰에 작가 홈이 없어서 소식이 없어요.' : (r.reason ? '소식을 불러오지 못했어요. 잠시 뒤에 다시 열어 주세요.' : '작가 홈에 아직 올라온 글이 없어요.');
         box.innerHTML = `<p class="ap-note">${why}${linkOut()}</p>`;
       }
     }
