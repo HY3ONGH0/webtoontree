@@ -1,6 +1,54 @@
 {
   "webtoons": [
     {
+      "id": "w657564281141008",
+      "title": "킬러 배드로",
+      "author": "김정현, 임리나",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=816798",
+      "cover": "https://image-comic.pstatic.net/webtoon/816798/thumbnail/thumbnail_IMAG21_bf6e3706-5518-445f-b516-b94257cfad4f.jpg",
+      "genres": [
+        "action"
+      ],
+      "recommended": 0,
+      "color": "#261d24",
+      "episodes": 158,
+      "status": "ongoing",
+      "days": [
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "액션",
+        "시리어스",
+        "미친작화",
+        "범죄",
+        "고인물",
+        "격투기",
+        "학원물",
+        "복수극"
+      ],
+      "desc": "배신당한 노인킬러 회춘하다!\n그런데... 아무도 날 못 알아봐?! \n\"그럼 내가 최강이지!\"",
+      "authors": [
+        {
+          "name": "김정현",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "임리나",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=816798",
+      "autoAt": "2026-11-13"
+    },
+    {
       "id": "w6575642811408p",
       "title": "나노리스트",
       "author": "민송아",
@@ -2481,12 +2529,12 @@
       "recommended": 3,
       "color": "#b51a00",
       "episodes": 70,
-      "status": "ongoing",
+      "status": "hiatus",
       "days": [
         "mon"
       ],
-      "autoCount": true,
-      "baseDate": "2026-11-11",
+      "autoCount": false,
+      "baseDate": "2026-11-13",
       "tags": [
         "판타지",
         "주식",
@@ -4636,7 +4684,11 @@
           280
         ],
         "w039": [
-          360,
+          380,
+          280
+        ],
+        "w657564281141008": [
+          630,
           280
         ]
       },
@@ -4644,6 +4696,11 @@
         {
           "from": "w030",
           "to": "w039",
+          "why": ""
+        },
+        {
+          "from": "w039",
+          "to": "w657564281141008",
           "why": ""
         }
       ]
@@ -4736,7 +4793,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141007
+    "lastWebtoonId": 657564281141008
   },
   "version": 1,
   "shop": [
@@ -6444,6 +6501,64 @@
       "bio": "",
       "url": "",
       "works": []
+    },
+    "김정현": {
+      "name": "김정현",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20231028_82/1698483365715uaNL3_PNG/IMG_3051.png",
+      "bio": "여기 들어오신 당신은 오늘도 행복하시겠군요",
+      "url": "https://comic.naver.com/community/u/_liku8",
+      "works": [
+        {
+          "title": "싸움독학",
+          "source": "https://comic.naver.com/webtoon/list?titleId=736277",
+          "cover": "https://image-comic.pstatic.net/webtoon/736277/thumbnail/thumbnail_IMAG21_bbbe3f76-021e-4dbc-830a-4358c1abec0c.jpg",
+          "finished": true
+        },
+        {
+          "title": "파도를 찾아라!",
+          "source": "https://comic.naver.com/webtoon/list?titleId=703836",
+          "cover": "https://image-comic.pstatic.net/webtoon/703836/thumbnail/thumbnail_IMAG21_3703139095769788470.jpg",
+          "finished": true
+        },
+        {
+          "title": "레이드",
+          "source": "https://comic.naver.com/webtoon/list?titleId=729039",
+          "cover": "https://image-comic.pstatic.net/webtoon/729039/thumbnail/thumbnail_IMAG21_3774632443562385969.jpg",
+          "finished": true
+        },
+        {
+          "title": "죽여주는 변호사",
+          "source": "https://comic.naver.com/webtoon/list?titleId=844810",
+          "cover": "https://image-comic.pstatic.net/webtoon/844810/thumbnail/thumbnail_IMAG21_cb5b50a4-1529-439e-bae6-951651d14d89.jpeg",
+          "finished": false
+        },
+        {
+          "title": "용감한 시민",
+          "source": "https://comic.naver.com/webtoon/list?titleId=780986",
+          "cover": "https://image-comic.pstatic.net/webtoon/780986/thumbnail/thumbnail_IMAG21_3919651438769746736.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "임리나": {
+      "name": "임리나",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20231028_277/1698493266258W0ju1_PNG/IMG_0074.png",
+      "bio": "독자님들 사랑해요❤️‍🔥",
+      "url": "https://comic.naver.com/community/u/linawebtoon",
+      "works": [
+        {
+          "title": "화이트 블러드",
+          "source": "https://comic.naver.com/webtoon/list?titleId=739503",
+          "cover": "https://image-comic.pstatic.net/webtoon/739503/thumbnail/thumbnail_IMAG21_7075497401627194164.jpg",
+          "finished": true
+        },
+        {
+          "title": "혼신",
+          "source": "https://comic.naver.com/webtoon/list?titleId=769688",
+          "cover": "https://image-comic.pstatic.net/webtoon/769688/thumbnail/thumbnail_IMAG21_7365692394708493360.JPEG",
+          "finished": true
+        }
+      ]
     }
   }
 }
