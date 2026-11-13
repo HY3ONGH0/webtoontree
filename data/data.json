@@ -1,18 +1,62 @@
 {
   "webtoons": [
     {
-      "id": "w657564281141008",
-      "title": "킬러 배드로",
-      "author": "김정현, 임리나",
+      "id": "w657564281141027",
+      "title": "고고농구",
+      "author": "이명재",
       "platform": "네이버웹툰",
-      "url": "https://comic.naver.com/webtoon/list?titleId=816798",
-      "cover": "https://image-comic.pstatic.net/webtoon/816798/thumbnail/thumbnail_IMAG21_bf6e3706-5518-445f-b516-b94257cfad4f.jpg",
+      "url": "https://comic.naver.com/webtoon/list?titleId=845463",
+      "cover": "https://image-comic.pstatic.net/webtoon/845463/thumbnail/thumbnail_IMAG21_1bf45e08-aaa5-47a3-91b0-293cd6f30cf0.jpg",
       "genres": [
-        "action"
+        "sports"
+      ],
+      "recommended": 3,
+      "color": "#f6ecd1",
+      "episodes": 50,
+      "status": "hiatus",
+      "days": [
+        "sat"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "스포츠",
+        "열혈",
+        "우정",
+        "라이벌",
+        "청춘",
+        "요즘핫한추천작",
+        "성장물",
+        "농구"
+      ],
+      "desc": "포지션도 스타일도, 엉망진창 제각각인 선수들.\n모인 건 우연이지만 목표는 분명하다!\n승남고 농구부, 올해는 우승을 향해 뛴다.",
+      "authors": [
+        {
+          "name": "이명재",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=845463",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141026",
+      "title": "우리 길드 아이돌",
+      "author": "꼬보",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=835557",
+      "cover": "https://image-comic.pstatic.net/webtoon/835557/thumbnail/thumbnail_IMAG21_8220d3db-8cce-42a0-9032-3121b2f6bc74.jpg",
+      "genres": [
+        "romance",
+        "daily"
       ],
       "recommended": 0,
-      "color": "#261d24",
-      "episodes": 158,
+      "color": "#e8dae9",
+      "episodes": 71,
       "status": "ongoing",
       "days": [
         "sat"
@@ -20,33 +64,856 @@
       "autoCount": true,
       "baseDate": "2026-11-13",
       "tags": [
-        "액션",
-        "시리어스",
-        "미친작화",
-        "범죄",
-        "고인물",
-        "격투기",
-        "학원물",
-        "복수극"
+        "로맨스",
+        "설렘폭발",
+        "게임",
+        "첫사랑",
+        "청춘",
+        "사연남",
+        "드라마",
+        "사연녀"
       ],
-      "desc": "배신당한 노인킬러 회춘하다!\n그런데... 아무도 날 못 알아봐?! \n\"그럼 내가 최강이지!\"",
+      "desc": "남동생의 계정으로 게임을 즐기던 '아진'. 길드를 위해 여성유저 [꽃뿌링]에게 접근했다가 여미새로 찍혀버린다. 나 사실 여자인데...! 한편 정체를 숨기고 [꽃뿌링]으로 활동 중인 '지현'은 아진이 보내온 영상 속 목소리가 낯설지 않다고 느끼는데...",
       "authors": [
         {
-          "name": "김정현",
+          "name": "꼬보",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=835557",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141025",
+      "title": "순정빌런",
+      "author": "세윤",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=797731",
+      "cover": "https://image-comic.pstatic.net/webtoon/797731/thumbnail/thumbnail_IMAG21_deeb76b6-89ce-4ae0-87e7-24e7576cc857.jpg",
+      "genres": [
+        "romance",
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#251d24",
+      "episodes": 126,
+      "status": "completed",
+      "days": [
+        "thu"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "이능력",
+        "빌런",
+        "공식미남",
+        "능력남",
+        "순정남",
+        "공식미녀",
+        "능력녀"
+      ],
+      "desc": "특수능력을 가진 범죄자를 상대하기 위한 특수경찰이 존재하는 세계. \n평화로운 나날을 보내던 최강의 특수경찰 '한도령'에게 감당할 수 없는 빌런이 찾아온다! 그런데 이 범죄자, 어딘가 이상하다?\n최강의 히어로를 사랑하는 최악의 빌런 '박로사'의 우당탕탕 사랑이야기",
+      "authors": [
+        {
+          "name": "세윤",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=797731",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141024",
+      "title": "너만 보인단 말이야",
+      "author": "채군, 닷지",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=849279",
+      "cover": "https://i.namu.wiki/i/hZYG87nHqwqNizNDt1yPGYFDQrwCFrGOm0-R6U-EkUCXh-qz8a94_vMHLULHWOzR4QKIfClKJZzn_R-U2e6S6Ihzx53BuXh3OObOGmhm6nRhzTi7KOJLgJR5U8uRccfl-8Ttaw_fu9DJPjZd0iHeSQ.webp",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 0,
+      "color": "",
+      "episodes": 37,
+      "status": "ongoing",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "러브코미디",
+        "설렘폭발",
+        "성장물",
+        "학원로맨스",
+        "학원물",
+        "청춘로맨스"
+      ],
+      "desc": "'여자 보기를 돌 같이 하라'라는 상상친구 제이슨의 조언에 따라 모든 여자를 돌로 보기 시작한 박진용.\n\n하지만 그의 앞에 돌로 보이지 않는 여학생 선우가 나타나고, 5년 만에 보는 여자 얼굴에 진용이의 행복 회로가 돌아가는데...",
+      "authors": [
+        {
+          "name": "채군",
           "roles": [
             "writer"
           ]
         },
         {
-          "name": "임리나",
+          "name": "닷지",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "source": "https://comic.naver.com/webtoon/list?titleId=849279",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141023",
+      "title": "아이캣치유",
+      "author": "코앳, 우주돌",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=843460",
+      "cover": "https://image-comic.pstatic.net/webtoon/843460/thumbnail/thumbnail_IMAG21_ced95f8a-75a6-4c95-ba32-91a12a73a52f.jpg",
+      "genres": [
+        "romance",
+        "fantasy"
+      ],
+      "recommended": 1,
+      "color": "#d89999",
+      "episodes": 48,
+      "status": "completed",
+      "days": [
+        "thu"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "설렘폭발",
+        "판타지",
+        "힐링",
+        "하이틴",
+        "학원로맨스",
+        "완결로맨스"
+      ],
+      "desc": "“내 마지막 행운이 되어줘서 고마워!” \n2015년 9월, 상위 0.1% 수험생 권민은 모의고사 20분을 가져간 환상 속 옆반 학생 차유빈의 정체를 우연히 밝혀내는데.\n하루 30분, 킬러 문항보다 어려운 행운과 운명의 미스테리를 파헤치는 두 사람. \n줄어드는 디데이 속 눈 깜짝할 새 끝나버릴 열아홉에게도 찾아왔던, 붙잡고 싶은 우리의 모든 반짝이는 순간으로.",
+      "authors": [
+        {
+          "name": "코앳",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        },
+        {
+          "name": "우주돌",
           "roles": [
             "painter"
           ]
         }
       ],
       "coverAuto": true,
-      "source": "https://comic.naver.com/webtoon/list?titleId=816798",
+      "source": "https://comic.naver.com/webtoon/list?titleId=843460",
       "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141022",
+      "title": "문과X이과",
+      "author": "다빈",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=839913",
+      "cover": "https://image-comic.pstatic.net/webtoon/839913/thumbnail/thumbnail_IMAG21_2933b629-d7fc-4c1f-80c3-1e2ed761521e.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 0,
+      "color": "#fcece4",
+      "episodes": 78,
+      "status": "ongoing",
+      "days": [
+        "thu"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "너드남",
+        "청춘",
+        "능글남",
+        "로맨틱코미디",
+        "계략녀",
+        "학원물",
+        "청춘로맨스"
+      ],
+      "desc": "모의고사만 쳤다 하면 실수를 연발해 만점에 실패했던 문과 전교 1등 양소연,\n1학년 때부터 모의고사 만점 이과 1등 김준수가 거슬린다.\n대망의 고3 첫 모의고사,\n소연은 마음이 급해져 준수에게 접근하게 되는데...",
+      "authors": [
+        {
+          "name": "다빈",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=839913",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141021",
+      "title": "미아가 돌아왔다",
+      "author": "귤다래, 멈멈",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=841491",
+      "cover": "https://image-comic.pstatic.net/webtoon/841491/thumbnail/thumbnail_IMAG21_b754f215-bac6-40e4-ab72-c4019c924547.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 1,
+      "color": "#191a24",
+      "episodes": 44,
+      "status": "hiatus",
+      "days": [
+        "wed"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "너드남",
+        "까칠녀",
+        "하렘",
+        "러브코미디",
+        "첫사랑",
+        "동아리",
+        "전남친"
+      ],
+      "desc": "5년 전 사라졌던 첫사랑 '차미아'가 완전히 달라진 모습으로 내 앞에 나타났다.\n경찰서에서의 뜻밖의 재회, 근데 같은 대학교 신입생이라니?\n차갑게 선을 긋는 그녀, 애써 무심한 나.\n끝난 줄 알았던 두 사람의 이야기는 다시 캠퍼스에서 시작된다.",
+      "authors": [
+        {
+          "name": "귤다래",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "멈멈",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=841491",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141020",
+      "title": "전력고백",
+      "author": "손차양, 냥지",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=833248",
+      "cover": "https://image-comic.pstatic.net/webtoon/833248/thumbnail/thumbnail_IMAG21_e547d74b-bcad-4d6d-bb48-4245cc40e55a.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 1,
+      "color": "#fce8e7",
+      "episodes": 85,
+      "status": "completed",
+      "days": [
+        "wed"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "설렘폭발",
+        "청춘",
+        "능글남",
+        "짝사랑녀",
+        "러블리",
+        "폭스남",
+        "짝사랑"
+      ],
+      "desc": "사랑에 빠지면 짜릿하다는데… 그래도 이건 아니잖아! \n짝사랑으로 인해 저주에 걸려버린 하리와 그 저주를 빌려달라는 유라.\n하리는 과연 짝남 정원에게 고백할 것인가? 아니면 짝사랑을 포기할 것인가?\n짜릿짜릿 하리의 첫사랑 전기 시작!",
+      "authors": [
+        {
+          "name": "손차양",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "냥지",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=833248",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141019",
+      "title": "레모네이드",
+      "author": "혜루",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=842899",
+      "cover": "https://image-comic.pstatic.net/webtoon/842899/thumbnail/thumbnail_IMAG21_4988b0b5-eeb4-48a9-88a7-da7af231c98d.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 0,
+      "color": "#fbf8e7",
+      "episodes": 49,
+      "status": "hiatus",
+      "days": [
+        "wed"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "순애남",
+        "첫사랑",
+        "요즘핫한추천작",
+        "짝사랑",
+        "소꿉친구",
+        "학원로맨스",
+        "청춘로맨스"
+      ],
+      "desc": "가족처럼 지낸 소꿉친구가 있었다. 그 애와 나는 정말 ‘친구’인데 그 애의 첫 연애 소식을 듣고 무너져버렸다.\n나 사실 걔를 좋아하고 있었구나..! 어떻게 해서든 이 짝사랑을 끝내야 해!\n근데.. 그만 좋아하기가 왜 이렇게 힘든 거야?\n짝사랑은 원래 이런 거야?!\n레모네이드처럼 새콤하지만 달콤한 청춘들의 첫 시련, 첫사랑",
+      "authors": [
+        {
+          "name": "혜루",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=842899",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141018",
+      "title": "여우애담",
+      "author": "이도광",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=786082",
+      "cover": "https://image-comic.pstatic.net/webtoon/786082/thumbnail/thumbnail_IMAG21_cfae6ac4-8da8-4c64-ab81-a3ca931f0908.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 2,
+      "color": "#190b12",
+      "episodes": 155,
+      "status": "hiatus",
+      "days": [
+        "sun"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "동양풍로맨스",
+        "동양",
+        "악역이주인공",
+        "공식미남",
+        "사연남",
+        "햇살남",
+        "연하남"
+      ],
+      "desc": "인간을 멸시하는 구미호 연은 우연히 인간인 동이의 도움을 받아 사고를 면하게 된다.\n\n본디 구미호란 은혜를 입으면 갚아야만 하는 존재.\n연은 보은을 위해 하루도 거르지 않고 동이를 찾아가고, 동이는 그런 연이 부담스럽기만 하다.\n\n절대 가까워질 수 없을 것 같던 둘은 서로의 상처와 결핍을 알고, 채워주며 좋은 감정을 키워나가는데...\n\n살아온 환경도, 종족도, 사랑하는 방식마저 다른 둘. 구미호와 인간의 사랑은 과연 행복한 결말로 맺어질 수 있을까?",
+      "authors": [
+        {
+          "name": "이도광",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=786082",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141017",
+      "title": "좋아하면 멍청해진다",
+      "author": "뀌옥",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=850214",
+      "cover": "https://image-comic.pstatic.net/webtoon/850214/thumbnail/thumbnail_IMAG21_51634089-9343-4b94-a494-b5cef58c549f.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 3,
+      "color": "#fbebe5",
+      "episodes": 31,
+      "status": "ongoing",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "러브코미디",
+        "일상개그힐링",
+        "소심남",
+        "공식미녀",
+        "일상",
+        "가벼운",
+        "개그"
+      ],
+      "desc": "차갑고 시크한 철벽녀 세린과 평범한 대학생 진형. 남들 앞에선 멀쩡한 두 사람이지만 함께 있으면 바보가 된다.",
+      "authors": [
+        {
+          "name": "뀌옥",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=850214",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141016",
+      "title": "단둘이는 안 돼!",
+      "author": "멜로로",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=838944",
+      "cover": "https://image-comic.pstatic.net/webtoon/838944/thumbnail/thumbnail_IMAG21_a475fa12-0187-4f5f-a1e2-432704df61be.jpg",
+      "genres": [],
+      "recommended": 0,
+      "color": "#e5e2ee",
+      "episodes": 55,
+      "status": "ongoing",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "햇살남",
+        "소심녀",
+        "무해한",
+        "다정남",
+        "하이틴",
+        "학원로맨스",
+        "학원물"
+      ],
+      "desc": "둘이 있으면 어색하다는 이유로 따돌림을 당한 슬이는 누구와도 단둘이 있으면 안 된다는 자신만의 철칙을 세웠지만, 같은 반 인싸인 정후와 온종일 함께 있게 될 위기에 처한다.\n누구와도 단둘이 있는 게 불편한 내향인 소녀에게 자꾸만 다가오는 외향인 소년, 정반대인 두 사람이 친구가 되고 사랑에 빠지는 이야기.",
+      "authors": [
+        {
+          "name": "멜로로",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=838944",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141015",
+      "title": "죽지 말아 줘!",
+      "author": "지와",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=847441",
+      "cover": "https://image-comic.pstatic.net/webtoon/847441/thumbnail/thumbnail_IMAG21_031b9f42-b847-4cc7-9f77-ca38860e0fdd.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 0,
+      "color": "#f9e9e8",
+      "episodes": 44,
+      "status": "ongoing",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "순애녀",
+        "까칠녀",
+        "라이벌",
+        "첫사랑",
+        "짝사랑녀",
+        "소심녀",
+        "판타지"
+      ],
+      "desc": "삶과 죽음 사이, 아슬아슬하게 살아가는 윤하진. \n평범한(?) 하루를 보내던 어느 날, 그를 지키는 소심한 정체불명의 소녀와 저승사자를 만나며 그의 하루는 완전히 달라진다.",
+      "authors": [
+        {
+          "name": "지와",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=847441",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141014",
+      "title": "두근두근 대작전",
+      "author": "최준영, 기령",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=845717",
+      "cover": "https://image-comic.pstatic.net/webtoon/845717/thumbnail/thumbnail_IMAG21_91c9d442-66e7-46f6-b58e-11ddddc2d95b.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 0,
+      "color": "#fae8ea",
+      "episodes": 52,
+      "status": "ongoing",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "러브코미디",
+        "설렘폭발",
+        "성장물",
+        "학원로맨스",
+        "학원물",
+        "청춘로맨스"
+      ],
+      "desc": "“우리, 두근두근함이 부족하지 않아?”\n\n초등학교부터 고등학교까지,\n소꿉친구에서 연인이 된 남도연과 정아린.\n\n합리적인 연애를 지향하는 두 사람에게\n빠져버린 한 조각의 설렘을 되찾기 위한—\n\n두근두근 대작전이 시작된다!",
+      "authors": [
+        {
+          "name": "최준영",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "기령",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=845717",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141013",
+      "title": "사지선다",
+      "author": "팀 네잎",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=841128",
+      "cover": "https://image-comic.pstatic.net/webtoon/841128/thumbnail/thumbnail_IMAG21_c29b053f-003a-47b6-84c1-5d60798d7cd8.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 3,
+      "color": "#041657",
+      "episodes": 50,
+      "status": "ongoing",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "리얼로맨스",
+        "혐관",
+        "사연남",
+        "햇살남",
+        "무심녀",
+        "능력녀",
+        "드라마"
+      ],
+      "desc": "연애는 사치라 믿던 완벽주의 모범생.\n갑자기 등장한 네 개의 선택지에\n흔들리는 마음. 이대로 괜찮을까?",
+      "authors": [
+        {
+          "name": "팀 네잎",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=841128",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141012",
+      "title": "여자사람친구",
+      "author": "이상돌",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=835693",
+      "cover": "https://image-comic.pstatic.net/webtoon/835693/thumbnail/thumbnail_IMAG21_b465cd91-737d-44a1-9eea-03e3b8b2ceb6.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 2,
+      "color": "#342c28",
+      "episodes": 47,
+      "status": "ongoing",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "설렘폭발",
+        "우정",
+        "짝사랑남",
+        "로맨틱코미디",
+        "짝사랑",
+        "로맨스코미디",
+        "하이틴"
+      ],
+      "desc": "그저 여자'사람'친구. 그 이상도 이하도 아니었던 친구가 방학 동안 예뻐져서 나타났다.\n이쁘다. 처음으로 쟤한테 설렐 정도로.",
+      "authors": [
+        {
+          "name": "이상돌",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=835693",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141011",
+      "title": "프롤로그에서 30년이 흘렀다",
+      "author": "기린그린, 맠엘라하",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=852765",
+      "cover": "https://image-comic.pstatic.net/webtoon/852765/thumbnail/thumbnail_IMAG21_8b4cc64e-f90e-4bde-94d7-2e4f62d805c3.jpg",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": 0,
+      "color": "#171824",
+      "episodes": 24,
+      "status": "ongoing",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "액션판타지",
+        "아카데미물",
+        "빙의",
+        "먼치킨",
+        "느와르",
+        "소설원작"
+      ],
+      "desc": "처음 보는 세계에 ‘빙의’했다.\n왕도 RPG라고 생각하고 30년을 보냈다.\n전쟁영웅이 되어 퇴역했고, 이제 엔딩을 맞이할 예정이었다.\n\n그런데ㅡ\n지금까지의 30년이 프롤로그였고, 심지어 아카데미물이었다고?",
+      "authors": [
+        {
+          "name": "기린그린",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        },
+        {
+          "name": "맠엘라하",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=852765",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-1",
+        "fantasy-6",
+        "fantasy-4"
+      ]
+    },
+    {
+      "id": "w657564281141010",
+      "title": "세상에 나쁜 영애는 없다",
+      "author": "신희빈, 팀 핑크샥, 코리타",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=846779",
+      "cover": "https://image-comic.pstatic.net/webtoon/846779/thumbnail/thumbnail_IMAG21_23419a88-8a18-4890-871e-a47a680c620a.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#3a3646",
+      "episodes": 50,
+      "status": "ongoing",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "액션판타지",
+        "중세판타지액션",
+        "왕족/귀족",
+        "성장물",
+        "소설원작"
+      ],
+      "desc": "귀족 영애라는 족속들은 싸가지가 없거나, 머리에 꽃밭밖에 없다.\n그런 말이 무성하던 시대에도, 그녀들을 가르치는 사람이 있었으니,\n\n평민 ‘데릭’은 마법 재능을 깨닫고 용병으로 활약하던 중,\n어느 날 귀족 영애들의 마법 교사로 초빙된다.\n싸가지 없던 영애들을 ‘사람’으로 만들어주는 일타 강사 '데릭'의 활약에\n쏟아지는 명문 귀족 가문들의 러브콜.\n\n'세상에 나쁜 영애는 없다.', 적어도 데릭 앞에선.",
+      "authors": [
+        {
+          "name": "신희빈",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "팀 핑크샥",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "코리타",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=846779",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-6"
+      ]
+    },
+    {
+      "id": "w657564281141009",
+      "title": "부활소년",
+      "author": "류",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=848075",
+      "cover": "https://image-comic.pstatic.net/webtoon/848075/thumbnail/thumbnail_IMAG21_78b58afa-f738-4292-9d0f-92992aa3057a.jpg",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": 0,
+      "color": "#fdebe6",
+      "episodes": 47,
+      "status": "ongoing",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "액션",
+        "소년물",
+        "소년왕도물"
+      ],
+      "desc": "부활의 심장을 가진 소년.\n수백 번의 죽음도 그를 죽이지 못한다.\n평생 그와 친구들의 능력을 억압한 연구소, \n지오는 그곳을 향해 움직인다",
+      "authors": [
+        {
+          "name": "류",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=848075",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w657564281141008",
+      "title": "아카데미 플레이어를 죽였다",
+      "author": "기린그린, 사람살려.",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=818434",
+      "cover": "https://image-comic.pstatic.net/webtoon/818434/thumbnail/thumbnail_IMAG21_c704029b-5230-401a-a20d-c8a2179f75fa.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#fdfce7",
+      "episodes": 141,
+      "status": "completed",
+      "days": [
+        "tue"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "게임",
+        "이능력",
+        "마법",
+        "액션",
+        "아카데미물",
+        "지금추천작",
+        "게임판타지"
+      ],
+      "desc": "플레이어를 죽였다.\n죽일 만한 놈이었다. 아주 X새끼였거든.",
+      "authors": [
+        {
+          "name": "기린그린",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        },
+        {
+          "name": "사람살려.",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=818434",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-1",
+        "fantasy-6"
+      ]
     },
     {
       "id": "w6575642811408p",
@@ -2529,12 +3396,12 @@
       "recommended": 3,
       "color": "#b51a00",
       "episodes": 70,
-      "status": "hiatus",
+      "status": "ongoing",
       "days": [
         "mon"
       ],
-      "autoCount": false,
-      "baseDate": "2026-11-13",
+      "autoCount": true,
+      "baseDate": "2026-11-11",
       "tags": [
         "판타지",
         "주식",
@@ -4684,11 +5551,7 @@
           280
         ],
         "w039": [
-          380,
-          280
-        ],
-        "w657564281141008": [
-          630,
+          360,
           280
         ]
       },
@@ -4696,11 +5559,6 @@
         {
           "from": "w030",
           "to": "w039",
-          "why": ""
-        },
-        {
-          "from": "w039",
-          "to": "w657564281141008",
           "why": ""
         }
       ]
@@ -4793,7 +5651,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141008
+    "lastWebtoonId": 657564281141027
   },
   "version": 1,
   "shop": [
@@ -6502,60 +7360,250 @@
       "url": "",
       "works": []
     },
-    "김정현": {
-      "name": "김정현",
-      "img": "https://kw-wcommunity-phinf.pstatic.net/20231028_82/1698483365715uaNL3_PNG/IMG_3051.png",
-      "bio": "여기 들어오신 당신은 오늘도 행복하시겠군요",
-      "url": "https://comic.naver.com/community/u/_liku8",
+    "사람살려.": {
+      "name": "사람살려.",
+      "img": "",
+      "bio": "",
+      "url": "",
       "works": [
         {
-          "title": "싸움독학",
-          "source": "https://comic.naver.com/webtoon/list?titleId=736277",
-          "cover": "https://image-comic.pstatic.net/webtoon/736277/thumbnail/thumbnail_IMAG21_bbbe3f76-021e-4dbc-830a-4358c1abec0c.jpg",
-          "finished": true
-        },
+          "title": "신과함께 돌아온 기사왕님",
+          "source": "https://comic.naver.com/webtoon/list?titleId=809618",
+          "cover": "https://image-comic.pstatic.net/webtoon/809618/thumbnail/thumbnail_IMAG21_df87e004-a86e-46d0-9749-aa338e9363ac.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "류": {
+      "name": "류",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_w18gpg",
+      "works": [
         {
-          "title": "파도를 찾아라!",
-          "source": "https://comic.naver.com/webtoon/list?titleId=703836",
-          "cover": "https://image-comic.pstatic.net/webtoon/703836/thumbnail/thumbnail_IMAG21_3703139095769788470.jpg",
-          "finished": true
-        },
-        {
-          "title": "레이드",
-          "source": "https://comic.naver.com/webtoon/list?titleId=729039",
-          "cover": "https://image-comic.pstatic.net/webtoon/729039/thumbnail/thumbnail_IMAG21_3774632443562385969.jpg",
-          "finished": true
-        },
-        {
-          "title": "죽여주는 변호사",
-          "source": "https://comic.naver.com/webtoon/list?titleId=844810",
-          "cover": "https://image-comic.pstatic.net/webtoon/844810/thumbnail/thumbnail_IMAG21_cb5b50a4-1529-439e-bae6-951651d14d89.jpeg",
+          "title": "사신소년",
+          "source": "https://comic.naver.com/webtoon/list?titleId=730656",
+          "cover": "https://image-comic.pstatic.net/webtoon/730656/thumbnail/thumbnail_IMAG21_fc6d8dbf-eed2-43d0-af45-2edb3cc4244e.jpg",
           "finished": false
         },
         {
-          "title": "용감한 시민",
-          "source": "https://comic.naver.com/webtoon/list?titleId=780986",
-          "cover": "https://image-comic.pstatic.net/webtoon/780986/thumbnail/thumbnail_IMAG21_3919651438769746736.jpg",
+          "title": "고수",
+          "source": "https://comic.naver.com/webtoon/list?titleId=662774",
+          "cover": "https://image-comic.pstatic.net/webtoon/662774/thumbnail/thumbnail_IMAG21_3618421729916171318.jpg",
+          "finished": true
+        },
+        {
+          "title": "우리 헤어졌어요",
+          "source": "https://comic.naver.com/webtoon/list?titleId=635989",
+          "cover": "https://image-comic.pstatic.net/webtoon/635989/thumbnail/thumbnail_IMAG21_7089851320625345377.jpg",
+          "finished": true
+        },
+        {
+          "title": "완벽한 허니문",
+          "source": "https://comic.naver.com/webtoon/list?titleId=689705",
+          "cover": "https://image-comic.pstatic.net/webtoon/689705/thumbnail/thumbnail_IMAG21_3544386998387171637.jpg",
           "finished": true
         }
       ]
     },
-    "임리나": {
-      "name": "임리나",
-      "img": "https://kw-wcommunity-phinf.pstatic.net/20231028_277/1698493266258W0ju1_PNG/IMG_0074.png",
-      "bio": "독자님들 사랑해요❤️‍🔥",
-      "url": "https://comic.naver.com/community/u/linawebtoon",
+    "신희빈": {
+      "name": "신희빈",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20231017_205/1697541754414hy1l0_PNG/KakaoTalk_20231017_005852132.png",
+      "bio": ":)",
+      "url": "https://comic.naver.com/community/u/heebin",
       "works": [
         {
-          "title": "화이트 블러드",
-          "source": "https://comic.naver.com/webtoon/list?titleId=739503",
-          "cover": "https://image-comic.pstatic.net/webtoon/739503/thumbnail/thumbnail_IMAG21_7075497401627194164.jpg",
+          "title": "포식동물",
+          "source": "https://comic.naver.com/webtoon/list?titleId=773417",
+          "cover": "https://image-comic.pstatic.net/webtoon/773417/thumbnail/thumbnail_IMAG21_3702580329889150776.jpg",
           "finished": true
         },
         {
-          "title": "혼신",
-          "source": "https://comic.naver.com/webtoon/list?titleId=769688",
-          "cover": "https://image-comic.pstatic.net/webtoon/769688/thumbnail/thumbnail_IMAG21_7365692394708493360.JPEG",
+          "title": "귀비나리",
+          "source": "https://comic.naver.com/webtoon/list?titleId=812381",
+          "cover": "https://image-comic.pstatic.net/webtoon/812381/thumbnail/thumbnail_IMAG21_616c0474-a8e2-4caf-a986-d7528c4feb55.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "팀 핑크샥": {
+      "name": "팀 핑크샥",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260317_291/1773733824126AXRrV_PNG/%C6%C0_%C7%CE%C5%A9%BC%A1.png",
+      "bio": "안녕하세요! 팀 핑크샥입니다! <세상에 나쁜 영애는 없다> 세나영 많관부💕",
+      "url": "https://comic.naver.com/community/u/teampinkshark",
+      "works": []
+    },
+    "맠엘라하": {
+      "name": "맠엘라하",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "이상돌": {
+      "name": "이상돌",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20250123_60/1737632091869IsDId_PNG/%C0%DB%B0%A1%BF%C0%B3%CA%C4%B3.png",
+      "bio": "안녕하세요. 이상돌입니다 인스타그램 2sangdol_",
+      "url": "https://comic.naver.com/community/u/_tdao3",
+      "works": []
+    },
+    "팀 네잎": {
+      "name": "팀 네잎",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20251006_278/1759738368589VKzV1_PNG/%C1%A6%B8%F1%C0%BB-%C0%D4%B7%C2%C7%D8%C1%D6%BC%BC%BF%E4_-001_%281%29.png",
+      "bio": "insta : @4.options.mcq biz : biz@emocent.com",
+      "url": "https://comic.naver.com/community/u/4optionmcq",
+      "works": []
+    },
+    "최준영": {
+      "name": "최준영",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20251226_200/1766675644794655RY_PNG/%C7%C1%BB%E7.png",
+      "bio": "봐주셔서 감사합니다! @ june_young_22",
+      "url": "https://comic.naver.com/community/u/juneyoung",
+      "works": [
+        {
+          "title": "까맣지만 새하얀",
+          "source": "https://comic.naver.com/webtoon/list?titleId=854126",
+          "cover": "https://image-comic.pstatic.net/webtoon/854126/thumbnail/thumbnail_IMAG21_723653d0-65bf-4d6f-9c13-45ade0d9369d.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "기령": {
+      "name": "기령",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20251227_174/1766784452142P5Rgn_PNG/%C0%E7%C4%DA_400x400.png",
+      "bio": "안녕하세요 기령입니다! 잘 부탁드립니다!",
+      "url": "https://comic.naver.com/community/u/_45zne3",
+      "works": []
+    },
+    "지와": {
+      "name": "지와",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_543gh1",
+      "works": []
+    },
+    "멜로로": {
+      "name": "멜로로",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20250515_236/17473162155732lCo7_PNG/%C7%C1%B7%CE%C7%CA.png",
+      "bio": "✿◕‿◕✿ 인스타 @mrr_1226",
+      "url": "https://comic.naver.com/community/u/MRR1226",
+      "works": []
+    },
+    "뀌옥": {
+      "name": "뀌옥",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "안녕하세요",
+      "url": "https://comic.naver.com/community/u/_mj78qv",
+      "works": []
+    },
+    "이도광": {
+      "name": "이도광",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20250626_156/1750936316733JlMsy_PNG/1000004623.png",
+      "bio": "안녕하세요! 이도광입니다~  2020 야자괴담 완결 2022~ 여우애담 연재중",
+      "url": "https://comic.naver.com/community/u/leedk03",
+      "works": [
+        {
+          "title": "야자괴담",
+          "source": "https://comic.naver.com/webtoon/list?titleId=743025",
+          "cover": "https://image-comic.pstatic.net/webtoon/743025/thumbnail/thumbnail_IMAG21_3835203438886937190.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "혜루": {
+      "name": "혜루",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260721_285/1784642237849WdK7U_PNG/%C0%CF%B7%AF%BD%BA%C6%AE23_%C3%E2%B7%C2.png",
+      "bio": "(˙ꈊ˙)",
+      "url": "https://comic.naver.com/community/u/hyeruoo",
+      "works": [
+        {
+          "title": "방과후 레시피",
+          "source": "https://comic.naver.com/webtoon/list?titleId=793130",
+          "cover": "https://image-comic.pstatic.net/webtoon/793130/thumbnail/thumbnail_IMAG21_1913856c-b494-4348-b3f0-b85393e4c3ed.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "손차양": {
+      "name": "손차양",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20241026_109/1729913543131OfJp5_PNG/IMG_5990.png",
+      "bio": "네이버 수요웹툰 <전력고백> 글 작가 손차양입니다 잘 부탁드립니다💌",
+      "url": "https://comic.naver.com/community/u/_k1jk32",
+      "works": []
+    },
+    "냥지": {
+      "name": "냥지",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20251014_44/1760450894657LGkcI_PNG/IMG_5144.png",
+      "bio": "인스타 @nyangzee",
+      "url": "https://comic.naver.com/community/u/_l1jn2n",
+      "works": []
+    },
+    "귤다래": {
+      "name": "귤다래",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20250813_81/1755061357984nSDGD_PNG/02_-_202.png",
+      "bio": "안녕하세요 감사합니다.",
+      "url": "https://comic.naver.com/community/u/_ge3hxp",
+      "works": []
+    },
+    "멈멈": {
+      "name": "멈멈",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "e-mail : mmuumm109@naver.com",
+      "url": "https://comic.naver.com/community/u/mmuumm109",
+      "works": []
+    },
+    "다빈": {
+      "name": "다빈",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260531_277/1780169743357y51TD_PNG/71640.png",
+      "bio": "dabinhls2@gmail.com 인스타 @dabin_hl",
+      "url": "https://comic.naver.com/community/u/dabin",
+      "works": [
+        {
+          "title": "살고 싶어? 그럼 키스해",
+          "source": "https://comic.naver.com/webtoon/list?titleId=795235",
+          "cover": "https://image-comic.pstatic.net/webtoon/795235/thumbnail/thumbnail_IMAG21_3618140057371226981.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "코앳": {
+      "name": "코앳",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20251022_249/1761121177789OVcfK_PNG/IMG_2108.png",
+      "bio": "@artisletter",
+      "url": "https://comic.naver.com/community/u/artisletter",
+      "works": []
+    },
+    "채군": {
+      "name": "채군",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260804_10/1785832986493ESU2q_PNG/cover.png",
+      "bio": "너만 보인단 말이야 글작가 채군입니다! 인스타 @artist_chaegun",
+      "url": "https://comic.naver.com/community/u/_49pdna",
+      "works": []
+    },
+    "닷지": {
+      "name": "닷지",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "반갑습니다~    .",
+      "url": "https://comic.naver.com/community/u/dodge4814",
+      "works": []
+    },
+    "꼬보": {
+      "name": "꼬보",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260223_68/1771773484486V5brr_PNG/sns%C7%C1%BB%E72.png",
+      "bio": "쌍방구원 로맨스 좋아합니다. :p 🐦kkoobooo 🌟kk0b0",
+      "url": "https://comic.naver.com/community/u/kkobo",
+      "works": []
+    },
+    "이명재": {
+      "name": "이명재",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20251218_48/1766039526473b8UnF_PNG/%BC%B6%B3%D7%C0%CF1.png",
+      "bio": "<고고농구> <위아더좀비>",
+      "url": "https://comic.naver.com/community/u/_vbt21",
+      "works": [
+        {
+          "title": "위아더좀비",
+          "source": "https://comic.naver.com/webtoon/list?titleId=766648",
+          "cover": "https://image-comic.pstatic.net/webtoon/766648/thumbnail/thumbnail_IMAG21_3977861984512325425.jpg",
           "finished": true
         }
       ]
