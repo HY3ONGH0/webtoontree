@@ -710,7 +710,8 @@
       const state = w.status === 'completed' ? '<span>완결</span>' : w.status === 'hiatus' ? '<span class="pause">휴재</span>' : `<span class="on">연재 중${(w.days || []).length ? ' · ' + w.days.map((d) => DAYK[d] || d).join('·') : ''}</span>`;
       const au = WT.authorsOf(w)[0];
       const auImg = au ? ((WT.data.authorInfo || {})[String(au.name).trim().toLowerCase().replace(/\s+/g, ' ')] || {}).img : '';
-      const avIn = `${esc(((au || {}).name || w.title)[0])}${auImg ? `<img src="${esc(auImg)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}`;
+      // 작가 프로필 사진이 없거나 못 불러오면 기본 프로필 그림을 보여 줘요
+      const avIn = `<img src="${esc(auImg || WT.AUTHOR_DEFAULT)}" alt="" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src=WT.AUTHOR_DEFAULT">`;
       box.innerHTML = `<div class="lb-head">${au ? `<a class="lb-av" href="${WT.authorHref(au.name)}" aria-label="${esc(au.name)} 작가 프로필" style="background:linear-gradient(150deg, ${t.c1}, ${t.c2})">${avIn}</a>` : `<span class="lb-av" style="background:linear-gradient(150deg, ${t.c1}, ${t.c2})">${avIn}</span>`}
           <span class="lb-who"><b>${WT.authorLinks(w)}</b><small>작가 · ${WT.platform.icon(w.platform, 'pf-in')}${esc(w.platform || '웹툰')}</small></span>
           <span class="lb-arrows">${WT.fav.btn(id)}<button type="button" data-step="-1" aria-label="이전 책">←</button><button type="button" data-step="1" aria-label="다음 책">→</button></span></div>
