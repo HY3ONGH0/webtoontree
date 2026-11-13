@@ -1,7 +1,7 @@
 {
   "webtoons": [
     {
-      "id": "w657564281141045",
+      "id": "w657564281141047",
       "title": "새 웹툰",
       "author": "",
       "platform": "네이버웹툰",
@@ -17,6 +17,89 @@
       "baseDate": "2026-11-13",
       "tags": [],
       "desc": ""
+    },
+    {
+      "id": "w657564281141046",
+      "title": "괴양이",
+      "author": "붉은코끼리",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=812339",
+      "cover": "https://image-comic.pstatic.net/webtoon/812339/thumbnail/thumbnail_IMAG21_8933b72e-2a6a-47e1-9c4a-b92d7b15c283.jpg",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 2,
+      "color": "#0ca6ff",
+      "episodes": 97,
+      "status": "completed",
+      "days": [
+        "sat"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "개그",
+        "열혈병맛개그",
+        "자극적인",
+        "공감",
+        "현대",
+        "병맛",
+        "가벼운",
+        "4차원"
+      ],
+      "desc": "어느 날 남자는 길에서 죽어가는 새끼 고양이를 발견한다.\n살아날 가망이 없었지만 지극 정성을 다하여 고양이를 보살폈다.\n강하게 크라고 카이사르라 이름도 붙여줬다.\n\n……너무 강해져 버렸다.",
+      "authors": [
+        {
+          "name": "붉은코끼리",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=812339",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141045",
+      "title": "다이스(DICE)",
+      "author": "윤현석",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=557676",
+      "cover": "https://image-comic.pstatic.net/webtoon/557676/thumbnail/thumbnail_IMAG21_4135488856113033523.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 4,
+      "color": "#140a1b",
+      "episodes": 393,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "완결판타지"
+      ],
+      "desc": "빵셔틀 남학생 동태가 우연히 얻게 된 주사위 '다이스'. 이 주사위만 굴리면 얼굴, 신체, 능력치 등 모든 걸 바꿀 수 있다고? '최후의 다이스'를 손에 얻기 위한 판타지 게임이 시작된다!",
+      "authors": [
+        {
+          "name": "윤현석",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=557676",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-5"
+      ]
     },
     {
       "id": "w657564281141044",
@@ -6526,7 +6609,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141045
+    "lastWebtoonId": 657564281141047
   },
   "version": 1,
   "shop": [
@@ -8861,6 +8944,39 @@
           "source": "https://comic.naver.com/webtoon/list?titleId=852601",
           "cover": "https://image-comic.pstatic.net/webtoon/852601/thumbnail/thumbnail_IMAG21_d0ab41f4-f85d-40d3-8430-6bc4193d8cdb.jpg",
           "finished": false
+        }
+      ]
+    },
+    "윤현석": {
+      "name": "윤현석",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/seok",
+      "works": []
+    },
+    "붉은코끼리": {
+      "name": "붉은코끼리",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230922_276/1695390073052G4CWs_PNG/IMG_3997.png",
+      "bio": "🏋🏿오전엔 쇠를 들고 ✍️오후엔 펜을 듭니다",
+      "url": "https://comic.naver.com/community/u/bulcoh",
+      "works": [
+        {
+          "title": "헬스 시궁창인생 고등학교",
+          "source": "https://comic.naver.com/webtoon/list?titleId=784820",
+          "cover": "https://image-comic.pstatic.net/webtoon/784820/thumbnail/thumbnail_IMAG21_7219945540721664817.jpg",
+          "finished": true
+        },
+        {
+          "title": "또한, 우리의 가족",
+          "source": "https://comic.naver.com/webtoon/list?titleId=701005",
+          "cover": "https://image-comic.pstatic.net/webtoon/701005/thumbnail/thumbnail_IMAG21_4122819385522925872.jpg",
+          "finished": true
+        },
+        {
+          "title": "아랫배 쪽에 힘을 콱 주고",
+          "source": "https://comic.naver.com/webtoon/list?titleId=851404",
+          "cover": "https://image-comic.pstatic.net/webtoon/851404/thumbnail/thumbnail_IMAG21_067b2e5a-3114-4891-8371-43264483acc7.jpg",
+          "finished": true
         }
       ]
     }
