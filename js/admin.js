@@ -227,7 +227,7 @@
                 <span class="ad-cv" style="--c:${esc(x.color || gColor(x))}">
                   <span class="ad-ini"><i>WEBTOON</i><em>${esc(x.title)}</em><small>${esc(x.author || '')}</small></span>
                   ${x.cover ? `<img src="${esc(x.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}
-                  ${x.pick ? '<span class="ad-pick">강추</span>' : ''}${x.source ? '' : '<span class="ad-nolink" title="작품 연결 안 됨">연결 전</span>'}${WT.platform.icon(x.platform, 'pf-in')}${rs ? `<span class="ad-st">${'★'.repeat(rs)}</span>` : ''}${on ? `<span class="ad-on">${on}</span>` : ''}
+                  ${x.pick ? '<span class="ad-pick">강추</span>' : ''}${x.source ? '' : '<span class="ad-nolink" title="작품 연결 안 됨">연결 전</span>'}${rs ? `<span class="ad-st">${'★'.repeat(rs)}</span>` : ''}${on ? `<span class="ad-on">${on}</span>` : ''}
                   <span class="ad-live">${liveOn(x.id)}</span>
                 </span>
                 <span class="ad-tt">${esc(x.title)}</span>
