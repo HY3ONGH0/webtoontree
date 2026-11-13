@@ -1,6 +1,50 @@
 {
   "webtoons": [
     {
+      "id": "w657564281141085",
+      "title": "사랑하는 여름 하늘",
+      "author": "소장",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=826661",
+      "cover": "https://image-comic.pstatic.net/webtoon/826661/thumbnail/thumbnail_IMAG21_42609d33-16bd-45ab-8479-a998db590d30.jpg",
+      "genres": [
+        "romance",
+        "daily"
+      ],
+      "recommended": 0,
+      "color": "#b9d5e8",
+      "episodes": 62,
+      "status": "completed",
+      "days": [
+        "thu"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "현대",
+        "우정",
+        "혐관",
+        "청춘",
+        "성장물",
+        "다정남",
+        "혐관로맨스"
+      ],
+      "desc": "사람보다 하늘을 더 좋아해 카메라로 하늘 사진만 찍는 기후. \n그러던 어느 여름, 옆자리에 \"하늘\"이 전학을 온다.",
+      "authors": [
+        {
+          "name": "소장",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=826661",
+      "autoAt": "2026-11-13"
+    },
+    {
       "id": "w657564281141084",
       "title": "도깨비의 밤",
       "author": "문식, 도올",
@@ -8442,7 +8486,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141084
+    "lastWebtoonId": 657564281141085
   },
   "version": 1,
   "shop": [
@@ -11843,6 +11887,26 @@
       "bio": "",
       "url": "",
       "works": []
+    },
+    "소장": {
+      "name": "소장",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20240703_214/1720014806817gCfXq_PNG/%C4%B8%C3%B3.PNG",
+      "bio": "소장입니다!",
+      "url": "https://comic.naver.com/community/u/_jboxy",
+      "works": [
+        {
+          "title": "찐:종합게임동아리",
+          "source": "https://comic.naver.com/webtoon/list?titleId=771018",
+          "cover": "https://image-comic.pstatic.net/webtoon/771018/thumbnail/thumbnail_IMAG21_3762818380117075513.jpg",
+          "finished": true
+        },
+        {
+          "title": "치렐루야",
+          "source": "https://comic.naver.com/webtoon/list?titleId=833712",
+          "cover": "https://image-comic.pstatic.net/webtoon/833712/thumbnail/thumbnail_IMAG21_ff24ca16-9a18-4ef8-a73d-cc073abba59b.jpg",
+          "finished": true
+        }
+      ]
     }
   }
 }
