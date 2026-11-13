@@ -68,7 +68,7 @@ function doPost(e) {
 }
 
 // 서버 코드 판 번호: 관리자 화면이 이 숫자를 보고 "서버 코드가 예전 버전"인지 알려 줘요. 서버 코드를 고치면 1씩 올려요
-var SERVER_VERSION = 12;
+var SERVER_VERSION = 13;
 
 var WRITE_ACTIONS = {
   signup: 1, login: 1, logout: 1, nick: 1, deleteAccount: 1, progress: 1, rate: 1, comment: 1, deleteComment: 1,
@@ -511,11 +511,11 @@ var ACTIONS = {
     who_(b);
     var q = String(b.q || '').trim();
     if (q.length < 1) fail_('찾을 제목을 넣어 주세요.');
-    var key = 'search2:' + sha256_(q).slice(0, 32);
+    var key = 'search3:' + (b.platform === 'kakaow' ? 'k:' : 'n:') + sha256_(q).slice(0, 32);
     var memo = cacheGet_(key);
     if (memo) return memo;
     var list = [];
-    list = naverSearch_(q);
+    list = b.platform === 'kakaow' ? kakaoWebtoonSearch_(q) : naverSearch_(q);
     var r = { items: list };
     cachePut_(key, r, 1800);
     return r;
@@ -940,8 +940,21 @@ function meta_(html, prop) {
   return m ? clean_(m[1]) : '';
 }
 
-// 카카오웹툰: 작품 페이지에 들어 있는 공개 정보(제목 · 작가 · 설명 · 표지 · 장르)를 읽어요.
-// 화수 · 연재 요일 · 연재 상태는 페이지에 없어서 가져오지 않아요 (관리자가 직접 적어요)
+// 카카오웹툰 제목 검색: 카카오웹툰이 로그인 없이 열어 둔 검색 주소를 써요
+var KW_ROLE_ = { author: 'writer', illustrator: 'painter', originalstory: 'original' };
+function kakaoWebtoonSearch_(q) {
+  var j = get_('https://gateway-kw.kakao.com/search/v2/content?limit=20&offset=0&word=' + encodeURIComponent(q), true);
+  return (((j && j.data) || {}).content || []).map(function (o) {
+    if (!o || !o.id || !o.title || !o.seoId) return null;
+    var names = uniq_((o.authors || []).filter(function (a) { return KW_ROLE_[String(a.type || '').replace(/_/g, '').toLowerCase()]; }).map(function (a) { return a.name; }));
+    return { title: clean_(o.title), author: names.join(' / '), platform: '카카오웹툰',
+      cover: o.featuredCharacterImageA ? o.featuredCharacterImageA + '.png' : '', source: 'https://webtoon.kakao.com/content/' + encodeURIComponent(o.seoId) + '/' + o.id,
+      when: clean_(o.genre || ''), adult: !!o.adult };
+  }).filter(Boolean).slice(0, 10);
+}
+// 카카오웹툰: 작품 페이지에 들어 있는 공개 정보(제목 · 작가 · 설명 · 표지 · 장르)와,
+// 열려 있는 작품 소개 주소의 연재 상태 · 연재 요일을 읽어요.
+// 화수는 로그인 확인을 거치는 주소에서만 나와서 가져오지 않아요 (관리자가 한 번 적어 두면 연재 요일마다 자동으로 늘어요)
 function kakaoWebtoonInfo_(url) {
   var id = (url.match(/\/content\/[^/?#]+\/(\d+)/) || [])[1];
   if (!id) fail_('카카오웹툰 작품 링크가 아니에요. webtoon.kakao.com/content/작품이름/숫자 모양의 링크를 넣어 주세요.');
@@ -952,6 +965,7 @@ function kakaoWebtoonInfo_(url) {
   var title = clean_((c && c.title) || meta_(html, 'og:title').replace(/\s*\|\s*카카오웹툰\s*$/, ''));
   if (!title || title === '카카오웹툰') fail_('카카오웹툰에서 작품 정보를 찾지 못했어요. 링크를 확인해 주세요.');
   var ROLE = { author: 'writer', illustrator: 'painter', originalStory: 'original' };
+  var id0 = id;
   var people = {}, order = [];
   ((c && c.authorDetails) || []).forEach(function (d) {
     var r = ROLE[d.type];
@@ -967,6 +981,22 @@ function kakaoWebtoonInfo_(url) {
     tags: uniq_(String((c && c.genre) || '').split('/')).slice(0, 8)
   };
   if (order.length) { info.authors = order.map(function (n) { return { name: n, roles: people[n] }; }); info.author = order.join(', '); }
+  // 연재 상태 · 요일 (못 받아도 나머지는 그대로 써요)
+  try {
+    var pr = (get_('https://gateway-kw.kakao.com/decorator/v2/decorator/contents/' + id0 + '/profile', true) || {}).data;
+    if (pr && Array.isArray(pr.badges)) {
+      var st = '', days = [];
+      pr.badges.forEach(function (bd) {
+        var t = String(bd.title || '');
+        if (bd.type === 'STATUS') st = t;
+        if (bd.type === 'WEEKDAYS' && /^(mon|tue|wed|thu|fri|sat|sun)$/i.test(t) && days.indexOf(t.toLowerCase()) < 0) days.push(t.toLowerCase());
+      });
+      info.status = st === 'COMPLETED' ? 'completed' : st ? 'hiatus' : 'ongoing';   // 시즌 완결 · 연재 쉼은 휴재로
+      if (days.length) info.days = days;
+      var kw = uniq_((pr.seoKeywords || []).map(function (k) { return String(k).replace(/^#/, ''); }).filter(function (k) { return k.indexOf('/') < 0; }));
+      if (kw.length) info.tags = uniq_(info.tags.concat(kw)).slice(0, 8);
+    }
+  } catch (e) { console.warn('kakao webtoon profile', e); }
   return { info: info, source: '카카오웹툰' };
 }
 // 그 밖의 플랫폼: 작품 페이지가 공개해 둔 소개 정보(제목 · 설명 · 표지)만 읽어요
