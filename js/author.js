@@ -89,11 +89,12 @@
       </section>
       <nav class="ap-tabs" role="tablist">
         <button type="button" role="tab" aria-selected="true" data-tab="works">작품 <em>${works.length}</em></button>
+        ${naverSrc.length || /comic\.naver\.com\/community\//.test(info.url || '') ? `<button type="button" role="tab" aria-selected="false" data-tab="posts">작가 소식</button>` : ''}
         ${outside.length ? `<button type="button" role="tab" aria-selected="false" data-tab="out">다른 작품 <em>${outside.length}</em></button>` : ''}
         ${related.length ? `<button type="button" role="tab" aria-selected="false" data-tab="rel">${studio ? '소속 작가' : '스튜디오 · 관련'} <em>${related.reduce((n, o) => n + o.works.length, 0)}</em></button>` : ''}
       </nav>
       <section class="ap-pane" data-pane="works"><div class="ap-grid">${works.map(card).join('')}</div></section>
-
+      <section class="ap-pane" data-pane="posts" hidden><div id="ap-posts" class="ap-posts"><p class="ap-note">불러오는 중…</p></div></section>
       ${outside.length ? `<section class="ap-pane" data-pane="out" hidden><p class="ap-note">웹툰트리에는 아직 없는 작품이에요. 누르면 네이버 웹툰에서 열려요.</p><div class="ap-grid">${outside.map((x) => `<a class="ap-card" href="${esc(x.source)}" target="_blank" rel="noopener">
           <span class="ap-cv" style="--c:#55607F"><span class="ap-ini">${esc(x.title)}</span>${x.cover ? `<img src="${esc(x.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}<span class="ap-role">↗</span></span>
           <b>${esc(x.title)}</b><small>네이버웹툰${x.finished ? ' · 완결' : ''}</small></a>`).join('')}</div></section>` : ''}
@@ -135,10 +136,10 @@
       const img = (r && r.artist && r.artist.img) || info.img || '';
       if (ps.length) {
         box.innerHTML = ps.map((x) => `<a class="ap-post" href="${esc(x.url)}" target="_blank" rel="noopener">
-            <span class="ap-pav${img ? '' : ' plain'}" style="--h:${h}">${img ? `<img src="${esc(img)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}</span>
-            <span class="ap-pbody"><span class="ap-phead"><b>${esc(me.name)}</b>${x.date ? `<small>${esc(x.date)}</small>` : ''}</span>
+            <span class="ap-pav${img && !x.system ? '' : ' plain'}" style="--h:${x.system ? 140 : h}">${img && !x.system ? `<img src="${esc(img)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}</span>
+            <span class="ap-pbody"><span class="ap-phead"><b>${x.system ? '네이버웹툰' : esc(me.name)}</b>${x.date ? `<small>${esc(x.date)}</small>` : ''}${x.pinned ? '<small class="ap-pin">고정</small>' : ''}</span>
               ${x.title ? `<strong>${esc(x.title)}</strong>` : ''}${x.excerpt ? `<p>${esc(x.excerpt)}</p>` : ''}
-              ${x.img ? `<span class="ap-pimg"><img src="${esc(x.img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></span>` : ''}
+              ${x.img ? `<span class="ap-pimg"><img src="${esc(x.img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.remove()">${x.images > 1 ? `<i>+${x.images - 1}</i>` : ''}</span>` : ''}
               <span class="ap-pfoot">${x.likes ? `<i>♡ ${x.likes}</i>` : ''}${x.comments ? `<i>💬 ${x.comments}</i>` : ''}<em>원문 보기 ↗</em></span></span></a>`).join('')
           + (home() ? `<a class="ap-pall" href="${esc(home())}" target="_blank" rel="noopener">작가 홈에서 모든 글 보기 ↗</a>` : '');
       } else {
@@ -151,7 +152,7 @@
     app.querySelectorAll('.ap-tabs button').forEach((b) => b.addEventListener('click', () => {
       app.querySelectorAll('.ap-tabs button').forEach((x) => x.setAttribute('aria-selected', x === b));
       app.querySelectorAll('.ap-pane').forEach((p) => { p.hidden = p.dataset.pane !== b.dataset.tab; });
-
+      if (b.dataset.tab === 'posts') loadPosts();
     }));
   }
   // 작가 소식 글: 사이트 위에 작은 창으로 네이버 원문을 열어요 (창이 막히면 새 탭)

@@ -367,9 +367,7 @@ var ACTIONS = {
     if (artist && artist.url && !/^https:\/\/comic\.naver\.com\/community\//.test(url)) url = artist.url;
     var out = { posts: [], url: url, artist: artist ? { img: artist.img || '', url: artist.url || '', bio: artist.bio || '' } : null };
     if (!/^https:\/\/comic\.naver\.com\/community\//.test(url)) { out.reason = 'no-home'; return out; }
-    // 작가 홈 글은 네이버 앱 전용 열쇠가 있어야 받을 수 있어서 가져오지 않아요 (작가 홈 링크로 안내)
-    return out;
-    var key = 'posts:' + sha256_(url).slice(0, 32);
+    var key = 'posts2:' + sha256_(url).slice(0, 32);
     var memo = cacheGet_(key);
     if (memo) { out.posts = memo.posts; out.reason = memo.reason; return out; }
     try { out.posts = naverPosts_(url); } catch (e) { out.reason = String(e.message || e).slice(0, 120); }
@@ -812,115 +810,35 @@ function naverArtists_(list, people, titleId) {
     return r;
   }).filter(Boolean);
 }
-// 작가 홈 게시글: 페이지에 들어 있는 데이터(__NEXT_DATA__ 등)나 커뮤니티 API에서 글 목록을 찾아요
+// 작가 홈 게시글: 네이버 웹툰 작가 홈이 웹에서 쓰는 공개 글 목록에서 최근 글을 가져와요 (로그인 없이 보이는 글만)
 function naverPosts_(url) {
-  var uid = (url.match(/\/community\/u\/([^/?#]+)/) || [])[1] || '';
-  var found = [];
+  var handle = (url.match(/\/community\/u\/([^/?#]+)/) || [])[1] || '';
+  var pageId = handle.replace(/^_/, '');   // 주소의 _3i1sk → 글 목록에서는 3i1sk
+  if (!pageId) throw new Error('작가 홈 주소가 아니에요');
+  var j = get_('https://comic.naver.com/community/api/v2/posts?pageId=' + encodeURIComponent(pageId) + '&nextSize=20&cursor=&childPreviewCount=0&pinRepresentation=distinct', true);
+  return naverPostList_((j && j.result) || {}, 'https://comic.naver.com/community/u/' + handle);
+}
+function naverPostList_(r, home) {
   var seen = {};
-  var add = function (o) {
-    var title = clean_(o.title || o.subject || '');
-    var body = clean_(o.contents || o.content || o.text || o.body || o.summary || '');
-    if (!title && !body) return;
-    var id = String(o.postId || o.articleId || o.id || o.postNo || title + body.slice(0, 20));
-    if (seen[id]) return;
-    seen[id] = 1;
-    var link = o.postUrl || o.url || o.link || (o.postId || o.id ? url.replace(/\/?(\?.*)?$/, '') + '/p/' + (o.postId || o.id) : url);
-    if (/^\//.test(link)) link = 'https://comic.naver.com' + link;
-    var img = '';
-    var imgs = o.imageList || o.images || o.attachments || o.thumbnails || [];
-    if (Array.isArray(imgs) && imgs.length) img = typeof imgs[0] === 'string' ? imgs[0] : (imgs[0].url || imgs[0].imageUrl || imgs[0].thumbnailUrl || '');
-    img = img || o.thumbnailUrl || o.imageUrl || o.thumbnail || '';
-    var date = String(o.createdAt || o.createdDate || o.registerDate || o.regDate || o.writeDate || o.postedAt || '');
-    if (/^\d{12,}$/.test(date)) date = Utilities.formatDate(new Date(Number(date)), TZ, 'yyyy-MM-dd');
-    found.push({ title: title.slice(0, 80), excerpt: body.slice(0, 120) + (body.length > 120 ? '…' : ''), date: date.slice(0, 10), url: link, img: img,
-      likes: Number(o.likeCount || o.reactionCount || o.sympathyCount || 0) || 0, comments: Number(o.commentCount || 0) || 0 });
-  };
-  var walk = function (o, d) {
-    if (!o || typeof o !== 'object' || d > 14 || found.length >= 20) return;
-    if (Array.isArray(o)) { o.forEach(function (x) { walk(x, d + 1); }); return; }
-    if ((o.postId || o.articleId || o.postNo) && (o.contents || o.content || o.title || o.text || o.body)) { add(o); return; }
-    for (var k in o) walk(o[k], d + 1);
-  };
-  // 1) 커뮤니티 글 목록 API (있으면)
-  var apis = uid ? ['https://comic.naver.com/api/community/v1/posts?userId=' + encodeURIComponent(uid) + '&page=1&size=20',
-                   'https://comic.naver.com/community/api/v1/user/' + encodeURIComponent(uid) + '/posts?page=1&size=20'] : [];
-  for (var i = 0; i < apis.length && !found.length; i++) {
-    try { walk(get_(apis[i], true), 0); } catch (e) { /* 다음 방법 */ }
-  }
-  // 2) 작가 홈 페이지 안의 데이터
-  if (!found.length) {
-    var html = get_(url, false);
-    var blocks = [];
-    var nd = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
-    if (nd) blocks.push(nd[1]);
-    var re = /<script[^>]*type="application\/(?:ld\+)?json"[^>]*>([\s\S]*?)<\/script>/g, m;
-    while ((m = re.exec(html))) blocks.push(m[1]);
-    blocks.forEach(function (t) { try { walk(JSON.parse(t), 0); } catch (e) { /* 건너뛰어요 */ } });
-  }
-  if (!found.length) throw new Error('게시글을 찾지 못했어요');
-  return found.slice(0, 20);
-}
-
-// ---------- 진단: 편집기에서 debugNaver를 골라 [실행]하고, 실행 로그를 복사해 Claude에게 보내 주세요 ----------
-// (비밀번호 · 토큰은 로그에 나오지 않아요)
-function debugNaver() {
-  var titleId = '670150';   // 나노리스트 (다른 작품으로 보려면 이 숫자를 바꿔요)
-  var UA = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36', 'Accept-Language': 'ko-KR,ko;q=0.9' };
-  var peek = function (label, url) {
-    try {
-      var r = UrlFetchApp.fetch(url, { muteHttpExceptions: true, followRedirects: true, headers: UA });
-      var t = r.getContentText('UTF-8');
-      console.log('▶ ' + label + '\n' + url + '\n코드 ' + r.getResponseCode() + ' · 길이 ' + t.length + '\n' + t.slice(0, 1500).replace(/\s+/g, ' '));
-      return t;
-    } catch (e) { console.log('▶ ' + label + ' 실패: ' + e); return ''; }
-  };
-  var info = peek('작품 정보', 'https://comic.naver.com/api/article/list/info?titleId=' + titleId);
-  var arts = [];
-  try { arts = JSON.parse(info).communityArtists || []; } catch (e) { /* */ }
-  console.log('▶ communityArtists 원본\n' + JSON.stringify(arts).slice(0, 2000));
-  arts.slice(0, 2).forEach(function (a) {
-    var ids = [a.communityId, a.artistId, a.id, a.userId, a.writerId].filter(Boolean);
-    console.log('▶ ' + a.name + ' 의 번호 후보: ' + JSON.stringify(ids));
-    ids.slice(0, 2).forEach(function (id) {
-      var html = peek(a.name + ' 작가 홈', 'https://comic.naver.com/community/u/' + id);
-      if (html) {
-        var nd = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
-        console.log('__NEXT_DATA__ ' + (nd ? '있음 (' + nd[1].length + '자): ' + nd[1].slice(0, 1500) : '없음'));
-        var apis = (html.match(/https?:\/\/[a-z0-9.-]*naver\.com\/[a-z0-9_\/.-]*api[a-z0-9_\/.-]*/gi) || []).slice(0, 15);
-        console.log('페이지 안 API 주소들: ' + JSON.stringify(apis));
-        var scripts = (html.match(/<script[^>]+src="[^"]+"/g) || []).slice(0, 10);
-        console.log('스크립트들: ' + JSON.stringify(scripts));
-      }
-      peek(a.name + ' API 후보 1', 'https://comic.naver.com/api/community/v1/posts?userId=' + id + '&page=1&size=5');
-      peek(a.name + ' API 후보 2', 'https://comic.naver.com/community/api/v1/user/' + id + '/posts?page=1&size=5');
-      peek(a.name + ' API 후보 3', 'https://comic.naver.com/api/community/v2/posts?communityId=' + id + '&page=1&pageSize=5');
+  var MILESTONE = { FOLLOWER_COUNT_ATTAINED: ['관심 독자 ', '명 돌파'], REACTION_COUNT_ATTAINED: ['누적 리액션 ', '개 달성'] };
+  return (r.pins || []).map(function (o) { o._pin = true; return o; }).concat(r.posts || []).map(function (o) {
+    if (!o || !o.id || seen[o.id] || o.status !== 'SERVICE') return null;
+    seen[o.id] = 1;
+    var title = clean_(o.title || ''), body = clean_(o.body || ''), img = '', images = 0, system = o.creationType === 'BY_SYSTEM';
+    ((o.sectionGroup || {}).sections || []).forEach(function (s) {
+      var d = s.data || {};
+      if (s.sectionType === 'IMAGE' && d.domain && d.path) { images++; if (!img) img = d.domain + d.path + '?type=w900'; }
+      var m = s.sectionType === 'VARIABLES' && MILESTONE[d.variablesType];
+      if (m && d.variablesData && d.variablesData.count && !title) title = m[0] + String(d.variablesData.count).replace(/\B(?=(\d{3})+$)/g, ',') + m[1] + ' 🎉';
     });
-  });
-}
-
-// 진단 2: 작가 홈 페이지 안에 게시글이 들어 있는지 확인해요 (편집기에서 debugNaver2 실행 → 로그 복사)
-function debugNaver2() {
-  var home = 'https://comic.naver.com/community/u/_3i1sk';   // 민송아 작가 홈
-  var UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
-  var tries = [
-    ['작가 홈 (PC)', home, {}],
-    ['작가 홈 (모바일)', home.replace('://comic.', '://m.comic.'), {}],
-    ['작가 홈 RSC', home, { 'RSC': '1', 'Next-Router-State-Tree': '%5B%22%22%5D' }]
-  ];
-  tries.forEach(function (t) {
-    try {
-      var h = Object.assign({ 'User-Agent': UA, 'Accept-Language': 'ko-KR,ko;q=0.9' }, t[2]);
-      var r = UrlFetchApp.fetch(t[1], { muteHttpExceptions: true, followRedirects: true, headers: h });
-      var x = r.getContentText('UTF-8');
-      console.log('▶ ' + t[0] + ' · 코드 ' + r.getResponseCode() + ' · 길이 ' + x.length + ' · __next_f ' + (x.indexOf('__next_f') >= 0 ? '있음' : '없음'));
-      ['postId', 'postNo', 'contents', 'articleId', 'feed', 'apiToken', 'api-token', 'x-api', 'NEXT_PUBLIC', '/community/api/'].forEach(function (k) {
-        var i = x.indexOf(k);
-        if (i >= 0) console.log('  · "' + k + '" 주변: ' + x.slice(Math.max(0, i - 200), i + 400).replace(/\s+/g, ' '));
-      });
-      var og = x.match(/<meta[^>]+property="og:description"[^>]*content="([^"]*)"/);
-      console.log('  · og:description: ' + (og ? og[1] : '없음'));
-    } catch (e) { console.log('▶ ' + t[0] + ' 실패: ' + e); }
-  });
+    if (!title && !body && !img) return null;
+    var likes = 0;
+    (o.reactions || []).forEach(function (x) { (x.emotions || []).forEach(function (e) { likes += Number(e.count) || 0; }); });
+    return { title: title.slice(0, 80), excerpt: body.slice(0, 120) + (body.length > 120 ? '…' : ''),
+      date: o.createdAt ? Utilities.formatDate(new Date(Number(o.createdAt)), TZ, 'yyyy-MM-dd') : '',
+      url: home + '/posts/' + encodeURIComponent(o.id), img: img, images: images, likes: likes, comments: Number(o.activeChildPostCount) || 0,
+      pinned: !!o._pin, system: system };
+  }).filter(Boolean).slice(0, 20);
 }
 
 // 작가 정보를 사이트 데이터(authorInfo)에 모아 둬요
