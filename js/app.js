@@ -25,17 +25,6 @@
     search: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA6C8" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>'
   };
 
-  // ---------- 로고: 세로 스크롤 웹툰 화면 속 나무 + 알약 모양 이름 ----------
-  const LOGO = '<svg viewBox="0 0 120 120" aria-hidden="true"><rect x="6" y="6" width="108" height="108" rx="26" fill="#E0565B"/><rect x="31" y="12" width="58" height="96" rx="12" fill="#fff"/>'
-    + '<path d="M37 25a7 7 0 0 1 7-7h32a7 7 0 0 1 7 7v23l-46 7z" fill="#1F2128"/><path d="M37 60l46-7v22l-46 6z" fill="#FFB648"/><path d="M37 86l46-6v15a7 7 0 0 1-7 7H44a7 7 0 0 1-7-7z" fill="#5BB8FF"/>'
-    + '<g stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"><path d="M60 50V33M60 41l-9-8M60 38l9-8"/></g><circle cx="50" cy="31" r="4" fill="#fff"/><circle cx="70" cy="28.5" r="4" fill="#fff"/><circle cx="60" cy="27" r="4.5" fill="#E0565B"/>'
-    + '<path d="M44 62.5h18a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3h-6l-3 3.5v-3.5h-9a3 3 0 0 1-3-3v-5a3 3 0 0 1 3-3z" fill="#fff"/><path d="M46 91h22M46 97h14" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/></svg>';
-  WT.logo = {
-    mark: () => `<span class="wt-mark" aria-hidden="true">${LOGO}</span>`,
-    /** 사이트 이름을 알약 모양으로. "웹툰트리"면 가운데에 점(트리의 노드)을 넣어요 */
-    word: (name) => { const n = String(name || ''); return `<b class="wt-word">${n === '웹툰트리' ? '웹툰<i></i>트리' : WT.esc(n)}</b>`; }
-  };
-
   // ---------- 관심 웹툰 ----------
   const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg>';
   WT.fav = {
