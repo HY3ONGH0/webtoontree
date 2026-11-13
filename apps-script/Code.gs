@@ -19,7 +19,7 @@ var DEFAULT_DATA_URL = 'https://hy3ongh0.github.io/webtoontree/data/data.json';
 var TZ = 'Asia/Seoul';
 
 var SHEETS = {
-  users: ['userId', 'nickname', 'pwHash', 'salt', 'createdAt', 'status', 'coins', 'progress', 'rewarded', 'daily', 'owned', 'equip', 'unlocked', 'role'],
+  users: ['userId', 'nickname', 'pwHash', 'salt', 'createdAt', 'status', 'coins', 'progress', 'rewarded', 'daily', 'owned', 'equip', 'unlocked', 'role', 'favs'],
   sessions: ['token', 'userId', 'expiresAt'],
   ratings: ['webtoonId', 'userId', 'score', 'updatedAt'],
   comments: ['commentId', 'webtoonId', 'userId', 'text', 'createdAt', 'hidden'],
@@ -28,7 +28,7 @@ var SHEETS = {
   live: ['ver', 'at', 'by', 'name', 'ops'],
   reports: ['reportId', 'webtoonId', 'viewerId', 'note', 'createdAt', 'done']
 };
-var JSON_COLS = { progress: 1, rewarded: 1, daily: 1, owned: 1, equip: 1, unlocked: 1 };
+var JSON_COLS = { progress: 1, rewarded: 1, daily: 1, owned: 1, equip: 1, unlocked: 1, favs: 1 };
 
 // ======================================================================
 // 웹 요청 입구
@@ -425,6 +425,21 @@ var ACTIONS = {
     me.owned[item.id] = true;
     if (item.kind === 'color') me.equip.color = item.id; else me.equip.acc = item.id;
     log_(me.userId, -Number(item.price), 'buy', item.id, 0);
+    updateRow_('users', u.row, me);
+    return { me: publicMe_(me) };
+  },
+
+  // 관심 웹툰 담기 · 빼기 (계정에 저장, 200개까지)
+  fav: function (b) {
+    var u = auth_(b.token);
+    var me = u.obj;
+    var id = String(b.webtoonId || '');
+    if (!id || id.length > 40) fail_('없는 웹툰이에요.');
+    me.favs = me.favs || {};
+    if (b.on) {
+      if (!me.favs[id] && Object.keys(me.favs).length >= 200) fail_('관심 웹툰은 200개까지 담을 수 있어요.');
+      me.favs[id] = 1;
+    } else delete me.favs[id];
     updateRow_('users', u.row, me);
     return { me: publicMe_(me) };
   },
@@ -1118,7 +1133,7 @@ function publicMe_(u) {
   readAll_('ratings').forEach(function (r) { if (r.obj.userId === u.userId) ratings[r.obj.webtoonId] = Number(r.obj.score); });
   return {
     userId: u.userId, nickname: u.nickname, coins: Number(u.coins), progress: u.progress, rewarded: u.rewarded,
-    daily: u.daily, owned: u.owned, equip: u.equip, unlocked: u.unlocked, ratings: ratings, role: u.role === 'admin' ? 'admin' : ''
+    daily: u.daily, owned: u.owned, equip: u.equip, unlocked: u.unlocked, favs: u.favs || {}, ratings: ratings, role: u.role === 'admin' ? 'admin' : ''
   };
 }
 function social_(wid, uid) {

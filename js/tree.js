@@ -708,10 +708,14 @@
       const w = WT.toon(id), t = lbTone(w), st = status(id), rec = w.pick ? 0 : WT.recStars(w);
       const gs = (w.genres || []).map((x) => WT.genre(x)).filter(Boolean);
       const state = w.status === 'completed' ? '<span>완결</span>' : w.status === 'hiatus' ? '<span class="pause">휴재</span>' : `<span class="on">연재 중${(w.days || []).length ? ' · ' + w.days.map((d) => DAYK[d] || d).join('·') : ''}</span>`;
-      box.innerHTML = `<div class="lb-head"><span class="lb-av" style="background:linear-gradient(150deg, ${t.c1}, ${t.c2})">${esc(((WT.authorsOf(w)[0] || {}).name || w.title)[0])}</span>
+      const au = WT.authorsOf(w)[0];
+      const auImg = au ? ((WT.data.authorInfo || {})[String(au.name).trim().toLowerCase().replace(/\s+/g, ' ')] || {}).img : '';
+      const avIn = `${esc(((au || {}).name || w.title)[0])}${auImg ? `<img src="${esc(auImg)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}`;
+      box.innerHTML = `<div class="lb-head">${au ? `<a class="lb-av" href="${WT.authorHref(au.name)}" aria-label="${esc(au.name)} 작가 프로필" style="background:linear-gradient(150deg, ${t.c1}, ${t.c2})">${avIn}</a>` : `<span class="lb-av" style="background:linear-gradient(150deg, ${t.c1}, ${t.c2})">${avIn}</span>`}
           <span class="lb-who"><b>${WT.authorLinks(w)}</b><small>작가 · ${WT.platform.icon(w.platform, 'pf-in')}${esc(w.platform || '웹툰')}</small></span>
-          <span class="lb-arrows"><button type="button" data-step="-1" aria-label="이전 책">←</button><button type="button" data-step="1" aria-label="다음 책">→</button></span></div>
-        <blockquote class="lb-quote">“<b>${esc(w.title)}</b>” ${esc(w.desc || '줄거리를 준비하고 있어요.')}</blockquote>
+          <span class="lb-arrows">${WT.fav.btn(id)}<button type="button" data-step="-1" aria-label="이전 책">←</button><button type="button" data-step="1" aria-label="다음 책">→</button></span></div>
+        <p class="lb-qt">“${esc(w.title)}”</p>
+        <blockquote class="lb-quote">${esc(w.desc || '줄거리를 준비하고 있어요.')}</blockquote>
         <div class="lb-metas">${w.pick ? '<span class="pick">관리자 강추</span>' : ''}${state}${rec ? `<span class="star">${'★'.repeat(rec)}</span>` : ''}${total(id) ? `<span>${total(id)}화</span>` : ''}${st === 'done' ? '<span class="done">✓ 다 봤어요</span>' : st === 'reading' ? `<span class="done">${ep(id)}화까지 봤어요</span>` : ''}${gs.map((x) => `<span>${esc(x.name)}</span>`).join('')}${WT.inTree(id) ? '<span class="intree">트리 웹툰</span>' : ''}</div>`;
       const e = ep(id), done = st === 'done';
       go.hidden = !w.url; if (w.url) go.href = w.url;
@@ -793,11 +797,19 @@
       // 창이 작아 트리가 줄어들면, 원과 이름만 조금 덜 줄여서 표지가 잘 보이게 해요 (자리는 그대로)
       const nk = framed ? Math.max(1, Math.min(1.28, 0.92 / sc)) : 1;
       if (nk > 1 && availH > 160) sc = Math.max(0.42, Math.min(sc, availH / (BH + (nk - 1) * 170)));   // 커진 원·이름이 아래로 잘리지 않게
-      stage.style.transform = `scale(${sc})`;
+      const scrolls = SW * sc > w + 2;
+      const sizerH = (BH + (nk - 1) * 120) * sc;   // 커진 원 아래 별까지 보이게
+      // 트리(웹툰들 + 끝의 도서관)를 판 한가운데에 놓아요. 옆으로 넘겨 보는 넓은 트리는 위아래만 맞춰요
+      const pts = ids.map((id) => T.nodes[id]).concat([[LIB.x, LIB.y]]);
+      const x0 = Math.min(...pts.map((q) => q[0])) - 95, x1 = Math.max(...pts.map((q) => q[0])) + 95;
+      const y0 = Math.min(...pts.map((q) => q[1])) - 95 * nk, y1 = Math.max(...pts.map((q) => q[1])) + 120 * nk;
+      const dx = scrolls ? 0 : Math.max(-x0 * sc, (w - (x1 - x0) * sc) / 2 - x0 * sc);
+      const dy = Math.max(-Math.max(0, y0) * sc, Math.min((sizerH - (y1 - y0) * sc) / 2 - y0 * sc, sizerH - y1 * sc));
+      stage.style.transform = `translate(${Math.round(dx)}px, ${Math.round(dy)}px) scale(${sc})`;
       stage.style.setProperty('--nk', nk.toFixed(3));
-      sizer.style.width = `${SW * sc}px`;
-      sizer.style.height = `${(BH + (nk - 1) * 120) * sc}px`;   // 커진 원 아래 별까지 보이게
-      wrap.classList.toggle('scrolls', SW * sc > w + 2);
+      sizer.style.width = scrolls ? `${SW * sc}px` : '100%';
+      sizer.style.height = `${sizerH}px`;
+      wrap.classList.toggle('scrolls', scrolls);
       edges();
     }
     function edges() {
@@ -915,6 +927,7 @@
               ${WT.schedule.status(w) === 'hiatus' ? '<span class="chip chip-hiatus">휴재 중</span>' : ''}
             </div>
             <h2>${esc(w.title)}</h2>
+            ${WT.fav.btn(id, 'fav-wide', true)}
             <span style="font-size:13px; color:var(--soft)">${server ? (social[id] ? (social[id].count ? `평균 별점 ★ ${social[id].avg} · ${social[id].count}명` : '아직 별점이 없어요') : '별점 불러오는 중…') : (my ? `내 별점 ${my}점` : '아직 별점을 주지 않았어요')}</span>
           </div>
         </div>

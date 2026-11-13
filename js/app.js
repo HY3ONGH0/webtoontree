@@ -25,6 +25,35 @@
     search: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA6C8" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>'
   };
 
+  // ---------- 관심 웹툰 ----------
+  const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg>';
+  WT.fav = {
+    has: (id) => !!((WT.store.state.favs || {})[id]),
+    list: () => Object.keys(WT.store.state.favs || {}).filter((id) => WT.toon(id)),
+    /** 관심 단추. text 를 주면 글자도 함께 보여 줘요 */
+    btn: (id, cls, text) => `<button type="button" class="fav-btn${cls ? ' ' + cls : ''}" data-fav="${WT.esc(id)}" aria-pressed="${WT.fav.has(id)}" aria-label="관심 웹툰" title="관심 웹툰">${HEART}${text ? '<span>관심</span>' : ''}</button>`,
+    mark: (id) => (WT.fav.has(id) ? `<span class="fav-mark" role="img" aria-label="관심 웹툰">${HEART}</span>` : ''),
+    toggle(id) {
+      const S = WT.store.state;
+      S.favs = S.favs || {};
+      const on = !S.favs[id];
+      if (on) S.favs[id] = 1; else delete S.favs[id];
+      WT.store.save();
+      document.querySelectorAll('[data-fav]').forEach((b) => { if (b.dataset.fav === id) b.setAttribute('aria-pressed', String(on)); });
+      WT.toast(on ? '관심 웹툰에 담았어요' : '관심 웹툰에서 뺐어요');
+      // 로그인했으면 계정에도 저장해요 (서버 코드가 예전 버전이면 이 기기에만 남아요)
+      if (S.profile && S.profile.userId && WT.api && WT.api.on()) WT.api.authed('fav', { webtoonId: id, on }).then((r) => { if (r && r.me) WT.api.applyMe(r.me); }, () => {});
+      document.dispatchEvent(new CustomEvent('wt:fav', { detail: { id, on } }));
+      return on;
+    }
+  };
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest && e.target.closest('button[data-fav]');
+    if (!b || !WT.toon(b.dataset.fav)) return;
+    e.preventDefault(); e.stopPropagation();
+    WT.fav.toggle(b.dataset.fav);
+  }, true);
+
   WT.genre = (id) => WT.data.genres.find((g) => g.id === id);
   WT.toon = (id) => WT.data.webtoons.find((w) => w.id === id);
   /** 오늘 기준 총 화수 (연재 요일 자동 계산 포함) */

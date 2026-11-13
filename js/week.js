@@ -3,7 +3,7 @@
   'use strict';
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const DAY_FULL = { mon: '월요일', tue: '화요일', wed: '수요일', thu: '목요일', fri: '금요일', sat: '토요일', sun: '일요일' };
-  const F = { mine: false, hiatus: true, day: null };
+  const F = { show: 'all', hiatus: true, day: null };   // show: all | mine(보는 중) | fav(관심)
 
   // 한국 시간 기준 이번 주(월~일) 날짜
   function weekDates() {
@@ -28,6 +28,7 @@
         <span class="wk-cv" style="--c:${esc(color)}"><span class="wk-ini">${esc(w.title)}</span>
           ${w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}
           ${st === 'hiatus' ? '<em class="wk-tag">휴재</em>' : ''}
+          ${WT.fav.mark(w.id)}
           ${WT.platform.icon(w.platform, 'pf-cv')}
           ${me.state !== 'none' ? `<span class="wk-bar" aria-hidden="true"><i style="width:${me.state === 'done' ? 100 : Math.max(6, pct)}%"></i></span>` : ''}
         </span>
@@ -50,7 +51,7 @@
     const todayList = ongoing.filter((w) => (w.days || []).includes(today.key));
 
     const draw = () => {
-      const pool = (F.hiatus ? ongoing.concat(hiatus) : ongoing).filter((w) => !F.mine || mine(w).state !== 'none');
+      const pool = (F.hiatus ? ongoing.concat(hiatus) : ongoing).filter((w) => (F.show === 'mine' ? mine(w).state !== 'none' : F.show === 'fav' ? WT.fav.has(w.id) : true));
       const order = (a, b) => (WT.schedule.status(a) === 'hiatus') - (WT.schedule.status(b) === 'hiatus')
         || (mine(b).state === 'reading') - (mine(a).state === 'reading') || WT.recRank(b) - WT.recRank(a) || a.title.localeCompare(b.title, 'ko');
       const cols = days.map((d) => ({ d, list: pool.filter((w) => (w.days || []).includes(d.key)).sort(order) }));
@@ -59,16 +60,16 @@
       grid.dataset.day = F.day;
       grid.innerHTML = cols.map(({ d, list }) => `<section class="wk-col${d.today ? ' today' : ''}" data-day="${d.key}" aria-label="${DAY_FULL[d.key]} 연재 ${list.length}편">
           <header class="wk-col-h"><b>${DAY_FULL[d.key]}</b><span>${d.m}.${String(d.d).padStart(2, '0')}${d.today ? ' · 오늘' : ''}</span><em>${list.length}</em></header>
-          <div class="wk-col-b">${list.length ? list.map(card).join('') : `<p class="wk-none">${F.mine ? '보는 웹툰이 없어요' : '올라오는 웹툰이 없어요'}</p>`}</div>
+          <div class="wk-col-b">${list.length ? list.map(card).join('') : `<p class="wk-none">${F.show === 'mine' ? '보는 웹툰이 없어요' : F.show === 'fav' ? '관심 웹툰이 없어요' : '올라오는 웹툰이 없어요'}</p>`}</div>
         </section>`).join('');
-      app.querySelectorAll('[data-f]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.f === 'mine' ? F.mine === (b.dataset.v === '1') : F.hiatus)));
+      app.querySelectorAll('[data-f]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.f === 'show' ? F.show === b.dataset.v : F.hiatus)));
     };
 
     app.innerHTML = `<div class="view wk-view">
       <header class="wk-head">
         <div class="wk-title"><h1>요일별 연재</h1><p>${days[0].m}월 ${days[0].d}일 – ${days[6].m}월 ${days[6].d}일 · 오늘은 <b>${DAY_FULL[today.key]}</b></p></div>
         <div class="wk-tools">
-          <div class="wk-seg" role="group" aria-label="보여 줄 웹툰"><button type="button" data-f="mine" data-v="0">전체</button><button type="button" data-f="mine" data-v="1">내가 보는 웹툰</button></div>
+          <div class="wk-seg" role="group" aria-label="보여 줄 웹툰"><button type="button" data-f="show" data-v="all">전체</button><button type="button" data-f="show" data-v="mine">보는 웹툰</button><button type="button" data-f="show" data-v="fav">관심 웹툰</button></div>
           <button type="button" class="wk-chip" data-f="hiatus">휴재 포함</button>
         </div>
       </header>
@@ -87,7 +88,7 @@
     app.querySelector('.wk-view').addEventListener('click', (e) => {
       const b = e.target.closest('button');
       if (!b) return;
-      if (b.dataset.f === 'mine') F.mine = b.dataset.v === '1';
+      if (b.dataset.f === 'show') F.show = b.dataset.v;
       else if (b.dataset.f === 'hiatus') F.hiatus = !F.hiatus;
       else if (b.dataset.day) F.day = b.dataset.day;
       else return;

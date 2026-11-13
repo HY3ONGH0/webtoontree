@@ -3,7 +3,7 @@
   'use strict';
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const DAYK = { mon: '월', tue: '화', wed: '수', thu: '목', fri: '금', sat: '토', sun: '일' };
-  const F = { q: '', genres: [], subs: [], status: [], stars: 0, pick: false, tree: false, mine: 'all', sort: 'rec', open: { genre: true, status: true, more: true } };
+  const F = { q: '', genres: [], subs: [], status: [], stars: 0, pick: false, tree: false, fav: false, mine: 'all', sort: 'rec', open: { genre: true, status: true, more: true } };
   const PAGE = 24;
   let shown = PAGE;
 
@@ -23,6 +23,7 @@
       if (F.pick && !w.pick) return false;
       if (F.stars && WT.recRank(w) < F.stars) return false;
       if (F.tree && !WT.inTree(w.id)) return false;
+      if (F.fav && !WT.fav.has(w.id)) return false;
       if (F.mine !== 'all' && stateOf(w) !== F.mine) return false;
       return true;
     });
@@ -44,6 +45,7 @@
         ${w.pick ? '<span class="bk-pick">관리자 강추</span>' : ''}
         <span class="bk-st ${st}">${st === 'completed' ? '완결' : st === 'hiatus' ? '휴재' : '연재 ' + (w.days || []).map((d) => DAYK[d]).join('')}</span>
         ${WT.platform.icon(w.platform, 'pf-cv')}
+        ${WT.fav.btn(w.id, 'fav-cv')}
         ${me !== 'none' ? `<span class="bk-me ${me}">${me === 'done' ? '✓ 다 봤어요' : '보는 중'}</span>` : ''}
       </span>
       <b class="bk-t">${esc(w.title)}</b>
@@ -64,6 +66,7 @@
       ${sec('more', '추천 · 내 기록', `<div class="bk-chks">
           ${chk('pick', '1', F.pick, '관리자 강추만', all.filter((w) => w.pick).length)}
           ${chk('tree', '1', F.tree, '트리 웹툰만', all.filter((w) => WT.inTree(w.id)).length)}
+          ${chk('favonly', '1', F.fav, '관심 웹툰만', WT.fav.list().length)}
         </div>
         <p class="bk-subh">추천 별</p>
         <div class="bk-seg">${[[0, '전체'], [3, '★3 이상'], [4, '★4 이상'], [5, '★5']].map(([v, n]) => `<button type="button" data-stars="${v}" aria-pressed="${F.stars === v}">${n}</button>`).join('')}</div>
@@ -113,6 +116,7 @@
       else if (t.dataset.st) arr('status', t.dataset.st);
       else if (t.dataset.pick) F.pick = t.checked;
       else if (t.dataset.tree) F.tree = t.checked;
+      else if (t.dataset.favonly) F.fav = t.checked;
       shown = PAGE; draw(false);
     });
     side.addEventListener('click', (e) => {
@@ -121,7 +125,7 @@
       if (b.dataset.tog) { F.open[b.dataset.tog] = !F.open[b.dataset.tog]; side.innerHTML = sideHTML(); return; }
       if (b.dataset.stars != null) F.stars = Number(b.dataset.stars);
       else if (b.dataset.mine) F.mine = b.dataset.mine;
-      else if (b.id === 'bk-reset') Object.assign(F, { q: '', genres: [], subs: [], status: [], stars: 0, pick: false, tree: false, mine: 'all' });
+      else if (b.id === 'bk-reset') Object.assign(F, { q: '', genres: [], subs: [], status: [], stars: 0, pick: false, tree: false, fav: false, mine: 'all' });
       else return;
       if (b.id === 'bk-reset') document.getElementById('bk-q').value = '';
       shown = PAGE; draw(false);
@@ -137,7 +141,9 @@
     const scroller = app.querySelector('.bk-view');
     const io = window.IntersectionObserver ? new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting) && document.getElementById('bk-load')) { shown += PAGE; draw(true); } }, { root: null, rootMargin: '300px' }) : null;
     if (io) io.observe(more);
-    WT.leaveView = () => { if (io) io.disconnect(); };
+    const onFav = () => { if (F.fav) draw(false); else side.innerHTML = sideHTML(); };
+    document.addEventListener('wt:fav', onFav);
+    WT.leaveView = () => { if (io) io.disconnect(); document.removeEventListener('wt:fav', onFav); };
     void scroller;
   }
   WT.views.books = view;

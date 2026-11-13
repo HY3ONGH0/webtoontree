@@ -2203,3 +2203,29 @@ html[data-theme="light"] .rail-item { color: var(--muted); }
 html[data-theme="light"] .rail-item:hover, html[data-theme="light"] .rail-item.on-d { color: var(--text); }
 /* 작가 화면 강조색도 밝은 · 어두운 테마 모두 산호색 */
 .ap-view, html[data-theme="light"] .ap-view { --ap-accent: var(--brand); }
+/* 관심 웹툰 단추 · 표시 */
+.fav-btn { display: inline-grid; place-items: center; flex: 0 0 auto; width: 40px; height: 40px; padding: 0; border-radius: 50%; border: 1px solid var(--card-line); background: var(--card-bg); color: var(--muted); cursor: pointer; transition: transform .15s ease, color .2s ease, border-color .2s ease; }
+.fav-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linejoin: round; }
+.fav-btn:hover { color: var(--brand); border-color: var(--brand); }
+.fav-btn:active { transform: scale(.9); }
+.fav-btn[aria-pressed="true"] { color: var(--brand); border-color: var(--brand); }
+.fav-btn[aria-pressed="true"] svg { fill: currentColor; }
+.fav-btn:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.fav-wide { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; width: auto; height: 34px; padding: 0 14px 0 11px; border-radius: 999px; font: inherit; font-size: 13px; font-weight: 700; }
+.fav-wide svg { width: 17px; height: 17px; }
+.fav-wide[aria-pressed="true"] { background: var(--brand); color: #fff; }
+.fav-cv { position: absolute; right: 6px; bottom: 36px; z-index: 3; width: 30px; height: 30px; border: 0; background: rgba(10, 14, 30, .55); color: #fff; }
+.fav-cv svg { width: 16px; height: 16px; }
+.fav-cv:hover { color: #fff; background: rgba(10, 14, 30, .8); }
+.fav-cv[aria-pressed="true"] { background: var(--brand); color: #fff; }
+.fav-mark { position: absolute; top: 7px; right: 7px; z-index: 2; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--brand); color: #fff; }
+.fav-mark svg { width: 12px; height: 12px; fill: currentColor; }
+.lb-arrows { align-items: center; }
+.lb-arrows .fav-btn { width: 46px; height: 46px; background: transparent; border-color: var(--lb-line); color: var(--lb-soft); }
+.lb-arrows .fav-btn[aria-pressed="true"] { color: var(--brand); border-color: var(--brand); }
+/* 도서관 정보: 작가 프로필 사진, 제목 한 줄 → 줄 바꿔 설명 */
+.lb-av { position: relative; overflow: hidden; text-decoration: none; }
+.lb-av img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+a.lb-av:hover { color: #fff; filter: brightness(1.08); }
+.lb-qt { margin: 12px 0 2px; font-size: 16px; font-weight: 800; letter-spacing: -.02em; line-height: 1.4; color: var(--lb-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lb-qt + .lb-quote { margin-top: 0; -webkit-line-clamp: 2; line-clamp: 2; height: calc(14.5px * 1.8 * 2); min-height: 0; }
