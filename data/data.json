@@ -1,6 +1,122 @@
 {
   "webtoons": [
     {
+      "id": "w657564281141045",
+      "title": "새 웹툰",
+      "author": "",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "",
+      "genres": [],
+      "recommended": 0,
+      "color": "",
+      "episodes": 1,
+      "status": "ongoing",
+      "days": [],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [],
+      "desc": ""
+    },
+    {
+      "id": "w657564281141044",
+      "title": "슬로우 다이브",
+      "author": "고다",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=839087",
+      "cover": "https://image-comic.pstatic.net/webtoon/839087/thumbnail/thumbnail_IMAG21_0c921e46-37fc-42fc-84e4-c1792e03945d.jpg",
+      "genres": [
+        "sports",
+        "daily"
+      ],
+      "recommended": 3,
+      "color": "#fdd6b6",
+      "episodes": 82,
+      "status": "ongoing",
+      "days": [
+        "mon"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "스포츠",
+        "고자극드라마",
+        "우정",
+        "라이벌",
+        "청춘",
+        "성장물",
+        "성장드라마",
+        "스포츠성장"
+      ],
+      "desc": "그놈의 다이빙, 점프 한 번에 울고 웃고.\n 애환 가득 친구들의 핑그르르 청춘만화!",
+      "authors": [
+        {
+          "name": "고다",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=839087",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141043",
+      "title": "이세계 캠핑으로 힐링 라이프",
+      "author": "일인분, 맹깐, 금의행",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=823971",
+      "cover": "https://image-comic.pstatic.net/webtoon/823971/thumbnail/thumbnail_IMAG21_749a7e27-b94b-4dad-a165-f7f22a2491b6.jpg",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 3,
+      "color": "#e6ecf5",
+      "episodes": 121,
+      "status": "ongoing",
+      "days": [
+        "thu"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "감성적인",
+        "일상",
+        "이세계요리",
+        "가벼운",
+        "요즘핫한추천작",
+        "무해한",
+        "힐링"
+      ],
+      "desc": "미각을 잃은 스타 셰프 강현은 사람들의 눈을 피해 한적한 시골로 숨는다.\n시골 할아버지 집에서 발견한 이세계로 이어진 통로, \n기왕 도망 온 김에 이세계에서 유유자적 캠핑 라이프를 즐기려고 하는데…\n자꾸만 강현에게 관심을 가지는 이세계 사람들.\n과연 강현은 진짜 힐링을 찾을 수 있을 것인가?",
+      "authors": [
+        {
+          "name": "일인분",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "맹깐",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "금의행",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=823971",
+      "autoAt": "2026-11-13"
+    },
+    {
       "id": "w657564281141042",
       "title": "앵클 브레이커",
       "author": "하하영, 민영",
@@ -6410,7 +6526,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141042
+    "lastWebtoonId": 657564281141045
   },
   "version": 1,
   "shop": [
@@ -7387,10 +7503,10 @@
       "url": "https://comic.naver.com/community/u/goda",
       "works": [
         {
-          "title": "슬로우 다이브",
-          "source": "https://comic.naver.com/webtoon/list?titleId=839087",
-          "cover": "https://image-comic.pstatic.net/webtoon/839087/thumbnail/thumbnail_IMAG21_0c921e46-37fc-42fc-84e4-c1792e03945d.jpg",
-          "finished": false
+          "title": "평행도시",
+          "source": "https://comic.naver.com/webtoon/list?titleId=730607",
+          "cover": "https://image-comic.pstatic.net/webtoon/730607/thumbnail/thumbnail_IMAG21_4050531779662669109.jpg",
+          "finished": true
         }
       ]
     },
@@ -8711,6 +8827,40 @@
           "source": "https://comic.naver.com/webtoon/list?titleId=774300",
           "cover": "https://image-comic.pstatic.net/webtoon/774300/thumbnail/thumbnail_IMAG21_4050196432125387569.jpg",
           "finished": true
+        }
+      ]
+    },
+    "일인분": {
+      "name": "일인분",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20240802_157/1722574723263FnrpE_PNG/%C1%A6%B8%F1_%BE%F8%C0%BD-1_%BA%B9%BB%E7.png",
+      "bio": "일인분 몫 하고 싶은 콘티작가 일인분입니다. 잘부탁드립니다.",
+      "url": "https://comic.naver.com/community/u/_6mg95",
+      "works": []
+    },
+    "맹깐": {
+      "name": "맹깐",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20250502_281/174617729978575Ksz_PNG/%C0%DA%B1%EE.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_o5ep6q",
+      "works": []
+    },
+    "금의행": {
+      "name": "금의행",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "시한부 기사가 되었다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=814371",
+          "cover": "https://image-comic.pstatic.net/webtoon/814371/thumbnail/thumbnail_IMAG21_45b13cf0-1c9a-4582-9a03-830329440c2a.jpg",
+          "finished": true
+        },
+        {
+          "title": "곤륜에 용이 산다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=852601",
+          "cover": "https://image-comic.pstatic.net/webtoon/852601/thumbnail/thumbnail_IMAG21_d0ab41f4-f85d-40d3-8430-6bc4193d8cdb.jpg",
+          "finished": false
         }
       ]
     }
