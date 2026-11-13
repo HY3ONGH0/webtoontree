@@ -1,6 +1,317 @@
 {
   "webtoons": [
     {
+      "id": "w657564281141042",
+      "title": "앵클 브레이커",
+      "author": "하하영, 민영",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=842261",
+      "cover": "https://image-comic.pstatic.net/webtoon/842261/thumbnail/thumbnail_IMAG21_0728999c-2b0e-4f05-8dfb-6cf762d0f559.jpg",
+      "genres": [
+        "sports"
+      ],
+      "recommended": 3,
+      "color": "#76575a",
+      "episodes": 46,
+      "status": "hiatus",
+      "days": [
+        "fri"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "스포츠",
+        "학원액션",
+        "열혈",
+        "우정",
+        "라이벌",
+        "청춘",
+        "미친작화",
+        "요즘핫한추천작"
+      ],
+      "desc": "167.8cm 단신 가드의 등장! \n\"농구는 키 작으면 절대 안 된다고? \n2m, 3m 다 데리고 와 보라 그래. \n아무리 키 커도 넘어뜨리면 나보다 다 아래야.\" \n주인공 강휘는 런 앤 건으로 대회 우승을 꿈꾸는 전광고 농구부의 마지막 퍼즐이 될 수 있을까?",
+      "authors": [
+        {
+          "name": "하하영",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "민영",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=842261",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141041",
+      "title": "내게 종말은 게임이다",
+      "author": "HOOPA, 최우진",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=807826",
+      "cover": "https://image-comic.pstatic.net/webtoon/807826/thumbnail/thumbnail_IMAG21_634e489a-2a62-4078-86e0-ca1a24f55f65.jpg",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": 2,
+      "color": "#f6eab6",
+      "episodes": 81,
+      "status": "hiatus",
+      "days": [
+        "sun"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "게임",
+        "생존",
+        "크리처",
+        "아포칼립스",
+        "게임판타지",
+        "인외존재",
+        "인플루언서"
+      ],
+      "desc": "백수나 다름없는 삶을 살던 게임 스트리머 고천수. 시청자 수는 1명.\n어느 날 플레이어로 지목된 그는 현실 세계의 서바이벌 게임에 내던져진다.\n클리어 조건은 죽지 않는 것. 24시간 라이브 생존 스트리밍이 시작된다.",
+      "authors": [
+        {
+          "name": "HOOPA",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        },
+        {
+          "name": "최우진",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=807826",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w657564281141040",
+      "title": "신화급 귀속 아이템을 손에 넣었다",
+      "author": "판테라, 헤스, 정선율",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=795297",
+      "cover": "https://image-comic.pstatic.net/webtoon/795297/thumbnail/thumbnail_IMAG21_2011c0f2-3b1c-4e32-9076-ee0eb9c6f684.jpg",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": 0,
+      "color": "#171826",
+      "episodes": 196,
+      "status": "hiatus",
+      "days": [
+        "mon"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "사이다",
+        "아카데미물",
+        "아포칼립스",
+        "게임판타지",
+        "회귀",
+        "헌터물",
+        "먼치킨"
+      ],
+      "desc": "D급 무투계 레이더로 마법계 레이더들의 고기방패나 하며 별 볼 일 없이 살던 재현. \n그러던 어느 날, 던전에서 우연히 \"오딘의 눈\" 이라는 최강의 귀속 아이템을 얻게 됐다.\n신의 눈을 가진 자, 세계를 구할 신의 대적자의 운명을 개척하라!",
+      "authors": [
+        {
+          "name": "판테라",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "헤스",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "정선율",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=795297",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-1",
+        "fantasy-2",
+        "fantasy-4"
+      ]
+    },
+    {
+      "id": "w657564281141039",
+      "title": "오늘만 사는 기사",
+      "author": "가나라, 이안, 소울풍",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=824543",
+      "cover": "https://image-comic.pstatic.net/webtoon/824543/thumbnail/thumbnail_IMAG21_7b913673-101c-4472-8889-1918ed4e87a4.jpg",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": 3,
+      "color": "#392527",
+      "episodes": 116,
+      "status": "hiatus",
+      "days": [
+        "sat"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "액션판타지",
+        "시리어스",
+        "용사",
+        "액션",
+        "요즘핫한추천작",
+        "성장물",
+        "고인물"
+      ],
+      "desc": "\"넌 천재다\"\n\n어릴 때 들었던 말이 독이었다.\n엔크리드는 기사를 꿈꿨다.\n헛된 꿈이라는 건 금세 알았다.\n\n\"그런 실력으로 칼밥을 먹겠다고?\"\n\n누군가는 비웃고.\n\n\"그만둬라.\"\n\n누군가는 조언했다.\n\n그럼에도 빛 바랜 꿈은 그대로였다.\n\n덜 자고 더 뛰고 더 휘둘렀다.\n\n그리 살던 어느 날이었다.\n전장에서 목이 찔려 죽은 뒤였다.\n\n다시 눈을 뜬 엔크리드는 죽기 전 '오늘' 아침에 돌아와 있었다.",
+      "authors": [
+        {
+          "name": "가나라",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "이안",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "소울풍",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=824543",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-1",
+        "fantasy-6"
+      ]
+    },
+    {
+      "id": "w657564281141038",
+      "title": "소녀바둑",
+      "author": "큐띠뿅",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=842839",
+      "cover": "https://image-comic.pstatic.net/webtoon/842839/thumbnail/thumbnail_IMAG21_ebb4a05d-f76d-4f01-bdb7-5e71c9e7728e.jpg",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 3,
+      "color": "#ece5e9",
+      "episodes": 57,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "드라마",
+        "2024 지상최대공모전",
+        "열혈",
+        "배틀",
+        "라이벌",
+        "청춘",
+        "스포츠",
+        "미친작화"
+      ],
+      "desc": "바둑의 한 수는 바다 혹은 우주. 그 끝에는 무엇이 있을까?\n그 안에서 잃어버린 것을 찾는 소녀와 소년의 이야기.",
+      "authors": [
+        {
+          "name": "큐띠뿅",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=842839",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141037",
+      "title": "현실퀘스트",
+      "author": "이주운, 태성",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=783888",
+      "cover": "https://image-comic.pstatic.net/webtoon/783888/thumbnail/thumbnail_IMAG21_4817cc1e-7ef9-4803-b7ce-db753953882b.jpg",
+      "genres": [
+        "action",
+        "fantasy"
+      ],
+      "recommended": 1,
+      "color": "#272847",
+      "episodes": 240,
+      "status": "ongoing",
+      "days": [
+        "thu"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "액션",
+        "게임판타지",
+        "회귀",
+        "학원물"
+      ],
+      "desc": "게임 아이템을 가져오라는 일진의 협박으로 인해\n일주일간 밤샘 게임을 하다 죽음을 맞이한 비운의 게임셔틀 하도완\n그 순간 일주일 전 교실에서 리스폰되는데...\n모든 것이 그날과 똑같다. 달라진 것은 단 하나, 눈앞에 떠있는 !\n뭐? 내가 지금껏 하던 게임들의 스킬을 이용해서 일진을 때려잡으라고?!?!",
+      "authors": [
+        {
+          "name": "이주운",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "태성",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=783888",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
       "id": "w657564281141036",
       "title": "청춘 러브썸",
       "author": "홍덕, NEMONE",
@@ -250,7 +561,7 @@
         "action",
         "fantasy"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "color": "#1a1318",
       "episodes": 17,
       "status": "ongoing",
@@ -6099,7 +6410,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141036
+    "lastWebtoonId": 657564281141042
   },
   "version": 1,
   "shop": [
@@ -8205,6 +8516,200 @@
           "title": "애늙은이",
           "source": "https://comic.naver.com/webtoon/list?titleId=828373",
           "cover": "https://image-comic.pstatic.net/webtoon/828373/thumbnail/thumbnail_IMAG21_bbe24b60-281a-4fd0-ab72-933259a2a3ab.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "이주운": {
+      "name": "이주운",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_8bt3p",
+      "works": []
+    },
+    "태성": {
+      "name": "태성",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "큐띠뿅": {
+      "name": "큐띠뿅",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260416_107/1776326363848OocjC_PNG/KakaoTalk_20240326_025422532.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_4hcs0g",
+      "works": []
+    },
+    "가나라": {
+      "name": "가나라",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "귀령",
+          "source": "https://comic.naver.com/webtoon/list?titleId=832095",
+          "cover": "https://image-comic.pstatic.net/webtoon/832095/thumbnail/thumbnail_IMAG21_503d7079-cfb0-4467-aabc-fe8b708805f9.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "이안": {
+      "name": "이안",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20240617_275/1718597392071xG6j1_PNG/IMG_4713.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/ian",
+      "works": []
+    },
+    "소울풍": {
+      "name": "소울풍",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "규격 외 혈통 천재",
+          "source": "https://comic.naver.com/webtoon/list?titleId=798331",
+          "cover": "https://image-comic.pstatic.net/webtoon/798331/thumbnail/thumbnail_IMAG21_8acd8214-c3df-427a-b0a5-d6ec3bd2811f.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "판테라": {
+      "name": "판테라",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260507_247/1778124230884KD7c8_PNG/%C6%C7%C5%D7%B6%F3_001.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_ebw2s",
+      "works": [
+        {
+          "title": "시한부 천재 암흑기사",
+          "source": "https://comic.naver.com/webtoon/list?titleId=809625",
+          "cover": "https://image-comic.pstatic.net/webtoon/809625/thumbnail/thumbnail_IMAG21_197bc2e8-64ff-461a-a85f-7cb68cd6c89e.jpg",
+          "finished": false
+        },
+        {
+          "title": "집구석 절대자",
+          "source": "https://comic.naver.com/webtoon/list?titleId=834351",
+          "cover": "https://image-comic.pstatic.net/webtoon/834351/thumbnail/thumbnail_IMAG21_f001312b-372c-40f5-9836-d53a025aff87.jpg",
+          "finished": false
+        },
+        {
+          "title": "뒷골목 마법사의 회귀생활",
+          "source": "https://comic.naver.com/webtoon/list?titleId=841129",
+          "cover": "https://image-comic.pstatic.net/webtoon/841129/thumbnail/thumbnail_IMAG21_c13c8199-fb7e-4547-ad98-851560b93d47.jpg",
+          "finished": false
+        },
+        {
+          "title": "이세계 영주가 밥을 잘 먹임",
+          "source": "https://comic.naver.com/webtoon/list?titleId=847782",
+          "cover": "https://image-comic.pstatic.net/webtoon/847782/thumbnail/thumbnail_IMAG21_34e59319-b747-4c3c-a30c-8e9705f186d9.jpg",
+          "finished": false
+        },
+        {
+          "title": "어느 날 해츨링이 되었다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=850266",
+          "cover": "https://image-comic.pstatic.net/webtoon/850266/thumbnail/thumbnail_IMAG21_2995f89d-e83b-472d-aa40-bf894346415c.jpg",
+          "finished": false
+        },
+        {
+          "title": "이세계서 유부남된 썰",
+          "source": "https://comic.naver.com/webtoon/list?titleId=850103",
+          "cover": "https://image-comic.pstatic.net/webtoon/850103/thumbnail/thumbnail_IMAG21_672df2d4-1dac-4ae1-8acb-79b2e3919cc9.jpg",
+          "finished": false
+        },
+        {
+          "title": "반로환동한 천마의 마경방송",
+          "source": "https://comic.naver.com/webtoon/list?titleId=851642",
+          "cover": "https://image-comic.pstatic.net/webtoon/851642/thumbnail/thumbnail_IMAG21_a85ad5e8-1dae-4f77-85ad-f76599b7cf86.jpg",
+          "finished": false
+        },
+        {
+          "title": "천마의 후손이 되었다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=817637",
+          "cover": "https://image-comic.pstatic.net/webtoon/817637/thumbnail/thumbnail_IMAG21_964e3808-07d8-49ce-bd35-1f1c2da3c453.jpg",
+          "finished": false
+        },
+        {
+          "title": "사령 가문의 어린 가주",
+          "source": "https://comic.naver.com/webtoon/list?titleId=835741",
+          "cover": "https://image-comic.pstatic.net/webtoon/835741/thumbnail/thumbnail_IMAG21_306f241c-fc09-4f07-b046-4d3b331a3caa.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "헤스": {
+      "name": "헤스",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230914_101/1694688811393MeCEY_PNG/%B3%D7%C0%A5%B3%D7%C4%C63.png",
+      "bio": "안녕하세요. <신화급 귀속 아이템을 손에 넣었다>의 그림 작가 헤스입니다. 작품은 매주 월요일 연재됩니다. 많은 사랑과 관심 부탁드립니다.",
+      "url": "https://comic.naver.com/community/u/hess",
+      "works": []
+    },
+    "정선율": {
+      "name": "정선율",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260311_173/1773220821727pnYrD_PNG/1000056666.png",
+      "bio": "안녕하세요. 정선율입니다.",
+      "url": "https://comic.naver.com/community/u/jungseonyul",
+      "works": [
+        {
+          "title": "시한부 천재 암흑기사",
+          "source": "https://comic.naver.com/webtoon/list?titleId=809625",
+          "cover": "https://image-comic.pstatic.net/webtoon/809625/thumbnail/thumbnail_IMAG21_197bc2e8-64ff-461a-a85f-7cb68cd6c89e.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "hoopa": {
+      "name": "HOOPA",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "AI가 세상을 지배한다면",
+          "source": "https://comic.naver.com/webtoon/list?titleId=755674",
+          "cover": "https://image-comic.pstatic.net/webtoon/755674/thumbnail/thumbnail_IMAG21_3473176247429837112.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "최우진": {
+      "name": "최우진",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "하하영": {
+      "name": "하하영",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20241121_289/1732168524038umEin_PNG/1000008739.png",
+      "bio": "인스타: ha_hayeong 안녕하세요! 와주셔서 감사합니다. 다양한 소식 많이 전달해 드릴게요~",
+      "url": "https://comic.naver.com/community/u/_c1jxda",
+      "works": [
+        {
+          "title": "빅맨",
+          "source": "https://comic.naver.com/webtoon/list?titleId=753839",
+          "cover": "https://image-comic.pstatic.net/webtoon/753839/thumbnail/thumbnail_IMAG21_3835153067459896165.jpg",
+          "finished": true
+        },
+        {
+          "title": "티키타카",
+          "source": "https://comic.naver.com/webtoon/list?titleId=833244",
+          "cover": "https://image-comic.pstatic.net/webtoon/833244/thumbnail/thumbnail_IMAG21_8dab2510-1384-418c-a60d-8e4ceac45422.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "민영": {
+      "name": "민영",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20250909_204/1757428878021p7Flp_PNG/%B0%AD%C8%D6%C0%CF%B7%CF.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/ivy9410",
+      "works": [
+        {
+          "title": "주욱 같은 하루",
+          "source": "https://comic.naver.com/webtoon/list?titleId=774300",
+          "cover": "https://image-comic.pstatic.net/webtoon/774300/thumbnail/thumbnail_IMAG21_4050196432125387569.jpg",
           "finished": true
         }
       ]
