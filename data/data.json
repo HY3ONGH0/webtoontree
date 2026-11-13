@@ -1,6 +1,634 @@
 {
   "webtoons": [
     {
+      "id": "w657564281141079",
+      "title": "천재는 평범하게 살기로 했더",
+      "author": "비단가리비, 아티, 자손e",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=835042",
+      "cover": "https://image-comic.pstatic.net/webtoon/835042/thumbnail/thumbnail_IMAG21_bfb5b6c7-ffed-4576-ba1d-e706833bcfbc.jpg",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 3,
+      "color": "#fbe8da",
+      "episodes": 85,
+      "status": "ongoing",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "드라마",
+        "감성적인",
+        "과거",
+        "가족",
+        "무해한",
+        "타임슬립",
+        "힐링",
+        "회귀"
+      ],
+      "desc": "세간이 인정한 성공한 인생의 주인공, '손진혁.'\n하지만 정작 진혁은 그저 사랑하는 가족와 함께하는 평범한 삶을 살고 싶었을 뿐, 그러지 못한 현실에 쓸쓸하고 외로운 마음을 감출 수 없는데...\n어느 날, 사고로 눈을 뜨니 그토록 원하던 부모님을 잃기 전 9살의 시절로 돌아왔다!\n과연 진혁은 부모님을 구하고 평범한 인생을 살 수 있을까?",
+      "authors": [
+        {
+          "name": "비단가리비",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "아티",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "자손e",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=835042",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141078",
+      "title": "독립일기",
+      "author": "자까",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=748105",
+      "cover": "https://image-comic.pstatic.net/webtoon/748105/thumbnail/thumbnail_IMAG21_87f84b6f-a211-4940-8684-f4b8731357eb.jpg",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 0,
+      "color": "#9dbef4",
+      "episodes": 205,
+      "status": "completed",
+      "days": [
+        "thu",
+        "sun"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "일상",
+        "몰아보기",
+        "컷툰",
+        "완결일상"
+      ],
+      "desc": "처음으로 나만의 집이 생긴다면? \n자까 작가의 나혼자 사는 이야기",
+      "authors": [
+        {
+          "name": "자까",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=748105",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141077",
+      "title": "개를 낳았다",
+      "author": "이선",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=712362",
+      "cover": "https://image-comic.pstatic.net/webtoon/712362/thumbnail/thumbnail_IMAG21_537a5e13-3bff-439e-896c-bc054602ee36.jpg",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 4,
+      "color": "#b7f8b9",
+      "episodes": 257,
+      "status": "completed",
+      "days": [
+        "fri"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "드라마",
+        "무해한",
+        "동물",
+        "감성드라마",
+        "완결드라마"
+      ],
+      "desc": "사랑스러운 너와의 첫 만남부터 이별까지. \n처음으로 반려견을 키우게 된 다나와 모든것이 처음인 강아지 명동이가 만나 함께 살아가는 이야기. \n강아지 수명 20년. 너와 내가 함께하는 20년 동안 우린 어떤 일을 겪게 될까?",
+      "authors": [
+        {
+          "name": "이선",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=712362",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141076",
+      "title": "노곤하개",
+      "author": "홍끼",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=702672",
+      "cover": "https://image-comic.pstatic.net/webtoon/702672/thumbnail/thumbnail_IMAG21_7292565186243082338.jpg",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 3,
+      "color": "#a3f5ff",
+      "episodes": 298,
+      "status": "completed",
+      "days": [
+        "wed",
+        "sat"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "일상",
+        "컷툰",
+        "동물",
+        "완결일상"
+      ],
+      "desc": "귀여운 멍멍이들과 함께하는\n노곤하지 않은 일상 이야기",
+      "authors": [
+        {
+          "name": "홍끼",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=702672",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141075",
+      "title": "내일",
+      "author": "라마",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=695796",
+      "cover": "https://image-comic.pstatic.net/webtoon/695796/thumbnail/thumbnail_IMAG21_332bb25b-c77d-477f-9979-5a8607ebd7a5.jpg",
+      "genres": [
+        "daily",
+        "fantasy"
+      ],
+      "recommended": 3,
+      "color": "#27141b",
+      "episodes": 381,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "드라마",
+        "사이다",
+        "눈물샘자극",
+        "현대",
+        "사회고발",
+        "가족",
+        "판타지",
+        "드라마&영화 원작웹툰"
+      ],
+      "desc": "다 되는데 취업만은 안되는 취준생 최준웅(27세,남)\n우연한 사고로 저승독점기업 주마등의 저승차사들을 만나게되고\n \n특별 위기관리팀의 계약직 막내로 일하며 위기에 처한 사람들을 돕게 되는데.",
+      "authors": [
+        {
+          "name": "라마",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=695796",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w657564281141074",
+      "title": "저 그런 인재 아닙니다",
+      "author": "에몽, 희진, 덴피",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=802840",
+      "cover": "https://image-comic.pstatic.net/webtoon/802840/thumbnail/thumbnail_IMAG21_ccaa0f02-6721-4c19-88f2-a3695a36b16d.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 3,
+      "color": "#16131b",
+      "episodes": 127,
+      "status": "completed",
+      "days": [
+        "tue"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "세계관",
+        "이세계",
+        "다크히어로",
+        "소설원작",
+        "완결판타지"
+      ],
+      "desc": "스트레스만 받으면 피를 토하는 병약하기 짝이 없는 나, 데온 하르트. 하지만 어쩐지 강하다는 오해를 받고 제국에서는 모두의 두려움을 받는 하르트 명예 백작인 동시에, 마계에서는 마왕이 가장 신임하는 0군단장이 되었는데… 예?! 제가요? 저 그런 인재 아닌데요?!",
+      "authors": [
+        {
+          "name": "에몽",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "희진",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "덴피",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=802840",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w657564281141073",
+      "title": "죽음에 관하여",
+      "author": "시니, 혀노",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=703845",
+      "cover": "https://image-comic.pstatic.net/webtoon/703845/thumbnail/thumbnail_IMAG21_4120902941892752226.JPEG",
+      "genres": [],
+      "recommended": 0,
+      "color": "#040404",
+      "episodes": 34,
+      "status": "completed",
+      "days": [
+        "wed"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "드라마",
+        "몰아보기",
+        "감성드라마",
+        "완결드라마"
+      ],
+      "desc": "삶과 죽음의 경계선, 그 곳엔 누가 있을까? \n\"가는 길에 심심한데 네 이야기나 한번 듣지\"",
+      "authors": [
+        {
+          "name": "시니",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "혀노",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=703845",
+      "autoAt": "2026-11-13",
+      "pick": true
+    },
+    {
+      "id": "w657564281141072",
+      "title": "1초",
+      "author": "시니, 광운",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=725586",
+      "cover": "https://image-comic.pstatic.net/webtoon/725586/thumbnail/thumbnail_IMAG21_aac005dc-11a7-41b6-a127-4ffa5b480698.jpg",
+      "genres": [
+        "action",
+        "daily"
+      ],
+      "recommended": 5,
+      "color": "#896489",
+      "episodes": 374,
+      "status": "completed",
+      "days": [
+        "fri"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "드라마",
+        "눈물샘자극",
+        "현대",
+        "이능력",
+        "청춘",
+        "직업드라마",
+        "서스펜스",
+        "성장드라마"
+      ],
+      "desc": "구조율 100%의 전설적인 소방관.  \n그의 특별한 능력은 긴장하는 순간, 미래가 보인다는 것! \n촌각을 다투는 진짜 소방관들의 이야기",
+      "authors": [
+        {
+          "name": "시니",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "광운",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=725586",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141071",
+      "title": "펜홀더",
+      "author": "이은재",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=814587",
+      "cover": "https://image-comic.pstatic.net/webtoon/814587/thumbnail/thumbnail_IMAG21_4d3bb97b-a0ca-4d51-8e2b-8d2ca83cce53.jpg",
+      "genres": [
+        "sports"
+      ],
+      "recommended": 3,
+      "color": "#f1ede9",
+      "episodes": 138,
+      "status": "hiatus",
+      "days": [
+        "fri"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "스포츠",
+        "명작",
+        "열혈",
+        "우정",
+        "라이벌",
+        "청춘",
+        "성장물",
+        "학원물"
+      ],
+      "desc": "천재적인 재능으로 모든 스포츠를 씹어먹는 고등학생 한이연.\n어떤 스포츠를 해도 패배를 몰랐던 그에게, 벽을 느끼게 해준 한 탁구 고수가 등장하는데...\n승부욕에 불타오른 이연은 사라져가는 '펜홀더' 라켓으로 복수를 꿈꾼다!",
+      "authors": [
+        {
+          "name": "이은재",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=814587",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141070",
+      "title": "빌드업",
+      "author": "911",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=750826",
+      "cover": "https://image-comic.pstatic.net/webtoon/750826/thumbnail/thumbnail_IMAG21_d7a15cf7-bee5-4fa9-93be-19a2d0d3d6f3.jpg",
+      "genres": [
+        "sports"
+      ],
+      "recommended": 3,
+      "color": "#19110e",
+      "episodes": 230,
+      "status": "ongoing",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "스포츠",
+        "2019 지상최대공모전",
+        "축구",
+        "소년왕도물",
+        "스포츠성장"
+      ],
+      "desc": "축구덕후지만 볼보이만 5년째?! \n빵셔틀 강마루의 열혈청춘 축구드라마",
+      "authors": [
+        {
+          "name": "911",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=750826",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141069",
+      "title": "탑코너",
+      "author": "윤성, 라군",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=732021",
+      "cover": "https://image-comic.pstatic.net/webtoon/732021/thumbnail/thumbnail_IMAG21_dd3b28b4-33b9-4cea-98b9-26fd51f06172.jpg",
+      "genres": [
+        "sports"
+      ],
+      "recommended": 3,
+      "color": "#120f16",
+      "episodes": 257,
+      "status": "completed",
+      "days": [
+        "sat"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "스포츠",
+        "열혈",
+        "우정",
+        "청춘",
+        "성장물",
+        "축구",
+        "학원물",
+        "스포츠성장"
+      ],
+      "desc": "소설가의 꿈을 가진 수학 천재소년 안시준. \n우연히 광진고 축구부의 유망주 허도형과 만나게 된다. \n\n뜻밖의 사건으로 시준에게 잠재된 축구 재능을 발견한 도형.\n팀을 구하기 위해 시준에게 은밀한 거래를 제안하지만..\n\n\".. 난 축구는 한 번도 해본 적 없는데..?\"\n\n과연 시준은 위기에 빠진 광진고 축구부의\n구세주가 될 수 있을까?\n\n꿈을 좇는 소년들의 축구드라마. 수학 천재의 킥오프가 시작된다!",
+      "authors": [
+        {
+          "name": "윤성",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "라군",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=732021",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141068",
+      "title": "스쿨 오브 스트릿",
+      "author": "슬랭킷",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=822642",
+      "cover": "https://image-comic.pstatic.net/webtoon/822642/thumbnail/thumbnail_IMAG21_3ef8c3a2-29d5-45a5-8567-c8e56b6d4642.jpg",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 3,
+      "color": "#fdece7",
+      "episodes": 118,
+      "status": "ongoing",
+      "days": [
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "드라마",
+        "예술",
+        "소년물",
+        "라이벌",
+        "청춘",
+        "스포츠",
+        "성장물",
+        "학원물"
+      ],
+      "desc": "천재 댄서이지만 무대 공포증을 지닌 혜은과,\n초보 댄서이지만 무대를 두려워하지 않는 수현.\n서로 다른 두 댄서의 스트릿 댄스 성장기!",
+      "authors": [
+        {
+          "name": "슬랭킷",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=822642",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141067",
+      "title": "스트릿 워크아웃",
+      "author": "장부규(BKORI)",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=778579",
+      "cover": "https://image-comic.pstatic.net/webtoon/778579/thumbnail/thumbnail_IMAG21_793b71dd-eb49-4b91-aff4-a53ba1141822.jpg",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 0,
+      "color": "#e4f9f8",
+      "episodes": 70,
+      "status": "completed",
+      "days": [
+        "sat"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "스포츠",
+        "스포츠성장",
+        "완결스포츠"
+      ],
+      "desc": "한 때는 세계 최고의 비보이라는 꿈을 좇았지만 \n사고로 인해 꿈과 희망을 모두 잃어버린 고등학생 백동희. \n어느 날 우연히 맨몸 운동 소녀 권지니를 만나고 멈춰있던 그의 인생이 다시 움직이기 시작한다.",
+      "authors": [
+        {
+          "name": "장부규(BKORI)",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=778579",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141066",
+      "title": "위닝샷!",
+      "author": "강견, 시바견",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=778578",
+      "cover": "https://image-comic.pstatic.net/webtoon/778578/thumbnail/thumbnail_IMAG21_88a0ecd0-be77-4ee6-96e8-103842ec3d4b.jpg",
+      "genres": [
+        "sports"
+      ],
+      "recommended": 3,
+      "color": "#252a36",
+      "episodes": 202,
+      "status": "ongoing",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "스포츠",
+        "열혈",
+        "우정",
+        "라이벌",
+        "청춘",
+        "성장물",
+        "야구",
+        "학원물"
+      ],
+      "desc": "야구를 할 수 있는 조건이라면 팀의 패전조 역할도 마다하지 않는 투수 '안시윤'. \n초라한 성적으로 중학교 선수 생활을 이어왔던 그는 상대팀의 포수 '백태오'와의 \n만남을 계기로 야구 인생이 송두리째 바뀌기 시작한다. \n\n고교야구 정상에서 힘찬 위닝샷을 던지기 위한 뜨거운 청춘들의 이야기!",
+      "authors": [
+        {
+          "name": "강견",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "시바견",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=778578",
+      "autoAt": "2026-11-13"
+    },
+    {
       "id": "w657564281141065",
       "title": "과학고 사변",
       "author": "고태린",
@@ -7545,7 +8173,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141065
+    "lastWebtoonId": 657564281141079
   },
   "version": 1,
   "shop": [
@@ -7657,6 +8285,13 @@
           "finished": true
         }
       ]
+    },
+    "911": {
+      "name": "911",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
     },
     "민송아": {
       "name": "민송아",
@@ -8763,10 +9398,10 @@
           "finished": true
         },
         {
-          "title": "죽음에 관하여",
-          "source": "https://comic.naver.com/webtoon/list?titleId=703845",
-          "cover": "https://image-comic.pstatic.net/webtoon/703845/thumbnail/thumbnail_IMAG21_4120902941892752226.JPEG",
-          "finished": true
+          "title": "별이삼샵",
+          "source": "https://comic.naver.com/webtoon/list?titleId=737628",
+          "cover": "https://image-comic.pstatic.net/webtoon/737628/thumbnail/thumbnail_IMAG21_9e108875-36b5-4872-8ace-53a6e492376b.jpg",
+          "finished": false
         }
       ]
     },
@@ -10417,6 +11052,354 @@
       "img": "https://kw-wcommunity-phinf.pstatic.net/20261006_99/1791268249245VnCGM_PNG/657487461_18126100174577408_7390494765536155559_n.png",
       "bio": "",
       "url": "https://comic.naver.com/community/u/_42evls",
+      "works": []
+    },
+    "강견": {
+      "name": "강견",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230913_299/16946007600613IDy2_PNG/inbound2358203506691803214.png",
+      "bio": "안녕하세요! 《위닝샷!》스토리 작가 강견입니다!!",
+      "url": "https://comic.naver.com/community/u/Kangkyeon1231",
+      "works": []
+    },
+    "시바견": {
+      "name": "시바견",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260901_176/1788235492576Hpjou_PNG/%B1%A4%C3%DF%B4%CF4sfd.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_0boz6",
+      "works": []
+    },
+    "장부규(bkori)": {
+      "name": "장부규(BKORI)",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "만화가 장부코리입니다.",
+      "url": "https://comic.naver.com/community/u/bkori",
+      "works": []
+    },
+    "슬랭킷": {
+      "name": "슬랭킷",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230929_275/1695988028526iD0Y4_PNG/%BF%C0%B3%CA%C4%B3.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/slanket",
+      "works": [
+        {
+          "title": "급식러너",
+          "source": "https://comic.naver.com/webtoon/list?titleId=770030",
+          "cover": "https://image-comic.pstatic.net/webtoon/770030/thumbnail/thumbnail_IMAG21_3760841466767095601.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "윤성": {
+      "name": "윤성",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20231002_244/16962041367609ba6E_PNG/IMG_3007.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_ybou2",
+      "works": [
+        {
+          "title": "뷰티풀 군바리",
+          "source": "https://comic.naver.com/webtoon/list?titleId=648419",
+          "cover": "https://image-comic.pstatic.net/webtoon/648419/thumbnail/thumbnail_IMAG21_d9398229-cbfd-47dc-9208-0a6fb936f3a7.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "라군": {
+      "name": "라군",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230915_298/16947583744344MbTo_PNG/%BD%C3%C1%D8%BD%E6%B3%D7%C0%CF_001.png",
+      "bio": "안녕하세요 라군작가입니다 :)",
+      "url": "https://comic.naver.com/community/u/_hcu77",
+      "works": [
+        {
+          "title": "기프트",
+          "source": "https://comic.naver.com/webtoon/list?titleId=840287",
+          "cover": "https://image-comic.pstatic.net/webtoon/840287/thumbnail/thumbnail_IMAG21_8141f7d8-1537-4987-a9aa-8b9b7a08b78b.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "이은재": {
+      "name": "이은재",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20250423_232/1745387674941FScFB_PNG/IMG_8099.png",
+      "bio": "안녕하세요 이은재입니다",
+      "url": "https://comic.naver.com/community/u/_mbour",
+      "works": [
+        {
+          "title": "셧업앤댄스",
+          "source": "https://comic.naver.com/webtoon/list?titleId=737032",
+          "cover": "https://image-comic.pstatic.net/webtoon/737032/thumbnail/thumbnail_IMAG21_7077463136033923939.jpg",
+          "finished": true
+        },
+        {
+          "title": "몬스터",
+          "source": "https://comic.naver.com/webtoon/list?titleId=771044",
+          "cover": "https://image-comic.pstatic.net/webtoon/771044/thumbnail/thumbnail_IMAG21_7003435216387258676.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "시니": {
+      "name": "시니",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230916_110/1694839896888IoxpQ_PNG/beauty_20190205232508.png",
+      "bio": "뭐야 이거 생겼구나?",
+      "url": "https://comic.naver.com/community/u/sini",
+      "works": [
+        {
+          "title": "네가 없는 세상",
+          "source": "https://comic.naver.com/webtoon/list?titleId=578105",
+          "cover": "https://image-comic.pstatic.net/webtoon/578105/thumbnail/thumbnail_IMAG21_3545002742209733475.jpg",
+          "finished": true
+        },
+        {
+          "title": "죽음에 관하여",
+          "source": "https://comic.naver.com/webtoon/list?titleId=703845",
+          "cover": "https://image-comic.pstatic.net/webtoon/703845/thumbnail/thumbnail_IMAG21_4120902941892752226.JPEG",
+          "finished": true
+        },
+        {
+          "title": "아이덴티티",
+          "source": "https://comic.naver.com/webtoon/list?titleId=642599",
+          "cover": "https://image-comic.pstatic.net/webtoon/642599/thumbnail/thumbnail_IMAG21_3760613669455869492.jpg",
+          "finished": true
+        },
+        {
+          "title": "만약은 없다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=850976",
+          "cover": "https://image-comic.pstatic.net/webtoon/850976/thumbnail/thumbnail_IMAG21_b4c05bd3-fa13-4a57-8c6a-006892cac8e0.jpg",
+          "finished": false
+        },
+        {
+          "title": "기밀입니다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=780151",
+          "cover": "https://image-comic.pstatic.net/webtoon/780151/thumbnail/thumbnail_IMAG21_4062636529966659122.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "광운": {
+      "name": "광운",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20241014_115/1728876823814ExpuL_PNG/KakaoTalk_20241014_122521156.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/kwangwoon",
+      "works": [
+        {
+          "title": "기밀입니다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=780151",
+          "cover": "https://image-comic.pstatic.net/webtoon/780151/thumbnail/thumbnail_IMAG21_4062636529966659122.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "에몽": {
+      "name": "에몽",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "희진": {
+      "name": "희진",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "덴피": {
+      "name": "덴피",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "라마": {
+      "name": "라마",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20231025_65/1698210171480gszUe_PNG/IMG_3995.png",
+      "bio": "라마예요. 침은 안뱉고 삼켜요. 우후훟",
+      "url": "https://comic.naver.com/community/u/_obor6",
+      "works": [
+        {
+          "title": "아무래도 결혼을 잘못한 것 같다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=817122",
+          "cover": "https://image-comic.pstatic.net/webtoon/817122/thumbnail/thumbnail_IMAG21_f2833432-055f-4aa4-9399-aa0a516f0a69.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "홍끼": {
+      "name": "홍끼",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260706_163/1783347788503OTVpI_PNG/1000039260.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_b2df9d",
+      "works": [
+        {
+          "title": "홍끼의 메소포타미아 신화",
+          "source": "https://comic.naver.com/webtoon/list?titleId=819910",
+          "cover": "https://image-comic.pstatic.net/webtoon/819910/thumbnail/thumbnail_IMAG21_1a827048-5c1f-43af-8bbc-3d89a0c6fdb3.jpg",
+          "finished": true
+        },
+        {
+          "title": "5kg을 위하여",
+          "source": "https://comic.naver.com/webtoon/list?titleId=710639",
+          "cover": "https://image-comic.pstatic.net/webtoon/710639/thumbnail/thumbnail_IMAG21_7292842263961756214.jpg",
+          "finished": true
+        },
+        {
+          "title": "먹는 인생",
+          "source": "https://comic.naver.com/webtoon/list?titleId=784255",
+          "cover": "https://image-comic.pstatic.net/webtoon/784255/thumbnail/thumbnail_IMAG21_7003999451307455078.jpg",
+          "finished": true
+        },
+        {
+          "title": "먹는 인생2",
+          "source": "https://comic.naver.com/webtoon/list?titleId=845271",
+          "cover": "https://image-comic.pstatic.net/webtoon/845271/thumbnail/thumbnail_IMAG21_b5f0f7d6-3527-4afb-8d66-f4de65d4d0ff.jpg",
+          "finished": false
+        },
+        {
+          "title": "노곤하개 쇼츠",
+          "source": "https://comic.naver.com/webtoon/list?titleId=834886",
+          "cover": "https://image-comic.pstatic.net/webtoon/834886/thumbnail/thumbnail_IMAG21_3a360149-06bd-4238-b9b6-5b4e6dc80420.jpg",
+          "finished": true
+        },
+        {
+          "title": "오늘도 기록생활",
+          "source": "https://comic.naver.com/webtoon/list?titleId=780995",
+          "cover": "https://image-comic.pstatic.net/webtoon/780995/thumbnail/thumbnail_IMAG21_7234581135687563364.jpg",
+          "finished": true
+        },
+        {
+          "title": "도전! 집콕취미",
+          "source": "https://comic.naver.com/webtoon/list?titleId=803907",
+          "cover": "https://image-comic.pstatic.net/webtoon/803907/thumbnail/thumbnail_IMAG21_cb7cf7aa-b7ae-4755-88f1-770c6b9d9ef9.jpg",
+          "finished": true
+        },
+        {
+          "title": "GO!구마 가족",
+          "source": "https://comic.naver.com/webtoon/list?titleId=737506",
+          "cover": "https://image-comic.pstatic.net/webtoon/737506/thumbnail/thumbnail_IMAG21_3616726282281575472.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "이선": {
+      "name": "이선",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20240207_108/17073019101527BCzY_PNG/1000044621.png",
+      "bio": "개를 낳았다의 이선입니다!!",
+      "url": "https://comic.naver.com/community/u/_wpdta",
+      "works": [
+        {
+          "title": "다이어트 워리어",
+          "source": "https://comic.naver.com/webtoon/list?titleId=840706",
+          "cover": "https://image-comic.pstatic.net/webtoon/840706/thumbnail/thumbnail_IMAG21_32dededc-3a65-472a-bf34-a76daaf08ca2.jpg",
+          "finished": false
+        },
+        {
+          "title": "은애하는 도적님아",
+          "source": "https://comic.naver.com/webtoon/list?titleId=846074",
+          "cover": "https://image-comic.pstatic.net/webtoon/846074/thumbnail/thumbnail_IMAG21_dec9f86d-7ca1-4796-a162-a9612a19b59a.jpg",
+          "finished": false
+        },
+        {
+          "title": "이상적인 자살을 찾아서",
+          "source": "https://comic.naver.com/webtoon/list?titleId=844067",
+          "cover": "https://image-comic.pstatic.net/webtoon/844067/thumbnail/thumbnail_IMAG21_a0be3d33-82f6-45bf-8174-787c499167c4.jpg",
+          "finished": true
+        },
+        {
+          "title": "부부의 시간",
+          "source": "https://comic.naver.com/webtoon/list?titleId=839717",
+          "cover": "https://image-comic.pstatic.net/webtoon/839717/thumbnail/thumbnail_IMAG21_e29ee3b3-83e3-43bf-8083-d89435fafb7c.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "자까": {
+      "name": "자까",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20240503_116/1714740713905shTkP_PNG/1000013947.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_kbz9r",
+      "works": [
+        {
+          "title": "대학일기",
+          "source": "https://comic.naver.com/webtoon/list?titleId=679519",
+          "cover": "https://image-comic.pstatic.net/webtoon/679519/thumbnail/thumbnail_IMAG21_3559076483126814265.jpg",
+          "finished": true
+        },
+        {
+          "title": "육아일기",
+          "source": "https://comic.naver.com/webtoon/list?titleId=812354",
+          "cover": "https://image-comic.pstatic.net/webtoon/812354/thumbnail/thumbnail_IMAG21_2896806f-bd3e-48af-b7e2-8e380ff702a4.jpg",
+          "finished": false
+        },
+        {
+          "title": "청년창업 기프트카툰",
+          "source": "https://comic.naver.com/webtoon/list?titleId=690596",
+          "cover": "https://image-comic.pstatic.net/webtoon/690596/thumbnail/thumbnail_IMAG21_7149520717119697764.jpg",
+          "finished": true
+        },
+        {
+          "title": "수능일기",
+          "source": "https://comic.naver.com/webtoon/list?titleId=734348",
+          "cover": "https://image-comic.pstatic.net/webtoon/734348/thumbnail/thumbnail_IMAG21_3486175567243785523.jpg",
+          "finished": true
+        },
+        {
+          "title": "낢마다 상쾌한 일기",
+          "source": "https://comic.naver.com/webtoon/list?titleId=705414",
+          "cover": "https://image-comic.pstatic.net/webtoon/705414/thumbnail/thumbnail_IMAG21_7306307763032373299.jpg",
+          "finished": true
+        },
+        {
+          "title": "휴재일기",
+          "source": "https://comic.naver.com/webtoon/list?titleId=807071",
+          "cover": "https://image-comic.pstatic.net/webtoon/807071/thumbnail/thumbnail_IMAG21_3bf72b83-7975-4409-8104-d4cdb8003752.jpg",
+          "finished": true
+        },
+        {
+          "title": "신입일기",
+          "source": "https://comic.naver.com/webtoon/list?titleId=773419",
+          "cover": "https://image-comic.pstatic.net/webtoon/773419/thumbnail/thumbnail_IMAG21_7147323883558940978.jpg",
+          "finished": true
+        },
+        {
+          "title": "내일을 부탁해",
+          "source": "https://comic.naver.com/webtoon/list?titleId=755642",
+          "cover": "https://image-comic.pstatic.net/webtoon/755642/thumbnail/thumbnail_IMAG21_3630520553252872754.jpg",
+          "finished": true
+        },
+        {
+          "title": "뽀샵일기",
+          "source": "https://comic.naver.com/webtoon/list?titleId=790824",
+          "cover": "https://image-comic.pstatic.net/webtoon/790824/thumbnail/thumbnail_IMAG21_7161061384488433762.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "비단가리비": {
+      "name": "비단가리비",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "환생했더니 단종의 보모나인",
+          "source": "https://comic.naver.com/webtoon/list?titleId=843921",
+          "cover": "https://image-comic.pstatic.net/webtoon/843921/thumbnail/thumbnail_IMAG21_31b34d88-d247-4288-9c51-df51ae500cf3.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "아티": {
+      "name": "아티",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "<천재는 평범하게 살기로 했더> 그림작가 입니다:)",
+      "url": "https://comic.naver.com/community/u/_p14uvz",
+      "works": []
+    },
+    "자손e": {
+      "name": "자손e",
+      "img": "",
+      "bio": "",
+      "url": "",
       "works": []
     }
   }
