@@ -1,22 +1,230 @@
 {
   "webtoons": [
     {
-      "id": "w657564281141047",
-      "title": "새 웹툰",
-      "author": "",
+      "id": "w657564281141051",
+      "title": "피와 나비",
+      "author": "레민",
       "platform": "네이버웹툰",
-      "url": "",
-      "cover": "",
-      "genres": [],
-      "recommended": 0,
-      "color": "",
-      "episodes": 1,
-      "status": "ongoing",
-      "days": [],
-      "autoCount": true,
+      "url": "https://comic.naver.com/webtoon/list?titleId=749633",
+      "cover": "https://image-comic.pstatic.net/webtoon/749633/thumbnail/thumbnail_IMAG21_7219943340893352248.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 3,
+      "color": "#83191b",
+      "episodes": 84,
+      "status": "completed",
+      "days": [
+        "fri"
+      ],
+      "autoCount": false,
       "baseDate": "2026-11-13",
-      "tags": [],
-      "desc": ""
+      "tags": [
+        "판타지",
+        "아포칼립스",
+        "이능력배틀물",
+        "완결판타지"
+      ],
+      "desc": "어느 날 나타난 정체불명의 괴물 '벌레'와, \n그에 맞서는 힘을 가진 '나비'의 아이들.",
+      "authors": [
+        {
+          "name": "레민",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=749633",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w657564281141050",
+      "title": "열렙전사",
+      "author": "김세훈",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=670152",
+      "cover": "https://image-comic.pstatic.net/webtoon/670152/thumbnail/thumbnail_IMAG21_7149522929097717862.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#f8e7f7",
+      "episodes": 319,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "몰아보기",
+        "게임판타지",
+        "먼치킨",
+        "완결판타지"
+      ],
+      "desc": "'퀘스트를 클리어 하는 자, 모든 것을 얻을 것이다'\n현실 밖의 현실, 루시드 어드벤쳐 최강의 용사 '열렙전사'와 동료들이 벌이는 본격 RPG 어드벤쳐.",
+      "authors": [
+        {
+          "name": "김세훈",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=670152",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-5"
+      ],
+      "pick": true
+    },
+    {
+      "id": "w657564281141049",
+      "title": "비질란테 2부",
+      "author": "CRG, 김규삼",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=820371",
+      "cover": "https://image-comic.pstatic.net/webtoon/820371/thumbnail/thumbnail_IMAG21_5e724822-2b6a-4e06-aab9-50d5be9b9f9f.jpg",
+      "genres": [
+        "thriller",
+        "action"
+      ],
+      "recommended": 3,
+      "color": "#362728",
+      "episodes": 109,
+      "status": "completed",
+      "days": [
+        "sat"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "드라마",
+        "사이다",
+        "시리어스",
+        "사회고발",
+        "액션",
+        "참교육",
+        "피카레스크",
+        "범죄"
+      ],
+      "desc": "경찰대학 졸업 후 경위로 임관한 지용은 수상한 고소인 황성구를 조사하게 되고 전국을 휩쓰는 전세사기 사건을 마주하게 된다.\n제대로 된 법의 심판을 받지 않는 전세사기 일당을 상대로 지용은 자신이 정한 비질란테의 룰이 시험에 드는 것을 느끼게 되고\n전세사기 일당을 쫓던 중 비질란테 4명은 그들의 정체를 아는 누군가로부터 협박을 받게 된다. \n그리고 비질란테 4명은 그들에게서 거악의 그림자를 느끼게 되는데",
+      "authors": [
+        {
+          "name": "CRG",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "김규삼",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=820371",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141048",
+      "title": "비질란테",
+      "author": "CRG, 김규삼",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=703843",
+      "cover": "https://image-comic.pstatic.net/webtoon/703843/thumbnail/thumbnail_IMAG21_7233963222279403873.jpg",
+      "genres": [
+        "thriller",
+        "action"
+      ],
+      "recommended": 4,
+      "color": "#230302",
+      "episodes": 141,
+      "status": "completed",
+      "days": [
+        "sat"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "액션",
+        "사이다",
+        "몰아보기",
+        "참교육",
+        "직업드라마",
+        "다크히어로",
+        "느와르",
+        "완결액션"
+      ],
+      "desc": "법은 구멍이 나 있다. 내가 그 구멍을 메운다. 널 풀어준 법을 원망해라.",
+      "authors": [
+        {
+          "name": "CRG",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "김규삼",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=703843",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141047",
+      "title": "트롤트랩",
+      "author": "유비",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=701700",
+      "cover": "https://image-comic.pstatic.net/webtoon/701700/thumbnail/thumbnail_IMAG21_14be195a-a8e9-4324-8d48-226eea667453.jpg",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": 3,
+      "color": "#010101",
+      "episodes": 275,
+      "status": "completed",
+      "days": [
+        "thu"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "소년왕도물",
+        "완결판타지"
+      ],
+      "desc": "트롤을 잡아, 인류를 지켜라!\n정체불명 헌터 하태와 알바헌터 지현의 통쾌한 판타지 액션",
+      "authors": [
+        {
+          "name": "유비",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=701700",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-5"
+      ]
     },
     {
       "id": "w657564281141046",
@@ -6609,7 +6817,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141047
+    "lastWebtoonId": 657564281141051
   },
   "version": 1,
   "shop": [
@@ -8976,6 +9184,154 @@
           "title": "아랫배 쪽에 힘을 콱 주고",
           "source": "https://comic.naver.com/webtoon/list?titleId=851404",
           "cover": "https://image-comic.pstatic.net/webtoon/851404/thumbnail/thumbnail_IMAG21_067b2e5a-3114-4891-8371-43264483acc7.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "유비": {
+      "name": "유비",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "마왕 마석호",
+          "source": "https://comic.naver.com/webtoon/list?titleId=842699",
+          "cover": "https://image-comic.pstatic.net/webtoon/842699/thumbnail/thumbnail_IMAG21_4c95e32a-3815-428b-8eca-e9083ccd42a4.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "crg": {
+      "name": "CRG",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "비질란테 2부",
+          "source": "https://comic.naver.com/webtoon/list?titleId=820371",
+          "cover": "https://image-comic.pstatic.net/webtoon/820371/thumbnail/thumbnail_IMAG21_5e724822-2b6a-4e06-aab9-50d5be9b9f9f.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "김규삼": {
+      "name": "김규삼",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230915_220/16947498720711cyQs_PNG/Screenshot_20230915_124903_LINE.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/q3",
+      "works": [
+        {
+          "title": "입시명문사립 정글고등학교",
+          "source": "https://comic.naver.com/webtoon/list?titleId=15640",
+          "cover": "https://image-comic.pstatic.net/webtoon/15640/thumbnail/thumbnail_IMAG21_4122822491576022625.jpg",
+          "finished": true
+        },
+        {
+          "title": "하이브 1~2",
+          "source": "https://comic.naver.com/webtoon/list?titleId=609480",
+          "cover": "https://image-comic.pstatic.net/webtoon/609480/thumbnail/thumbnail_IMAG21_4049638099174778162.jpg",
+          "finished": true
+        },
+        {
+          "title": "하이브 3",
+          "source": "https://comic.naver.com/webtoon/list?titleId=675331",
+          "cover": "https://image-comic.pstatic.net/webtoon/675331/thumbnail/thumbnail_IMAG21_3617013070807053875.jpg",
+          "finished": true
+        },
+        {
+          "title": "버프소녀 오오라",
+          "source": "https://comic.naver.com/webtoon/list?titleId=511444",
+          "cover": "https://image-comic.pstatic.net/webtoon/511444/thumbnail/thumbnail_IMAG21_7293970357788095588.JPEG",
+          "finished": true
+        },
+        {
+          "title": "쌉니다 천리마마트",
+          "source": "https://comic.naver.com/webtoon/list?titleId=697679",
+          "cover": "https://image-comic.pstatic.net/webtoon/697679/thumbnail/thumbnail_IMAG21_3919601964219131494.jpg",
+          "finished": true
+        },
+        {
+          "title": "N의등대-눈의등대",
+          "source": "https://comic.naver.com/webtoon/list?titleId=26458",
+          "cover": "https://image-comic.pstatic.net/webtoon/26458/thumbnail/thumbnail_IMAG21_7018124665846576180.jpg",
+          "finished": true
+        },
+        {
+          "title": "만렙소녀 오오라",
+          "source": "https://comic.naver.com/webtoon/list?titleId=665174",
+          "cover": "https://image-comic.pstatic.net/webtoon/665174/thumbnail/thumbnail_IMAG21_7365748456896356661.jpg",
+          "finished": true
+        },
+        {
+          "title": "데드퀸",
+          "source": "https://comic.naver.com/webtoon/list?titleId=753478",
+          "cover": "https://image-comic.pstatic.net/webtoon/753478/thumbnail/thumbnail_IMAG21_4049077133597095219.jpg",
+          "finished": true
+        },
+        {
+          "title": "이름을 불러주세요",
+          "source": "https://comic.naver.com/webtoon/list?titleId=713334",
+          "cover": "https://image-comic.pstatic.net/webtoon/713334/thumbnail/thumbnail_IMAG21_3689964760283298145.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "김세훈": {
+      "name": "김세훈",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230919_121/1695075890057Eo0kc_PNG/IMG_0901.png",
+      "bio": "열렙전사 / 엑스애쉬 / 삽가능 / 요괴괴괴",
+      "url": "https://comic.naver.com/community/u/_tboqu",
+      "works": [
+        {
+          "title": "열렙전사 3부",
+          "source": "https://comic.naver.com/webtoon/list?titleId=817032",
+          "cover": "https://image-comic.pstatic.net/webtoon/817032/thumbnail/thumbnail_IMAG21_75d7192e-5de2-46ae-bd94-749477fbabe6.jpg",
+          "finished": false
+        },
+        {
+          "title": "엑스애쉬",
+          "source": "https://comic.naver.com/webtoon/list?titleId=783814",
+          "cover": "https://image-comic.pstatic.net/webtoon/783814/thumbnail/thumbnail_IMAG21_3472617502213103923.jpg",
+          "finished": false
+        },
+        {
+          "title": "삽가능",
+          "source": "https://comic.naver.com/webtoon/list?titleId=838708",
+          "cover": "https://image-comic.pstatic.net/webtoon/838708/thumbnail/thumbnail_IMAG21_3cb4dbaa-82a7-4236-882e-2b2ca5797c05.jpg",
+          "finished": true
+        },
+        {
+          "title": "열렙전차",
+          "source": "https://comic.naver.com/webtoon/list?titleId=753378",
+          "cover": "https://image-comic.pstatic.net/webtoon/753378/thumbnail/thumbnail_IMAG21_3834315051443499321.jpg",
+          "finished": true
+        },
+        {
+          "title": "이 주길럼의 전장",
+          "source": "https://comic.naver.com/webtoon/list?titleId=814805",
+          "cover": "https://image-comic.pstatic.net/webtoon/814805/thumbnail/thumbnail_IMAG21_44bc1fd7-1711-4752-9eae-7fa55c188711.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "레민": {
+      "name": "레민",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "황금의 세계를 너에게",
+          "source": "https://comic.naver.com/webtoon/list?titleId=813598",
+          "cover": "https://image-comic.pstatic.net/webtoon/813598/thumbnail/thumbnail_IMAG21_f55c7a25-f918-43d5-a6c1-e63ab9deb378.jpg",
+          "finished": true
+        },
+        {
+          "title": "루나샵에 어서오세요!",
+          "source": "https://comic.naver.com/webtoon/list?titleId=836584",
+          "cover": "https://image-comic.pstatic.net/webtoon/836584/thumbnail/thumbnail_IMAG21_b8046c81-e0dd-4175-bb69-5628b27e0bd9.jpg",
           "finished": true
         }
       ]
