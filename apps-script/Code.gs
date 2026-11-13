@@ -786,8 +786,8 @@ function naverArtists_(list, people, titleId) {
     var memo = cacheGet_(key);
     if (memo) return Object.assign({}, memo, { roles: people[name] || [] });
     var r = { name: name, roles: people[name] || [] };
-    r.img = pickKey_(a, /image|thumbnail|profileImg/i);
-    r.url = pickKey_(a, /url|link/i);
+    r.img = a.profileImageUrl || pickKey_(a, /image|thumbnail|profileImg/i);
+    r.url = String(a.profilePageUrl || '').replace(/\?.*$/, '');   // 작가 홈 (예: https://comic.naver.com/community/u/_3i1sk)
     if (r.url && /^\//.test(r.url)) r.url = 'https://comic.naver.com' + r.url;
     var cid = a.communityId || a.artistId || a.id;
     if (!r.url && a.communityId) r.url = 'https://comic.naver.com/community/u/' + a.communityId;
@@ -893,6 +893,31 @@ function debugNaver() {
       peek(a.name + ' API 후보 2', 'https://comic.naver.com/community/api/v1/user/' + id + '/posts?page=1&size=5');
       peek(a.name + ' API 후보 3', 'https://comic.naver.com/api/community/v2/posts?communityId=' + id + '&page=1&pageSize=5');
     });
+  });
+}
+
+// 진단 2: 작가 홈 페이지 안에 게시글이 들어 있는지 확인해요 (편집기에서 debugNaver2 실행 → 로그 복사)
+function debugNaver2() {
+  var home = 'https://comic.naver.com/community/u/_3i1sk';   // 민송아 작가 홈
+  var UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+  var tries = [
+    ['작가 홈 (PC)', home, {}],
+    ['작가 홈 (모바일)', home.replace('://comic.', '://m.comic.'), {}],
+    ['작가 홈 RSC', home, { 'RSC': '1', 'Next-Router-State-Tree': '%5B%22%22%5D' }]
+  ];
+  tries.forEach(function (t) {
+    try {
+      var h = Object.assign({ 'User-Agent': UA, 'Accept-Language': 'ko-KR,ko;q=0.9' }, t[2]);
+      var r = UrlFetchApp.fetch(t[1], { muteHttpExceptions: true, followRedirects: true, headers: h });
+      var x = r.getContentText('UTF-8');
+      console.log('▶ ' + t[0] + ' · 코드 ' + r.getResponseCode() + ' · 길이 ' + x.length + ' · __next_f ' + (x.indexOf('__next_f') >= 0 ? '있음' : '없음'));
+      ['postId', 'postNo', 'contents', 'articleId', 'feed', 'apiToken', 'api-token', 'x-api', 'NEXT_PUBLIC', '/community/api/'].forEach(function (k) {
+        var i = x.indexOf(k);
+        if (i >= 0) console.log('  · "' + k + '" 주변: ' + x.slice(Math.max(0, i - 200), i + 400).replace(/\s+/g, ' '));
+      });
+      var og = x.match(/<meta[^>]+property="og:description"[^>]*content="([^"]*)"/);
+      console.log('  · og:description: ' + (og ? og[1] : '없음'));
+    } catch (e) { console.log('▶ ' + t[0] + ' 실패: ' + e); }
   });
 }
 
