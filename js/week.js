@@ -18,31 +18,23 @@
     return { e, tot, state: e >= tot || (S.rewarded || {})[w.id + ':done'] ? 'done' : e > 0 ? 'reading' : 'none' };
   }
   const libHref = (w) => `#/library/${(w.genres || [])[0] || 'all'}/${w.id}`;
-  // 장르마다 카드 색을 하나씩 (장르 순서대로 돌아가며)
-  function tone(w) {
-    const ids = WT.data.genres.map((g) => g.id);
-    const i = ids.indexOf((w.genres || [])[0]);
-    return (i < 0 ? 0 : i) % 6;
-  }
+  // 요일 칸의 웹툰: 표지만 보여 줘요 (표지가 없을 때만 제목이 보여요)
   function card(w) {
     const st = WT.schedule.status(w), me = mine(w);
     const pct = me.tot ? Math.round((me.e / me.tot) * 100) : 0;
-    const gname = (WT.genre((w.genres || [])[0]) || {}).name || '';
-    return `<a class="wk-card wkc${tone(w)}${st === 'hiatus' ? ' rest' : ''}" href="${libHref(w)}" title="${esc(w.title)}">
-        <span class="wk-c-top">
-          <span class="wk-c-cv">${w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : esc((w.title || '?')[0])}</span>
-          <span class="wk-c-meta">${WT.platform.icon(w.platform, 'pf-in')}<i>${WT.eps(w)}화</i></span>
-          ${st === 'hiatus' ? '<em class="wk-c-tag">휴재</em>' : w.pick ? '<em class="wk-c-tag pick">강추</em>' : ''}
+    const color = w.color || (WT.genre((w.genres || [])[0]) || {}).color || '#55607F';
+    const label = `${w.title}, ${st === 'hiatus' ? '휴재' : '연재 중'}, ${WT.eps(w)}화${me.state === 'reading' ? `, ${me.e}화까지 봤어요` : me.state === 'done' ? ', 다 따라왔어요' : ''}`;
+    return `<a class="wk-card${st === 'hiatus' ? ' rest' : ''}" href="${libHref(w)}" title="${esc(w.title)}" aria-label="${esc(label)}">
+        <span class="wk-cv" style="--c:${esc(color)}"><span class="wk-ini">${esc(w.title)}</span>
+          ${w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}
+          ${st === 'hiatus' ? '<em class="wk-tag">휴재</em>' : ''}
+          ${WT.platform.icon(w.platform, 'pf-cv')}
+          ${me.state !== 'none' ? `<span class="wk-bar" aria-hidden="true"><i style="width:${me.state === 'done' ? 100 : Math.max(6, pct)}%"></i></span>` : ''}
         </span>
-        <b class="wk-c-t">${esc(w.title)}</b>
-        <small class="wk-c-a">${esc(WT.authorsOf(w).map((a) => a.name).join(', ') || gname)}</small>
-        <span class="wk-c-bar" aria-hidden="true"><i style="width:${Math.max(me.e ? 8 : 0, pct)}%"></i></span>
-        <span class="wk-c-my">${me.state === 'done' ? '✓ 다 따라왔어요' : me.state === 'reading' ? `${me.e} / ${me.tot}화` : '아직 안 봤어요'}</span>
       </a>`;
   }
-  function tile(n, cls, title, num, sub, ratio) {
-    return `<div class="wk-tile wkc${n} ${cls}"><span class="wk-t-h">${title}</span><b class="wk-t-n">${num}</b><span class="wk-t-s">${sub}</span>
-      <span class="wk-t-bar" aria-hidden="true"><i style="width:${Math.round(Math.max(0, Math.min(1, ratio)) * 100)}%"></i></span></div>`;
+  function tile(title, num, sub) {
+    return `<div class="wk-tile"><span class="wk-t-h">${title}</span><b class="wk-t-n">${num}</b><span class="wk-t-s">${sub}</span></div>`;
   }
 
   function view() {
@@ -81,10 +73,10 @@
         </div>
       </header>
       <section class="wk-tiles" aria-label="한눈에 보기">
-        ${tile(0, '', '오늘 올라와요', `${todayList.length}<small>편</small>`, esc(todayList.slice(0, 2).map((w) => w.title).join(', ') || '오늘은 쉬는 날이에요') + (todayList.length > 2 ? ` 외 ${todayList.length - 2}편` : ''), ongoing.length ? todayList.length / ongoing.length : 0)}
-        ${tile(1, '', '연재 중', `${ongoing.length}<small>편</small>`, `등록한 웹툰 ${all.length}편 가운데`, all.length ? ongoing.length / all.length : 0)}
-        ${tile(2, '', '내가 보는 연재작', `${reading.length}<small>편</small>`, reading.length ? esc(reading.slice(0, 2).map((w) => w.title).join(', ')) + (reading.length > 2 ? ` 외 ${reading.length - 2}편` : '') : '보기 시작하면 여기에 모여요', ongoing.length ? reading.length / ongoing.length : 0)}
-        ${tile(3, '', '휴재 중', `${hiatus.length}<small>편</small>`, '돌아오면 요일 칸에 다시 떠요', ongoing.length + hiatus.length ? hiatus.length / (ongoing.length + hiatus.length) : 0)}
+        ${tile('오늘 올라와요', `${todayList.length}<small>편</small>`, esc(todayList.slice(0, 2).map((w) => w.title).join(', ') || '오늘은 쉬는 날이에요') + (todayList.length > 2 ? ` 외 ${todayList.length - 2}편` : ''))}
+        ${tile('연재 중', `${ongoing.length}<small>편</small>`, `등록한 웹툰 ${all.length}편 가운데`)}
+        ${tile('내가 보는 연재작', `${reading.length}<small>편</small>`, reading.length ? esc(reading.slice(0, 2).map((w) => w.title).join(', ')) + (reading.length > 2 ? ` 외 ${reading.length - 2}편` : '') : '보기 시작하면 여기에 모여요')}
+        ${tile('휴재 중', `${hiatus.length}<small>편</small>`, '돌아오면 요일 칸에 다시 떠요')}
       </section>
       <nav class="wk-tabs" id="wk-tabs" role="tablist" aria-label="요일 고르기"></nav>
       <div class="wk-grid" id="wk-grid"></div>
