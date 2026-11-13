@@ -1059,7 +1059,7 @@
     catch (e) { throw new Error('서버에 닿지 못했어요. 인터넷 연결을 확인해 주세요.'); }
     try { j = await res.json(); }
     catch (e) { throw new Error(`서버가 잠시 응답하지 못했어요 (응답 ${res.status}). 조금 뒤에 다시 돼요.`); }
-    if (!j.ok) throw new Error(j.error || '서버에서 문제가 생겼어요.');
+    if (!j.ok) throw new Error((j.error || '서버에서 문제가 생겼어요.') + (j.detail ? ` (${j.detail})` : ''));
     return j;
   }
   async function srvLoad() {
@@ -1432,7 +1432,8 @@
     put('m:links', M.links || []);
     Object.keys(M.pins || {}).forEach((id) => put('mp:' + id, M.pins[id]));
     Object.keys(d.settings || {}).forEach((k) => put('s:' + k, d.settings[k]));
-    Object.keys(d).forEach((k) => { if (!['webtoons', 'genres', 'trees', 'map', 'settings', 'meta'].includes(k)) put('x:' + k, d[k]); });
+    Object.keys(d.authorInfo || {}).forEach((k) => put('ai:' + k, d.authorInfo[k]));   // 작가 정보는 한 명씩 (한 덩어리면 너무 커서 서버가 못 받아요)
+    Object.keys(d).forEach((k) => { if (!['webtoons', 'genres', 'trees', 'map', 'settings', 'meta', 'authorInfo'].includes(k)) put('x:' + k, d[k]); });
     return u;
   }
   function fromUnits(u, meta) {
@@ -1445,7 +1446,7 @@
       Object.keys(items).sort().forEach((id) => { if (!order.includes(id)) out.push(items[id]); });
       return out;
     };
-    const d = { webtoons: keyed('w:', 'o:w'), genres: keyed('g:', 'o:g'), trees: {}, map: {}, settings: {}, meta: meta || {} };
+    const d = { webtoons: keyed('w:', 'o:w'), genres: keyed('g:', 'o:g'), trees: {}, map: {}, settings: {}, meta: meta || {}, authorInfo: {} };
     Object.keys(u).forEach((k) => {
       if (k.startsWith('ts:')) { const gid = k.slice(3); d.trees[gid] = d.trees[gid] || { start: null, nodes: {}, links: [] }; d.trees[gid].start = get(k); }
     });
@@ -1454,7 +1455,8 @@
       else if (k.startsWith('tn:')) { const rest = k.slice(3); const i = rest.indexOf(':'); const gid = rest.slice(0, i); d.trees[gid] = d.trees[gid] || { start: null, nodes: {}, links: [] }; d.trees[gid].nodes[rest.slice(i + 1)] = get(k); }
       else if (k.startsWith('mp:')) { d.map.pins = d.map.pins || {}; d.map.pins[k.slice(3)] = get(k); }
       else if (k.startsWith('s:')) d.settings[k.slice(2)] = get(k);
-      else if (k.startsWith('x:')) d[k.slice(2)] = get(k);
+      else if (k.startsWith('ai:')) d.authorInfo[k.slice(3)] = get(k);
+      else if (k.startsWith('x:') && k !== 'x:authorInfo') d[k.slice(2)] = get(k);
     });
     const size = u['m:size'] ? get('m:size') : [2400, 1400];
     d.map.width = size[0]; d.map.height = size[1];
@@ -1470,6 +1472,30 @@
     return ops;
   }
   function applyUnits(u, ops) { ops.forEach((o) => { if (o.v === null) delete u[o.k]; else u[o.k] = o.v; }); return u; }
+  // 예전 방식(작가 정보 한 덩어리)으로 올라온 변경은 작가 한 명씩으로 풀어서 받아요
+  function modernOps(ops) {
+    const out = [];
+    (ops || []).forEach((o) => {
+      if (o.k !== 'x:authorInfo') { out.push(o); return; }
+      let all = null;
+      try { all = o.v ? JSON.parse(o.v) : null; } catch (e) { all = null; }
+      Object.keys(all || {}).forEach((k) => out.push({ k: 'ai:' + k, v: JSON.stringify(all[k]) }));
+    });
+    return out;
+  }
+  const modernBatches = (bts) => (bts || []).map((bt) => Object.assign({}, bt, { ops: modernOps(bt.ops) }));
+  // 한 번에 보낼 만큼만 잘라요 (서버의 시트 한 칸에 들어가는 크기까지)
+  const SEND_MAX = 38000;
+  function sendable(ops) {
+    const out = [];
+    let size = 2;
+    for (let i = 0; i < ops.length; i++) {
+      const n = JSON.stringify(ops[i]).length + 1;
+      if (out.length && size + n > SEND_MAX) break;
+      out.push(ops[i]); size += n;
+    }
+    return out;
+  }
 
   /** 함께 편집 시작: 마지막으로 올린 데이터 + 그 뒤 모두가 고친 내용, 그 위에 이 기기에서 하던 작업 */
   // 연결에 실패하면 저절로 다시 시도해요 (3초 → 6초 → … 최대 30초 간격). 전에는 한 번 실패하면 새로고침할 때까지 끊긴 채였어요
@@ -1483,7 +1509,7 @@
     if (live.on || live.joining || !srv.ok) return;
     live.joining = true; clearTimeout(live.retry);
     let r;
-    try { r = await api('liveJoin', { here: liveHere() }); } catch (e) { liveRetryLater(e.message); return; }
+    try { r = await api('liveJoin', { here: liveHere(), proto: 2 }); } catch (e) { liveRetryLater(e.message); return; }
     if (!r || !r.base || !Array.isArray(r.base.webtoons)) { liveRetryLater('서버에서 사이트 데이터를 받지 못했어요.'); return; }
     const first = !live.joined;
     const before = JSON.parse(siteJSON);               // 이 화면을 열 때 받은 사이트 데이터
@@ -1500,7 +1526,8 @@
     siteJSON = JSON.stringify(D);
     setBase(r.baseHash);
     let u = units(D);
-    r.batches.forEach((bt) => applyUnits(u, bt.ops));
+    modernBatches(r.batches).forEach((bt) => applyUnits(u, bt.ops));
+    if (r.lost) toast('저장 전 변경 기록 일부를 읽지 못해서, 마지막으로 저장된 내용부터 다시 시작해요');
     live.shadow = Object.assign({}, u);
     applyUnits(u, mine);
     D = fromUnits(u, meta); ensure();
@@ -1526,11 +1553,12 @@
     if (live.busy) { await new Promise((ok) => setTimeout(ok, 300)); if (live.busy) return; }
     live.busy = true;
     try {
-      const ops = diffUnits(live.shadow, units(D));
-      const r = await api('liveSync', { since: live.ver, ops: ops.length ? ops : undefined, here: liveHere() });
+      const all = diffUnits(live.shadow, units(D));
+      const ops = sendable(all);   // 많이 고쳤으면 나눠서 올려요
+      const r = await api('liveSync', { since: live.ver, ops: ops.length ? ops : undefined, here: liveHere(), proto: 2 });
       if (r.rejoin) { live.on = false; live.busy = false; await liveJoin(); return; }
       if (ops.length) applyUnits(live.shadow, ops);
-      const remote = (r.batches || []).filter((bt) => bt.ver !== r.myVer);
+      const remote = modernBatches((r.batches || []).filter((bt) => bt.ver !== r.myVer));
       if (remote.length) liveReceive(remote);
       live.ver = r.version;
       live.who = r.who || [];
@@ -1542,6 +1570,7 @@
         setState();
       }
       live.err = '';
+      if (all.length > ops.length) setTimeout(() => liveTick(), 150);   // 남은 조각 이어서 올리기
     } catch (e) {
       live.err = e.message;
     }

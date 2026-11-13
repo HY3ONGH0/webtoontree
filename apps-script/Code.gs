@@ -58,7 +58,10 @@ function doPost(e) {
   } catch (err) {
     var msg = err && err.userMessage ? err.userMessage : '서버에서 문제가 생겼어요. 잠시 뒤 다시 시도해 주세요.';
     if (!(err && err.userMessage)) console.error(err && err.stack ? err.stack : err);
-    return out_({ ok: false, error: msg });
+    var fail = { ok: false, error: msg };
+    // 관리자 화면의 요청은 무엇이 잘못됐는지 짧게 함께 알려 줘요 (원인을 바로 찾을 수 있게)
+    if (!(err && err.userMessage) && /^(live|admin)/.test(String(body.action))) fail.detail = String((err && err.message) || err).slice(0, 160);
+    return out_(fail);
   } finally {
     if (lock) lock.releaseLock();
   }
@@ -270,8 +273,12 @@ var ACTIONS = {
     var cur = githubFile_(github_());
     if (!cur) fail_('GitHub에서 data.json을 읽지 못했어요. ' + GH_LAST_);
     var data = JSON.parse(cur.text);
-    livePresence_(me, b.here);
-    return { version: st.ver, baseVersion: st.base, base: data, baseHash: hash_(JSON.stringify(data)), batches: liveOps_(st.base, st.ver), who: livePresence_(null) };
+    // 저장 전 변경 기록을 읽지 못해도 연결은 되게 해요 (마지막으로 저장된 내용부터 다시 시작)
+    var batches = [], lost = false;
+    try { batches = liveOps_(st.base, st.ver); } catch (e) { console.error('liveOps', e && e.stack ? e.stack : e); lost = true; }
+    var who = [];
+    try { livePresence_(me, b.here); who = livePresence_(null); } catch (e) { console.error('presence', e); }
+    return { version: st.ver, baseVersion: st.base, base: data, baseHash: hash_(JSON.stringify(data)), batches: batches, lost: lost, who: who };
   },
 
   /** 몇 초마다: 내 변경 올리기 + 다른 관리자 변경 받기 + 누가 있는지 */
@@ -281,7 +288,8 @@ var ACTIONS = {
     var myVer = null;
     if (b.ops && b.ops.length) {
       var text = JSON.stringify(b.ops);
-      if (text.length > 90000) fail_('한 번에 고친 내용이 너무 커요. 조금씩 나눠서 고쳐 주세요.');
+      // 시트 한 칸에는 5만 자까지만 들어가요. 관리자 화면이 이보다 작게 나눠서 보내요
+      if (text.length > 49000) fail_('한 번에 고친 내용이 너무 커요. 관리자 화면을 새로고침한 뒤 다시 해 주세요.');
       var lock = LockService.getScriptLock();
       lock.waitLock(15000);
       try {
@@ -1090,7 +1098,15 @@ function githubFile_(g) {
   GH_LAST_ = code === 401 ? 'GitHub 토큰이 만료됐거나 틀렸어요 (응답 401)' : code === 404 ? '저장소나 data.json을 찾지 못했어요 (응답 404)' : code === 403 || code === 429 ? 'GitHub 사용량 제한에 걸렸어요 (응답 ' + code + ')' : code ? '응답 ' + code : 'GitHub에 닿지 못했어요';
   if (code !== 200) return null;
   var j = JSON.parse(res.getContentText());
-  var text = Utilities.newBlob(Utilities.base64Decode(String(j.content || '').replace(/\s/g, ''))).getDataAsString('UTF-8');
+  var b64 = String(j.content || '').replace(/\s/g, '');
+  // 파일이 1MB를 넘으면 GitHub가 내용을 비워서 줘요. 그때는 파일 덩어리(blob) 주소로 다시 받아요
+  if (!b64 && j.git_url) {
+    var r2 = UrlFetchApp.fetch(j.git_url, { headers: g.headers, muteHttpExceptions: true });
+    if (r2.getResponseCode() !== 200) { GH_LAST_ = 'data.json 내용을 받지 못했어요 (응답 ' + r2.getResponseCode() + ')'; return null; }
+    b64 = String(JSON.parse(r2.getContentText()).content || '').replace(/\s/g, '');
+  }
+  if (!b64) { GH_LAST_ = 'data.json 내용이 비어 있어요'; return null; }
+  var text = Utilities.newBlob(Utilities.base64Decode(b64)).getDataAsString('UTF-8');
   return { sha: j.sha, text: text };
 }
 function liveState_() {
@@ -1106,7 +1122,7 @@ function liveOps_(since, upto) {
   var got = {};
   for (var i = 0; i < keys.length; i += 100) {
     var part = cache.getAll(keys.slice(i, i + 100));
-    Object.keys(part).forEach(function (k) { got[k] = JSON.parse(part[k]); });
+    Object.keys(part).forEach(function (k) { try { got[k] = JSON.parse(part[k]); } catch (e) { /* 시트에서 다시 읽어요 */ } });
   }
   var rows = keys.map(function (k) { return got[k]; });
   if (rows.some(function (r) { return !r; })) {
@@ -1115,7 +1131,12 @@ function liveOps_(since, upto) {
     rows = [];
     for (var w = since + 1; w <= upto; w++) if (byVer[w]) rows.push(byVer[w]);
   }
-  return rows.map(function (r) { return { ver: Number(r.ver), by: r.by, name: r.name, ops: typeof r.ops === 'string' ? JSON.parse(r.ops) : r.ops }; });
+  // 읽을 수 없는 기록 한 줄 때문에 전체가 막히지 않게, 그 줄만 건너뛰어요
+  return rows.map(function (r) {
+    var ops = r.ops;
+    if (typeof ops === 'string') { try { ops = JSON.parse(ops); } catch (e) { console.warn('live op ' + r.ver + ' 건너뜀'); return null; } }
+    return Array.isArray(ops) ? { ver: Number(r.ver), by: r.by, name: r.name, ops: ops } : null;
+  }).filter(Boolean);
 }
 /** 사이트에 올린 지점까지의 기록은 시트에서 지워요 */
 function livePrune_(upto) {
