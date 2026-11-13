@@ -8,7 +8,8 @@
       "url": "https://comic.naver.com/webtoon/list?titleId=723046",
       "cover": "https://image-comic.pstatic.net/webtoon/723046/thumbnail/thumbnail_IMAG21_c9dc9f1e-6e34-4ae8-9ea3-e94dda2dbef5.jpg",
       "genres": [
-        "action"
+        "action",
+        "apocalyps"
       ],
       "recommended": 3,
       "color": "#353648",
@@ -736,7 +737,8 @@
       "cover": "https://image-comic.pstatic.net/webtoon/807826/thumbnail/thumbnail_IMAG21_634e489a-2a62-4078-86e0-ca1a24f55f65.jpg",
       "genres": [
         "fantasy",
-        "action"
+        "action",
+        "apocalyps"
       ],
       "recommended": 2,
       "color": "#f6eab6",
