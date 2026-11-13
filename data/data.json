@@ -1,81 +1,87 @@
 {
   "webtoons": [
     {
-      "id": "w657564281141030",
-      "title": "앵클 브레이커",
-      "author": "하하영, 민영",
+      "id": "w657564281141036",
+      "title": "청춘 러브썸",
+      "author": "홍덕, NEMONE",
       "platform": "네이버웹툰",
-      "url": "https://comic.naver.com/webtoon/list?titleId=842261",
-      "cover": "https://image-comic.pstatic.net/webtoon/842261/thumbnail/thumbnail_IMAG21_0728999c-2b0e-4f05-8dfb-6cf762d0f559.jpg",
+      "url": "https://comic.naver.com/webtoon/list?titleId=828920",
+      "cover": "https://image-comic.pstatic.net/webtoon/828920/thumbnail/thumbnail_IMAG21_4a49ae6d-a059-4b94-b3f4-a16d62dad552.jpg",
       "genres": [
-        "sports"
+        "romance"
       ],
       "recommended": 3,
-      "color": "#76575a",
-      "episodes": 46,
-      "status": "hiatus",
+      "color": "#ebf0eb",
+      "episodes": 87,
+      "status": "ongoing",
       "days": [
-        "fri"
+        "tue"
       ],
-      "autoCount": false,
+      "autoCount": true,
       "baseDate": "2026-11-13",
       "tags": [
-        "스포츠",
-        "학원액션",
-        "열혈",
+        "로맨스",
+        "리얼로맨스",
+        "감성적인",
+        "설렘폭발",
+        "캠퍼스",
         "우정",
-        "라이벌",
         "청춘",
-        "미친작화",
-        "요즘핫한추천작"
+        "소심녀"
       ],
-      "desc": "167.8cm 단신 가드의 등장! \n\"농구는 키 작으면 절대 안 된다고? \n2m, 3m 다 데리고 와 보라 그래. \n아무리 키 커도 넘어뜨리면 나보다 다 아래야.\" \n주인공 강휘는 런 앤 건으로 대회 우승을 꿈꾸는 전광고 농구부의 마지막 퍼즐이 될 수 있을까?",
+      "desc": "\"푸르진 않지만 나름 괜찮아.\"\n전작 청춘블라썸 에필로그로부터 1년 뒤,\n원장 쌤이 새로 오픈한 '카페블라썸 앤 네모네화실'을 중심으로\n보미의 대학 동기 '푸름'과 함께 다시 시작되는 청춘들의 이야기.\n캠퍼스 로맨스, 학원 로맨스, 직장인 로맨스 등 없는 게 없다.\n유쾌한 이야기로 다시 찾아온 청춘 시리즈!",
       "authors": [
         {
-          "name": "하하영",
+          "name": "홍덕",
           "roles": [
             "writer"
           ]
         },
         {
-          "name": "민영",
+          "name": "NEMONE",
           "roles": [
             "painter"
           ]
         }
       ],
       "coverAuto": true,
-      "source": "https://comic.naver.com/webtoon/list?titleId=842261",
+      "source": "https://comic.naver.com/webtoon/list?titleId=828920",
       "autoAt": "2026-11-13"
     },
     {
-      "id": "w657564281141029",
-      "title": "용이산다",
-      "author": "초",
+      "id": "w657564281141035",
+      "title": "잔불의 기사",
+      "author": "환댕",
       "platform": "네이버웹툰",
-      "url": "https://comic.naver.com/webtoon/list?titleId=568986",
-      "cover": "https://image-comic.pstatic.net/webtoon/568986/thumbnail/thumbnail_IMAG21_4064044811088834611.jpg",
+      "url": "https://comic.naver.com/webtoon/list?titleId=768536",
+      "cover": "https://image-comic.pstatic.net/webtoon/768536/thumbnail/thumbnail_IMAG21_06774772-8958-4f9b-ad2c-895567ec11bc.jpg",
       "genres": [
         "fantasy",
-        "daily"
+        "action"
       ],
-      "recommended": 0,
-      "color": "#fcede2",
-      "episodes": 197,
-      "status": "completed",
+      "recommended": 4,
+      "color": "#472716",
+      "episodes": 246,
+      "status": "hiatus",
       "days": [
-        "sat"
+        "mon"
       ],
       "autoCount": false,
       "baseDate": "2026-11-13",
       "tags": [
-        "드라마",
-        "완결드라마"
+        "판타지",
+        "중세판타지액션",
+        "마법",
+        "액션",
+        "성장물",
+        "세계관",
+        "소년왕도물",
+        "복수극"
       ],
-      "desc": "드래곤이든 인간이든 그저 평범한 판타지 일상물.\n새로운 용(?)물 등장!",
+      "desc": "유일한 가족이자, 최고의 기사 유망주였던 쌍둥이 동생이 살해당했다.\n천재적이었던 동생과는 달리 무예에 재능이 전혀 없지만,\n동생의 복수를 위해 '강함'을 연기하기로 결심했다.\n약해빠진 나는 복수에 성공할 수 있을까.",
       "authors": [
         {
-          "name": "초",
+          "name": "환댕",
           "roles": [
             "writer",
             "painter"
@@ -83,10 +89,299 @@
         }
       ],
       "coverAuto": true,
-      "source": "https://comic.naver.com/webtoon/list?titleId=568986",
+      "source": "https://comic.naver.com/webtoon/list?titleId=768536",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-6"
+      ]
+    },
+    {
+      "id": "w657564281141034",
+      "title": "괴이현상 하나",
+      "author": "머클, 곰방",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=848549",
+      "cover": "https://image-comic.pstatic.net/webtoon/848549/thumbnail/thumbnail_IMAG21_105d3d6f-1b1d-477f-8a3e-5e6a1802392c.jpg",
+      "genres": [
+        "thriller"
+      ],
+      "recommended": 2,
+      "color": "#ececf3",
+      "episodes": 41,
+      "status": "ongoing",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "스릴러",
+        "비쥬얼쇼크",
+        "바디 호러",
+        "2024 지상최대공모전",
+        "고자극스릴러",
+        "자극적인",
+        "시리어스",
+        "크리처"
+      ],
+      "desc": "괴이현상 규칙 하나,\n?̵̡͖̺̮͚̱͚̿͛̋͌̑͡?̢̨̲̤̞͙̟̌̏́̒̔̎̅͌͠͝?̴̰̭̭͉̬͙̲̄̀̐̿͐͋͛͡͠?̧͖͈̮̞̯̯̟̲̒̏̒͘͘͠을 잊지 마세요.\n\n괴이현상 규칙 둘,\n중심부 ?̭̠͙̖̹̪͎͗̒̒̋͒͠?̸̫͈̯͉̝̰͇́̒̀̏́͂͛͟͠을 찾으세요.\n\n괴이현상 규칙 셋,\n?̭̠͙̖̹̪͎͗̒̒̋͒͠?̸̫͈̯͉̝̰͇́̒̀̏́͂͛͟͠을 들고 도망치세요.\n\n규칙괴담 호러판타지",
+      "authors": [
+        {
+          "name": "머클",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "곰방",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=848549",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141033",
+      "title": "종말에서 살아남기",
+      "author": "송",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=826321",
+      "cover": "https://image-comic.pstatic.net/webtoon/826321/thumbnail/thumbnail_IMAG21_6f758997-16a2-49a9-abf9-d28611b38a2e.jpg",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": 1,
+      "color": "#181d23",
+      "episodes": 119,
+      "status": "ongoing",
+      "days": [
+        "thu"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "시리어스",
+        "생존",
+        "크리처",
+        "액션",
+        "스릴러",
+        "서바이벌",
+        "2021 지상최대공모전"
+      ],
+      "desc": "평생 지하실에 감금되어 훈련받은 소년.\n그리고 그를 가둔 미치광이 아빠가 하는 말\n\"종말이 온다.\"\n지금껏 수없이 반복해온 훈련과 생존 지식으로\n종말에서 살아남아야만 한다.",
+      "authors": [
+        {
+          "name": "송",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=826321",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141032",
+      "title": "정글쥬스",
+      "author": "형은, 쥬더",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=762279",
+      "cover": "https://image-comic.pstatic.net/webtoon/762279/thumbnail/thumbnail_IMAG21_9f0ab9e4-d8d4-4c6c-ac07-606f6950df39.jpg",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": 2,
+      "color": "#fed9d5",
+      "episodes": 234,
+      "status": "ongoing",
+      "days": [
+        "thu"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "액션",
+        "현대판타지",
+        "열혈",
+        "캠퍼스",
+        "현대",
+        "이능력",
+        "배틀",
+        "슈퍼스트링"
+      ],
+      "desc": "의문의 벌레약 ‘정글쥬스’로 인해 곤충인간이 되었다.\n이를 숨기며 살던 대학생 장수찬은 어느 날 그 모습을\n모두에게 보이게 되고, 곤충인간들의 사회로 들어가\n약육강식의 논리와 맞서 싸우게 되는데...\n\n각양각색 곤충능력자들의 판타지 액션\n슈퍼스트링 유니버스의 새로운 히어로 등장!",
+      "authors": [
+        {
+          "name": "형은",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "쥬더",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=762279",
       "autoAt": "2026-11-13",
       "subs": [
         "fantasy-5"
+      ]
+    },
+    {
+      "id": "w657564281141031",
+      "title": "세계멸망전",
+      "author": "펀치킥, 킬",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=854580",
+      "cover": "https://image-comic.pstatic.net/webtoon/854580/thumbnail/thumbnail_IMAG21_7d3f5e81-58bd-48f2-9705-6dbd0703cd44.jpg",
+      "genres": [
+        "action",
+        "fantasy"
+      ],
+      "recommended": 1,
+      "color": "#1a1318",
+      "episodes": 17,
+      "status": "ongoing",
+      "days": [
+        "thu"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "액션",
+        "액션판타지",
+        "게임",
+        "상태창",
+        "생존",
+        "이능력",
+        "배틀",
+        "판타지"
+      ],
+      "desc": "천마, 헌터, 거대 로봇, 마왕, 초인.\n각 세계의 존망을 걸고 한자리에 모인 최강자들.\n패배의 대가는 오직 세계의 멸망뿐인 생존 전쟁 속,\n유일하게 아무런 능력도 없는 '일반 세계' 대표들이 끌려온다.\n규격 외 괴물들의 압도적인 무력에 짓밟히기 직전,\n그들에게 주어진 뜻밖의 무기.\n\n[게임 캐릭터의 능력이 동기화됩니다.]\n\n신자현과 일반 세계 대표들은 게임의 능력을 빌려 진짜 최강자들을 꺾고 살아남을 수 있을까?",
+      "authors": [
+        {
+          "name": "펀치킥",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "킬",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=854580",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-6"
+      ]
+    },
+    {
+      "id": "w657564281141030",
+      "title": "해골전령 이야기",
+      "author": "kain_y, 소라게",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=842620",
+      "cover": "https://image-comic.pstatic.net/webtoon/842620/thumbnail/thumbnail_IMAG21_ccc50362-e80d-412b-afab-cb8769ca6af7.jpg",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": 1,
+      "color": "#171728",
+      "episodes": 57,
+      "status": "ongoing",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "액션",
+        "복수극",
+        "먼치킨",
+        "다크판타지"
+      ],
+      "desc": "황제가 죽고 120년, 다시 눈을 뜬 황제의 전령이자\n용사파티원이였던 벤리라.\n부패한 조국에게 사랑하던 제자를 잃고\n황제의 마지막 전언을 전하기로 결정한다.\n\n[나는 황제의 말을 전하는 전령, 초대황제의 뜻을 들어라.]\n[제국에게 종언을 속삭이러 왔다]\n\n용사파티의 120년후 두번째 모험 이야기.",
+      "authors": [
+        {
+          "name": "kain_y",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "소라게",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=842620",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-6"
+      ]
+    },
+    {
+      "id": "w657564281141029",
+      "title": "장인의 거리",
+      "author": "kain_y, 호재",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=847612",
+      "cover": "https://image-comic.pstatic.net/webtoon/847612/thumbnail/thumbnail_IMAG21_947b78c6-5b19-44e9-8b60-24bc2e4994bd.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 1,
+      "color": "#291714",
+      "episodes": 45,
+      "status": "ongoing",
+      "days": [
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지"
+      ],
+      "desc": "유년시절 부모님을 잃고\n홀로 마왕군의 노예가 된 \"유타\"\n용사에게 구출 된 후, 자신이 진짜로\n하고싶던 일을 찾아 망치를 들고...\n장인의 거리로 향한다.\n\n용사의 동화에는 실리지 않은,\n그들을 도왔던 대장장이들의 이야기.\n\n\"장인의 거리의 오신걸 환영합니다.\"",
+      "authors": [
+        {
+          "name": "kain_y",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "호재",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=847612",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-6"
       ]
     },
     {
@@ -642,7 +937,9 @@
       "platform": "네이버웹툰",
       "url": "https://comic.naver.com/webtoon/list?titleId=838944",
       "cover": "https://image-comic.pstatic.net/webtoon/838944/thumbnail/thumbnail_IMAG21_a475fa12-0187-4f5f-a1e2-432704df61be.jpg",
-      "genres": [],
+      "genres": [
+        "romance"
+      ],
       "recommended": 0,
       "color": "#e5e2ee",
       "episodes": 55,
@@ -5678,26 +5975,17 @@
       "start": "w027",
       "nodes": {
         "w027": [
-          110,
+          130,
           280
         ],
         "w657564281141027": [
-          510,
-          280
-        ],
-        "w657564281141030": [
-          310,
+          380,
           280
         ]
       },
       "links": [
         {
           "from": "w027",
-          "to": "w657564281141030",
-          "why": ""
-        },
-        {
-          "from": "w657564281141030",
           "to": "w657564281141027",
           "why": ""
         }
@@ -5811,7 +6099,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141030
+    "lastWebtoonId": 657564281141036
   },
   "version": 1,
   "shop": [
@@ -7429,10 +7717,10 @@
       "url": "https://comic.naver.com/community/u/_l1dx3l",
       "works": [
         {
-          "title": "청춘 러브썸",
-          "source": "https://comic.naver.com/webtoon/list?titleId=828920",
-          "cover": "https://image-comic.pstatic.net/webtoon/828920/thumbnail/thumbnail_IMAG21_4a49ae6d-a059-4b94-b3f4-a16d62dad552.jpg",
-          "finished": false
+          "title": "청춘 블라썸",
+          "source": "https://comic.naver.com/webtoon/list?titleId=746834",
+          "cover": "https://image-comic.pstatic.net/webtoon/746834/thumbnail/thumbnail_IMAG21_6412ed6b-2288-41df-8715-648a3da9154e.jpg",
+          "finished": true
         }
       ]
     },
@@ -7443,10 +7731,10 @@
       "url": "https://comic.naver.com/community/u/_k1eyok",
       "works": [
         {
-          "title": "청춘 러브썸",
-          "source": "https://comic.naver.com/webtoon/list?titleId=828920",
-          "cover": "https://image-comic.pstatic.net/webtoon/828920/thumbnail/thumbnail_IMAG21_4a49ae6d-a059-4b94-b3f4-a16d62dad552.jpg",
-          "finished": false
+          "title": "청춘 블라썸",
+          "source": "https://comic.naver.com/webtoon/list?titleId=746834",
+          "cover": "https://image-comic.pstatic.net/webtoon/746834/thumbnail/thumbnail_IMAG21_6412ed6b-2288-41df-8715-648a3da9154e.jpg",
+          "finished": true
         }
       ]
     },
@@ -7796,50 +8084,127 @@
         }
       ]
     },
-    "초": {
-      "name": "초",
+    "kain_y": {
+      "name": "kain_y",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20250916_252/1758024967175JuODU_PNG/jMMzxNZD_400x400.png",
+      "bio": "엄마 나 네이버 왔어  유튜브 https://www.youtube.com/@kain_y6388 치지직 https://chzzk.naver.com/ba8d715bc87fffa1f72cf389f59f8380",
+      "url": "https://comic.naver.com/community/u/_053779",
+      "works": [
+        {
+          "title": "해골전령 이야기",
+          "source": "https://comic.naver.com/webtoon/list?titleId=842620",
+          "cover": "https://image-comic.pstatic.net/webtoon/842620/thumbnail/thumbnail_IMAG21_ccc50362-e80d-412b-afab-cb8769ca6af7.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "호재": {
+      "name": "호재",
       "img": "",
       "bio": "",
       "url": "",
       "works": [
         {
-          "title": "쌉초의 난",
-          "source": "https://comic.naver.com/webtoon/list?titleId=823195",
-          "cover": "https://image-comic.pstatic.net/webtoon/823195/thumbnail/thumbnail_IMAG21_5a92d1bb-bfc1-4f46-aff6-9131d1b20b07.jpg",
-          "finished": true
+          "title": "경험치 10만배로 초월급 헌터가 되었다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=853052",
+          "cover": "https://image-comic.pstatic.net/webtoon/853052/thumbnail/thumbnail_IMAG21_dd7c5585-d459-46ba-9f5c-3c611e102025.jpg",
+          "finished": false
         }
       ]
     },
-    "하하영": {
-      "name": "하하영",
-      "img": "https://kw-wcommunity-phinf.pstatic.net/20241121_289/1732168524038umEin_PNG/1000008739.png",
-      "bio": "인스타: ha_hayeong 안녕하세요! 와주셔서 감사합니다. 다양한 소식 많이 전달해 드릴게요~",
-      "url": "https://comic.naver.com/community/u/_c1jxda",
+    "소라게": {
+      "name": "소라게",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20250916_148/17580252524302w88e_PNG/%BD%BA%C5%A9%B8%B0%BC%A6_2025-09-16_212002.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_2534v5",
+      "works": []
+    },
+    "펀치킥": {
+      "name": "펀치킥",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20250504_188/1746346096105CypRV_PNG/IMG_9636.png",
+      "bio": "인스타👉punch_kick_",
+      "url": "https://comic.naver.com/community/u/_chky1",
       "works": [
         {
-          "title": "빅맨",
-          "source": "https://comic.naver.com/webtoon/list?titleId=753839",
-          "cover": "https://image-comic.pstatic.net/webtoon/753839/thumbnail/thumbnail_IMAG21_3835153067459896165.jpg",
-          "finished": true
+          "title": "백XX",
+          "source": "https://comic.naver.com/webtoon/list?titleId=804862",
+          "cover": "https://image-comic.pstatic.net/webtoon/804862/thumbnail/thumbnail_IMAG21_16a25137-072a-4a83-acc5-211b47546595.jpeg",
+          "finished": false
         },
         {
-          "title": "티키타카",
-          "source": "https://comic.naver.com/webtoon/list?titleId=833244",
-          "cover": "https://image-comic.pstatic.net/webtoon/833244/thumbnail/thumbnail_IMAG21_8dab2510-1384-418c-a60d-8e4ceac45422.jpg",
+          "title": "레드셔츠",
+          "source": "https://comic.naver.com/webtoon/list?titleId=838553",
+          "cover": "https://image-comic.pstatic.net/webtoon/838553/thumbnail/thumbnail_IMAG21_2ad80608-3395-40ac-8603-4b1eb2a3d335.jpg",
           "finished": true
         }
       ]
     },
-    "민영": {
-      "name": "민영",
-      "img": "https://kw-wcommunity-phinf.pstatic.net/20250909_204/1757428878021p7Flp_PNG/%B0%AD%C8%D6%C0%CF%B7%CF.png",
+    "킬": {
+      "name": "킬",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230918_179/1695048392739sMAH8_PNG/1695043155839.png",
       "bio": "",
-      "url": "https://comic.naver.com/community/u/ivy9410",
+      "url": "https://comic.naver.com/community/u/Kill",
+      "works": []
+    },
+    "형은": {
+      "name": "형은",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20240329_235/17117125235508D8vG_PNG/%C7%FC%C0%BA_%BF%C0%B3%CA%C4%B3_%BA%B9%BB%E7.png",
+      "bio": "[정글쥬스] [100] 스토리 작가 형은입니다. 인별: @carpants",
+      "url": "https://comic.naver.com/community/u/TypeSilver",
       "works": [
         {
-          "title": "주욱 같은 하루",
-          "source": "https://comic.naver.com/webtoon/list?titleId=774300",
-          "cover": "https://image-comic.pstatic.net/webtoon/774300/thumbnail/thumbnail_IMAG21_4050196432125387569.jpg",
+          "title": "100",
+          "source": "https://comic.naver.com/webtoon/list?titleId=783549",
+          "cover": "https://image-comic.pstatic.net/webtoon/783549/thumbnail/thumbnail_IMAG21_3847261774335533621.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "쥬더": {
+      "name": "쥬더",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230915_172/1694719348769k0f3s_PNG/%C7%C1%B7%CE%C7%CA.png",
+      "bio": "안녕하세요  쥬더J & 쥬더D  부부작가 쥬더입니다.",
+      "url": "https://comic.naver.com/community/u/juder",
+      "works": []
+    },
+    "송": {
+      "name": "송",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "머클": {
+      "name": "머클",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260304_207/1772634868550lN7m1_PNG/%B3%BB_%C0%DA%C4%B3.png",
+      "bio": "안녕하세요 여러분!!!!!!!",
+      "url": "https://comic.naver.com/community/u/mokle",
+      "works": []
+    },
+    "곰방": {
+      "name": "곰방",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_d1fyi4",
+      "works": [
+        {
+          "title": "인류를 절반으로 줄이겠습니다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=850684",
+          "cover": "https://image-comic.pstatic.net/webtoon/850684/thumbnail/thumbnail_IMAG21_8fcf23c6-02dc-4b11-8d63-663104e6fd93.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "환댕": {
+      "name": "환댕",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230914_15/16946230102115U5mM_PNG/ccc.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/hwandaeng",
+      "works": [
+        {
+          "title": "애늙은이",
+          "source": "https://comic.naver.com/webtoon/list?titleId=828373",
+          "cover": "https://image-comic.pstatic.net/webtoon/828373/thumbnail/thumbnail_IMAG21_bbe24b60-281a-4fd0-ab72-933259a2a3ab.jpg",
           "finished": true
         }
       ]
