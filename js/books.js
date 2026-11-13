@@ -43,6 +43,7 @@
         ${w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}
         ${w.pick ? '<span class="bk-pick">관리자 강추</span>' : ''}
         <span class="bk-st ${st}">${st === 'completed' ? '완결' : st === 'hiatus' ? '휴재' : '연재 ' + (w.days || []).map((d) => DAYK[d]).join('')}</span>
+        ${WT.platform.icon(w.platform, 'pf-cv')}
         ${me !== 'none' ? `<span class="bk-me ${me}">${me === 'done' ? '✓ 다 봤어요' : '보는 중'}</span>` : ''}
       </span>
       <b class="bk-t">${esc(w.title)}</b>

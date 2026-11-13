@@ -234,3 +234,19 @@ body.admin .chip-admin { background: #5BB8FF; }
 .au-info[open] { display: flex; flex-direction: column; gap: 14px; }
 .au-info-row { display: flex; flex-direction: column; gap: 6px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, .06); }
 .au-info-row b { font-size: 14px; }
+/* 작품 연결: 연결된 작품 카드 · 찾은 작품 목록 */
+.fx-h .pf { vertical-align: -3px; }
+.fx-linked { display: flex; gap: 14px; align-items: flex-start; }
+.fx-cv.big { width: 72px; border-radius: 10px; box-shadow: 0 8px 18px -8px rgba(0, 0, 0, .6); }
+.fx-lbody { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.fx-lt { font-size: 16px; }
+.fx-warn { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; padding: 9px 12px; border-radius: 10px; font-size: 13px; background: rgba(255, 154, 77, .12); border: 1px solid rgba(255, 154, 77, .45); }
+.fx-st { display: inline-block; margin-right: 6px; padding: 1px 7px; border-radius: 999px; font-style: normal; font-size: 11px; font-weight: 800; background: rgba(255, 255, 255, .14); color: #fff; }
+.fx-st.ongoing { background: #1D6FE8; }
+.fx-st.hiatus { background: #FF9A4D; color: #2A1405; }
+.fx-cand.dup { opacity: .55; cursor: not-allowed; }
+.fx-cand.dup:hover { border-color: rgba(255, 255, 255, .08); }
+.fx-go { text-align: right; }
+.fx-go small { display: block; max-width: 130px; font-weight: 500; font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ad-list .pf { margin-left: 4px; margin-right: 0; }
+@media (max-width: 640px) { .fx-linked { flex-direction: column; } }

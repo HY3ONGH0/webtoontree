@@ -367,7 +367,7 @@ var ACTIONS = {
     if (artist && artist.url && !/^https:\/\/comic\.naver\.com\/community\//.test(url)) url = artist.url;
     var out = { posts: [], url: url, artist: artist ? { img: artist.img || '', url: artist.url || '', bio: artist.bio || '' } : null };
     if (!/^https:\/\/comic\.naver\.com\/community\//.test(url)) { out.reason = 'no-home'; return out; }
-    var key = 'posts2:' + sha256_(url).slice(0, 32);
+    var key = 'posts3:' + sha256_(url).slice(0, 32);
     var memo = cacheGet_(key);
     if (memo) { out.posts = memo.posts; out.reason = memo.reason; return out; }
     try { out.posts = naverPosts_(url); } catch (e) { out.reason = String(e.message || e).slice(0, 120); }
@@ -480,18 +480,17 @@ var ACTIONS = {
   },
 
   // ---------- 관리자 ----------
-  // 제목으로 작품 찾기 (관리자만): 네이버 웹툰 + 카카오페이지 후보
+  // 제목으로 작품 찾기 (관리자만): 네이버 웹툰 정식 연재작
   adminSearch: function (b) {
     who_(b);
     var q = String(b.q || '').trim();
     if (q.length < 1) fail_('찾을 제목을 넣어 주세요.');
-    var key = 'search:' + sha256_(q).slice(0, 32);
+    var key = 'search2:' + sha256_(q).slice(0, 32);
     var memo = cacheGet_(key);
     if (memo) return memo;
     var list = [];
-    try { list = list.concat(naverSearch_(q)); } catch (e) { console.warn('naver search', e); }
-    try { list = list.concat(kakaoSearch_(q)); } catch (e) { console.warn('kakao search', e); }
-    var r = { items: list.slice(0, 12) };
+    list = naverSearch_(q);
+    var r = { items: list };
     cachePut_(key, r, 1800);
     return r;
   },
@@ -506,11 +505,10 @@ var ACTIONS = {
     return { infos: out };
   },
 
-  // 링크로 웹툰 정보 가져오기 (관리자만) — 네이버 웹툰 · 카카오페이지 · 그 밖의 사이트는 소개 정보(og)만
+  // 링크(또는 작품 번호)로 웹툰 정보 가져오기 (관리자만) — 네이버 웹툰
   adminFetchInfo: function (b) {
     who_(b);
     var url = String(b.url || '').trim();
-    if (!/^https?:\/\//i.test(url)) fail_('http로 시작하는 링크를 넣어 주세요.');
     return infoFor_(url, false);
   },
 
@@ -719,10 +717,7 @@ function infoFor_(url, fresh) {
   var key = 'info:' + sha256_(url).slice(0, 32);
   var memo = fresh ? null : cacheGet_(key);
   if (memo) return memo;
-  var r;
-  if (/comic\.naver\.com/i.test(url)) r = naverInfo_(url);
-  else if (/page\.kakao\.com/i.test(url)) r = kakaoPageInfo_(url);
-  else r = ogInfo_(url, '');
+  var r = naverInfo_(url);
   r.info.source = r.info.url;   // 정보를 가져오는 공식 작품 주소 (보러 가기 링크와는 따로)
   cachePut_(key, r, 3600);
   return r;
@@ -742,41 +737,26 @@ function applyInfo_(w, info, day) {
   w.autoAt = day;
   return changed;
 }
+// 네이버 웹툰 제목 검색: 정식 연재 웹툰만 (도전만화 · 베스트도전 · 단행본은 빼요)
 function naverSearch_(q) {
-  var j = get_('https://comic.naver.com/api/search/all?keyword=' + encodeURIComponent(q), true);
-  var found = [], seen = {};
-  (function walk(o, d) {
-    if (!o || typeof o !== 'object' || d > 8) return;
-    if (o.titleId && o.titleName && !seen[o.titleId]) {
-      seen[o.titleId] = 1;
-      found.push({ title: clean_(o.titleName), author: clean_(o.displayAuthor || o.author || (o.writers || []).map(function (a) { return a.name; }).join(', ') || ''), platform: '네이버웹툰',
-        cover: o.thumbnailUrl || '', source: 'https://comic.naver.com/webtoon/list?titleId=' + o.titleId, finished: !!o.finished });
-      return;
-    }
-    for (var k in o) walk(o[k], d + 1);
-  })(j, 0);
-  return found.slice(0, 8);
+  var j = get_('https://comic.naver.com/api/search/webtoon?keyword=' + encodeURIComponent(q) + '&page=1', true);
+  var seen = {};
+  return ((j && j.searchList) || []).map(function (o) {
+    if (!o || !o.titleId || !o.titleName || seen[o.titleId]) return null;
+    seen[o.titleId] = 1;
+    return { title: clean_(o.titleName),
+      author: clean_(o.displayAuthor || (o.communityArtists || []).map(function (a) { return a.name; }).join(' / ')),
+      platform: '네이버웹툰', cover: o.thumbnailUrl || '', source: 'https://comic.naver.com/webtoon/list?titleId=' + o.titleId,
+      finished: !!o.finished, rest: !!o.rest, when: clean_(o.publishDescription || ''), episodes: Number(o.articleTotalCount) || 0, adult: !!o.adult };
+  }).filter(Boolean).slice(0, 10);
 }
-function kakaoSearch_(q) {
-  var html = get_('https://page.kakao.com/search/result?keyword=' + encodeURIComponent(q), false);
-  var found = [], seen = {};
-  var nd = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
-  if (nd) {
-    (function walk(o, d) {
-      if (!o || typeof o !== 'object' || d > 18 || found.length >= 6) return;
-      var sid = o.seriesId || (/^\d+$/.test(String(o.id || '')) && o.title && (o.thumbnail || o.authors) ? o.id : null);
-      if (sid && o.title && !seen[sid] && !/소설|책/.test(String(o.category || o.subcategory || ''))) {
-        seen[sid] = 1;
-        found.push({ title: clean_(o.title), author: clean_(o.authors || ''), platform: '카카오페이지', cover: o.thumbnail ? (/^\/\//.test(o.thumbnail) ? 'https:' + o.thumbnail : o.thumbnail) : '', source: 'https://page.kakao.com/content/' + sid });
-        return;
-      }
-      for (var k in o) walk(o[k], d + 1);
-    })(JSON.parse(nd[1]), 0);
-  }
-  return found;
+// 링크나 숫자에서 네이버 웹툰 작품 번호 찾기 (PC · 모바일 · 회차 링크 모두)
+function naverTitleId_(s) {
+  s = String(s || '').trim();
+  if (/^\d{3,9}$/.test(s)) return s;
+  if (!/(^|[\/.])comic\.naver\.com\//i.test(s)) return '';
+  return (s.match(/[?&]titleId=(\d+)/) || [])[1] || '';
 }
-
-// 네이버 작가 정보: 프로필 사진 · 소개 · 작가 페이지 · 네이버 웹툰의 다른 작품 (하루 동안 기억해 둬요)
 function pickKey_(o, re) { for (var k in o) { if (re.test(k) && typeof o[k] === 'string' && o[k]) return o[k]; } return ''; }
 function naverArtists_(list, people, titleId) {
   return list.slice(0, 4).map(function (a) {
@@ -813,10 +793,22 @@ function naverArtists_(list, people, titleId) {
 // 작가 홈 게시글: 네이버 웹툰 작가 홈이 웹에서 쓰는 공개 글 목록에서 최근 글을 가져와요 (로그인 없이 보이는 글만)
 function naverPosts_(url) {
   var handle = (url.match(/\/community\/u\/([^/?#]+)/) || [])[1] || '';
-  var pageId = handle.replace(/^_/, '');   // 주소의 _3i1sk → 글 목록에서는 3i1sk
-  if (!pageId) throw new Error('작가 홈 주소가 아니에요');
+  if (!handle) throw new Error('작가 홈 주소가 아니에요');
+  var pageId = naverPageId_(handle);
   var j = get_('https://comic.naver.com/community/api/v2/posts?pageId=' + encodeURIComponent(pageId) + '&nextSize=20&cursor=&childPreviewCount=0&pinRepresentation=distinct', true);
   return naverPostList_((j && j.result) || {}, 'https://comic.naver.com/community/u/' + handle);
+}
+// 글 목록에 쓰는 작가 번호: 주소가 _3i1sk 꼴이면 3i1sk, 직접 정한 주소(232inthe 등)면 작가 홈 페이지 안에서 찾아요
+function naverPageId_(handle) {
+  if (/^_/.test(handle)) return handle.slice(1);
+  var key = 'cuid:' + sha256_(handle).slice(0, 24);
+  var memo = cacheGet_(key);
+  if (memo && memo.id) return memo.id;
+  var html = get_('https://comic.naver.com/community/u/' + encodeURIComponent(handle), false);
+  var m = html.match(/creatorId\\*"\s*:\s*\\*"([0-9a-z]+)/i) || html.match(/cuid\\*"\s*:\s*\\*"([0-9a-z]+)/i);
+  if (!m) throw new Error('작가 번호를 찾지 못했어요');
+  cachePut_(key, { id: m[1] }, 21600);
+  return m[1];
 }
 function naverPostList_(r, home) {
   var seen = {};
@@ -918,9 +910,8 @@ function meta_(html, prop) {
 }
 
 function naverInfo_(url) {
-  var m = url.match(/titleId=(\d+)/);
-  if (!m) fail_('네이버 웹툰 링크에서 작품 번호(titleId)를 찾지 못했어요. 작품 목록 페이지 링크를 넣어 주세요.');
-  var id = m[1];
+  var id = naverTitleId_(url);
+  if (!id) fail_('네이버 웹툰 작품 링크만 연결할 수 있어요. comic.naver.com 의 작품 목록(또는 회차) 링크를 넣어 주세요.');
   var j = get_('https://comic.naver.com/api/article/list/info?titleId=' + id, true);
   if (!j || !j.titleName) fail_('네이버 웹툰에서 작품 정보를 찾지 못했어요.');
   var roleOf = function (a) { var t = (a.artistTypeList || []).join(','); var r = []; if (/WRITER/.test(t)) r.push('writer'); if (/PAINTER/.test(t)) r.push('painter'); if (/ORIGIN/.test(t)) r.push('original'); return r; };
@@ -942,75 +933,18 @@ function naverInfo_(url) {
   try {
     var l = get_('https://comic.naver.com/api/article/list?titleId=' + id + '&page=1&sort=DESC', true);
     if (l && l.totalCount) info.episodes = Number(l.totalCount);
-  } catch (e) { /* 화수는 못 가져와도 괜찮아요 */ }
+  } catch (e) { /* 아래에서 다른 방법으로 찾아요 */ }
+  // 성인 작품은 회차 목록이 로그인 뒤에만 보여서, 완결 화수 표시나 검색 결과의 화수를 써요
+  if (!info.episodes) {
+    var fin = String(j.publishDescription || '').match(/(\d+)\s*화\s*완결/);
+    if (fin) info.episodes = Number(fin[1]);
+    else {
+      try {
+        naverSearch_(j.titleName).forEach(function (x) { if (!info.episodes && x.episodes && x.source.split('titleId=')[1] === id) info.episodes = x.episodes; });
+      } catch (e) { /* 화수는 못 가져와도 괜찮아요 */ }
+    }
+  }
   return { info: info, source: '네이버 웹툰' };
-}
-
-// 카카오페이지: 페이지가 쓰는 GraphQL로 작품 정보(제목 · 작가 · 연재 요일 · 상태 · 설명)와 총 화수를 가져와요.
-// 실패하면 페이지 소개 정보(og)로 제목 · 설명 · 표지만이라도 가져와요.
-function kakaoGql_(query, vars, referer) {
-  var res = UrlFetchApp.fetch('https://page.kakao.com/graphql', {
-    method: 'post', contentType: 'application/json', muteHttpExceptions: true,
-    headers: { 'Accept': 'application/graphql+json, application/json', 'Origin': 'https://page.kakao.com', 'Referer': referer,
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36' },
-    payload: JSON.stringify({ query: query, variables: vars })
-  });
-  var code = res.getResponseCode();
-  var j = null;
-  try { j = JSON.parse(res.getContentText('UTF-8')); } catch (e) { /* 아래에서 처리 */ }
-  if (code >= 400 || !j || !j.data) throw new Error('gql ' + code + ' ' + (j && j.errors ? JSON.stringify(j.errors).slice(0, 200) : ''));
-  return j.data;
-}
-function kakaoImg_(u) { u = String(u || ''); return /^\/\//.test(u) ? 'https:' + u : u; }
-function kakaoPageInfo_(url) {
-  var m = url.match(/content\/(\d+)/) || url.match(/seriesId=(\d+)/);
-  if (!m) fail_('카카오페이지 링크에서 작품 번호를 찾지 못했어요. page.kakao.com/content/숫자 모양의 링크를 넣어 주세요.');
-  var id = m[1];
-  var link = 'https://page.kakao.com/content/' + id;
-  var info = { platform: '카카오페이지', url: link, title: '' };
-  var notes = [];
-  // 1) 작품 정보
-  var fieldsList = ['title authors pubPeriod onIssue thumbnail description', 'title authors pubPeriod onIssue thumbnail', 'title authors thumbnail'];
-  for (var i = 0; i < fieldsList.length && !info.title; i++) {
-    try {
-      var d = kakaoGql_('query contentHomeOverview($seriesId: Long!) { contentHomeOverview(seriesId: $seriesId) { content { ' + fieldsList[i] + ' } } }', { seriesId: Number(id) }, link);
-      var c = d && d.contentHomeOverview && d.contentHomeOverview.content;
-      if (c && c.title) {
-        info.title = clean_(c.title);
-        if (c.authors) { info.author = uniq_(String(c.authors).split(/\s*,\s*/)).join(', '); info.authors = info.author.split(', ').map(function (n) { return { name: n, roles: [] }; }); }
-        if (c.thumbnail) info.cover = kakaoImg_(c.thumbnail);
-        if (c.description) info.desc = clean_(c.description);
-        if (c.pubPeriod) info.days = daysKo_(c.pubPeriod);
-        var issue = String(c.onIssue || '');
-        info.status = /end|complete/i.test(issue) ? 'completed' : /rest|pause|stop/i.test(issue) ? 'hiatus' : (issue || c.pubPeriod) ? 'ongoing' : undefined;
-      }
-    } catch (e) { notes.push(String(e.message || e)); }
-  }
-  // 2) 총 화수
-  try {
-    var d2 = kakaoGql_('query contentHomeProductList($seriesId: Long!, $first: Int) { contentHomeProductList(seriesId: $seriesId, first: $first) { totalCount } }', { seriesId: Number(id), first: 1 }, link);
-    var tc = d2 && d2.contentHomeProductList && d2.contentHomeProductList.totalCount;
-    if (tc) info.episodes = Number(tc);
-  } catch (e) { notes.push(String(e.message || e)); }
-  // 3) 모자란 건 페이지 소개 정보(og)로 채워요
-  if (!info.title || !info.desc || !info.cover) {
-    try {
-      var o = ogInfo_(link, '').info;
-      if (!info.title) info.title = String(o.title || '').replace(/\s*[-|]\s*(웹툰|웹소설|책)?\s*\|?\s*카카오페이지\s*$/, '').replace(/\s*-\s*(웹툰|웹소설)\s*$/, '').trim();
-      if (!info.desc && o.desc && !/카카오페이지/.test(o.desc.slice(0, 12))) info.desc = o.desc;
-      if (!info.cover && o.cover) info.cover = o.cover;
-    } catch (e) { notes.push('og ' + (e.userMessage || e.message || e)); }
-  }
-  if (!info.title) { console.warn('kakao', id, notes.join(' / ')); fail_('카카오페이지에서 작품 정보를 가져오지 못했어요. (' + (notes[0] || '응답 없음').slice(0, 120) + ')'); }
-  if (notes.length) console.warn('kakao partial', id, notes.join(' / '));
-  return { info: info, source: '카카오페이지' };
-}
-
-function ogInfo_(url, html) {
-  html = html || get_(url, false);
-  var title = meta_(html, 'og:title') || clean_((html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1] || '');
-  if (!title) fail_('이 페이지에서 작품 정보를 찾지 못했어요.');
-  return { info: { title: title, desc: meta_(html, 'og:description') || meta_(html, 'description'), cover: meta_(html, 'og:image'), url: url }, source: '페이지 소개 정보' };
 }
 
 function out_(obj) {
