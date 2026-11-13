@@ -2229,3 +2229,19 @@ html[data-theme="light"] .rail-item:hover, html[data-theme="light"] .rail-item.o
 a.lb-av:hover { color: #fff; filter: brightness(1.08); }
 .lb-qt { margin: 12px 0 2px; font-size: 16px; font-weight: 800; letter-spacing: -.02em; line-height: 1.4; color: var(--lb-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .lb-qt + .lb-quote { margin-top: 0; -webkit-line-clamp: 2; line-clamp: 2; height: calc(14.5px * 1.8 * 2); min-height: 0; }
+/* 로고: 아이콘(세로 스크롤 웹툰 속 나무) + 알약 모양 사이트 이름 */
+.wt-mark { display: inline-block; flex: 0 0 auto; width: 34px; height: 34px; line-height: 0; }
+.wt-mark svg { display: block; width: 100%; height: 100%; }
+.wt-word, .rail-mark b.wt-word, .au-brand b.wt-word { display: inline-flex; align-items: center; padding: .26em .62em .3em; border-radius: 999px; background: var(--text); color: var(--panel); font-family: var(--display); font-weight: 900; font-size: 16px; letter-spacing: -.05em; line-height: 1; white-space: nowrap; }
+.wt-word i { display: inline-block; width: .24em; height: .24em; margin: 0 .2em; border-radius: 50%; background: var(--brand); }
+.rail-mark .wt-mark { width: 40px; height: 40px; }
+.rail-mark b.wt-word { display: none; }
+@media (min-width: 861px) { .rail-mark { gap: 8px; } .rail-mark .wt-mark { width: 32px; height: 32px; } .rail-mark b.wt-word { display: inline-flex; font-size: 15px; } }
+.au-brand .wt-mark { width: 38px; height: 38px; }
+.au-brand b.wt-word { font-size: 19px; background: var(--au-ink, var(--text)); color: var(--au-card, #fff); }
+.hm-name { display: inline-flex; align-items: center; gap: 8px; }
+.home-logo .wt-mark { width: 40px; height: 40px; }
+.home-logo h1 .wt-word { font-size: 20px; }
+/* 프로필 사진이 없는 작가: 기본 프로필 그림 */
+.ap-photo, .ap-photo.plain, html:not([data-theme="light"]) .ap-photo, html:not([data-theme="light"]) .ap-photo.plain, .ap-pav, .ap-pav.plain { background: #F1F3F6 url("../img/author-default.jpg") center / cover no-repeat; }
+.ap-pav.sys { background: hsl(var(--h) 30% 45%); }

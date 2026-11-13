@@ -11,6 +11,7 @@
     if (Array.isArray(w.authors) && w.authors.length) return w.authors.filter((a) => a && a.name);
     return String(w.author || '').split(/\s*[,/·&]\s*/).map((n) => n.trim()).filter(Boolean).map((name) => ({ name, roles: [] }));
   };
+  WT.AUTHOR_DEFAULT = 'img/author-default.jpg';   // 프로필 사진이 없는 작가의 기본 그림
   WT.authorHref = (name) => `#/author/${encodeURIComponent(name)}`;
   WT.authorLinks = (w, sep) => WT.authorsOf(w).map((a) => `<a class="au-link" href="${WT.authorHref(a.name)}">${esc(a.name)}</a>`).join(sep || ', ') || '작가 미상';
 
@@ -137,7 +138,7 @@
       const img = (r && r.artist && r.artist.img) || info.img || '';
       if (ps.length) {
         box.innerHTML = ps.map((x) => `<a class="ap-post" href="${esc(x.url)}" target="_blank" rel="noopener">
-            <span class="ap-pav${img && !x.system ? '' : ' plain'}" style="--h:${x.system ? 140 : h}">${img && !x.system ? `<img src="${esc(img)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}</span>
+            <span class="ap-pav${img && !x.system ? '' : x.system ? ' plain sys' : ' plain'}" style="--h:${x.system ? 140 : h}">${img && !x.system ? `<img src="${esc(img)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}</span>
             <span class="ap-pbody"><span class="ap-phead"><b>${x.system ? '네이버웹툰' : esc(me.name)}</b>${x.date ? `<small>${esc(x.date)}</small>` : ''}${x.pinned ? '<small class="ap-pin">고정</small>' : ''}</span>
               ${x.title ? `<strong>${esc(x.title)}</strong>` : ''}${x.excerpt ? `<p>${esc(x.excerpt)}</p>` : ''}
               ${x.img ? `<span class="ap-pimg"><img src="${esc(x.img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.remove()">${x.images > 1 ? `<i>+${x.images - 1}</i>` : ''}</span>` : ''}
