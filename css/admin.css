@@ -256,3 +256,7 @@ body.admin .chip-admin { background: #5BB8FF; }
 .live-retry { padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .22); background: none; color: inherit; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
 .live-retry:hover { border-color: #E0565B; }
 .live-why { flex-basis: 100%; font-size: 11.5px; color: var(--muted); max-width: 420px; }
+/* 머리말의 함께 편집 표시: 단추와 겹치지 않게 아래 줄 한가운데에 */
+.ad-head > #ad-live { position: static; order: 9; flex: 1 0 100%; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 8px; max-width: none; text-align: center; }
+.ad-head > #ad-live:empty { display: none; }
+.ad-head > #ad-live .live-why { flex-basis: 100%; max-width: none; text-align: center; }
