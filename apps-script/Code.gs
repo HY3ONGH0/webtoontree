@@ -268,7 +268,7 @@ var ACTIONS = {
     var me = who_(b);
     var st = liveState_();
     var cur = githubFile_(github_());
-    if (!cur) fail_('GitHub에서 data.json을 읽지 못했어요.');
+    if (!cur) fail_('GitHub에서 data.json을 읽지 못했어요. ' + GH_LAST_);
     var data = JSON.parse(cur.text);
     livePresence_(me, b.here);
     return { version: st.ver, baseVersion: st.base, base: data, baseHash: hash_(JSON.stringify(data)), batches: liveOps_(st.base, st.ver), who: livePresence_(null) };
@@ -1075,9 +1075,20 @@ function github_() {
     headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' }
   };
 }
+var GH_LAST_ = '';   // 마지막으로 GitHub에서 받은 응답 (실패 이유를 알려 줄 때 써요)
 function githubFile_(g) {
-  var res = UrlFetchApp.fetch(g.api + '?ref=' + encodeURIComponent(g.branch) + '&t=' + Date.now(), { headers: g.headers, muteHttpExceptions: true });
-  if (res.getResponseCode() !== 200) return null;
+  var res = null, code = 0;
+  // GitHub가 잠깐 응답하지 못할 때가 있어서 세 번까지 다시 물어봐요 (토큰 · 주소 문제는 바로 멈춰요)
+  for (var i = 0; i < 3; i++) {
+    try {
+      res = UrlFetchApp.fetch(g.api + '?ref=' + encodeURIComponent(g.branch) + '&t=' + Date.now(), { headers: g.headers, muteHttpExceptions: true });
+      code = res.getResponseCode();
+    } catch (e) { res = null; code = 0; }
+    if (code === 200 || code === 401 || code === 404) break;
+    Utilities.sleep(700 * (i + 1));
+  }
+  GH_LAST_ = code === 401 ? 'GitHub 토큰이 만료됐거나 틀렸어요 (응답 401)' : code === 404 ? '저장소나 data.json을 찾지 못했어요 (응답 404)' : code === 403 || code === 429 ? 'GitHub 사용량 제한에 걸렸어요 (응답 ' + code + ')' : code ? '응답 ' + code : 'GitHub에 닿지 못했어요';
+  if (code !== 200) return null;
   var j = JSON.parse(res.getContentText());
   var text = Utilities.newBlob(Utilities.base64Decode(String(j.content || '').replace(/\s/g, ''))).getDataAsString('UTF-8');
   return { sha: j.sha, text: text };

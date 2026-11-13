@@ -252,3 +252,7 @@ body.admin .chip-admin { background: #5BB8FF; }
 /* 관리자 머리말의 로고 */
 .ad-head .brand b.wt-word { font-size: 17px; }
 .ad-head .brand .wt-mark { width: 34px; height: 34px; }
+/* 함께 편집이 끊겼을 때: 이유와 다시 연결 단추 */
+.live-retry { padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .22); background: none; color: inherit; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
+.live-retry:hover { border-color: #E0565B; }
+.live-why { flex-basis: 100%; font-size: 11.5px; color: var(--muted); max-width: 420px; }

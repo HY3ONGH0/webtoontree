@@ -1054,8 +1054,11 @@
     const url = (D.settings.apiUrl || '').trim();
     if (!url) throw new Error('먼저 [디자인 · 코인 설정]에 Apps Script 주소를 넣어 주세요.');
     const who = srv.pw ? { adminPassword: srv.pw } : { token: srv.token };
-    const res = await fetch(url, { method: 'POST', body: JSON.stringify(Object.assign({ action }, who, payload || {})) });
-    const j = await res.json();
+    let res, j;
+    try { res = await fetch(url, { method: 'POST', body: JSON.stringify(Object.assign({ action }, who, payload || {})) }); }
+    catch (e) { throw new Error('서버에 닿지 못했어요. 인터넷 연결을 확인해 주세요.'); }
+    try { j = await res.json(); }
+    catch (e) { throw new Error(`서버가 잠시 응답하지 못했어요 (응답 ${res.status}). 조금 뒤에 다시 돼요.`); }
     if (!j.ok) throw new Error(j.error || '서버에서 문제가 생겼어요.');
     return j;
   }
@@ -1352,6 +1355,7 @@
       case 'lk-refresh': linkRefresh(toon(id)); break;
       case 'lk-change': ui.link = { id, relink: true, q: toon(id).title }; render(); break;
       case 'lk-cancel': ui.link = null; render(); break;
+      case 'live-retry': live.tries = 0; live.joining = false; clearTimeout(live.retry); liveJoin(); break;
       case 'lk-unlink': if (confirmOnce('unlink:' + id)) { const w = toon(id); delete w.source; delete w.autoAt; w.autoCount = false; ui.link = null; saveDraft(); toast('연결을 끊었어요. 이제 자동으로 바뀌지 않아요'); render(); } break;
       case 'lk-official': { const w = toon(id); w.url = w.source; saveDraft(); toast('보러 가기 링크를 공식 페이지로 바꿨어요'); render(); break; }
       case 'lk-official-all': if (confirmOnce('official-all')) { const l = notOfficial(); l.forEach((w) => { w.url = w.source; }); saveDraft(); toast(`${l.length}개 웹툰의 보러 가기 링크를 공식 페이지로 바꿨어요. 확인한 뒤 저장해 주세요`); render(); } break;
@@ -1468,9 +1472,20 @@
   function applyUnits(u, ops) { ops.forEach((o) => { if (o.v === null) delete u[o.k]; else u[o.k] = o.v; }); return u; }
 
   /** 함께 편집 시작: 마지막으로 올린 데이터 + 그 뒤 모두가 고친 내용, 그 위에 이 기기에서 하던 작업 */
+  // 연결에 실패하면 저절로 다시 시도해요 (3초 → 6초 → … 최대 30초 간격). 전에는 한 번 실패하면 새로고침할 때까지 끊긴 채였어요
+  function liveRetryLater(msg) {
+    live.joining = false; live.err = msg; live.tries = (live.tries || 0) + 1;
+    liveBadge();
+    clearTimeout(live.retry);
+    live.retry = setTimeout(() => liveJoin(), Math.min(30000, 3000 * Math.pow(2, live.tries - 1)));
+  }
   async function liveJoin() {
+    if (live.on || live.joining || !srv.ok) return;
+    live.joining = true; clearTimeout(live.retry);
     let r;
-    try { r = await api('liveJoin', { here: liveHere() }); } catch (e) { live.err = e.message; liveBadge(); return; }
+    try { r = await api('liveJoin', { here: liveHere() }); } catch (e) { liveRetryLater(e.message); return; }
+    if (!r || !r.base || !Array.isArray(r.base.webtoons)) { liveRetryLater('서버에서 사이트 데이터를 받지 못했어요.'); return; }
+    const first = !live.joined;
     const before = JSON.parse(siteJSON);               // 이 화면을 열 때 받은 사이트 데이터
     let savedBase = '';
     try { savedBase = localStorage.getItem(BASE) || ''; } catch (e) { savedBase = ''; }
@@ -1489,13 +1504,16 @@
     live.shadow = Object.assign({}, u);
     applyUnits(u, mine);
     D = fromUnits(u, meta); ensure();
-    live.on = true; live.ver = r.version; live.base = r.baseVersion; live.who = r.who || []; live.err = '';
+    const again = live.tries > 0;
+    live.on = true; live.joining = false; live.joined = true; live.tries = 0; live.ver = r.version; live.base = r.baseVersion; live.who = r.who || []; live.err = '';
     try { localStorage.setItem(DRAFT, JSON.stringify(D)); } catch (e) { /* 무시 */ }
     if (mine.length) toast(`함께 편집에 연결됐어요. 이 기기에서 하던 변경 ${mine.length}곳을 같이 올려요`);
-    else toast('함께 편집에 연결됐어요. 다른 관리자가 고친 내용이 몇 초 안에 보여요');
+    else if (first || again) toast(again ? '함께 편집에 다시 연결됐어요' : '함께 편집에 연결됐어요. 다른 관리자가 고친 내용이 몇 초 안에 보여요');
     liveRender();
     liveLoop();
   }
+  window.addEventListener('online', () => { if (!live.on && live.err) { live.tries = 0; clearTimeout(live.retry); liveJoin(); } });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && !live.on && live.err) { clearTimeout(live.retry); liveJoin(); } });
   function liveHere() { return { tab: ui.tab, w: ui.tab === 'webtoons' ? (ui.w || '') : '', g: ui.tab === 'tree' ? (ui.tg || '') : ui.tab === 'genres' ? (ui.g || '') : '' }; }
   function liveLoop() {
     clearTimeout(live.timer);
@@ -1567,7 +1585,11 @@
   function liveBadge() {
     const el = document.getElementById('ad-live');
     if (!el) return;
-    if (!live.on) { el.innerHTML = live.err ? `<span class="live-dot off"></span>함께 편집 연결 안 됨` : ''; el.title = live.err || ''; return; }
+    if (!live.on) {
+      // 왜 끊겼는지 글로 보여 주고(패드에서는 마우스를 올릴 수 없어요), 저절로 다시 연결해요
+      el.innerHTML = live.err ? `<span class="live-dot off"></span>함께 편집 다시 연결하는 중… <button type="button" class="live-retry" data-a="live-retry">지금 다시 연결</button><small class="live-why">${esc(live.err)}</small>` : '';
+      el.title = live.err || ''; return;
+    }
     const others = live.who.filter((x) => x.userId !== srv.uid);
     const tabName = (t) => (TABS.find((x) => x[0] === t) || [])[1] || '';
     el.title = live.err ? `연결이 잠시 끊겼어요: ${live.err}` : '다른 관리자가 고친 내용이 몇 초 안에 보여요';
