@@ -1,5 +1,6 @@
 /* 플랫폼 아이콘 (사이트와 관리자 화면이 함께 써요)
-   웹툰이 올라오는 플랫폼을 앱 아이콘 느낌의 작은 네모로 보여 줘요. 직접 그린 단순한 그림이에요. */
+   웹툰이 올라오는 플랫폼을 작은 아이콘으로 보여 줘요.
+   네이버웹툰 · 카카오페이지는 각 사이트가 공개한 공식 아이콘 파일(img/platform/)을 쓰고, 나머지는 직접 그린 단순한 그림이에요. */
 (function () {
   'use strict';
   window.WT = window.WT || {};
@@ -20,6 +21,12 @@
     // 그 밖의 플랫폼: 회색 바탕 · 책
     etc: box('#6B7390', line('M7 6.5h8.5a1.5 1.5 0 0 1 1.5 1.5v9.5H8.5A1.5 1.5 0 0 1 7 16zM7 16a1.5 1.5 0 0 1 1.5-1.5H17', '#fff', 1.7)),
   };
+  // 공식 아이콘 파일이 있는 플랫폼 (파일을 못 불러오면 위의 그림으로 바꿔요)
+  const FILE = { naver: 'img/platform/naver.png', kakaopage: 'img/platform/kakaopage.png' };
+  document.addEventListener('error', (e) => {
+    const t = e.target;
+    if (t && t.tagName === 'IMG' && t.dataset && t.dataset.pf && ICON[t.dataset.pf]) t.outerHTML = ICON[t.dataset.pf];
+  }, true);
   function key(name) {
     const s = String(name || '').toLowerCase().replace(/\s+/g, '');
     if (!s) return '';
@@ -34,7 +41,8 @@
   function icon(name, cls) {
     const k = key(name);
     if (!k) return '';
-    return `<span class="pf pf-${k}${cls ? ' ' + cls : ''}" role="img" aria-label="${esc(name)}" title="${esc(name)}">${ICON[k]}</span>`;
+    const pic = FILE[k] ? `<img src="${FILE[k]}" alt="" data-pf="${k}" decoding="async">` : ICON[k];
+    return `<span class="pf pf-${k}${cls ? ' ' + cls : ''}" role="img" aria-label="${esc(name)}" title="${esc(name)}">${pic}</span>`;
   }
   WT.platform = { key, icon };
 })();
