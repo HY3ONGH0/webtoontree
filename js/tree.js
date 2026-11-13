@@ -268,7 +268,7 @@
             ${nw ? '<span class="lb-new">N</span>' : ''}
             ${st === 'done' ? `<span class="lb-done">${WT.icon.check}</span>` : ''}
           </span>
-          <span class="lb-t">${esc(w.title)}<i>${esc(w.platform || '')}</i></span>
+          <span class="lb-t">${esc(w.title)}<i>${WT.platform.icon(w.platform, 'pf-in')}${esc(w.platform || '')}</i></span>
         </button>`;
     }
     function lbHTML() {
@@ -425,7 +425,7 @@
         const st = status(id);
         return `<div class="g-page-in g-desc-page">
             <h3 class="g-title">${esc(w.title)}</h3>
-            <p class="g-meta">${esc([w.author, w.platform].filter(Boolean).join(' · '))}</p>
+            <p class="g-meta">${WT.platform.icon(w.platform, 'pf-in')}${esc([w.author, w.platform].filter(Boolean).join(' · '))}</p>
             <p class="g-meta"><span class="node-tag tag-${WT.schedule.status(w)}">${esc(WT.schedule.label(w))}</span> ${!w.pick && WT.recStars(w) ? `<span class="g-rec" aria-label="추천 별 ${WT.recStars(w)}개">${'★'.repeat(WT.recStars(w))}</span>` : ''} ${w.pick ? '<span class="pick-badge">관리자 강추</span>' : ''}</p>
             <p class="g-rate">${rateText(id)}</p>
             <div class="g-desc">${w.desc ? esc(w.desc).replace(/\n/g, '<br>') : '<span class="g-norate">아직 설명이 없어요.</span>'}</div>
@@ -709,7 +709,7 @@
       const gs = (w.genres || []).map((x) => WT.genre(x)).filter(Boolean);
       const state = w.status === 'completed' ? '<span>완결</span>' : w.status === 'hiatus' ? '<span class="pause">휴재</span>' : `<span class="on">연재 중${(w.days || []).length ? ' · ' + w.days.map((d) => DAYK[d] || d).join('·') : ''}</span>`;
       box.innerHTML = `<div class="lb-head"><span class="lb-av" style="background:linear-gradient(150deg, ${t.c1}, ${t.c2})">${esc(((WT.authorsOf(w)[0] || {}).name || w.title)[0])}</span>
-          <span class="lb-who"><b>${WT.authorLinks(w)}</b><small>작가 · ${esc(w.platform || '웹툰')}</small></span>
+          <span class="lb-who"><b>${WT.authorLinks(w)}</b><small>작가 · ${WT.platform.icon(w.platform, 'pf-in')}${esc(w.platform || '웹툰')}</small></span>
           <span class="lb-arrows"><button type="button" data-step="-1" aria-label="이전 책">←</button><button type="button" data-step="1" aria-label="다음 책">→</button></span></div>
         <blockquote class="lb-quote">“<b>${esc(w.title)}</b>” ${esc(w.desc || '줄거리를 준비하고 있어요.')}</blockquote>
         <div class="lb-metas">${w.pick ? '<span class="pick">관리자 강추</span>' : ''}${state}${rec ? `<span class="star">${'★'.repeat(rec)}</span>` : ''}${total(id) ? `<span>${total(id)}화</span>` : ''}${st === 'done' ? '<span class="done">✓ 다 봤어요</span>' : st === 'reading' ? `<span class="done">${ep(id)}화까지 봤어요</span>` : ''}${gs.map((x) => `<span>${esc(x.name)}</span>`).join('')}${WT.inTree(id) ? '<span class="intree">트리 웹툰</span>' : ''}</div>`;
@@ -921,7 +921,7 @@
         <div class="divider"></div>
         <dl class="meta">
           <dt>작가</dt><dd>${WT.authorLinks(w)}</dd>
-          <dt>플랫폼</dt><dd>${esc(w.platform)}</dd>
+          <dt>플랫폼</dt><dd>${WT.platform.icon(w.platform, 'pf-in')}${esc(w.platform)}</dd>
           <dt>연재</dt><dd><span class="node-tag tag-${WT.schedule.status(w)}" style="font-size:13px">${esc(WT.schedule.label(w))}</span></dd>
           <dt>장르</dt><dd>${esc(genreNames)}</dd>
           ${(w.tags || []).length ? `<dt>태그</dt><dd style="color:${g.color}">${w.tags.map((x) => '#' + esc(x)).join(' ')}</dd>` : ''}

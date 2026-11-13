@@ -240,7 +240,7 @@
       const st = w.status === 'completed' ? '<span>완결</span>' : w.status === 'hiatus' ? '<span class="pause">휴재</span>' : `<span class="on">연재 중${(w.days || []).length ? ' · ' + w.days.map((d) => DAYK[d] || d).join('·') : ''}</span>`;
       const href = p.tree ? `#/tree/${p.r.g.id}/${sel}` : `#/library/${p.r.g.id}/${sel}`;
       box.innerHTML = `<div class="lb-head"><span class="lb-av" style="background:linear-gradient(150deg, ${shade(base, 1.2)}, ${shade(base, .55)})">${esc(w.title[0])}</span>
-          <span class="lb-who"><b>${esc(w.title)}</b><small>${esc(w.author || '작가 미상')} · ${esc(w.platform || '웹툰')}</small></span>
+          <span class="lb-who"><b>${esc(w.title)}</b><small>${WT.platform.icon(w.platform, 'pf-in')}${esc(w.author || '작가 미상')} · ${esc(w.platform || '웹툰')}</small></span>
           <a class="lb-cta mp-go" href="${href}">${p.tree ? `${esc(p.r.g.name)} 트리로` : '도서관에서 보기'} →</a></div>
         <blockquote class="lb-quote mp-quote">${esc(w.desc || '줄거리를 준비하고 있어요.')}</blockquote>
         <div class="lb-metas">${w.pick ? '<span class="pick">관리자 강추</span>' : ''}${st}${rec ? `<span class="star">${'★'.repeat(rec)}</span>` : ''}${WT.eps(w) ? `<span>${WT.eps(w)}화</span>` : ''}<span>${esc(p.r.g.name)}</span>${p.tree ? '<span class="intree">트리 웹툰</span>' : ''}${done(sel) ? '<span class="done">✓ 다 봤어요</span>' : ''}</div>`;

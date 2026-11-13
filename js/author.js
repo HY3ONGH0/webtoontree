@@ -36,6 +36,7 @@
           ${w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}
           ${roles ? `<span class="ap-role">${roles}</span>` : ''}
           ${w.pick ? '<span class="ap-pick">강추</span>' : ''}
+          ${WT.platform.icon(w.platform, 'pf-cv')}
         </span>
         <b>${esc(w.title)}</b>
         <small>${esc(w.platform || '웹툰')} · ${st === 'completed' ? '완결' : st === 'hiatus' ? '휴재' : '연재 중'}</small>

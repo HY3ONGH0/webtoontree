@@ -203,6 +203,7 @@
           <label class="sr" for="w-q">웹툰 검색</label>
           <input id="w-q" class="fld" type="search" placeholder="제목, 작가 검색" value="${esc(ui.q)}">
           ${srvReady() ? `<button type="button" class="btn btn-sm press" data-a="lk-all" ${ui.refreshing ? 'disabled' : ''}>${ui.refreshing ? `자동 정보 가져오는 중… ${ui.refreshing}` : `연결된 웹툰 ${D.webtoons.filter((x) => x.source).length}개 지금 다시 가져오기`}</button>` : ''}
+          ${notOfficial().length ? `<button type="button" class="btn btn-sm press" data-a="lk-official-all" title="연결된 작품의 보러 가기 링크를 네이버 웹툰 공식 작품 페이지로 바꿔요">${ui.confirm === 'official-all' ? '한 번 더 누르면 바꿔요' : `보러 가기 링크 ${notOfficial().length}개를 공식 페이지로`}</button>` : ''}
           <button type="button" class="btn btn-sm press" data-a="recolor-all" title="표지에서 가장 넓게 차지하는 색으로 모든 웹툰의 상세 창 색을 다시 정해요">${ui.recolor ? `표지 색 뽑는 중… ${ui.recolor}` : '표지 색 모두 다시 뽑기'}</button>
           <label class="sr" for="w-fg">장르로 거르기</label>
           <select id="w-fg" class="fld">
@@ -226,7 +227,7 @@
                 <span class="ad-cv" style="--c:${esc(x.color || gColor(x))}">
                   <span class="ad-ini"><i>WEBTOON</i><em>${esc(x.title)}</em><small>${esc(x.author || '')}</small></span>
                   ${x.cover ? `<img src="${esc(x.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}
-                  ${x.pick ? '<span class="ad-pick">강추</span>' : ''}${x.source ? '' : '<span class="ad-nolink" title="작품 연결 안 됨">연결 전</span>'}${rs ? `<span class="ad-st">${'★'.repeat(rs)}</span>` : ''}${on ? `<span class="ad-on">${on}</span>` : ''}
+                  ${x.pick ? '<span class="ad-pick">강추</span>' : ''}${x.source ? '' : '<span class="ad-nolink" title="작품 연결 안 됨">연결 전</span>'}${WT.platform.icon(x.platform, 'pf-in')}${rs ? `<span class="ad-st">${'★'.repeat(rs)}</span>` : ''}${on ? `<span class="ad-on">${on}</span>` : ''}
                   <span class="ad-live">${liveOn(x.id)}</span>
                 </span>
                 <span class="ad-tt">${esc(x.title)}</span>
@@ -325,7 +326,7 @@
 
   // ---------- 작품 연결: 제목이나 공식 링크로 찾아 연결하면 작가 · 화수 · 연재 · 설명 · 태그를 자동으로 채우고, 매일 새벽 서버가 다시 가져와요 ----------
   const srvReady = () => !!(D.settings.apiUrl || '').trim() && srv.ok;
-  const srcName = (u) => (/comic\.naver\.com/.test(u) ? '네이버 웹툰' : /page\.kakao\.com/.test(u) ? '카카오페이지' : '공식 페이지');
+  const srcName = (u) => (/comic\.naver\.com/.test(u) ? '네이버웹툰' : '공식 페이지');
   // 가져온 정보를 웹툰에 넣어요 (서버의 applyInfo_와 같은 규칙: 보러 가기 링크 · 장르 · 추천은 그대로)
   function applyInfo(w, I) {
     const day = WT.schedule.today();
@@ -349,43 +350,59 @@
     w.autoAt = day;
     return coverNew;
   }
+  // 보러 가기 링크가 공식 작품 페이지인지 (연결한 작품과 같은 번호의 네이버 웹툰 주소)
+  const titleIdOf = (u) => (/(^|[/.])comic\.naver\.com\//.test(u || '') ? ((u || '').match(/[?&]titleId=(\d+)/) || [])[1] || '' : '');
+  const isOfficial = (w) => !!w.source && !!w.url && titleIdOf(w.url) === titleIdOf(w.source);
+  const notOfficial = () => D.webtoons.filter((x) => x.source && !isOfficial(x));
   function linkBox(w) {
     const L = ui.link && ui.link.id === w.id ? ui.link : null;
     if (!srvReady()) {
-      return `<div class="fx-box"><b class="fx-h">작품 연결</b><span class="hint">서버(Apps Script)에 관리자로 연결하면, 제목만 넣어도 작가 · 화수 · 연재 요일 · 설명 · 태그를 자동으로 채워요. [회원 · 댓글 · 제보] 탭에서 연결해 주세요.</span></div>`;
+      return `<div class="fx-box"><b class="fx-h">작품 연결</b><span class="hint">서버(Apps Script)에 관리자로 연결하면, 네이버 웹툰 제목만 넣어도 작가 · 화수 · 연재 요일 · 설명 · 태그 · 표지를 자동으로 채워요. [회원 · 댓글 · 제보] 탭에서 연결해 주세요.</span></div>`;
     }
     if (w.source && !(L && L.relink)) {
       const st = WT.schedule.status(w);
+      const busy = L && L.busy;
       return `<div class="fx-box linked">
-        <div class="fx-top"><b class="fx-h">작품 연결됨 <span>${esc(srcName(w.source))}</span></b>
-          <div class="ad-actions"><button type="button" class="btn btn-sm press" data-a="lk-refresh" data-id="${w.id}" ${L && L.busy ? 'disabled' : ''}>${L && L.busy ? '가져오는 중…' : '지금 다시 가져오기'}</button><button type="button" class="btn btn-sm press" data-a="lk-change" data-id="${w.id}">다른 작품으로</button></div></div>
-        <div class="fx-sum">
-          <span class="fx-au"><b>작가</b>${WT.authorsOf(w).map((a) => `${esc(a.name)}${(a.roles || []).length ? `<i>${a.roles.map((r) => AROLE[r]).join('·')}</i>` : ''}`).join(', ') || '-'}</span><span><b>화수</b>${WT.schedule.episodes(w)}화</span>
-          <span><b>연재</b>${esc(WT.schedule.STATUS_KO[st] || st)}${st === 'ongoing' && (w.days || []).length ? ' · ' + w.days.map((d) => WT.schedule.DAY_KO[d]).join('·') : ''}</span>
-          <span><b>태그</b>${esc((w.tags || []).join(', ') || '-')}</span>
+        <div class="fx-top"><b class="fx-h">${WT.platform.icon(srcName(w.source), 'pf-in')}${esc(srcName(w.source))}에 연결됨</b>
+          <div class="ad-actions"><button type="button" class="btn btn-sm btn-gold press" data-a="lk-refresh" data-id="${w.id}" ${busy ? 'disabled' : ''}>${busy ? '가져오는 중…' : '지금 다시 가져오기'}</button><button type="button" class="btn btn-sm press" data-a="lk-change" data-id="${w.id}">다른 작품으로</button><button type="button" class="btn btn-sm press" data-a="lk-unlink" data-id="${w.id}">${ui.confirm === 'unlink:' + w.id ? '한 번 더 누르면 끊어요' : '연결 끊기'}</button></div></div>
+        <div class="fx-linked">
+          <span class="fx-cv big">${w.cover ? `<img src="${esc(w.cover)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}</span>
+          <div class="fx-lbody">
+            <b class="fx-lt">${esc(w.title)}</b>
+            <div class="fx-sum">
+              <span class="fx-au"><b>작가</b>${WT.authorsOf(w).map((a) => `${esc(a.name)}${(a.roles || []).length ? `<i>${a.roles.map((r) => AROLE[r]).join('·')}</i>` : ''}`).join(', ') || '-'}</span><span><b>화수</b>${WT.schedule.episodes(w)}화</span>
+              <span><b>연재</b>${esc(WT.schedule.STATUS_KO[st] || st)}${(w.days || []).length ? ' · ' + w.days.map((d) => WT.schedule.DAY_KO[d]).join('·') : ''}</span>
+              <span><b>태그</b>${esc((w.tags || []).join(', ') || '-')}</span>
+            </div>
+            <p class="fx-desc">${esc((w.desc || '').slice(0, 120))}${(w.desc || '').length > 120 ? '…' : ''}</p>
+          </div>
         </div>
-        <p class="fx-desc">${esc((w.desc || '').slice(0, 120))}${(w.desc || '').length > 120 ? '…' : ''}</p>
-        <span class="hint">매일 새벽 서버가 화수 · 연재 상태 · 요일 · 설명을 다시 가져와 사이트에 반영해요${w.autoAt ? ` · 마지막 갱신 ${esc(w.autoAt)}` : ''}. <a href="${esc(w.source)}" target="_blank" rel="noopener">공식 페이지</a></span>
+        ${isOfficial(w) ? '' : `<div class="fx-warn"><span>${w.url ? '보러 가기 링크가 공식 작품 페이지가 아니에요.' : '보러 가기 링크가 비어 있어요.'}</span><button type="button" class="btn btn-sm press" data-a="lk-official" data-id="${w.id}">공식 페이지로 ${w.url ? '바꾸기' : '채우기'}</button></div>`}
+        <span class="hint">매일 새벽 서버가 화수 · 연재 상태 · 요일 · 설명 · 작가 정보를 다시 가져와 사이트에 반영해요${w.autoAt ? ` · 마지막 갱신 ${esc(w.autoAt)}` : ''}. <a href="${esc(w.source)}" target="_blank" rel="noopener">공식 페이지 열기 ↗</a></span>
         ${L && L.error ? `<p class="warn" role="alert">${esc(L.error)}</p>` : ''}
       </div>`;
     }
     let body = '';
-    if (L && L.busy) body = '<p class="ad-help">찾는 중…</p>';
+    if (L && L.busy) body = '<p class="ad-help">네이버 웹툰에서 찾는 중…</p>';
     else if (L && L.error) body = `<p class="warn" role="alert">${esc(L.error)}</p>`;
     else if (L && L.items) {
-      body = L.items.length ? `<div class="fx-cands">${L.items.map((x, i) => `<button type="button" class="fx-cand press" data-a="lk-pick" data-id="${w.id}" data-i="${i}">
+      body = L.items.length ? `<div class="fx-cands">${L.items.map((x, i) => {
+          const dup = D.webtoons.find((o) => o.id !== w.id && o.source && titleIdOf(o.source) === titleIdOf(x.source));
+          const state = x.finished ? '완결' : x.rest ? '휴재' : '연재 중';
+          return `<button type="button" class="fx-cand press${dup ? ' dup' : ''}" data-a="lk-pick" data-id="${w.id}" data-i="${i}" ${dup ? 'disabled' : ''}>
           <span class="fx-cv">${x.cover ? `<img src="${esc(x.cover)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}</span>
-          <span class="fx-ct"><b>${esc(x.title)}</b><span>${esc(x.author || '')}</span><i>${esc(x.platform || '')}${x.finished ? ' · 완결' : ''}</i></span>
-          <span class="fx-go">연결</span></button>`).join('')}</div>`
-        : '<p class="ad-help">찾는 작품이 없어요. 제목을 조금 바꾸거나, 네이버 웹툰 · 카카오페이지의 작품 링크를 붙여 넣어 주세요.</p>';
+          <span class="fx-ct"><b>${esc(x.title)}</b><span>${esc(x.author || '')}</span>
+            <i><em class="fx-st ${x.finished ? 'completed' : x.rest ? 'hiatus' : 'ongoing'}">${state}</em>${esc(x.when || '')}${x.episodes && !/\d화/.test(x.when || '') ? ` · ${x.episodes}화` : ''}${x.adult ? ' · 성인' : ''}</i></span>
+          <span class="fx-go">${dup ? `이미 등록됨<small>${esc(dup.title)}</small>` : '연결'}</span></button>`; }).join('')}</div>`
+        : '<p class="ad-help">네이버 웹툰 정식 연재작 가운데 찾는 작품이 없어요. 제목을 조금 바꾸거나, 작품 페이지 링크(comic.naver.com/webtoon/list?titleId=숫자)를 붙여 넣어 주세요.</p>';
     }
     return `<div class="fx-box">
-      <label for="fx-q" class="fx-h">작품 연결 <span>제목이나 네이버 웹툰 · 카카오페이지 링크</span></label>
-      <div class="fx-in"><input id="fx-q" class="fld" placeholder="예: 화산귀환" value="${esc((L && L.q) || (w.title !== '새 웹툰' ? w.title : ''))}">
-        <button type="button" class="btn btn-gold btn-sm press" data-a="lk-find" data-id="${w.id}">찾기</button>
+      <label for="fx-q" class="fx-h">${WT.platform.icon('네이버웹툰', 'pf-in')}작품 연결 <span>네이버 웹툰 제목 · 작가 이름 · 작품 링크</span></label>
+      <div class="fx-in"><input id="fx-q" class="fld" placeholder="예: 화산귀환" value="${esc((L && L.q) || (w.title !== '새 웹툰' ? w.title : ''))}" autocomplete="off">
+        <button type="button" class="btn btn-gold btn-sm press" data-a="lk-find" data-id="${w.id}" ${L && L.busy ? 'disabled' : ''}>찾기</button>
         ${L && L.relink ? `<button type="button" class="btn btn-sm press" data-a="lk-cancel">취소</button>` : ''}</div>
-      <span class="hint">연결하면 작가 · 화수 · 연재 요일 · 설명 · 태그를 채우고, 그 뒤로는 매일 자동으로 맞춰요. 보러 가기 링크와 표지만 직접 넣으면 돼요. <b>카카오페이지 작품</b>은 제목 검색이 잘 안 될 수 있어서, 작품 페이지 링크(page.kakao.com/content/숫자)를 붙여 넣는 게 가장 정확해요.</span>
       ${body}
+      <span class="hint">연결하면 제목 · 작가 · 화수 · 연재 요일 · 설명 · 태그 · 표지를 채우고, 보러 가기 링크가 비어 있으면 공식 페이지로 넣어요. 그 뒤로는 매일 자동으로 맞춰요. 네이버 웹툰이 아닌 작품은 아래 [작품 정보 직접 입력]에 적어 주세요.</span>
     </div>`;
   }
   const apiErr = (e) => (/알 수 없는 요청/.test(e.message) ? '서버 코드가 예전 버전이에요. 새 Code.gs를 붙여 넣고 새 버전으로 다시 배포해 주세요.' : e.message);
@@ -396,7 +413,8 @@
     ui.link = { id: w.id, q, busy: true, relink };
     render();
     try {
-      if (/^https?:\/\//i.test(q)) {
+      if (/^https?:\/\//i.test(q) || /^\d{3,9}$/.test(q)) {
+        if (/^https?:/i.test(q) && !titleIdOf(q)) throw new Error('네이버 웹툰 작품 링크만 연결할 수 있어요. comic.naver.com 의 작품 링크를 넣어 주세요.');
         const r = await api('adminFetchInfo', { url: q });
         if (!ui.link || ui.link.id !== w.id) return;
         linkApply(w, r.info || {});
@@ -419,16 +437,20 @@
     try {
       const r = await api('adminFetchInfo', { url: x.source });
       linkApply(w, Object.assign({ cover: x.cover }, r.info || {}, { source: (r.info && r.info.source) || x.source }));
-    } catch (e) { ui.link = { id: w.id, q: ui.link.q, error: apiErr(e) }; render(); }
+    } catch (e) { ui.link = { id: w.id, q: (ui.link || {}).q, error: apiErr(e), relink: !!(ui.link && ui.link.relink) }; render(); }
   }
   function linkApply(w, I) {
     if (!I.title) { ui.link = { id: w.id, error: '작품 정보를 가져오지 못했어요.' }; render(); return; }
+    const dup = D.webtoons.find((o) => o.id !== w.id && o.source && I.source && titleIdOf(o.source) === titleIdOf(I.source));
+    if (dup) { ui.link = { id: w.id, q: (ui.link || {}).q, error: `이미 "${dup.title}"에 연결된 작품이에요.`, relink: !!(ui.link && ui.link.relink) }; render(); return; }
     const coverNew = applyInfo(w, I);
+    const filled = !w.url && !!(I.url || I.source);
+    if (filled) w.url = I.url || I.source;
     ui.link = null;
     saveDraft();
     if (coverNew || !w.color) { w.color = ''; autoColor(w, false); }
     render();
-    toast(`${w.title}에 연결했어요. 보러 가기 링크를 넣고 저장해 주세요`);
+    toast(`${w.title}에 연결했어요.${filled ? ' 보러 가기 링크도 공식 페이지로 넣었어요.' : ''} 확인한 뒤 저장해 주세요`);
   }
   async function linkRefresh(w) {
     ui.link = { id: w.id, busy: true };
@@ -1330,6 +1352,9 @@
       case 'lk-refresh': linkRefresh(toon(id)); break;
       case 'lk-change': ui.link = { id, relink: true, q: toon(id).title }; render(); break;
       case 'lk-cancel': ui.link = null; render(); break;
+      case 'lk-unlink': if (confirmOnce('unlink:' + id)) { const w = toon(id); delete w.source; delete w.autoAt; w.autoCount = false; ui.link = null; saveDraft(); toast('연결을 끊었어요. 이제 자동으로 바뀌지 않아요'); render(); } break;
+      case 'lk-official': { const w = toon(id); w.url = w.source; saveDraft(); toast('보러 가기 링크를 공식 페이지로 바꿨어요'); render(); break; }
+      case 'lk-official-all': if (confirmOnce('official-all')) { const l = notOfficial(); l.forEach((w) => { w.url = w.source; }); saveDraft(); toast(`${l.length}개 웹툰의 보러 가기 링크를 공식 페이지로 바꿨어요. 확인한 뒤 저장해 주세요`); render(); } break;
       case 'lk-all': if (!ui.refreshing) linkRefreshAll(); break;
       case 'w-color': { const w = toon(id); w.color = ''; autoColor(w, true); break; }
       case 'srv-logout': srv.pw = ''; srv.token = ''; srv.ok = false; srv.owner = false; srv.users = srv.comments = srv.reports = null; try { sessionStorage.removeItem('webtoontree.adminpw'); } catch (e) { /* 무시 */ } toast('관리자에서 나왔어요'); render(); break;
@@ -1729,7 +1754,7 @@
     try { savedBase = localStorage.getItem(BASE) || ''; } catch (e) { savedBase = ''; }
     if (draft && Array.isArray(draft.webtoons)) { D = draft; ensure(); setBase(savedBase || siteHash); } else setBase(siteHash);
     root().addEventListener('click', onClick);
-    root().addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target.id === 'fx-q') { e.preventDefault(); const w = toon(ui.w); if (w) linkFind(w); }
+    root().addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target.id === 'fx-q' && !e.isComposing) { e.preventDefault(); const w = toon(ui.w); if (w) linkFind(w); }
       if (e.key === 'Enter' && e.target.id === 'f-au-new' && !e.isComposing) {
         e.preventDefault();
         const w = toon(ui.w); const n = e.target.value.trim();

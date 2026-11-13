@@ -125,15 +125,16 @@
     const last = WT.lastTree();
     const treeId = live.includes(last) ? last : live[0];
     const s = WT.store.state;
-    const on = { home: 'home', tree: 'tree', map: 'tree', worlds: 'tree', library: 'library', books: 'library', author: 'library', top: 'rank', ranking: 'rank', me: 'me', shop: 'me', login: 'me' }[name] || 'home';
+    const on = { home: 'home', tree: 'tree', map: 'tree', worlds: 'tree', library: 'library', books: 'library', author: 'library', week: 'week', top: 'rank', ranking: 'rank', me: 'me', shop: 'me', login: 'me' }[name] || 'home';
     const items = [
       ['home', '#/', '홈', '<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>'],
       ['tree', treeId ? `#/tree/${treeId}` : (WT.liveGenres()[0] ? `#/tree/${WT.liveGenres()[0].id}` : '#/worlds'), '트리', '<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.6 7.9l3.2 7.8M16.4 7.9l-3.2 7.8"/>'],
       ['library', '#/library/all', '도서관', '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v18"/>'],
+      ['week', '#/week', '요일', '<rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h2M14 14h2"/>'],
       ['rank', '#/top', '랭킹', '<path d="M7 4h10v5a5 5 0 0 1-10 0z M7 6H4a3 3 0 0 0 3 4 M17 6h3a3 3 0 0 1-3 4 M12 14v4 M8 21h8"/>'],
       ['me', s.profile ? '#/me' : '#/login', '프로필', '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>']
     ];
-    items.splice(4, 0, ['map', '#/worlds', '전체 지도', '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z M9 4v14 M15 6v14"/>']);
+    items.splice(5, 0, ['map', '#/worlds', '전체 지도', '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z M9 4v14 M15 6v14"/>']);
     const onD = (name === 'map' || name === 'worlds') ? 'map' : on;   // 위쪽 메뉴에서는 전체 지도가 따로 있어요
     const nick = s.profile ? s.profile.nick : '둘러보기 중';
     el.innerHTML = `<a href="#/" class="rail-mark" aria-label="${esc(WT.settings().siteName)} 홈"><span class="au-mark" aria-hidden="true"><i></i><i></i><i></i></span><b>${esc(WT.settings().siteName)}</b></a>
