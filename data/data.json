@@ -1,6 +1,48 @@
 {
   "webtoons": [
     {
+      "id": "w657564281141087ah",
+      "title": "신과함께",
+      "author": "주호민",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=697685",
+      "cover": "https://image-comic.pstatic.net/webtoon/697685/thumbnail/thumbnail_IMAG21_7220736075942344240.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 4,
+      "color": "#f2eee5",
+      "episodes": 212,
+      "status": "completed",
+      "days": [
+        "thu"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "영화원작웹툰",
+        "드라마&영화 원작웹툰",
+        "완결판타지"
+      ],
+      "desc": "나쁘지도 착하지도 않은 평범한 남자 김자홍이\n저승에서 49일 동안 일곱 번의 재판을 받게 된다.",
+      "authors": [
+        {
+          "name": "주호민",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=697685",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
       "id": "w657564281141086",
       "title": "킬러 배드로",
       "author": "김정현, 임리나",
@@ -7300,21 +7342,49 @@
     },
     {
       "id": "w65756428114097v",
-      "title": "",
-      "author": "",
+      "title": "안 멋진 어른 지혜 양",
+      "author": "호리호, 하나",
       "platform": "네이버웹툰",
-      "url": "",
-      "cover": "",
-      "genres": [],
+      "url": "https://comic.naver.com/webtoon/list?titleId=850746",
+      "cover": "https://image-comic.pstatic.net/webtoon/850746/thumbnail/thumbnail_IMAG21_7e2293f9-620b-4906-9c67-2a39135837be.jpg",
+      "genres": [
+        "romance",
+        "daily"
+      ],
       "recommended": 0,
-      "color": "",
-      "episodes": 1,
+      "color": "#f8ebea",
+      "episodes": 30,
       "status": "ongoing",
-      "days": [],
+      "days": [
+        "tue"
+      ],
       "autoCount": true,
-      "baseDate": "2026-11-11",
-      "tags": [],
-      "desc": ""
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "러브코미디",
+        "드라마",
+        "성장물",
+        "성장드라마"
+      ],
+      "desc": "학원 강사로 근무 중인 ‘주연호’\n4년 전 과외에서 만났던 제자 ‘안지혜’가 180도 달라진 모습으로 돌아왔다!?\n\n사정에 못 이겨 얼떨결에 시작하게 된 기 빨리는 동거….\n성실하고 총명했던 모습은 온데간데없고, 철부지처럼 변해버린 지혜!\n\n어른스럽지 못한 지혜는 ‘멋진 어른’으로 성장할 수 있을까?",
+      "authors": [
+        {
+          "name": "호리호",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "하나",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=850746",
+      "autoAt": "2026-11-13"
     }
   ],
   "genres": [
@@ -8579,7 +8649,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141086
+    "lastWebtoonId": 657564281141087
   },
   "authorInfo": {
     "232": {
@@ -11959,6 +12029,52 @@
           "title": "혼신",
           "source": "https://comic.naver.com/webtoon/list?titleId=769688",
           "cover": "https://image-comic.pstatic.net/webtoon/769688/thumbnail/thumbnail_IMAG21_7365692394708493360.JPEG",
+          "finished": true
+        }
+      ]
+    },
+    "호리호": {
+      "name": "호리호",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260525_210/177971691060586KN6_PNG/%BF%C0%B3%CA%C4%B3.png",
+      "bio": "📧  k3009795@gmail.com",
+      "url": "https://comic.naver.com/community/u/_8bnnja",
+      "works": []
+    },
+    "하나": {
+      "name": "하나",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260525_281/1779716957038oLTEX_PNG/%C1%F6%C7%FD_%C1%C1%BE%D2%BE%B2_001.png",
+      "bio": "안녕하세요",
+      "url": "https://comic.naver.com/community/u/hanazyang",
+      "works": []
+    },
+    "주호민": {
+      "name": "주호민",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "무한동력",
+          "source": "https://comic.naver.com/webtoon/list?titleId=500944",
+          "cover": "https://image-comic.pstatic.net/webtoon/500944/thumbnail/thumbnail_IMAG21_7234531635464845109.jpg",
+          "finished": true
+        },
+        {
+          "title": "빙탕후루",
+          "source": "https://comic.naver.com/webtoon/list?titleId=695321",
+          "cover": "https://image-comic.pstatic.net/webtoon/695321/thumbnail/thumbnail_IMAG21_4122026650577876836.jpg",
+          "finished": true
+        },
+        {
+          "title": "제비원 이야기",
+          "source": "https://comic.naver.com/webtoon/list?titleId=605137",
+          "cover": "https://image-comic.pstatic.net/webtoon/605137/thumbnail/thumbnail_IMAG21_3905805296625595957.jpg",
+          "finished": true
+        },
+        {
+          "title": "검협전기",
+          "source": "https://comic.naver.com/webtoon/list?titleId=680107",
+          "cover": "https://image-comic.pstatic.net/webtoon/680107/thumbnail/thumbnail_IMAG21_7075547957740845366.jpg",
           "finished": true
         }
       ]
