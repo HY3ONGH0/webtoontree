@@ -1,6 +1,361 @@
 {
   "webtoons": [
     {
+      "id": "w657564281141065",
+      "title": "과학고 사변",
+      "author": "고태린",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=849907",
+      "cover": "https://image-comic.pstatic.net/webtoon/849907/thumbnail/thumbnail_IMAG21_0abcc2c1-76d8-4da2-9a1f-867c699c5c15.jpg",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 0,
+      "color": "#79cc94",
+      "episodes": 34,
+      "status": "ongoing",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "드라마",
+        "입시",
+        "2024 지상최대공모전",
+        "현대",
+        "소년물",
+        "청춘",
+        "성장물",
+        "하이틴"
+      ],
+      "desc": "과학고 꼴찌가 되어버렸다.",
+      "authors": [
+        {
+          "name": "고태린",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=849907",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141064",
+      "title": "파브르 in 사천당가",
+      "author": "지대공마법소년, 크라켄, 에르훗",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=833702",
+      "cover": "https://image-comic.pstatic.net/webtoon/833702/thumbnail/thumbnail_IMAG21_aad66c46-90fc-4d2d-8cb9-46fc0ff0abc2.jpg",
+      "genres": [
+        "murim"
+      ],
+      "recommended": 3,
+      "color": "#faeee4",
+      "episodes": 113,
+      "status": "ongoing",
+      "days": [
+        "mon"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "무협/사극",
+        "동양",
+        "액션",
+        "판타지",
+        "판무",
+        "빙의",
+        "동물",
+        "소설원작"
+      ],
+      "desc": "독물과 독충을 다루던 백만 스트리머 매운 파브르.\n아프리카 현지촬영중 블랙맘바에 물려 무림에 전생하게 된다.\n정글에서 자신이 좋아하는 독물들을 키우며 자연인 생활을 하던 주인공은\n독공을 사용하는 사천당가의 눈에 띄게 된다.\n\n\"자네. 우리 식구(食口)가 되게!\"",
+      "authors": [
+        {
+          "name": "지대공마법소년",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "크라켄",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "에르훗",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=833702",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141063",
+      "title": "무벌전",
+      "author": "노백",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=827322",
+      "cover": "https://image-comic.pstatic.net/webtoon/827322/thumbnail/thumbnail_IMAG21_4a4bd0df-498c-4dd9-91e2-e5592487f38e.jpg",
+      "genres": [
+        "murim"
+      ],
+      "recommended": 3,
+      "color": "#3e2a21",
+      "episodes": 53,
+      "status": "hiatus",
+      "days": [
+        "mon"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "무협/사극",
+        "정통무협",
+        "동양",
+        "시대물",
+        "액션",
+        "성장물",
+        "2022 지상최대공모전",
+        "소년왕도물"
+      ],
+      "desc": "…무당이 망했다!!!\n\n긴 임무에서 돌아온 2대제자 충엽. 그러나 본산은 이미 폐허가 되고, 이에 절망한 충엽도 폐인이 되었다!\n그러나 아직 한 줄기 희망을 품고 있는 석현과 무영!\n과연 무당의 앞날은 어찌 될 것인지…. 이 녀석 충엽! 어서 의욕 좀 챙겨라!! 이 벌레야!!!",
+      "authors": [
+        {
+          "name": "노백",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=827322",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141062",
+      "title": "꽤애액",
+      "author": "고래군",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=847483",
+      "cover": "https://image-comic.pstatic.net/webtoon/847483/thumbnail/thumbnail_IMAG21_3a2bec0c-d5f0-4754-9764-ae5bf79e4bbf.jpg",
+      "genres": [
+        "romance",
+        "daily"
+      ],
+      "recommended": 0,
+      "color": "#fae7e7",
+      "episodes": 43,
+      "status": "ongoing",
+      "days": [
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "2025 지상최대공모전",
+        "일상개그힐링",
+        "개그",
+        "동물"
+      ],
+      "desc": "썸타는 두 남녀 영수와 고란.\n그러나 고란의 정체를 알게 된 영수는 큰 혼란에 빠진다.\n둘의 사랑은 이뤄질 수 있을 것인가?",
+      "authors": [
+        {
+          "name": "고래군",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=847483",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141061",
+      "title": "여신강림",
+      "author": "야옹이",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=703846",
+      "cover": "https://image-comic.pstatic.net/webtoon/703846/thumbnail/thumbnail_IMAG21_3617626786448291892.jpg",
+      "genres": [
+        "romance",
+        "daily"
+      ],
+      "recommended": 3,
+      "color": "#f5e7fc",
+      "episodes": 261,
+      "status": "completed",
+      "days": [
+        "tue"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "몰아보기",
+        "아이돌",
+        "드라마&영화 원작웹툰",
+        "인플루언서",
+        "삼각관계",
+        "완결로맨스"
+      ],
+      "desc": "네웹 대표 글로벌 인기작! 주경, 수호, 서준. 세 청춘의 두근두근 눈호강 로맨스~♡\n메이크업으로 여신이 된 주경이는 꿈과 사랑을 이룰 수 있을까?",
+      "authors": [
+        {
+          "name": "야옹이",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=703846",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141060",
+      "title": "슈퍼 시크릿",
+      "author": "이온",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=650304",
+      "cover": "https://image-comic.pstatic.net/webtoon/650304/thumbnail/thumbnail_IMAG21_4051329144585728102.jpg",
+      "genres": [
+        "daily",
+        "romance"
+      ],
+      "recommended": 3,
+      "color": "#d7c9b5",
+      "episodes": 144,
+      "status": "completed",
+      "days": [
+        "tue"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "로맨스",
+        "몰아보기",
+        "소꿉친구",
+        "친구>연인",
+        "인외존재",
+        "완결로맨스"
+      ],
+      "desc": "평범한 여대생 은호와 조금 특별한 소꿉친구 견우의 술래잡기. 은호만 모르는 이웃집의 비밀들이 밝혀진다",
+      "authors": [
+        {
+          "name": "이온",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=650304",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141059",
+      "title": "숲속의 담",
+      "author": "다홍",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=738145",
+      "cover": "https://image-comic.pstatic.net/webtoon/738145/thumbnail/thumbnail_IMAG21_5fd1a1c9-5628-46ed-b025-ec0ed44eae65.jpg",
+      "genres": [
+        "apocalyps",
+        "daily"
+      ],
+      "recommended": 4,
+      "color": "#69a88a",
+      "episodes": 132,
+      "status": "completed",
+      "days": [
+        "tue"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "판타지",
+        "명작",
+        "2019 지상최대공모전",
+        "아포칼립스",
+        "완결판타지"
+      ],
+      "desc": "어느 순간부터 성장이 멈춘 '담'은\n사람들을 피해 숲속으로 떠난다.",
+      "authors": [
+        {
+          "name": "다홍",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=738145",
+      "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w657564281141058",
+      "title": "좀비X슬래셔",
+      "author": "나락, 홍준기",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=808533",
+      "cover": "https://image-comic.pstatic.net/webtoon/808533/thumbnail/thumbnail_IMAG21_53a3fb2b-dc24-4281-b4c0-0cc1015bcaa8.jpg",
+      "genres": [
+        "apocalyps"
+      ],
+      "recommended": 2,
+      "color": "#f3ecec",
+      "episodes": 93,
+      "status": "completed",
+      "days": [
+        "sat"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "액션",
+        "액션아포칼립스",
+        "아포칼립스",
+        "좀비",
+        "인외존재",
+        "먼치킨",
+        "감염",
+        "완결액션"
+      ],
+      "desc": "흔한 설정이다. 좀비 사태가 발생했다.\n사람들은 부산에 안전지대를 만들었으나, 한정된 공간과 넘치는 사람들로 집값은 천정부지로 치솟는다.\n(여전히) 내 집 마련은 꿈도 못 꿀 시대.\n\n이 이야기의 주인공도 집이 없다. 이 글을 보고 있는 당신과 마찬가지로.\n좀비를 사냥하여 돈을 버는 직업, 좀비 슬래셔. 내집마련을 위해 그는 최전선에 뛰어들기로 한다.",
+      "authors": [
+        {
+          "name": "나락",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "홍준기",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=808533",
+      "autoAt": "2026-11-13"
+    },
+    {
       "id": "w657564281141057",
       "title": "하우스키퍼",
       "author": "채용택, 유현",
@@ -7190,7 +7545,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141057
+    "lastWebtoonId": 657564281141065
   },
   "version": 1,
   "shop": [
@@ -9884,6 +10239,184 @@
       "img": "",
       "bio": "",
       "url": "",
+      "works": []
+    },
+    "홍준기": {
+      "name": "홍준기",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20240603_109/1717410277466r8Kmr_PNG/AFFA106B-3E89-499E-8E0D-0E1686BFDE8C.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_vboxb",
+      "works": [
+        {
+          "title": "빨리감기",
+          "source": "https://comic.naver.com/webtoon/list?titleId=764040",
+          "cover": "https://image-comic.pstatic.net/webtoon/764040/thumbnail/thumbnail_IMAG21_3847825819371123553.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "다홍": {
+      "name": "다홍",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20240229_264/1709211965096J8Eds_PNG/1000015265.png",
+      "bio": "✉️dahong_wt@naver.com",
+      "url": "https://comic.naver.com/community/u/dahongcomic",
+      "works": [
+        {
+          "title": "그렇게 물거품이 되어도",
+          "source": "https://comic.naver.com/webtoon/list?titleId=822239",
+          "cover": "https://image-comic.pstatic.net/webtoon/822239/thumbnail/thumbnail_IMAG21_5a915557-91af-430f-92e1-5c863a6944db.jpg",
+          "finished": true
+        },
+        {
+          "title": "완벽한 부부는 없다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=793374",
+          "cover": "https://image-comic.pstatic.net/webtoon/793374/thumbnail/thumbnail_IMAG21_3775484551403496548.jpg",
+          "finished": true
+        },
+        {
+          "title": "나의 불편한 상사",
+          "source": "https://comic.naver.com/webtoon/list?titleId=799165",
+          "cover": "https://image-comic.pstatic.net/webtoon/799165/thumbnail/thumbnail_IMAG21_e4cf53a5-8d69-435d-95eb-a68a0128580e.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "이온": {
+      "name": "이온",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "걸어서 30분",
+          "source": "https://comic.naver.com/webtoon/list?titleId=700844",
+          "cover": "https://image-comic.pstatic.net/webtoon/700844/thumbnail/thumbnail_IMAG21_4135202081180039526.jpg",
+          "finished": true
+        },
+        {
+          "title": "합격시켜주세용",
+          "source": "https://comic.naver.com/webtoon/list?titleId=728128",
+          "cover": "https://image-comic.pstatic.net/webtoon/728128/thumbnail/thumbnail_IMAG21_7089844928995668020.jpg",
+          "finished": true
+        },
+        {
+          "title": "몰랐지만 괜찮아",
+          "source": "https://comic.naver.com/webtoon/list?titleId=751989",
+          "cover": "https://image-comic.pstatic.net/webtoon/751989/thumbnail/thumbnail_IMAG21_3990527026987938406.jpg",
+          "finished": true
+        },
+        {
+          "title": "다시, 순정퀘스트",
+          "source": "https://comic.naver.com/webtoon/list?titleId=852275",
+          "cover": "https://image-comic.pstatic.net/webtoon/852275/thumbnail/thumbnail_IMAG21_ae0bf3c2-1d29-43af-a4a5-00731dd4b536.jpg",
+          "finished": false
+        },
+        {
+          "title": "남주의 정석",
+          "source": "https://comic.naver.com/webtoon/list?titleId=827323",
+          "cover": "https://image-comic.pstatic.net/webtoon/827323/thumbnail/thumbnail_IMAG21_fb18875b-4b0c-4a5c-a514-1359552e8ecf.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "야옹이": {
+      "name": "야옹이",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230928_263/1695912109994RmaAw_PNG/%BE%DF%BF%CB%C0%CC.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/meow",
+      "works": [
+        {
+          "title": "여심강타(feat.금연)",
+          "source": "https://comic.naver.com/webtoon/list?titleId=717480",
+          "cover": "https://image-comic.pstatic.net/webtoon/717480/thumbnail/thumbnail_IMAG21_3486460538273161777.jpg",
+          "finished": true
+        },
+        {
+          "title": "귀혼",
+          "source": "https://comic.naver.com/webtoon/list?titleId=833705",
+          "cover": "https://image-comic.pstatic.net/webtoon/833705/thumbnail/thumbnail_IMAG21_ecc40772-cbdc-48af-9a49-71d85fc8c8fb.jpg",
+          "finished": false
+        },
+        {
+          "title": "희망강림",
+          "source": "https://comic.naver.com/webtoon/list?titleId=766982",
+          "cover": "https://image-comic.pstatic.net/webtoon/766982/thumbnail/thumbnail_IMAG21_3474303036378342195.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "고래군": {
+      "name": "고래군",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260210_115/1770726978070pQqzR_PNG/%BC%B6%B3%DA.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_ll0uo",
+      "works": []
+    },
+    "노백": {
+      "name": "노백",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_91mzj1",
+      "works": []
+    },
+    "지대공마법소년": {
+      "name": "지대공마법소년",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "지대공마법소년입니다.",
+      "url": "https://comic.naver.com/community/u/SAMmagician",
+      "works": [
+        {
+          "title": "신과함께 돌아온 기사왕님",
+          "source": "https://comic.naver.com/webtoon/list?titleId=809618",
+          "cover": "https://image-comic.pstatic.net/webtoon/809618/thumbnail/thumbnail_IMAG21_df87e004-a86e-46d0-9749-aa338e9363ac.jpg",
+          "finished": false
+        },
+        {
+          "title": "부패의 사제",
+          "source": "https://comic.naver.com/webtoon/list?titleId=809722",
+          "cover": "https://image-comic.pstatic.net/webtoon/809722/thumbnail/thumbnail_IMAG21_a4b83b0f-31c2-40b2-9bf1-0bd5e4cb2e74.jpg",
+          "finished": false
+        },
+        {
+          "title": "드블리와 힐링합니다.",
+          "source": "https://comic.naver.com/webtoon/list?titleId=850505",
+          "cover": "https://image-comic.pstatic.net/webtoon/850505/thumbnail/thumbnail_IMAG21_ab7c0158-b8d5-4950-978d-dd0a2eaa9ec8.jpg",
+          "finished": false
+        },
+        {
+          "title": "호감도로 스킬 복사!",
+          "source": "https://comic.naver.com/webtoon/list?titleId=855599",
+          "cover": "https://image-comic.pstatic.net/webtoon/855599/thumbnail/thumbnail_IMAG21_218333ad-6ed5-4d8e-b713-6109dfbb8690.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "크라켄": {
+      "name": "크라켄",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "에르훗": {
+      "name": "에르훗",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "짜장 한 그릇에 제갈세가 데릴사위",
+          "source": "https://comic.naver.com/webtoon/list?titleId=822114",
+          "cover": "https://image-comic.pstatic.net/webtoon/822114/thumbnail/thumbnail_IMAG21_072b5567-fe04-4da3-abcd-fdb3ea167744.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "고태린": {
+      "name": "고태린",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20261006_99/1791268249245VnCGM_PNG/657487461_18126100174577408_7390494765536155559_n.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_42evls",
       "works": []
     }
   }
