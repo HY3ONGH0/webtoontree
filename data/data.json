@@ -1,6 +1,58 @@
 {
   "webtoons": [
     {
+      "id": "w657564281141084",
+      "title": "도깨비의 밤",
+      "author": "문식, 도올",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=813641",
+      "cover": "https://image-comic.pstatic.net/webtoon/813641/thumbnail/thumbnail_IMAG21_a53a4e1b-3395-44da-b9dc-6fe08c98bee5.jpg",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": 0,
+      "color": "#372847",
+      "episodes": 130,
+      "status": "completed",
+      "days": [
+        "fri"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "액션",
+        "서양",
+        "현대",
+        "동양",
+        "신화",
+        "이능력",
+        "배틀",
+        "소년물"
+      ],
+      "desc": "도깨비의 피를 물려받은 반요(半妖) 소년 최시우.\n이 세상 모든 요괴들의 정점에 올라서기까지.\n\n세상의 밤을 다스리는 요마왕(妖魔王).\n그 자리를 놓고 벌어지는 싸움이 시작된다.",
+      "authors": [
+        {
+          "name": "문식",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "도올",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=813641",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-6"
+      ]
+    },
+    {
       "id": "w657564281141083",
       "title": "캐슬2:만인지상",
       "author": "정연, 박만사",
@@ -8390,7 +8442,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141083
+    "lastWebtoonId": 657564281141084
   },
   "version": 1,
   "shop": [
@@ -11777,6 +11829,20 @@
           "finished": true
         }
       ]
+    },
+    "문식": {
+      "name": "문식",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "도올": {
+      "name": "도올",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
     }
   }
 }
