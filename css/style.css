@@ -2098,3 +2098,7 @@ html:not([data-theme="light"]) .ap-photo.plain { background: hsl(var(--h) 30% 38
 .ap-view > * { flex-shrink: 0; }
 .ap-acts { display: flex; gap: 10px; margin-left: 4px; min-height: 18px; }
 .ap-acts .ap-more { margin-left: 0; }
+.ap-pbody p { white-space: pre-line; overflow-wrap: anywhere; }
+.ap-pimg { position: relative; }
+.ap-pimg i { position: absolute; right: 8px; bottom: 8px; padding: 3px 9px; border-radius: 999px; background: rgba(0, 0, 0, .6); color: #fff; font-size: 12px; font-style: normal; font-weight: 700; }
+.ap-phead .ap-pin { padding: 1px 7px; border-radius: 999px; border: 1px solid var(--card-line); font-size: 11px; }
