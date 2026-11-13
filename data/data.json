@@ -1,6 +1,58 @@
 {
   "webtoons": [
     {
+      "id": "w657564281141028",
+      "title": "체크포인트",
+      "author": "송가, 은소",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=677452",
+      "cover": "https://image-comic.pstatic.net/webtoon/677452/thumbnail/thumbnail_IMAG21_05f30a57-88b9-4798-8987-4851f1b28f5a.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#f6f6e9",
+      "episodes": 119,
+      "status": "hiatus",
+      "days": [
+        "fri"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "드라마",
+        "이능력",
+        "자본주의",
+        "판타지",
+        "타임슬립",
+        "회귀",
+        "이능력배틀물",
+        "두뇌싸움"
+      ],
+      "desc": "내 인생에 세이브 포인트가 있다면?\n하루에도 수십 번씩 시간을 되돌리는 남자.",
+      "authors": [
+        {
+          "name": "송가",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "은소",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=677452",
+      "autoAt": "2026-11-13",
+      "subs": [
+        "fantasy-5"
+      ],
+      "pick": true
+    },
+    {
       "id": "w657564281141027",
       "title": "고고농구",
       "author": "이명재",
@@ -5661,7 +5713,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141027
+    "lastWebtoonId": 657564281141028
   },
   "version": 1,
   "shop": [
@@ -7614,6 +7666,34 @@
           "title": "위아더좀비",
           "source": "https://comic.naver.com/webtoon/list?titleId=766648",
           "cover": "https://image-comic.pstatic.net/webtoon/766648/thumbnail/thumbnail_IMAG21_3977861984512325425.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "송가": {
+      "name": "송가",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "데스포인트",
+          "source": "https://comic.naver.com/webtoon/list?titleId=843007",
+          "cover": "https://image-comic.pstatic.net/webtoon/843007/thumbnail/thumbnail_IMAG21_0b36b041-ab48-45f1-813d-1cc60fe58dff.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "은소": {
+      "name": "은소",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "데스포인트",
+          "source": "https://comic.naver.com/webtoon/list?titleId=843007",
+          "cover": "https://image-comic.pstatic.net/webtoon/843007/thumbnail/thumbnail_IMAG21_0b36b041-ab48-45f1-813d-1cc60fe58dff.jpg",
           "finished": true
         }
       ]
