@@ -158,7 +158,7 @@
     const q = (sel) => root().querySelector(sel);
     if (q('.ad-main')) { keep.main = q('.ad-main').scrollTop; keep.nav = q('.ad-nav').scrollTop; keep.lists = Array.from(root().querySelectorAll('.items-box, .ad-list')).map((x) => x.scrollTop); }
     root().innerHTML = `<header class="ad-head">
-        <div class="brand"><b>웹툰트리</b><span class="ad-tag">관리자</span></div>
+        <div class="brand">${WT.logo.mark()}${WT.logo.word((D.settings || {}).siteName || '웹툰트리')}<span class="ad-tag">관리자</span></div>
         <span id="ad-state" class="ad-state" aria-live="polite"></span>
         <span id="ad-live" class="ad-live"></span>
         <div class="ad-actions">
