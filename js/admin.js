@@ -158,7 +158,7 @@
     const keep = { tab: lastTab, main: 0, nav: 0, lists: [] };
     const q = (sel) => root().querySelector(sel);
     if (q('.ad-main')) { keep.main = q('.ad-main').scrollTop; keep.nav = q('.ad-nav').scrollTop; keep.lists = Array.from(root().querySelectorAll('.items-box, .ad-list')).map((x) => x.scrollTop); }
-    root().innerHTML = `<header class="ad-head">
+    const html = `<header class="ad-head">
         <div class="brand">${WT.logo.mark()}${WT.logo.word((D.settings || {}).siteName || '웹툰트리')}<span class="ad-tag">관리자</span></div>
         <span id="ad-state" class="ad-state" aria-live="polite"></span>
         <span id="ad-live" class="ad-live"></span>
@@ -178,6 +178,7 @@
         </nav>
         <main class="ad-main" id="ad-main">${({ webtoons: tabWebtoons, genres: tabGenres, tree: tabTree, map: tabMap, settings: tabSettings, shop: tabShop, server: tabServer, data: tabData })[ui.tab]()}</main>
       </div>`;
+    if (!keepTyping(html)) root().innerHTML = html;
     setState();
     liveBadge();
     const head = q('.ad-head');
@@ -191,6 +192,37 @@
     if (ui.tab === 'tree') mountTree();
     if (ui.tab === 'map') mountMap();
     window.scrollTo(0, scrollY);
+  }
+
+  // 글자를 치고 있는 칸을 다시 그리면(새 칸으로 바꾸면) 한글 조합이 끊겨 자모가 따로 찍혀요 (특히 패드 · 휴대폰 자판).
+  // 그래서 지금 쓰는 칸과 그 바깥 틀은 그대로 두고, 나머지만 새 내용으로 바꿔요.
+  const typingSel = (a) => (a.id ? '#' + CSS.escape(a.id) : ['data-wf', 'data-gf', 'data-subf', 'data-sid', 'data-sf', 'data-why', 'data-shop', 'data-k', 'data-ai', 'data-id'].filter((x) => a.hasAttribute(x)).map((x) => `[${x}="${CSS.escape(a.getAttribute(x))}"]`).join(''));
+  function keepTyping(html) {
+    const a = document.activeElement;
+    const R = root();
+    if (!a || !R.contains(a) || !/^(INPUT|TEXTAREA)$/.test(a.tagName) || /^(checkbox|radio|color|range|file|button|submit)$/.test(a.type || '')) return false;
+    const sel = typingSel(a);
+    if (!sel) return false;
+    const T = document.createElement('div');
+    T.innerHTML = html;
+    let b;
+    try { const all = T.querySelectorAll(a.tagName.toLowerCase() + sel); if (all.length !== 1) return false; b = all[0]; } catch (e) { return false; }
+    const path = (el, top) => { const out = []; for (let x = el; x && x !== top; x = x.parentNode) out.unshift(x); return out; };
+    const pa = path(a, R), pb = path(b, T);
+    if (pa.length !== pb.length || pa.some((x, i) => x.tagName !== pb[i].tagName)) return false;
+    const syncAttrs = (o, n, skip) => {
+      Array.from(o.attributes).forEach((at) => { if (!n.hasAttribute(at.name) && !skip.includes(at.name)) o.removeAttribute(at.name); });
+      Array.from(n.attributes).forEach((at) => { if (!skip.includes(at.name) && o.getAttribute(at.name) !== at.value) o.setAttribute(at.name, at.value); });
+    };
+    for (let i = 0; i < pa.length; i++) {
+      const po = i ? pa[i - 1] : R, pn = i ? pb[i - 1] : T, co = pa[i], cn = pb[i];
+      Array.from(po.childNodes).forEach((x) => { if (x !== co) po.removeChild(x); });
+      let before = true;
+      Array.from(pn.childNodes).forEach((x) => { if (x === cn) { before = false; return; } if (before) po.insertBefore(x, co); else po.appendChild(x); });
+      if (i < pa.length - 1) syncAttrs(co, cn, ['open']);   // 펼쳐 둔 칸(details)은 그대로
+    }
+    syncAttrs(a, b, ['value']);   // 쓰고 있는 글자와 커서는 건드리지 않아요
+    return true;
   }
 
   // ---------- 웹툰 목록 ----------
@@ -1629,7 +1661,7 @@
     render();
     if (sel) {
       const n = root().querySelector(sel);
-      if (n) { n.focus({ preventScroll: true }); try { if (start !== null) n.setSelectionRange(start, end); } catch (e) { /* 무시 */ } }
+      if (n && n !== document.activeElement) { n.focus({ preventScroll: true }); try { if (start !== null) n.setSelectionRange(start, end); } catch (e) { /* 무시 */ } }
     }
   }
   function liveBadge() {
@@ -1713,9 +1745,8 @@
   function onInput(e) {
     const el = e.target;
     // 한국어처럼 글자를 조합하는 중에는 화면을 다시 그리지 않아요 (그리면 조합이 끊겨요). 조합이 끝나면(compositionend) 반영해요
-    if ((el.id === 'w-q' || el.id === 'b-q') && (e.isComposing || composing)) { if (el.id === 'w-q') ui.q = el.value; else ui.bq = el.value; return; }
-    if (el.id === 'w-q') { ui.q = el.value; const pos = el.selectionStart; render(); const n = document.getElementById('w-q'); n.focus(); n.setSelectionRange(pos, pos); return; }
-    if (el.id === 'b-q') { ui.bq = el.value; const pos = el.selectionStart; render(); const n = document.getElementById('b-q'); n.focus(); n.setSelectionRange(pos, pos); return; }
+    if (el.id === 'w-q') { ui.q = el.value; render(); return; }
+    if (el.id === 'b-q') { ui.bq = el.value; render(); return; }
     if (el.dataset.ai) {   // 작가 정보 직접 고치기 (다시 그리지 않고 저장만)
       const [k, f] = el.dataset.ai.split('|');
       D.authorInfo = D.authorInfo || {};

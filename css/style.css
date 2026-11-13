@@ -2245,3 +2245,5 @@ a.lb-av:hover { color: #fff; filter: brightness(1.08); }
 /* 프로필 사진이 없는 작가: 기본 프로필 그림 */
 .ap-photo, .ap-photo.plain, html:not([data-theme="light"]) .ap-photo, html:not([data-theme="light"]) .ap-photo.plain, .ap-pav, .ap-pav.plain { background: #F1F3F6 url("../img/author-default.jpg") center / cover no-repeat; }
 .ap-pav.sys { background: hsl(var(--h) 30% 45%); }
+/* 글자를 쓰는 칸은 언제나 글자를 고를 수 있게 (끌기 방지가 걸린 판 안에서는 패드 · 휴대폰 자판 입력이 이상해져요) */
+input, textarea, select, [contenteditable="true"] { -webkit-user-select: text; user-select: text; }

@@ -133,8 +133,10 @@
     let composing = false;
     const q = document.getElementById('bk-q');
     q.addEventListener('compositionstart', () => { composing = true; });
-    q.addEventListener('compositionend', () => { composing = false; F.q = q.value; shown = PAGE; draw(true); });
-    q.addEventListener('input', (e) => { if (composing || e.isComposing) return; F.q = q.value; shown = PAGE; draw(true); });
+    let qt = 0;
+    const bkSearch = () => { clearTimeout(qt); qt = setTimeout(() => { if (q.value === F.q) return; F.q = q.value; shown = PAGE; draw(true); }, 160); };
+    q.addEventListener('compositionend', () => { composing = false; bkSearch(); });
+    q.addEventListener('input', bkSearch);
     document.getElementById('bk-sort').addEventListener('change', (e) => { F.sort = e.target.value; draw(true); });
     more.addEventListener('click', (e) => { if (e.target.id === 'bk-load') { shown += PAGE; draw(true); } });
     // 아래로 내리면 저절로 더 불러와요
