@@ -1,6 +1,54 @@
 {
   "webtoons": [
     {
+      "id": "w657564281141086",
+      "title": "킬러 배드로",
+      "author": "김정현, 임리나",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=816798",
+      "cover": "https://image-comic.pstatic.net/webtoon/816798/thumbnail/thumbnail_IMAG21_bf6e3706-5518-445f-b516-b94257cfad4f.jpg",
+      "genres": [
+        "action"
+      ],
+      "recommended": 4,
+      "color": "#261d24",
+      "episodes": 158,
+      "status": "ongoing",
+      "days": [
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-13",
+      "tags": [
+        "액션",
+        "시리어스",
+        "미친작화",
+        "범죄",
+        "고인물",
+        "격투기",
+        "학원물",
+        "복수극"
+      ],
+      "desc": "배신당한 노인킬러 회춘하다!\n그런데... 아무도 날 못 알아봐?! \n\"그럼 내가 최강이지!\"",
+      "authors": [
+        {
+          "name": "김정현",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "임리나",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=816798",
+      "autoAt": "2026-11-13"
+    },
+    {
       "id": "w657564281141085",
       "title": "사랑하는 여름 하늘",
       "author": "소장",
@@ -3668,7 +3716,7 @@
         "fantasy-5"
       ],
       "source": "https://comic.naver.com/webtoon/list?titleId=670150",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "민송아",
@@ -3691,13 +3739,13 @@
       ],
       "recommended": 2,
       "color": "",
-      "episodes": 70,
+      "episodes": 61,
       "status": "completed",
       "days": [
         "thu"
       ],
       "autoCount": false,
-      "baseDate": "2026-11-13",
+      "baseDate": "2026-11-11",
       "tags": [
         "로맨스",
         "러브코미디",
@@ -3710,7 +3758,7 @@
       ],
       "desc": "어느 날 갑자기 나의 평온한 일상을 깨뜨린 그녀. 그런데 미소녀다? 그리고 나를 조...좋아한다고? 아니, 사랑한다고....?\n문제는, 나와 결혼하기 위해 앞집으로 이사 왔다는 '나리'가 싫지 않다는 것.  민송아 작가의 18금 두근두근 러브코미디.",
       "source": "https://comic.naver.com/webtoon/list?titleId=802293",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "민송아",
@@ -3748,7 +3796,7 @@
       ],
       "desc": "아름다울 미 고울 연. 이름처럼 아름답게 자란 19살 ‘미연’은 화려한 외모와 달리 소심한 성격의 소녀다. \n그러던 어느 날, 수업 중 잠이 든 미연은 돌연 6년 뒤 미래에서 눈을 뜨게 된다. 배우가 된 자신과 어딘가 익숙한 얼굴의 매니저. \n미연은 낯설기만 한 미래에서 얼어붙은 기억 속 진실을 찾아 앞으로 나아갈 수 있을까?",
       "source": "https://comic.naver.com/webtoon/list?titleId=837864",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "서녜",
@@ -3790,7 +3838,7 @@
       ],
       "desc": "\"내가 재밌게 해줄 수 있는데.\"\n서른 살, 노잼 인생을 살고 있는 여름 앞에\n어느 날 나타난 미스테리 연하남!\n앞뒤 가리지 않고 직진하는 모습이 그저 귀엽다가도,  \n어딘가 세하고 어딘가 집착적인데?\n \n대체 너 나한테 원하는 게 뭐니?!\n두근두근 쌍방사기 로맨스 코미디!",
       "source": "https://comic.naver.com/webtoon/list?titleId=808455",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "조흰",
@@ -3835,7 +3883,7 @@
       ],
       "desc": "완벽한 인플루언서의 삶. 좋아하는 여자와의 썸.\n고백만이 남았는데 황당한 테러 사건에 휘말렸다?!\n\"집착이 아니라 진짜로 우리..! 헤어지면 죽어!!\"",
       "source": "https://comic.naver.com/webtoon/list?titleId=783861",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "봄소희",
@@ -3878,7 +3926,7 @@
       ],
       "desc": "고백 성공률 0%의 짝사랑마스터 해리.\n굴욕적인 19번째 실연장면을 우연히 예찬에게 들키고 만다.\n다시는 아무도 안 좋아하겠다고 다짐했지만, 또 짝사랑을 시작해버린 해리는 \n20번째 실연을 막기 위해 예찬의 도움을 받기로 하는데...\n과연 이번 사랑은 성공할 수 있을까?",
       "source": "https://comic.naver.com/webtoon/list?titleId=789682",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "숭어",
@@ -3920,7 +3968,7 @@
       ],
       "desc": "혼밥, 혼영, 혼술 모든 것이 혼자가 편했던 백사랑.\n손해를 보면서까지 타인과 어울리길 원하는 유평화.\n상반되는 삶을 살아온 사랑과 평화는 서로를 만나 새로운 삶의 방식을 알게 된다. \n생각보다 어른스럽고, 생각보다 유치한 어딘가 공감가는 현실 로맨스",
       "source": "https://comic.naver.com/webtoon/list?titleId=843450",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "숭어",
@@ -3962,7 +4010,7 @@
       ],
       "desc": "사이비 교주 아들과의 아슬아슬하고 위험천만한 동거가 시작됐다! 철석같이 믿었던 외삼촌에게 사기를 당한 청아네. 부모님은 행방불명된 외삼촌을 쫓는다며 사라지고, 청아는 갑작스레 빈 집에 혼자 살게 된다. 그런데 사기당한 가족이 청아네만이 아니었으니! 자치구에서 가장 큰 사이비, ‘천년재림교’도 외삼촌에게 제대로 속았다. 그리고 청아네 집에 찾아온 교주의 아들 ‘요한’. 무작정 짐을 끌고 쳐들어오는데...! 신이시여, 이 동거 괜찮을까요?",
       "source": "https://comic.naver.com/webtoon/list?titleId=802079",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "한서",
@@ -4001,7 +4049,7 @@
       ],
       "desc": "하루에 무려 쓰리잡. \n스물 다섯 지언의 일과 끝에 남는 건 갑질에 시달린 스트레스와 돼지우리같은 집구석 뿐이다. \n그러다 어느날 얻게 된 인형 한 개. 이것만 있으면 대한민국의 탑 배우 남도윤을 가정부로 부려먹을 수있다...?!\n2017 최강자전 대상 수상작  슈안 작가의 차기작!",
       "source": "https://comic.naver.com/webtoon/list?titleId=761461",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "슈안",
@@ -4043,7 +4091,7 @@
       ],
       "desc": "스킨십 공포증이 있는 유라의 곁엔 오로지 소꿉친구인 해원이뿐이었지만 고인우와 권미인 그리고 다양한 사람들과 만나게 되면서 새로운 감정을 알아가고 진정한 인간관계를 쌓아간다.",
       "source": "https://comic.naver.com/webtoon/list?titleId=789652",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "강환영",
@@ -4084,7 +4132,7 @@
       ],
       "desc": "태어나서 단 한번도 패배해본 적 없는 남주 '이기고'\n그런 이기고를 처음으로 패배하게 만든 여주 '오로지'\n과연 이 '내기'의 승자는 누가 될 것인가?",
       "source": "https://comic.naver.com/webtoon/list?titleId=730657",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "아마도지",
@@ -4131,7 +4179,7 @@
       ],
       "desc": "쌍방 사랑의 행운을 만끽하는 18세 강견오. 그 상대는 같은 반의 초미녀 백찬비. \n항상 먼저 직진해오는 찬비와의 썸을 즐기던 것도 잠시, 찬비는 사고로\n최근 1년의 기억을 잃게 되고 견오를 좋아했다는 기억까지 잃게 된다!\n순식간에 짝사랑이 돼버린 견오. 과연 예전의 쌍방 사랑의 시기로 돌아갈 수 있을까?\n…근데 우리 서로 좋아한 거 확실하지?",
       "source": "https://comic.naver.com/webtoon/list?titleId=826322",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "장사휘",
@@ -4173,7 +4221,7 @@
       ],
       "desc": "살인에서 삶의 즐거움을 느끼는 '겸살귀', 정(正).\n대 연목검장의 셋째공자 목경운과 똑같이 생긴 얼굴을 가졌는데...\n\"나의 대역이 되어라. 그러면 옥에서 나갈 수 있게 해 주마.\"\n\"그 기회. 제게 주시겠습니까?\"\n\n'촤악-!!!'\n\n셋째공자를 죽여버린다. 그리고 본인이 '진짜'가 되어 살아가고자 한다.\n가짜 목경운은 진짜 목경운으로서 살아남을 수 있을까?\n연쇄살인마, 대 연목검장의 셋째공자로서 새로운 삶을 시작한다.",
       "source": "https://comic.naver.com/webtoon/list?titleId=821597",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "매드버드",
@@ -4229,7 +4277,7 @@
         "fantasy-1"
       ],
       "source": "https://comic.naver.com/webtoon/list?titleId=752414",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "레포",
@@ -4282,7 +4330,7 @@
       ],
       "desc": "갖은 멸시와 목숨의 위협을 받던 마교의 사생아 천여운, \n미래에서 나타난 후손이 천여운의 몸에 나노 머신을 주입한 후 그의 인생이 송두리째 바뀐다.\n마교를 넘어 무림 최고의 자리에 오르기 위한 천여운의 거침없는 이야기가 시작된다!",
       "source": "https://comic.naver.com/webtoon/list?titleId=747271",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "현절무",
@@ -4355,7 +4403,7 @@
       ],
       "desc": "최강의 콤비가 무협의 전설을 다시 쓰다! \n천하제일의 고수 강룡. 그리고 수많은 다른 고수들의 이야기.",
       "source": "https://comic.naver.com/webtoon/list?titleId=662774",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "류기운",
@@ -4396,7 +4444,7 @@
       ],
       "desc": "『태존비록』\n\n천하의 겁난을 종식시킨 위대한 무인.\n광휘무존(光輝武尊) 위연호(魏衍澔).\n\n그는 군자(君子)였으며, 대인(大人)이었고, 대협(大俠)이었…….\n\n\"그 인간, 그거 완전 인간 말종이거든.\"\n\n차마 세상에 알릴 수 없는 진실.\n고금제일대협의 실체가 낱낱이 밝혀진다!",
       "source": "https://comic.naver.com/webtoon/list?titleId=840687",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "김꿀빨",
@@ -4453,7 +4501,7 @@
         "fantasy-6"
       ],
       "source": "https://comic.naver.com/webtoon/list?titleId=808482",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "팀 더 지크",
@@ -4510,7 +4558,7 @@
         "fantasy-2"
       ],
       "source": "https://comic.naver.com/webtoon/list?titleId=784248",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "seri",
@@ -4567,7 +4615,7 @@
         "fantasy-5"
       ],
       "source": "https://comic.naver.com/webtoon/list?titleId=792651",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "홍실",
@@ -4620,7 +4668,7 @@
         "fantasy-6"
       ],
       "source": "https://comic.naver.com/webtoon/list?titleId=829875",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "GMAN",
@@ -4671,7 +4719,7 @@
         "fantasy-5"
       ],
       "source": "https://comic.naver.com/webtoon/list?titleId=840508",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "도국",
@@ -4717,7 +4765,7 @@
         "fantasy-6"
       ],
       "source": "https://comic.naver.com/webtoon/list?titleId=766563",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "꿀벌",
@@ -4767,7 +4815,7 @@
         "fantasy-2"
       ],
       "source": "https://comic.naver.com/webtoon/list?titleId=773797",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "WAN.Z",
@@ -4839,13 +4887,13 @@
       ],
       "recommended": 3,
       "color": "#66ffc4",
-      "episodes": 88,
+      "episodes": 41,
       "status": "hiatus",
       "days": [
         "thu"
       ],
       "autoCount": false,
-      "baseDate": "2026-11-13",
+      "baseDate": "2026-11-10",
       "tags": [
         "로맨스",
         "리얼로맨스",
@@ -4858,7 +4906,7 @@
       ],
       "desc": "20살에 20년지기, 평생을 함께한 소꿉친구 하늘과 민철.\n그런 소꿉친구의 알고 싶지 않은 은밀한 사정을 알아버렸다?!\n서로를 이성으로 생각한 적이 결코 없는 두사람이지만,\n오해가 오해를 낳고 착각이 착각을 낳는 상황들 속에서 점점 서로가 의식되기 시작한다.\n서로를 너무 잘 알기 때문에 오히려 고난을 겪는 두 남녀의 술래잡기 같은 로맨스 코미디!",
       "source": "https://comic.naver.com/webtoon/list?titleId=822640",
-      "autoAt": "2026-11-13",
+      "autoAt": "2026-11-12",
       "authors": [
         {
           "name": "은하이",
@@ -7249,6 +7297,24 @@
           ]
         }
       ]
+    },
+    {
+      "id": "w65756428114097v",
+      "title": "",
+      "author": "",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "",
+      "genres": [],
+      "recommended": 0,
+      "color": "",
+      "episodes": 1,
+      "status": "ongoing",
+      "days": [],
+      "autoCount": true,
+      "baseDate": "2026-11-11",
+      "tags": [],
+      "desc": ""
     }
   ],
   "genres": [
@@ -8372,18 +8438,45 @@
       "start": "w030",
       "nodes": {
         "w030": [
-          130,
+          110,
           280
         ],
         "w039": [
-          350,
-          370
+          310,
+          90
+        ],
+        "w657564281141086": [
+          310,
+          470
+        ],
+        "w657564281141082": [
+          510,
+          280
+        ],
+        "w657564281141083": [
+          710,
+          280
         ]
       },
       "links": [
         {
           "from": "w030",
           "to": "w039",
+          "why": ""
+        },
+        {
+          "from": "w030",
+          "to": "w657564281141086",
+          "why": ""
+        },
+        {
+          "from": "w657564281141086",
+          "to": "w657564281141082",
+          "why": ""
+        },
+        {
+          "from": "w657564281141082",
+          "to": "w657564281141083",
           "why": ""
         }
       ]
@@ -8486,104 +8579,8 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657564281141085
+    "lastWebtoonId": 657564281141086
   },
-  "version": 1,
-  "shop": [
-    {
-      "id": "basic",
-      "kind": "acc",
-      "name": "기본 별똥이",
-      "desc": "머리 위 작은 별이 반짝여요",
-      "price": 0,
-      "body": "#CDEBFF",
-      "feet": "#7FB8F0",
-      "acc": "none"
-    },
-    {
-      "id": "crown",
-      "kind": "acc",
-      "name": "황금 왕관",
-      "desc": "판타지 웹툰을 좋아하는 당신에게",
-      "price": 80,
-      "body": "#CDEBFF",
-      "feet": "#7FB8F0",
-      "acc": "crown"
-    },
-    {
-      "id": "wizard",
-      "kind": "acc",
-      "name": "마법사 모자",
-      "desc": "끝에서 별가루가 떨어지는 모자",
-      "price": 120,
-      "body": "#CDEBFF",
-      "feet": "#7FB8F0",
-      "acc": "wizard",
-      "isNew": true
-    },
-    {
-      "id": "satgat",
-      "kind": "acc",
-      "name": "강호의 삿갓",
-      "desc": "무협 웹툰 주인공처럼",
-      "price": 120,
-      "body": "#CDEBFF",
-      "feet": "#7FB8F0",
-      "acc": "satgat"
-    },
-    {
-      "id": "cat",
-      "kind": "acc",
-      "name": "고양이 귀",
-      "desc": "일상 웹툰과 잘 어울려요",
-      "price": 150,
-      "body": "#CDEBFF",
-      "feet": "#7FB8F0",
-      "acc": "cat"
-    },
-    {
-      "id": "phones",
-      "kind": "acc",
-      "name": "분홍 헤드폰",
-      "desc": "로맨스 웹툰 볼 때 BGM은 필수",
-      "price": 200,
-      "body": "#CDEBFF",
-      "feet": "#7FB8F0",
-      "acc": "phones",
-      "isNew": true
-    },
-    {
-      "id": "sunset",
-      "kind": "color",
-      "name": "노을빛 몸",
-      "desc": "따뜻한 주황빛으로 물들어요",
-      "price": 50,
-      "body": "#FFD0B5",
-      "feet": "#F29A6B",
-      "acc": "none"
-    },
-    {
-      "id": "forest",
-      "kind": "color",
-      "name": "숲빛 몸",
-      "desc": "싱그러운 초록빛",
-      "price": 50,
-      "body": "#C8F2D9",
-      "feet": "#6FCB98",
-      "acc": "none"
-    },
-    {
-      "id": "night",
-      "kind": "color",
-      "name": "밤하늘 몸",
-      "desc": "보랏빛 밤하늘 색",
-      "price": 100,
-      "body": "#C9B8FF",
-      "feet": "#8E74E6",
-      "acc": "none"
-    }
-  ],
-  "hotToday": [],
   "authorInfo": {
     "232": {
       "name": "232",
@@ -8609,8 +8606,8 @@
     "민송아": {
       "name": "민송아",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20230920_157/1695195402948HdBal_PNG/IMG_6445.png",
-      "bio": "사람",
-      "url": "https://comic.naver.com/community/u/_3i1sk",
+      "bio": "",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20230920_157/1695195402948HdBal_PNG/IMG_6445.png",
       "works": [
         {
           "title": "이두나!",
@@ -8635,8 +8632,8 @@
     "서녜": {
       "name": "서녜",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20261015_275/1792040291156HO7J4_PNG/IMG_7947.png",
-      "bio": "<미연❄️>연재 중  <선을 넘은 연애> 단편 <요즘연애특) ‘남들 다 하는 연애’> <소년 소녀 연애하다 ‘물꽃놀이’>  insta: @seo_nye.c",
-      "url": "https://comic.naver.com/community/u/seonye",
+      "bio": "",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20261015_275/1792040291156HO7J4_PNG/IMG_7947.png",
       "works": [
         {
           "title": "선을 넘은 연애",
@@ -8649,22 +8646,22 @@
     "조흰": {
       "name": "조흰",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20230913_281/1694611671400MLfSq_PNG/KakaoTalk_20230913_221826692.png",
-      "bio": "조랭이떡🤍",
-      "url": "https://comic.naver.com/community/u/white",
+      "bio": "",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20230913_281/1694611671400MLfSq_PNG/KakaoTalk_20230913_221826692.png",
       "works": []
     },
     "윤김": {
       "name": "윤김",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20230913_163/1694611210075Bbgbu_PNG/%A4%B1.png",
-      "bio": "안녕하세요~ 윤김입니다.",
-      "url": "https://comic.naver.com/community/u/YK",
+      "bio": "",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20230913_163/1694611210075Bbgbu_PNG/%A4%B1.png",
       "works": []
     },
     "봄소희": {
       "name": "봄소희",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20260809_64/1786284249574B0mlW_PNG/1000076556.png",
-      "bio": "오늘도 파이팅 넘치는 하루!! ⭐️ @bomso_hee",
-      "url": "https://comic.naver.com/community/u/_qbotm",
+      "bio": "",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20260809_64/1786284249574B0mlW_PNG/1000076556.png",
       "works": [
         {
           "title": "호러전파상",
@@ -8695,8 +8692,8 @@
     "kyma": {
       "name": "KYMA",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20230915_210/1694710097444RknF4_PNG/IMG_1803.png",
-      "bio": "우왕",
-      "url": "https://comic.naver.com/community/u/kyma",
+      "bio": "",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20230915_210/1694710097444RknF4_PNG/IMG_1803.png",
       "works": [
         {
           "title": "청춘정식",
@@ -8709,8 +8706,8 @@
     "숭어": {
       "name": "숭어",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20230913_54/1694616992259F7J73_PNG/%C7%D8%B4%DE%BC%FE.png",
-      "bio": "숭어입니다",
-      "url": "https://comic.naver.com/community/u/sungA",
+      "bio": "",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20230913_54/1694616992259F7J73_PNG/%C7%D8%B4%DE%BC%FE.png",
       "works": [
         {
           "title": "가타부타타",
@@ -8736,7 +8733,7 @@
       "name": "한서",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20230913_17/1694588687543BaG0i_PNG/kj.png",
       "bio": "",
-      "url": "https://comic.naver.com/community/u/hanseo",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20230913_17/1694588687543BaG0i_PNG/kj.png",
       "works": [
         {
           "title": "오! my GOD",
@@ -8749,8 +8746,8 @@
     "슈안": {
       "name": "슈안",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20230914_145/1694621256790tPdPy_PNG/1000017921.png",
-      "bio": "웹툰을그려요",
-      "url": "https://comic.naver.com/community/u/xuannk",
+      "bio": "",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20230914_145/1694621256790tPdPy_PNG/1000017921.png",
       "works": [
         {
           "title": "늑대와 빨간모자",
@@ -8763,8 +8760,8 @@
     "강환영": {
       "name": "강환영",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20230914_113/1694676552491P12AC_PNG/%B4%BA%C5%B8%C0%CC%C6%B2-2%B1%E2_001.png",
-      "bio": "안녕하세요💖",
-      "url": "https://comic.naver.com/community/u/xoxo10280",
+      "bio": "",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20230914_113/1694676552491P12AC_PNG/%B4%BA%C5%B8%C0%CC%C6%B2-2%B1%E2_001.png",
       "works": [
         {
           "title": "일진이 사나워",
@@ -8783,8 +8780,8 @@
     "아마도지": {
       "name": "아마도지",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=326476",
       "works": [
         {
           "title": "멀리서 온 에일리",
@@ -8803,8 +8800,8 @@
     "사삭": {
       "name": "사삭",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20250721_75/1753105333279o0hqV_PNG/%C8%AD%B8%E9_%C4%B8%C3%B3_2025-07-21_224030.png",
-      "bio": "오너이 / 에일리 작화",
-      "url": "https://comic.naver.com/community/u/6451",
+      "bio": "",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20250721_75/1753105333279o0hqV_PNG/%C8%AD%B8%E9_%C4%B8%C3%B3_2025-07-21_224030.png",
       "works": [
         {
           "title": "멀리서 온 에일리",
@@ -8823,29 +8820,29 @@
     "장사휘": {
       "name": "장사휘",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=379163",
       "works": []
     },
     "매드버드": {
       "name": "매드버드",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=375577",
       "works": []
     },
     "김태형": {
       "name": "김태형",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=375579",
       "works": []
     },
     "한중월야": {
       "name": "한중월야",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=347598",
       "works": [
         {
           "title": "나노마신",
@@ -8864,8 +8861,8 @@
     "레포": {
       "name": "레포",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=370342",
       "works": [
         {
           "title": "2015년생 레포토",
@@ -8878,36 +8875,36 @@
     "세혼": {
       "name": "세혼",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=336654",
       "works": []
     },
     "인덱스": {
       "name": "인덱스",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=336851",
       "works": []
     },
     "현절무": {
       "name": "현절무",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=334605",
       "works": []
     },
     "금강불괴": {
       "name": "금강불괴",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=334606",
       "works": []
     },
     "류기운": {
       "name": "류기운",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=293267",
       "works": [
         {
           "title": "용비불패 완전판",
@@ -8926,8 +8923,8 @@
     "문정후": {
       "name": "문정후",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=293268",
       "works": [
         {
           "title": "용비불패 완전판",
@@ -8946,8 +8943,8 @@
     "김꿀빨": {
       "name": "김꿀빨",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=357917",
       "works": [
         {
           "title": "왕따가 격투기를 너무 잘함",
@@ -8978,8 +8975,8 @@
     "레드훅": {
       "name": "레드훅",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20260823_74/17874525480998EmkJ_PNG/12435.png",
-      "bio": "안녕하세요 레드훅 입니다.",
-      "url": "https://comic.naver.com/community/u/Redhook",
+      "bio": "",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20260823_74/17874525480998EmkJ_PNG/12435.png",
       "works": [
         {
           "title": "황제의 검",
@@ -8992,15 +8989,15 @@
     "비가": {
       "name": "비가",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=344545",
       "works": []
     },
     "팀 더 지크": {
       "name": "팀 더 지크",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20250908_293/1757283300642uGhWg_PNG/%C6%C0_%B4%F5_%C1%F6%C5%A9_%B0%ED%BE%E7%C0%CC_%B7%CE%B0%ED.png",
-      "bio": "Manhwa Creators — Crafting stories you can’t wait to read next.  다음 화가 궁금해지는 이야기를 만듭니다.",
-      "url": "https://comic.naver.com/community/u/teamthejick",
+      "bio": "",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20250908_293/1757283300642uGhWg_PNG/%C6%C0_%B4%F5_%C1%F6%C5%A9_%B0%ED%BE%E7%C0%CC_%B7%CE%B0%ED.png",
       "works": [
         {
           "title": "몬스터와 힐링하는 S급 헌터",
@@ -9020,21 +9017,21 @@
       "name": "MIDNIGHT STUDIO",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20240909_232/1725878236230irfmQ_PNG/%BD%BA%C6%A9%B5%F0%BF%C0_%B7%CE%B0%ED.png",
       "bio": "",
-      "url": "https://comic.naver.com/community/u/MIDNIGHTSTUDIO",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20240909_232/1725878236230irfmQ_PNG/%BD%BA%C6%A9%B5%F0%BF%C0_%B7%CE%B0%ED.png",
       "works": []
     },
     "정윤강": {
       "name": "정윤강",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=365339",
       "works": []
     },
     "seri": {
       "name": "seri",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=188020",
       "works": [
         {
           "title": "",
@@ -9059,8 +9056,8 @@
     "비완": {
       "name": "비완",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=265256",
       "works": [
         {
           "title": "매지컬 고삼즈",
@@ -9073,15 +9070,15 @@
     "근서": {
       "name": "근서",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=351338",
       "works": []
     },
     "홍실": {
       "name": "홍실",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=340142",
       "works": [
         {
           "title": "드라큘라 DRACULA",
@@ -9112,29 +9109,29 @@
     "지페리": {
       "name": "지페리",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20231205_100/1701741853026LgEDG_PNG/%C1%F6%C6%E4%B8%AE_%B5%B5%C6%AE.png",
-      "bio": "<99강화 나무몽둥이>그림작가 지페리입니다~! 재밌게 봐주셔서 감사합니다~! 계속 즐겁게 보실 수 있도록 열심히 그리겠습니다~!",
-      "url": "https://comic.naver.com/community/u/_qbp19",
+      "bio": "",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20231205_100/1701741853026LgEDG_PNG/%C1%F6%C6%E4%B8%AE_%B5%B5%C6%AE.png",
       "works": []
     },
     "gman": {
       "name": "GMAN",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20250515_287/1747300212777RXUDW_PNG/%B7%CE%BA%A390.png",
-      "bio": "생선회 학원을 그리고 있는 GMAN입니다.",
-      "url": "https://comic.naver.com/community/u/ssmaca",
+      "bio": "",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20250515_287/1747300212777RXUDW_PNG/%B7%CE%BA%A390.png",
       "works": []
     },
     "탕아후루": {
       "name": "탕아후루",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=382125",
       "works": []
     },
     "도국": {
       "name": "도국",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=243358",
       "works": [
         {
           "title": "스펙트럼 분석기",
@@ -9154,14 +9151,14 @@
       "name": "꿀벌",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20261028_156/1793176031082K1xuH_PNG/IMG_7366.png",
       "bio": "",
-      "url": "https://comic.naver.com/community/u/_v4z1t0",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20261028_156/1793176031082K1xuH_PNG/IMG_7366.png",
       "works": []
     },
     "벌꿀": {
       "name": "벌꿀",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=343875",
       "works": [
         {
           "title": "조작된 교실",
@@ -9174,8 +9171,8 @@
     "wan.z": {
       "name": "WAN.Z",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=348482",
       "works": [
         {
           "title": "소방관",
@@ -9188,8 +9185,8 @@
     "스윙뱃": {
       "name": "스윙뱃",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=348481",
       "works": [
         {
           "title": "회귀한 공작가의 막내도련님은 암살자",
@@ -9202,15 +9199,15 @@
     "메슬로우": {
       "name": "메슬로우",
       "img": "",
-      "bio": "",
-      "url": "",
+      "bio": "매일매일 새로운 재미, 네이버웹툰.",
+      "url": "https://comic.naver.com/artistTitle?id=348480",
       "works": []
     },
     "은하이": {
       "name": "은하이",
       "img": "https://kw-wcommunity-phinf.pstatic.net/20240314_70/17104060291326HhhM_PNG/%C0%CF%B7%AF%BD%BA%C6%AE2.png",
       "bio": "",
-      "url": "https://comic.naver.com/community/u/_uxi7a",
+      "url": "https://kw-wcommunity-phinf.pstatic.net/20240314_70/17104060291326HhhM_PNG/%C0%CF%B7%AF%BD%BA%C6%AE2.png",
       "works": []
     },
     "개": {
@@ -11907,6 +11904,171 @@
           "finished": true
         }
       ]
+    },
+    "김정현": {
+      "name": "김정현",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20231028_82/1698483365715uaNL3_PNG/IMG_3051.png",
+      "bio": "여기 들어오신 당신은 오늘도 행복하시겠군요",
+      "url": "https://comic.naver.com/community/u/_liku8",
+      "works": [
+        {
+          "title": "싸움독학",
+          "source": "https://comic.naver.com/webtoon/list?titleId=736277",
+          "cover": "https://image-comic.pstatic.net/webtoon/736277/thumbnail/thumbnail_IMAG21_bbbe3f76-021e-4dbc-830a-4358c1abec0c.jpg",
+          "finished": true
+        },
+        {
+          "title": "파도를 찾아라!",
+          "source": "https://comic.naver.com/webtoon/list?titleId=703836",
+          "cover": "https://image-comic.pstatic.net/webtoon/703836/thumbnail/thumbnail_IMAG21_3703139095769788470.jpg",
+          "finished": true
+        },
+        {
+          "title": "레이드",
+          "source": "https://comic.naver.com/webtoon/list?titleId=729039",
+          "cover": "https://image-comic.pstatic.net/webtoon/729039/thumbnail/thumbnail_IMAG21_3774632443562385969.jpg",
+          "finished": true
+        },
+        {
+          "title": "죽여주는 변호사",
+          "source": "https://comic.naver.com/webtoon/list?titleId=844810",
+          "cover": "https://image-comic.pstatic.net/webtoon/844810/thumbnail/thumbnail_IMAG21_cb5b50a4-1529-439e-bae6-951651d14d89.jpeg",
+          "finished": false
+        },
+        {
+          "title": "용감한 시민",
+          "source": "https://comic.naver.com/webtoon/list?titleId=780986",
+          "cover": "https://image-comic.pstatic.net/webtoon/780986/thumbnail/thumbnail_IMAG21_3919651438769746736.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "임리나": {
+      "name": "임리나",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20231028_277/1698493266258W0ju1_PNG/IMG_0074.png",
+      "bio": "독자님들 사랑해요❤️‍🔥",
+      "url": "https://comic.naver.com/community/u/linawebtoon",
+      "works": [
+        {
+          "title": "화이트 블러드",
+          "source": "https://comic.naver.com/webtoon/list?titleId=739503",
+          "cover": "https://image-comic.pstatic.net/webtoon/739503/thumbnail/thumbnail_IMAG21_7075497401627194164.jpg",
+          "finished": true
+        },
+        {
+          "title": "혼신",
+          "source": "https://comic.naver.com/webtoon/list?titleId=769688",
+          "cover": "https://image-comic.pstatic.net/webtoon/769688/thumbnail/thumbnail_IMAG21_7365692394708493360.JPEG",
+          "finished": true
+        }
+      ]
     }
-  }
+  },
+  "version": 1,
+  "shop": [
+    {
+      "id": "basic",
+      "kind": "acc",
+      "name": "기본 별똥이",
+      "desc": "머리 위 작은 별이 반짝여요",
+      "price": 0,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "none"
+    },
+    {
+      "id": "crown",
+      "kind": "acc",
+      "name": "황금 왕관",
+      "desc": "판타지 웹툰을 좋아하는 당신에게",
+      "price": 80,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "crown"
+    },
+    {
+      "id": "wizard",
+      "kind": "acc",
+      "name": "마법사 모자",
+      "desc": "끝에서 별가루가 떨어지는 모자",
+      "price": 120,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "wizard",
+      "isNew": true
+    },
+    {
+      "id": "satgat",
+      "kind": "acc",
+      "name": "강호의 삿갓",
+      "desc": "무협 웹툰 주인공처럼",
+      "price": 120,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "satgat"
+    },
+    {
+      "id": "cat",
+      "kind": "acc",
+      "name": "고양이 귀",
+      "desc": "일상 웹툰과 잘 어울려요",
+      "price": 150,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "cat"
+    },
+    {
+      "id": "phones",
+      "kind": "acc",
+      "name": "분홍 헤드폰",
+      "desc": "로맨스 웹툰 볼 때 BGM은 필수",
+      "price": 200,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "phones",
+      "isNew": true
+    },
+    {
+      "id": "sunset",
+      "kind": "color",
+      "name": "노을빛 몸",
+      "desc": "따뜻한 주황빛으로 물들어요",
+      "price": 50,
+      "body": "#FFD0B5",
+      "feet": "#F29A6B",
+      "acc": "none"
+    },
+    {
+      "id": "forest",
+      "kind": "color",
+      "name": "숲빛 몸",
+      "desc": "싱그러운 초록빛",
+      "price": 50,
+      "body": "#C8F2D9",
+      "feet": "#6FCB98",
+      "acc": "none"
+    },
+    {
+      "id": "night",
+      "kind": "color",
+      "name": "밤하늘 몸",
+      "desc": "보랏빛 밤하늘 색",
+      "price": 100,
+      "body": "#C9B8FF",
+      "feet": "#8E74E6",
+      "acc": "none"
+    },
+    {
+      "id": "itemmwbujmhb",
+      "kind": "acc",
+      "name": "새 장식",
+      "desc": "",
+      "price": 100,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "crown",
+      "isNew": true
+    }
+  ],
+  "hotToday": []
 }
