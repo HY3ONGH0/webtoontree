@@ -741,8 +741,11 @@
       let comp = false;
       const qi = document.getElementById('lb-q');
       qi.addEventListener('compositionstart', () => { comp = true; });
-      qi.addEventListener('compositionend', () => { comp = false; LB.q = qi.value.trim().toLowerCase(); LB.idx = 0; lbBuild(); });
-      qi.addEventListener('input', () => { if (comp) return; LB.q = qi.value.trim().toLowerCase(); LB.idx = 0; lbBuild(); });
+      // 글자를 치는 동안에는 잠깐 모았다가 한 번에 찾아요 (칠 때마다 책장을 통째로 다시 그리면 한글 입력이 버벅여요)
+      let qt = 0;
+      const lbSearch = () => { clearTimeout(qt); qt = setTimeout(() => { const v = qi.value.trim().toLowerCase(); if (v === LB.q) return; LB.q = v; LB.idx = 0; lbBuild(); }, 160); };
+      qi.addEventListener('compositionend', () => { comp = false; lbSearch(); });
+      qi.addEventListener('input', lbSearch);
       // 밀기 · 터치패드 좌우 스크롤로 넘기기
       let sx = null, acc = 0, lockW = false, tW;
       wrap.addEventListener('pointerdown', (e) => { sx = e.clientX; });

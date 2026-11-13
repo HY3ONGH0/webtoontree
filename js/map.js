@@ -265,8 +265,10 @@
       res.classList.toggle('on', !!val);
     };
     q.addEventListener('compositionstart', () => { comp = true; });
-    q.addEventListener('compositionend', () => { comp = false; search(); });
-    q.addEventListener('input', () => { if (!comp) search(); });
+    let qt = 0;
+    const searchSoon = () => { clearTimeout(qt); qt = setTimeout(search, 160); };
+    q.addEventListener('compositionend', () => { comp = false; searchSoon(); });
+    q.addEventListener('input', searchSoon);
     res.addEventListener('click', (e) => { const b = e.target.closest('[data-pick]'); if (!b) return; res.classList.remove('on'); select(b.dataset.pick); });
     const onKey = (e) => { if (e.key === 'Escape') { sel = null; hits = new Set(); res.classList.remove('on'); draw(); info(); } };
     document.addEventListener('keydown', onKey);
