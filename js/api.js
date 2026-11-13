@@ -49,6 +49,7 @@
     S.equip = me.equip || { acc: 'basic', color: null };
     S.unlocked = me.unlocked || {};
     S.ratings = me.ratings || {};
+    if (me.favs) S.favs = me.favs;   // 관심 웹툰 (예전 서버 코드면 이 기기 기록을 그대로 둬요)
     S.role = me.role || '';
     WT.store.save();
   }
