@@ -56,13 +56,13 @@
       ],
       "recommended": 2,
       "color": "",
-      "episodes": 61,
+      "episodes": 70,
       "status": "completed",
       "days": [
         "thu"
       ],
       "autoCount": false,
-      "baseDate": "2026-11-11",
+      "baseDate": "2026-11-13",
       "tags": [
         "로맨스",
         "러브코미디",
@@ -1203,13 +1203,13 @@
       ],
       "recommended": 3,
       "color": "#66ffc4",
-      "episodes": 41,
+      "episodes": 88,
       "status": "hiatus",
       "days": [
         "thu"
       ],
       "autoCount": false,
-      "baseDate": "2026-11-10",
+      "baseDate": "2026-11-13",
       "tags": [
         "로맨스",
         "리얼로맨스",
@@ -1279,13 +1279,13 @@
       ],
       "recommended": 4,
       "color": "#000000",
-      "episodes": 110,
+      "episodes": 126,
       "status": "ongoing",
       "days": [
         "sat"
       ],
       "autoCount": true,
-      "baseDate": "2026-11-10",
+      "baseDate": "2026-11-13",
       "tags": [
         "로맨스",
         "자극적인",
@@ -3379,7 +3379,7 @@
         "연예계"
       ],
       "desc": "(구)아이돌, 첫사랑, 소개팅녀까지 한 집에 모였다!  민송아 작가의 두근두근 누나 리스트! 대학생 이원준은 개강을 맞아 셰어하우스에 입주한다. 은퇴한 아이돌 이두나가 아래층에 살고 있다는 것을 알게 되는데..",
-      "color": "#270303",
+      "color": "#f7e6dd",
       "pick": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=731130",
       "autoAt": "2026-11-13",
