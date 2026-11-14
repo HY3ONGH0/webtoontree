@@ -1,6 +1,152 @@
 {
   "webtoons": [
     {
+      "id": "w6.57564281141091e+21fx",
+      "title": "베이비 폭군",
+      "author": "정난, 아원, 이흰",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=807019",
+      "cover": "https://image-comic.pstatic.net/webtoon/807019/thumbnail/thumbnail_IMAG21_f0cd664b-4e6a-4bcc-9a91-67f73ed4c620.jpg",
+      "genres": [
+        "romance",
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#fae7e8",
+      "episodes": 133,
+      "status": "hiatus",
+      "days": [
+        "wed"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "로맨스",
+        "성장로판",
+        "서양",
+        "환생",
+        "왕족/귀족",
+        "가벼운",
+        "개그",
+        "성장물"
+      ],
+      "desc": "가질 수 없었던 화목한 가정, 다정한 부모님.\n비참한 결말 끝에 눈을 떠 보니, 환생했다.\n그것도 제국의 공주로!\n\n그런데 이 나라 좀 이상하다!\n오빠 같은 아빠, 꼬리 하나 달렸을 거 같은 진짜 오빠가\n시도 때도 없이 찾아와서 귀찮게 한다!\n\n하지만 가족의 사랑 따위 필요 없어!\n이번 생엔 조용히 지내다가 떠날 거야!\n그랬는데! 분명 내 목표는 그랬는데!\n황궁의 숲을 주질 않나, 성을 하사하질 않나,\n이젠 심지어 한 살인 나에게 나라를 주겠다고?!\n\n이 나라는 미쳤다!!\n\n“안 돼! 이대로 나의 조용한 생활을 포기할 순 없어!”",
+      "authors": [
+        {
+          "name": "정난",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "아원",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "이흰",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=807019",
+      "autoAt": "2026-11-14",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w6.57564281141091e+2111",
+      "title": "그레이마크",
+      "author": "박태현",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=829462",
+      "cover": "https://image-comic.pstatic.net/webtoon/829462/thumbnail/thumbnail_IMAG21_b1749dc0-dea9-4bae-a64f-94e621f215e4.jpg",
+      "genres": [
+        "action",
+        "fantasy"
+      ],
+      "recommended": 3,
+      "color": "#190e11",
+      "episodes": 103,
+      "status": "hiatus",
+      "days": [
+        "sun"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "액션",
+        "사이다",
+        "신화",
+        "소년물",
+        "성장물",
+        "세계관",
+        "SF",
+        "소년왕도물"
+      ],
+      "desc": "수많은 죄를 짓고 우주로 쫓겨난 잔학무도한 죄인 \n그곳에서 만난 우주의 왕 에 의해 과거로 내쫓겨진다.\n그레이트는 과거 범했던 숱한 잘못을 바로잡고\n올바른 미래를 다시 쓰려 하는데..",
+      "authors": [
+        {
+          "name": "박태현",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=829462",
+      "autoAt": "2026-11-14"
+    },
+    {
+      "id": "w6.57564281141091e+21vp",
+      "title": "집이 없어",
+      "author": "와난",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=721433",
+      "cover": "https://image-comic.pstatic.net/webtoon/721433/thumbnail/thumbnail_IMAG21_e14d8057-378c-4208-8531-e82e1dce8dd6.jpg",
+      "genres": [
+        "daily",
+        "drama"
+      ],
+      "recommended": 3,
+      "color": "#7655e4",
+      "episodes": 270,
+      "status": "completed",
+      "days": [
+        "tue"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "드라마",
+        "명작",
+        "눈물샘자극",
+        "우정",
+        "가족",
+        "혐관",
+        "가벼운",
+        "개그"
+      ],
+      "desc": "집을 버리고 뛰쳐나간 고해준, 집 없이 텐트 생활하는 문제아 백은영. \n악연으로 만난 두 사람은 버려진 옛날 기숙사에서 함께 살게 되는데.. \n기숙사도 서로도 싫지만 돌아갈 곳이 없는 두 사람의 힘든 성장 이야기",
+      "authors": [
+        {
+          "name": "와난",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=721433",
+      "autoAt": "2026-11-14"
+    },
+    {
       "id": "w6.57564281141091e+21ok",
       "title": "얼음군주",
       "author": "팀 크로아상, 돼지고기, 산짐승, 발렌",
@@ -9087,6 +9233,11 @@
           "id": "fantasy-5",
           "name": "그외",
           "color": "#FFB347"
+        },
+        {
+          "id": "fantasy-7",
+          "name": "로맨스 판타지",
+          "color": "#71e869"
         }
       ]
     },
@@ -10154,39 +10305,38 @@
       "start": "w657564281141078",
       "nodes": {
         "w026": [
-          150,
-          140
+          160,
+          110
         ],
         "w657564281141077": [
-          380,
-          200
+          540,
+          180
         ],
         "w6.57564281141091e+212z": [
-          380,
-          320
+          360,
+          310
         ],
         "w657564281141079": [
-          380,
-          80
+          360,
+          70
         ],
         "w657564281141088zk": [
-          380,
-          430
+          360,
+          420
         ],
         "w657564281141078": [
           150,
           360
+        ],
+        "w657564281141076": [
+          360,
+          180
         ]
       },
       "links": [
         {
           "from": "w026",
           "to": "w657564281141079",
-          "why": ""
-        },
-        {
-          "from": "w026",
-          "to": "w657564281141077",
           "why": ""
         },
         {
@@ -10197,6 +10347,16 @@
         {
           "from": "w657564281141078",
           "to": "w657564281141088zk",
+          "why": ""
+        },
+        {
+          "from": "w026",
+          "to": "w657564281141076",
+          "why": ""
+        },
+        {
+          "from": "w657564281141076",
+          "to": "w657564281141077",
           "why": ""
         }
       ],
@@ -14662,6 +14822,93 @@
       "bio": "",
       "url": "",
       "works": []
+    },
+    "와난": {
+      "name": "와난",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_yboou",
+      "works": [
+        {
+          "title": "어서오세요.305호에",
+          "source": "https://comic.naver.com/webtoon/list?titleId=25735",
+          "cover": "https://image-comic.pstatic.net/webtoon/25735/thumbnail/thumbnail_IMAG21_7004617156892649014.jpg",
+          "finished": true
+        },
+        {
+          "title": "하나(HANA)",
+          "source": "https://comic.naver.com/webtoon/list?titleId=557675",
+          "cover": "https://image-comic.pstatic.net/webtoon/557675/thumbnail/thumbnail_IMAG21_7219611267711973429.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "박태현": {
+      "name": "박태현",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20240801_242/172252139418255xFG_PNG/IMG_9671.png",
+      "bio": "만화가",
+      "url": "https://comic.naver.com/community/u/great",
+      "works": [
+        {
+          "title": "생존고백",
+          "source": "https://comic.naver.com/webtoon/list?titleId=786262",
+          "cover": "https://image-comic.pstatic.net/webtoon/786262/thumbnail/thumbnail_IMAG21_ef76cf9e-0742-400a-8dcb-2720679c9764.jpg",
+          "finished": true
+        },
+        {
+          "title": "버닝이펙트",
+          "source": "https://comic.naver.com/webtoon/list?titleId=829011",
+          "cover": "https://image-comic.pstatic.net/webtoon/829011/thumbnail/thumbnail_IMAG21_b380cc6c-3602-4c91-b6c9-73d57b5cc203.jpg",
+          "finished": true
+        },
+        {
+          "title": "지배",
+          "source": "https://comic.naver.com/webtoon/list?titleId=837635",
+          "cover": "https://image-comic.pstatic.net/webtoon/837635/thumbnail/thumbnail_IMAG21_4d5eeaea-77f7-4744-b0ed-9ef8be352d76.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "정난": {
+      "name": "정난",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "아원": {
+      "name": "아원",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20240827_165/1724743962708VkBcO_PNG/%BA%A3%C0%CC%BA%F1%C6%F8%B1%BA_%BD%C3%C1%F02_9%BC%BC.png",
+      "bio": "이흰 작가님 원작, 베이비폭군의 작화를 담당하고 있습니다💪😎👍",
+      "url": "https://comic.naver.com/community/u/_6luo3",
+      "works": [
+        {
+          "title": "고인물 힐러가 너무 강하다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=836359",
+          "cover": "https://image-comic.pstatic.net/webtoon/836359/thumbnail/thumbnail_IMAG21_b7a88fb5-de09-4337-8460-88cc63210a20.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "이흰": {
+      "name": "이흰",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "악당 가족이 독립을 반대한다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=817365",
+          "cover": "https://image-comic.pstatic.net/webtoon/817365/thumbnail/thumbnail_IMAG21_47fe25cc-cb4a-4251-870f-8fa45cce732c.jpg",
+          "finished": false
+        },
+        {
+          "title": "황제의 멍멍이",
+          "source": "https://comic.naver.com/webtoon/list?titleId=832985",
+          "cover": "https://image-comic.pstatic.net/webtoon/832985/thumbnail/thumbnail_IMAG21_7a8e8f7d-8e9b-409a-af83-122ebd9a20f7.jpg",
+          "finished": false
+        }
+      ]
     }
   },
   "version": 1,
