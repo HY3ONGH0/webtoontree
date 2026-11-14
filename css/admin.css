@@ -269,3 +269,12 @@ body.admin .chip-admin { background: #5BB8FF; }
 .fx-pf button { display: inline-flex; align-items: center; padding: 7px 13px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .14); background: none; color: var(--muted); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
 .fx-pf button[aria-pressed="true"] { border-color: #E0565B; color: #fff; background: rgba(224, 86, 91, .16); }
 .fx-box .hint a { color: #fff; font-weight: 700; }
+
+/* 웹툰 목록 탭: 왼쪽 목록과 오른쪽 편집 칸이 각자 따로 스크롤 (전체 화면은 움직이지 않아요) */
+@media (min-width: 901px) {
+  .ad-main:has(> .ad-split) { overflow: hidden; }
+  .ad-main > .ad-split { flex: 1 1 auto; min-height: 0; flex-wrap: nowrap; align-items: stretch; }
+  .ad-split > .ad-list { position: static; max-height: none; min-height: 0; overflow: hidden; }
+  .ad-split > .ad-list .items-box { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding-right: 6px; scrollbar-width: thin; }
+  .ad-split > .ad-form { min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+}
