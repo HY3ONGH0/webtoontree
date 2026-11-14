@@ -278,3 +278,9 @@ body.admin .chip-admin { background: #5BB8FF; }
   .ad-split > .ad-list .items-box { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding-right: 6px; scrollbar-width: thin; }
   .ad-split > .ad-form { min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 }
+/* 웹툰 목록 탭: 왼쪽(버튼 + 표지 목록 전체)이 스크롤 1개, 오른쪽 편집 칸이 스크롤 1개 */
+@media (min-width: 901px) {
+  .ad-split > .ad-list { overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; padding-right: 6px; }
+  .ad-split > .ad-list .items-box { flex: 0 0 auto; min-height: auto; overflow: visible; padding-right: 0; }
+  .ad-split > .ad-list > * { flex-shrink: 0; }
+}
