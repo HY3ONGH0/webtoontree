@@ -1,6 +1,47 @@
 {
   "webtoons": [
     {
+      "id": "w6.57564281141091e+216c",
+      "title": "용이산다",
+      "author": "초",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=568986",
+      "cover": "https://image-comic.pstatic.net/webtoon/568986/thumbnail/thumbnail_IMAG21_4064044811088834611.jpg",
+      "genres": [
+        "fantasy",
+        "daily"
+      ],
+      "recommended": 4,
+      "color": "#fcede2",
+      "episodes": 197,
+      "status": "completed",
+      "days": [
+        "sat"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "드라마",
+        "완결드라마"
+      ],
+      "desc": "드래곤이든 인간이든 그저 평범한 판타지 일상물.\n새로운 용(?)물 등장!",
+      "authors": [
+        {
+          "name": "초",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=568986",
+      "autoAt": "2026-11-14",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
       "id": "w6.57564281141091e+21ov",
       "title": "빙의자를 위한 특혜",
       "author": "구르, 이린비",
@@ -10546,22 +10587,22 @@
       "nodes": {
         "w026": [
           170,
-          140
+          180
         ],
         "w657564281141077": [
-          540,
-          210
+          620,
+          300
         ],
         "w6.57564281141091e+212z": [
-          360,
-          340
+          620,
+          460
         ],
         "w657564281141079": [
-          540,
-          90
+          620,
+          50
         ],
         "w657564281141088zk": [
-          360,
+          390,
           460
         ],
         "w657564281141078": [
@@ -10569,20 +10610,19 @@
           370
         ],
         "w657564281141076": [
-          360,
-          210
+          390,
+          300
         ],
         "w6.57564281141091e+215d": [
-          360,
-          90
+          390,
+          120
+        ],
+        "w6.57564281141091e+216c": [
+          620,
+          180
         ]
       },
       "links": [
-        {
-          "from": "w657564281141078",
-          "to": "w6.57564281141091e+212z",
-          "why": ""
-        },
         {
           "from": "w657564281141078",
           "to": "w657564281141088zk",
@@ -10606,6 +10646,16 @@
         {
           "from": "w6.57564281141091e+215d",
           "to": "w657564281141079",
+          "why": ""
+        },
+        {
+          "from": "w6.57564281141091e+215d",
+          "to": "w6.57564281141091e+216c",
+          "why": ""
+        },
+        {
+          "from": "w657564281141088zk",
+          "to": "w6.57564281141091e+212z",
           "why": ""
         }
       ],
@@ -15177,6 +15227,20 @@
           "source": "https://comic.naver.com/webtoon/list?titleId=856241",
           "cover": "https://image-comic.pstatic.net/webtoon/856241/thumbnail/thumbnail_IMAG21_74a80071-3e29-4318-93b5-3d3bc8f8feaa.jpg",
           "finished": false
+        }
+      ]
+    },
+    "초": {
+      "name": "초",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "쌉초의 난",
+          "source": "https://comic.naver.com/webtoon/list?titleId=823195",
+          "cover": "https://image-comic.pstatic.net/webtoon/823195/thumbnail/thumbnail_IMAG21_5a92d1bb-bfc1-4f46-aff6-9131d1b20b07.jpg",
+          "finished": true
         }
       ]
     }
