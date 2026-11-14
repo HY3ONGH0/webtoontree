@@ -1,6 +1,276 @@
 {
   "webtoons": [
     {
+      "id": "w6.57564281141091e+21nb",
+      "title": "인피니티",
+      "author": "2오",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=775140",
+      "cover": "https://image-comic.pstatic.net/webtoon/775140/thumbnail/thumbnail_IMAG21_2de7a216-571b-4bf9-81b6-11b37126d328.jpg",
+      "genres": [
+        "sports"
+      ],
+      "recommended": 4,
+      "color": "#97160d",
+      "episodes": 117,
+      "status": "completed",
+      "days": [
+        "fri"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "스포츠",
+        "몰아보기",
+        "스포츠성장",
+        "완결스포츠"
+      ],
+      "desc": "축구선수가 공을 무서워한다?!\n공만 오면 자동적으로 피하는 몸 때문에 괴로워하는 축구부 다민은 새로운 제안을 받는다.\n\"야, 너 펜싱 해라!\"\n인생 최대의 약점이 최대의 강점으로 인정받은 순간 다민은 새로운 세계에 발을 내딛는데...\n귀족 스포츠 펜싱계에 말도 안 되는 천재 등장!",
+      "authors": [
+        {
+          "name": "2오",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=775140",
+      "autoAt": "2026-11-14"
+    },
+    {
+      "id": "w6.57564281141091e+21rl",
+      "title": "스위트홈",
+      "author": "김칸비, 황영찬",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=701081",
+      "cover": "https://image-comic.pstatic.net/webtoon/701081/thumbnail/thumbnail_IMAG21_3761692268951647077.jpg",
+      "genres": [
+        "apocalyps"
+      ],
+      "recommended": 3,
+      "color": "#493635",
+      "episodes": 141,
+      "status": "completed",
+      "days": [
+        "fri"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "스릴러",
+        "몰아보기",
+        "명작",
+        "드라마&영화 원작웹툰",
+        "아포칼립스",
+        "완결스릴러"
+      ],
+      "desc": "절망의 세상을 비관하고 스스로를 고립시킨 한 소년,\n하지만 이제 소년은 밖으로 나가고 싶다.",
+      "authors": [
+        {
+          "name": "김칸비",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "황영찬",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=701081",
+      "autoAt": "2026-11-14"
+    },
+    {
+      "id": "w6.57564281141091e+2191",
+      "title": "그림자의 밤",
+      "author": "융",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=783596",
+      "cover": "https://image-comic.pstatic.net/webtoon/783596/thumbnail/thumbnail_IMAG21_a2c613eb-8ef0-439d-bab8-cbfaec83a960.jpg",
+      "genres": [
+        "apocalyps"
+      ],
+      "recommended": 1,
+      "color": "#0c1219",
+      "episodes": 106,
+      "status": "hiatus",
+      "days": [
+        "wed"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "판타지",
+        "최강자전",
+        "2020 최강자전"
+      ],
+      "desc": "예지몽을 꾸는 '이아름'은 어느 날 기억 저편으로 밀려났던 악몽들을 떠올리게 된다.\n그리고 노트에는 기억에 없는 꿈에 관한 내용들이 적혀있는데...\n'난 이런 거 쓴 적 없어! 하지만 분명 이건 내 꿈이 맞는데..?'\n꿈에서 봤던 괴물들이 하나씩 현실에 등장하고,\n특별한 능력을 가진 사람들이 세상에 모습을 보이기 시작한다.",
+      "authors": [
+        {
+          "name": "융",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=783596",
+      "autoAt": "2026-11-14"
+    },
+    {
+      "id": "w6.57564281141091e+21f7",
+      "title": "더블클릭",
+      "author": "박수봉, 김장훈",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=769663",
+      "cover": "https://image-comic.pstatic.net/webtoon/769663/thumbnail/thumbnail_IMAG21_ca070fab-2e71-4220-9d33-ae0d0de1e6f4.jpg",
+      "genres": [
+        "sports"
+      ],
+      "recommended": 3,
+      "color": "#493403",
+      "episodes": 278,
+      "status": "ongoing",
+      "days": [
+        "mon"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "액션",
+        "학원액션",
+        "게임",
+        "소년물",
+        "청춘",
+        "성장물",
+        "고인물",
+        "게임판타지"
+      ],
+      "desc": "악명 높은 난이도를 가진 게임의 세계 랭킹 1위였던 지호.\n서비스 종료된 줄만 알았던 그 게임이 새롭게 돌아왔다!\n지호는 다시 한번 랭킹 1위를 꿈꾸며 게임 동아리에 입부한다.\n오랜만에 게임을 해도 살아있는 감각. 하지만 게임이 새롭게 변하면서 예상치 못한 약점이 생긴다.\n강한 상대를 마주할수록 열정이 끓어오르는 주인공의 프로게이머 도전기!",
+      "authors": [
+        {
+          "name": "박수봉",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        },
+        {
+          "name": "김장훈",
+          "roles": [
+            "writer"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=769663",
+      "autoAt": "2026-11-14",
+      "subs": [
+        "sports-5"
+      ]
+    },
+    {
+      "id": "w6.57564281141091e+2164",
+      "title": "하드캐리",
+      "author": "조양",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=710761",
+      "cover": "https://image-comic.pstatic.net/webtoon/710761/thumbnail/thumbnail_IMAG21_4122540100946452835.jpg",
+      "genres": [
+        "sports",
+        "drama"
+      ],
+      "recommended": 5,
+      "color": "#0c131c",
+      "episodes": 205,
+      "status": "completed",
+      "days": [
+        "thu"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "드라마",
+        "몰아보기",
+        "직업드라마",
+        "학원물",
+        "스포츠성장",
+        "완결드라마"
+      ],
+      "desc": "성격은 소심하지만 게임 실력 하나는 천상계 최고인 '도윤'과\n공부, 인성, 외모, 게임 실력 어디 하나 부족한 것 없는 '수호'의 \n본격 프로게이머 도전기!",
+      "authors": [
+        {
+          "name": "조양",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=710761",
+      "autoAt": "2026-11-14",
+      "subs": [
+        "sports-5"
+      ]
+    },
+    {
+      "id": "w6.57564281141091e+2139",
+      "title": "축구천재로 오해받는 중입니다",
+      "author": "이보테, 한명현",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=835119",
+      "cover": "https://image-comic.pstatic.net/webtoon/835119/thumbnail/thumbnail_IMAG21_bece51ba-e598-4a15-8e0e-bd552191fda9.jpg",
+      "genres": [
+        "sports"
+      ],
+      "recommended": 4,
+      "color": "#163836",
+      "episodes": 101,
+      "status": "ongoing",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "스포츠",
+        "첫사랑",
+        "축구",
+        "스포츠성장",
+        "먼치킨",
+        "소설원작"
+      ],
+      "desc": "이탈리아 명문 유스에서 방출당한  한국인 소년 ‘이지안’은\n도망치듯이 도착한 ‘AC 피렌체’ 유스에서도 후보로 지내며 허송세월을 보낸다.\n평소처럼 소꿉친구인 ‘김지우’에게 자신이 천재라며 허세를 부리는데\n지우가 이탈리아로 유학을 온다는 충격적인 소식을 접한다.\n\n소중한 친구(?)인 지우를 실망시킬 수 없다는 생각에 주전을 노리는 지안.\n사실 지안이의 정체는 몇십 년에 한 번 나올만한 축구천재였다.\n하지만 정작 본인은 그 사실을 모르고 있는데…\n'과연 지안이는 지우를 계속 속이면서(?) 축구천재로 남아 있을 수 있을까'",
+      "authors": [
+        {
+          "name": "이보테",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        },
+        {
+          "name": "한명현",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=835119",
+      "autoAt": "2026-11-14",
+      "subs": [
+        "sports-3"
+      ]
+    },
+    {
       "id": "w6.57564281141091e+216c",
       "title": "용이산다",
       "author": "초",
@@ -4645,6 +4915,7 @@
       "url": "https://comic.naver.com/webtoon/list?titleId=677452",
       "cover": "https://image-comic.pstatic.net/webtoon/677452/thumbnail/thumbnail_IMAG21_05f30a57-88b9-4798-8987-4851f1b28f5a.jpg",
       "genres": [
+        "drama",
         "fantasy"
       ],
       "recommended": 0,
@@ -4877,6 +5148,7 @@
       "cover": "https://image-comic.pstatic.net/webtoon/843460/thumbnail/thumbnail_IMAG21_ced95f8a-75a6-4c95-ba32-91a12a73a52f.jpg",
       "genres": [
         "romance",
+        "drama",
         "fantasy"
       ],
       "recommended": 1,
@@ -7568,7 +7840,7 @@
         "action",
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "color": "#011d57",
       "episodes": 150,
       "status": "completed",
@@ -7787,7 +8059,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "color": "#ff4015",
       "episodes": 196,
       "status": "ongoing",
@@ -8002,7 +8274,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "color": "#b51a00",
       "episodes": 133,
       "status": "ongoing",
@@ -8133,7 +8405,8 @@
       "url": "https://blacktoon427.com/webtoon/3530.html",
       "cover": "https://i.namu.wiki/i/9ac__9J32xEh7H5Md2lJVA9wBHZXeFndo3WFDGihzuVSLMugAkeNJEQ6HIqAyOCv1m4CBoeoVzlr29bP5g1xatoDkMs6KPuJOqChyj0MIGxS-81EO6fjjU0dVn5LoOEXApHm40YLkhpcQGDKT5U3Uw.webp",
       "genres": [
-        "action"
+        "action",
+        "sports"
       ],
       "recommended": 4,
       "color": "#000000",
@@ -8165,6 +8438,9 @@
             "painter"
           ]
         }
+      ],
+      "subs": [
+        "sports-4"
       ]
     },
     {
@@ -8618,7 +8894,7 @@
         "murim",
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "episodes": 193,
       "status": "ongoing",
       "days": [
@@ -8762,7 +9038,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "episodes": 225,
       "status": "ongoing",
       "days": [
@@ -8866,7 +9142,7 @@
         "apocalyps",
         "action"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "episodes": 200,
       "status": "completed",
       "days": [
@@ -9952,6 +10228,11 @@
           "id": "sports-4",
           "name": "그외",
           "color": "#FFB347"
+        },
+        {
+          "id": "sports-5",
+          "name": "e스포츠",
+          "color": "#FF7EB6"
         }
       ]
     },
@@ -10205,48 +10486,48 @@
           280
         ],
         "w024": [
-          280,
-          80
-        ],
-        "w034": [
-          530,
-          440
+          310,
+          90
         ],
         "w037": [
-          380,
-          210
+          310,
+          217
         ],
         "w038": [
-          600,
-          80
+          510,
+          90
         ],
         "w042": [
-          750,
-          330
+          700,
+          310
         ],
         "w047": [
-          590,
-          240
+          510,
+          280
         ],
         "w033": [
-          370,
-          350
+          310,
+          343
         ],
         "w048": [
-          840,
-          120
+          790,
+          60
         ],
         "w050": [
-          780,
-          480
+          710,
+          470
         ],
         "w025": [
-          280,
-          480
+          310,
+          470
         ],
         "w029": [
-          1030,
-          480
+          930,
+          330
+        ],
+        "w657564281141035": [
+          510,
+          470
         ]
       },
       "links": [
@@ -10286,23 +10567,23 @@
           "why": ""
         },
         {
-          "from": "w025",
-          "to": "w034",
+          "from": "w050",
+          "to": "w029",
           "why": ""
         },
         {
-          "from": "w034",
+          "from": "w025",
+          "to": "w657564281141035",
+          "why": ""
+        },
+        {
+          "from": "w657564281141035",
           "to": "w042",
           "why": ""
         },
         {
-          "from": "w034",
+          "from": "w657564281141035",
           "to": "w050",
-          "why": ""
-        },
-        {
-          "from": "w050",
-          "to": "w029",
           "why": ""
         }
       ],
@@ -10667,31 +10948,78 @@
       "start": "w027",
       "nodes": {
         "w027": [
-          130,
-          280
+          150,
+          80
+        ],
+        "w657564281141066": [
+          610,
+          190
+        ],
+        "w657564281141069": [
+          380,
+          190
         ],
         "w657564281141027": [
           380,
-          280
+          50
         ],
-        "w657564281141042": [
-          630,
-          280
+        "w6.57564281141091e+2164": [
+          150,
+          320
+        ],
+        "w657564281141044": [
+          460,
+          300
+        ],
+        "w039": [
+          440,
+          430
+        ],
+        "w6.57564281141091e+21nb": [
+          670,
+          330
         ]
       },
       "links": [
+        {
+          "from": "w657564281141027",
+          "to": "w657564281141042",
+          "why": ""
+        },
         {
           "from": "w027",
           "to": "w657564281141027",
           "why": ""
         },
         {
-          "from": "w657564281141027",
-          "to": "w657564281141042",
+          "from": "w027",
+          "to": "w657564281141069",
+          "why": ""
+        },
+        {
+          "from": "w657564281141069",
+          "to": "w657564281141066",
+          "why": ""
+        },
+        {
+          "from": "w6.57564281141091e+2164",
+          "to": "w657564281141044",
+          "why": ""
+        },
+        {
+          "from": "w6.57564281141091e+2164",
+          "to": "w039",
+          "why": ""
+        },
+        {
+          "from": "w657564281141044",
+          "to": "w6.57564281141091e+21nb",
           "why": ""
         }
       ],
-      "starts": []
+      "starts": [
+        "w6.57564281141091e+2164"
+      ]
     },
     "action": {
       "start": "w030",
@@ -10760,8 +11088,13 @@
       "starts": []
     },
     "apocalyps": {
-      "start": null,
-      "nodes": {},
+      "start": "w034",
+      "nodes": {
+        "w034": [
+          130,
+          280
+        ]
+      },
       "links": [],
       "starts": []
     },
@@ -15243,6 +15576,195 @@
           "finished": true
         }
       ]
+    },
+    "이보테": {
+      "name": "이보테",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20241223_124/1734925255836vYp9j_PNG/%BE%C6%BC%F6%B6%F3.png",
+      "bio": "만화가 이보테입니다! insta @fantasy__tonight",
+      "url": "https://comic.naver.com/community/u/fantasytonight",
+      "works": []
+    },
+    "한명현": {
+      "name": "한명현",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "조양": {
+      "name": "조양",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "방울토마토",
+          "source": "https://comic.naver.com/webtoon/list?titleId=251575",
+          "cover": "https://image-comic.pstatic.net/webtoon/251575/thumbnail/thumbnail_IMAG21_3473743579001860452.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "박수봉": {
+      "name": "박수봉",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230916_109/1694845545598VWla9_PNG/IMG_0204.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_pbopx",
+      "works": [
+        {
+          "title": "야채호빵의 봄방학",
+          "source": "https://comic.naver.com/webtoon/list?titleId=694806",
+          "cover": "https://image-comic.pstatic.net/webtoon/694806/thumbnail/thumbnail_IMAG21_7292000927146533731.jpg",
+          "finished": true
+        },
+        {
+          "title": "수업시간그녀",
+          "source": "https://comic.naver.com/webtoon/list?titleId=557673",
+          "cover": "https://image-comic.pstatic.net/webtoon/557673/thumbnail/thumbnail_IMAG21_7377799122322207280.JPEG",
+          "finished": true
+        },
+        {
+          "title": "먹이",
+          "source": "https://comic.naver.com/webtoon/list?titleId=724274",
+          "cover": "https://image-comic.pstatic.net/webtoon/724274/thumbnail/thumbnail_IMAG21_4049917182727512368.jpg",
+          "finished": true
+        },
+        {
+          "title": "금세 사랑에 빠지는",
+          "source": "https://comic.naver.com/webtoon/list?titleId=671270",
+          "cover": "https://image-comic.pstatic.net/webtoon/671270/thumbnail/thumbnail_IMAG21_7234297460949213744.jpg",
+          "finished": true
+        },
+        {
+          "title": "올해의 벚꽃도 함께",
+          "source": "https://comic.naver.com/webtoon/list?titleId=652403",
+          "cover": "https://image-comic.pstatic.net/webtoon/652403/thumbnail/thumbnail_IMAG21_3473793958129252402.jpg",
+          "finished": true
+        },
+        {
+          "title": "2차전직 스킵용사",
+          "source": "https://comic.naver.com/webtoon/list?titleId=820569",
+          "cover": "https://image-comic.pstatic.net/webtoon/820569/thumbnail/thumbnail_IMAG21_a10933fc-ba21-460c-909e-312361e9bd32.jpg",
+          "finished": true
+        },
+        {
+          "title": "카르텔",
+          "source": "https://comic.naver.com/webtoon/list?titleId=849144",
+          "cover": "https://image-comic.pstatic.net/webtoon/849144/thumbnail/thumbnail_IMAG21_5ab69f98-d643-443b-976d-643c68e7a128.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "김장훈": {
+      "name": "김장훈",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20240110_17/1704872772757sILdi_PNG/1000004904.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/kimjang",
+      "works": [
+        {
+          "title": "2차전직 스킵용사",
+          "source": "https://comic.naver.com/webtoon/list?titleId=820569",
+          "cover": "https://image-comic.pstatic.net/webtoon/820569/thumbnail/thumbnail_IMAG21_a10933fc-ba21-460c-909e-312361e9bd32.jpg",
+          "finished": true
+        },
+        {
+          "title": "카르텔",
+          "source": "https://comic.naver.com/webtoon/list?titleId=849144",
+          "cover": "https://image-comic.pstatic.net/webtoon/849144/thumbnail/thumbnail_IMAG21_5ab69f98-d643-443b-976d-643c68e7a128.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "융": {
+      "name": "융",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230916_222/16948551783402cEQN_PNG/%C5%AB%B9%F6%C0%FC_%B8%B8%BF%EC%C0%FD.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_qbp0v",
+      "works": [
+        {
+          "title": "괴물의 순결한 심장",
+          "source": "https://comic.naver.com/webtoon/list?titleId=818443",
+          "cover": "https://image-comic.pstatic.net/webtoon/818443/thumbnail/thumbnail_IMAG21_395ef66f-b5c7-4321-980a-9d08ccc98c7c.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "김칸비": {
+      "name": "김칸비",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230913_17/1694611503626cr0cP_PNG/1694611349255.png",
+      "bio": "웹툰작가 김칸비 올시다.",
+      "url": "https://comic.naver.com/community/u/carnbykim",
+      "works": [
+        {
+          "title": "죽은 마법사의 도시",
+          "source": "https://comic.naver.com/webtoon/list?titleId=409629",
+          "cover": "https://image-comic.pstatic.net/webtoon/409629/thumbnail/thumbnail_IMAG21_3689630276853641784.jpg",
+          "finished": true
+        },
+        {
+          "title": "후레자식",
+          "source": "https://comic.naver.com/webtoon/list?titleId=628997",
+          "cover": "https://image-comic.pstatic.net/webtoon/628997/thumbnail/thumbnail_IMAG21_7378358957538294066.jpg",
+          "finished": true
+        },
+        {
+          "title": "돼지우리",
+          "source": "https://comic.naver.com/webtoon/list?titleId=724854",
+          "cover": "https://image-comic.pstatic.net/webtoon/724854/thumbnail/thumbnail_IMAG21_3833460919822935650.jpg",
+          "finished": true
+        },
+        {
+          "title": "엽총소년",
+          "source": "https://comic.naver.com/webtoon/list?titleId=759925",
+          "cover": "https://image-comic.pstatic.net/webtoon/759925/thumbnail/thumbnail_IMAG21_3473743398582892856.jpg",
+          "finished": true
+        },
+        {
+          "title": "천치전능",
+          "source": "https://comic.naver.com/webtoon/list?titleId=768473",
+          "cover": "https://image-comic.pstatic.net/webtoon/768473/thumbnail/thumbnail_IMAG21_3977634166458311222.jpg",
+          "finished": true
+        },
+        {
+          "title": "표절의혹",
+          "source": "https://comic.naver.com/webtoon/list?titleId=846106",
+          "cover": "https://image-comic.pstatic.net/webtoon/846106/thumbnail/thumbnail_IMAG21_7b2cd709-7e82-457c-a3e5-0ee320f7f8ba.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "황영찬": {
+      "name": "황영찬",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "비흔",
+          "source": "https://comic.naver.com/webtoon/list?titleId=72497",
+          "cover": "https://image-comic.pstatic.net/webtoon/72497/thumbnail/thumbnail_IMAG21_3474581212867617334.jpg",
+          "finished": true
+        },
+        {
+          "title": "후레자식",
+          "source": "https://comic.naver.com/webtoon/list?titleId=628997",
+          "cover": "https://image-comic.pstatic.net/webtoon/628997/thumbnail/thumbnail_IMAG21_7378358957538294066.jpg",
+          "finished": true
+        },
+        {
+          "title": "표절의혹",
+          "source": "https://comic.naver.com/webtoon/list?titleId=846106",
+          "cover": "https://image-comic.pstatic.net/webtoon/846106/thumbnail/thumbnail_IMAG21_7b2cd709-7e82-457c-a3e5-0ee320f7f8ba.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "2오": {
+      "name": "2오",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
     }
   },
   "version": 1,
