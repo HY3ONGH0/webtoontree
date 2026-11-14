@@ -156,12 +156,13 @@
   // ---------- 틀 ----------
   const TABS = [['webtoons', '웹툰 목록'], ['genres', '장르 관리'], ['tree', '트리 편집'], ['map', '전체 지도 편집'], ['settings', '디자인 · 코인 설정'], ['shop', '상점 아이템'], ['server', '회원 · 댓글 · 제보'], ['data', '저장 · 백업']];
   let lastTab = null;
+  let lastW = null;
   function render() {
     const scrollY = window.scrollY;
     // 스크롤이 칸마다 따로라서, 다시 그려도 각 칸의 스크롤 위치를 지켜요 (탭을 바꾸면 처음부터)
-    const keep = { tab: lastTab, main: 0, nav: 0, lists: [] };
+    const keep = { tab: lastTab, main: 0, nav: 0, lists: [], forms: [], w: lastW };
     const q = (sel) => root().querySelector(sel);
-    if (q('.ad-main')) { keep.main = q('.ad-main').scrollTop; keep.nav = q('.ad-nav').scrollTop; keep.lists = Array.from(root().querySelectorAll('.items-box, .ad-list')).map((x) => x.scrollTop); }
+    if (q('.ad-main')) { keep.main = q('.ad-main').scrollTop; keep.nav = q('.ad-nav').scrollTop; keep.lists = Array.from(root().querySelectorAll('.items-box, .ad-list')).map((x) => x.scrollTop); keep.forms = Array.from(root().querySelectorAll('.ad-form, .ad-side')).map((x) => x.scrollTop); }
     const html = `<header class="ad-head">
         <div class="brand">${WT.logo.mark()}${WT.logo.word((D.settings || {}).siteName || '웹툰트리')}<span class="ad-tag">관리자</span></div>
         <span id="ad-state" class="ad-state" aria-live="polite"></span>
@@ -191,7 +192,10 @@
     if (keep.tab === ui.tab) {
       q('.ad-main').scrollTop = keep.main;
       root().querySelectorAll('.items-box, .ad-list').forEach((x, i) => { if (keep.lists[i]) x.scrollTop = keep.lists[i]; });
+      // 오른쪽 편집 칸: 같은 웹툰을 고치는 중이면 그 자리 그대로 (다른 웹툰을 고르면 맨 위부터)
+      if (keep.w === ui.w) root().querySelectorAll('.ad-form, .ad-side').forEach((x, i) => { if (keep.forms[i]) x.scrollTop = keep.forms[i]; });
     }
+    lastW = ui.w;
     lastTab = ui.tab;
     if (ui.tab === 'tree') mountTree();
     if (ui.tab === 'map') mountMap();
