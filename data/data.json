@@ -1,6 +1,164 @@
 {
   "webtoons": [
     {
+      "id": "w6.57564281141091e+21ok",
+      "title": "얼음군주",
+      "author": "팀 크로아상, 돼지고기, 산짐승, 발렌",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=838052",
+      "cover": "https://image-comic.pstatic.net/webtoon/838052/thumbnail/thumbnail_IMAG21_cfefae26-874d-495e-9873-6e124eb57c52.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 2,
+      "color": "#fae8fb",
+      "episodes": 66,
+      "status": "completed",
+      "days": [
+        "thu"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "액션",
+        "사이다",
+        "무협/사극",
+        "차원이동",
+        "판무",
+        "이세계",
+        "먼치킨",
+        "소설원작"
+      ],
+      "desc": "약관의 나이에 북해빙궁 궁주가 된 현경 고수 설무독, 연인이 죽자 시름에 빠져 있던 그는 전설의 꽃 연리화를 통해 죽은 연인이 환생한 것을 깨닫고 헤매다 이계로 떨어지고 마는데…",
+      "authors": [
+        {
+          "name": "팀 크로아상",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "돼지고기",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "산짐승",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "발렌",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=838052",
+      "autoAt": "2026-11-14",
+      "subs": [
+        "fantasy-6"
+      ]
+    },
+    {
+      "id": "w6.57564281141091e+21z2",
+      "title": "오늘의 한요일은 여자다",
+      "author": "송극장",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=837504",
+      "cover": "https://image-comic.pstatic.net/webtoon/837504/thumbnail/thumbnail_IMAG21_6c072d1b-0c2a-46b5-8991-df14573d9088.jpg",
+      "genres": [
+        "daily",
+        "fantasy"
+      ],
+      "recommended": 3,
+      "color": "#f8e5eb",
+      "episodes": 72,
+      "status": "hiatus",
+      "days": [
+        "thu"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "드라마",
+        "하렘",
+        "러브코미디",
+        "설렘폭발",
+        "요즘핫한추천작",
+        "아이돌",
+        "환골탈태",
+        "하이틴"
+      ],
+      "desc": "학폭 가해자라는 치명적인 누명을 쓰고 아이돌을 꿈꾸는 김상현.\n어느 날 찾아온 대형 기획사 실장의 제안으로 '전생의 모습으로 바꿔주는 약'을 사용하게 되는데, \n변신한 거울 속 전생의 모습은 엄청난 미인.. 그런데 여자?\n과연 남자라는 정체를 들키지 않고 연습생들 무리에서 살아남을 수 있을까?",
+      "authors": [
+        {
+          "name": "송극장",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=837504",
+      "autoAt": "2026-11-14",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w6.57564281141091e+21tm",
+      "title": "귀환자의 마법은 특별해야 합니다",
+      "author": "욱작가, 유소난",
+      "platform": "카카오웹툰",
+      "url": "https://webtoon.kakao.com/content/%EA%B7%80%ED%99%98%EC%9E%90%EC%9D%98-%EB%A7%88%EB%B2%95%EC%9D%80-%ED%8A%B9%EB%B3%84%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4/2323",
+      "cover": "https://kr-a.kakaopagecdn.com/P/C/2323/sharing/2x/eacb00ec-9034-42cb-a533-7c7690741113.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 5,
+      "color": "#17131c",
+      "episodes": 1,
+      "status": "completed",
+      "days": [],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "학원",
+        "판타지",
+        "몰입되는",
+        "긴장감 있는",
+        "회귀물"
+      ],
+      "desc": "\"다시 돌아온 이상, 사랑하는 사람들을 두 번 잃을 순 없어!\"\n \n인류가 맞이한 최악의 재앙, 그림자 미궁.\n데지르 아르망은 미궁 속에서 \n마지막까지 살아남은 최후의 생존자 6명 중 한 명이다.\n그들은 그림자 미궁의 마지막 단계에 도전하지만 결국 실패하고\n세계는 멸망을 맞이하고 만다.\n \n모든 게 끝이라 생각했던 순간,\n데지르의 눈앞에 펼쳐진 것은 다름 아닌 13년 전의 세상?!\n \n제국 최고의 마법 학원, 헤브리온에 입학했던 순간으로 돌아온 데지르.\n그림자 미궁에서 잃었던 소중한 사람들과 재회하게 되고,\n사랑하는 사람들과 세상을",
+      "authors": [
+        {
+          "name": "욱작가",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        },
+        {
+          "name": "유소난",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://webtoon.kakao.com/content/%EA%B7%80%ED%99%98%EC%9E%90%EC%9D%98-%EB%A7%88%EB%B2%95%EC%9D%80-%ED%8A%B9%EB%B3%84%ED%95%B4%EC%95%BC-%ED%95%A9%EB%8B%88%EB%8B%A4/2323",
+      "autoAt": "2026-11-14",
+      "subs": [
+        "fantasy-1",
+        "fantasy-4"
+      ]
+    },
+    {
       "id": "w6.57564281141091e+210k",
       "title": "재능 삼킨 마법사",
       "author": "수리, DJ공룡, 스튜디오이너스, 빵먹는다람쥐",
@@ -533,9 +691,10 @@
       "url": "https://comic.naver.com/webtoon/list?titleId=710751",
       "cover": "https://image-comic.pstatic.net/webtoon/710751/thumbnail/thumbnail_IMAG21_53aefc06-6bdf-40fb-93ac-fab7242146c6.jpg",
       "genres": [
-        "action"
+        "action",
+        "drama"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "color": "#846d66",
       "episodes": 269,
       "status": "completed",
@@ -10063,15 +10222,23 @@
         ],
         "w657564281141086": [
           310,
-          470
+          280
         ],
         "w657564281141082": [
           510,
-          280
+          90
         ],
         "w657564281141083": [
           710,
           280
+        ],
+        "w6575642811410910000uy": [
+          310,
+          470
+        ],
+        "w6575642811410910000l7": [
+          510,
+          470
         ]
       },
       "links": [
@@ -10093,6 +10260,16 @@
         {
           "from": "w657564281141082",
           "to": "w657564281141083",
+          "why": ""
+        },
+        {
+          "from": "w030",
+          "to": "w6575642811410910000uy",
+          "why": ""
+        },
+        {
+          "from": "w6575642811410910000uy",
+          "to": "w6575642811410910000l7",
           "why": ""
         }
       ]
@@ -14422,6 +14599,41 @@
           "finished": true
         }
       ]
+    },
+    "송극장": {
+      "name": "송극장",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "인스타: jayu_k7 / 송국쟝",
+      "url": "https://comic.naver.com/community/u/_q40ec1",
+      "works": []
+    },
+    "팀 크로아상": {
+      "name": "팀 크로아상",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "돼지고기": {
+      "name": "돼지고기",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "산짐승": {
+      "name": "산짐승",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "발렌": {
+      "name": "발렌",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
     }
   },
   "version": 1,
