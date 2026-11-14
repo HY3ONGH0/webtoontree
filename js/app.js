@@ -60,6 +60,9 @@
   WT.eps = (w) => WT.schedule.episodes(w);
   WT.isHot = (id) => (WT.data.hotToday || []).includes(id);
   /** 홈·장르 띠에 보여줄 장르: 트리에 웹툰이 하나 이상 있는 장르 */
+  // 입문작: 장르마다 여러 개 (start가 첫 번째, starts에 나머지)
+  WT.starts = (T) => (T ? [T.start].concat(T.starts || []).filter((id, i, a) => id && a.indexOf(id) === i && (T.nodes || {})[id]) : []);
+  WT.isStart = (T, id) => WT.starts(T).includes(id);
   WT.liveGenres = () => WT.data.genres.filter((g) => WT.data.trees[g.id] && Object.keys(WT.data.trees[g.id].nodes || {}).length && WT.data.trees[g.id].start);
   WT.canEarn = () => !!WT.store.state.profile;
   WT.settings = () => WT.data.settings;
@@ -300,9 +303,10 @@
     const libN = WT.libraryBooks ? WT.libraryBooks('all').length : 0;
     const items = genres.map((g) => {
       const T = WT.data.trees[g.id];
-      const w = WT.toon(T.start);
-      return { kind: 'genre', href: `#/tree/${g.id}`, name: g.name, sub: w ? w.title : '', tag: '입문작', foot: `웹툰 ${Object.keys(T.nodes).length}편`,
-        color: g.color, w, label: `${g.name} 트리로 가기${w ? `, 입문작 ${w.title}` : ''}` };
+      const ws = WT.starts(T).map(WT.toon).filter(Boolean);
+      const w = ws[0];
+      return { kind: 'genre', href: `#/tree/${g.id}`, name: g.name, sub: w ? w.title : '', subs: ws.map((x) => x.title), tag: ws.length > 1 ? `입문작 ${ws.length}` : '입문작', foot: `웹툰 ${Object.keys(T.nodes).length}편`,
+        color: g.color, w, ws, label: `${g.name} 트리로 가기${ws.length ? `, 입문작 ${ws.map((x) => x.title).join(', ')}` : ''}` };
     }).concat(genres.length ? [
       { kind: 'lib', href: '#/library/all', name: '도서관', sub: '마음대로 골라 보기', tag: `${libN}권`, foot: '모든 웹툰', color: '#7A4A22', label: `도서관으로 가기, 웹툰 ${libN}권` },
       { kind: 'rank', href: '#/top', name: '이번 주 랭킹', sub: '많이 읽은 웹툰', tag: 'TOP 10', foot: '이번 주 조회수 기준', color: '#E8C66A', label: '이번 주 많이 읽은 웹툰 랭킹 보기' }
@@ -311,16 +315,17 @@
     const cardHTML = (it, k, real) => {
       let art = HOME_ART[it.kind] || '';
       if (it.kind === 'genre') {
-        const tone = (it.w && (it.w.color || (WT.color && WT.color.cached(it.w.cover)))) || shade(it.color, 0.5);
-        const base = typeof tone === 'string' ? tone : (tone && tone.hex) || shade(it.color, 0.5);
-        art = `<span class="hc-art hc-cover" aria-hidden="true" style="background:linear-gradient(160deg, ${shade(base, 1.25)}, ${shade(base, 0.45)})">
-          ${it.w && it.w.cover ? `<img src="${esc(it.w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}
-          <b>${esc(it.sub)}</b></span>`;
+        const toneOf = (w) => { const t = (w && (w.color || (WT.color && WT.color.cached(w.cover)))) || shade(it.color, 0.5); return typeof t === 'string' ? t : (t && t.hex) || shade(it.color, 0.5); };
+        const one = (w, i) => { const base = toneOf(w); return `<span class="hc-art hc-cover${it.ws.length > 1 ? ` hc-x${i === 0 ? ' front' : ' back'}` : ''}" data-i="${i}" aria-hidden="true" style="background:linear-gradient(160deg, ${shade(base, 1.25)}, ${shade(base, 0.45)})">
+          ${w && w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}
+          <b>${esc(w ? w.title : it.sub)}</b></span>`; };
+        // 입문작이 여럿이면 표지 두 장이 앞뒤로 엇갈려 놓이고, 번갈아 앞으로 나와요
+        art = it.ws.length > 1 ? `<span class="hc-xs" data-n="${it.ws.length}">${it.ws.slice(0, 4).map(one).join('')}</span>` : one(it.w, 0);
       }
       return `<a href="${it.href}" class="hcard" data-k="${k}" style="--hc:${it.color}; --ink:${lum(it.color) > 0.42 ? '#10162B' : '#FFFFFF'}"
         ${real ? `aria-label="${esc(it.label)}"` : 'aria-hidden="true" tabindex="-1"'}>${art}
         <span class="hc-text"><span class="hc-name">${esc(it.name)}</span>
-          <span class="hc-sub"><span>${esc(it.sub)}</span><span class="hc-tag">${esc(it.tag)}</span></span>
+          <span class="hc-sub"><span class="hc-subt">${esc(it.sub)}</span><span class="hc-tag">${esc(it.tag)}</span></span>
           <span class="hc-foot">${esc(it.foot)}</span></span></a>`;
     };
     app().innerHTML = `<div class="view home">
@@ -440,7 +445,20 @@
     window.addEventListener('resize', onResize);
     document.addEventListener('fullscreenchange', onResize);
     document.body.classList.add('home-lock');   // 홈은 위아래로 스크롤하지 않아요 (판이 화면 높이에 맞춰져요)
+    // 입문작이 여러 개인 장르 카드: 3.6초마다 뒤에 있던 표지가 앞으로 엇갈려 나오고, 아래 제목도 함께 바뀌어요
+    const xTimer = document.body.classList.contains('no-anim') ? 0 : setInterval(() => {
+      if (document.hidden) return;
+      document.querySelectorAll('.hc-xs').forEach((box) => {
+        const cs = Array.from(box.children), n = cs.length;
+        const cur = cs.findIndex((c) => c.classList.contains('front'));
+        const nx = (cur + 1) % n;
+        cs.forEach((c, i) => { c.classList.toggle('front', i === nx); c.classList.toggle('back', i === cur); c.classList.toggle('hide', i !== nx && i !== cur); });
+        const t = box.closest('.hcard') && box.closest('.hcard').querySelector('.hc-subt');
+        if (t) { t.classList.remove('swap'); void t.offsetWidth; t.textContent = cs[nx].querySelector('b').textContent; t.classList.add('swap'); }
+      });
+    }, 3600);
     WT.leaveView = () => {
+      clearInterval(xTimer);
       document.body.classList.remove('home-lock');
       document.removeEventListener('fullscreenchange', onResize);
       document.removeEventListener('keydown', onKey);
@@ -515,9 +533,8 @@
   function authShell(paneHTML) {
     const st = WT.settings();
     const covers = WT.liveGenres().map((g) => {
-      const w = WT.toon(WT.data.trees[g.id].start);
-      return w ? { title: w.title, cover: w.cover || '', tone: w.color || (WT.color && WT.color.cached(w.cover)) || shade(g.color, 0.5), glow: g.color } : null;
-    }).filter(Boolean);
+      return WT.starts(WT.data.trees[g.id]).map(WT.toon).filter(Boolean).map((w) => ({ title: w.title, cover: w.cover || '', tone: w.color || (WT.color && WT.color.cached(w.cover)) || shade(g.color, 0.5), glow: g.color }));
+    }).flat();
     app().innerHTML = `<div class="view au-view"><main class="au-shell">
       <section class="au-form-side">
         <div class="au-top"><span class="au-brand">${WT.logo.mark()}${WT.logo.word(st.siteName)}</span>${WT.themeBtn()}</div>

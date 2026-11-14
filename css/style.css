@@ -2247,3 +2247,16 @@ a.lb-av:hover { color: #fff; filter: brightness(1.08); }
 .ap-pav.sys { background: hsl(var(--h) 30% 45%); }
 /* 글자를 쓰는 칸은 언제나 글자를 고를 수 있게 (끌기 방지가 걸린 판 안에서는 패드 · 휴대폰 자판 입력이 이상해져요) */
 input, textarea, select, [contenteditable="true"] { -webkit-user-select: text; user-select: text; }
+
+/* 장르 카드: 입문작이 여러 개면 표지 두 장이 엇갈려 놓이고 번갈아 앞으로 */
+.hc-xs { position: absolute; left: 50%; top: calc(-128px * var(--s)); width: calc(176px * var(--s)); height: calc(246px * var(--s)); transform: translateX(-50%); pointer-events: none; }
+.hc-xs .hc-cover { position: absolute; left: 0; top: 0; margin: 0; transition: transform .9s cubic-bezier(.45, .05, .25, 1), opacity .9s ease, filter .9s ease, z-index 0s .45s; }
+.hc-xs .hc-cover.front { z-index: 2; transform: translateX(10%) rotate(4deg); filter: none; opacity: 1; }
+.hc-xs .hc-cover.back { z-index: 1; transform: translateX(-22%) translateY(-4%) rotate(-8deg) scale(.9); filter: brightness(.72) saturate(.85); opacity: 1; }
+.hc-xs .hc-cover:not(.front):not(.back), .hc-xs .hc-cover.hide { z-index: 0; transform: translateX(-30%) rotate(-12deg) scale(.82); opacity: 0; }
+.hc-xs .hc-cover.back b { opacity: 0; }
+.hcard:hover .hc-xs .hc-cover.front { transform: translateX(12%) translateY(-3%) rotate(5deg); }
+.hcard:hover .hc-xs .hc-cover.back { transform: translateX(-28%) translateY(-6%) rotate(-11deg) scale(.9); }
+.hc-subt.swap { animation: hcSub .6s ease both; }
+@keyframes hcSub { from { opacity: 0; transform: translateY(5px); } }
+@media (prefers-reduced-motion: reduce) { .hc-xs .hc-cover { transition: none; } .hc-subt.swap { animation: none; } }

@@ -26,7 +26,7 @@
     const P = {};
     Object.keys(T0.nodes || {}).forEach((id) => { P[id] = T0.nodes[id].slice(); });
     const ids = Object.keys(P);
-    const rOf = (id) => (id === T0.start ? NODE_START : NODE) / 2;
+    const rOf = (id) => (WT.isStart(T0, id) ? NODE_START : NODE) / 2;
     const foot = (id) => { const [x, y] = P[id]; const r = rOf(id); return [x - 82, y - r - 18, x + 82, y + r + 62]; };
     const GAP = 10;
     const maxY = (id) => BH - rOf(id) - 64;   // 아래 제목이 판 밖으로 잘리지 않게
@@ -118,11 +118,11 @@
     const status = (id) => {
       if (cleared(id)) return 'done';
       if (ep(id) > 0) return 'reading';
-      if (lib || id === T.start || S.unlocked[id]) return 'open';
+      if (lib || WT.isStart(T, id) || S.unlocked[id]) return 'open';
       return T.links.some((l) => l.to === id && cleared(l.from)) ? 'open' : 'locked';
     };
     const pct = (id) => Math.round(ep(id) / total(id) * 100);
-    const sizeOf = (id) => (id === T.start ? NODE_START : NODE);
+    const sizeOf = (id) => (WT.isStart(T, id) ? NODE_START : NODE);
     const statusText = { done: labels.done || '완독', reading: '보는 중', open: '안 봄', locked: '잠김' };
 
     // ---------- 그리기 ----------
@@ -571,7 +571,7 @@
       const tag = stName === 'ongoing' && days
         ? `<span class="node-tag tag-ongoing two" aria-hidden="true">연재 중<small>${esc(days)}</small></span>`
         : `<span class="node-tag tag-${stName}" aria-hidden="true">${esc(WT.schedule.STATUS_KO[stName])}</span>`;
-      const isStart = id === T.start;
+      const isStart = WT.isStart(T, id);
       const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.2l-5.8 3.2 1.2-6.5L2.6 9.4l6.5-.8z"/></svg>';
       const meta = rec ? `<span class="nm-stars" aria-hidden="true">${STAR.repeat(rec)}</span>` : '';
       // 자리 정하기: 위 가운데 = 관리자 강추(또는 입문작) · 오른쪽 = 연재 상태 · 오른쪽 아래 = 다 봄 체크 / 자물쇠 · 왼쪽 위 = 새 화 N · 아래 = 제목과 한 줄 정보

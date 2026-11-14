@@ -39,6 +39,9 @@
     return ('0000000' + h.toString(16)).slice(-8) + ':' + str.length;
   }
   function setBase(h) { base = h; try { localStorage.setItem(BASE, h); } catch (e) { /* 무시 */ } }
+  // 입문작 여러 개 (사이트의 app.js와 같은 규칙)
+  WT.starts = WT.starts || ((T) => (T ? [T.start].concat(T.starts || []).filter((id, i, a) => id && a.indexOf(id) === i && (T.nodes || {})[id]) : []));
+  WT.isStart = WT.isStart || ((T, id) => WT.starts(T).includes(id));
   const DAYK = { mon: '월', tue: '화', wed: '수', thu: '목', fri: '금', sat: '토', sun: '일' };
   const ui = {
     tab: 'webtoons', w: null, q: '', fg: 'all', confirm: null, wview: (() => { try { return localStorage.getItem('webtoontree.adminWView') || 'grid'; } catch (e) { return 'grid'; } })(),
@@ -118,7 +121,8 @@
     const T = D.trees[gid];
     delete T.nodes[id];
     T.links = T.links.filter((l) => l.from !== id && l.to !== id);
-    if (T.start === id) T.start = Object.keys(T.nodes)[0] || null;
+    T.starts = (T.starts || []).filter((x) => x !== id);
+    if (T.start === id) { T.start = T.starts.shift() || Object.keys(T.nodes)[0] || null; }
   }
   function deleteWebtoon(id) {
     Object.keys(D.trees).forEach((g) => removeFromTree(g, id));
@@ -653,16 +657,18 @@
     const id = ui.tsel;
     if (!id || !T.nodes[id]) {
       return `<h3>${esc(g.name)} 트리</h3><p class="ad-help">노드를 누르면 연결 이유를 적거나, 시작점으로 정하거나, 트리에서 뺄 수 있어요.</p>
-        <p class="ad-help">입문작: <b>${esc((toon(T.start) || {}).title || '정하지 않음')}</b></p>`;
+        <p class="ad-help">입문작 ${WT.starts(T).length}개: <b>${esc(WT.starts(T).map((x) => (toon(x) || {}).title).join(', ') || '정하지 않음')}</b> · 노드를 골라 [입문작에 넣기]로 여러 개 정할 수 있어요. 첫 번째 입문작이 트리의 시작점이에요.</p>`;
     }
     const w = toon(id);
     const outs = T.links.map((l, i) => [l, i]).filter(([l]) => l.from === id);
     const ins = T.links.filter((l) => l.to === id);
     const confirming = ui.confirm === 'tn:' + id;
     return `<h3>${esc(w.title)}</h3>
-      <p class="ad-help">${T.start === id ? '★ 이 트리의 입문작이에요' : ''}${ins.length ? ` 이전 웹툰: ${ins.map((l) => esc((toon(l.from) || {}).title)).join(', ')}` : ''}</p>
+      <p class="ad-help">${T.start === id ? '★ 이 트리의 첫 번째 입문작(시작점)이에요' : WT.isStart(T, id) ? '★ 이 트리의 입문작이에요' : ''}${ins.length ? ` 이전 웹툰: ${ins.map((l) => esc((toon(l.from) || {}).title)).join(', ')}` : ''}</p>
       <div class="ad-actions">
-        ${T.start === id ? '' : `<button type="button" class="btn btn-sm press" data-a="set-start" data-id="${id}">입문작으로 정하기</button>`}
+        ${WT.isStart(T, id)
+          ? `${T.start === id ? '' : `<button type="button" class="btn btn-sm press" data-a="start-first" data-id="${id}">첫 번째 입문작으로</button>`}${WT.starts(T).length > 1 ? `<button type="button" class="btn btn-sm press" data-a="start-del" data-id="${id}">입문작에서 빼기</button>` : ''}`
+          : `<button type="button" class="btn btn-sm press" data-a="start-add" data-id="${id}">입문작에 넣기</button>`}
         <button type="button" class="btn btn-sm press" data-a="branch-from" data-id="${id}">＋ 여기서 가지 내리기</button>
       </div>
       <div style="display:flex; flex-direction:column; gap:8px">
@@ -705,10 +711,10 @@
       Object.keys(T.nodes).map((id) => {
         const w = toon(id) || { title: '?' };
         const [x, y] = T.nodes[id];
-        const cls = [T.start === id ? 'start' : '', ui.tsel === id ? 'sel' : '', ui.from === id ? 'from' : ''].join(' ');
-        return `<div class="ad-node ${cls}" data-n="${id}" style="--gc:${gColor(w)}; left:${x}px; top:${y - (T.start === id ? 45 : 36)}px" role="button" tabindex="0" aria-label="${esc(w.title)}">
+        const cls = [WT.isStart(T, id) ? 'start' : '', ui.tsel === id ? 'sel' : '', ui.from === id ? 'from' : ''].join(' ');
+        return `<div class="ad-node ${cls}" data-n="${id}" style="--gc:${gColor(w)}; left:${x}px; top:${y - (WT.isStart(T, id) ? 45 : 36)}px" role="button" tabindex="0" aria-label="${esc(w.title)}">
           <div class="c">${nodeFace(w)}${ui.tsel === id && ui.mode === 'select' ? '<span class="plus" data-plus="1" aria-hidden="true">+</span>' : ''}</div>
-          <span>${WT.recStars(w) ? '★'.repeat(WT.recStars(w)) + ' ' : ''}${esc(w.title)}</span>${T.start === id ? '<span class="start-tag">입문작</span>' : ''}
+          <span>${WT.recStars(w) ? '★'.repeat(WT.recStars(w)) + ' ' : ''}${esc(w.title)}</span>${WT.isStart(T, id) ? `<span class="start-tag">입문작${T.start === id && WT.starts(T).length > 1 ? ' 1' : ''}</span>` : ''}
         </div>`;
       }).join('');
     const drawLinks = () => T.links.forEach((l, i) => {
@@ -737,7 +743,7 @@
       const ny = Math.round(Math.min(TREE_H - 60, Math.max(50, drag.y + dy)) / 10) * 10;
       T.nodes[drag.id] = [nx, ny];
       drag.el.style.left = `${nx}px`;
-      drag.el.style.top = `${ny - (T.start === drag.id ? 45 : 36)}px`;
+      drag.el.style.top = `${ny - (WT.isStart(T, drag.id) ? 45 : 36)}px`;
       drawLinks();
     });
     cv.addEventListener('pointerup', () => {
@@ -1352,7 +1358,9 @@
       }
       case 'branch-from': ui.branchFor = id; ui.bq = ''; render(); break;
       case 'branch-cancel': ui.branchFor = null; ui.mode = 'select'; render(); break;
-      case 'set-start': D.trees[ui.tg].start = id; saveDraft(); render(); break;
+      case 'set-start': case 'start-first': { const T = D.trees[ui.tg]; const all = WT.starts(T).filter((x) => x !== id); T.start = id; T.starts = all; saveDraft(); render(); break; }
+      case 'start-add': { const T = D.trees[ui.tg]; if (!T.start) T.start = id; else { T.starts = (T.starts || []).filter((x) => x !== id); T.starts.push(id); } saveDraft(); render(); break; }
+      case 'start-del': { const T = D.trees[ui.tg]; const all = WT.starts(T).filter((x) => x !== id); T.start = all.shift() || null; T.starts = all; saveDraft(); render(); break; }
       case 'del-link': D.trees[ui.tg].links.splice(i, 1); saveDraft(); render(); break;
       case 'del-node': if (confirmOnce('tn:' + id)) { removeFromTree(ui.tg, id); ui.tsel = null; saveDraft(); render(); } break;
       case 'mmode': ui.mmode = id; ui.mfrom = null; render(); break;
@@ -1476,6 +1484,7 @@
     Object.keys(d.trees || {}).forEach((gid) => {
       const T = d.trees[gid];
       put('ts:' + gid, T.start || null);
+      put('tss:' + gid, T.starts || []);
       put('tl:' + gid, T.links || []);
       Object.keys(T.nodes || {}).forEach((id) => put('tn:' + gid + ':' + id, T.nodes[id]));
     });
@@ -1502,6 +1511,7 @@
     const d = { webtoons: keyed('w:', 'o:w'), genres: keyed('g:', 'o:g'), trees: {}, map: {}, settings: {}, meta: meta || {}, authorInfo: {} };
     Object.keys(u).forEach((k) => {
       if (k.startsWith('ts:')) { const gid = k.slice(3); d.trees[gid] = d.trees[gid] || { start: null, nodes: {}, links: [] }; d.trees[gid].start = get(k); }
+      if (k.startsWith('tss:')) { const gid = k.slice(4); d.trees[gid] = d.trees[gid] || { start: null, nodes: {}, links: [] }; d.trees[gid].starts = get(k) || []; }
     });
     Object.keys(u).forEach((k) => {
       if (k.startsWith('tl:')) { const gid = k.slice(3); d.trees[gid] = d.trees[gid] || { start: null, nodes: {}, links: [] }; d.trees[gid].links = get(k); }
@@ -1812,7 +1822,7 @@
     if (el.dataset.wf === 'cover') { const w = toon(ui.w); w.color = ''; saveDraft(); autoColor(w, true); render(); return; }
     if (el.dataset.wf || el.dataset.gf) { render(); return; }
     if (el.dataset.aChange === 'g-shape') { if (SHAPES[el.value]) { genre(ui.g).shape = clone(SHAPES[el.value].shape); saveDraft(); render(); } return; }
-    if (el.dataset.aChange === 'g-start') { D.trees[ui.g].start = el.value || null; saveDraft(); render(); return; }
+    if (el.dataset.aChange === 'g-start') { const T = D.trees[ui.g]; const v = el.value || null; T.starts = WT.starts(T).filter((x) => x !== v); T.start = v; saveDraft(); render(); return; }
     if (el.dataset.aChange === 't-genre') { ui.tg = el.value; ui.tsel = null; ui.from = null; ui.branchFor = null; render(); return; }
     if (el.dataset.sf && el.type === 'checkbox') { setPath(D.settings, el.dataset.sf, el.checked); saveDraft(); return; }
     if (el.dataset.shop !== undefined) {
