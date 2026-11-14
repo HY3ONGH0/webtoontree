@@ -1,6 +1,135 @@
 {
   "webtoons": [
     {
+      "id": "w6.57564281141091e+21q5",
+      "title": "기자매",
+      "author": "범배",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=823285",
+      "cover": "https://image-comic.pstatic.net/webtoon/823285/thumbnail/thumbnail_IMAG21_b644a680-a301-4fcf-b914-c490141e2237.jpg",
+      "genres": [],
+      "recommended": 0,
+      "color": "#f3e8e6",
+      "episodes": 52,
+      "status": "completed",
+      "days": [
+        "thu"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "개그",
+        "열혈병맛개그",
+        "가족",
+        "일상",
+        "병맛",
+        "가벼운",
+        "미친작화",
+        "짝사랑"
+      ],
+      "desc": "으스스한 저택엔, 기자매가 산다.\n'이번주도 모여주어서 이 언니는 기쁘단다.'\n매주 목요일에 열리는 가족회의에서 언니들은 충격적인 소식을 듣는다.\n막내에게 남자가 생겼다고? 기가 조금 쎈 언니들과 로맨스 폭주기관차 막내의 시트콤이 시작된다!",
+      "authors": [
+        {
+          "name": "범배",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=823285",
+      "autoAt": "2026-11-14"
+    },
+    {
+      "id": "w6.57564281141091e+21iy",
+      "title": "신의 탑",
+      "author": "SIU",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=183559",
+      "cover": "https://image-comic.pstatic.net/webtoon/183559/thumbnail/thumbnail_IMAG21_5f3fec31-5c95-4afe-a73f-3046288edb47.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 4,
+      "color": "#e5eaf3",
+      "episodes": 653,
+      "status": "hiatus",
+      "days": [
+        "mon"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "판타지",
+        "탑등반",
+        "명작",
+        "이능력",
+        "배틀",
+        "모험",
+        "전쟁",
+        "액션"
+      ],
+      "desc": "자신의 모든 것이었던 소녀를 쫓아 탑에 들어온 소년\n그리고 그런 소년을 시험하는 탑",
+      "authors": [
+        {
+          "name": "SIU",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=183559",
+      "autoAt": "2026-11-14",
+      "subs": [
+        "fantasy-5",
+        "fantasy-6"
+      ]
+    },
+    {
+      "id": "w6.57564281141091e+21q3",
+      "title": "신의 언어",
+      "author": "장래혁",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=602287",
+      "cover": "https://image-comic.pstatic.net/webtoon/602287/thumbnail/thumbnail_IMAG21_7221914958545707320.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 3,
+      "color": "#eae4da",
+      "episodes": 333,
+      "status": "completed",
+      "days": [
+        "tue"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "판타지",
+        "몰아보기",
+        "완결판타지"
+      ],
+      "desc": "퇴마계의 신개념 영웅!\n프로그래머 난새의 마계 전투가 시작된다!",
+      "authors": [
+        {
+          "name": "장래혁",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=602287",
+      "autoAt": "2026-11-14",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
       "id": "w6.57564281141091e+21nb",
       "title": "인피니티",
       "author": "2오",
@@ -324,7 +453,7 @@
       ],
       "recommended": 4,
       "color": "#eae4ea",
-      "episodes": 1,
+      "episodes": 147,
       "status": "hiatus",
       "days": [
         "sun"
@@ -371,7 +500,7 @@
         "romance",
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 3,
       "color": "#f9f5e9",
       "episodes": 238,
       "status": "hiatus",
@@ -511,7 +640,7 @@
         "romance",
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 3,
       "color": "#fae7e8",
       "episodes": 133,
       "status": "hiatus",
@@ -767,9 +896,9 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 5,
+      "recommended": 4,
       "color": "#17131c",
-      "episodes": 1,
+      "episodes": 268,
       "status": "completed",
       "days": [],
       "autoCount": false,
@@ -815,7 +944,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 2,
       "color": "#18130d",
       "episodes": 148,
       "status": "hiatus",
@@ -974,7 +1103,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 3,
       "color": "#56393a",
       "episodes": 99,
       "status": "hiatus",
@@ -1290,7 +1419,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 3,
       "color": "#e83402",
       "episodes": 32,
       "status": "ongoing",
@@ -4581,7 +4710,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "color": "#472716",
       "episodes": 246,
       "status": "hiatus",
@@ -6758,7 +6887,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 1,
+      "recommended": 3,
       "color": "#01c7fc",
       "episodes": 192,
       "status": "ongoing",
@@ -6816,7 +6945,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": 1,
+      "recommended": 3,
       "color": "#450d59",
       "episodes": 236,
       "status": "ongoing",
@@ -7506,7 +7635,7 @@
         "fantasy",
         "daily"
       ],
-      "recommended": 1,
+      "recommended": 3,
       "color": "#5a1c00",
       "episodes": 159,
       "status": "ongoing",
@@ -7746,9 +7875,10 @@
       "url": "https://blacktoon427.com/webtoon/19171.html",
       "cover": "https://i.namu.wiki/i/YqpqnWfGlDXimf68f1iyvCLiidO0bovRrh2yK7f2zPNKalCzmi7IyazbTBwXg1YfxQAeHKxHbkHUeeqFPJlx0sxCIxga-emHJ1uNhqSfmvXqKRoP7JX2jS5ZH7kNAsfRFNBYOwAle5qv7Uh-R67IMA.webp",
       "genres": [
-        "fantasy"
+        "fantasy",
+        "romance"
       ],
-      "recommended": 1,
+      "recommended": 3,
       "color": "#450d59",
       "episodes": 44,
       "status": "ongoing",
@@ -8059,7 +8189,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 3,
       "color": "#ff4015",
       "episodes": 196,
       "status": "ongoing",
@@ -8408,7 +8538,7 @@
         "action",
         "sports"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "color": "#000000",
       "episodes": 134,
       "status": "completed",
@@ -8632,7 +8762,7 @@
         "action",
         "apocalyps"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "color": "#ff6a00",
       "episodes": 279,
       "status": "completed",
@@ -9659,6 +9789,50 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=850746",
       "autoAt": "2026-11-13"
+    },
+    {
+      "id": "w6.57564281141091e+2122",
+      "title": "올가미",
+      "author": "해무리",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=732988",
+      "cover": "https://image-comic.pstatic.net/webtoon/732988/thumbnail/thumbnail_IMAG21_eda8ea4b-fdc8-411d-9f28-09e450cc06c5.jpg",
+      "genres": [
+        "drama",
+        "thriller"
+      ],
+      "recommended": 2,
+      "color": "#372616",
+      "episodes": 204,
+      "status": "completed",
+      "days": [
+        "tue"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "드라마",
+        "로맨스릴러",
+        "스릴러",
+        "폭스남",
+        "집착물",
+        "고자극로맨스",
+        "혐관로맨스",
+        "인외존재"
+      ],
+      "desc": "\"일주일에 단 한 번, 내가 지시하는 곳으로 데려오기만 하면 돼요.\"\n정체불명의 힘을 지닌 윤수와 그의 올가미에 단단히 옭아매어진 채아. 과연 그녀는 그의 덫에서 빠져나올 수 있을까.",
+      "authors": [
+        {
+          "name": "해무리",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=732988",
+      "autoAt": "2026-11-14"
     }
   ],
   "genres": [
@@ -10955,13 +11129,13 @@
           610,
           190
         ],
-        "w657564281141069": [
-          380,
-          190
-        ],
         "w657564281141027": [
           380,
           50
+        ],
+        "w657564281141069": [
+          380,
+          190
         ],
         "w6.57564281141091e+2164": [
           150,
@@ -15765,6 +15939,74 @@
       "bio": "",
       "url": "",
       "works": []
+    },
+    "장래혁": {
+      "name": "장래혁",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230923_184/1695441859494B1sKn_PNG/KakaoTalk_20230923_130253163.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_hboq5",
+      "works": [
+        {
+          "title": "일홀도",
+          "source": "https://comic.naver.com/webtoon/list?titleId=819230",
+          "cover": "https://image-comic.pstatic.net/webtoon/819230/thumbnail/thumbnail_IMAG21_0e049c62-8732-4c2b-adcf-ae67a6bc7542.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "해무리": {
+      "name": "해무리",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230922_93/16953795960243Nysp_PNG/1000001439.png",
+      "bio": "안녕하세요. 작가 해무리입니다.",
+      "url": "https://comic.naver.com/community/u/harry",
+      "works": [
+        {
+          "title": "맹종",
+          "source": "https://comic.naver.com/webtoon/list?titleId=850546",
+          "cover": "https://image-comic.pstatic.net/webtoon/850546/thumbnail/thumbnail_IMAG21_6f2e1af7-c7a2-40b0-9e57-f69dad8dd027.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "siu": {
+      "name": "SIU",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "우렉 마지노",
+          "source": "https://comic.naver.com/webtoon/list?titleId=838432",
+          "cover": "https://image-comic.pstatic.net/webtoon/838432/thumbnail/thumbnail_IMAG21_c9ea8921-d3e1-40ac-b730-ea91b7bfc4a4.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "범배": {
+      "name": "범배",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20240404_190/17122189856343AbDD_PNG/Screenshot_20240404_172218_Naver_Cafe.png",
+      "bio": "가내웹공업",
+      "url": "https://comic.naver.com/community/u/lbb",
+      "works": [
+        {
+          "title": "20주년 명작 극장",
+          "source": "https://comic.naver.com/webtoon/list?titleId=844984",
+          "cover": "https://image-comic.pstatic.net/webtoon/844984/thumbnail/thumbnail_IMAG21_c6f05b7c-c05e-405b-b373-35939aec7c5c.jpg",
+          "finished": true
+        },
+        {
+          "title": "완벽한 결혼의 정석",
+          "source": "https://comic.naver.com/webtoon/list?titleId=775631",
+          "cover": "https://image-comic.pstatic.net/webtoon/775631/thumbnail/thumbnail_IMAG21_4063147592470967090.jpg",
+          "finished": true
+        },
+        {
+          "title": "신혼부부 생활 백서",
+          "source": "https://comic.naver.com/webtoon/list?titleId=805405",
+          "cover": "https://image-comic.pstatic.net/webtoon/805405/thumbnail/thumbnail_IMAG21_74098c45-0052-46e7-affc-91013b2e3c0a.jpg",
+          "finished": true
+        }
+      ]
     }
   },
   "version": 1,
