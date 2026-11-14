@@ -1,14 +1,371 @@
 {
   "webtoons": [
     {
+      "id": "w6.57564281141091e+21ac",
+      "title": "똑 닮은 딸",
+      "author": "이담",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=774866",
+      "cover": "https://image-comic.pstatic.net/webtoon/774866/thumbnail/thumbnail_IMAG21_b03cd4bd-bc74-4469-a501-20896bcc887f.jpg",
+      "genres": [
+        "drama",
+        "thriller"
+      ],
+      "recommended": 4,
+      "color": "#fd054b",
+      "episodes": 233,
+      "status": "ongoing",
+      "days": [
+        "mon"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "스릴러",
+        "입시",
+        "명작",
+        "고자극드라마",
+        "자극적인",
+        "시리어스",
+        "미스터리",
+        "범죄"
+      ],
+      "desc": "'우리 엄마가 살인마인 것 같다.' \n성적 우수, 품행 단정, 모범적인 자식인 길소명은 엄마가 요구하는 기준에 맞춰 완벽한 딸로 살아왔다.\n그러나 남동생이 강물에서 시체로 떠오른 그 날, 소명의 머릿속엔 섬뜩한 의혹이 피어오른다.\n자식의 인생에 방해되는 모든 것을 없애려는 엄마와 그녀에게서 벗어나려는 딸, 두 사람의 잔혹한 모녀 스릴러!\n2020 지상최대공모전 2기 우수상 수상작.",
+      "authors": [
+        {
+          "name": "이담",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=774866",
+      "autoAt": "2026-11-14"
+    },
+    {
+      "id": "w6.57564281141091e+21v3",
+      "title": "메모리얼",
+      "author": "상C",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=791140",
+      "cover": "https://image-comic.pstatic.net/webtoon/791140/thumbnail/thumbnail_IMAG21_28c779aa-48bf-47bc-8a52-fd0ede76a9c5.jpg",
+      "genres": [
+        "thriller"
+      ],
+      "recommended": 3,
+      "color": "#39332c",
+      "episodes": 71,
+      "status": "completed",
+      "days": [
+        "wed"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "스릴러",
+        "몰아보기",
+        "완결스릴러"
+      ],
+      "desc": "평범한 일상을 보내고 있던 고등학생 '민희'는 예전부터 좋아하던 친구에게 고백을 계획한다.\n그러나 고백 전날, '그 애'와 관련된 불길한 꿈을 꾸게 되고 현실에서 '그 애'와 관련된 모든 것이 사라지고 만다.\n모든 것이 혼란스러운 민희는 '그 애'를 찾기 시작하는데..",
+      "authors": [
+        {
+          "name": "상C",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=791140",
+      "autoAt": "2026-11-14"
+    },
+    {
+      "id": "w6.57564281141091e+215s",
+      "title": "어느날 갑자기 서울은",
+      "author": "박창근",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=776092",
+      "cover": "https://image-comic.pstatic.net/webtoon/776092/thumbnail/thumbnail_IMAG21_48bf81d8-0c0c-4130-9173-2d2b1f27aff3.jpg",
+      "genres": [
+        "thriller"
+      ],
+      "recommended": 3,
+      "color": "#271737",
+      "episodes": 181,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "스릴러",
+        "바디 호러",
+        "액션아포칼립스",
+        "자극적인",
+        "시리어스",
+        "현대",
+        "크리처",
+        "환골탈태"
+      ],
+      "desc": "'닿는 순간 먹이가 된다.' 어느 날 갑자기 서울을 덮친 끔찍한 변이 바이러스! 서울로 수학여행을 온 연우는 평소 짝사랑하던 같은 반 소연과 친해질 수 있다는 생각에 설렌다. 그때 서울 관광 중인 연우네 반 앞에 나타난 정체불명의 세포들. 접촉하면 감염자를 흉측한 모습으로 변이시켜버리는 세포들 때문에 연우와 같은 반 친구들의 수학 여행은 지옥으로 바뀌어버리는데...! 연우는 무사히 서울을 벗어날 수 있을까?",
+      "authors": [
+        {
+          "name": "박창근",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=776092",
+      "autoAt": "2026-11-14"
+    },
+    {
+      "id": "w6.57564281141091e+21tn",
+      "title": "꼬리잡기",
+      "author": "바쉬",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=758666",
+      "cover": "https://image-comic.pstatic.net/webtoon/758666/thumbnail/thumbnail_IMAG21_7364564497641911606.jpg",
+      "genres": [
+        "thriller"
+      ],
+      "recommended": 4,
+      "color": "#170e11",
+      "episodes": 108,
+      "status": "completed",
+      "days": [
+        "mon"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "스릴러",
+        "범죄",
+        "서바이벌",
+        "2020 지상최대공모전",
+        "서스펜스",
+        "두뇌싸움",
+        "완결스릴러"
+      ],
+      "desc": "건물붕괴 사고로 매몰된 9명의 대학생.\n2주 뒤, 3명은 사망하고 1명은 의식불명인 상태로 발견된다.\n가까스로 구조된 생존자 5명은 그곳에서 있었던 일을 숨기려 하는데... 생존자인 척 숨어있던 살인자에 대한 정황이 드러나기 시작한다.\n수사팀은 이 밀실살인 사건의 처음과 끝을 파헤치게 된다.\n2020 지상최대공모전 1기 대상 수상작.",
+      "authors": [
+        {
+          "name": "바쉬",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=758666",
+      "autoAt": "2026-11-14"
+    },
+    {
+      "id": "w6.57564281141091e+219r",
+      "title": "외모지상주의",
+      "author": "박태준",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=641253",
+      "cover": "https://image-comic.pstatic.net/webtoon/641253/thumbnail/thumbnail_IMAG21_01672165-03c8-44b1-ba0e-ef82c9cfcd10.jpg",
+      "genres": [
+        "action",
+        "drama"
+      ],
+      "recommended": 4,
+      "color": "#1b1415",
+      "episodes": 634,
+      "status": "ongoing",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "드라마",
+        "사이다",
+        "학원액션",
+        "소년물",
+        "참교육",
+        "성장물",
+        "격투기",
+        "학원물"
+      ],
+      "desc": "못생기고 뚱뚱하다고 괴롭힘을 당하며  루저 인생만 살아온 내가 잘생겨졌다는 이유로 인싸가 됐다.\n\n어느 날 자고 일어났더니 갑자기 완벽한 외모와 몸을 지닌 사람이 되어 깨어난다면?",
+      "authors": [
+        {
+          "name": "박태준",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=641253",
+      "autoAt": "2026-11-14"
+    },
+    {
+      "id": "w6.57564281141091e+21en",
+      "title": "선천적 얼간이들",
+      "author": "가스파드",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=478261",
+      "cover": "https://image-comic.pstatic.net/webtoon/478261/thumbnail/thumbnail_IMAG21_7fbd8610-0a97-40e3-9c63-101ea07fc4b4.jpg",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 3,
+      "color": "#dde7e5",
+      "episodes": 104,
+      "status": "completed",
+      "days": [
+        "thu"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "개그",
+        "무해한",
+        "러블리",
+        "힐링",
+        "4차원",
+        "하이퍼리얼리즘",
+        "동물",
+        "공감성수치"
+      ],
+      "desc": "뭘 해도 안되는 얼간이 신인류가 떴다!\n낙천적 우유부단 거북이 가스파드와 말초적 친구들의 좌충우돌 라이프.\n이미 화제의 중심! 'Natural Born Idiots'의 새로운 이름, '선천적 얼간이들'",
+      "authors": [
+        {
+          "name": "가스파드",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=478261",
+      "autoAt": "2026-11-14"
+    },
+    {
+      "id": "w6.57564281141091e+2196",
+      "title": "부활남",
+      "author": "채용택, 김재한",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=670139",
+      "cover": "https://image-comic.pstatic.net/webtoon/670139/thumbnail/thumbnail_IMAG21_9052edf0-7d54-4dcd-bf73-2d8f0d160c5b.jpg",
+      "genres": [
+        "drama"
+      ],
+      "recommended": 4,
+      "color": "#583a35",
+      "episodes": 178,
+      "status": "completed",
+      "days": [
+        "sat"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "액션",
+        "몰아보기",
+        "슈퍼스트링",
+        "완결액션"
+      ],
+      "desc": "나는 죽으면\n3일 만에 부활한다!",
+      "authors": [
+        {
+          "name": "채용택",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "김재한",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=670139",
+      "autoAt": "2026-11-14",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w6.57564281141091e+21fp",
+      "title": "재벌집 막내아들",
+      "author": "JP, 김병관, 산경(山景)",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=800770",
+      "cover": "https://image-comic.pstatic.net/webtoon/800770/thumbnail/thumbnail_IMAG21_d2e1e7ee-fc83-4030-a1e7-200378bc088f.jpg",
+      "genres": [
+        "drama"
+      ],
+      "recommended": 2,
+      "color": "#262c44",
+      "episodes": 236,
+      "status": "ongoing",
+      "days": [
+        "thu"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-14",
+      "tags": [
+        "드라마",
+        "고자극드라마",
+        "오피스",
+        "정치",
+        "재벌",
+        "타임슬립",
+        "드라마&영화 원작웹툰",
+        "회귀"
+      ],
+      "desc": "[화제의 드라마 원작 웹툰!] \n13년 동안의 수고를 배신으로 돌려받다니! \n머슴처럼 살다 버려진 순양그룹의 실장, 윤현우. \n모든 게 끝났다 싶었을 즘, 순양그룹 진 회장의 손주 진도준으로 깨어난다! \n하지만 상속권과는 거리가 먼 재벌집 막내아들 진도준. \n과연 그는 가족 정치극에서 최후의 승자가 될 수 있을 것인가! \n순양그룹을 집어삼키기 위한 윤현우의 통쾌한 복수극이 시작된다!",
+      "authors": [
+        {
+          "name": "JP",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "김병관",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "산경(山景)",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=800770",
+      "autoAt": "2026-11-14"
+    },
+    {
       "id": "w6.57564281141091e+21q5",
       "title": "기자매",
       "author": "범배",
       "platform": "네이버웹툰",
       "url": "https://comic.naver.com/webtoon/list?titleId=823285",
       "cover": "https://image-comic.pstatic.net/webtoon/823285/thumbnail/thumbnail_IMAG21_b644a680-a301-4fcf-b914-c490141e2237.jpg",
-      "genres": [],
-      "recommended": 0,
+      "genres": [
+        "daily"
+      ],
+      "recommended": 3,
       "color": "#f3e8e6",
       "episodes": 52,
       "status": "completed",
@@ -699,7 +1056,7 @@
         "fantasy",
         "apocalyps"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "color": "#190e11",
       "episodes": 103,
       "status": "hiatus",
@@ -7970,7 +8327,7 @@
         "action",
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "color": "#011d57",
       "episodes": 150,
       "status": "completed",
@@ -7998,7 +8355,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "pick": true
     },
     {
       "id": "w052",
@@ -8897,7 +9255,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "color": "#000000",
       "episodes": 53,
       "status": "ongoing",
@@ -8926,7 +9284,7 @@
           ]
         }
       ],
-      "pick": true
+      "pick": false
     },
     {
       "id": "w030",
@@ -10935,32 +11293,32 @@
       "start": "w028",
       "nodes": {
         "w028": [
-          130,
+          110,
           280
         ],
         "w054": [
-          350,
-          80
+          310,
+          90
         ],
         "w657564279ng": [
-          680,
-          240
+          560,
+          230
         ],
         "w657564278": [
-          320,
-          220
+          310,
+          217
         ],
         "w657564280k5": [
-          380,
-          350
+          310,
+          343
         ],
         "w6575642810a": [
-          320,
-          480
+          310,
+          470
         ],
         "w657564281127jw": [
-          570,
-          480
+          510,
+          470
         ]
       },
       "links": [
@@ -11011,31 +11369,46 @@
       "start": "w031",
       "nodes": {
         "w031": [
-          130,
+          110,
           280
         ],
         "w052": [
-          360,
-          280
+          710,
+          90
         ],
         "w053": [
-          590,
+          310,
+          280
+        ],
+        "w6.57564281141091e+21tn": [
+          710,
+          470
+        ],
+        "w6.57564281141091e+215s": [
+          510,
           280
         ]
       },
       "links": [
         {
-          "from": "w031",
-          "to": "w052",
+          "from": "w052",
+          "to": "w6.57564281141091e+21tn",
           "why": ""
         },
         {
-          "from": "w052",
+          "from": "w031",
           "to": "w053",
+          "why": ""
+        },
+        {
+          "from": "w053",
+          "to": "w6.57564281141091e+215s",
           "why": ""
         }
       ],
-      "starts": []
+      "starts": [
+        "w052"
+      ]
     },
     "daily": {
       "start": "w657564281141078",
@@ -11122,36 +11495,36 @@
       "start": "w027",
       "nodes": {
         "w027": [
-          150,
-          80
+          110,
+          280
         ],
         "w657564281141066": [
-          610,
-          190
+          510,
+          280
         ],
         "w657564281141027": [
-          380,
-          50
+          310,
+          470
         ],
         "w657564281141069": [
-          380,
-          190
+          310,
+          90
         ],
         "w6.57564281141091e+2164": [
-          150,
-          320
+          710,
+          90
         ],
         "w657564281141044": [
-          460,
-          300
+          710,
+          217
         ],
         "w039": [
-          440,
-          430
+          710,
+          343
         ],
         "w6.57564281141091e+21nb": [
-          670,
-          330
+          710,
+          470
         ]
       },
       "links": [
@@ -11273,9 +11646,33 @@
       "starts": []
     },
     "drama": {
-      "start": null,
-      "nodes": {},
-      "links": [],
+      "start": "w65756428114109096gj",
+      "nodes": {
+        "w65756428114109096gj": [
+          130,
+          280
+        ],
+        "w657564281141028": [
+          380,
+          300
+        ],
+        "w044": [
+          340,
+          140
+        ]
+      },
+      "links": [
+        {
+          "from": "w65756428114109096gj",
+          "to": "w657564281141028",
+          "why": ""
+        },
+        {
+          "from": "w65756428114109096gj",
+          "to": "w044",
+          "why": ""
+        }
+      ],
       "starts": []
     }
   },
@@ -12760,10 +13157,10 @@
       "url": "https://comic.naver.com/community/u/sangC",
       "works": [
         {
-          "title": "메모리얼",
-          "source": "https://comic.naver.com/webtoon/list?titleId=791140",
-          "cover": "https://image-comic.pstatic.net/webtoon/791140/thumbnail/thumbnail_IMAG21_28c779aa-48bf-47bc-8a52-fd0ede76a9c5.jpg",
-          "finished": true
+          "title": "44교시 생존수업",
+          "source": "https://comic.naver.com/webtoon/list?titleId=836848",
+          "cover": "https://image-comic.pstatic.net/webtoon/836848/thumbnail/thumbnail_IMAG21_3908e9b2-6cfb-45d5-9bc1-04b8453c1602.jpg",
+          "finished": false
         }
       ]
     },
@@ -16007,6 +16404,221 @@
           "finished": true
         }
       ]
+    },
+    "jp": {
+      "name": "JP",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_21cqqm",
+      "works": [
+        {
+          "title": "광마회귀",
+          "source": "https://comic.naver.com/webtoon/list?titleId=776601",
+          "cover": "https://image-comic.pstatic.net/webtoon/776601/thumbnail/thumbnail_IMAG21_7365135131254864183.jpg",
+          "finished": false
+        },
+        {
+          "title": "절대회귀",
+          "source": "https://comic.naver.com/webtoon/list?titleId=828715",
+          "cover": "https://image-comic.pstatic.net/webtoon/828715/thumbnail/thumbnail_IMAG21_8957548a-2eb2-4ddf-a50e-dbc7fddc16a7.jpg",
+          "finished": false
+        },
+        {
+          "title": "환생천마",
+          "source": "https://comic.naver.com/webtoon/list?titleId=822657",
+          "cover": "https://image-comic.pstatic.net/webtoon/822657/thumbnail/thumbnail_IMAG21_99e49512-e05d-48c3-846d-d898f78523df.jpg",
+          "finished": false
+        },
+        {
+          "title": "칼에 취한 밤을 걷다",
+          "source": "https://comic.naver.com/webtoon/list?titleId=795542",
+          "cover": "https://image-comic.pstatic.net/webtoon/795542/thumbnail/thumbnail_IMAG21_3703756833080816441.jpg",
+          "finished": false
+        },
+        {
+          "title": "시한부 천재가 살아남는 법",
+          "source": "https://comic.naver.com/webtoon/list?titleId=832703",
+          "cover": "https://image-comic.pstatic.net/webtoon/832703/thumbnail/thumbnail_IMAG21_1dab240b-fafb-472a-8b42-966f40f8fdc0.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "김병관": {
+      "name": "김병관",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_zsj89",
+      "works": [
+        {
+          "title": "서울 자가에 대기업 다니는 김 부장 이야기",
+          "source": "https://comic.naver.com/webtoon/list?titleId=819929",
+          "cover": "https://image-comic.pstatic.net/webtoon/819929/thumbnail/thumbnail_IMAG21_f1ca00e5-9b30-44d3-a1ee-7a04d539002a.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "산경(山景)": {
+      "name": "산경(山景)",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "신입사원 강 회장",
+          "source": "https://comic.naver.com/webtoon/list?titleId=814766",
+          "cover": "https://image-comic.pstatic.net/webtoon/814766/thumbnail/thumbnail_IMAG21_f963539b-9954-4b1a-a4a8-7b01bb6d3247.jpg",
+          "finished": true
+        },
+        {
+          "title": "네 법대로 해라",
+          "source": "https://comic.naver.com/webtoon/list?titleId=833648",
+          "cover": "https://image-comic.pstatic.net/webtoon/833648/thumbnail/thumbnail_IMAG21_fa20a27e-f68d-45f0-b30d-a14c040512df.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "가스파드": {
+      "name": "가스파드",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20250822_270/1755860368285Xto3m_PNG/turtle_smile2.png",
+      "bio": "​(๑‿..‿๑)",
+      "url": "https://comic.naver.com/community/u/gasfard",
+      "works": [
+        {
+          "title": "전자오락수호대",
+          "source": "https://comic.naver.com/webtoon/list?titleId=637931",
+          "cover": "https://image-comic.pstatic.net/webtoon/637931/thumbnail/thumbnail_IMAG21_7233965413470910771.jpg",
+          "finished": true
+        },
+        {
+          "title": "혁신적 얼간이들",
+          "source": "https://comic.naver.com/webtoon/list?titleId=783466",
+          "cover": "https://image-comic.pstatic.net/webtoon/783466/thumbnail/thumbnail_IMAG21_7364005731772031586.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "김재한": {
+      "name": "김재한",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "알게뭐야",
+          "source": "https://comic.naver.com/webtoon/list?titleId=546805",
+          "cover": "https://image-comic.pstatic.net/webtoon/546805/thumbnail/thumbnail_IMAG21_7149238141809013602.jpg",
+          "finished": true
+        },
+        {
+          "title": "급식아빠",
+          "source": "https://comic.naver.com/webtoon/list?titleId=758662",
+          "cover": "https://image-comic.pstatic.net/webtoon/758662/thumbnail/thumbnail_IMAG21_0c8a2c9e-b2de-4346-8ac6-c8e2c0a5bfe5.jpg",
+          "finished": false
+        },
+        {
+          "title": "피아노",
+          "source": "https://comic.naver.com/webtoon/list?titleId=643549",
+          "cover": "https://image-comic.pstatic.net/webtoon/643549/thumbnail/thumbnail_IMAG21_3990862407998713956.jpg",
+          "finished": true
+        },
+        {
+          "title": "미스터 나이팅게일",
+          "source": "https://comic.naver.com/webtoon/list?titleId=689012",
+          "cover": "https://image-comic.pstatic.net/webtoon/689012/thumbnail/thumbnail_IMAG21_7377239457196488293.jpg",
+          "finished": true
+        },
+        {
+          "title": "검은 마법사 Origin",
+          "source": "https://comic.naver.com/webtoon/list?titleId=710649",
+          "cover": "https://image-comic.pstatic.net/webtoon/710649/thumbnail/thumbnail_IMAG21_7148451089072074802.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "박태준": {
+      "name": "박태준",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_8dull9",
+      "works": [
+        {
+          "title": "본격금연권장만화",
+          "source": "https://comic.naver.com/webtoon/list?titleId=659273",
+          "cover": "https://image-comic.pstatic.net/webtoon/659273/thumbnail/thumbnail_IMAG21_3631419953794660195.jpg",
+          "finished": true
+        },
+        {
+          "title": "인생존망",
+          "source": "https://comic.naver.com/webtoon/list?titleId=733766",
+          "cover": "https://image-comic.pstatic.net/webtoon/733766/thumbnail/thumbnail_IMAG21_3761692497393575265.jpg",
+          "finished": true
+        },
+        {
+          "title": "한남동 케이하우스",
+          "source": "https://comic.naver.com/webtoon/list?titleId=718707",
+          "cover": "https://image-comic.pstatic.net/webtoon/718707/thumbnail/thumbnail_IMAG21_3702299966500321633.JPEG",
+          "finished": true
+        },
+        {
+          "title": "쇼미더럭키짱!",
+          "source": "https://comic.naver.com/webtoon/list?titleId=783054",
+          "cover": "https://image-comic.pstatic.net/webtoon/783054/thumbnail/thumbnail_IMAG21_3761741772764557620.jpg",
+          "finished": true
+        },
+        {
+          "title": "우리반 아이돌",
+          "source": "https://comic.naver.com/webtoon/list?titleId=702674",
+          "cover": "https://image-comic.pstatic.net/webtoon/702674/thumbnail/thumbnail_IMAG21_7378079690239062072.jpg",
+          "finished": true
+        },
+        {
+          "title": "범죄도시0",
+          "source": "https://comic.naver.com/webtoon/list?titleId=848000",
+          "cover": "https://image-comic.pstatic.net/webtoon/848000/thumbnail/thumbnail_IMAG21_761c9bb6-b986-4d1d-987d-6f47604e8c71.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "바쉬": {
+      "name": "바쉬",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20240618_154/1718717147229jG3X4_PNG/IMG_4424.png",
+      "bio": "💚 ‘25 기생번식 연재중 💚 ‘21–&#x27;23  꼬리잡기 (완결) 💚 ‘17–&#x27;19  과격자매단 (완결)",
+      "url": "https://comic.naver.com/community/u/bashi",
+      "works": [
+        {
+          "title": "기생번식",
+          "source": "https://comic.naver.com/webtoon/list?titleId=845885",
+          "cover": "https://image-comic.pstatic.net/webtoon/845885/thumbnail/thumbnail_IMAG21_5c9507b7-2072-455c-af17-bb7be17018e6.jpg",
+          "finished": false
+        },
+        {
+          "title": "과격자매단",
+          "source": "https://comic.naver.com/webtoon/list?titleId=845833",
+          "cover": "https://image-comic.pstatic.net/webtoon/845833/thumbnail/thumbnail_IMAG21_e09f12e5-464e-4727-80e7-fb0815db4c88.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "박창근": {
+      "name": "박창근",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20230919_233/1695110716144amusV_PNG/593C70BF-D274-4CAB-9431-88BE02869D05.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/parkchang",
+      "works": [
+        {
+          "title": "싸움배달",
+          "source": "https://comic.naver.com/webtoon/list?titleId=850079",
+          "cover": "https://image-comic.pstatic.net/webtoon/850079/thumbnail/thumbnail_IMAG21_77a89ba7-d5fe-4b5b-b668-c3b618065f7c.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "이담": {
+      "name": "이담",
+      "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/_dboz2",
+      "works": []
     }
   },
   "version": 1,
