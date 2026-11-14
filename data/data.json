@@ -1776,7 +1776,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 0,
+      "recommended": 5,
       "color": "#9dbef4",
       "episodes": 205,
       "status": "completed",
@@ -2046,7 +2046,8 @@
       "cover": "https://image-comic.pstatic.net/webtoon/725586/thumbnail/thumbnail_IMAG21_aac005dc-11a7-41b6-a127-4ffa5b480698.jpg",
       "genres": [
         "action",
-        "daily"
+        "daily",
+        "drama"
       ],
       "recommended": 5,
       "color": "#896489",
@@ -2268,7 +2269,8 @@
       "url": "https://comic.naver.com/webtoon/list?titleId=778579",
       "cover": "https://image-comic.pstatic.net/webtoon/778579/thumbnail/thumbnail_IMAG21_793b71dd-eb49-4b91-aff4-a53ba1141822.jpg",
       "genres": [
-        "daily"
+        "daily",
+        "sports"
       ],
       "recommended": 0,
       "color": "#e4f9f8",
@@ -2354,7 +2356,7 @@
       "url": "https://comic.naver.com/webtoon/list?titleId=849907",
       "cover": "https://image-comic.pstatic.net/webtoon/849907/thumbnail/thumbnail_IMAG21_0abcc2c1-76d8-4da2-9a1f-867c699c5c15.jpg",
       "genres": [
-        "daily"
+        "drama"
       ],
       "recommended": 0,
       "color": "#79cc94",
@@ -2536,7 +2538,7 @@
       "cover": "https://image-comic.pstatic.net/webtoon/703846/thumbnail/thumbnail_IMAG21_3617626786448291892.jpg",
       "genres": [
         "romance",
-        "daily"
+        "drama"
       ],
       "recommended": 3,
       "color": "#f5e7fc",
@@ -3610,7 +3612,7 @@
       "url": "https://comic.naver.com/webtoon/list?titleId=842839",
       "cover": "https://image-comic.pstatic.net/webtoon/842839/thumbnail/thumbnail_IMAG21_ebb4a05d-f76d-4f01-bdb7-5e71c9e7728e.jpg",
       "genres": [
-        "daily"
+        "drama"
       ],
       "recommended": 3,
       "color": "#ece5e9",
@@ -4181,8 +4183,7 @@
       "url": "https://comic.naver.com/webtoon/list?titleId=835557",
       "cover": "https://image-comic.pstatic.net/webtoon/835557/thumbnail/thumbnail_IMAG21_8220d3db-8cce-42a0-9032-3121b2f6bc74.jpg",
       "genres": [
-        "romance",
-        "daily"
+        "romance"
       ],
       "recommended": 0,
       "color": "#e8dae9",
@@ -6489,7 +6490,7 @@
       "cover": "https://i.namu.wiki/i/EGQsYf9DoNSeY11OvvAia4YPQAKZ0yMIYnYKYTnBV1lLZPAoeOGMIPGqwjYdrD6hL68r3-vz2m7zjhjXj7RWuCIA8BDKKx9j0ITchOj8yR7NQXBMVjLru_8Or33DtttMlgeRUCXezOSnlBGeJrb9Vg.webp",
       "genres": [
         "romance",
-        "daily"
+        "drama"
       ],
       "recommended": 4,
       "color": "#f4b74e",
@@ -7400,7 +7401,7 @@
       "url": "https://blacktoon427.com/webtoon/19388.html",
       "cover": "https://i.namu.wiki/i/abEVTDXmxdo-_SZBdzxJYeTIo_Exsc6N20snq0-jwMljw4Yt4DRiDvGRR7ppsb2L8ssmweyjhO3GZ3ZzZb4GEnbQn8s2vueu8COb_QHMUaFMxY-e-zXsIa31lSMcoXOd1IdO5aFOPBysce96nfAMEg.webp",
       "genres": [
-        "daily"
+        "drama"
       ],
       "recommended": 3,
       "color": "#011d57",
@@ -9990,21 +9991,35 @@
       "start": "w026",
       "nodes": {
         "w026": [
-          130,
-          280
+          150,
+          180
         ],
-        "w044": [
-          360,
-          280
+        "w657564281141077": [
+          330,
+          260
+        ],
+        "w6.57564281141091e+212z": [
+          700,
+          340
+        ],
+        "w657564281141079": [
+          350,
+          110
+        ],
+        "w657564281141088zk": [
+          740,
+          180
+        ],
+        "w657564281141073": [
+          540,
+          180
+        ],
+        "w657564281141078": [
+          150,
+          360
         ]
       },
-      "links": [
-        {
-          "from": "w026",
-          "to": "w044",
-          "why": ""
-        }
-      ]
+      "links": []
     },
     "sports": {
       "start": "w027",
