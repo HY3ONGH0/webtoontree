@@ -7353,7 +7353,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "color": "#011d57",
       "episodes": 43,
       "status": "completed",
@@ -8264,7 +8264,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "pick": true
     },
     {
       "id": "w030",
@@ -9672,7 +9673,29 @@
             4.6
           ]
         ]
-      }
+      },
+      "subs": [
+        {
+          "id": "sports-1",
+          "name": "농구",
+          "color": "#ff6929"
+        },
+        {
+          "id": "sports-2",
+          "name": "야구",
+          "color": "#5BB8FF"
+        },
+        {
+          "id": "sports-3",
+          "name": "축구",
+          "color": "#4FD1A5"
+        },
+        {
+          "id": "sports-4",
+          "name": "그외",
+          "color": "#FFB347"
+        }
+      ]
     },
     {
       "id": "action",
