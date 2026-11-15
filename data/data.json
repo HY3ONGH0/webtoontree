@@ -1056,7 +1056,7 @@
         "fantasy",
         "apocalyps"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "color": "#190e11",
       "episodes": 103,
       "status": "hiatus",
@@ -5546,7 +5546,7 @@
         "romance",
         "fantasy"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "color": "#251d24",
       "episodes": 126,
       "status": "completed",
@@ -6282,7 +6282,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "color": "#fdebe6",
       "episodes": 47,
       "status": "ongoing",
@@ -7302,7 +7302,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": 3,
+      "recommended": 2,
       "color": "#450d59",
       "episodes": 236,
       "status": "ongoing",
@@ -7502,7 +7502,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "color": "#003cff",
       "episodes": 285,
       "status": "ongoing",
@@ -8043,7 +8043,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#fdc700",
       "episodes": 171,
       "status": "completed",
@@ -9328,7 +9328,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "pick": true
     },
     {
       "id": "w029",
@@ -11529,11 +11530,6 @@
       },
       "links": [
         {
-          "from": "w657564281141027",
-          "to": "w657564281141042",
-          "why": ""
-        },
-        {
           "from": "w027",
           "to": "w657564281141027",
           "why": ""
@@ -11773,7 +11769,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 6.57564281141091e+21
+    "lastWebtoonId": 657568
   },
   "authorInfo": {
     "232": {
