@@ -136,7 +136,7 @@
         if (!p.tree && !showExtra) return;
         const w = WT.toon(id), dim = only !== 'all' && only !== p.r.g.id;
         const base = hex6(w.color) || p.r.g.color, rad = p.tree ? (id === p.r.T.start ? 15 : 12) : 9;
-        const dn = done(id), ring = dn ? '#E8B53A' : w.pick ? '#E5141B' : '#fff';
+        const dn = done(id), ring = dn ? '#E8B53A' : w.pick ? '#E0565B' : '#fff';
         const clip = `mpc-${id}`;
         if (w.cover) defs += `<clipPath id="${clip}"><circle cx="${p.x}" cy="${p.y}" r="${rad}"/></clipPath>`;
         const title = w.title.length > 10 ? w.title.slice(0, 9) + '…' : w.title;

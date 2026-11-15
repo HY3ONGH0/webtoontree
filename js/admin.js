@@ -4,7 +4,7 @@
    - 이 화면은 서버에 아무것도 바꾸지 않아요. 실제 수정 권한은 GitHub 저장소가 가져요. */
 (function () {
   const DRAFT = 'webtoontree.admin.draft';
-  const NEED_SERVER = 13;   // 이 화면이 필요로 하는 서버 코드 판 번호 (apps-script/Code.gs 의 SERVER_VERSION)
+  const NEED_SERVER = 14;   // 이 화면이 필요로 하는 서버 코드 판 번호 (apps-script/Code.gs 의 SERVER_VERSION)
   const root = () => document.getElementById('admin');
   const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -84,8 +84,10 @@
   const gColor = (w) => ((w && w.genres && genre(w.genres[0])) || {}).color || '#5BB8FF';
   function ensure() {
     D.meta = D.meta || {};
-    const max = D.webtoons.reduce((m, w) => Math.max(m, parseInt(String(w.id).replace(/\D/g, ''), 10) || 0), 0);
-    D.meta.lastWebtoonId = Math.max(D.meta.lastWebtoonId || 0, max);
+    // 웹툰 번호: w001 처럼 w 뒤 숫자(6자리까지)만 봐요. 전에는 ID 안의 숫자를 모두 이어 붙여서 번호가 터무니없이 커졌어요
+    const max = D.webtoons.reduce((m, w) => { const x = /^w(\d{1,6})(?!\d)/.exec(String(w.id)); return x ? Math.max(m, Number(x[1])) : m; }, 0);
+    const last = Number(D.meta.lastWebtoonId);
+    D.meta.lastWebtoonId = Number.isSafeInteger(last) && last >= 0 && last <= 999999 ? Math.max(last, max) : max;
     D.trees = D.trees || {};
     D.map = D.map || { width: 2400, height: 1400, regions: [], links: [] };
     D.map.regions = D.map.regions || []; D.map.links = D.map.links || [];
@@ -94,6 +96,8 @@
     D.shop = D.shop || [];
     D.hotToday = D.hotToday || [];
     D.genres.forEach((g) => { if (!D.trees[g.id]) D.trees[g.id] = { start: null, nodes: {}, links: [] }; });
+    // 트리에 없는 웹툰을 가리키는 연결선은 지워요 (웹툰을 트리에서 뺀 뒤 남은 찌꺼기)
+    Object.keys(D.trees).forEach((gid) => { const T = D.trees[gid]; if (!T || !Array.isArray(T.links)) return; const n = T.nodes || {}; if (T.links.some((l) => !n[l.from] || !n[l.to])) T.links = T.links.filter((l) => n[l.from] && n[l.to]); });
     // 세부 장르 (도서관 마도서): 장르마다 subs, 웹툰마다 subs
     const allSubs = new Set();
     D.genres.forEach((g) => { (g.subs || []).forEach((x) => allSubs.add(x.id)); });
@@ -106,10 +110,15 @@
     return `${g.id}-${n}`;
   }
   function newWebtoonId() {
-    D.meta.lastWebtoonId += 1;          // 지운 번호는 다시 쓰지 않아요
+    // 번호가 망가져 있으면(너무 큰 수 등) 지금 있는 웹툰 번호 가운데 가장 큰 것에서 다시 이어요
+    let last = Number(D.meta.lastWebtoonId);
+    if (!Number.isSafeInteger(last) || last < 0 || last > 999999) {
+      last = D.webtoons.reduce((m, w) => { const x = /^w(\d{1,6})(?!\d)/.exec(w.id); return x ? Math.max(m, Number(x[1])) : m; }, 0);
+    }
+    D.meta.lastWebtoonId = last + 1;          // 지운 번호는 다시 쓰지 않아요
     let id = 'w' + String(D.meta.lastWebtoonId).padStart(3, '0');
     // 함께 편집 중이면 다른 관리자와 같은 번호가 되지 않게 꼬리표를 붙여요
-    if (live.on) id += Math.random().toString(36).slice(2, 4);
+    if (live.on) id += Math.random().toString(36).slice(2, 6);
     while (D.webtoons.some((w) => w.id === id)) id += Math.random().toString(36).slice(2, 3);
     return id;
   }
@@ -452,7 +461,7 @@
     const how = {
       naver: '제목이나 작가 이름으로 찾아요. 제목 · 작가 · 화수 · 연재 요일 · 상태 · 설명 · 태그 · 표지를 채우고, 그 뒤로는 매일 자동으로 맞춰요.',
       kakaow: '제목으로 찾아요 (작품 페이지 주소를 붙여 넣어도 돼요). 제목 · 작가 · 연재 요일 · 상태 · 설명 · 태그 · 표지를 채우고 매일 자동으로 맞춰요. <b>화수만은 가져오지 못해요</b>: 아래 [자동 정보 직접 고치기]에 지금 화수를 한 번 적어 두면 연재 요일마다 자동으로 1화씩 늘어요. <b>카카오페이지 작품</b>도 카카오웹툰에 같은 작품이 있으면 여기서 연결할 수 있어요 (플랫폼 이름은 적어 둔 그대로 둬요).',
-      etc: '작품 페이지 주소를 붙여 넣으면, 그 페이지가 공개해 둔 제목 · 설명 · 표지를 채워요. 작가 · 화수 · 연재 요일 · 상태는 직접 적어 주세요. 카카오페이지 작품 페이지는 공개 정보가 없어서 연결할 수 없어요.'
+      etc: '작품 페이지 주소를 붙여 넣으면, 그 페이지가 공개해 둔 제목 · 설명 · 표지를 채워요 (레진코믹스는 작가까지). 화수 · 연재 요일 · 상태는 직접 적어 주세요. 리디는 자동으로 읽지 못하게 막혀 있고, 카카오페이지는 공개 정보가 없어서 연결할 수 없어요.'
     }[pf];
     return `<div class="fx-box">
       <span class="fx-h">작품 연결 <span>어느 플랫폼에서 연재하나요?</span></span>
@@ -1570,6 +1579,7 @@
     live.joining = false; live.err = msg; live.tries = (live.tries || 0) + 1;
     liveBadge();
     clearTimeout(live.retry);
+    if (document.hidden) return;   // 다른 탭을 보는 동안에는 쉬었다가, 돌아오면 다시 연결해요
     live.retry = setTimeout(() => liveJoin(), Math.min(30000, 3000 * Math.pow(2, live.tries - 1)));
   }
   async function liveJoin() {
@@ -1611,8 +1621,20 @@
   function liveHere() { return { tab: ui.tab, w: ui.tab === 'webtoons' ? (ui.w || '') : '', g: ui.tab === 'tree' ? (ui.tg || '') : ui.tab === 'genres' ? (ui.g || '') : '' }; }
   function liveLoop() {
     clearTimeout(live.timer);
-    live.timer = setTimeout(async () => { await liveTick(); liveLoop(); }, document.hidden ? 8000 : 2000);
+    live.timer = setTimeout(async () => { await liveTick(); liveLoop(); }, liveWait());
   }
+  // 서버를 부르는 간격: 누가 함께 있거나 방금 뭔가 했으면 2초, 혼자 가만히 있으면 6초 → 12초, 다른 탭을 보고 있으면 20초
+  // (종일 열어 두어도 서버 하루 사용량을 아껴요. 내가 고치면 0.5초 안에 따로 올려요)
+  function liveWait() {
+    if (document.hidden) return 20000;
+    const idle = Date.now() - (live.act || 0);
+    const others = live.who.some((x) => x.userId !== srv.uid);
+    if (others || idle < 30000) return 2000;
+    return idle < 120000 ? 6000 : 12000;
+  }
+  const liveTouch = () => { const was = Date.now() - (live.act || 0); live.act = Date.now(); if (live.on && was > 30000) liveLoop(); };   // 다시 움직이면 바로 빠른 간격으로
+  ['pointerdown', 'keydown', 'input'].forEach((ev) => document.addEventListener(ev, liveTouch, true));
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && live.on) { live.act = Date.now(); liveTick().then(liveLoop); } });
   function livePushSoon() { clearTimeout(live.soon); live.soon = setTimeout(() => liveTick(), 500); }
   async function liveFlush() { for (let i = 0; i < 3; i++) { await liveTick(); if (!diffUnits(live.shadow, units(D)).length) break; } }
   async function liveTick() {
@@ -1626,7 +1648,7 @@
       if (r.rejoin) { live.on = false; live.busy = false; await liveJoin(); return; }
       if (ops.length) applyUnits(live.shadow, ops);
       const remote = modernBatches((r.batches || []).filter((bt) => bt.ver !== r.myVer));
-      if (remote.length) liveReceive(remote);
+      if (remote.length) { live.act = Date.now(); liveReceive(remote); }
       live.ver = r.version;
       live.who = r.who || [];
       if (r.base && r.base.version !== live.base) {

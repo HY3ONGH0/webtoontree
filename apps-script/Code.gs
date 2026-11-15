@@ -68,7 +68,7 @@ function doPost(e) {
 }
 
 // 서버 코드 판 번호: 관리자 화면이 이 숫자를 보고 "서버 코드가 예전 버전"인지 알려 줘요. 서버 코드를 고치면 1씩 올려요
-var SERVER_VERSION = 13;
+var SERVER_VERSION = 14;
 
 var WRITE_ACTIONS = {
   signup: 1, login: 1, logout: 1, nick: 1, deleteAccount: 1, progress: 1, rate: 1, comment: 1, deleteComment: 1,
@@ -1001,17 +1001,26 @@ function kakaoWebtoonInfo_(url) {
 }
 // 그 밖의 플랫폼: 작품 페이지가 공개해 둔 소개 정보(제목 · 설명 · 표지)만 읽어요
 function pageInfo_(url) {
-  var html = get_(url, false);
+  if (/page\.kakao\.com/i.test(url)) fail_('카카오페이지 작품 페이지에는 가져올 수 있는 정보가 없어요. 같은 작품이 카카오웹툰(webtoon.kakao.com)에 있으면 거기서 연결해 주세요. 없으면 [작품 정보 직접 입력]에 적어 주세요.');
+  var html;
+  try { html = get_(url, false); }
+  catch (e) { fail_('이 사이트는 작품 페이지를 자동으로 읽지 못하게 막아 두었어요 (리디 등). [작품 정보 직접 입력]에 적어 주세요.'); }
   var site = meta_(html, 'og:site_name');
   var title = meta_(html, 'og:title') || clean_((html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1] || '');
-  title = title.replace(/\s*[|\-–:]\s*[^|\-–:]*$/, function (tail) { return site && tail.indexOf(site) >= 0 ? '' : tail; }).trim();
-  // 작품 정보 없이 사이트 소개만 나오는 페이지(카카오페이지 등)는 연결할 수 없어요
-  if (!title || title === site || /page\.kakao\.com/i.test(url)) {
-    fail_(/page\.kakao\.com/i.test(url)
-      ? '카카오페이지 작품 페이지에는 가져올 수 있는 정보가 없어요. 같은 작품이 카카오웹툰(webtoon.kakao.com)에 있으면 그 링크를 넣어 주세요. 없으면 [작품 정보 직접 입력]에 적어 주세요.'
-      : '이 페이지에서 작품 정보를 찾지 못했어요. [작품 정보 직접 입력]에 적어 주세요.');
-  }
-  return { info: { partial: true, title: title.slice(0, 200), desc: meta_(html, 'og:description') || meta_(html, 'description'), cover: meta_(html, 'og:image'), url: url.replace(/#.*$/, '') }, source: site || '작품 페이지' };
+  // "제목 - 작가 - 웹툰 - 사이트 이름" 꼴이면 제목과 작가를 나눠요 (레진코믹스 등)
+  var parts = title.split(/\s+[-|–]\s+/).map(function (x) { return x.trim(); }).filter(Boolean);
+  if (site && parts.length > 1 && parts[parts.length - 1] === site) parts.pop();
+  if (parts.length > 1 && /^(웹툰|만화|webtoons?|comics?)$/i.test(parts[parts.length - 1])) parts.pop();
+  var author = parts.length === 2 ? parts[1] : '';
+  title = parts.length <= 2 ? (parts[0] || '') : parts.join(' - ');
+  // 작품 정보 없이 사이트 소개만 나오는 페이지는 연결할 수 없어요
+  if (!title || title === site) fail_('이 페이지에서 작품 정보를 찾지 못했어요. [작품 정보 직접 입력]에 적어 주세요.');
+  var info = { partial: true, title: title.slice(0, 200), desc: meta_(html, 'og:description') || meta_(html, 'description'), cover: meta_(html, 'og:image'), url: (meta_(html, 'og:url') || url).replace(/#.*$/, '') };
+  if (!/^https:\/\//.test(info.url)) info.url = url.replace(/#.*$/, '');
+  if (author) { info.author = author; info.authors = author.split(/\s*[,/]\s*/).filter(Boolean).slice(0, 8).map(function (n) { return { name: n, roles: [] }; }); }
+  var pf = /lezhin\.com/i.test(url) ? '레진코믹스' : /ridibooks\.com/i.test(url) ? '리디' : '';
+  if (pf) info.platform = pf;
+  return { info: info, source: site || '작품 페이지' };
 }
 
 function naverInfo_(url) {
@@ -1238,7 +1247,7 @@ function livePresence_(me, here) {
     var h = here || {};
     map[me.userId] = { name: me.name, owner: !!me.owner, at: nowMs, tab: String(h.tab || ''), w: String(h.w || ''), g: String(h.g || '') };
   }
-  Object.keys(map).forEach(function (k) { if (nowMs - map[k].at > 20000) delete map[k]; });
+  Object.keys(map).forEach(function (k) { if (nowMs - map[k].at > 45000) delete map[k]; });   // 관리자 화면이 길게는 20초에 한 번 알려 와요
   if (me) cachePut_('live:who', map, 120);
   return Object.keys(map).map(function (k) { var x = map[k]; return { userId: k, name: x.name, owner: x.owner, tab: x.tab, w: x.w, g: x.g }; });
 }
