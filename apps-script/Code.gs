@@ -68,7 +68,7 @@ function doPost(e) {
 }
 
 // 서버 코드 판 번호: 관리자 화면이 이 숫자를 보고 "서버 코드가 예전 버전"인지 알려 줘요. 서버 코드를 고치면 1씩 올려요
-var SERVER_VERSION = 14;
+var SERVER_VERSION = 15;
 
 var WRITE_ACTIONS = {
   signup: 1, login: 1, logout: 1, nick: 1, deleteAccount: 1, progress: 1, rate: 1, comment: 1, deleteComment: 1,
@@ -1046,7 +1046,12 @@ function naverInfo_(url) {
   try { info.artists = naverArtists_(j.communityArtists || [], people, id); } catch (e) { console.warn('artists', e); }
   try {
     var l = get_('https://comic.naver.com/api/article/list?titleId=' + id + '&page=1&sort=DESC', true);
-    if (l && l.totalCount) info.episodes = Number(l.totalCount);
+    // 연재 중: 무료로 볼 수 있는 화까지만 (미리보기 · 유료 회차는 빼요). 완결: 전체 화수
+    if (l && l.totalCount) {
+      var free = Number((l.pageInfo || {}).totalRows) || (Number(l.totalCount) - ((l.chargeFolderArticleList || []).length));
+      info.episodes = j.finished || !(free > 0) ? Number(l.totalCount) : Math.min(free, Number(l.totalCount));
+      if (!j.finished && free > 0 && free < Number(l.totalCount)) info.paidAhead = Number(l.totalCount) - free;   // 미리보기로 먼저 나온 화 수
+    }
   } catch (e) { /* 아래에서 다른 방법으로 찾아요 */ }
   // 성인 작품은 회차 목록이 로그인 뒤에만 보여서, 완결 화수 표시나 검색 결과의 화수를 써요
   if (!info.episodes) {
