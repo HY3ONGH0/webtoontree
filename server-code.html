@@ -15,6 +15,12 @@
   button:disabled { opacity: .6; }
   #msg { min-height: 1.6em; font-weight: 700; color: #8FE3B0; }
   #msg.err { color: #FF9BB0; }
+  #ver { padding: 12px 14px; border-radius: 10px; border: 1px solid #3A4A7A; background: #0B1024; color: #E8ECFF; font-weight: 700; }
+  #ver.ok { border-color: #3FA36C; color: #8FE3B0; }
+  #ver.old { border-color: #E0884A; color: #FFC79A; }
+  #ver small { display: block; margin-top: 4px; font-weight: 400; color: #B9C2E6; }
+  #recheck { min-height: 40px; font-size: 14px; background: none; color: #E8ECFF; border: 1px solid #3A4A7A; }
+  ol b { color: #E8ECFF; }
   textarea { width: 100%; box-sizing: border-box; height: 160px; border-radius: 8px; border: 1px solid #3A4A7A; background: #0B1024; color: #B9C2E6; font: 12px/1.4 ui-monospace, monospace; }
 </style>
 </head>
@@ -22,13 +28,17 @@
 <main>
   <h1>서버 코드 복사</h1>
   <p>Apps Script에 붙여 넣을 최신 <b>Code.gs</b>를 복사해요.</p>
+  <p id="ver" role="status">지금 돌고 있는 서버가 최신인지 확인하는 중…</p>
   <button type="button" id="copy" disabled>불러오는 중…</button>
   <p id="msg" role="status"></p>
   <ol>
     <li>위 버튼을 눌러 복사해요.</li>
-    <li>Apps Script의 Code.gs에서 기존 코드를 전부 지우고 붙여 넣어요.</li>
-    <li>저장 → 배포 → 배포 관리 → 연필 → 새 버전 → 배포</li>
+    <li>웹툰트리 구글 시트 → <b>확장 프로그램 → Apps Script</b>를 열어요.</li>
+    <li><b>Code.gs</b>의 기존 코드를 전부 지우고 붙여 넣은 뒤 저장해요.</li>
+    <li>오른쪽 위 <b>배포 → 배포 관리</b> → <b>연필</b> → 버전: <b>새 버전</b> → <b>배포</b><br>("새 배포"를 누르면 주소가 바뀌어 사이트 연결이 끊겨요)</li>
+    <li>아래 [다시 확인]을 눌러 초록색 "최신이에요"가 뜨면 끝이에요.</li>
   </ol>
+  <button type="button" id="recheck">서버가 최신인지 다시 확인</button>
   <p>버튼이 안 되면 아래 칸을 길게 눌러 [전체 선택] → [복사]해 주세요.</p>
   <textarea id="code" readonly aria-label="서버 코드"></textarea>
 </main>
@@ -49,6 +59,23 @@
     msg.textContent = '잠시 뒤 새로고침해 주세요.';
     return;
   }
+  // 지금 배포돼 돌고 있는 서버의 판 번호와, 복사할 코드의 판 번호를 견줘요
+  const ver = document.getElementById('ver');
+  const want = Number((code.match(/var SERVER_VERSION = (\d+)/) || [])[1]) || 0;
+  async function check() {
+    ver.className = ''; ver.textContent = '지금 돌고 있는 서버가 최신인지 확인하는 중…';
+    try {
+      const data = await (await fetch('data/data.json?t=' + Date.now(), { cache: 'no-store' })).json();
+      const api = ((data.settings || {}).apiUrl || '').trim();
+      if (!api) { ver.textContent = '사이트에 서버 주소가 아직 없어요. 처음이라면 apps-script/설치방법.md 를 따라 주세요.'; return; }
+      const live = await (await fetch(api, { cache: 'no-store' })).json();
+      const now = Number(live.version) || 0;
+      if (now >= want) { ver.className = 'ok'; ver.innerHTML = '✓ 최신이에요 (서버 ' + now + '판)<small>지금은 다시 배포할 필요가 없어요.</small>'; }
+      else { ver.className = 'old'; ver.innerHTML = '서버가 예전 버전이에요: 지금 ' + (now || '번호 없는 예전') + '판 → 새 코드 ' + want + '판<small>아래 순서대로 새 코드를 붙여 넣고 새 버전으로 배포해 주세요.</small>'; }
+    } catch (e) { ver.className = 'old'; ver.innerHTML = '서버에 물어보지 못했어요.<small>인터넷 연결을 확인하고 [다시 확인]을 눌러 주세요.</small>'; }
+  }
+  check();
+  document.getElementById('recheck').addEventListener('click', check);
   btn.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(code);
