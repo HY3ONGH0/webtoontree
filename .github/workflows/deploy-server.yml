@@ -1,0 +1,95 @@
+name: 서버 자동 배포
+# apps-script/Code.gs 가 main 에 합쳐지면, Apps Script에 코드를 올리고 "배포 관리 → 새 버전"까지 해 줘요.
+# 처음 한 번 설정이 필요해요: apps-script/자동배포.md
+on:
+  push:
+    branches: [main]
+    paths: ['apps-script/Code.gs']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: deploy-server
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CLASPRC_JSON: ${{ secrets.CLASPRC_JSON }}
+      GAS_SCRIPT_ID: ${{ secrets.GAS_SCRIPT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 설정 확인
+        id: cfg
+        run: |
+          if [ -z "$CLASPRC_JSON" ] || [ -z "$GAS_SCRIPT_ID" ]; then
+            echo "::notice::자동 배포가 아직 설정되지 않았어요. apps-script/자동배포.md 를 따라 CLASPRC_JSON, GAS_SCRIPT_ID 를 넣어 주세요. 이번에는 건너뛰어요."
+            echo "ready=no" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          API_URL=$(node -e "console.log((require('./data/data.json').settings||{}).apiUrl||'')")
+          DEPLOY_ID=$(echo "$API_URL" | sed -nE 's#^https://script\.google\.com/macros/s/([A-Za-z0-9_-]+)/exec.*#\1#p')
+          if [ -z "$DEPLOY_ID" ]; then echo "::error::data.json 의 서버 주소(settings.apiUrl)에서 배포 ID를 찾지 못했어요: $API_URL"; exit 1; fi
+          WANT=$(sed -nE 's/^var SERVER_VERSION = ([0-9]+);.*/\1/p' apps-script/Code.gs)
+          echo "ready=yes" >> "$GITHUB_OUTPUT"
+          echo "api=$API_URL" >> "$GITHUB_OUTPUT"
+          echo "deploy=$DEPLOY_ID" >> "$GITHUB_OUTPUT"
+          echo "want=$WANT" >> "$GITHUB_OUTPUT"
+          echo "배포 ID: ${DEPLOY_ID:0:8}… / 올릴 서버 코드: ${WANT}판"
+
+      - uses: actions/setup-node@v4
+        if: steps.cfg.outputs.ready == 'yes'
+        with:
+          node-version: 20
+
+      - name: 올리기 전 검사
+        if: steps.cfg.outputs.ready == 'yes'
+        run: node scripts/check.js
+
+      - name: clasp 준비
+        if: steps.cfg.outputs.ready == 'yes'
+        run: |
+          npm install -g @google/clasp@3.4.1
+          printf '%s' "$CLASPRC_JSON" > "$HOME/.clasprc.json"
+          chmod 600 "$HOME/.clasprc.json"
+
+      - name: 지금 Apps Script 내용 받아 오기
+        if: steps.cfg.outputs.ready == 'yes'
+        run: |
+          mkdir gas && cd gas
+          printf '{"scriptId":"%s","rootDir":".","scriptExtensions":[".gs"]}' "$GAS_SCRIPT_ID" > .clasp.json
+          clasp pull
+          ls -la
+
+      - name: 새 서버 코드로 바꿔 넣기
+        if: steps.cfg.outputs.ready == 'yes'
+        run: |
+          cd gas
+          # 프로젝트 안의 코드 파일(이름이 Code 가 아니어도)에 새 코드를 덮어써요
+          mapfile -t files < <(ls *.gs 2>/dev/null)
+          if [ "${#files[@]}" -ne 1 ]; then echo "::error::Apps Script 프로젝트에 코드 파일이 ${#files[@]}개 있어요 (${files[*]}). 하나만 있어야 자동으로 바꿔 넣을 수 있어요."; exit 1; fi
+          cp ../apps-script/Code.gs "${files[0]}"
+          echo "${files[0]} 를 새 코드로 바꿨어요"
+
+      - name: Apps Script에 올리기
+        if: steps.cfg.outputs.ready == 'yes'
+        run: cd gas && clasp push -f
+
+      - name: 새 버전으로 배포 (배포 관리 → 연필 → 새 버전과 같아요, 주소는 그대로)
+        if: steps.cfg.outputs.ready == 'yes'
+        run: cd gas && clasp redeploy "${{ steps.cfg.outputs.deploy }}" -d "GitHub 자동 배포 ${GITHUB_SHA::7}"
+
+      - name: 배포됐는지 확인
+        if: steps.cfg.outputs.ready == 'yes'
+        run: |
+          for i in 1 2 3 4 5 6; do
+            NOW=$(curl -sSL --max-time 30 "${{ steps.cfg.outputs.api }}" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).version||0)}catch(e){console.log(0)}})")
+            echo "지금 돌고 있는 서버: ${NOW}판 / 올린 코드: ${{ steps.cfg.outputs.want }}판"
+            if [ "$NOW" = "${{ steps.cfg.outputs.want }}" ]; then echo "::notice::서버 ${NOW}판 배포 완료"; exit 0; fi
+            sleep 10
+          done
+          echo "::error::배포는 했지만 서버가 아직 새 판 번호를 돌려주지 않아요. server-code.html 에서 다시 확인해 주세요."; exit 1
+
+      - name: 인증 파일 지우기
+        if: always()
+        run: rm -f "$HOME/.clasprc.json"
