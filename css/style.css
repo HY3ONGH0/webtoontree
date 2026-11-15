@@ -1,3 +1,12 @@
+/* 글꼴: 제목 · 이름 · 로고는 여기어때 잘난체, 나머지 글은 Pretendard
+   잘난체는 굵기가 하나뿐이라 굵기 범위를 넓게 적어 둬요 (그래야 브라우저가 가짜로 더 굵게 만들지 않아요) */
+@font-face {
+  font-family: 'Jalnan';
+  src: url('../fonts/jalnan.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 /* 웹툰트리 스타일
    색은 data/data.json 의 settings.colors 에서 덮어씁니다. 크기·간격은 아래 변수에서 한 번에 바꿀 수 있어요. */
 :root {
@@ -18,7 +27,7 @@
   --node-start: 108px;
   --anim: 1;
   --font: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-  --display: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  --display: 'Jalnan', 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -2260,3 +2269,7 @@ input, textarea, select, [contenteditable="true"] { -webkit-user-select: text; u
 .hc-subt.swap { animation: hcSub .6s ease both; }
 @keyframes hcSub { from { opacity: 0; transform: translateY(5px); } }
 @media (prefers-reduced-motion: reduce) { .hc-xs .hc-cover { transition: none; } .hc-subt.swap { animation: none; } }
+/* 제목은 잘난체 (자간은 잘난체에 맞게 조금 덜 좁혀요) */
+h1, h2, h3, .wt-word, .lb-h1, .hm-h1, .lb-qt, .wk-t-n { font-family: var(--display); letter-spacing: -.01em; }
+.lb-qt, .wk-t-n { font-weight: 400; }
+.wt-word, .rail-mark b.wt-word, .au-brand b.wt-word { letter-spacing: -.02em; font-weight: 400; }
