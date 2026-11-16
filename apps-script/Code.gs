@@ -68,7 +68,7 @@ function doPost(e) {
 }
 
 // 서버 코드 판 번호: 관리자 화면이 이 숫자를 보고 "서버 코드가 예전 버전"인지 알려 줘요. 서버 코드를 고치면 1씩 올려요
-var SERVER_VERSION = 15;
+var SERVER_VERSION = 16;
 
 var WRITE_ACTIONS = {
   signup: 1, login: 1, logout: 1, nick: 1, deleteAccount: 1, progress: 1, rate: 1, comment: 1, deleteComment: 1,
@@ -273,9 +273,9 @@ var ACTIONS = {
   liveJoin: function (b) {
     var me = who_(b);
     var st = liveState_();
-    var cur = githubFile_(github_());
-    if (!cur) fail_('GitHub에서 data.json을 읽지 못했어요. ' + GH_LAST_);
-    var data = JSON.parse(cur.text);
+    var site = readSite_(github_());
+    if (!site) fail_('GitHub에서 data.json을 읽지 못했어요. ' + GH_LAST_);
+    var data = site.data;
     // 저장 전 변경 기록을 읽지 못해도 연결은 되게 해요 (마지막으로 저장된 내용부터 다시 시작)
     var batches = [], lost = false;
     try { batches = liveOps_(st.base, st.ver); } catch (e) { console.error('liveOps', e && e.stack ? e.stack : e); lost = true; }
@@ -649,10 +649,9 @@ var ACTIONS = {
   /** 지금 GitHub에 올라가 있는 최신 data.json (다른 관리자가 막 저장한 것도 바로 보여요) */
   adminLatest: function (b) {
     who_(b);
-    var cur = githubFile_(github_());
-    if (!cur) fail_('GitHub에서 data.json을 읽지 못했어요.');
-    var data = JSON.parse(cur.text);
-    return { data: data, hash: hash_(JSON.stringify(data)) };
+    var site = readSite_(github_());
+    if (!site) fail_('GitHub에서 data.json을 읽지 못했어요.');
+    return { data: site.data, hash: hash_(JSON.stringify(site.data)) };
   },
 
   adminSaveData: function (b) {
@@ -660,22 +659,18 @@ var ACTIONS = {
     var data = b.data;
     if (!data || !Array.isArray(data.webtoons) || !Array.isArray(data.genres) || !data.settings) fail_('data.json 모양이 올바르지 않아요.');
     var g = github_();
-    var cur = githubFile_(g);
+    var site = readSite_(g);
     // 내가 고치기 시작한 뒤에 다른 관리자가 먼저 저장했으면, 덮어쓰기 전에 알려 줘요
-    if (cur && b.baseHash && !b.force && hash_(JSON.stringify(JSON.parse(cur.text))) !== b.baseHash) return { conflict: true };
+    if (site && b.baseHash && !b.force && hash_(JSON.stringify(site.data)) !== b.baseHash) return { conflict: true };
     var liveSt = null;
     if (b.liveVersion !== undefined && b.liveVersion !== null) {
       liveSt = liveState_();
       if (Number(b.liveVersion) !== liveSt.ver) return { behind: true, version: liveSt.ver };
     }
-    var text = JSON.stringify(data, null, 2) + '\n';
     var who = me.owner ? '최종 관리자' : me.name + ' (' + me.userId + ')';
-    var res = UrlFetchApp.fetch(g.api, {
-      method: 'put', headers: g.headers, contentType: 'application/json', muteHttpExceptions: true,
-      payload: JSON.stringify({ message: '관리자 화면에서 데이터 저장 - ' + who, content: Utilities.base64Encode(text, Utilities.Charset.UTF_8), sha: cur ? cur.sha : undefined, branch: g.branch })
-    });
-    if (res.getResponseCode() === 409) return { conflict: true };
-    if (res.getResponseCode() >= 300) fail_('GitHub에 저장하지 못했어요 (' + res.getResponseCode() + '). 토큰 권한을 확인해 주세요.');
+    var code = writeSite_(g, data, site, '관리자 화면에서 데이터 저장 - ' + who);
+    if (code === 409) return { conflict: true };
+    if (code >= 300) fail_('GitHub에 저장하지 못했어요 (' + code + '). 토큰 권한을 확인해 주세요.');
     cacheDel_('site');
     var savedHash = hash_(JSON.stringify(data));
     if (!liveSt && b.resetLive) liveSt = liveState_();   // 함께 편집에 연결하지 못한 관리자가 저장: 지금 내용을 새 기준으로
@@ -893,9 +888,9 @@ function autoRefresh() {
   var live = liveState_();
   if (live.ver > live.base) return '아직 저장 안 된 함께 편집 내용이 있어서 다음에 해요';
   var g = github_();
-  var cur = githubFile_(g);
-  if (!cur) return 'data.json을 읽지 못했어요';
-  var data = JSON.parse(cur.text);
+  var site = readSite_(g);
+  if (!site) return 'data.json을 읽지 못했어요';
+  var data = site.data;
   var start = Date.now(), changed = [], fails = 0;
   data.webtoons.forEach(function (w) {
     if (!w.source || Date.now() - start > 270000) return;   // 5분 안에 끝내요
@@ -907,12 +902,8 @@ function autoRefresh() {
   });
   p.setProperty('AUTO_DAY', day);
   if (!changed.length) return '바뀐 게 없어요' + (fails ? ' (못 가져온 웹툰 ' + fails + '개)' : '');
-  var text = JSON.stringify(data, null, 2) + '\n';
-  var res = UrlFetchApp.fetch(g.api, {
-    method: 'put', headers: g.headers, contentType: 'application/json', muteHttpExceptions: true,
-    payload: JSON.stringify({ message: '자동 정보 갱신 - ' + changed.length + '개 (' + changed.slice(0, 5).join(', ') + (changed.length > 5 ? ' 외' : '') + ')', content: Utilities.base64Encode(text, Utilities.Charset.UTF_8), sha: cur.sha, branch: g.branch })
-  });
-  if (res.getResponseCode() >= 300) { p.deleteProperty('AUTO_DAY'); return 'GitHub 저장 실패 ' + res.getResponseCode(); }
+  var code = writeSite_(g, data, site, '자동 정보 갱신 - ' + changed.length + '개 (' + changed.slice(0, 5).join(', ') + (changed.length > 5 ? ' 외' : '') + ')');
+  if (code >= 300) { p.deleteProperty('AUTO_DAY'); return 'GitHub 저장 실패 ' + code; }
   cacheDel_('site');
   // 함께 편집 기준도 새 데이터로 맞춰요 (저장 버튼을 누른 것과 같아요)
   p.setProperty('LIVE_BASE', String(live.ver));
@@ -1176,16 +1167,18 @@ function github_() {
   var branch = p.getProperty('GITHUB_BRANCH') || 'main';
   return {
     api: 'https://api.github.com/repos/' + repo + '/contents/data/data.json', branch: branch,
+    base: 'https://api.github.com/repos/' + repo + '/contents/',
     headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' }
   };
 }
 var GH_LAST_ = '';   // 마지막으로 GitHub에서 받은 응답 (실패 이유를 알려 줄 때 써요)
-function githubFile_(g) {
+function githubFile_(g, path) {
+  var url = path ? g.base + path : g.api;
   var res = null, code = 0;
   // GitHub가 잠깐 응답하지 못할 때가 있어서 세 번까지 다시 물어봐요 (토큰 · 주소 문제는 바로 멈춰요)
   for (var i = 0; i < 3; i++) {
     try {
-      res = UrlFetchApp.fetch(g.api + '?ref=' + encodeURIComponent(g.branch) + '&t=' + Date.now(), { headers: g.headers, muteHttpExceptions: true });
+      res = UrlFetchApp.fetch(url + '?ref=' + encodeURIComponent(g.branch) + '&t=' + Date.now(), { headers: g.headers, muteHttpExceptions: true });
       code = res.getResponseCode();
     } catch (e) { res = null; code = 0; }
     if (code === 200 || code === 401 || code === 404) break;
@@ -1204,6 +1197,37 @@ function githubFile_(g) {
   if (!b64) { GH_LAST_ = 'data.json 내용이 비어 있어요'; return null; }
   var text = Utilities.newBlob(Utilities.base64Decode(b64)).getDataAsString('UTF-8');
   return { sha: j.sha, text: text };
+}
+// ---------- 사이트 데이터를 두 파일로: data.json(웹툰 · 장르 · 트리 …) + authors.json(작가 정보) ----------
+// 사이트는 data.json만 먼저 받아 빨리 뜨고, 작가 정보는 뒤에서 따로 받아요.
+// 서버 · 관리자 화면에서는 둘을 합친 하나의 데이터로 다뤄요 (작가 정보는 맨 뒤에 붙여요 → 지문(hash)이 어디서나 같아요)
+var AUTHORS_PATH_ = 'data/authors.json';
+function readSite_(g) {
+  var cur = githubFile_(g);
+  if (!cur) return null;
+  var data = JSON.parse(cur.text);
+  var au = githubFile_(g, AUTHORS_PATH_);   // 아직 나누기 전이면 없어요 (괜찮아요)
+  // 합치는 규칙 (관리자 화면 · 사이트와 똑같아요): authors.json 위에 data.json 안의 작가 정보를 덮어써요
+  if (au) { try { var base = JSON.parse(au.text) || {}; data.authorInfo = Object.assign({}, base, data.authorInfo || {}); } catch (e) { /* 깨진 파일은 무시 */ } }
+  return { data: data, sha: cur.sha, authorsSha: au ? au.sha : null, authorsText: au ? au.text : null };
+}
+function ghPut_(g, path, text, sha, message) {
+  return UrlFetchApp.fetch(path ? g.base + path : g.api, {
+    method: 'put', headers: g.headers, contentType: 'application/json', muteHttpExceptions: true,
+    payload: JSON.stringify({ message: message, content: Utilities.base64Encode(text, Utilities.Charset.UTF_8), sha: sha || undefined, branch: g.branch })
+  });
+}
+/** 합친 데이터를 두 파일로 나눠 올려요. 작가 정보가 바뀌었을 때만 authors.json도 올려요. 돌려주는 값: data.json 올리기 응답 번호 */
+function writeSite_(g, data, site, message) {
+  var slim = {};
+  Object.keys(data).forEach(function (k) { if (k !== 'authorInfo') slim[k] = data[k]; });
+  var aText = JSON.stringify(data.authorInfo || {}, null, 2) + '\n';
+  if (!site || aText !== site.authorsText) {
+    var ra = ghPut_(g, AUTHORS_PATH_, aText, site && site.authorsSha, message + ' (작가 정보)');
+    if (ra.getResponseCode() === 409) return 409;
+    if (ra.getResponseCode() >= 300) return ra.getResponseCode();
+  }
+  return ghPut_(g, null, JSON.stringify(slim, null, 2) + '\n', site && site.sha, message).getResponseCode();
 }
 function liveState_() {
   var p = PropertiesService.getScriptProperties();

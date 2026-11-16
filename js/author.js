@@ -174,5 +174,10 @@
     e.preventDefault();
     WT.openPost(a.href);
   });
+  // 작가 정보(authors.json)가 늦게 도착하면, 보고 있던 작가 화면을 다시 그려요
+  document.addEventListener('wt:authors', () => {
+    const parts = (location.hash || '').replace(/^#\/?/, '').split('/').filter(Boolean);
+    if (parts[0] === 'author' && document.querySelector('#app .ap-view')) view(parts.slice(1));
+  });
   if (WT.views) WT.views.author = view;
 })();

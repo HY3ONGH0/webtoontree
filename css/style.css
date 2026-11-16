@@ -2143,3 +2143,11 @@ h1, h2, h3, .wt-word, .lb-h1, .hm-h1, .lb-qt, .wk-t-n { font-family: var(--displ
 .wk-pick + .wk-tag { top: 29px; }
 .wk-card.pick .wk-cv { box-shadow: 0 0 0 2px var(--brand), 0 10px 22px -10px rgba(224, 86, 91, .7); }
 @media (max-width: 1100px) { .wk-pick { font-size: 0; padding: 0; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; } .wk-pick::before { content: '강추'; font-size: 0; } .wk-pick::after { content: '★'; font-size: 12px; } .wk-pick + .wk-tag { top: 33px; } }
+/* 요일 화면: 도서관과 같은 틀 (가운데 요일 칸 + 오른쪽 상세 창) */
+.wk-shell { display: block; overflow-x: hidden; overflow-y: auto; scrollbar-width: thin; }
+.wk-shell > .wk-view { display: flex; flex-direction: column; min-height: 100%; box-sizing: border-box; }
+.wk-card.on .wk-cv { box-shadow: 0 0 0 3px var(--text), 0 12px 24px -10px rgba(0, 0, 0, .5); }
+.wk-card.on { transform: translateY(-3px); }
+@media (max-width: 860px) { .wk-shell { overflow: visible; } }
+/* 좁은 화면: 아래에서 올라오는 상세 창이 어두운 막보다 위에 오게 (전에는 막에 가려 단추가 안 눌렸어요) */
+@media (max-width: 900px) { .lb-view .lb-drawer .panel { z-index: 60; } }
