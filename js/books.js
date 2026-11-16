@@ -3,7 +3,7 @@
   'use strict';
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const DAYK = { mon: '월', tue: '화', wed: '수', thu: '목', fri: '금', sat: '토', sun: '일' };
-  const F = { q: '', genres: [], subs: [], status: [], stars: 0, pick: false, tree: false, fav: false, mine: 'all', sort: 'rec', open: { genre: true, status: true, more: true } };
+  const F = { q: '', genres: [], subs: [], status: [], ages: [], stars: 0, pick: false, tree: false, fav: false, mine: 'all', sort: 'rec', open: { genre: true, status: true, age: true, more: true } };
   const PAGE = 24;
   let shown = PAGE;
 
@@ -20,6 +20,7 @@
       if (F.genres.length && !F.genres.some((g) => (w.genres || []).includes(g))) return false;
       if (F.subs.length && !F.subs.some((x) => (w.subs || []).includes(x))) return false;
       if (F.status.length && !F.status.includes(WT.schedule.status(w))) return false;
+      if (F.ages.length && !F.ages.includes(String(w.age))) return false;
       if (F.pick && !w.pick) return false;
       if (F.stars && WT.recRank(w) < F.stars) return false;
       if (F.tree && !WT.inTree(w.id)) return false;
@@ -43,6 +44,7 @@
       <span class="bk-cv" style="--c:${esc(color)}"><span class="bk-ini">${esc(w.title)}</span>
         ${w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}
         ${w.pick ? '<span class="bk-pick">관리자 강추</span>' : ''}
+        ${WT.platform.ageBadge(w, 'age-cv')}
         <span class="bk-st ${st}">${st === 'completed' ? '완결' : st === 'hiatus' ? '휴재' : '연재 ' + (w.days || []).map((d) => DAYK[d]).join('')}</span>
         ${WT.platform.icon(w.platform, 'pf-cv')}
         ${WT.fav.btn(w.id, 'fav-cv')}
@@ -63,6 +65,7 @@
       ${sec('genre', '장르', `<div class="bk-chks two">${WT.data.genres.map((g) => chk('g', g.id, F.genres.includes(g.id), g.name, all.filter((w) => (w.genres || []).includes(g.id)).length)).join('')}</div>
         ${subGenres.map((g) => `<p class="bk-subh">${esc(g.name)} 세부 장르</p><div class="bk-chks">${g.subs.map((x) => chk('s', x.id, F.subs.includes(x.id), x.name, all.filter((w) => (w.subs || []).includes(x.id)).length)).join('')}</div>`).join('')}`)}
       ${sec('status', '연재 상태', `<div class="bk-chks">${[['ongoing', '연재 중'], ['completed', '완결'], ['hiatus', '휴재']].map(([k, n]) => chk('st', k, F.status.includes(k), n, all.filter((w) => WT.schedule.status(w) === k).length)).join('')}</div>`)}
+      ${sec('age', '연령 등급', `<div class="bk-chks two">${[['0', '전체'], ['12', '12세'], ['15', '15세'], ['19', '19세']].map(([k, n]) => chk('age', k, F.ages.includes(k), n, all.filter((w) => String(w.age) === k).length)).join('')}</div>`)}
       ${sec('more', '추천 · 내 기록', `<div class="bk-chks">
           ${chk('pick', '1', F.pick, '관리자 강추만', all.filter((w) => w.pick).length)}
           ${chk('tree', '1', F.tree, '트리 웹툰만', all.filter((w) => WT.inTree(w.id)).length)}
@@ -114,6 +117,7 @@
       if (t.dataset.g) { arr('genres', t.dataset.g); if (!t.checked) { const g = WT.genre(t.dataset.g); F.subs = F.subs.filter((s) => !((g && g.subs) || []).some((x) => x.id === s)); } }
       else if (t.dataset.s) arr('subs', t.dataset.s);
       else if (t.dataset.st) arr('status', t.dataset.st);
+      else if (t.dataset.age) arr('ages', t.dataset.age);
       else if (t.dataset.pick) F.pick = t.checked;
       else if (t.dataset.tree) F.tree = t.checked;
       else if (t.dataset.favonly) F.fav = t.checked;
@@ -125,7 +129,7 @@
       if (b.dataset.tog) { F.open[b.dataset.tog] = !F.open[b.dataset.tog]; side.innerHTML = sideHTML(); return; }
       if (b.dataset.stars != null) F.stars = Number(b.dataset.stars);
       else if (b.dataset.mine) F.mine = b.dataset.mine;
-      else if (b.id === 'bk-reset') Object.assign(F, { q: '', genres: [], subs: [], status: [], stars: 0, pick: false, tree: false, fav: false, mine: 'all' });
+      else if (b.id === 'bk-reset') Object.assign(F, { q: '', genres: [], subs: [], status: [], ages: [], stars: 0, pick: false, tree: false, fav: false, mine: 'all' });
       else return;
       if (b.id === 'bk-reset') document.getElementById('bk-q').value = '';
       shown = PAGE; draw(false);

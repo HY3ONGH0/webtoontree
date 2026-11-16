@@ -443,7 +443,7 @@
             <p class="g-mine">${st === 'done' ? '✓ 완독했어요' : st === 'reading' ? `${ep(id)}화까지 봤어요 (${pct(id)}%)` : '아직 안 봤어요'}</p>
             <div class="g-actions">
               <button type="button" class="btn btn-gold btn-sm press" data-open="${id}">자세히 보기 · 기록하기</button>
-              ${w.url ? `<a class="btn btn-sm press" href="${esc(w.url)}" target="_blank" rel="noopener">보러 가기</a>` : ''}
+              ${WT.platform.watchUrl(w) ? `<a class="btn btn-sm press" href="${esc(WT.platform.watchUrl(w))}" target="_blank" rel="noopener">보러 가기</a>` : ''}
             </div>
           </div>`;
       };
@@ -727,9 +727,10 @@
           <span class="lb-arrows">${WT.fav.btn(id)}<button type="button" data-step="-1" aria-label="이전 책">←</button><button type="button" data-step="1" aria-label="다음 책">→</button></span></div>
         <p class="lb-qt">“${esc(w.title)}”</p>
         <blockquote class="lb-quote">${esc(w.desc || '줄거리를 준비하고 있어요.')}</blockquote>
-        <div class="lb-metas">${w.pick ? '<span class="pick">관리자 강추</span>' : ''}${state}${rec ? `<span class="star">${'★'.repeat(rec)}</span>` : ''}${total(id) ? `<span>${total(id)}화</span>` : ''}${st === 'done' ? '<span class="done">✓ 다 봤어요</span>' : st === 'reading' ? `<span class="done">${ep(id)}화까지 봤어요</span>` : ''}${gs.map((x) => `<span>${esc(x.name)}</span>`).join('')}${WT.inTree(id) ? '<span class="intree">트리 웹툰</span>' : ''}</div>`;
+        <div class="lb-metas">${WT.platform.ageBadge(w)}${w.pick ? '<span class="pick">관리자 강추</span>' : ''}${state}${rec ? `<span class="star">${'★'.repeat(rec)}</span>` : ''}${total(id) ? `<span>${total(id)}화</span>` : ''}${st === 'done' ? '<span class="done">✓ 다 봤어요</span>' : st === 'reading' ? `<span class="done">${ep(id)}화까지 봤어요</span>` : ''}${gs.map((x) => `<span>${esc(x.name)}</span>`).join('')}${WT.inTree(id) ? '<span class="intree">트리 웹툰</span>' : ''}</div>`;
       const e = ep(id), done = st === 'done';
-      go.hidden = !w.url; if (w.url) go.href = w.url;
+      const gu = WT.platform.watchUrl(w, done ? 0 : e + 1);   // 1화 · 이어 볼 화로 바로 (다 봤으면 작품 목록)
+      go.hidden = !gu; if (gu) go.href = gu;
       go.firstChild.textContent = done ? '다시 보러 가기 ' : e > 0 ? `${e + 1}화 이어 보기 ` : '1화 보러 가기 ';
       more.hidden = false;
     }
@@ -955,6 +956,7 @@
           <dt>작가</dt><dd>${WT.authorLinks(w)}</dd>
           <dt>플랫폼</dt><dd>${WT.platform.icon(w.platform, 'pf-in')}${esc(w.platform)}</dd>
           <dt>연재</dt><dd><span class="node-tag tag-${WT.schedule.status(w)}" style="font-size:13px">${esc(WT.schedule.label(w))}</span></dd>
+          ${w.age != null ? `<dt>등급</dt><dd>${WT.platform.ageBadge(w)} ${esc((WT.platform.AGES[w.age] || [])[1] || '')}</dd>` : ''}
           <dt>장르</dt><dd>${esc(genreNames)}</dd>
           ${(w.tags || []).length ? `<dt>태그</dt><dd style="color:${g.color}">${w.tags.map((x) => '#' + esc(x)).join(' ')}</dd>` : ''}
         </dl>
@@ -977,7 +979,7 @@
           </div>
           ${WT.canEarn() ? `<span class="hint">1화 기록할 때마다 코인 +${rules.perEpisode} (하루 ${rules.dailyEpisodeCap}개까지) · ${esc(labels.done || '완독')}하면 +${rules.completeBonus}</span>` : '<span class="hint">닉네임으로 시작하면 기록할 때마다 코인을 받아요</span>'}
           <div class="row2">
-            <a class="btn btn-line press" href="${esc(w.url)}" target="_blank" rel="noopener">${goLabel}</a>
+            ${WT.platform.watchUrl(w) ? `<a class="btn btn-line press" href="${esc(WT.platform.watchUrl(w, done ? 0 : e + 1))}" target="_blank" rel="noopener">${goLabel}</a>` : '<span class="btn btn-line" aria-disabled="true" style="opacity:.5">공식 링크 준비 중</span>'}
             <button type="button" class="btn ${done ? 'btn-soft' : 'btn-gold'} press" data-act="done">${done ? `${esc(labels.done || '완독')} · 취소` : esc(labels.doneButton || '다 봤어요')}</button>
           </div>
           ${server && WT.schedule.status(w) !== 'completed' ? '<button type="button" class="btn press" data-act="report" style="min-height:40px; font-size:13px; font-weight:500">플랫폼에 새 화가 나왔는데 여기 화수가 적어요</button>' : ''}

@@ -55,7 +55,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-6"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w065",
@@ -104,7 +105,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=847135",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w066",
@@ -144,7 +146,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=843310",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w067",
@@ -202,7 +205,8 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 15
     },
     {
       "id": "w068",
@@ -258,7 +262,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-6"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w069",
@@ -307,7 +312,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=850709",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w070",
@@ -352,7 +358,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=845214",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w071",
@@ -396,7 +403,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=774866",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w072",
@@ -434,7 +442,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=791140",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w073",
@@ -477,7 +486,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=776092",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w074",
@@ -519,7 +529,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=758666",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w075",
@@ -563,7 +574,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=641253",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w076",
@@ -606,7 +618,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=478261",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w077",
@@ -653,7 +666,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w078",
@@ -707,7 +721,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=800770",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 12
     },
     {
       "id": "w079",
@@ -750,7 +765,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=823285",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 12
     },
     {
       "id": "w080",
@@ -797,7 +813,8 @@
       "subs": [
         "fantasy-5",
         "fantasy-6"
-      ]
+      ],
+      "age": 12
     },
     {
       "id": "w081",
@@ -838,7 +855,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 12
     },
     {
       "id": "w082",
@@ -877,7 +895,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=775140",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w083",
@@ -923,7 +942,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=701081",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w084",
@@ -961,7 +981,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=783596",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w085",
@@ -1013,7 +1034,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "sports-5"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w086",
@@ -1058,7 +1080,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "sports-5"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w087",
@@ -1108,7 +1131,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "sports-3"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w088",
@@ -1149,7 +1173,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w089",
@@ -1198,7 +1223,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-7"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w090",
@@ -1252,7 +1278,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-7"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w091",
@@ -1298,7 +1325,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=757904",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w092",
@@ -1338,7 +1366,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=851401",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w093",
@@ -1396,7 +1425,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-7"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w094",
@@ -1445,7 +1475,8 @@
       "arate": {
         "admin": 5
       },
-      "recAvg": 5
+      "recAvg": 5,
+      "age": 15
     },
     {
       "id": "w095",
@@ -1489,7 +1520,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=721433",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w096",
@@ -1552,7 +1584,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-6"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w097",
@@ -1599,7 +1632,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w098",
@@ -1651,7 +1685,8 @@
       "arate": {
         "admin": 1
       },
-      "recAvg": 1
+      "recAvg": 1,
+      "age": 0
     },
     {
       "id": "w099",
@@ -1711,7 +1746,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-1"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w100",
@@ -1758,7 +1794,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=721948",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w101",
@@ -1810,7 +1847,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w102",
@@ -1864,7 +1902,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-1"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w103",
@@ -1910,7 +1949,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=81482",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w104",
@@ -1965,7 +2005,8 @@
       "subs": [
         "fantasy-2",
         "fantasy-6"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w105",
@@ -2023,7 +2064,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w106",
@@ -2073,7 +2115,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=727188",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w107",
@@ -2126,7 +2169,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-6"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w108",
@@ -2176,7 +2220,8 @@
       "subs": [
         "fantasy-2",
         "fantasy-6"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w109",
@@ -2222,7 +2267,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=710751",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w110",
@@ -2267,7 +2313,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=736277",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w111",
@@ -2321,7 +2368,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=818149",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w112",
@@ -2364,7 +2412,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=651673",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 12
     },
     {
       "id": "w113",
@@ -2415,7 +2464,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-6"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w114",
@@ -2463,7 +2513,8 @@
       ],
       "coverAuto": true,
       "source": "https://webtoon.kakao.com/content/%EB%B0%B0%EC%9A%B0%EB%A1%9C%EC%84%9C-%EC%82%B4%EA%B2%A0%EB%8B%A4/3152",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w115",
@@ -2523,7 +2574,8 @@
       "arate": {
         "admin": 3
       },
-      "recAvg": 3
+      "recAvg": 3,
+      "age": 0
     },
     {
       "id": "w116",
@@ -2562,7 +2614,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=738194",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w117",
@@ -2625,7 +2678,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w118",
@@ -2672,7 +2726,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-2"
-      ]
+      ],
+      "age": 12
     },
     {
       "id": "w119",
@@ -2725,7 +2780,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-1"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w120",
@@ -2776,7 +2832,8 @@
       ],
       "coverAuto": true,
       "source": "https://webtoon.kakao.com/content/%EA%B4%B4%EB%8B%B4%EC%97%90-%EB%96%A8%EC%96%B4%EC%A0%B8%EB%8F%84-%EC%B6%9C%EA%B7%BC%EC%9D%84-%ED%95%B4%EC%95%BC-%ED%95%98%EB%8A%94%EA%B5%AC%EB%82%98/4869",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w121",
@@ -2836,7 +2893,8 @@
       "arate": {
         "admin": 3
       },
-      "recAvg": 3
+      "recAvg": 3,
+      "age": 0
     },
     {
       "id": "w122",
@@ -2888,7 +2946,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-2"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w123",
@@ -2940,7 +2999,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=842601",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 12
     },
     {
       "id": "w124",
@@ -2982,7 +3042,8 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=20853",
       "autoAt": "2026-11-16",
-      "pick": false
+      "pick": false,
+      "age": 0
     },
     {
       "id": "w125",
@@ -3028,7 +3089,8 @@
       "arate": {
         "admin": 3
       },
-      "recAvg": 3
+      "recAvg": 3,
+      "age": 0
     },
     {
       "id": "w126",
@@ -3076,7 +3138,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=816798",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w127",
@@ -3120,7 +3183,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=826661",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w128",
@@ -3176,7 +3240,8 @@
       "arate": {
         "admin": 1
       },
-      "recAvg": 1
+      "recAvg": 1,
+      "age": 15
     },
     {
       "id": "w129",
@@ -3225,7 +3290,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=807178",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w130",
@@ -3264,7 +3330,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=736744",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w131",
@@ -3323,7 +3390,8 @@
       "subs": [
         "fantasy-1",
         "fantasy-2"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w132",
@@ -3384,7 +3452,8 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 12
     },
     {
       "id": "w133",
@@ -3438,7 +3507,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=835042",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 12
     },
     {
       "id": "w134",
@@ -3478,7 +3548,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=748105",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w135",
@@ -3518,7 +3589,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=712362",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w136",
@@ -3558,7 +3630,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=702672",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w137",
@@ -3605,7 +3678,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w138",
@@ -3660,7 +3734,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w139",
@@ -3710,7 +3785,8 @@
       "subs": [
         "fantasy-5"
       ],
-      "pickBase": true
+      "pickBase": true,
+      "age": 12
     },
     {
       "id": "w140",
@@ -3760,7 +3836,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=725586",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w141",
@@ -3806,7 +3883,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "sports-4"
-      ]
+      ],
+      "age": 12
     },
     {
       "id": "w142",
@@ -3849,7 +3927,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "sports-3"
-      ]
+      ],
+      "age": 12
     },
     {
       "id": "w143",
@@ -3900,7 +3979,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "sports-3"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w144",
@@ -3943,7 +4023,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=822642",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 12
     },
     {
       "id": "w145",
@@ -3985,7 +4066,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "sports-4"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w146",
@@ -4036,7 +4118,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "sports-2"
-      ]
+      ],
+      "age": 12
     },
     {
       "id": "w147",
@@ -4079,7 +4162,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=849907",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w148",
@@ -4133,7 +4217,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=833702",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w149",
@@ -4176,7 +4261,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=827322",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w150",
@@ -4217,7 +4303,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=847483",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w151",
@@ -4260,7 +4347,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=703846",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 12
     },
     {
       "id": "w152",
@@ -4302,7 +4390,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=650304",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w153",
@@ -4343,7 +4432,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=738145",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w154",
@@ -4391,7 +4481,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=808533",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w155",
@@ -4443,7 +4534,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w156",
@@ -4485,7 +4577,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w157",
@@ -4530,7 +4623,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=720121",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 12
     },
     {
       "id": "w158",
@@ -4575,7 +4669,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 12
     },
     {
       "id": "w159",
@@ -4618,7 +4713,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=835244",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w160",
@@ -4664,7 +4760,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 12
     },
     {
       "id": "w161",
@@ -4706,7 +4803,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w162",
@@ -4751,7 +4849,8 @@
         "fantasy-5"
       ],
       "pick": true,
-      "pickBase": true
+      "pickBase": true,
+      "age": 12
     },
     {
       "id": "w163",
@@ -4800,7 +4899,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=820371",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w164",
@@ -4849,7 +4949,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=703843",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w165",
@@ -4891,7 +4992,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 12
     },
     {
       "id": "w166",
@@ -4934,7 +5036,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=812339",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w167",
@@ -4974,7 +5077,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w168",
@@ -5021,7 +5125,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "sports-4"
-      ]
+      ],
+      "age": 12
     },
     {
       "id": "w169",
@@ -5075,7 +5180,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=823971",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w170",
@@ -5126,7 +5232,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "sports-1"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w171",
@@ -5184,7 +5291,8 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 15
     },
     {
       "id": "w172",
@@ -5248,7 +5356,8 @@
       "arate": {
         "admin": 1
       },
-      "recAvg": 1
+      "recAvg": 1,
+      "age": 15
     },
     {
       "id": "w173",
@@ -5307,7 +5416,8 @@
       "subs": [
         "fantasy-1",
         "fantasy-6"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w174",
@@ -5350,7 +5460,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=842839",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w175",
@@ -5402,7 +5513,8 @@
       "arate": {
         "admin": 1
       },
-      "recAvg": 1
+      "recAvg": 1,
+      "age": 15
     },
     {
       "id": "w176",
@@ -5450,7 +5562,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=828920",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 12
     },
     {
       "id": "w177",
@@ -5501,7 +5614,8 @@
       "arate": {
         "admin": 5
       },
-      "recAvg": 5
+      "recAvg": 5,
+      "age": 15
     },
     {
       "id": "w178",
@@ -5549,7 +5663,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=848549",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w179",
@@ -5598,7 +5713,8 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 15
     },
     {
       "id": "w180",
@@ -5654,7 +5770,8 @@
       "arate": {
         "admin": 3
       },
-      "recAvg": 3
+      "recAvg": 3,
+      "age": 15
     },
     {
       "id": "w181",
@@ -5710,7 +5827,8 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 15
     },
     {
       "id": "w182",
@@ -5763,7 +5881,8 @@
       "arate": {
         "admin": 3
       },
-      "recAvg": 3
+      "recAvg": 3,
+      "age": 15
     },
     {
       "id": "w183",
@@ -5811,7 +5930,8 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 15
     },
     {
       "id": "w184",
@@ -5865,7 +5985,8 @@
         "fantasy-5"
       ],
       "pick": true,
-      "pickBase": true
+      "pickBase": true,
+      "age": 12
     },
     {
       "id": "w185",
@@ -5911,7 +6032,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "sports-1"
-      ]
+      ],
+      "age": 0
     },
     {
       "id": "w186",
@@ -5954,7 +6076,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=835557",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w187",
@@ -6002,7 +6125,8 @@
       "arate": {
         "admin": 1
       },
-      "recAvg": 1
+      "recAvg": 1,
+      "age": 12
     },
     {
       "id": "w188",
@@ -6049,7 +6173,8 @@
       ],
       "source": "https://comic.naver.com/webtoon/list?titleId=849279",
       "autoAt": "2026-11-16",
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w189",
@@ -6103,7 +6228,8 @@
       "arate": {
         "admin": 3
       },
-      "recAvg": 3
+      "recAvg": 3,
+      "age": 15
     },
     {
       "id": "w190",
@@ -6146,7 +6272,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=839913",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w191",
@@ -6194,7 +6321,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=841491",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w192",
@@ -6242,7 +6370,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=833248",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w193",
@@ -6285,7 +6414,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=842899",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w194",
@@ -6328,7 +6458,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=786082",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w195",
@@ -6371,7 +6502,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=850214",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 12
     },
     {
       "id": "w196",
@@ -6414,7 +6546,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=838944",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w197",
@@ -6457,7 +6590,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=847441",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 12
     },
     {
       "id": "w198",
@@ -6504,7 +6638,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=845717",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w199",
@@ -6547,7 +6682,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=841128",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     },
     {
       "id": "w200",
@@ -6590,7 +6726,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=835693",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w201",
@@ -6644,7 +6781,8 @@
         "fantasy-1",
         "fantasy-6",
         "fantasy-4"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w202",
@@ -6699,7 +6837,8 @@
       "autoAt": "2026-11-16",
       "subs": [
         "fantasy-6"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w203",
@@ -6745,7 +6884,8 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 15
     },
     {
       "id": "w204",
@@ -6802,14 +6942,15 @@
       "arate": {
         "admin": 1
       },
-      "recAvg": 1
+      "recAvg": 1,
+      "age": 15
     },
     {
       "id": "w205",
       "title": "나노리스트",
       "author": "민송아",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=670150",
       "cover": "https://image-comic.pstatic.net/webtoon/670150/thumbnail/thumbnail_IMAG21_7292516799121273648.jpg",
       "genres": [
         "fantasy",
@@ -6847,14 +6988,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 12
     },
     {
       "id": "w206",
       "title": "앞집나리",
       "author": "민송아",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=802293",
       "cover": "https://image-comic.pstatic.net/webtoon/802293/thumbnail/thumbnail_IMAG21_a3e4736d-dfd6-4e76-aec6-b145f4123845.jpg",
       "genres": [
         "romance"
@@ -6890,14 +7032,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 19
     },
     {
       "id": "w207",
       "title": "미연",
       "author": "서녜",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=837864",
       "cover": "https://image-comic.pstatic.net/webtoon/837864/thumbnail/thumbnail_IMAG21_d64c70b3-24be-49b3-986c-017a1701cf02.jpg",
       "genres": [
         "romance"
@@ -6929,14 +7072,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w208",
       "title": "중간에서 만나",
       "author": "조흰, 윤김",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=808455",
       "cover": "https://image-comic.pstatic.net/webtoon/808455/thumbnail/thumbnail_IMAG21_ab203d0e-92b0-4179-8aaa-28b1f835ad8a.jpg",
       "genres": [
         "romance"
@@ -6977,14 +7121,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w209",
       "title": "헤어지면 죽음",
       "author": "봄소희, KYMA",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=783861",
       "cover": "https://image-comic.pstatic.net/webtoon/783861/thumbnail/thumbnail_IMAG21_7571ae6b-a37c-4d12-8193-cb79c857cfaa.jpg",
       "genres": [
         "romance"
@@ -7023,14 +7168,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w210",
       "title": "짝사랑의 마침표",
       "author": "숭어",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=789682",
       "cover": "https://image-comic.pstatic.net/webtoon/789682/thumbnail/thumbnail_IMAG21_764560de-de68-45ee-816f-fe376fbe4f60.jpg",
       "genres": [
         "romance"
@@ -7062,14 +7208,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 0
     },
     {
       "id": "w211",
       "title": "터닝포인트",
       "author": "숭어",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=843450",
       "cover": "https://image-comic.pstatic.net/webtoon/843450/thumbnail/thumbnail_IMAG21_ad3b7cad-3566-4eee-a5f8-ef41eed816b3.jpg",
       "genres": [
         "romance"
@@ -7105,14 +7252,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w212",
       "title": "청춘계시록",
       "author": "한서",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=802079",
       "cover": "https://image-comic.pstatic.net/webtoon/802079/thumbnail/thumbnail_IMAG21_a30fbbcb-33ac-4b24-aa8d-0049007595e0.jpg",
       "genres": [
         "romance"
@@ -7148,14 +7296,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w213",
       "title": "순정말고 순종",
       "author": "슈안",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=761461",
       "cover": "https://image-comic.pstatic.net/webtoon/761461/thumbnail/thumbnail_IMAG21_e3c857a7-900b-4085-969a-75d9127b5a38.jpg",
       "genres": [
         "romance"
@@ -7188,14 +7337,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w214",
       "title": "인과관계",
       "author": "강환영",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=789652",
       "cover": "https://image-comic.pstatic.net/webtoon/789652/thumbnail/thumbnail_IMAG21_e3631348-fffb-41c5-880f-d2d64cc3c0c0.jpg",
       "genres": [
         "romance"
@@ -7231,14 +7381,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 12
     },
     {
       "id": "w215",
       "title": "오로지 너를 이기고 싶어",
       "author": "아마도지, 사삭",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=730657",
       "cover": "https://image-comic.pstatic.net/webtoon/730657/thumbnail/thumbnail_IMAG21_4d928a6e-b354-4b8c-ad73-382845df1857.jpg",
       "genres": [
         "romance"
@@ -7278,14 +7429,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 0
     },
     {
       "id": "w216",
       "title": "백투더찬비",
       "author": "장사휘",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=826322",
       "cover": "https://image-comic.pstatic.net/webtoon/826322/thumbnail/thumbnail_IMAG21_3eb4ba39-ef18-4178-b5a1-ca4243e455e6.jpg",
       "genres": [
         "romance"
@@ -7321,14 +7473,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 0
     },
     {
       "id": "w217",
       "title": "괴력 난신",
       "author": "매드버드, 김태형, 한중월야",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=821597",
       "cover": "https://image-comic.pstatic.net/webtoon/821597/thumbnail/thumbnail_IMAG21_e0a16b98-1418-4cdc-82b0-f25c258f7ede.jpg",
       "genres": [
         "murim"
@@ -7375,14 +7528,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w218",
       "title": "리턴 투 플레이어",
       "author": "레포, 세혼, 인덱스",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=752414",
       "cover": "https://image-comic.pstatic.net/webtoon/752414/thumbnail/thumbnail_IMAG21_e93d3826-db41-4606-9d0c-5184d5bd2d09.jpg",
       "genres": [
         "fantasy"
@@ -7432,14 +7586,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w219",
       "title": "나노마신",
       "author": "현절무, 금강불괴, 한중월야",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/4614.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=747271",
       "cover": "https://image-comic.pstatic.net/webtoon/747271/thumbnail/thumbnail_IMAG21_d46b4a69-6de0-41be-b368-ce5e74ab8f76.jpg",
       "genres": [
         "murim"
@@ -7486,14 +7641,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w220",
       "title": "비뢰도",
       "author": "오주, Awin, 검류혼",
       "platform": "카카오페이지",
-      "url": "https://blacktoon427.com/webtoon/3579.html",
+      "url": "https://webtoon.kakao.com/content/%EB%B9%84%EB%A2%B0%EB%8F%84/2355",
       "cover": "https://kr-a.kakaopagecdn.com/P/C/2355/sharing/2x/9cf434bf-0841-45fa-a779-816578440194.jpg",
       "genres": [
         "murim"
@@ -7537,14 +7693,15 @@
       ],
       "source": "https://webtoon.kakao.com/content/%EB%B9%84%EB%A2%B0%EB%8F%84/2355",
       "autoAt": "2026-11-16",
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 0
     },
     {
       "id": "w221",
       "title": "고수",
       "author": "류기운, 문정후",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/596.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=662774",
       "cover": "https://image-comic.pstatic.net/webtoon/662774/thumbnail/thumbnail_IMAG21_3618421729916171318.jpg",
       "genres": [
         "murim"
@@ -7583,14 +7740,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w222",
       "title": "태존비록",
       "author": "김꿀빨, 레드훅, 비가",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/18444.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=840687",
       "cover": "https://image-comic.pstatic.net/webtoon/840687/thumbnail/thumbnail_IMAG21_39bb1c23-898b-4190-94a9-28fa0ea1bcb4.jpg",
       "genres": [
         "murim"
@@ -7631,14 +7789,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w223",
       "title": "게임 속 바바리안으로 살아남기",
       "author": "팀 더 지크, MIDNIGHT STUDIO, 정윤강",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/13353.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=808482",
       "cover": "https://image-comic.pstatic.net/webtoon/808482/thumbnail/thumbnail_IMAG21_70db4b46-15ca-4780-98c8-a7ec1668887c.jpg",
       "genres": [
         "fantasy"
@@ -7693,14 +7852,15 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 15
     },
     {
       "id": "w224",
       "title": "내가 키운 S급들",
       "author": "seri, 비완, 근서",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/10662.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=784248",
       "cover": "https://image-comic.pstatic.net/webtoon/784248/thumbnail/thumbnail_IMAG21_5ec2a5b8-167a-497b-8316-5bb38abe6f74.jpg",
       "genres": [
         "fantasy"
@@ -7755,14 +7915,15 @@
       "arate": {
         "admin": 1
       },
-      "recAvg": 1
+      "recAvg": 1,
+      "age": 12
     },
     {
       "id": "w225",
       "title": "99강화나무몽둥이",
       "author": "홍실, 지페리",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/11394.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=792651",
       "cover": "https://image-comic.pstatic.net/webtoon/792651/thumbnail/thumbnail_IMAG21_218f18ef-7f68-4d6a-972c-686a3e9f6138.jpg",
       "genres": [
         "fantasy",
@@ -7811,14 +7972,15 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 15
     },
     {
       "id": "w226",
       "title": "사시미 한 자루로 아카데미를 씹어먹음",
       "author": "GMAN, 탕아후루",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/16209.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=829875",
       "cover": "https://image-comic.pstatic.net/webtoon/829875/thumbnail/thumbnail_IMAG21_02213bdb-e0cb-4f26-9542-2e2dd865c4f7.jpg",
       "genres": [
         "fantasy",
@@ -7870,14 +8032,15 @@
       "arate": {
         "admin": 3
       },
-      "recAvg": 3
+      "recAvg": 3,
+      "age": 15
     },
     {
       "id": "w227",
       "title": "인간천적",
       "author": "도국",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/18457.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=840508",
       "cover": "https://image-comic.pstatic.net/webtoon/840508/thumbnail/thumbnail_IMAG21_3efd1807-8caf-4daa-9f83-86cd637c0e8d.jpg",
       "genres": [
         "fantasy",
@@ -7916,14 +8079,15 @@
           ]
         }
       ],
-      "pickBase": true
+      "pickBase": true,
+      "age": 15
     },
     {
       "id": "w228",
       "title": "히어로 킬러",
       "author": "꿀벌, 벌꿀",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=766563",
       "cover": "https://image-comic.pstatic.net/webtoon/766563/thumbnail/thumbnail_IMAG21_17c45c55-b734-42b1-b11c-719daeea4fba.jpg",
       "genres": [
         "fantasy",
@@ -7972,14 +8136,15 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 15
     },
     {
       "id": "w229",
       "title": "나 혼자 만렙 뉴비",
       "author": "WAN.Z, 스윙뱃, 메슬로우",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=773797",
       "cover": "https://image-comic.pstatic.net/webtoon/773797/thumbnail/thumbnail_IMAG21_37c6a85a-d3a6-4afc-909a-420973f63019.jpg",
       "genres": [
         "fantasy"
@@ -8033,7 +8198,8 @@
       "arate": {
         "admin": 3
       },
-      "recAvg": 3
+      "recAvg": 3,
+      "age": 15
     },
     {
       "id": "w230",
@@ -8095,14 +8261,15 @@
       "arate": {
         "admin": 3
       },
-      "recAvg": 3
+      "recAvg": 3,
+      "age": 0
     },
     {
       "id": "w231",
       "title": "소꿉친구 컴플렉스",
       "author": "은하이",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=822640",
       "cover": "https://image-comic.pstatic.net/webtoon/822640/thumbnail/thumbnail_IMAG21_009dd859-91d1-4682-862b-bace6d93fc79.jpg",
       "genres": [
         "romance",
@@ -8139,7 +8306,8 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 19
     },
     {
       "id": "w232",
@@ -8199,14 +8367,15 @@
       "arate": {
         "admin": 4
       },
-      "recAvg": 4
+      "recAvg": 4,
+      "age": 15
     },
     {
       "id": "w233",
       "title": "시든 꽃에 눈물을",
       "author": "개",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=827190",
       "cover": "https://image-comic.pstatic.net/webtoon/827190/thumbnail/thumbnail_IMAG21_ce05e060-9420-4494-a004-278f90e8dde9.jpg",
       "genres": [
         "romance",
@@ -8243,7 +8412,8 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 19
     },
     {
       "id": "w234",
@@ -8301,14 +8471,15 @@
       "arate": {
         "admin": 4
       },
-      "recAvg": 4
+      "recAvg": 4,
+      "age": 0
     },
     {
       "id": "w235",
       "title": "오피스 누나 이야기",
       "author": "김자네, 와삭바삭, 팔메이로",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=755694",
       "cover": "https://image-comic.pstatic.net/webtoon/755694/thumbnail/thumbnail_IMAG21_308ca76e-f806-4517-b52c-b992321c1668.jpg",
       "genres": [
         "romance",
@@ -8356,14 +8527,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w063",
       "title": "속아주고싶어",
       "author": "케냠",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=840114",
       "cover": "https://image-comic.pstatic.net/webtoon/840114/thumbnail/thumbnail_IMAG21_afaca43e-5841-431a-ae99-8deeca2e1fc8.jpg",
       "genres": [
         "romance"
@@ -8399,14 +8571,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w062",
       "title": "낮에 뜨는 달",
       "author": "헤윰",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=551649",
       "cover": "https://image-comic.pstatic.net/webtoon/551649/thumbnail/thumbnail_IMAG21_7221630172870686053.jpg",
       "genres": [
         "romance"
@@ -8442,14 +8615,15 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "age": 12
     },
     {
       "id": "w061",
       "title": "여명의 등불",
       "author": "구크",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/15316.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=822109",
       "cover": "https://image-comic.pstatic.net/webtoon/822109/thumbnail/thumbnail_IMAG21_98f0b317-27e6-4e79-9601-1fd09b62443c.jpg",
       "genres": [
         "fantasy",
@@ -8488,14 +8662,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 12
     },
     {
       "id": "w060",
       "title": "어느 마법사의 식당",
       "author": "차씨, 스튜디오 이너스",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/14591.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=818888",
       "cover": "https://image-comic.pstatic.net/webtoon/818888/thumbnail/thumbnail_IMAG21_d9c3a1d6-9fec-4466-b1e9-5e871a95118e.jpg",
       "genres": [
         "fantasy",
@@ -8545,14 +8720,15 @@
       "arate": {
         "admin": 3
       },
-      "recAvg": 3
+      "recAvg": 3,
+      "age": 15
     },
     {
       "id": "w059",
       "title": "아카데미에 위장취업당했다",
       "author": "타나, WAG, sayren",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/11660.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=795529",
       "cover": "https://image-comic.pstatic.net/webtoon/795529/thumbnail/thumbnail_IMAG21_60e29e1a-a910-4d27-bca4-30fb5df9e21e.jpg",
       "genres": [
         "fantasy"
@@ -8604,14 +8780,15 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 12
     },
     {
       "id": "w058",
       "title": "투신전생기",
       "author": "청담",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/10043.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=774044",
       "cover": "https://image-comic.pstatic.net/webtoon/774044/thumbnail/thumbnail_IMAG21_81504afb-1a05-41b0-9650-0c9aa1d741d9.jpg",
       "genres": [
         "fantasy"
@@ -8651,14 +8828,15 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 12
     },
     {
       "id": "w057",
       "title": "플레이어",
       "author": "박종석, 오현준",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/4528.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=745876",
       "cover": "https://image-comic.pstatic.net/webtoon/745876/thumbnail/thumbnail_IMAG21_18211c6c-b076-4023-9d14-d71bb41cae70.jpg",
       "genres": [
         "fantasy",
@@ -8704,14 +8882,15 @@
       "arate": {
         "admin": 1
       },
-      "recAvg": 1
+      "recAvg": 1,
+      "age": 15
     },
     {
       "id": "w056",
       "title": "작두",
       "author": "232, POGO",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/16019.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=828294",
       "cover": "https://image-comic.pstatic.net/webtoon/828294/thumbnail/thumbnail_IMAG21_840e741d-f74e-44bc-b60b-a4e132516889.jpg",
       "genres": [
         "fantasy"
@@ -8756,14 +8935,15 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 15
     },
     {
       "id": "w055",
       "title": "용사 출연 마왕 연출",
       "author": "희또",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/19171.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=847812",
       "cover": "https://image-comic.pstatic.net/webtoon/847812/thumbnail/thumbnail_IMAG21_191da5fb-7b12-4a7e-9971-0ae8e7066fc9.jpg",
       "genres": [
         "fantasy",
@@ -8799,14 +8979,15 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 12
     },
     {
       "id": "w054",
       "title": "모든걸 기억하는 천재무사",
       "author": "Omin, 모기향, 적설목",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/19373.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=849611",
       "cover": "https://image-comic.pstatic.net/webtoon/849611/thumbnail/thumbnail_IMAG21_46ca822d-c549-4b5f-8e67-0a2b3973b457.jpg",
       "genres": [
         "murim"
@@ -8853,14 +9034,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w053",
       "title": "평행도시",
       "author": "고다",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/3235.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=730607",
       "cover": "https://image-comic.pstatic.net/webtoon/730607/thumbnail/thumbnail_IMAG21_4050531779662669109.jpg",
       "genres": [
         "thriller",
@@ -8898,14 +9080,15 @@
       ],
       "pick": true,
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "age": 15
     },
     {
       "id": "w052",
       "title": "오버더문",
       "author": "포르토, 이승준",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/3597.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=737836",
       "cover": "https://image-comic.pstatic.net/webtoon/737836/thumbnail/thumbnail_IMAG21_3631137383537456690.jpg",
       "genres": [
         "thriller"
@@ -8942,14 +9125,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w051",
       "title": "헬크래프트",
       "author": "나락, 영기",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/12127.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=800034",
       "cover": "https://image-comic.pstatic.net/webtoon/800034/thumbnail/thumbnail_IMAG21_df4c9ca5-a954-4c14-b03b-8716f5eea843.jpg",
       "genres": [
         "fantasy"
@@ -8994,14 +9178,15 @@
       "arate": {
         "admin": 1
       },
-      "recAvg": 1
+      "recAvg": 1,
+      "age": 15
     },
     {
       "id": "w050",
       "title": "별과 사슬이 뜨는 섬",
       "author": "어패류메기, 훌리",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/17864.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=837100",
       "cover": "https://image-comic.pstatic.net/webtoon/837100/thumbnail/thumbnail_IMAG21_905baefd-0b5f-4924-8007-fbd578ab4e16.jpg",
       "genres": [
         "fantasy"
@@ -9046,14 +9231,15 @@
       "arate": {
         "admin": 4
       },
-      "recAvg": 4
+      "recAvg": 4,
+      "age": 15
     },
     {
       "id": "w049",
       "title": "염라강림",
       "author": "바른꽃",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/14460.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=818192",
       "cover": "https://image-comic.pstatic.net/webtoon/818192/thumbnail/thumbnail_IMAG21_d3fb5932-e9b1-4a50-bbb9-e9849f21dae9.jpg",
       "genres": [
         "fantasy"
@@ -9093,14 +9279,15 @@
       "arate": {
         "admin": 3
       },
-      "recAvg": 3
+      "recAvg": 3,
+      "age": 15
     },
     {
       "id": "w048",
       "title": "붉은 이정표",
       "author": "달뜬",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/11374.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=790776",
       "cover": "https://image-comic.pstatic.net/webtoon/790776/thumbnail/thumbnail_IMAG21_eaf0f609-1fca-4a38-9b57-2241c5f53d23.jpg",
       "genres": [
         "fantasy"
@@ -9140,14 +9327,15 @@
       "arate": {
         "admin": 3
       },
-      "recAvg": 3
+      "recAvg": 3,
+      "age": 15
     },
     {
       "id": "w047",
       "title": "나태 공자, 노력 천재 되다",
       "author": "doip, 도도문, 이등별",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/9878.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=772853",
       "cover": "https://image-comic.pstatic.net/webtoon/772853/thumbnail/thumbnail_IMAG21_9b5f2843-89e5-458e-a5fe-d8883c72907b.jpg",
       "genres": [
         "fantasy"
@@ -9198,14 +9386,15 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 0
     },
     {
       "id": "w046",
       "title": "연놈",
       "author": "상하",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=667573",
       "cover": "https://image-comic.pstatic.net/webtoon/667573/thumbnail/thumbnail_IMAG21_095997c8-effc-4722-8157-baeaaa439930.jpg",
       "genres": [
         "romance"
@@ -9237,14 +9426,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 12
     },
     {
       "id": "w045",
       "title": "연애혁명",
       "author": "232",
       "platform": "네이버웹툰",
-      "url": "",
+      "url": "https://comic.naver.com/webtoon/list?titleId=570503",
       "cover": "https://image-comic.pstatic.net/webtoon/570503/thumbnail/thumbnail_IMAG21_7b907ee6-a61e-495b-9b8f-be2f0a4be44b.jpeg",
       "genres": [
         "romance",
@@ -9281,14 +9471,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w044",
       "title": "저궤도인간",
       "author": "조은영",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/19388.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=840510",
       "cover": "https://image-comic.pstatic.net/webtoon/840510/thumbnail/thumbnail_IMAG21_e5ef3ad0-9b40-4ec1-a05a-f6e1f546d7b8.jpg",
       "genres": [
         "drama"
@@ -9322,14 +9513,15 @@
       ],
       "pick": true,
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "age": 15
     },
     {
       "id": "w042",
       "title": "아카데미에서 살아남기",
       "author": "기린그린, 코리타",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/14922.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=820097",
       "cover": "https://image-comic.pstatic.net/webtoon/820097/thumbnail/thumbnail_IMAG21_f453912f-edd5-432c-a4f7-50e4b314ad6c.jpg",
       "genres": [
         "fantasy"
@@ -9375,14 +9567,15 @@
       "arate": {
         "admin": 4
       },
-      "recAvg": 4
+      "recAvg": 4,
+      "age": 15
     },
     {
       "id": "w041",
       "title": "별이삼샵",
       "author": "혀노",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/3593.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=737628",
       "cover": "https://image-comic.pstatic.net/webtoon/737628/thumbnail/thumbnail_IMAG21_9e108875-36b5-4872-8ace-53a6e492376b.jpg",
       "genres": [
         "romance",
@@ -9419,14 +9612,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w040",
       "title": "강남도깨비",
       "author": "이경민, 송준혁",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/3407.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=733728",
       "cover": "https://image-comic.pstatic.net/webtoon/733728/thumbnail/thumbnail_IMAG21_3919368837772895284.jpg",
       "genres": [
         "fantasy"
@@ -9469,14 +9663,15 @@
       "recAvg": 1,
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w039",
       "title": "더 복서",
       "author": "정지훈",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/3530.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=736989",
       "cover": "https://image-comic.pstatic.net/webtoon/736989/thumbnail/thumbnail_IMAG21_3618985590402593377.jpg",
       "genres": [
         "action",
@@ -9516,14 +9711,15 @@
       "subs": [
         "sports-4"
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w038",
       "title": "샤MONEY즘",
       "author": "나락, 영기",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/18421.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=840014",
       "cover": "https://image-comic.pstatic.net/webtoon/840014/thumbnail/thumbnail_IMAG21_d0d4b1c4-bfe7-43e5-8f02-0a911652e2dc.jpg",
       "genres": [
         "fantasy"
@@ -9568,14 +9764,15 @@
       "arate": {
         "admin": 3
       },
-      "recAvg": 3
+      "recAvg": 3,
+      "age": 15
     },
     {
       "id": "w037",
       "title": "사람의 탈",
       "author": "우주돌",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/15352.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=822198",
       "cover": "https://image-comic.pstatic.net/webtoon/822198/thumbnail/thumbnail_IMAG21_87309bfe-6df3-40c5-b299-1dee7d144c80.jpg",
       "genres": [
         "fantasy"
@@ -9613,14 +9810,15 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "age": 15
     },
     {
       "id": "w036",
       "title": "이직로그",
       "author": "우시목, 이하안",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/17956.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=837659",
       "cover": "https://image-comic.pstatic.net/webtoon/837659/thumbnail/thumbnail_IMAG21_6f1f4ac2-fe69-494a-b175-fc5447f5a54f.jpg",
       "genres": [
         "romance"
@@ -9663,14 +9861,15 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "age": 0
     },
     {
       "id": "w035",
       "title": "내 최애는 막차를 탄다",
       "author": "직씨",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/17446.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=834896",
       "cover": "https://image-comic.pstatic.net/webtoon/834896/thumbnail/thumbnail_IMAG21_7277d36d-4cd9-4585-ac07-2b29f7c01ec0.jpg",
       "genres": [
         "romance"
@@ -9703,14 +9902,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w034",
       "title": "신도림",
       "author": "오세형",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/737.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=683496",
       "cover": "https://image-comic.pstatic.net/webtoon/683496/thumbnail/thumbnail_IMAG21_7365463893838160438.jpg",
       "genres": [
         "fantasy",
@@ -9749,14 +9949,15 @@
       "arate": {
         "admin": 4
       },
-      "recAvg": 4
+      "recAvg": 4,
+      "age": 15
     },
     {
       "id": "w033",
       "title": "별을 품은 소드마스터",
       "author": "홍대의, 주노, Q10",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/14169.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=816809",
       "cover": "https://image-comic.pstatic.net/webtoon/816809/thumbnail/thumbnail_IMAG21_7cdbae7a-df9f-4277-9e40-844c0dbd1af3.jpg",
       "genres": [
         "fantasy"
@@ -9805,14 +10006,15 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "age": 15
     },
     {
       "id": "w032",
       "title": "아리도록",
       "author": "잔디롤빵",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/19430.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=849736",
       "cover": "https://image-comic.pstatic.net/webtoon/849736/thumbnail/thumbnail_IMAG21_dedcc8fc-7230-4a58-a0c9-82d44cfe6391.jpg",
       "genres": [
         "romance"
@@ -9848,14 +10050,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w031",
       "title": "44교시 생존수업",
       "author": "상C",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/17827.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=836848",
       "cover": "https://image-comic.pstatic.net/webtoon/836848/thumbnail/thumbnail_IMAG21_3908e9b2-6cfb-45d5-9bc1-04b8453c1602.jpg",
       "genres": [
         "thriller"
@@ -9890,14 +10093,15 @@
         }
       ],
       "pick": false,
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w030",
       "title": "광장",
       "author": "오세형, 김균태",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/8941.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=753509",
       "cover": "https://image-comic.pstatic.net/webtoon/753509/thumbnail/thumbnail_IMAG21_7220222612514879842.jpg",
       "genres": [
         "action"
@@ -9937,14 +10141,15 @@
       ],
       "pick": true,
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "age": 15
     },
     {
       "id": "w029",
       "title": "갓 오브 하이스쿨",
       "author": "박용제",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/2959.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=318995",
       "cover": "https://image-comic.pstatic.net/webtoon/318995/thumbnail/thumbnail_IMAG21_38f18e00-09f2-4a0c-b36a-3aa56dfe0b3b.jpg",
       "genres": [
         "fantasy"
@@ -9980,14 +10185,15 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "age": 12
     },
     {
       "id": "w028",
       "title": "화산귀환",
       "author": "ARCHE, LICO, 비가",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/9500.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=769209",
       "cover": "https://image-comic.pstatic.net/webtoon/769209/thumbnail/thumbnail_IMAG21_3511dcdd-6e33-4171-8839-598d6d266215.jpg",
       "genres": [
         "murim",
@@ -10044,14 +10250,15 @@
       "recAvg": 4,
       "subs": [
         "fantasy-1"
-      ]
+      ],
+      "age": 15
     },
     {
       "id": "w027",
       "title": "가비지타임",
       "author": "2사장",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/3044.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=703844",
       "cover": "https://image-comic.pstatic.net/webtoon/703844/thumbnail/thumbnail_IMAG21_5ddcb40e-1f6a-40f3-b2c4-6cd9a7eee843.jpg",
       "genres": [
         "sports"
@@ -10091,14 +10298,15 @@
         "sports-1"
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "age": 0
     },
     {
       "id": "w026",
       "title": "엄마를 만나러 가는 길",
       "author": "고먕",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/17333.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=834369",
       "cover": "https://image-comic.pstatic.net/webtoon/834369/thumbnail/thumbnail_IMAG21_053009da-be7a-41d4-a3ab-b0321963e8e0.jpg",
       "genres": [
         "daily",
@@ -10137,14 +10345,15 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "age": 0
     },
     {
       "id": "w025",
       "title": "말년용사",
       "author": "후딩, 신마니",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/10025.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=773916",
       "cover": "https://image-comic.pstatic.net/webtoon/773916/thumbnail/thumbnail_IMAG21_4ed8076c-cf13-4a8a-a6e5-f0868349f635.jpg",
       "genres": [
         "fantasy"
@@ -10189,14 +10398,15 @@
       "arate": {
         "admin": 5
       },
-      "recAvg": 5
+      "recAvg": 5,
+      "age": 15
     },
     {
       "id": "w024",
       "title": "전지적 독자 시점",
       "author": "UMI, 슬리피-C, 싱숑",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/4279.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=747269",
       "cover": "https://image-comic.pstatic.net/webtoon/747269/thumbnail/thumbnail_IMAG21_aabd9952-ff45-47a2-a543-33f19a5c6708.jpg",
       "genres": [
         "fantasy",
@@ -10246,14 +10456,15 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "age": 15
     },
     {
       "id": "w023",
       "title": "나 혼자만 레벨업",
       "author": "현군, 장성락(REDICE STUDIO), 추공",
       "platform": "카카오페이지",
-      "url": "https://blacktoon427.com/webtoon/279.html",
+      "url": "https://webtoon.kakao.com/content/%EB%82%98-%ED%98%BC%EC%9E%90%EB%A7%8C-%EB%A0%88%EB%B2%A8%EC%97%85/2320",
       "cover": "https://kr-a.kakaopagecdn.com/P/C/2320/sharing/2x/eacb00ec-9034-42cb-a533-7c7690741113.jpg",
       "genres": [
         "fantasy",
@@ -10303,14 +10514,15 @@
       "arate": {
         "admin": 5
       },
-      "recAvg": 5
+      "recAvg": 5,
+      "age": 0
     },
     {
       "id": "w022",
       "title": "세림의 철칙",
       "author": "세윤, 써나",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/19803.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=852516",
       "cover": "https://image-comic.pstatic.net/webtoon/852516/thumbnail/thumbnail_IMAG21_fb9361e6-8576-45f7-b8d1-131a39fbdc7e.jpg",
       "genres": [
         "romance"
@@ -10348,14 +10560,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w021",
       "title": "나타나주세요!",
       "author": "김기현",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/9582.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=770068",
       "cover": "https://image-comic.pstatic.net/webtoon/770068/thumbnail/thumbnail_IMAG21_b5e21984-464b-4529-91fa-3ecc4428e690.jpg",
       "genres": [
         "romance"
@@ -10389,14 +10602,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w020",
       "title": "이번 생도 잘 부탁해",
       "author": "이혜",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/4609.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=746858",
       "cover": "https://image-comic.pstatic.net/webtoon/746858/thumbnail/thumbnail_IMAG21_7306020803348674360.jpg",
       "genres": [
         "romance"
@@ -10430,14 +10644,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 0
     },
     {
       "id": "w019",
       "title": "청춘 블라썸",
       "author": "홍덕, NEMONE",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/4516.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=746834",
       "cover": "https://image-comic.pstatic.net/webtoon/746834/thumbnail/thumbnail_IMAG21_6412ed6b-2288-41df-8715-648a3da9154e.jpg",
       "genres": [
         "romance"
@@ -10480,14 +10695,15 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "age": 0
     },
     {
       "id": "w018",
       "title": "이두나!",
       "author": "민송아",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/3111.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=731130",
       "cover": "https://image-comic.pstatic.net/webtoon/731130/thumbnail/thumbnail_IMAG21_7220732760258196019.jpg",
       "genres": [
         "romance"
@@ -10525,14 +10741,15 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "age": 12
     },
     {
       "id": "w236",
       "title": "악당들의 후원자가 되었다",
       "author": "LICO, 조겐, 봄한방울",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/18794.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=844063",
       "cover": "https://image-comic.pstatic.net/webtoon/844063/thumbnail/thumbnail_IMAG21_07fca44b-55a8-4bae-bdcf-0740d8655274.jpg",
       "genres": [
         "fantasy"
@@ -10586,14 +10803,15 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 15
     },
     {
       "id": "w237",
       "title": "마왕인데 용사가 너무 많음",
       "author": "윤선웅, MIDNIGHT STUDIO, 미립",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/18920.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=845002",
       "cover": "https://image-comic.pstatic.net/webtoon/845002/thumbnail/thumbnail_IMAG21_e81f32be-295e-45cb-bf83-ffbd1887b90d.jpg",
       "genres": [
         "fantasy"
@@ -10643,14 +10861,15 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 12
     },
     {
       "id": "w238",
       "title": "아포칼립스를 걷는 우체부",
       "author": "소구미, 오드로버",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/19169.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=847306",
       "cover": "https://image-comic.pstatic.net/webtoon/847306/thumbnail/thumbnail_IMAG21_c7f84a22-3abb-4311-b73c-e05b32fc4cdf.jpg",
       "genres": [
         "fantasy",
@@ -10700,14 +10919,15 @@
       "arate": {
         "admin": 2
       },
-      "recAvg": 2
+      "recAvg": 2,
+      "age": 15
     },
     {
       "id": "w239",
       "title": "아티팩트 먹는 플레이어",
       "author": "벤티, 기인",
       "platform": "네이버웹툰",
-      "url": "https://blacktoon427.com/webtoon/17801.html",
+      "url": "https://comic.naver.com/webtoon/list?titleId=836683",
       "cover": "https://image-comic.pstatic.net/webtoon/836683/thumbnail/thumbnail_IMAG21_18bc7426-b4a7-4d99-9cdf-36b52058b405.jpg",
       "genres": [
         "fantasy",
@@ -10753,7 +10973,8 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "age": 15
     },
     {
       "id": "w240",
@@ -10799,7 +11020,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=850746",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w241",
@@ -10843,7 +11065,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=732988",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 15
     },
     {
       "id": "w657564281141014",
@@ -10890,7 +11113,8 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=845717",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "age": 0
     }
   ],
   "genres": [
