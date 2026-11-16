@@ -23,10 +23,11 @@
     const st = WT.schedule.status(w), me = mine(w);
     const pct = me.tot ? Math.round((me.e / me.tot) * 100) : 0;
     const color = w.color || (WT.genre((w.genres || [])[0]) || {}).color || '#55607F';
-    const label = `${w.title}, ${st === 'hiatus' ? '휴재' : '연재 중'}, ${WT.eps(w)}화${me.state === 'reading' ? `, ${me.e}화까지 봤어요` : me.state === 'done' ? ', 다 따라왔어요' : ''}`;
-    return `<a class="wk-card${st === 'hiatus' ? ' rest' : ''}" href="${libHref(w)}" title="${esc(w.title)}" aria-label="${esc(label)}">
+    const label = `${w.title}, ${w.pick ? '관리자 강추, ' : ''}${st === 'hiatus' ? '휴재' : '연재 중'}, ${WT.eps(w)}화${me.state === 'reading' ? `, ${me.e}화까지 봤어요` : me.state === 'done' ? ', 다 따라왔어요' : ''}`;
+    return `<a class="wk-card${st === 'hiatus' ? ' rest' : ''}${w.pick ? ' pick' : ''}" href="${libHref(w)}" title="${esc(w.title)}" aria-label="${esc(label)}">
         <span class="wk-cv" style="--c:${esc(color)}"><span class="wk-ini">${esc(w.title)}</span>
           ${w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}
+          ${w.pick ? '<em class="wk-pick">관리자 강추</em>' : ''}
           ${st === 'hiatus' ? '<em class="wk-tag">휴재</em>' : ''}
           ${WT.fav.mark(w.id)}
           ${WT.platform.icon(w.platform, 'pf-cv')}
