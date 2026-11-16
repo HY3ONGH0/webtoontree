@@ -2275,3 +2275,11 @@ h1, h2, h3, .wt-word, .lb-h1, .hm-h1, .lb-qt, .wk-t-n { font-family: var(--displ
 .u-cnt[aria-pressed="true"] { color: var(--brand); border-bottom-style: solid; }
 .u-fl { margin-top: 14px; padding-top: 4px; border-top: 1px solid var(--card-line); }
 .u-fl h3 { margin: 12px 0 4px; font-size: 15px; }
+/* 내 기록 칸: 프로필 카드와 같은 여백 (화면 옆에 붙지 않게) */
+.rec { margin: 6px 30px 22px; }
+@media (max-width: 600px) {
+  .rec { margin: 6px 14px 20px; }
+  /* 휴대폰: 아래 메뉴에 '프로필'이 있으니 위쪽 이름표는 숨겨서 위 줄이 두 줄로 넘치지 않게 해요 */
+  .topbar .right .user-chip { display: none; }
+  .topbar .right { gap: 8px; }
+}
