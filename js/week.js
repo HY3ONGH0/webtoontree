@@ -48,7 +48,7 @@
     return `<div class="wk-today-it">
         <a class="wk-today-cv" href="${weekHref(w)}" data-wk="${esc(w.id)}" aria-label="${esc(w.title)} 자세히"><span class="wk-cv" style="--c:${esc(color)}"><span class="wk-ini">${esc(w.title)}</span>${w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}<span class="wk-tags">${n ? `<em class="wk-new">새 화 ${n}</em>` : fav ? '<em class="wk-fav">관심</em>' : ''}</span>${WT.platform.icon(w.platform, 'pf-cv')}</span></a>
         <div class="wk-today-tx"><a href="${weekHref(w)}" data-wk="${esc(w.id)}"><b>${esc(w.title)}</b></a><p>${line}</p>
-          ${w.url ? `<a class="wk-go${me.e > 0 ? '' : ' ghost'}" href="${esc(w.url)}" target="_blank" rel="noopener">${me.e > 0 ? `${next}화 이어 보기` : '1화 보러 가기'} ↗</a>` : ''}</div>
+          ${WT.platform.watchUrl(w) ? `<a class="wk-go${me.e > 0 ? '' : ' ghost'}" href="${esc(WT.platform.watchUrl(w, me.e > 0 ? next : 1))}" target="_blank" rel="noopener">${me.e > 0 ? `${next}화 이어 보기` : '1화 보러 가기'} ↗</a>` : ''}</div>
       </div>`;
   }
   function tile(title, num, sub) {

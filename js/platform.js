@@ -44,5 +44,23 @@
     const pic = FILE[k] ? `<img src="${FILE[k]}" alt="" data-pf="${k}" decoding="async">` : ICON[k];
     return `<span class="pf pf-${k}${cls ? ' ' + cls : ''}" role="img" aria-label="${esc(name)}" title="${esc(name)}">${pic}</span>`;
   }
-  WT.platform = { key, icon };
+  // ---------- 보러 가기: 공식 페이지로만 ----------
+  const OFFICIAL = /^https:\/\/(comic\.naver\.com|m\.comic\.naver\.com|webtoon\.kakao\.com|page\.kakao\.com|(www\.)?lezhin\.com|ridibooks\.com)\//;
+  const official = (u) => (OFFICIAL.test(String(u || '')) ? String(u) : '');
+  /** 보러 가기 주소. n 을 주면 네이버 웹툰은 그 화 페이지로 바로 가요 (공식 주소가 없으면 '') */
+  function watchUrl(w, n) {
+    const base = official(w && w.url) || official(w && w.source);
+    if (!base) return '';
+    const id = (base.match(/comic\.naver\.com\/.*[?&]titleId=(\d+)/) || [])[1];
+    if (id && n >= 1) return `https://comic.naver.com/webtoon/detail?titleId=${id}&no=${Math.floor(n)}`;
+    return base;
+  }
+  // ---------- 연령 등급 ----------
+  const AGES = { 0: ['ALL', '전체 이용가'], 12: ['12', '12세 이용가'], 15: ['15', '15세 이용가'], 19: ['19', '19세 이용가 (청소년 이용불가)'] };
+  /** 연령 등급 배지 (등급 정보가 없으면 '') */
+  function ageBadge(w, cls) {
+    const a = w && w.age != null && AGES[w.age] ? AGES[w.age] : null;
+    return a ? `<span class="age age-${a[0].toLowerCase()}${cls ? ' ' + cls : ''}" title="${a[1]}" aria-label="${a[1]}">${a[0]}</span>` : '';
+  }
+  WT.platform = { key, icon, official, watchUrl, ageBadge, AGES };
 })();

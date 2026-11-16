@@ -72,7 +72,7 @@ function doPost(e) {
 }
 
 // 서버 코드 판 번호: 관리자 화면이 이 숫자를 보고 "서버 코드가 예전 버전"인지 알려 줘요. 서버 코드를 고치면 1씩 올려요
-var SERVER_VERSION = 21;
+var SERVER_VERSION = 22;
 
 var WRITE_ACTIONS = {
   signup: 1, login: 1, logout: 1, nick: 1, deleteAccount: 1, progress: 1, rate: 1, comment: 1, deleteComment: 1,
@@ -1042,6 +1042,16 @@ function infoFor_(url, fresh) {
   return r;
 }
 /** 가져온 정보를 웹툰에 반영 (보러 가기 링크 · 장르 · 추천은 건드리지 않아요). 바뀐 게 있으면 true */
+/** 연령 등급 → 0(전체) · 12 · 15 · 19 (모르면 null) */
+function ageOf_(t, adult) {
+  if (adult) return 19;
+  t = String(t || '');
+  if (!t) return null;
+  if (/ALL/i.test(t)) return 0;
+  var n = Number(t.replace(/\D/g, '')) || 0;
+  return n >= 18 ? 19 : n >= 15 ? 15 : n >= 12 ? 12 : 0;
+}
+function official_(u) { return /^https:\/\/(comic\.naver\.com|m\.comic\.naver\.com|webtoon\.kakao\.com|page\.kakao\.com|(www\.)?lezhin\.com|ridibooks\.com)\//.test(String(u || '')); }
 function applyInfo_(w, info, day) {
   var before = JSON.stringify(w);
   ['title', 'author', 'platform', 'desc'].forEach(function (k) { if (k === 'platform' && info.partial && /카카오\s*페이지/.test(w.platform || '')) return; if (info[k]) w[k] = String(info[k]).slice(0, k === 'desc' ? 300 : 200); });
@@ -1051,6 +1061,8 @@ function applyInfo_(w, info, day) {
   if ((info.days || []).length) w.days = info.days.slice();
   if (info.episodes && Number(info.episodes) !== episodes_(w, day)) { w.episodes = Math.max(1, Number(info.episodes)); w.baseDate = day; }
   if (info.cover && (!w.cover || w.coverAuto)) { if (w.cover !== info.cover) w.color = ''; w.cover = info.cover; w.coverAuto = true; }
+  if (info.age != null) w.age = info.age;
+  if (!official_(w.url) && official_(w.source)) w.url = w.source;   // 보러 가기는 공식 페이지로만
   w.autoCount = w.status === 'ongoing' && (w.days || []).length > 0;
   var changed = JSON.stringify(w) !== before;
   w.autoAt = day;
@@ -1273,10 +1285,12 @@ function kakaoWebtoonInfo_(url) {
       pr.badges.forEach(function (bd) {
         var t = String(bd.title || '');
         if (bd.type === 'STATUS') st = t;
+        if (bd.type === 'AGE_LIMIT') info.age = ageOf_(t);
         if (bd.type === 'WEEKDAYS' && /^(mon|tue|wed|thu|fri|sat|sun)$/i.test(t) && days.indexOf(t.toLowerCase()) < 0) days.push(t.toLowerCase());
       });
       info.status = st === 'COMPLETED' ? 'completed' : st ? 'hiatus' : 'ongoing';   // 시즌 완결 · 연재 쉼은 휴재로
       if (days.length) info.days = days;
+      if (info.age == null) info.age = 0;   // 등급 배지가 없으면 전체 이용가
       var kw = uniq_((pr.seoKeywords || []).map(function (k) { return String(k).replace(/^#/, ''); }).filter(function (k) { return k.indexOf('/') < 0; }));
       if (kw.length) info.tags = uniq_(info.tags.concat(kw)).slice(0, 8);
     }
@@ -1325,7 +1339,8 @@ function naverInfo_(url) {
     desc: clean_(j.synopsis || ''),
     status: j.finished ? 'completed' : j.rest ? 'hiatus' : 'ongoing',
     days: (j.publishDayOfWeekList || []).map(function (d) { return DAY_EN_[String(d).toUpperCase()]; }).filter(Boolean),
-    tags: uniq_((j.curationTagList || []).map(function (t) { return t.tagName; })).slice(0, 8)
+    tags: uniq_((j.curationTagList || []).map(function (t) { return t.tagName; })).slice(0, 8),
+    age: ageOf_((j.age || {}).type, j.adult)
   };
   try { info.artists = naverArtists_(j.communityArtists || [], people, id); } catch (e) { console.warn('artists', e); }
   try {

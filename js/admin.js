@@ -4,7 +4,7 @@
    - 이 화면은 서버에 아무것도 바꾸지 않아요. 실제 수정 권한은 GitHub 저장소가 가져요. */
 (function () {
   const DRAFT = 'webtoontree.admin.draft';
-  const NEED_SERVER = 21;   // 이 화면이 필요로 하는 서버 코드 판 번호 (apps-script/Code.gs 의 SERVER_VERSION)
+  const NEED_SERVER = 22;   // 이 화면이 필요로 하는 서버 코드 판 번호 (apps-script/Code.gs 의 SERVER_VERSION)
   const root = () => document.getElementById('admin');
   const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -462,7 +462,10 @@
         <div><b style="font-size:17px">${esc(w.title)}</b><div class="ad-help">${w.id} · 트리: ${esc(inTrees.join(', ') || '없음 (도서관에 꽂혀요)')} · 전체 지도: ${D.map.pins[w.id] ? '직접 고정' : '자동 배치'}</div></div>
       </div>
       ${linkBox(w)}
-      <div class="field"><label for="f-url">보러 가기 링크</label><input id="f-url" class="fld" type="url" data-wf="url" value="${esc(w.url)}" placeholder="https://"></div>
+      <div class="field"><label for="f-url">보러 가기 링크 (공식 페이지만)</label><input id="f-url" class="fld" type="url" data-wf="url" value="${esc(w.url)}" placeholder="https://comic.naver.com/…">
+        ${w.url && !WT.platform.official(w.url) ? '<span class="hint" style="color:#E0565B">공식 플랫폼 주소가 아니라서 사이트에서는 이 링크를 쓰지 않아요 (네이버웹툰 · 카카오웹툰 · 카카오페이지 · 레진 · 리디만)</span>' : ''}</div>
+      <div class="field"><label for="f-age">연령 등급</label><select id="f-age" class="fld" data-wf="age" style="max-width:220px"><option value="">모름</option>${[[0, '전체 이용가'], [12, '12세 이용가'], [15, '15세 이용가'], [19, '19세 이용가']].map(([v, n]) => `<option value="${v}" ${w.age === v ? 'selected' : ''}>${n}</option>`).join('')}</select>
+        <span class="hint">작품을 연결하면 공식 정보에서 자동으로 채워져요.</span></div>
       <div class="field"><label for="f-cover">표지 이미지 주소</label><input id="f-cover" class="fld" type="url" data-wf="cover" value="${esc(w.cover)}" placeholder="비워 두면 공식 표지를 써요"><span class="hint">직접 만들었거나 써도 되는 이미지만 넣어 주세요.</span></div>
       ${w.coverAuto && w.cover ? '<span class="hint">지금은 공식 표지를 쓰고 있어요. 다른 표지를 쓰려면 주소를 바꿔 넣으세요.</span>' : ''}
       <div class="field"><span style="font-size:14px; color:var(--soft)">상세 창 색 (표지에서 자동으로 뽑아요)</span>
@@ -562,6 +565,8 @@
     if (I.cover && (!w.cover || w.coverAuto)) { coverNew = w.cover !== I.cover; w.cover = I.cover; w.coverAuto = true; }
     w.autoCount = WT.schedule.status(w) === 'ongoing' && (w.days || []).length > 0;
     if (I.source) w.source = I.source;
+    if (I.age != null) w.age = I.age;
+    if (!WT.platform.official(w.url) && WT.platform.official(w.source)) w.url = w.source;   // 보러 가기는 공식 페이지로만
     w.autoAt = day;
     return coverNew;
   }
@@ -2096,6 +2101,7 @@
       if (k === 'episodes') { w.episodes = Math.max(1, parseInt(el.value, 10) || 1); w.baseDate = WT.schedule.today(); }
       else if (k === 'status') { w.episodes = WT.schedule.episodes(w); w.baseDate = WT.schedule.today(); w.status = el.value; delete w.ongoing; }
       else if (k === 'tags') w.tags = el.value.split(',').map((x) => x.trim()).filter(Boolean);
+      else if (k === 'age') { if (el.value === '') delete w.age; else w.age = Number(el.value); }
       else if (k === 'chars') { w.chars = [...new Set(el.value.split(',').map((x) => x.trim().slice(0, 12)).filter(Boolean))].slice(0, 12); if (!w.chars.length) delete w.chars; }
       else { w[k] = el.value; if (k === 'cover') delete w.coverAuto; }
       saveDraft();
