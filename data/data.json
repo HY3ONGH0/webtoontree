@@ -12111,7 +12111,21 @@
       "topN": 3,
       "minViewers": 5
     },
-    "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
+    "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec",
+    "attend": [
+      2,
+      2,
+      3,
+      3,
+      4,
+      4,
+      20
+    ],
+    "contact": [
+      "33_22@kbs.hs.kr",
+      "33_37@kbs.hs.kr",
+      "33_45@kbs.hs.kr"
+    ]
   },
   "meta": {
     "lastWebtoonId": 241
@@ -12220,7 +12234,889 @@
       "feet": "#7FB8F0",
       "acc": "crown",
       "isNew": true
+    },
+    {
+      "id": "acc-ribbon",
+      "kind": "acc",
+      "name": "분홍 리본",
+      "desc": "머리 위에 살짝 얹은 리본",
+      "price": 80,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "ribbon",
+      "isNew": true
+    },
+    {
+      "id": "acc-flower",
+      "kind": "acc",
+      "name": "꽃 핀",
+      "desc": "봄바람에 어울리는 꽃 한 송이",
+      "price": 60,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "flower",
+      "isNew": true
+    },
+    {
+      "id": "acc-sprout",
+      "kind": "acc",
+      "name": "새싹",
+      "desc": "쑥쑥 자라는 중",
+      "price": 80,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "sprout",
+      "isNew": true
+    },
+    {
+      "id": "acc-cap",
+      "kind": "acc",
+      "name": "야구 모자",
+      "desc": "스포츠 웹툰 볼 때",
+      "price": 80,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "cap",
+      "isNew": true
+    },
+    {
+      "id": "acc-shades",
+      "kind": "acc",
+      "name": "선글라스",
+      "desc": "액션 웹툰 주인공처럼",
+      "price": 100,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "shades",
+      "isNew": true
+    },
+    {
+      "id": "acc-horn",
+      "kind": "acc",
+      "name": "꼬마 뿔",
+      "desc": "장난꾸러기 악마",
+      "price": 100,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "horn",
+      "isNew": true
+    },
+    {
+      "id": "acc-beanie",
+      "kind": "acc",
+      "name": "털모자",
+      "desc": "포근한 겨울 모자",
+      "price": 100,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "beanie",
+      "isNew": true
+    },
+    {
+      "id": "acc-chef",
+      "kind": "acc",
+      "name": "요리사 모자",
+      "desc": "요리 웹툰 정주행 중",
+      "price": 100,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "chef",
+      "isNew": true
+    },
+    {
+      "id": "acc-grad",
+      "kind": "acc",
+      "name": "학사모",
+      "desc": "완독 박사",
+      "price": 120,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "grad",
+      "isNew": true
+    },
+    {
+      "id": "acc-halo",
+      "kind": "acc",
+      "name": "천사 고리",
+      "desc": "착한 독자에게만 보여요",
+      "price": 160,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "halo",
+      "isNew": true
+    },
+    {
+      "id": "acc-bunny",
+      "kind": "acc",
+      "name": "토끼 귀",
+      "desc": "봄 한정 · 깡충깡충",
+      "price": 120,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "bunny",
+      "isNew": true,
+      "season": "spring"
+    },
+    {
+      "id": "acc-straw",
+      "kind": "acc",
+      "name": "밀짚모자",
+      "desc": "여름 한정 · 바다로 떠나요",
+      "price": 120,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "straw",
+      "isNew": true,
+      "season": "summer"
+    },
+    {
+      "id": "acc-snorkel",
+      "kind": "acc",
+      "name": "스노클",
+      "desc": "여름 한정 · 바닷속 탐험",
+      "price": 150,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "snorkel",
+      "isNew": true,
+      "season": "summer"
+    },
+    {
+      "id": "acc-gat",
+      "kind": "acc",
+      "name": "선비 갓",
+      "desc": "추석 한정 · 달 보러 가는 선비",
+      "price": 120,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "gat",
+      "isNew": true,
+      "season": "chuseok"
+    },
+    {
+      "id": "acc-pumpkin",
+      "kind": "acc",
+      "name": "호박 모자",
+      "desc": "할로윈 한정 · 사탕 주세요",
+      "price": 150,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "pumpkin",
+      "isNew": true,
+      "season": "halloween"
+    },
+    {
+      "id": "acc-witch",
+      "kind": "acc",
+      "name": "마녀 모자",
+      "desc": "할로윈 한정 · 빗자루는 없어요",
+      "price": 150,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "witch",
+      "isNew": true,
+      "season": "halloween"
+    },
+    {
+      "id": "acc-santa",
+      "kind": "acc",
+      "name": "산타 모자",
+      "desc": "크리스마스 한정 · 선물은 웹툰",
+      "price": 180,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "santa",
+      "isNew": true,
+      "season": "xmas"
+    },
+    {
+      "id": "acc-rudolph",
+      "kind": "acc",
+      "name": "루돌프 뿔",
+      "desc": "크리스마스 한정 · 빨간 코",
+      "price": 150,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "rudolph",
+      "isNew": true,
+      "season": "xmas"
+    },
+    {
+      "id": "acc-bok",
+      "kind": "acc",
+      "name": "복주머니",
+      "desc": "설날 한정 · 새해 복 많이",
+      "price": 150,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "bok",
+      "isNew": true,
+      "season": "seollal"
+    },
+    {
+      "id": "acc-jobawi",
+      "kind": "acc",
+      "name": "조바위",
+      "desc": "설날 한정 · 고운 설빔",
+      "price": 150,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "jobawi",
+      "isNew": true,
+      "season": "seollal"
+    },
+    {
+      "id": "col-peach",
+      "kind": "color",
+      "name": "복숭아빛 몸",
+      "desc": "말랑한 분홍빛",
+      "price": 50,
+      "body": "#FFD3DC",
+      "feet": "#F28CA6",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-mint",
+      "kind": "color",
+      "name": "민트빛 몸",
+      "desc": "시원한 민트",
+      "price": 50,
+      "body": "#C6F3EA",
+      "feet": "#5CC9B5",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-lemon",
+      "kind": "color",
+      "name": "레몬빛 몸",
+      "desc": "상큼한 노랑",
+      "price": 50,
+      "body": "#FFF2B0",
+      "feet": "#F2C230",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-sky",
+      "kind": "color",
+      "name": "하늘빛 몸",
+      "desc": "맑은 날의 하늘",
+      "price": 50,
+      "body": "#BFE3FF",
+      "feet": "#4FA3F2",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-grape",
+      "kind": "color",
+      "name": "포도빛 몸",
+      "desc": "진한 보라",
+      "price": 80,
+      "body": "#D9C2FF",
+      "feet": "#8A56E0",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-coral",
+      "kind": "color",
+      "name": "산호빛 몸",
+      "desc": "바닷속 산호색",
+      "price": 80,
+      "body": "#FFC2B0",
+      "feet": "#F0704F",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-snow",
+      "kind": "color",
+      "name": "눈빛 몸",
+      "desc": "새하얀 눈사람",
+      "price": 100,
+      "body": "#FFFFFF",
+      "feet": "#BFD0E6",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-choco",
+      "kind": "color",
+      "name": "초코빛 몸",
+      "desc": "달콤한 초콜릿",
+      "price": 100,
+      "body": "#D9B99B",
+      "feet": "#8A5A3A",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-mono",
+      "kind": "color",
+      "name": "먹빛 몸",
+      "desc": "무협 고수의 색",
+      "price": 120,
+      "body": "#C9CED9",
+      "feet": "#4A5068",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-gold",
+      "kind": "color",
+      "name": "황금빛 몸",
+      "desc": "반짝반짝",
+      "price": 200,
+      "body": "#FFE9A0",
+      "feet": "#E0A21A",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "bg-cream",
+      "kind": "bg",
+      "name": "크림",
+      "desc": "가장 깔끔한 배경",
+      "price": 30,
+      "c1": "#FBF3E0",
+      "c2": "#F2E2C4",
+      "scene": "none",
+      "pattern": "none",
+      "isNew": true
+    },
+    {
+      "id": "bg-mintsky",
+      "kind": "bg",
+      "name": "민트 하늘",
+      "desc": "산뜻한 하루",
+      "price": 30,
+      "c1": "#D5F5EC",
+      "c2": "#A8E0D0",
+      "scene": "none",
+      "pattern": "none",
+      "isNew": true
+    },
+    {
+      "id": "bg-sunset",
+      "kind": "bg",
+      "name": "노을 언덕",
+      "desc": "해 질 무렵의 언덕",
+      "price": 60,
+      "c1": "#FF9A6B",
+      "c2": "#FFD79A",
+      "scene": "sunset",
+      "pattern": "none",
+      "isNew": true
+    },
+    {
+      "id": "bg-forest",
+      "kind": "bg",
+      "name": "숲속 아침",
+      "desc": "나무 사이로 드는 햇살",
+      "price": 60,
+      "c1": "#BDE8C8",
+      "c2": "#E8F7DC",
+      "scene": "forest",
+      "pattern": "none",
+      "isNew": true
+    },
+    {
+      "id": "bg-night",
+      "kind": "bg",
+      "name": "별밤 언덕",
+      "desc": "별이 쏟아지는 밤",
+      "price": 80,
+      "c1": "#0E1530",
+      "c2": "#3A2C6B",
+      "scene": "night",
+      "pattern": "star",
+      "isNew": true
+    },
+    {
+      "id": "bg-sea",
+      "kind": "bg",
+      "name": "바닷속",
+      "desc": "물고기와 함께",
+      "price": 100,
+      "c1": "#0E7FB8",
+      "c2": "#7FE0E6",
+      "scene": "sea",
+      "pattern": "bubble",
+      "isNew": true
+    },
+    {
+      "id": "bg-city",
+      "kind": "bg",
+      "name": "도시의 밤",
+      "desc": "불 켜진 창문들",
+      "price": 100,
+      "c1": "#141A3C",
+      "c2": "#3B3F77",
+      "scene": "city",
+      "pattern": "star",
+      "isNew": true
+    },
+    {
+      "id": "bg-space",
+      "kind": "bg",
+      "name": "우주 여행",
+      "desc": "행성 사이를 떠다녀요",
+      "price": 150,
+      "c1": "#0B0D26",
+      "c2": "#2A1E5C",
+      "scene": "space",
+      "pattern": "spark",
+      "isNew": true
+    },
+    {
+      "id": "bg-love",
+      "kind": "bg",
+      "name": "두근두근",
+      "desc": "로맨스 웹툰 볼 때",
+      "price": 100,
+      "c1": "#FFD0E0",
+      "c2": "#FFF0F5",
+      "scene": "none",
+      "pattern": "heart",
+      "isNew": true
+    },
+    {
+      "id": "bg-newyear",
+      "kind": "bg",
+      "name": "새해 불꽃놀이",
+      "desc": "새해 한정 · 펑펑 터지는 불꽃",
+      "price": 120,
+      "c1": "#0B1030",
+      "c2": "#28306B",
+      "scene": "newyear",
+      "pattern": "spark",
+      "isNew": true,
+      "season": "newyear"
+    },
+    {
+      "id": "bg-seollal",
+      "kind": "bg",
+      "name": "설날 아침",
+      "desc": "설날 한정 · 새해 첫 해돋이",
+      "price": 150,
+      "c1": "#B3202C",
+      "c2": "#F1B92E",
+      "scene": "seollal",
+      "pattern": "none",
+      "isNew": true,
+      "season": "seollal"
+    },
+    {
+      "id": "bg-spring",
+      "kind": "bg",
+      "name": "벚꽃길",
+      "desc": "봄 한정 · 꽃잎이 흩날려요",
+      "price": 120,
+      "c1": "#FFD6E6",
+      "c2": "#FFF4F8",
+      "scene": "spring",
+      "pattern": "petal",
+      "isNew": true,
+      "season": "spring"
+    },
+    {
+      "id": "bg-summer",
+      "kind": "bg",
+      "name": "한여름 해변",
+      "desc": "여름 한정 · 파도 소리",
+      "price": 150,
+      "c1": "#3CC1E6",
+      "c2": "#C9F0FA",
+      "scene": "summer",
+      "pattern": "none",
+      "isNew": true,
+      "season": "summer"
+    },
+    {
+      "id": "bg-chuseok",
+      "kind": "bg",
+      "name": "한가위 보름달",
+      "desc": "추석 한정 · 보름달과 억새",
+      "price": 150,
+      "c1": "#161A40",
+      "c2": "#3C3470",
+      "scene": "chuseok",
+      "pattern": "leaf",
+      "isNew": true,
+      "season": "chuseok"
+    },
+    {
+      "id": "bg-halloween",
+      "kind": "bg",
+      "name": "할로윈의 밤",
+      "desc": "할로윈 한정 · 박쥐와 호박",
+      "price": 150,
+      "c1": "#2A1638",
+      "c2": "#B8551F",
+      "scene": "halloween",
+      "pattern": "none",
+      "isNew": true,
+      "season": "halloween"
+    },
+    {
+      "id": "bg-xmas",
+      "kind": "bg",
+      "name": "눈 내리는 크리스마스",
+      "desc": "크리스마스 한정 · 눈 내리는 밤",
+      "price": 180,
+      "c1": "#12203F",
+      "c2": "#3C6E9E",
+      "scene": "xmas",
+      "pattern": "snow",
+      "isNew": true,
+      "season": "xmas"
+    },
+    {
+      "id": "tk-vine",
+      "kind": "tree",
+      "name": "덩굴",
+      "desc": "초록 덩굴이 이어져요",
+      "price": 100,
+      "ring": "#4E9B5A",
+      "line": "#6DB277",
+      "shape": "circle",
+      "lineStyle": "solid",
+      "isNew": true
+    },
+    {
+      "id": "tk-candy",
+      "kind": "tree",
+      "name": "솜사탕",
+      "desc": "분홍 점선",
+      "price": 120,
+      "ring": "#FF7EB6",
+      "line": "#FFB0D2",
+      "shape": "circle",
+      "lineStyle": "dash",
+      "isNew": true
+    },
+    {
+      "id": "tk-neon",
+      "kind": "tree",
+      "name": "네온",
+      "desc": "빛나는 보라색 선",
+      "price": 150,
+      "ring": "#8B6CFF",
+      "line": "#A990FF",
+      "shape": "hex",
+      "lineStyle": "glow",
+      "isNew": true
+    },
+    {
+      "id": "tk-ocean",
+      "kind": "tree",
+      "name": "바다",
+      "desc": "물방울처럼 이어지는 선",
+      "price": 120,
+      "ring": "#2FA8D8",
+      "line": "#7FD4FF",
+      "shape": "circle",
+      "lineStyle": "dot",
+      "isNew": true
+    },
+    {
+      "id": "tk-gold",
+      "kind": "tree",
+      "name": "황금",
+      "desc": "둥근 네모 황금 칸",
+      "price": 200,
+      "ring": "#E0A21A",
+      "line": "#EBC550",
+      "shape": "square",
+      "lineStyle": "solid",
+      "isNew": true
+    },
+    {
+      "id": "tk-mono",
+      "kind": "tree",
+      "name": "먹선",
+      "desc": "무협풍 마름모",
+      "price": 150,
+      "ring": "#3A3F52",
+      "line": "#7A8098",
+      "shape": "diamond",
+      "lineStyle": "solid",
+      "isNew": true
+    },
+    {
+      "id": "tk-blossom",
+      "kind": "tree",
+      "name": "벚꽃 가지",
+      "desc": "봄 한정 · 분홍 가지",
+      "price": 120,
+      "ring": "#F48FB1",
+      "line": "#F8BBD0",
+      "shape": "circle",
+      "lineStyle": "solid",
+      "isNew": true,
+      "season": "spring"
+    },
+    {
+      "id": "tk-pumpkin",
+      "kind": "tree",
+      "name": "호박 덩굴",
+      "desc": "할로윈 한정 · 주황 점선",
+      "price": 120,
+      "ring": "#F28C28",
+      "line": "#C96A12",
+      "shape": "hex",
+      "lineStyle": "dash",
+      "isNew": true,
+      "season": "halloween"
+    },
+    {
+      "id": "tk-ice",
+      "kind": "tree",
+      "name": "얼음 결정",
+      "desc": "크리스마스 한정 · 육각 얼음",
+      "price": 150,
+      "ring": "#5AB6E8",
+      "line": "#9CD3F0",
+      "shape": "hex",
+      "lineStyle": "dash",
+      "isNew": true,
+      "season": "xmas"
+    },
+    {
+      "id": "tk-lantern",
+      "kind": "tree",
+      "name": "청사초롱",
+      "desc": "설날 한정 · 붉은 둥근 네모",
+      "price": 150,
+      "ring": "#D93A4A",
+      "line": "#F1B92E",
+      "shape": "square",
+      "lineStyle": "glow",
+      "isNew": true,
+      "season": "seollal"
     }
   ],
-  "hotToday": []
+  "hotToday": [],
+  "seasons": [
+    {
+      "id": "newyear",
+      "name": "새해",
+      "date": "01-01",
+      "before": 3,
+      "after": 7,
+      "bg": "bg-newyear",
+      "reward": "bg-newyear",
+      "missions": [
+        {
+          "type": "eps",
+          "n": 10,
+          "reward": 15
+        },
+        {
+          "type": "attend",
+          "n": 5,
+          "reward": 20
+        },
+        {
+          "type": "done",
+          "n": 1,
+          "reward": 30
+        },
+        {
+          "type": "rec",
+          "n": 1,
+          "reward": 10
+        }
+      ]
+    },
+    {
+      "id": "seollal",
+      "name": "설날",
+      "lunar": "seollal",
+      "before": 10,
+      "after": 3,
+      "bg": "bg-seollal",
+      "reward": "bg-seollal",
+      "missions": [
+        {
+          "type": "eps",
+          "n": 10,
+          "reward": 15
+        },
+        {
+          "type": "attend",
+          "n": 5,
+          "reward": 20
+        },
+        {
+          "type": "done",
+          "n": 1,
+          "reward": 30
+        },
+        {
+          "type": "rec",
+          "n": 1,
+          "reward": 10
+        }
+      ]
+    },
+    {
+      "id": "spring",
+      "name": "봄 벚꽃",
+      "date": "04-05",
+      "before": 10,
+      "after": 3,
+      "bg": "bg-spring",
+      "reward": "bg-spring",
+      "missions": [
+        {
+          "type": "eps",
+          "n": 10,
+          "reward": 15
+        },
+        {
+          "type": "attend",
+          "n": 5,
+          "reward": 20
+        },
+        {
+          "type": "done",
+          "n": 1,
+          "reward": 30
+        },
+        {
+          "type": "rec",
+          "n": 1,
+          "reward": 10
+        }
+      ]
+    },
+    {
+      "id": "summer",
+      "name": "여름",
+      "date": "08-01",
+      "before": 10,
+      "after": 3,
+      "bg": "bg-summer",
+      "reward": "bg-summer",
+      "missions": [
+        {
+          "type": "eps",
+          "n": 10,
+          "reward": 15
+        },
+        {
+          "type": "attend",
+          "n": 5,
+          "reward": 20
+        },
+        {
+          "type": "done",
+          "n": 1,
+          "reward": 30
+        },
+        {
+          "type": "rec",
+          "n": 1,
+          "reward": 10
+        }
+      ]
+    },
+    {
+      "id": "chuseok",
+      "name": "추석",
+      "lunar": "chuseok",
+      "before": 10,
+      "after": 3,
+      "bg": "bg-chuseok",
+      "reward": "bg-chuseok",
+      "missions": [
+        {
+          "type": "eps",
+          "n": 10,
+          "reward": 15
+        },
+        {
+          "type": "attend",
+          "n": 5,
+          "reward": 20
+        },
+        {
+          "type": "done",
+          "n": 1,
+          "reward": 30
+        },
+        {
+          "type": "rec",
+          "n": 1,
+          "reward": 10
+        }
+      ]
+    },
+    {
+      "id": "halloween",
+      "name": "할로윈",
+      "date": "10-31",
+      "before": 10,
+      "after": 3,
+      "bg": "bg-halloween",
+      "reward": "bg-halloween",
+      "missions": [
+        {
+          "type": "eps",
+          "n": 10,
+          "reward": 15
+        },
+        {
+          "type": "attend",
+          "n": 5,
+          "reward": 20
+        },
+        {
+          "type": "done",
+          "n": 1,
+          "reward": 30
+        },
+        {
+          "type": "rec",
+          "n": 1,
+          "reward": 10
+        }
+      ]
+    },
+    {
+      "id": "xmas",
+      "name": "크리스마스",
+      "date": "12-25",
+      "before": 10,
+      "after": 3,
+      "bg": "bg-xmas",
+      "reward": "bg-xmas",
+      "missions": [
+        {
+          "type": "eps",
+          "n": 10,
+          "reward": 15
+        },
+        {
+          "type": "attend",
+          "n": 5,
+          "reward": 20
+        },
+        {
+          "type": "done",
+          "n": 1,
+          "reward": 30
+        },
+        {
+          "type": "rec",
+          "n": 1,
+          "reward": 10
+        }
+      ]
+    }
+  ]
 }

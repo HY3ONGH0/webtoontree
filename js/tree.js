@@ -1000,6 +1000,19 @@
             <span class="sim-cv" style="--c:${esc(o.color || (WT.genre((o.genres || [])[0]) || {}).color || '#55607F')}"><span>${esc(o.title)}</span>${o.cover ? `<img src="${esc(o.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}</span>
             <b>${esc(o.title)}</b>${why ? `<small>${esc(why)}</small>` : ''}</button>`).join('')}</div>
         </div>` : ''; })()}
+        ${server && (w.chars || []).length ? (() => {
+          const sc = social[id] || {};
+          const tally = {}; (sc.chars || []).forEach((c) => { tally[c.name] = c.n; });
+          const list = w.chars.map((n) => ({ name: n, n: tally[n] || 0 })).sort((a, b) => b.n - a.n);
+          const tot = list.reduce((a, c) => a + c.n, 0), max = Math.max(1, ...list.map((c) => c.n));
+          const can = !!(S.profile && S.token);
+          return `<div class="charbox">
+            <span class="sim-h">최애 캐릭터${tot ? ` <small>${tot}명이 골랐어요</small>` : ''}</span>
+            <div class="char-list">${list.map((c) => `<button type="button" class="char-it${sc.myChar === c.name ? ' mine' : ''}" data-act="char" data-name="${esc(c.name)}" ${can ? '' : 'disabled'} aria-pressed="${sc.myChar === c.name}">
+              <i style="width:${c.n ? Math.max(6, Math.round(c.n / max * 100)) : 0}%"></i><b>${esc(c.name)}</b><span>${c.n ? `${c.n}표` : ''}${sc.myChar === c.name ? ' · 내 최애' : ''}</span></button>`).join('')}</div>
+            <span class="hint">${can ? '웹툰마다 한 표예요. 다른 캐릭터를 누르면 바뀌어요.' : '로그인하면 최애 캐릭터를 고를 수 있어요.'}</span>
+          </div>`;
+        })() : ''}
         ${server ? (() => {
           const sc = social[id];
           const recs = sc && sc.recs ? sc.recs : null;
@@ -1266,6 +1279,13 @@
         const url = `${location.origin}${location.pathname}#/library/all/${sel}`;
         const ok = () => WT.toast('링크를 복사했어요. 친구에게 보내 보세요');
         if (navigator.clipboard) navigator.clipboard.writeText(url).then(ok, () => window.prompt('이 링크를 복사해 주세요', url)); else window.prompt('이 링크를 복사해 주세요', url);
+      }
+      else if (a === 'char') {
+        const id = sel, name = t.dataset.name;
+        if ((social[id] || {}).myChar === name) return;
+        t.disabled = true;
+        WT.api.authed('charVote', { webtoonId: id, name }).then((x) => { social[id] = x.social; if (sel === id) renderPanel(false); WT.toast(`최애 캐릭터로 '${name}'을(를) 골랐어요`); })
+          .catch((er) => { t.disabled = false; if (!er.auth) WT.toast(/알 수 없는 요청/.test(er.message) ? '서버 코드가 예전 버전이에요.' : er.message); });
       }
       else if (a === 'unrec') {
         const id = sel; t.disabled = true;

@@ -340,8 +340,11 @@
           <h1 class="hm-h1"><span>${heroLine(hero.line1, '볼 건 많고, 시간은 없고?')}</span><span>${heroLine(hero.line2, '*트리*가 골라 줄게요.')}</span></h1>
           <p class="hm-sub">${esc((hero.sub || '').trim() || '수많은 웹툰 중에 진짜 볼 만한 것만. 순서대로 따라가기만 하면 돼요.')}</p>
           ${cont || `<a href="${href}" class="hm-cta">${began ? '다음 웹툰 고르기' : '첫 웹툰 고르기'}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>`}
+          ${WT.homeExtras ? WT.homeExtras() : ''}
         </section>
+        ${WT.homeFoot ? WT.homeFoot() : ''}
       </div>`;
+    if (WT.bindHomeExtras) WT.bindHomeExtras(() => viewHomeHero());
   }
 
   function viewHome() {
@@ -536,7 +539,7 @@
         <div class="left">
           <a href="#/" class="icon-btn press" aria-label="홈으로">${WT.icon.back}</a>
           <div class="title-block"><h1 style="color:var(--coin)">이번 주 랭킹</h1><span class="sub">이번 주에 많이 읽은 웹툰 TOP 10</span></div>
-          <nav class="rank-switch" aria-label="랭킹 종류"><a href="#/top" aria-current="page">웹툰 랭킹</a><a href="#/ranking">독자 랭킹</a><a href="#/feed">친구 소식</a></nav>
+          ${WT.rankTabs('top')}
         </div>
         ${WT.topRight()}
       </div>
@@ -760,7 +763,7 @@
           <p class="au-hint" style="margin:-6px 0 12px">다른 사이트에서 쓰는 비밀번호는 사용하지 마세요.</p>
           <details class="au-terms"><summary>[필수] 개인정보 수집·이용 안내 보기</summary>
             <p>· 모으는 것: 아이디, 닉네임, 비밀번호(암호화해서 저장)<br>· 쓰는 곳: 로그인, 별점·댓글 표시, 감상 진행·코인 저장<br>· 보관 기간: 탈퇴할 때까지 (탈퇴하면 바로 삭제)<br>· 댓글은 다른 사용자에게 닉네임과 함께 공개돼요.</p></details>
-          <label class="au-check"><input type="checkbox" id="s-agree"> 개인정보 수집·이용 안내를 읽고 동의합니다</label>
+          <label class="au-check"><input type="checkbox" id="s-agree"> <span><a href="#/about/terms">이용약관</a>과 <a href="#/about/privacy">개인정보 안내</a>를 읽고 동의합니다</span></label>
           <p class="au-err" id="acc-err" role="alert" hidden></p>
           <button type="submit" class="au-btn au-main">가입하고 시작하기</button>
           <p class="au-switch">이미 계정이 있나요? <button type="button" data-tab="login">로그인</button></p>
@@ -905,11 +908,12 @@
     vt.finished.then(done, done);
   }
   function routeNow() {
+    if (WT.skin) WT.skin.apply();   // 배경 · 트리 디자인 (시즌이 바뀌었으면 여기서 반영)
     const parts = (location.hash || '#/').replace(/^#\/?/, '').split('/').filter(Boolean);
     if (parts[0] === 'map') { location.replace('#/worlds'); return; }   // 장르 구역 지도는 없앴어요
     const name = parts[0] || 'home';
     const s = WT.store.state;
-    if (!s.profile && !s.guest && name !== 'login') { location.replace('#/login'); return; }
+    if (!s.profile && !s.guest && name !== 'login' && name !== 'about') { location.replace('#/login'); return; }
     const view = WT.views[name] || viewHomeHero;
     if (WT.leaveView) { WT.leaveView(); WT.leaveView = null; }
     window.scrollTo(0, 0);

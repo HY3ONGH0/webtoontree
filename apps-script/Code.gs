@@ -19,7 +19,7 @@ var DEFAULT_DATA_URL = 'https://hy3ongh0.github.io/webtoontree/data/data.json';
 var TZ = 'Asia/Seoul';
 
 var SHEETS = {
-  users: ['userId', 'nickname', 'pwHash', 'salt', 'createdAt', 'status', 'coins', 'progress', 'rewarded', 'daily', 'owned', 'equip', 'unlocked', 'role', 'favs', 'privacy', 'seen', 'log'],
+  users: ['userId', 'nickname', 'pwHash', 'salt', 'createdAt', 'status', 'coins', 'progress', 'rewarded', 'daily', 'owned', 'equip', 'unlocked', 'role', 'favs', 'privacy', 'seen', 'log', 'attend', 'bio', 'best', 'claims'],
   sessions: ['token', 'userId', 'expiresAt'],
   ratings: ['webtoonId', 'userId', 'score', 'updatedAt'],
   comments: ['commentId', 'webtoonId', 'userId', 'text', 'createdAt', 'hidden'],
@@ -28,9 +28,11 @@ var SHEETS = {
   live: ['ver', 'at', 'by', 'name', 'ops'],
   reports: ['reportId', 'webtoonId', 'viewerId', 'note', 'createdAt', 'done'],
   follows: ['follower', 'followee', 'at'],
-  recs: ['recId', 'userId', 'webtoonId', 'text', 'at']
+  recs: ['recId', 'userId', 'webtoonId', 'text', 'at'],
+  votes: ['month', 'userId', 'webtoonId', 'at'],
+  charVotes: ['webtoonId', 'userId', 'name', 'at']
 };
-var JSON_COLS = { progress: 1, rewarded: 1, daily: 1, owned: 1, equip: 1, unlocked: 1, favs: 1, seen: 1, log: 1 };
+var JSON_COLS = { progress: 1, rewarded: 1, daily: 1, owned: 1, equip: 1, unlocked: 1, favs: 1, seen: 1, log: 1, attend: 1, best: 1, claims: 1 };
 
 // ======================================================================
 // 웹 요청 입구
@@ -70,13 +72,14 @@ function doPost(e) {
 }
 
 // 서버 코드 판 번호: 관리자 화면이 이 숫자를 보고 "서버 코드가 예전 버전"인지 알려 줘요. 서버 코드를 고치면 1씩 올려요
-var SERVER_VERSION = 20;
+var SERVER_VERSION = 21;
 
 var WRITE_ACTIONS = {
   signup: 1, login: 1, logout: 1, nick: 1, deleteAccount: 1, progress: 1, rate: 1, comment: 1, deleteComment: 1,
   view: 1, buy: 1, equip: 1, unlockCoin: 1, unlockAdmin: 1, report: 1,
   adminSetStatus: 1, adminResetPassword: 1, adminSetNick: 1, adminHideComment: 1, adminReportDone: 1, adminSaveData: 1, adminSetRole: 1,
-  follow: 1, recommend: 1, setPrivacy: 1
+  follow: 1, recommend: 1, setPrivacy: 1, sync: 1,
+  attend: 1, setProfile: 1, voteMonth: 1, charVote: 1, event: 1
 };
 
 var ACTIONS = {
@@ -151,6 +154,8 @@ var ACTIONS = {
     deleteWhere_('sessions', function (r) { return r.userId === id; });
     deleteWhere_('ratings', function (r) { return r.userId === id; });
     deleteWhere_('coinLog', function (r) { return r.userId === id; });
+    deleteWhere_('votes', function (r) { return r.userId === id; });
+    deleteWhere_('charVotes', function (r) { return r.userId === id; });
     updateWhere_('comments', function (r) { return r.userId === id; }, function (r) { r.userId = ''; return r; });
     deleteRow_('users', findRow_('users', 'userId', id).row);
     return {};
@@ -446,7 +451,8 @@ var ACTIONS = {
       followers: fl.filter(function (r) { return r.obj.followee === uid; }).length,
       following: fl.filter(function (r) { return r.obj.follower === uid; }).length,
       done: Object.keys(rw).filter(function (k) { return /:done$/.test(k); }).length,
-      recs: [], favs: []
+      recs: [], favs: [], equip: t.obj.equip || {}, bio: open ? String(t.obj.bio || '') : '', best: open && Array.isArray(t.obj.best) ? t.obj.best.slice(0, 3) : [],
+      streak: attendStreak_(t.obj.attend)
     };
     if (open) {
       out.recs = readAll_('recs').filter(function (r) { return r.obj.userId === uid; }).map(function (r) { return { webtoonId: r.obj.webtoonId, text: r.obj.text, at: r.obj.at }; })
@@ -504,6 +510,119 @@ var ACTIONS = {
       return { pid: pubId_(id), nickname: users[id].nickname, followers: cntF[id] || 0, iFollow: !!mine[id], me: !!viewer && id === viewer.userId };
     });
     return { kind: kind, users: list };
+  },
+
+  // ---------- 출석 체크 ----------
+  /** 하루 한 번. 연속 출석 일수에 따라 코인 (7일 주기, 금액은 사이트 설정 attend) */
+  attend: function (b) {
+    var u = auth_(b.token), me = u.obj;
+    if (me.status === 'banned') fail_('이용이 정지된 계정이에요.');
+    var a = attendObj_(me.attend), t = today_();
+    if (a.last === t) fail_('오늘은 이미 출석했어요.');
+    var rewards = attendRewards_(siteData_());
+    a.streak = a.last === addDays_(t, -1) ? Number(a.streak || 0) + 1 : 1;
+    a.last = t; a.best = Math.max(Number(a.best || 0), a.streak);
+    a.days.push(t); if (a.days.length > 400) a.days = a.days.slice(-400);
+    var gain = Number(rewards[(a.streak - 1) % rewards.length]) || 0;
+    me.attend = a; me.coins = Number(me.coins) + gain;
+    log_(me.userId, gain, 'attend', String(a.streak), 0);
+    updateRow_('users', u.row, me);
+    return { me: publicMe_(me), gain: gain, streak: a.streak };
+  },
+
+  /** 프로필 소개글(60자) · 최애 웹툰 3편 */
+  setProfile: function (b) {
+    var u = auth_(b.token), me = u.obj;
+    if (me.status === 'banned') fail_('이용이 정지된 계정이에요.');
+    if (b.bio != null) me.bio = String(b.bio).replace(/\s+/g, ' ').trim().slice(0, 60);
+    if (Array.isArray(b.best)) {
+      var site = siteData_(), ok = {}, list = [];
+      site.webtoons.forEach(function (w) { ok[w.id] = 1; });
+      b.best.forEach(function (id) { id = String(id); if (ok[id] && list.indexOf(id) < 0 && list.length < 3) list.push(id); });
+      me.best = list;
+    }
+    updateRow_('users', u.row, me);
+    return { me: publicMe_(me) };
+  },
+
+  // ---------- 이달의 웹툰 투표 ----------
+  /** webtoonId 를 주면 투표(한 달에 한 표, 바꿀 수 있어요), 없으면 현황만 */
+  voteMonth: function (b) {
+    var month = today_().slice(0, 7), uid = '';
+    if (b.token) { try { uid = auth_(b.token).obj.userId; } catch (e) { uid = ''; } }
+    if (b.webtoonId != null) {
+      var me = auth_(b.token).obj;
+      if (me.status === 'banned') fail_('이용이 정지된 계정이에요.');
+      var w = findToon_(siteData_(), String(b.webtoonId)), hit = null;
+      readAll_('votes').forEach(function (r) { if (String(r.obj.month).slice(0, 7) === month && r.obj.userId === me.userId) hit = r; });
+      if (hit) { hit.obj.webtoonId = w.id; hit.obj.at = now_(); updateRow_('votes', hit.row, hit.obj); }
+      else appendRow_('votes', { month: month, userId: me.userId, webtoonId: w.id, at: now_() });
+      uid = me.userId;
+    }
+    var by = {}, mine = '';
+    readAll_('votes').forEach(function (r) {
+      var m = String(r.obj.month).slice(0, 7);
+      (by[m] = by[m] || {})[r.obj.webtoonId] = ((by[m] || {})[r.obj.webtoonId] || 0) + 1;
+      if (m === month && uid && r.obj.userId === uid) mine = r.obj.webtoonId;
+    });
+    var tally = function (m) { var o = by[m] || {}; return Object.keys(o).map(function (k) { return { webtoonId: k, n: o[k] }; }).sort(function (a, c) { return c.n - a.n || (a.webtoonId < c.webtoonId ? -1 : 1); }); };
+    var cur = tally(month), total = 0;
+    cur.forEach(function (x) { total += x.n; });
+    var past = Object.keys(by).filter(function (m) { return m < month; }).sort().reverse().slice(0, 12).map(function (m) { var t = tally(m)[0]; return { month: m, webtoonId: t.webtoonId, n: t.n }; });
+    return { month: month, total: total, top: cur.slice(0, 30), mine: mine, past: past };
+  },
+
+  /** 최애 캐릭터 투표 (웹툰마다 한 표, 관리자가 넣어 둔 캐릭터 중에서만) */
+  charVote: function (b) {
+    var me = auth_(b.token).obj;
+    if (me.status === 'banned') fail_('이용이 정지된 계정이에요.');
+    var w = findToon_(siteData_(), String(b.webtoonId || '')), name = String(b.name || '');
+    if ((w.chars || []).indexOf(name) < 0) fail_('없는 캐릭터예요.');
+    var hit = null;
+    readAll_('charVotes').forEach(function (r) { if (r.obj.webtoonId === w.id && r.obj.userId === me.userId) hit = r; });
+    if (hit) { hit.obj.name = name; hit.obj.at = now_(); updateRow_('charVotes', hit.row, hit.obj); }
+    else appendRow_('charVotes', { webtoonId: w.id, userId: me.userId, name: name, at: now_() });
+    cacheDel_('social:' + w.id);
+    return { social: social_(w.id, me.userId) };
+  },
+
+  // ---------- 시즌 이벤트 ----------
+  /** 진행 중인 시즌의 미션 현황. claim 을 주면 보상 받기 (미션 번호 또는 'final') */
+  event: function (b) {
+    var site = siteData_(), now = seasonNow_(site);
+    if (!now) return { event: null };
+    var u = auth_(b.token), me = u.obj, s = now.season, ms = s.missions || [];
+    var have = eventProgress_(me, now, site);
+    var claims = (me.claims && typeof me.claims === 'object' && !Array.isArray(me.claims)) ? me.claims : {};
+    var mine = claims[now.key] || {}, gain = 0, got = '';
+    if (b.claim != null) {
+      if (me.status === 'banned') fail_('이용이 정지된 계정이에요.');
+      if (b.claim === 'final') {
+        if (mine.final) fail_('이미 받았어요.');
+        if (!ms.length || ms.some(function (m, i) { return have[i] < Number(m.n); })) fail_('미션을 모두 끝내면 받을 수 있어요.');
+        var item = null;
+        (site.shop || []).forEach(function (it) { if (it.id === s.reward) item = it; });
+        if (!item) fail_('보상 아이템이 없어요.');
+        me.owned[item.id] = true; mine.final = 1; got = item.id;
+      } else {
+        var i = Math.floor(Number(b.claim));
+        if (!ms[i]) fail_('없는 미션이에요.');
+        if (mine['m' + i]) fail_('이미 받았어요.');
+        if (have[i] < Number(ms[i].n)) fail_('아직 미션을 끝내지 못했어요.');
+        gain = Math.max(0, Math.min(1000, Math.round(Number(ms[i].reward) || 0)));
+        mine['m' + i] = 1; me.coins = Number(me.coins) + gain;
+        log_(me.userId, gain, 'event', now.key + ':' + i, 0);
+      }
+      claims[now.key] = mine;
+      var keys = Object.keys(claims).sort(); while (keys.length > 12) delete claims[keys.shift()];
+      me.claims = claims;
+      updateRow_('users', u.row, me);
+    }
+    return {
+      event: { key: now.key, id: s.id, name: s.name, from: now.from, to: now.to, reward: s.reward || '',
+        missions: ms.map(function (m, i) { return { type: m.type, n: Number(m.n), reward: Number(m.reward) || 0, genre: m.genre || '', have: Math.min(have[i], Number(m.n)), claimed: !!mine['m' + i] }; }), finalClaimed: !!mine.final },
+      me: b.claim != null ? publicMe_(me) : undefined, gain: gain, got: got
+    };
   },
 
   searchUsers: function (b) {
@@ -584,10 +703,11 @@ var ACTIONS = {
     var item = findItem_(siteData_(), b.itemId);
     var me = u.obj;
     if (me.owned[item.id] || Number(item.price) === 0) fail_('이미 가지고 있는 아이템이에요.');
+    if (!onSale_(siteData_(), item)) fail_('지금은 팔지 않는 시즌 한정 아이템이에요.');
     if (Number(me.coins) < Number(item.price)) fail_('코인이 부족해요.');
     me.coins = Number(me.coins) - Number(item.price);
     me.owned[item.id] = true;
-    if (item.kind === 'color') me.equip.color = item.id; else me.equip.acc = item.id;
+    me.equip[slotOf_(item)] = item.id;
     log_(me.userId, -Number(item.price), 'buy', item.id, 0);
     updateRow_('users', u.row, me);
     return { me: publicMe_(me) };
@@ -611,10 +731,10 @@ var ACTIONS = {
   equip: function (b) {
     var u = auth_(b.token);
     var me = u.obj;
-    if (b.slot === 'color' && !b.itemId) { me.equip.color = null; updateRow_('users', u.row, me); return { me: publicMe_(me) }; }
+    if ({ color: 1, bg: 1, tree: 1 }[b.slot] && !b.itemId) { me.equip[b.slot] = null; updateRow_('users', u.row, me); return { me: publicMe_(me) }; }
     var item = findItem_(siteData_(), b.itemId);
     if (!me.owned[item.id] && Number(item.price) !== 0) fail_('먼저 아이템을 사 주세요.');
-    if (item.kind === 'color') me.equip.color = item.id; else me.equip.acc = item.id;
+    me.equip[slotOf_(item)] = item.id;
     updateRow_('users', u.row, me);
     return { me: publicMe_(me) };
   },
@@ -1462,6 +1582,76 @@ function livePresence_(me, here) {
   if (me) cachePut_('live:who', map, 120);
   return Object.keys(map).map(function (k) { var x = map[k]; return { userId: k, name: x.name, owner: x.owner, tab: x.tab, w: x.w, g: x.g }; });
 }
+// ---------- 출석 · 시즌 · 투표 도우미 ----------
+function attendObj_(v) {
+  var a = v && typeof v === 'object' && !Array.isArray(v) ? v : {};
+  return { last: String(a.last || ''), streak: Number(a.streak || 0), best: Number(a.best || 0), days: Array.isArray(a.days) ? a.days : [] };
+}
+/** 지금 이어지고 있는 연속 출석 일수 (어제나 오늘 출석했을 때만) */
+function attendStreak_(v) { var a = attendObj_(v), t = today_(); return a.last === t || a.last === addDays_(t, -1) ? a.streak : 0; }
+function attendRewards_(site) {
+  var r = site.settings && site.settings.attend;
+  r = Array.isArray(r) ? r.map(function (x) { return Math.max(0, Math.min(500, Math.round(Number(x) || 0))); }) : [];
+  return r.length ? r : [2, 2, 3, 3, 4, 4, 20];
+}
+function dayNum_(d) { return Math.round(Date.UTC(Number(d.slice(0, 4)), Number(d.slice(5, 7)) - 1, Number(d.slice(8, 10))) / 86400000); }
+function dayStr_(n) { return new Date(n * 86400000).toISOString().slice(0, 10); }
+function addDays_(d, n) { return dayStr_(dayNum_(d) + n); }
+function slotOf_(item) { return { color: 'color', bg: 'bg', tree: 'tree' }[item.kind] || 'acc'; }
+// 음력 명절 날짜 (js/theme.js 의 LUNAR 와 같아요)
+var LUNAR_ = {
+  seollal: { 2026: '02-17', 2027: '02-07', 2028: '01-27', 2029: '02-13', 2030: '02-03', 2031: '01-23', 2032: '02-11', 2033: '01-31', 2034: '02-19', 2035: '02-08' },
+  chuseok: { 2026: '09-25', 2027: '09-15', 2028: '10-03', 2029: '09-22', 2030: '09-12', 2031: '10-01', 2032: '09-19', 2033: '09-08', 2034: '09-27', 2035: '09-16' }
+};
+function seasonSpan_(s, d) {
+  var y = Number(d.slice(0, 4)), n = dayNum_(d);
+  var before = s.before == null ? 10 : Number(s.before), after = s.after == null ? 3 : Number(s.after);
+  for (var k = -1; k <= 1; k++) {
+    var year = y + k, md = s.lunar ? (LUNAR_[s.lunar] || {})[year] : s.date;
+    if (!md || !/^\d{2}-\d{2}$/.test(md)) continue;
+    var c = dayNum_(year + '-' + md);
+    if (n >= c - before && n <= c + after) return { from: dayStr_(c - before), to: dayStr_(c + after), day: year + '-' + md, key: s.id + ':' + year };
+  }
+  return null;
+}
+function seasonNow_(site) {
+  var d = today_(), best = null;
+  (site.seasons || []).forEach(function (s) {
+    if (s.on === false) return;
+    var sp = seasonSpan_(s, d); if (!sp) return;
+    var dist = Math.abs(dayNum_(sp.day) - dayNum_(d));
+    if (!best || dist < best.dist) { sp.season = s; sp.dist = dist; best = sp; }
+  });
+  return best;
+}
+function onSale_(site, item) {
+  if (!item.season) return true;
+  var ok = false;
+  (site.seasons || []).forEach(function (s) { if (s.id === item.season && s.on !== false && seasonSpan_(s, today_())) ok = true; });
+  return ok;
+}
+/** 시즌 기간 동안의 미션 진행 (미션 순서대로 숫자) */
+function eventProgress_(me, now, site) {
+  var ms = now.season.missions || [], inSpan = function (t) { var d = String(t || '').slice(0, 10); return d >= now.from && d <= now.to; };
+  var genreOf = {};
+  site.webtoons.forEach(function (w) { genreOf[w.id] = w.genres || []; });
+  var logs = null, recs = null;
+  return ms.map(function (m) {
+    if (m.type === 'attend') return attendObj_(me.attend).days.filter(inSpan).length;
+    if (m.type === 'rec') { recs = recs || readAll_('recs').filter(function (r) { return r.obj.userId === me.userId; }); return recs.filter(function (r) { return inSpan(r.obj.at); }).length; }
+    logs = logs || readAll_('coinLog').filter(function (r) { return r.obj.userId === me.userId && inSpan(r.obj.createdAt); });
+    if (m.type === 'done') return logs.filter(function (r) { return r.obj.reason === 'done'; }).length;
+    var n = 0;
+    logs.forEach(function (r) { if (r.obj.reason === 'ep' && (!m.genre || (genreOf[r.obj.ref] || []).indexOf(m.genre) >= 0)) n += Number(r.obj.eps) || 0; });
+    return n;
+  });
+}
+function charTally_(cv) {
+  var o = {};
+  cv.forEach(function (c) { o[c.name] = (o[c.name] || 0) + 1; });
+  return Object.keys(o).map(function (k) { return { name: k, n: o[k] }; }).sort(function (a, b) { return b.n - a.n; });
+}
+
 var LOG_MAX = 1500;   // 내 기록은 최근 1500개까지 (시트 칸 하나에 다 들어가게)
 function seenObj_(v) { return v && typeof v === 'object' && !Array.isArray(v) ? v : {}; }
 function logArr_(v) { return Array.isArray(v) ? v : []; }
@@ -1482,7 +1672,9 @@ function publicMe_(u, full) {
   return {
     userId: u.userId, nickname: u.nickname, coins: Number(u.coins), progress: u.progress, rewarded: u.rewarded,
     daily: u.daily, owned: u.owned, equip: u.equip, unlocked: u.unlocked, favs: u.favs || {}, ratings: ratings, pid: pubId_(u.userId), privacy: u.privacy || 'all', role: u.role === 'admin' ? 'admin' : '',
-    seen: seenObj_(u.seen), log: full ? logArr_(u.log) : undefined
+    seen: seenObj_(u.seen), log: full ? logArr_(u.log) : undefined,
+    attend: (function () { var a = attendObj_(u.attend); return { last: a.last, streak: attendStreak_(a), best: Number(a.best || 0), days: a.days.slice(-120) }; })(),
+    bio: String(u.bio || ''), best: Array.isArray(u.best) ? u.best.slice(0, 3) : []
   };
 }
 function social_(wid, uid) {
@@ -1496,13 +1688,15 @@ function social_(wid, uid) {
       .reverse().slice(0, 50);
     var recs = readAll_('recs').filter(function (r) { return r.obj.webtoonId === wid; }).map(function (r) { return { userId: r.obj.userId, nickname: nicks[r.obj.userId] || '알 수 없음', pid: pubId_(r.obj.userId), text: r.obj.text, at: r.obj.at }; })
       .sort(function (a, b2) { return String(b2.at).localeCompare(String(a.at)); }).slice(0, 20);
-    base = { avg: n ? Math.round(sum / n * 10) / 10 : 0, count: n, comments: comments, recs: recs };
+    var cv = readAll_('charVotes').filter(function (r) { return r.obj.webtoonId === wid; }).map(function (r) { return { userId: r.obj.userId, name: String(r.obj.name) }; });
+    base = { avg: n ? Math.round(sum / n * 10) / 10 : 0, count: n, comments: comments, recs: recs, cv: cv };
     cachePut_('social:' + wid, base, 120);
   }
   return {
     avg: base.avg, count: base.count,
     comments: base.comments.map(function (c) { return { commentId: c.commentId, nickname: c.nickname, pid: c.userId ? pubId_(c.userId) : '', text: c.text, createdAt: c.createdAt, mine: !!uid && c.userId === uid }; }),
-    recs: (base.recs || []).map(function (r) { return { nickname: r.nickname, pid: r.pid, text: r.text, at: r.at, mine: !!uid && r.userId === uid }; })
+    recs: (base.recs || []).map(function (r) { return { nickname: r.nickname, pid: r.pid, text: r.text, at: r.at, mine: !!uid && r.userId === uid }; }),
+    chars: charTally_(base.cv || []), myChar: (function () { var m = ''; (base.cv || []).forEach(function (c) { if (uid && c.userId === uid) m = c.name; }); return m; })()
   };
 }
 function log_(userId, amount, reason, ref, eps) {

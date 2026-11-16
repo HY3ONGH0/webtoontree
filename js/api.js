@@ -52,6 +52,8 @@
     if (me.favs) S.favs = me.favs;
     S.pid = me.pid || ''; S.privacy = me.privacy || 'all';   // 관심 웹툰 (예전 서버 코드면 이 기기 기록을 그대로 둬요)
     S.role = me.role || '';
+    if (me.attend) S.attend = me.attend;
+    if (me.bio != null) { S.bio = me.bio; S.best = me.best || []; }
     // 새 화 확인 표시 · 내 기록: 서버와 이 기기 것을 합쳐요 (예전 서버 코드면 이 기기 기록을 그대로 둬요)
     let push = false, pushLog = false;
     if (me.seen && typeof me.seen === 'object') {
@@ -71,6 +73,7 @@
       if (extra.some((e) => kept.has(e))) { push = true; pushLog = true; }
     }
     WT.store.save();
+    if (WT.skin && WT.data) WT.skin.apply();
     if (push) syncSoon(pushLog);
   }
 

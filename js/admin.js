@@ -4,7 +4,7 @@
    - 이 화면은 서버에 아무것도 바꾸지 않아요. 실제 수정 권한은 GitHub 저장소가 가져요. */
 (function () {
   const DRAFT = 'webtoontree.admin.draft';
-  const NEED_SERVER = 20;   // 이 화면이 필요로 하는 서버 코드 판 번호 (apps-script/Code.gs 의 SERVER_VERSION)
+  const NEED_SERVER = 21;   // 이 화면이 필요로 하는 서버 코드 판 번호 (apps-script/Code.gs 의 SERVER_VERSION)
   const root = () => document.getElementById('admin');
   const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -84,6 +84,7 @@
   const gColor = (w) => ((w && w.genres && genre(w.genres[0])) || {}).color || '#5BB8FF';
   function ensure() {
     D.meta = D.meta || {};
+    D.shop = D.shop || []; D.seasons = D.seasons || [];
     // 웹툰 번호: w001 처럼 w 뒤 숫자(6자리까지)만 봐요. 전에는 ID 안의 숫자를 모두 이어 붙여서 번호가 터무니없이 커졌어요
     const max = D.webtoons.reduce((m, w) => { const x = /^w(\d{1,4})(?![0-9])/.exec(String(w.id)); return x ? Math.max(m, Number(x[1])) : m; }, 0);
     const last = Number(D.meta.lastWebtoonId);
@@ -458,9 +459,13 @@
       ${WT.schedule.status(w) === 'ongoing' ? `<label class="ad-check"><input type="checkbox" data-wf="autoCount" ${w.autoCount ? 'checked' : ''}> 연재 요일마다 총 화수 자동으로 +1</label>
       <span class="hint">${w.autoCount ? ((w.days || []).length ? `${esc(w.baseDate || '')}에 ${w.episodes}화로 적었고, 그 뒤 연재 요일마다 1화씩 늘어나요. 휴재 등으로 어긋나면 총 화수를 다시 적어 주세요.` : '올라오는 요일을 골라 주세요.') : '끄면 총 화수를 직접 고쳐야 해요.'}</span>` : `<span class="hint">${WT.schedule.status(w) === 'hiatus' ? '휴재 중에는 화수가 늘어나지 않아요. 다시 연재되면 "연재 중"으로 바꿔 주세요.' : '완결된 웹툰은 화수가 늘어나지 않아요.'}</span>`}
       <div class="field"><label for="f-tags">태그 (쉼표로 구분)</label><input id="f-tags" class="fld" data-wf="tags" value="${esc((w.tags || []).join(', '))}" placeholder="예: 회귀, 성장"></div>
+
       <div class="field"><label for="f-desc">설명</label><textarea id="f-desc" class="fld" data-wf="desc" maxlength="300">${esc(w.desc)}</textarea></div>
       ${w.source ? '<span class="hint">여기서 고쳐도 다음 자동 갱신 때 공식 정보로 다시 바뀌어요.</span>' : ''}
       </details>
+      <div class="field"><label for="f-chars">주요 캐릭터 (쉼표로 구분 · 회원들이 이 중에서 최애를 골라요)</label><input id="f-chars" class="fld" data-wf="chars" value="${esc((w.chars || []).join(', '))}" placeholder="예: 청명, 백천, 유이설">
+        <div class="ad-actions" style="margin-top:6px"><button type="button" class="btn btn-sm press" data-a="chars-find">위키백과에서 자동으로 찾기</button><button type="button" class="btn btn-sm press" data-a="chars-all">캐릭터가 빈 웹툰 모두 찾기</button></div>
+        <span class="hint">한국어 위키백과에 '등장인물' 항목이 있는 작품만 찾아져요. 찾은 이름은 꼭 확인하고, 없으면 직접 적어 주세요.</span></div>
       <div class="ad-actions">
         ${treesOf(w.id).length ? '' : (w.genres.length ? `<button type="button" class="btn btn-sm press" data-a="w-to-tree" data-id="${w.id}">${esc((genre(w.genres[0]) || {}).name)} 트리에 넣기</button>` : '')}
         <button type="button" class="btn btn-sm btn-danger press" data-a="del-w" data-id="${w.id}">${confirming ? '한 번 더 누르면 삭제돼요 (트리·지도에서도 빠져요)' : '웹툰 삭제'}</button>
@@ -1207,29 +1212,115 @@
   }
 
   // ---------- 상점 ----------
+  const KINDS = { acc: '장식', color: '몸 색', bg: '배경', tree: '트리 디자인' };
+  const kindOf = (it) => it.kind || 'acc';
+  const opts = (map, cur) => Object.keys(map).map((k) => `<option value="${k}" ${cur === k ? 'selected' : ''}>${esc(typeof map[k] === 'string' ? map[k] : map[k].name)}</option>`).join('');
+  function shopPreview(it) {
+    if (!window.WT || !WT.skin) return '';
+    if (kindOf(it) === 'bg') return `<span class="bg-box ad-pv">${WT.skin.thumb(it, 5)}${WT.charSVG({}, 34)}</span>`;
+    if (kindOf(it) === 'tree') return `<span class="ad-pv ad-pv-t">${WT.skin.treeThumb(it, 110, 62)}</span>`;
+    return WT.charSVG({ acc: it.acc, body: it.body, feet: it.feet }, 44);
+  }
+  function shopControls(it, i) {
+    const col = (k, label) => `<input class="swatch" type="color" data-shop="${i}" data-k="${k}" value="${esc(it[k] || '#888888')}" aria-label="${label}" title="${label}">`;
+    const sel = (k, map, label) => `<select class="fld" data-shop="${i}" data-k="${k}" aria-label="${label}" title="${label}">${opts(map, it[k] || Object.keys(map)[0])}</select>`;
+    if (kindOf(it) === 'color') return `${col('body', '몸 색')} ${col('feet', '발 색')}`;
+    if (kindOf(it) === 'bg') return `<div class="ad-ctl">${col('c1', '위쪽 색')} ${col('c2', '아래쪽 색')} ${sel('scene', WT.skin.SCENES, '그림')} ${sel('pattern', WT.skin.PATTERNS, '날리는 무늬')} ${sel('motion', Object.assign({ '': '움직임 자동' }, WT.skin.MOTIONS), '움직임')}</div>
+      <input class="fld" data-shop="${i}" data-k="img" value="${esc(it.img || '')}" placeholder="직접 그린 그림 주소 (선택 · 넣으면 그림 대신 보여요)" aria-label="직접 그린 그림 주소" style="margin-top:6px; width:100%">`;
+    if (kindOf(it) === 'tree') return `<div class="ad-ctl">${col('ring', '칸 테두리 색')} ${col('line', '선 색')} ${sel('shape', WT.skin.SHAPES, '칸 모양')} ${sel('lineStyle', WT.skin.LINES, '선 모양')}</div>`;
+    return `<div class="ad-ctl"><select class="fld" data-shop="${i}" data-k="acc" aria-label="장식 모양" ${it.id === 'basic' ? 'disabled' : ''}>${opts(WT.ACC_NAMES || ACCS, it.acc)}</select> ${col('body', '몸 색')} ${col('feet', '발 색')}</div>`;
+  }
   function tabShop() {
+    const kind = ui.shopKind || 'all';
+    const seasons = D.seasons || [];
+    const rows = D.shop.map((it, i) => ({ it, i })).filter((x) => kind === 'all' || kindOf(x.it) === kind);
+    const itemOpts = (cur, kinds, none) => `<option value="">${none}</option>` + D.shop.filter((x) => kinds.includes(kindOf(x))).map((x) => `<option value="${esc(x.id)}" ${cur === x.id ? 'selected' : ''}>${esc(KINDS[kindOf(x)])} · ${esc(x.name)}</option>`).join('');
+    const today = WT.skin.kstToday();
     return `<h2>상점 아이템</h2>
-      <p class="ad-help">가격과 이름을 바꾸거나 아이템을 추가해요. 장식 모양은 지금 있는 그림 중에서 고를 수 있어요. 직접 그린 캐릭터로 바꾸면 장식도 새로 넣을 수 있어요.</p>
-      <div class="table-box"><table class="ad-table">
-        <thead><tr><th>미리보기</th><th>이름</th><th>종류</th><th>모양 · 색</th><th>가격</th><th>NEW</th><th>설명</th><th></th></tr></thead>
-        <tbody>${D.shop.map((it, i) => `<tr>
-          <td>${window.WT && WT.charSVG ? WT.charSVG({ acc: it.acc, body: it.body, feet: it.feet }, 44) : ''}</td>
-          <td><label class="sr" for="si-n-${i}">이름</label><input id="si-n-${i}" class="fld" data-shop="${i}" data-k="name" value="${esc(it.name)}" style="min-width:120px"></td>
-          <td>${it.kind === 'color' ? '몸 색' : '장식'}</td>
-          <td>${it.kind === 'color'
-            ? `<input class="swatch" type="color" data-shop="${i}" data-k="body" value="${esc(it.body)}" aria-label="몸 색"> <input class="swatch" type="color" data-shop="${i}" data-k="feet" value="${esc(it.feet)}" aria-label="발 색">`
-            : `<label class="sr" for="si-a-${i}">장식</label><select id="si-a-${i}" class="fld" data-shop="${i}" data-k="acc" ${it.id === 'basic' ? 'disabled' : ''}>${Object.keys(ACCS).map((k) => `<option value="${k}" ${it.acc === k ? 'selected' : ''}>${ACCS[k]}</option>`).join('')}</select>`}</td>
-          <td><label class="sr" for="si-p-${i}">가격</label><input id="si-p-${i}" class="fld" type="number" min="0" data-shop="${i}" data-k="price" value="${it.price}" style="width:90px" ${it.id === 'basic' ? 'disabled' : ''}></td>
+      <p class="ad-help">캐릭터 장식 · 몸 색 · 배경 · 트리 디자인을 만들고 고쳐요. 색과 모양을 바꾸면 왼쪽 미리보기에 바로 보여요. <b>시즌</b>을 고른 아이템은 그 시즌 기간에만 팔아요 (이미 산 사람은 계속 써요).</p>
+      <div class="ad-actions" role="tablist" aria-label="종류">${[['all', '전체']].concat(Object.entries(KINDS)).map(([k, n]) => `<button type="button" class="btn btn-sm press ${kind === k ? 'btn-gold' : ''}" data-a="shop-kind" data-id="${k}">${n} ${k === 'all' ? D.shop.length : D.shop.filter((x) => kindOf(x) === k).length}</button>`).join('')}</div>
+      <div class="table-box"><table class="ad-table ad-shop">
+        <thead><tr><th>미리보기</th><th>이름 · 설명</th><th>종류</th><th>모양 · 색</th><th>가격</th><th>시즌 한정</th><th>NEW</th><th></th></tr></thead>
+        <tbody>${rows.map(({ it, i }) => `<tr>
+          <td>${shopPreview(it)}</td>
+          <td><label class="sr" for="si-n-${i}">이름</label><input id="si-n-${i}" class="fld" data-shop="${i}" data-k="name" value="${esc(it.name)}" style="min-width:130px">
+            <label class="sr" for="si-d-${i}">설명</label><input id="si-d-${i}" class="fld" data-shop="${i}" data-k="desc" value="${esc(it.desc || '')}" placeholder="설명" style="min-width:130px; margin-top:6px"></td>
+          <td>${KINDS[kindOf(it)]}</td>
+          <td>${shopControls(it, i)}</td>
+          <td><label class="sr" for="si-p-${i}">가격</label><input id="si-p-${i}" class="fld" type="number" min="0" data-shop="${i}" data-k="price" value="${it.price}" style="width:84px" ${it.id === 'basic' ? 'disabled' : ''}></td>
+          <td><select class="fld" data-shop="${i}" data-k="season" aria-label="시즌 한정" ${it.id === 'basic' ? 'disabled' : ''}><option value="">항상 판매</option>${seasons.map((s) => `<option value="${esc(s.id)}" ${it.season === s.id ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}</select></td>
           <td><input type="checkbox" data-shop="${i}" data-k="isNew" ${it.isNew ? 'checked' : ''} aria-label="NEW 표시"></td>
-          <td><label class="sr" for="si-d-${i}">설명</label><input id="si-d-${i}" class="fld" data-shop="${i}" data-k="desc" value="${esc(it.desc)}" style="min-width:160px"></td>
           <td>${it.id === 'basic' ? '' : `<button type="button" class="btn btn-sm btn-danger press" data-a="del-item" data-i="${i}">${ui.confirm === 'si:' + i ? '정말 삭제' : '삭제'}</button>`}</td>
         </tr>`).join('')}</tbody>
       </table></div>
-      <div class="ad-actions">
-        <button type="button" class="btn btn-gold btn-sm press" data-a="add-item" data-id="acc">+ 장식 아이템</button>
-        <button type="button" class="btn btn-gold btn-sm press" data-a="add-item" data-id="color">+ 몸 색 아이템</button>
-      </div>
-      <p class="ad-help">이미 산 사람이 있는 아이템을 지우면 그 사람의 착용이 기본으로 돌아가요.</p>`;
+      <div class="ad-actions">${Object.entries(KINDS).map(([k, n]) => `<button type="button" class="btn btn-gold btn-sm press" data-a="add-item" data-id="${k}">+ ${n}</button>`).join('')}</div>
+      <p class="ad-help">이미 산 사람이 있는 아이템을 지우면 그 사람의 착용이 기본으로 돌아가요. 배경은 사이트 전체에, 트리 디자인은 트리 화면에 입혀져요.</p>
+
+      <h2 style="margin-top:28px">시즌 · 이벤트</h2>
+      <p class="ad-help">시즌 기간(당일 앞뒤 며칠)이 되면 <b>사이트 배경이 자동으로 바뀌고</b> 회원에게 알림이 떠요. 그 기간에만 시즌 한정 아이템을 팔고, 미션 이벤트가 열려요. 설날 · 추석은 음력이라 해마다 날짜를 자동으로 맞춰요 (2035년까지).</p>
+      ${seasons.map((s, i) => { const nx = WT.skin.seasonNext(s, today), on = s.on !== false && WT.skin.seasonSpan(s, today); return `<section class="ad-season${on ? ' on' : ''}">
+        <div class="ad-season-h">
+          <label class="ad-check"><input type="checkbox" data-season="${i}" data-k="on" ${s.on === false ? '' : 'checked'}> 사용</label>
+          <input class="fld" data-season="${i}" data-k="name" value="${esc(s.name)}" aria-label="시즌 이름" style="width:130px">
+          ${s.lunar ? `<span class="hint">음력 ${s.lunar === 'seollal' ? '1월 1일' : '8월 15일'} (자동)</span>` : `<label class="hint">당일 <input class="fld" data-season="${i}" data-k="date" value="${esc(s.date || '')}" placeholder="12-25" style="width:78px" aria-label="당일 (월-일)"></label>`}
+          <label class="hint">앞 <input class="fld" type="number" min="0" max="60" data-season="${i}" data-k="before" value="${s.before == null ? 10 : s.before}" style="width:64px" aria-label="당일 앞 며칠">일</label>
+          <label class="hint">뒤 <input class="fld" type="number" min="0" max="60" data-season="${i}" data-k="after" value="${s.after == null ? 3 : s.after}" style="width:64px" aria-label="당일 뒤 며칠">일</label>
+          <span class="hint">${on ? '<b style="color:#E0565B">지금 진행 중</b> · ' : ''}${nx ? `${on ? '' : '다음 '}${nx.from.slice(5).replace('-', '.')} ~ ${nx.to.slice(5).replace('-', '.')}` : '날짜를 월-일(예: 12-25)로 적어 주세요'}</span>
+          <button type="button" class="btn btn-sm btn-danger press" data-a="del-season" data-i="${i}" style="margin-left:auto">${ui.confirm === 'ss:' + i ? '정말 삭제' : '삭제'}</button>
+        </div>
+        <div class="ad-season-h">
+          <label class="hint">자동 배경 <select class="fld" data-season="${i}" data-k="bg">${itemOpts(s.bg, ['bg'], '바꾸지 않음')}</select></label>
+          <label class="hint">미션 모두 완료 보상 <select class="fld" data-season="${i}" data-k="reward">${itemOpts(s.reward, ['bg', 'tree', 'acc', 'color'], '없음')}</select></label>
+        </div>
+        <div class="ad-ms">${(s.missions || []).map((m, j) => `<div><select class="fld" data-ms="${i}:${j}" data-k="type" aria-label="미션 종류">${opts({ eps: '웹툰 N화 보기', attend: 'N일 출석', done: 'N편 완독', rec: '추천 N개 남기기' }, m.type)}</select>
+          ${m.type === 'eps' ? `<select class="fld" data-ms="${i}:${j}" data-k="genre" aria-label="장르"><option value="">모든 장르</option>${D.genres.map((g) => `<option value="${esc(g.id)}" ${m.genre === g.id ? 'selected' : ''}>${esc(g.name)}</option>`).join('')}</select>` : ''}
+          <label class="hint">N <input class="fld" type="number" min="1" data-ms="${i}:${j}" data-k="n" value="${m.n}" style="width:70px"></label>
+          <label class="hint">보상 코인 <input class="fld" type="number" min="0" data-ms="${i}:${j}" data-k="reward" value="${m.reward}" style="width:76px"></label>
+          <button type="button" class="btn btn-sm press" data-a="del-ms" data-id="${i}:${j}">빼기</button></div>`).join('')}
+          <button type="button" class="btn btn-sm press" data-a="add-ms" data-i="${i}">+ 미션</button></div>
+      </section>`; }).join('')}
+      <div class="ad-actions"><button type="button" class="btn btn-gold btn-sm press" data-a="add-season">+ 시즌</button></div>
+
+      <h2 style="margin-top:28px">출석 체크 보상</h2>
+      <p class="ad-help">연속 출석 1일째부터 받는 코인을 쉼표로 적어요. 마지막 칸까지 받으면 처음으로 돌아가요.</p>
+      <div class="field" style="max-width:420px"><label for="att-r">하루씩 받는 코인</label><input id="att-r" class="fld" data-attend value="${esc((D.settings.attend || [2, 2, 3, 3, 4, 4, 20]).join(', '))}" placeholder="2, 2, 3, 3, 4, 4, 20"></div>`;
+  }
+
+  // ---------- 주요 캐릭터 자동으로 찾기 (한국어 위키백과의 '등장인물' 항목) ----------
+  function parseChars(text) {
+    const clean = (s) => String(s || '')
+      .replace(/<ref[^>]*>[\s\S]*?<\/ref>|<ref[^>]*\/>|<!--[\s\S]*?-->|<[^>]+>/g, '')
+      .replace(/\{\{[^{}]*\}\}/g, '').replace(/\[\[(?:[^\]|]*\|)?([^\]]*)\]\]/g, '$1').replace(/'{2,}/g, '')
+      .replace(/\([^)]*\)|（[^）]*）/g, '').split(/\s[-–—:]\s|[:：]/)[0].replace(/\s+/g, ' ').trim();
+    const GROUP = /인물|주인공|조연|기타|등장|세력|가족|학교|길드|문파|단체|조직|일행|팀|소속|그 외|주변|악역|동료|목록|설정|줄거리/;
+    const names = [];
+    const add = (raw) => { const n = clean(raw); if (n && n.length <= 12 && !/^[\d\s.,·]+$/.test(n) && !GROUP.test(n) && !names.includes(n)) names.push(n); };
+    String(text || '').split('\n').forEach((line) => {
+      let m;
+      if ((m = /^;\s*(.+)$/.exec(line))) add(m[1]);
+      else if ((m = /^[*#]+\s*'''(.+?)'''/.exec(line))) add(m[1]);
+      else if ((m = /^={3,}\s*(.+?)\s*={3,}\s*$/.exec(line))) add(m[1]);
+    });
+    return names.slice(0, 8);
+  }
+  async function wikiChars(title) {
+    const api = 'https://ko.wikipedia.org/w/api.php?origin=*&format=json&';
+    const get = async (q) => { const r = await fetch(api + q); if (!r.ok) throw new Error('위키백과에 닿지 못했어요.'); return r.json(); };
+    const norm = (s) => String(s).replace(/[\s:：·\-~!?,.()]/g, '').toLowerCase();
+    const tryPage = async (page) => {
+      const j = await get('action=parse&redirects=1&prop=sections&page=' + encodeURIComponent(page));
+      if (j.error || !j.parse) return null;
+      const sec = (j.parse.sections || []).find((s) => /등장\s*인물|주요\s*인물|캐릭터/.test(String(s.line).replace(/<[^>]+>/g, '')));
+      if (!sec) return [];
+      const t = await get('action=parse&redirects=1&prop=wikitext&section=' + sec.index + '&page=' + encodeURIComponent(page));
+      return parseChars(((t.parse || {}).wikitext || {})['*'] || '');
+    };
+    let list = await tryPage(title);
+    if (list && list.length) return list;
+    const s = await get('action=query&list=search&srlimit=5&srsearch=' + encodeURIComponent(title + ' 웹툰'));
+    const hits = (((s.query || {}).search) || []).map((x) => x.title).filter((t) => norm(t).includes(norm(title)) && t !== title);
+    for (const t of hits) { list = await tryPage(t); if (list && list.length) return list; }
+    return [];
   }
 
 
@@ -1507,9 +1598,40 @@
       }
       case 'add-item': {
         const n = D.shop.length + 1;
-        const base = { id: 'item' + Date.now().toString(36), kind: id, name: id === 'color' ? '새 몸 색' : '새 장식', desc: '', price: 100, body: '#CDEBFF', feet: '#7FB8F0', acc: id === 'color' ? 'none' : 'crown', isNew: true };
+        let base = { id: 'item' + Date.now().toString(36), kind: id, name: id === 'color' ? '새 몸 색' : '새 장식', desc: '', price: 100, body: '#CDEBFF', feet: '#7FB8F0', acc: id === 'color' ? 'none' : 'crown', isNew: true };
         if (id === 'color') { base.body = '#FFE29A'; base.feet = '#E8B730'; }
-        D.shop.push(base); saveDraft(); toast(`아이템 ${n}번째를 추가했어요`); render(); break;
+        if (id === 'bg') base = { id: base.id, kind: 'bg', name: '새 배경', desc: '', price: 100, c1: '#0E1530', c2: '#3A2C6B', scene: 'night', pattern: 'star', isNew: true };
+        if (id === 'tree') base = { id: base.id, kind: 'tree', name: '새 트리 디자인', desc: '', price: 100, ring: '#E0565B', line: '#B8BECC', shape: 'circle', lineStyle: 'solid', isNew: true };
+        D.shop.push(base); ui.shopKind = id; saveDraft(); toast(`아이템 ${n}번째를 추가했어요`); render(); break;
+      }
+      case 'shop-kind': ui.shopKind = id; render(); break;
+      case 'add-season': D.seasons = D.seasons || []; D.seasons.push({ id: 'season' + Date.now().toString(36), name: '새 시즌', date: '05-05', before: 10, after: 3, bg: '', reward: '', missions: [] }); saveDraft(); render(); break;
+      case 'del-season': if (confirmOnce('ss:' + i)) { const sid = D.seasons[i].id; D.seasons.splice(i, 1); D.shop.forEach((x) => { if (x.season === sid) delete x.season; }); saveDraft(); render(); } break;
+      case 'add-ms': (D.seasons[i].missions = D.seasons[i].missions || []).push({ type: 'eps', n: 10, reward: 10 }); saveDraft(); render(); break;
+      case 'del-ms': { const [a, b] = String(id).split(':').map(Number); D.seasons[a].missions.splice(b, 1); saveDraft(); render(); break; }
+      case 'chars-find': {
+        const w = toon(ui.w); if (!w) break;
+        t.disabled = true; toast('위키백과에서 등장인물을 찾는 중…');
+        wikiChars(w.title).then((list) => {
+          if (!list.length) { toast('위키백과에서 등장인물을 찾지 못했어요. 직접 적어 주세요.'); t.disabled = false; return; }
+          w.chars = list; saveDraft(); toast(`주요 캐릭터 ${list.length}명을 찾았어요. 맞는지 확인해 주세요`); render();
+        }).catch((e) => { toast(e.message || '찾지 못했어요.'); t.disabled = false; });
+        break;
+      }
+      case 'chars-all': {
+        const todo = D.webtoons.filter((w) => !(w.chars || []).length);
+        if (!todo.length) { toast('모든 웹툰에 캐릭터가 들어 있어요'); break; }
+        t.disabled = true;
+        (async () => {
+          let found = 0, k = 0;
+          for (const w of todo) {
+            k++; t.textContent = `찾는 중… ${k} / ${todo.length}`;
+            try { const list = await wikiChars(w.title); if (list.length) { w.chars = list; found++; } } catch (e) { /* 이 웹툰은 건너뛰어요 */ }
+            await new Promise((r) => setTimeout(r, 250));
+          }
+          saveDraft(); toast(`${todo.length}편 중 ${found}편에서 캐릭터를 찾았어요`); render();
+        })();
+        break;
       }
       case 'del-item': if (confirmOnce('si:' + i)) { D.shop.splice(i, 1); saveDraft(); render(); } break;
       case 'revert': if (confirmOnce('revert')) {
@@ -1932,6 +2054,7 @@
       if (k === 'episodes') { w.episodes = Math.max(1, parseInt(el.value, 10) || 1); w.baseDate = WT.schedule.today(); }
       else if (k === 'status') { w.episodes = WT.schedule.episodes(w); w.baseDate = WT.schedule.today(); w.status = el.value; delete w.ongoing; }
       else if (k === 'tags') w.tags = el.value.split(',').map((x) => x.trim()).filter(Boolean);
+      else if (k === 'chars') { w.chars = [...new Set(el.value.split(',').map((x) => x.trim().slice(0, 12)).filter(Boolean))].slice(0, 12); if (!w.chars.length) delete w.chars; }
       else if (k === 'recommended') w.recommended = Math.max(0, Math.min(5, parseInt(el.value, 10) || 0));
       else { w[k] = el.value; if (k === 'cover') delete w.coverAuto; }
       saveDraft();
@@ -1945,6 +2068,20 @@
       const it = D.shop[Number(el.dataset.shop)];
       it[el.dataset.k] = el.dataset.k === 'price' ? Math.max(0, parseInt(el.value, 10) || 0) : el.value;
       saveDraft();
+    }
+    if (el.dataset.season !== undefined && el.type !== 'checkbox' && el.tagName !== 'SELECT') {
+      const s = D.seasons[Number(el.dataset.season)], k = el.dataset.k;
+      s[k] = k === 'before' || k === 'after' ? Math.max(0, Math.min(60, parseInt(el.value, 10) || 0)) : el.value.trim();
+      saveDraft();
+    }
+    if (el.dataset.ms !== undefined && el.tagName !== 'SELECT') {
+      const [a, b] = el.dataset.ms.split(':').map(Number);
+      D.seasons[a].missions[b][el.dataset.k] = Math.max(el.dataset.k === 'n' ? 1 : 0, parseInt(el.value, 10) || 0);
+      saveDraft();
+    }
+    if (el.dataset.attend !== undefined) {
+      const list = el.value.split(',').map((x) => parseInt(x, 10)).filter((x) => x >= 0 && x <= 500);
+      if (list.length) { D.settings.attend = list.slice(0, 31); saveDraft(); }
     }
   }
 
@@ -1985,9 +2122,26 @@
     if (el.dataset.aChange === 'g-start') { const T = D.trees[ui.g]; const v = el.value || null; T.starts = WT.starts(T).filter((x) => x !== v); T.start = v; saveDraft(); render(); return; }
     if (el.dataset.aChange === 't-genre') { ui.tg = el.value; ui.tsel = null; ui.from = null; ui.branchFor = null; render(); return; }
     if (el.dataset.sf && el.type === 'checkbox') { setPath(D.settings, el.dataset.sf, el.checked); saveDraft(); return; }
+    const redraw = el.tagName === 'SELECT' || el.type === 'checkbox' || el.type === 'color';   // 글자 칸은 다시 그리지 않아요 (바로 다음 누르기가 씹히지 않게)
     if (el.dataset.shop !== undefined) {
-      const it = D.shop[Number(el.dataset.shop)];
-      it[el.dataset.k] = el.type === 'checkbox' ? el.checked : el.value;
+      if (!redraw) return;
+      const it = D.shop[Number(el.dataset.shop)], k = el.dataset.k;
+      if (k === 'price') it.price = Math.max(0, parseInt(el.value, 10) || 0);
+      else if ((k === 'season' || k === 'motion') && !el.value) delete it[k];
+      else it[k] = el.type === 'checkbox' ? el.checked : el.value;
+      saveDraft(); render();
+    }
+    else if (el.dataset.season !== undefined) {
+      if (!redraw) return;
+      const s = D.seasons[Number(el.dataset.season)], k = el.dataset.k;
+      if (el.type === 'checkbox') { if (el.checked) delete s.on; else s.on = false; }
+      else if (el.tagName === 'SELECT') s[k] = el.value;
+      saveDraft(); render();
+    }
+    else if (el.dataset.ms !== undefined) {
+      if (!redraw) return;
+      const [a, b] = el.dataset.ms.split(':').map(Number), m = D.seasons[a].missions[b];
+      if (el.tagName === 'SELECT') { if (el.dataset.k === 'genre' && !el.value) delete m.genre; else m[el.dataset.k] = el.value; if (m.type !== 'eps') delete m.genre; }
       saveDraft(); render();
     }
   }
