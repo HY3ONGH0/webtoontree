@@ -1,4 +1,5 @@
-/* 요일별 연재: #/week — 등록해 둔 웹툰을 올라오는 요일별로 한 주 달력처럼 보여 줘요 */
+/* 요일별 연재: #/week — 등록해 둔 웹툰을 올라오는 요일별로 한 주 달력처럼 보여 줘요
+   화면 틀과 오른쪽 상세 창은 도서관(js/tree.js)의 것을 그대로 써요. 여기서는 요일 칸만 그려요 (WT.week.mount) */
 (function () {
   'use strict';
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -17,14 +18,14 @@
     const tot = WT.eps(w), e = Math.min(tot, (S.progress || {})[w.id] || 0);
     return { e, tot, state: e >= tot || (S.rewarded || {})[w.id + ':done'] ? 'done' : e > 0 ? 'reading' : 'none' };
   }
-  const libHref = (w) => `#/library/${(w.genres || [])[0] || 'all'}/${w.id}`;
+  const weekHref = (w) => `#/week/all/${w.id}`;
   // 요일 칸의 웹툰: 표지만 보여 줘요 (표지가 없을 때만 제목이 보여요)
   function card(w) {
     const st = WT.schedule.status(w), me = mine(w);
     const pct = me.tot ? Math.round((me.e / me.tot) * 100) : 0;
     const color = w.color || (WT.genre((w.genres || [])[0]) || {}).color || '#55607F';
     const label = `${w.title}, ${w.pick ? '관리자 강추, ' : ''}${st === 'hiatus' ? '휴재' : '연재 중'}, ${WT.eps(w)}화${me.state === 'reading' ? `, ${me.e}화까지 봤어요` : me.state === 'done' ? ', 다 따라왔어요' : ''}`;
-    return `<a class="wk-card${st === 'hiatus' ? ' rest' : ''}${w.pick ? ' pick' : ''}" href="${libHref(w)}" title="${esc(w.title)}" aria-label="${esc(label)}">
+    return `<a class="wk-card${st === 'hiatus' ? ' rest' : ''}${w.pick ? ' pick' : ''}" href="${weekHref(w)}" data-wk="${esc(w.id)}" title="${esc(w.title)}" aria-label="${esc(label)}">
         <span class="wk-cv" style="--c:${esc(color)}"><span class="wk-ini">${esc(w.title)}</span>
           ${w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}
           ${w.pick ? '<em class="wk-pick">관리자 강추</em>' : ''}
@@ -39,8 +40,10 @@
     return `<div class="wk-tile"><span class="wk-t-h">${title}</span><b class="wk-t-n">${num}</b><span class="wk-t-s">${sub}</span></div>`;
   }
 
-  function view() {
-    const app = document.getElementById('app');
+  /** root 안에 요일 화면을 그려요. opts.onPick(id): 웹툰을 누르면 (상세 창 열기) */
+  function mount(root, opts) {
+    const o = opts || {};
+    let selId = null;
     const days = weekDates();
     const today = days.find((x) => x.today) || days[0];
     if (!F.day) F.day = today.key;
@@ -56,17 +59,18 @@
       const order = (a, b) => (WT.schedule.status(a) === 'hiatus') - (WT.schedule.status(b) === 'hiatus')
         || (mine(b).state === 'reading') - (mine(a).state === 'reading') || WT.recRank(b) - WT.recRank(a) || a.title.localeCompare(b.title, 'ko');
       const cols = days.map((d) => ({ d, list: pool.filter((w) => (w.days || []).includes(d.key)).sort(order) }));
-      document.getElementById('wk-tabs').innerHTML = cols.map(({ d, list }) => `<button type="button" role="tab" data-day="${d.key}" aria-selected="${F.day === d.key}" class="${d.today ? 'today' : ''}">${WT.schedule.DAY_KO[d.key]}<em>${list.length}</em></button>`).join('');
-      const grid = document.getElementById('wk-grid');
+      root.querySelector('#wk-tabs').innerHTML = cols.map(({ d, list }) => `<button type="button" role="tab" data-day="${d.key}" aria-selected="${F.day === d.key}" class="${d.today ? 'today' : ''}">${WT.schedule.DAY_KO[d.key]}<em>${list.length}</em></button>`).join('');
+      const grid = root.querySelector('#wk-grid');
       grid.dataset.day = F.day;
       grid.innerHTML = cols.map(({ d, list }) => `<section class="wk-col${d.today ? ' today' : ''}" data-day="${d.key}" aria-label="${DAY_FULL[d.key]} 연재 ${list.length}편">
           <header class="wk-col-h"><b>${DAY_FULL[d.key]}</b><span>${d.m}.${String(d.d).padStart(2, '0')}${d.today ? ' · 오늘' : ''}</span><em>${list.length}</em></header>
           <div class="wk-col-b">${list.length ? list.map(card).join('') : `<p class="wk-none">${F.show === 'mine' ? '보는 웹툰이 없어요' : F.show === 'fav' ? '관심 웹툰이 없어요' : '올라오는 웹툰이 없어요'}</p>`}</div>
         </section>`).join('');
-      app.querySelectorAll('[data-f]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.f === 'show' ? F.show === b.dataset.v : F.hiatus)));
+      mark(selId);
+      root.querySelectorAll('[data-f]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.f === 'show' ? F.show === b.dataset.v : F.hiatus)));
     };
 
-    app.innerHTML = `<div class="view wk-view">
+    root.innerHTML = `<div class="wk-view">
       <header class="wk-head">
         <div class="wk-title"><h1>요일별 연재</h1><p>${days[0].m}월 ${days[0].d}일 – ${days[6].m}월 ${days[6].d}일 · 오늘은 <b>${DAY_FULL[today.key]}</b></p></div>
         <div class="wk-tools">
@@ -82,11 +86,14 @@
       </section>
       <nav class="wk-tabs" id="wk-tabs" role="tablist" aria-label="요일 고르기"></nav>
       <div class="wk-grid" id="wk-grid"></div>
-      ${noDay.length ? `<p class="wk-foot">요일이 정해지지 않은 연재작 ${noDay.length}편: ${noDay.slice(0, 6).map((w) => `<a href="${libHref(w)}">${esc(w.title)}</a>`).join(', ')}</p>` : ''}
+      ${noDay.length ? `<p class="wk-foot">요일이 정해지지 않은 연재작 ${noDay.length}편: ${noDay.slice(0, 6).map((w) => `<a href="${weekHref(w)}" data-wk="${esc(w.id)}">${esc(w.title)}</a>`).join(', ')}</p>` : ''}
       <p class="wk-foot">완결된 웹툰은 <a href="#/books">도서관 목록</a>에서 볼 수 있어요.</p>
     </div>`;
     draw();
-    app.querySelector('.wk-view').addEventListener('click', (e) => {
+    root.querySelector('.wk-view').addEventListener('click', (e) => {
+      // 웹툰을 누르면 옆에 상세 창 (새 탭으로 열기 · 가운데 단추는 그대로)
+      const a = e.target.closest('a[data-wk]');
+      if (a && o.onPick && !(e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button)) { e.preventDefault(); o.onPick(a.dataset.wk); return; }
       const b = e.target.closest('button');
       if (!b) return;
       if (b.dataset.f === 'show') F.show = b.dataset.v;
@@ -95,6 +102,23 @@
       else return;
       draw();
     });
+    // 고른 웹툰 표시 (상세 창이 열린 웹툰)
+    function mark(id) {
+      selId = id || null;
+      root.querySelectorAll('.wk-card.on').forEach((x) => { x.classList.remove('on'); x.removeAttribute('aria-current'); });
+      if (selId) root.querySelectorAll(`.wk-card[data-wk="${CSS.escape(selId)}"]`).forEach((x) => { x.classList.add('on'); x.setAttribute('aria-current', 'true'); });
+    }
+    let lastSig = '';
+    return {
+      mark,
+      /** 감상 기록 · 관심이 바뀌었을 때만 칸을 다시 그려요 (진행 막대 · 관심 표시) */
+      refresh(id) {
+        const S = WT.store.state;
+        const sig = JSON.stringify([S.progress || {}, S.favs || {}]);
+        if (sig !== lastSig) { lastSig = sig; draw(); }
+        mark(id);
+      }
+    };
   }
-  WT.views.week = view;
+  WT.week = { mount };
 })();

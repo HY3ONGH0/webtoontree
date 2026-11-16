@@ -63,23 +63,24 @@
     return Object.assign({}, T0, { nodes: P });
   }
 
-  function view(params, lib) {
+  function view(params, lib, mode) {
+    const weekMode = mode === 'week';   // 요일 화면: 도서관 틀 + 오른쪽 상세 창은 같고, 가운데만 요일 칸
     const trees = WT.data.trees;
     const live = WT.liveGenres().map((x) => x.id);
     if (!live.length) { document.getElementById('app').innerHTML = '<div class="view" style="align-items:center; justify-content:center; padding:40px; text-align:center"><p>아직 트리가 준비되지 않았어요.</p><a class="btn press" href="#/">홈으로</a></div>'; return; }
     let gid, g, T;
     if (lib) {
       // 도서관: 장르별(또는 전체) 남은 웹툰을 책장에. 위치 대신 책 순서만 있어요
-      gid = params[0] === 'all' || live.includes(params[0]) ? params[0] : 'all';
+      gid = !weekMode && (params[0] === 'all' || live.includes(params[0])) ? params[0] : 'all';
       g = gid === 'all' ? { id: 'all', name: '전체', color: '#E8C66A', desc: '', constellation: '' } : WT.genre(gid);
-      T = { nodes: Object.fromEntries(libraryBooks(gid).map((w) => [w.id, [0, 0]])), links: [], start: null };
+      T = { nodes: Object.fromEntries((weekMode ? WT.data.webtoons : libraryBooks(gid)).map((w) => [w.id, [0, 0]])), links: [], start: null };
     } else {
       gid = live.includes(params[0]) ? params[0] : live[0];
       g = WT.genre(gid);
       T = spread(scaleTree(trees[gid]));
       WT.lastTree(gid);
     }
-    const BASE = lib ? 'library' : 'tree';
+    const BASE = weekMode ? 'week' : lib ? 'library' : 'tree';
     // 트리 끝 도서관 자리: 가장 오른쪽 웹툰보다 더 오른쪽
     const leaves = lib ? [] : Object.keys(T.nodes).filter((id) => WT.toon(id) && !T.links.some((l) => l.from === id && T.nodes[l.to]));
     const xs = Object.values(T.nodes).map((p) => p[0]);
@@ -103,6 +104,7 @@
     })();
 
     let sel = null;
+    let weekApi = null;   // 요일 화면일 때 요일 칸 (WT.week.mount)
     const server = WT.api.on();
     const social = {};          // 웹툰ID → { avg, count, comments } (서버 모드)
     let charAt = T.start;
@@ -270,6 +272,14 @@
           </span>
           <span class="lb-t">${esc(w.title)}<i>${WT.platform.icon(w.platform, 'pf-in')}${esc(w.platform || '')}</i></span>
         </button>`;
+    }
+    function weekShellHTML() {
+      return `<div class="view lib-view lb-view wk-host">
+        <main class="lb-shell wk-shell" id="wk-root"></main>
+        <div class="lb-dim" id="lb-dim" hidden></div>
+        <div id="panel-slot" class="lb-drawer"></div>
+        <div id="wrap" hidden><div id="stage"></div></div>
+      </div>`;
     }
     function lbHTML() {
       const st = WT.settings();
@@ -623,7 +633,7 @@
     const libOpen = () => !lib && (leaves.some(cleared) || !!S.unlocked['lib:' + gid]);
     // 도서관에서 장르 탭을 바꿀 땐 화면이 깜박이지 않게 등장 효과를 꺼요
     const noEnter = lib && Date.now() - (WT.libLeftAt || 0) < 1500;
-    document.getElementById('app').innerHTML = lib ? lbHTML() : `<div class="view${lib ? ' lib-view' : ' tree-view side-view'}${noEnter ? ' no-enter' : ''}" style="--gc:${g.color}">
+    document.getElementById('app').innerHTML = weekMode ? weekShellHTML() : lib ? lbHTML() : `<div class="view${lib ? ' lib-view' : ' tree-view side-view'}${noEnter ? ' no-enter' : ''}" style="--gc:${g.color}">
       <div class="tv-frame">
       <div class="topbar">
         <div class="left">
@@ -726,7 +736,11 @@
     function lbRefresh() { if (lib && document.getElementById('lb-info')) lbInfo(); }
     function lbStep(d) { if (!LB.list.length) return; LB.idx = Math.max(0, Math.min(LB.list.length - 1, LB.idx + d)); lbShow(); }
     function lbOpen(id) { select(id); document.getElementById('lb-dim').hidden = false; }
-    if (lib) {
+    if (weekMode) {
+      weekApi = WT.week.mount(document.getElementById('wk-root'), { onPick: (id) => (sel === id ? close() : lbOpen(id)) });
+      document.getElementById('lb-dim').addEventListener('click', () => close());
+    }
+    if (lib && !weekMode) {
       const main = document.getElementById('lb-main');
       main.addEventListener('click', (e) => {
         const st = e.target.closest('[data-step]'); if (st) { lbStep(+st.dataset.step); return; }
@@ -781,6 +795,7 @@
         if (sel && l.from === sel) [ln, dt, ar].forEach((el) => el && el.classList.add('near'));
       });
       const c = counts();
+      if (weekApi) weekApi.refresh(sel);
       if (!document.getElementById('prog-bar')) { if (lib) lbRefresh(); return; }
       document.getElementById('prog-bar').style.width = `${c.d / (ids.length || 1) * 100}%`;
       document.getElementById('prog-text').textContent = `${c.d} / ${ids.length} ${labels.done || '완독'} · 보는 중 ${c.r}`;
@@ -1362,7 +1377,7 @@
     });
     slot.addEventListener('click', (e) => { if (!sel && e.target.closest('.guide-x')) clearSlot(); });
     WT.leaveView = () => {
-      if (lib) WT.libLeftAt = Date.now();
+      if (lib && !weekMode) WT.libLeftAt = Date.now();
       if (ro) ro.disconnect();
       if (ro2) ro2.disconnect();
       window.removeEventListener('resize', onResize);
@@ -1395,4 +1410,5 @@
 
   WT.views.tree = view;
   WT.views.library = (params) => view(params, true);
+  WT.views.week = (params) => view(params, true, 'week');
 })();
