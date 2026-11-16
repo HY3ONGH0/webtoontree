@@ -1,6 +1,24 @@
 {
   "webtoons": [
     {
+      "id": "w657575op5k",
+      "title": "역대급",
+      "author": "",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "",
+      "genres": [],
+      "recommended": 0,
+      "color": "",
+      "episodes": 1,
+      "status": "ongoing",
+      "days": [],
+      "autoCount": true,
+      "baseDate": "2026-11-16",
+      "tags": [],
+      "desc": ""
+    },
+    {
       "id": "w657574suxh",
       "title": "쪽팔려게임",
       "author": "봉수, 다이",
@@ -11924,13 +11942,8 @@
       "starts": []
     },
     "apocalyps": {
-      "start": "w034",
-      "nodes": {
-        "w034": [
-          130,
-          280
-        ]
-      },
+      "start": null,
+      "nodes": {},
       "links": [],
       "starts": []
     },
