@@ -5935,12 +5935,12 @@
       "author": "채군, 닷지",
       "platform": "네이버웹툰",
       "url": "https://comic.naver.com/webtoon/list?titleId=849279",
-      "cover": "https://i.namu.wiki/i/hZYG87nHqwqNizNDt1yPGYFDQrwCFrGOm0-R6U-EkUCXh-qz8a94_vMHLULHWOzR4QKIfClKJZzn_R-U2e6S6Ihzx53BuXh3OObOGmhm6nRhzTi7KOJLgJR5U8uRccfl-8Ttaw_fu9DJPjZd0iHeSQ.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/849279/thumbnail/thumbnail_IMAG21_722a83e0-c209-43d6-996b-b491ae6e4bde.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 0,
-      "color": "",
+      "color": "#fcece8",
       "episodes": 33,
       "status": "ongoing",
       "days": [
@@ -5973,7 +5973,8 @@
         }
       ],
       "source": "https://comic.naver.com/webtoon/list?titleId=849279",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "coverAuto": true
     },
     {
       "id": "w189",
@@ -6722,7 +6723,7 @@
       "author": "민송아",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/dBoFWRvjI6xRab869Blz8T_k9Hs2Ksyks1HZUC7xTyABr2LN7O-2BhDgMmEbOydwJKyQEqpyFRqjTZ-mGLn9Cdzt2COVK4BOBUDYOpKpIhkP-uyHss_uBfQywnXrZgO1dxFhc0MezyKfsfnYABdP7w.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/670150/thumbnail/thumbnail_IMAG21_7292516799121273648.jpg",
       "genres": [
         "fantasy",
         "thriller",
@@ -6730,7 +6731,7 @@
         "romance"
       ],
       "recommended": 2,
-      "color": "",
+      "color": "#f3eaea",
       "episodes": 149,
       "status": "completed",
       "days": [
@@ -6758,7 +6759,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w206",
@@ -6766,12 +6768,12 @@
       "author": "민송아",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/eb7-4xbo5bmBqXc5qzi90GETpPJeKqXOnixiSvUfEIdIS5-4598hRHjJRU4eEYfdN-D1OQYm6qMl7lSMG79UYXm0H08zDu_JRr0_7gSXBxoCwk2BCd_-nLrgcPWkkk524WGubMZPdf-6fL7ynNdHxw.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/802293/thumbnail/thumbnail_IMAG21_a3e4736d-dfd6-4e76-aec6-b145f4123845.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 2,
-      "color": "",
+      "color": "#d5b6a8",
       "episodes": 70,
       "status": "completed",
       "days": [
@@ -6800,7 +6802,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w207",
@@ -6808,12 +6811,12 @@
       "author": "서녜",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/_36TFVpyGMLyv_wfI81eKcHI91b7AQSbOwO_IXQHFHHmSgfba_QMyOxBvXk4R9aTAhQDPpPVlrr0d6UtTGVSFW1aMLwTsWt04VAgOmYhFXEMlShLOr6kDcgP0IBoinRCjOVnZPQBQZOjq-8A94OPHg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/837864/thumbnail/thumbnail_IMAG21_d64c70b3-24be-49b3-986c-017a1701cf02.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 2,
-      "color": "",
+      "color": "#c7a889",
       "episodes": 58,
       "status": "ongoing",
       "days": [
@@ -6838,7 +6841,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w208",
@@ -6846,12 +6850,12 @@
       "author": "조흰, 윤김",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/BzqpJps_Lq8uPqlJFO37pQyCouVRnZptcdfhi0SCYlzceR0OEannfiVUcH68UR4XkMu7RUMy09nIujH9F2f6zhDHo2xTuCv7Z14ybYAhtUK7jPjDziLiE4ymJVDV4GZx1_93a0GJ9xMgTz_9pyr1UQ.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/808455/thumbnail/thumbnail_IMAG21_ab203d0e-92b0-4179-8aaa-28b1f835ad8a.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 2,
-      "color": "",
+      "color": "#d9e7e4",
       "episodes": 140,
       "status": "completed",
       "days": [
@@ -6885,7 +6889,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w209",
@@ -6893,12 +6898,12 @@
       "author": "봄소희, KYMA",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/vjOnLGoAM3ooaOGFe_UmgTJutwM_sRXm1uZmxbp1bAX90UiNHeo3YgnXzJX4zskyd1lctTfva4qbt4b3SBK-jhIUwaALQX1BiDFVnEValua0ND4I1BShih5Sv_rawJidveFJUHDjZP-WxTer7jLuwQ.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/783861/thumbnail/thumbnail_IMAG21_7571ae6b-a37c-4d12-8193-cb79c857cfaa.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 1,
-      "color": "",
+      "color": "#f62a5f",
       "episodes": 96,
       "status": "completed",
       "days": [
@@ -6930,7 +6935,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w210",
@@ -6938,12 +6944,12 @@
       "author": "숭어",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/hGmbMjj7CDuXQSDaomBbXnGw0CDp20rS39EZh8DvWiWSKa6X7JthjsYbEiCb4HQFghIHmrL0C7mVBCxT2EHemRgiop5GKteOyUk3GBXuMnctKwnxdFwwtTNc3691X1fdvx6cVZmfJT_UC9Ax5usd2g.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/789682/thumbnail/thumbnail_IMAG21_764560de-de68-45ee-816f-fe376fbe4f60.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 1,
-      "color": "",
+      "color": "#ff5767",
       "episodes": 91,
       "status": "completed",
       "days": [
@@ -6968,7 +6974,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w211",
@@ -6976,12 +6983,12 @@
       "author": "숭어",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/9kNZ-o5VGI9-zMxAyJUyoNQKrC_lQbh04TXXxdl3eI6op5-ayGi7mh53GFbWa9ciX93AoqY3Ml2YD0q2tUCrTvzDXRhOAQqmHhR1YkM7WnnlGrfHZsxeVnabE-t-Sb2INcxfrkCB6IrZJIcZOsP5tg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/843450/thumbnail/thumbnail_IMAG21_ad3b7cad-3566-4eee-a5f8-ef41eed816b3.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 0,
-      "color": "",
+      "color": "#261c27",
       "episodes": 55,
       "status": "ongoing",
       "days": [
@@ -7010,7 +7017,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w212",
@@ -7018,12 +7026,12 @@
       "author": "한서",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/Rt4zMag5PDgbvfwOlW33Wfj1yja63ux9lGU5S_dJ-ALN1qzX6ScWqGXSJ6yXYzjX0_b5iLhVT3cxpQOZ5Xo-mnXHTNl6P4YkZOphCiJ03COxCB5h1y-CKDEBo7Y9k3jdfzgpvVDaurx_imQppXokWA.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/802079/thumbnail/thumbnail_IMAG21_a30fbbcb-33ac-4b24-aa8d-0049007595e0.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 1,
-      "color": "",
+      "color": "#fbe9e7",
       "episodes": 136,
       "status": "completed",
       "days": [
@@ -7052,7 +7060,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w213",
@@ -7060,12 +7069,12 @@
       "author": "슈안",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/fyJBEcSIFhYZHxkkoZNh-ImX5t2XiiUpmV8t1clFwImKp9sjplY9FrL_oeulvaoPCAfOW3RL2LUKa4h7Vywx9K0BWqp9rT8Q5VUEX6p1i53pOtTKncxIcZpMlr01Uab-bUpcHklmg_mwbyqt8RNXrA.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/761461/thumbnail/thumbnail_IMAG21_e3c857a7-900b-4085-969a-75d9127b5a38.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 0,
-      "color": "",
+      "color": "#b8fe88",
       "episodes": 151,
       "status": "completed",
       "days": [
@@ -7091,7 +7100,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w214",
@@ -7099,12 +7109,12 @@
       "author": "강환영",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/79m6wQAekcmYMviDBmTgicB3vQ_VRq2mhjHGcw73BgbPmbD6ixQ2bwLQbGfl2ODyln-VjlKlNarhv7hVncbsvomOeggYXjChgB8Phrlm0L9nX6DreYuvWKxArC0azNn8tMQLZ1phwnswRU6bWOXaZQ.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/789652/thumbnail/thumbnail_IMAG21_e3631348-fffb-41c5-880f-d2d64cc3c0c0.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 0,
-      "color": "",
+      "color": "#f5eaea",
       "episodes": 140,
       "status": "completed",
       "days": [
@@ -7133,7 +7143,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w215",
@@ -7141,12 +7152,12 @@
       "author": "아마도지, 사삭",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/7AVlcxTSkkqDR0RM7j_oP84_XNzQ-C8CSVBVknBEDvMD4wbDK4qKGsLzQeqFkp-oQ9vE1zrUuwksZ_I38B42hwHsj9rgZjSLK7FqiOEobZdwGG-RK11VgvtMbog0cJYdsjaVRkdRNGr_WjbEseU_xA.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/730657/thumbnail/thumbnail_IMAG21_4d928a6e-b354-4b8c-ad73-382845df1857.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 2,
-      "color": "",
+      "color": "#faebe5",
       "episodes": 236,
       "status": "completed",
       "days": [
@@ -7179,7 +7190,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w216",
@@ -7187,12 +7199,12 @@
       "author": "장사휘",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/k8fawt-eDG76H-zgSdK_sO3WpawWNOvLIXAp8AtNWhM258GD55z_movCvBWC3HExdijnULEwAvFjzw9oQUk0Q6dBx9lid9DLyJzwYSgy3HikZDw0G2wCE2Hx7JXSoLEIwPnVwRrY28Lx1cc-Wn-LRg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/826322/thumbnail/thumbnail_IMAG21_3eb4ba39-ef18-4178-b5a1-ca4243e455e6.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 0,
-      "color": "",
+      "color": "#fae5eb",
       "episodes": 102,
       "status": "completed",
       "days": [
@@ -7221,7 +7233,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w217",
@@ -7229,12 +7242,12 @@
       "author": "매드버드, 김태형, 한중월야",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/7PvbuzgY1NdA9OTVoNLDQ2sdNnQAVsp3baWM0kVOKX3xSDSGT51uJeJx23ID41FAXj8mUapWHidpHnIQPRguZTa7ImwcZeqElQ6-Fa7arDJfZRA9XOrklm2iLGlTgSt_Z4vzU9RAHJ5ASu4DaeFn-g.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/821597/thumbnail/thumbnail_IMAG21_e0a16b98-1418-4cdc-82b0-f25c258f7ede.jpg",
       "genres": [
         "murim"
       ],
       "recommended": 3,
-      "color": "#c10606",
+      "color": "#191b24",
       "episodes": 118,
       "status": "ongoing",
       "days": [
@@ -7274,7 +7287,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w218",
@@ -7282,12 +7296,12 @@
       "author": "레포, 세혼, 인덱스",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/IvNZUCzkEclwk4BGHRa6waJy2ZWPlWjFEBqfwcP-45bmhvezkY5VqNX01JV10z0p3jBYbI-QEI0k2BU2zFJ76DoHPp3r7fid1FO_vUdao5YW6cJxMO6b_1yj9n8LrQBRt2bju3sSj9qk5XbVv9ZUgA.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/752414/thumbnail/thumbnail_IMAG21_e93d3826-db41-4606-9d0c-5184d5bd2d09.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 1,
-      "color": "#1a0a91",
+      "color": "#fcf4e7",
       "episodes": 253,
       "status": "completed",
       "days": [
@@ -7330,7 +7344,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w219",
@@ -7338,12 +7353,12 @@
       "author": "현절무, 금강불괴, 한중월야",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/4614.html",
-      "cover": "https://i.namu.wiki/i/oucs4zljkyRpVv344feeX4QO66nDuj96noPCEYG3Qb86KRqlqtmbAzgfB2QSni_zWkf6WVol7TgeDqZwX1HvtqrqEHle5Q6spfmAGg1R4OgsGXOFh5amSnXs4uka5wxaHfzd2KlECYFqLawLMQxWBw.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/747271/thumbnail/thumbnail_IMAG21_d46b4a69-6de0-41be-b368-ce5e74ab8f76.jpg",
       "genres": [
         "murim"
       ],
       "recommended": 3,
-      "color": "",
+      "color": "#27151a",
       "episodes": 331,
       "status": "ongoing",
       "days": [
@@ -7383,7 +7398,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w220",
@@ -7391,12 +7407,12 @@
       "author": "오주, Awin, 검류혼",
       "platform": "카카오페이지",
       "url": "https://blacktoon427.com/webtoon/3579.html",
-      "cover": "https://i.namu.wiki/i/TipKtzoQSkpM0-qj8GKYQ-DVljuvWeCxcn5xF6B_1fPiW_CHz5DeHv-pzWhm2Xng8unpTFZYYZz8WgnaS6C_6iII4S-7oNxcyihckbrLzSL_1sxitoul8hWypC5rMQaHUtso5k0YATWNhAKIlpDdvw.webp",
+      "cover": "https://kr-a.kakaopagecdn.com/P/C/2355/sharing/2x/9cf434bf-0841-45fa-a779-816578440194.jpg",
       "genres": [
         "murim"
       ],
       "recommended": 3,
-      "color": "#fdd654",
+      "color": "#262637",
       "episodes": 220,
       "status": "hiatus",
       "days": [
@@ -7433,7 +7449,8 @@
         }
       ],
       "source": "https://webtoon.kakao.com/content/%EB%B9%84%EB%A2%B0%EB%8F%84/2355",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "coverAuto": true
     },
     {
       "id": "w221",
@@ -7441,12 +7458,12 @@
       "author": "류기운, 문정후",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/596.html",
-      "cover": "https://i.namu.wiki/i/K6NQSKqbi37ZB9RTnSRFqvEgUa36NLmZxwv0J8OuzCVpT_57ta0O4DNi3-n80fLItv643bSUVnVS6s_AIPQg_hn-jbtEvdwGRETajeq2r-SkR_eGIbHZIhOykkuWpDZ-DR73GYXW7bPOi3cue_IMbg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/662774/thumbnail/thumbnail_IMAG21_3618421729916171318.jpg",
       "genres": [
         "murim"
       ],
       "recommended": 4,
-      "color": "#d0dafb",
+      "color": "#f8eae8",
       "episodes": 236,
       "status": "completed",
       "days": [
@@ -7478,7 +7495,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w222",
@@ -7486,12 +7504,12 @@
       "author": "김꿀빨, 레드훅, 비가",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/18444.html",
-      "cover": "https://i.namu.wiki/i/uLTgull33F38KicloTEaXr9-cZkuf8CJz1XUVEOEk-MlqJGnla7UV3vjEni1puPHqSxf0mXHWg_SyhY3zV1NnaACIan0yI5_ZcbTAeeIrKOP_NCCwTxHoWXL3M2b6pjx21Tgo7Kmbh7Q-lUjPy3fIQ.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/840687/thumbnail/thumbnail_IMAG21_39bb1c23-898b-4190-94a9-28fa0ea1bcb4.jpg",
       "genres": [
         "murim"
       ],
       "recommended": 3,
-      "color": "#e5c474",
+      "color": "#fee4d8",
       "episodes": 69,
       "status": "ongoing",
       "days": [
@@ -7525,7 +7543,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w223",
@@ -7533,12 +7552,12 @@
       "author": "팀 더 지크, MIDNIGHT STUDIO, 정윤강",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/13353.html",
-      "cover": "https://i.namu.wiki/i/RINzftuzYmDNP7-H_dec-M4gW4FpPqZfNdVxn0vCKXd7mTFIG8eYSbBNMfpPkdjJEKDdtYdADN-q4SjabBMDR_B874fN0nqMvSjR8T5QsDO3d9w89jvm_78nIlVEzbp7UHiiB_YFOo3-iMLD7Blm_w.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/808482/thumbnail/thumbnail_IMAG21_70db4b46-15ca-4780-98c8-a7ec1668887c.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 1,
-      "color": "#583300",
+      "color": "#373668",
       "episodes": 165,
       "status": "ongoing",
       "days": [
@@ -7582,7 +7601,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w224",
@@ -7590,12 +7610,12 @@
       "author": "seri, 비완, 근서",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/10662.html",
-      "cover": "https://i.namu.wiki/i/IVqNqmudYOiF4O2DY0Nn4odHPNS0hUUDHJayWjbK5vwU5h4AMuGvb889W1JhrYfVA8RvtEr-KG7g5Wx5oT8iRZItD-UdLsKHLzRzN1admG12LXV07xmjcBcuhyhPe25qQx6zYKYiw8sI65ipVWz3Gg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/784248/thumbnail/thumbnail_IMAG21_5ec2a5b8-167a-497b-8316-5bb38abe6f74.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 3,
-      "color": "#01c7fc",
+      "color": "#e6f6fd",
       "episodes": 185,
       "status": "ongoing",
       "days": [
@@ -7639,7 +7659,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w225",
@@ -7647,13 +7668,13 @@
       "author": "홍실, 지페리",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/11394.html",
-      "cover": "https://i.namu.wiki/i/AtAOh7LQNlrKgw3Tqv59PB5jK2W1JFzF-IXhRW1OAXM8zjVzHuS5TjMG_QiiJyS4xhV3TkvTnljhRPDTWNxhRAsg_P9T6aj5BOQ9gwFxr2G36-WlHMbuxLyG61mDmUHQECGxeHhIg9nxsEx60o6_mg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/792651/thumbnail/thumbnail_IMAG21_218f18ef-7f68-4d6a-972c-686a3e9f6138.jpg",
       "genres": [
         "fantasy",
         "action"
       ],
       "recommended": 2,
-      "color": "#450d59",
+      "color": "#f5ebe8",
       "episodes": 229,
       "status": "ongoing",
       "days": [
@@ -7690,7 +7711,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w226",
@@ -7698,13 +7720,13 @@
       "author": "GMAN, 탕아후루",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/16209.html",
-      "cover": "https://i.namu.wiki/i/9wA4wN2q6P9jt0xqQ0ZxgRJDXe75_C327h-g4fktbUJ0qZEzdbf7Y4m-X93gDIh_ZZr8unKoxCuZqIw0HoGi1vHW02uoE_Y_wxfxR1sbo7SBQ9-hAWL2dnFTismgInzKF5zXhFO8VcaB_NoXSEuF3g.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/829875/thumbnail/thumbnail_IMAG21_02213bdb-e0cb-4f26-9542-2e2dd865c4f7.jpg",
       "genres": [
         "fantasy",
         "action"
       ],
       "recommended": 2,
-      "color": "#9ba50e",
+      "color": "#faf9e8",
       "episodes": 101,
       "status": "ongoing",
       "days": [
@@ -7744,7 +7766,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w227",
@@ -7797,13 +7820,13 @@
       "author": "꿀벌, 벌꿀",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/TYy0nMpK2B9ki6gvwghagTsoReopSH0-JpgRDh-3YCVKhokY11l8yYg-SYKEU7phqu71ranG_uKKoRPeoDqY4tnfQ935JZOMeRZgzrgo5dhfVHPQs9e3IOkQXozUgtkjlKt1EZDrKuPRNKdVsyNj5g.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/766563/thumbnail/thumbnail_IMAG21_17c45c55-b734-42b1-b11c-719daeea4fba.jpg",
       "genres": [
         "fantasy",
         "action"
       ],
       "recommended": 0,
-      "color": "#ff0000",
+      "color": "#e5ebf5",
       "episodes": 294,
       "status": "ongoing",
       "days": [
@@ -7840,7 +7863,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w229",
@@ -7848,12 +7872,12 @@
       "author": "WAN.Z, 스윙뱃, 메슬로우",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/ZJrmz5IdnBKJtxMukuGl_Yx95zxHg_dMzwaXgjEY0x7tOcWAJKpu8Ph2Yc859FHEYbCGj46Io1fe3k1eKS1R7umJpM1kWm23G0DhvHaLhffQbfc3MbYVDDNfS7MKbTawNndHQre_ZvmPgS9VuUc9sQ.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/773797/thumbnail/thumbnail_IMAG21_37c6a85a-d3a6-4afc-909a-420973f63019.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 3,
-      "color": "#003cff",
+      "color": "#162a47",
       "episodes": 278,
       "status": "ongoing",
       "days": [
@@ -7896,7 +7920,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w230",
@@ -7904,14 +7929,14 @@
       "author": "윤쓰(Redice Studio), 3B2S, 산지직송",
       "platform": "카카오페이지",
       "url": "https://webtoon.kakao.com/content/%EB%8F%84%EA%B5%B4%EC%99%95/2340",
-      "cover": "https://i.namu.wiki/i/lbGPhVfwIMFvS8UxxkE_JyGsbZApYCo1mgM455mkYlMY5i4YT8CGu01PFdiP2ww_gNHKp8lVfJ8xV-eeIH1O1oxi0Rttxe7b9tYGDwLR8btxTKQI6X0PJ6jN3DVbRhnp2LozXoMT6tXsaxA7PBQO4w.webp",
+      "cover": "https://kr-a.kakaopagecdn.com/P/C/2340/sharing/2x/f3568b36-8128-46b4-ae39-521c51ac472a.jpg",
       "genres": [
         "fantasy",
         "action",
         "apocalyps"
       ],
       "recommended": 3,
-      "color": "#8c00ff",
+      "color": "#363869",
       "episodes": 411,
       "status": "completed",
       "days": [
@@ -7953,7 +7978,8 @@
         }
       ],
       "source": "https://webtoon.kakao.com/content/%EB%8F%84%EA%B5%B4%EC%99%95/2340",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "coverAuto": true
     },
     {
       "id": "w231",
@@ -7961,13 +7987,13 @@
       "author": "은하이",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/8rHZndNVPLbjcdHDxCAmGhuwMnDviSPURdGhNWTlRF2hga1S89_MH5sRsJYQdghSCrDFcVXcgQwtueTw-_QlQN3zkqlUvQHF_rfZqJfbVjzAmK5H-wXPayMZOkuKCjldhAfhYvw_B8coNZCBvYRoDg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/822640/thumbnail/thumbnail_IMAG21_009dd859-91d1-4682-862b-bace6d93fc79.jpg",
       "genres": [
         "romance",
         "daily"
       ],
       "recommended": 3,
-      "color": "#66ffc4",
+      "color": "#373a47",
       "episodes": 88,
       "status": "hiatus",
       "days": [
@@ -7996,7 +8022,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w232",
@@ -8004,12 +8031,12 @@
       "author": "네이다, Bill K, 신노아",
       "platform": "카카오페이지",
       "url": "https://webtoon.kakao.com/content/SSS%EA%B8%89-%EC%A3%BD%EC%96%B4%EC%95%BC-%EC%82%AC%EB%8A%94-%ED%97%8C%ED%84%B0/2454",
-      "cover": "https://i.namu.wiki/i/hmEfCm0zu9C1Be5nmJf-X9Kd4C3Pbhe84NkqhG66Q9D7N_cb5Co8oKsJg7MSgUQZfFngD9W8qX_x6-McDWmInELXj7O9iGROpmfcEe6R2sMowr6WeWPcrVQ3wxDb6GuJgC9iqmlTidpj0b97lCfXWw.webp",
+      "cover": "https://kr-a.kakaopagecdn.com/P/C/2454/sharing/2x/7d13c1bb-4ff6-4ed0-bf31-67d5a638cab4.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 4,
-      "color": "#00aaff",
+      "color": "#24221c",
       "episodes": 159,
       "status": "hiatus",
       "days": [
@@ -8051,7 +8078,8 @@
         }
       ],
       "source": "https://webtoon.kakao.com/content/SSS%EA%B8%89-%EC%A3%BD%EC%96%B4%EC%95%BC-%EC%82%AC%EB%8A%94-%ED%97%8C%ED%84%B0/2454",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "coverAuto": true
     },
     {
       "id": "w233",
@@ -8059,13 +8087,13 @@
       "author": "개",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/FEa225kvHMq9gU-d01zu4I9tTbMlxxUAqUWQeorHLWL4tMuhf1Xo3jWriQpHrno63boOiFCNXVxqp1K6rpzQEq55ctzIwFH_7yE3TFUmhUkyXLWf3MG85vyquIc0OMajQoi2AopFjTWslsnfKAPwCg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/827190/thumbnail/thumbnail_IMAG21_ce05e060-9420-4494-a004-278f90e8dde9.jpg",
       "genres": [
         "romance",
         "thriller"
       ],
       "recommended": 4,
-      "color": "#000000",
+      "color": "#261c14",
       "episodes": 126,
       "status": "ongoing",
       "days": [
@@ -8094,7 +8122,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w234",
@@ -8102,12 +8131,12 @@
       "author": "kiraz(REDICE STUDIO), 아디티, 김치우",
       "platform": "카카오페이지",
       "url": "https://webtoon.kakao.com/content/%EB%AC%B4%ED%95%9C%EC%9D%98-%EB%A7%88%EB%B2%95%EC%82%AC/3211",
-      "cover": "https://i.namu.wiki/i/_KMA7Higg2WuRbdZjzNXpGzw-dKb7ikaUTuqy0I0dxgPA3GXpCZJOFu0oO4eDmHXHL3Rump_uEDfKCI3D8zGDkRKxQdAt5Gf63qGhOysZRAtGIXNBKJNIHqarToJKmBiM687Tup-wF0DBM0o8hJFZg.webp",
+      "cover": "https://kr-a.kakaopagecdn.com/P/C/3211/sharing/2x/078905ef-926a-4ef8-bc57-7d0cfd786eec.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 4,
-      "color": "#ffe770",
+      "color": "#251c17",
       "episodes": 193,
       "status": "hiatus",
       "days": [
@@ -8147,7 +8176,8 @@
         }
       ],
       "source": "https://webtoon.kakao.com/content/%EB%AC%B4%ED%95%9C%EC%9D%98-%EB%A7%88%EB%B2%95%EC%82%AC/3211",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "coverAuto": true
     },
     {
       "id": "w235",
@@ -8155,13 +8185,13 @@
       "author": "김자네, 와삭바삭, 팔메이로",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/EGQsYf9DoNSeY11OvvAia4YPQAKZ0yMIYnYKYTnBV1lLZPAoeOGMIPGqwjYdrD6hL68r3-vz2m7zjhjXj7RWuCIA8BDKKx9j0ITchOj8yR7NQXBMVjLru_8Or33DtttMlgeRUCXezOSnlBGeJrb9Vg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/755694/thumbnail/thumbnail_IMAG21_308ca76e-f806-4517-b52c-b992321c1668.jpg",
       "genres": [
         "romance",
         "drama"
       ],
       "recommended": 4,
-      "color": "#f4b74e",
+      "color": "#f9e8d8",
       "episodes": 65,
       "status": "completed",
       "days": [
@@ -8201,7 +8231,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w063",
@@ -8209,12 +8240,12 @@
       "author": "케냠",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/AUXzx0mCbVG-ch_snrZFYeU7ETGucEMiKnXG8u0iI1VcLuItUdxVd94F1UJwEWW47xvfGJfmkWBb5WeL70Ku26X4AFx5Bk7f_bZPHK1oOrGGGtmXNIdAnWr08IBLzL5F_dCK_rmw0co4lxZc6f41mg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/840114/thumbnail/thumbnail_IMAG21_afaca43e-5841-431a-ae99-8deeca2e1fc8.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 3,
-      "color": "#2c30a0",
+      "color": "#fde6d9",
       "episodes": 46,
       "status": "hiatus",
       "days": [
@@ -8243,7 +8274,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w062",
@@ -8251,12 +8283,12 @@
       "author": "헤윰",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/l97EBTUm5BGJ1ctpd12H35-SXC7J-7b_5G-pbkRrdL0912A3nAO3ilIcQ7c68kjMe81S4OmBA3wNFAOVaFETw9z7WJkMXU8mhao1Uoe3YQuGvYaYJKMTtkpeeENcJDHyMZwaNJt50AlLUgccjZ56SA.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/551649/thumbnail/thumbnail_IMAG21_7221630172870686053.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 5,
-      "color": "#ca0202",
+      "color": "#e8f6fb",
       "episodes": 206,
       "status": "completed",
       "days": [
@@ -8284,7 +8316,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w061",
@@ -8292,13 +8325,13 @@
       "author": "구크",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/15316.html",
-      "cover": "https://i.namu.wiki/i/OLimvh3K-Kq6kLdV-9igIlTFrrzQy8KNkqF46p-rIV1ozwVUB1xWf5ugL-lMa2PVo18Oe32Kt_GV3T_3f8FcZvNwrhSCU5p9BXi-U-ZX560FzzlR-uR5a7idwUqfqPZk38MYuw_biVjCX4CHgZ7SNg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/822109/thumbnail/thumbnail_IMAG21_98f0b317-27e6-4e79-9601-1fd09b62443c.jpg",
       "genres": [
         "fantasy",
         "action"
       ],
       "recommended": 0,
-      "color": "#e22400",
+      "color": "#09131b",
       "episodes": 107,
       "status": "hiatus",
       "days": [
@@ -8329,7 +8362,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w060",
@@ -8337,13 +8371,13 @@
       "author": "차씨, 스튜디오 이너스",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/14591.html",
-      "cover": "https://i.namu.wiki/i/qAlxwCljO0Gy0U1UzPEdy1Lb5hdqOEZvXqFMcUn0PYWdl_L-StFo038mHUT1JicIVyhD5NCzN_UBwQcu6cvTu_AOjpCkXMjQCugLz54tybezYUtYiCwSXXSS_LEMGt00SjQ9loGFbrrR5Tugq5Pr5A.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/818888/thumbnail/thumbnail_IMAG21_d9c3a1d6-9fec-4466-b1e9-5e871a95118e.jpg",
       "genres": [
         "fantasy",
         "daily"
       ],
       "recommended": 3,
-      "color": "#5a1c00",
+      "color": "#19120d",
       "episodes": 153,
       "status": "ongoing",
       "days": [
@@ -8381,7 +8415,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w059",
@@ -8389,12 +8424,12 @@
       "author": "타나, WAG, sayren",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/11660.html",
-      "cover": "https://i.namu.wiki/i/CK5gjQXS1hPpBMGnZImInqvjeMYzI-xr0gX5ZktoVsB9RDqATRbqpVwKEu2DIpoY7jAqM53XKA_RZZ5VisgSCcbroYgs1mKV3y6h6KVbgyWLYwughxwrWdkNv4eqxIFkwgwRPXgja4lYO3zMpYzefA.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/795529/thumbnail/thumbnail_IMAG21_60e29e1a-a910-4d27-bca4-30fb5df9e21e.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 2,
-      "color": "#fdc700",
+      "color": "#271807",
       "episodes": 171,
       "status": "completed",
       "days": [
@@ -8435,7 +8470,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w058",
@@ -8443,12 +8479,12 @@
       "author": "청담",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/10043.html",
-      "cover": "https://i.namu.wiki/i/IgxB3J_etypRxwMtmuOWTKlDDcST1FqPyWTRHeOX7vnt1sAamOR0fbcYkMtSosJHEZ1-GQ_NtydCvRGA8AL1csG0Q3YKG7HwfrVM_kfJYMbSLS2xElK1Rkakprcy3EZDN3aM1FhYte7gMzNbxGuZJQ.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/774044/thumbnail/thumbnail_IMAG21_81504afb-1a05-41b0-9650-0c9aa1d741d9.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 1,
-      "color": "#01c7fc",
+      "color": "#271718",
       "episodes": 101,
       "status": "hiatus",
       "days": [
@@ -8477,7 +8513,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w057",
@@ -8485,13 +8522,13 @@
       "author": "박종석, 오현준",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/4528.html",
-      "cover": "https://i.namu.wiki/i/asvqEIQR-KClqGBRC1ruON7LwUuC9GysRIcb3YbnbTxVb4ETrmTubtOd9mLq4Wzwi1tk8EnqYuw8MQ29aSns_43dMVEpWaZ-W-wnCvAqlbgu99rovaerxKK3sF_4C-HqPYfUU2OnCbBJW6DICUhCUw.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/745876/thumbnail/thumbnail_IMAG21_18211c6c-b076-4023-9d14-d71bb41cae70.jpg",
       "genres": [
         "fantasy",
         "action"
       ],
       "recommended": 0,
-      "color": "#0056d6",
+      "color": "#0f1216",
       "episodes": 266,
       "status": "completed",
       "days": [
@@ -8525,7 +8562,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w056",
@@ -8533,12 +8571,12 @@
       "author": "232, POGO",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/16019.html",
-      "cover": "https://i.namu.wiki/i/GjI0ZmaJP6Xxn5bGC2T8-gZ3z3t9CzJ74NTGX75BcRo-8bE-u5PZJSE_-8LVPKc-Jo10UyqcPzyCxukXq7EMx20_kjPXCV-Sp5ldgsHKZu28ZmLhkr9aFtLeESSLzuul4DWxd3wrJmzgW7gRPWUsTg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/828294/thumbnail/thumbnail_IMAG21_840e741d-f74e-44bc-b60b-a4e132516889.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 1,
-      "color": "#ffffff",
+      "color": "#0d121a",
       "episodes": 121,
       "status": "ongoing",
       "days": [
@@ -8572,7 +8610,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w055",
@@ -8580,13 +8619,13 @@
       "author": "희또",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/19171.html",
-      "cover": "https://i.namu.wiki/i/YqpqnWfGlDXimf68f1iyvCLiidO0bovRrh2yK7f2zPNKalCzmi7IyazbTBwXg1YfxQAeHKxHbkHUeeqFPJlx0sxCIxga-emHJ1uNhqSfmvXqKRoP7JX2jS5ZH7kNAsfRFNBYOwAle5qv7Uh-R67IMA.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/847812/thumbnail/thumbnail_IMAG21_191da5fb-7b12-4a7e-9971-0ae8e7066fc9.jpg",
       "genres": [
         "fantasy",
         "romance"
       ],
       "recommended": 3,
-      "color": "#450d59",
+      "color": "#151419",
       "episodes": 41,
       "status": "ongoing",
       "days": [
@@ -8610,7 +8649,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w054",
@@ -8618,12 +8658,12 @@
       "author": "Omin, 모기향, 적설목",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/19373.html",
-      "cover": "https://i.namu.wiki/i/4jdNM-15UGH__bz9CuPqC3HdxrErgIplisWaYw5FQ31Vqcycm21emIVwISZZ0eQUrof4ibuF8scLmy74ad_wNVUhVZ9HsPXsZPn01m5qiSzjXYlHVA340LcATbnM1Ft5ZqIQRC-0p040DqYdVznoOg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/849611/thumbnail/thumbnail_IMAG21_46ca822d-c549-4b5f-8e67-0a2b3973b457.jpg",
       "genres": [
         "murim"
       ],
       "recommended": 2,
-      "color": "#831100",
+      "color": "#0e1217",
       "episodes": 30,
       "status": "ongoing",
       "days": [
@@ -8663,7 +8703,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w053",
@@ -8671,14 +8712,14 @@
       "author": "고다",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/3235.html",
-      "cover": "https://i.namu.wiki/i/mJzefQ7_5u-gkBN58TrETH9PPdLpFi19Qg_yk5fELeAXDAPf-E9OPQ2sRU1gW-9hwQ-k4GXLcaqhRmEJyn2gMZ4cnY8W7no2QhjjvgnHGvUqyHGWf9FWfTygj5ufutnVhdV9NJaZuh4tonkeBmw9Cw.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/730607/thumbnail/thumbnail_IMAG21_4050531779662669109.jpg",
       "genres": [
         "thriller",
         "action",
         "fantasy"
       ],
       "recommended": 5,
-      "color": "#011d57",
+      "color": "#576a78",
       "episodes": 150,
       "status": "completed",
       "days": [
@@ -8706,7 +8747,8 @@
           ]
         }
       ],
-      "pick": true
+      "pick": true,
+      "coverAuto": true
     },
     {
       "id": "w052",
@@ -8714,12 +8756,12 @@
       "author": "포르토, 이승준",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/3597.html",
-      "cover": "https://i.namu.wiki/i/cNS7tCJyR-YnDdvIrgMM7PzwYCYFlq-5p77E8KieuC9ChzatzEiD6W-E_SXYnNgbZtDG1XPnMiOZDC95Xxkc11b_JW9c-wEYGx3uSCl6t2PszI_927DW0aWuhUBpR-vvZOc9C_SkaIeiP2gDe2UDvA.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/737836/thumbnail/thumbnail_IMAG21_3631137383537456690.jpg",
       "genres": [
         "thriller"
       ],
       "recommended": 4,
-      "color": "#011d57",
+      "color": "#100f17",
       "episodes": 43,
       "status": "completed",
       "days": [
@@ -8749,7 +8791,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w051",
@@ -8757,12 +8800,12 @@
       "author": "나락, 영기",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/12127.html",
-      "cover": "https://i.namu.wiki/i/nqJCGOuM4DN6QymqhBHjYWjrikA6GHzNxHEe341t38ozfi2xYeWb2ooXzSBoOZBFcQ7zody6V5JK78DW7KXpQXp5bJ56X_YJJQdeVs0IapwhSdc58MBSpAXaNef__yelgSSMhxHonavu-84IoV4oQQ.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/800034/thumbnail/thumbnail_IMAG21_df4c9ca5-a954-4c14-b03b-8716f5eea843.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 1,
-      "color": "#831100",
+      "color": "#251d36",
       "episodes": 97,
       "status": "completed",
       "days": [
@@ -8796,7 +8839,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w050",
@@ -8804,12 +8848,12 @@
       "author": "어패류메기, 훌리",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/17864.html",
-      "cover": "https://i.namu.wiki/i/bengH_FNYm7t5aRaDhmIy4wbf8xvT8yJUyapgLhHdvFl-ztVPp2dxNbXyTLe5SdckmPN4dXcrNNpfYn0MR2s4HnpeJTxBNJROdCaKdgCzOUvRuxwOQ-8vTSGCy7PWZ3vRsU43L8IhViAKST8Sq4_wg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/837100/thumbnail/thumbnail_IMAG21_905baefd-0b5f-4924-8007-fbd578ab4e16.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 4,
-      "color": "#016e8f",
+      "color": "#160f14",
       "episodes": 89,
       "status": "ongoing",
       "days": [
@@ -8843,7 +8887,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w049",
@@ -8851,12 +8896,12 @@
       "author": "바른꽃",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/14460.html",
-      "cover": "https://i.namu.wiki/i/NQjyx6XVcD0Lih3HXIZmuJcZEA_mQ2lgmH_faqByw4XpvAWq_ArzoB_T6O3zx5KiKl-MMrTZifiUAhe5xId3XsBDYZruiGvwrOpallR9KcURz7W3MRPLubS77It3L5cqaHhOIVTWelShY8QDxDt_kQ.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/818192/thumbnail/thumbnail_IMAG21_d3fb5932-e9b1-4a50-bbb9-e9849f21dae9.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 2,
-      "color": "#000000",
+      "color": "#485667",
       "episodes": 157,
       "status": "ongoing",
       "days": [
@@ -8885,7 +8930,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w048",
@@ -8893,12 +8939,12 @@
       "author": "달뜬",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/11374.html",
-      "cover": "https://i.namu.wiki/i/xX0ixvf-Ftth03ColrJXFJ7rzQoPS0MrezXMRuwYtbMV7NSWgFk525nVPjgcJRDmTpcZqqab93M_G-xwz5IStm5BLitPcgIro7SmVpPGsHXgQtGx7rB9sDFVViqld18YfElHLZmx_ZG7lr_dT5QOiw.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/790776/thumbnail/thumbnail_IMAG21_eaf0f609-1fca-4a38-9b57-2241c5f53d23.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 3,
-      "color": "#ff4015",
+      "color": "#79535c",
       "episodes": 193,
       "status": "ongoing",
       "days": [
@@ -8927,7 +8973,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w047",
@@ -8935,12 +8982,12 @@
       "author": "doip, 도도문, 이등별",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/9878.html",
-      "cover": "https://i.namu.wiki/i/-PmJquAh0Wmq742jZwN3l2DdRGdz3re_K_3DVSRenMcegidJ030KPojXmq5ohjoaQooK0fKqwtUu8buS390T5ZoF6jSCWea9wbBbVXKBWo5--rFvWUiYOmpSTXrh0RHORICXe2TAMfa4wgbC_4C3lw.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/772853/thumbnail/thumbnail_IMAG21_9b5f2843-89e5-458e-a5fe-d8883c72907b.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 3,
-      "color": "#f5ec00",
+      "color": "#482927",
       "episodes": 165,
       "status": "ongoing",
       "days": [
@@ -8980,7 +9027,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w046",
@@ -8988,12 +9036,12 @@
       "author": "상하",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/nVswmJGIFZpKIDIK-1QSoVzblMrgSbW_zjRArE_XJnrsgZOvT09Ea-ti5EDEcDr4O5b5CMx9g2SzHxaL7f2iGZuCgwH0vibyrxpDdHkrVgRyjYPWoYKTtbPvU8weZ2Vf9j7VGLRZ0dQRV8Tdse6T5Q.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/667573/thumbnail/thumbnail_IMAG21_095997c8-effc-4722-8157-baeaaa439930.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 4,
-      "color": "#ffe278",
+      "color": "#fefbca",
       "episodes": 372,
       "status": "completed",
       "days": [
@@ -9018,7 +9066,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w045",
@@ -9026,13 +9075,13 @@
       "author": "232",
       "platform": "네이버웹툰",
       "url": "",
-      "cover": "https://i.namu.wiki/i/ulwdoFdCwxYT5-0-0tYciRKfNxX6dXSG70FFlzaOB7AtjBwN4B6NbrkwzkRpSkJWcHM8xqwnuESOeOtN9fyoeKZE9Ww8BvZIh5B2NGIScrmNWK00I7CjF4TYd_35sWR4CsgxN8as-EuWJBBoeOlqvw.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/570503/thumbnail/thumbnail_IMAG21_7b907ee6-a61e-495b-9b8f-be2f0a4be44b.jpeg",
       "genres": [
         "romance",
         "daily"
       ],
       "recommended": 4,
-      "color": "#ff668a",
+      "color": "#fea8aa",
       "episodes": 442,
       "status": "completed",
       "days": [
@@ -9061,7 +9110,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w044",
@@ -9069,12 +9119,12 @@
       "author": "조은영",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/19388.html",
-      "cover": "https://i.namu.wiki/i/abEVTDXmxdo-_SZBdzxJYeTIo_Exsc6N20snq0-jwMljw4Yt4DRiDvGRR7ppsb2L8ssmweyjhO3GZ3ZzZb4GEnbQn8s2vueu8COb_QHMUaFMxY-e-zXsIa31lSMcoXOd1IdO5aFOPBysce96nfAMEg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/840510/thumbnail/thumbnail_IMAG21_e5ef3ad0-9b40-4ec1-a05a-f6e1f546d7b8.jpg",
       "genres": [
         "drama"
       ],
       "recommended": 3,
-      "color": "#011d57",
+      "color": "#1a1317",
       "episodes": 44,
       "status": "hiatus",
       "days": [
@@ -9100,7 +9150,8 @@
           ]
         }
       ],
-      "pick": true
+      "pick": true,
+      "coverAuto": true
     },
     {
       "id": "w042",
@@ -9108,12 +9159,12 @@
       "author": "기린그린, 코리타",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/14922.html",
-      "cover": "https://i.namu.wiki/i/JmEKK43cOaD14tcH34RIV_PcweyxOYmNQhZzHk197l6qtcW8WRlbvgbE_cTXNDMJk6h_zHLpKixxEiluT0qLxSK4G-EtFVcHEnjkH8ZIEY548CnskmFi7MapvqfLKWJeMqHcwL7-WH_6DVhQUX8aMA.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/820097/thumbnail/thumbnail_IMAG21_f453912f-edd5-432c-a4f7-50e4b314ad6c.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 4,
-      "color": "#b51a00",
+      "color": "#f9e8e7",
       "episodes": 127,
       "status": "ongoing",
       "days": [
@@ -9148,7 +9199,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w041",
@@ -9156,13 +9208,13 @@
       "author": "혀노",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/3593.html",
-      "cover": "https://i.namu.wiki/i/6hs7O4YoqhldVCHkl4rOPH3rc0r5a98Tm8QfWz_HmWz4vY2OWZNr9ScVSPzecvnE_MPbTW8VSdkdbR6IhWkIHoBbrZZIFUiH7Ux2aGNJEGm8wtn-3nt2v4IViusmTQwGS7r45agrugzBNkB-qtfwRg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/737628/thumbnail/thumbnail_IMAG21_9e108875-36b5-4872-8ace-53a6e492376b.jpg",
       "genres": [
         "romance",
         "daily"
       ],
       "recommended": 3,
-      "color": "#b1dd8b",
+      "color": "#74fd92",
       "episodes": 224,
       "status": "ongoing",
       "days": [
@@ -9191,7 +9243,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w040",
@@ -9199,12 +9252,12 @@
       "author": "이경민, 송준혁",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/3407.html",
-      "cover": "https://i.namu.wiki/i/sGL7zJKVZLuoY0F36dJxxW9llSha2kKHlu8IygKf5sgNFp6DsSaQQElJM6suI-7quQVyXTmKdZyXgW5lPyKB-j-dIkLz_uiuCSQDAea3CpSg8geB6sUw7V6F19rUJkfWqyCYhxrUqegKiUO56kCD-w.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/733728/thumbnail/thumbnail_IMAG21_3919368837772895284.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 2,
-      "color": "#01c7fc",
+      "color": "#191a36",
       "episodes": 114,
       "status": "completed",
       "days": [
@@ -9233,7 +9286,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w039",
@@ -9241,13 +9295,13 @@
       "author": "정지훈",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/3530.html",
-      "cover": "https://i.namu.wiki/i/9ac__9J32xEh7H5Md2lJVA9wBHZXeFndo3WFDGihzuVSLMugAkeNJEQ6HIqAyOCv1m4CBoeoVzlr29bP5g1xatoDkMs6KPuJOqChyj0MIGxS-81EO6fjjU0dVn5LoOEXApHm40YLkhpcQGDKT5U3Uw.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/736989/thumbnail/thumbnail_IMAG21_3618985590402593377.jpg",
       "genres": [
         "action",
         "sports"
       ],
       "recommended": 5,
-      "color": "#000000",
+      "color": "#1d1922",
       "episodes": 134,
       "status": "completed",
       "days": [
@@ -9279,7 +9333,8 @@
       ],
       "subs": [
         "sports-4"
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w038",
@@ -9287,12 +9342,12 @@
       "author": "나락, 영기",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/18421.html",
-      "cover": "https://i.namu.wiki/i/e4e7olsbjvjJyFX4kNMhljgx5a4aEvj8X3SOuJ4H9wVFBFbbITpyJBmmjhEBNk5tOIo84gIhOuWdK8WOmNZMoHnqtGxB3P8l7pmCghkri-bYnslmGkznOJkCVAMi_7IMPQ7BC_qDCDTe77pGJSZflw.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/840014/thumbnail/thumbnail_IMAG21_d0d4b1c4-bfe7-43e5-8f02-0a911652e2dc.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 3,
-      "color": "#b51a00",
+      "color": "#26191a",
       "episodes": 70,
       "status": "hiatus",
       "days": [
@@ -9326,7 +9381,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w037",
@@ -9334,12 +9390,12 @@
       "author": "우주돌",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/15352.html",
-      "cover": "https://i.namu.wiki/i/pMNlPjxJI4iuQhVIN_vkl4xsmWaAUnT4HG3AzQvnv-nFiF7h5BeprwtsIPTqtNGTwFQ9u5Mfc7rH2qz28NuP2B2hkdMfoAn-3cbszN02TgC7c77B1E24wMu5I5TA0OS2H0IynavqOLeI3FMjj1dzjA.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/822198/thumbnail/thumbnail_IMAG21_87309bfe-6df3-40c5-b299-1dee7d144c80.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 4,
-      "color": "#7a4a00",
+      "color": "#f7ebe5",
       "episodes": 113,
       "status": "ongoing",
       "days": [
@@ -9369,7 +9425,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w036",
@@ -9377,12 +9434,12 @@
       "author": "우시목, 이하안",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/17956.html",
-      "cover": "https://i.namu.wiki/i/Te9ruwCg2yuCD89_wWBXPMMsH1CIjeZmgv2G0K-KLzUet_oDmvQRkX566d2aakh2BFD3JTOQoQPBZqZe2GKJupmT8HeMl01-ICeSJLgzsnKCAAxTggXvLkCtPkBfOzg-DwjakJbetEqSP1tSkPjE2A.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/837659/thumbnail/thumbnail_IMAG21_6f1f4ac2-fe69-494a-b175-fc5447f5a54f.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 5,
-      "color": "#dfeed4",
+      "color": "#fcebe6",
       "episodes": 55,
       "status": "hiatus",
       "days": [
@@ -9417,7 +9474,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w035",
@@ -9425,12 +9483,12 @@
       "author": "직씨",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/17446.html",
-      "cover": "https://i.namu.wiki/i/ONNIcbE4ATbNtH8faSecOxmiGImZxjvVzdtbV-WxmWUKRMIoRSDe7RNpT3AZ5m2BLPJmnCVjMmbfT9Nyf9GFbXswcQaI6T-OvLxo1g3iPAs5pzgMTJPwxeXddDw6zyqwavJIRpd7GZnSGaL6B9Oqkg.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/834896/thumbnail/thumbnail_IMAG21_7277d36d-4cd9-4585-ac07-2b29f7c01ec0.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 3,
-      "color": "#96d35f",
+      "color": "#fbe8e4",
       "episodes": 92,
       "status": "hiatus",
       "days": [
@@ -9456,7 +9514,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w034",
@@ -9464,14 +9523,14 @@
       "author": "오세형",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/737.html",
-      "cover": "https://i.namu.wiki/i/Hk3-FF7-4N3DsI4N5-tZ0CRBthSBk0VPTkZVafV7PUQgacCQ52KxHG1i-0u1Rp5f-k4HrO95lvr3FTmvEHECX2KAC40lSbePsGFJfHc1kEgY3Ll5v4xFGvYVoMyhNkVXQs0JX39JKV8lSzrmN2nOUA.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/683496/thumbnail/thumbnail_IMAG21_7365463893838160438.jpg",
       "genres": [
         "fantasy",
         "action",
         "apocalyps"
       ],
       "recommended": 4,
-      "color": "#ff6a00",
+      "color": "#e50202",
       "episodes": 279,
       "status": "completed",
       "days": [
@@ -9497,7 +9556,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w033",
@@ -9505,12 +9565,12 @@
       "author": "홍대의, 주노, Q10",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/14169.html",
-      "cover": "https://i.namu.wiki/i/7ltca-yETsh2wiWQXZ3gvmWnFdzwDv4J9lsWYPtS1lizzJaQxHYzkPWIk2EAeWawC0M4ZC_DQt5Pbneu3ABmmYtU11W9BOLQ08iA0PEC1UKRK3UMzeFV-697JwORGlUpNA5_SXCkzFWH124UxfgSww.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/816809/thumbnail/thumbnail_IMAG21_7cdbae7a-df9f-4277-9e40-844c0dbd1af3.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 5,
-      "color": "#3a87fe",
+      "color": "#f5ebe9",
       "episodes": 143,
       "status": "ongoing",
       "days": [
@@ -9551,7 +9611,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w032",
@@ -9559,12 +9620,12 @@
       "author": "잔디롤빵",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/19430.html",
-      "cover": "https://i.namu.wiki/i/hsx3dNC7X-aVaHMFFpxHNoPC0INHj3fPjjxB_g8Nzp1L2IwI4xL6LE1T9wRsDBiSrr9tkfiOUjnZTw3viCA0Lla7qKozscCmOWzf_LK3d_s7X2H1Hd1CmFvjDP_iBG9Qm6ywQrsEzwC7bw7ikqao_g.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/849736/thumbnail/thumbnail_IMAG21_dedcc8fc-7230-4a58-a0c9-82d44cfe6391.jpg",
       "genres": [
         "romance"
       ],
       "recommended": 3,
-      "color": "#fefb41",
+      "color": "#2a323c",
       "episodes": 29,
       "status": "ongoing",
       "days": [
@@ -9593,7 +9654,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w031",
@@ -9601,12 +9663,12 @@
       "author": "상C",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/17827.html",
-      "cover": "https://i.namu.wiki/i/VWEud4yXr9-pMnSSWTvPsxJXtGi2ZKzdZh1h8YUN3fuKVIFzjKnnKWYw2quDuApi-2uCiWHA04qSCjjzE-N1IV7_5qaWNWK2vYIDTNIyW9pDR58VKucdSggMonBXC5hEruip-Dg4v0HozXVOiFF2aw.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/836848/thumbnail/thumbnail_IMAG21_3908e9b2-6cfb-45d5-9bc1-04b8453c1602.jpg",
       "genres": [
         "thriller"
       ],
       "recommended": 4,
-      "color": "#000000",
+      "color": "#13151b",
       "episodes": 51,
       "status": "ongoing",
       "days": [
@@ -9634,7 +9696,8 @@
           ]
         }
       ],
-      "pick": false
+      "pick": false,
+      "coverAuto": true
     },
     {
       "id": "w030",
@@ -9642,12 +9705,12 @@
       "author": "오세형, 김균태",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/8941.html",
-      "cover": "https://i.namu.wiki/i/Qv2poxPgS-xHfVl-7Gynd4uj9HZUyGSff_XrhYcfZQWry_n30_7_IuUbdwusgca3RehSNwga5IRDU342gwpYA9tb5ycOAN2k33YslB6mid8PAerGn6u-shTAutqADyd-7K7gJj4ZaOrZ016FJcCoWw.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/753509/thumbnail/thumbnail_IMAG21_7220222612514879842.jpg",
       "genres": [
         "action"
       ],
       "recommended": 3,
-      "color": "#831100",
+      "color": "#c90101",
       "episodes": 63,
       "status": "completed",
       "days": [
@@ -9679,7 +9742,8 @@
           ]
         }
       ],
-      "pick": true
+      "pick": true,
+      "coverAuto": true
     },
     {
       "id": "w029",
@@ -9687,12 +9751,12 @@
       "author": "박용제",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/2959.html",
-      "cover": "https://i.namu.wiki/i/pIjq7anyVuZx4fCwF_ErlEoGzI8M8gRmgHUT5N2w1MxO5agGqSLtZ_TsCoDTOm0gvcGpEo5ONY09_guoXAdicGJRUxGbWMTA2KB_WxUrnlERlHo5gK3jimeBtqYqoyKMouQBvdUGdVTowW-VpbjS7g.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/318995/thumbnail/thumbnail_IMAG21_38f18e00-09f2-4a0c-b36a-3aa56dfe0b3b.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 5,
-      "color": "#ffffff",
+      "color": "#f9e7e7",
       "episodes": 573,
       "status": "completed",
       "days": [
@@ -9720,7 +9784,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w028",
@@ -9728,7 +9793,7 @@
       "author": "ARCHE, LICO, 비가",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/9500.html",
-      "cover": "https://i.namu.wiki/i/6Ju3rrJag9aWNiVldT_Jm_rq-7ShfaSbp5bNYhJzsdC9Jr7hQ2uDeG-28k1WpGUE8C3rDi1J_fkwqTFkJto0aQr8Rh3IMUBLnO9KTRtRfWiMGVzKlP8ESGCl8Ued43IO_W2dEFrhi8yN_bsAA0ouAw.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/769209/thumbnail/thumbnail_IMAG21_3511dcdd-6e33-4171-8839-598d6d266215.jpg",
       "genres": [
         "murim",
         "fantasy"
@@ -9752,7 +9817,7 @@
         "판무"
       ],
       "desc": "대 화산파 13대 제자.천하삼대검수 매화검존 청명. \n천하를 혼란에 빠뜨린 고금제일마 천마의 목을 치고 십만대산의 정상에서 영면.\n백 년의 시간을 뛰어넘어 아이의 몸으로 다시 살아나다.\n......뭐? 화산이 망해? 이게 뭔 개소리야!?",
-      "color": "#ee719e",
+      "color": "#472b36",
       "source": "https://comic.naver.com/webtoon/list?titleId=769209",
       "autoAt": "2026-11-16",
       "authors": [
@@ -9776,7 +9841,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w027",
@@ -9784,7 +9850,7 @@
       "author": "2사장",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/3044.html",
-      "cover": "https://i.namu.wiki/i/HkOlzsfkzdI-Asc2E79y6AeT45NsnQQIANjiQ5w91oL08J3_TzqDLbQaiIS0-V_eRgcDtqgMPXhpr3UlsYWJQdXMyB7OovPqDNn8rsE06cg4pI1pbMw7wYl3DocwRxyU_P3YFbAp8ceJCc0viYIocQ.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/703844/thumbnail/thumbnail_IMAG21_5ddcb40e-1f6a-40f3-b2c4-6cd9a7eee843.jpg",
       "genres": [
         "sports"
       ],
@@ -9806,7 +9872,7 @@
         "완결스포츠"
       ],
       "desc": "한국 최초 한국형 고교스포츠 웹툰!\n열혈따윈 개나 줘, 낙오자들 뿐인 농구부의 운명은?",
-      "color": "#0061fe",
+      "color": "#3579fe",
       "source": "https://comic.naver.com/webtoon/list?titleId=703844",
       "autoAt": "2026-11-16",
       "authors": [
@@ -9821,7 +9887,8 @@
       "pick": true,
       "subs": [
         "sports-1"
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w026",
@@ -9829,7 +9896,7 @@
       "author": "고먕",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/17333.html",
-      "cover": "https://i.namu.wiki/i/6iGaaZgEaSRChIWV12Z0jvCecaUU6qNHzmJbpGyxv2EbwMcZ8FPFcWEOQxpk5nbhujX4O8fcMRM9crbdKlg0O05K4yVxu-FIcxzTx9q0EDwPDfWnWCcBLNMmrT2Ubz43tQIcIR3EeA808dXQFcFI2g.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/834369/thumbnail/thumbnail_IMAG21_053009da-be7a-41d4-a3ab-b0321963e8e0.jpg",
       "genres": [
         "daily",
         "fantasy"
@@ -9853,7 +9920,7 @@
         "러블리"
       ],
       "desc": "폐가에서 발견된 아이 '모리'는 구조대에 의해 보호소에서 눈을 뜬다.\n익숙하지 않은 생활에 적응하던 어느 날 생긴 후원자에게 조건 없는 사랑을 받고 자라는데..\n친하게 지내던 친구가 엄마와 떠나고, '엄마'라는 존재가 있다는 걸 알게 된 아이는 생각한다.\n혹시 이 사람이... 나의 엄마가 아닐까?\n모리의 멀고도 험한 엄마 만나러 가는 이야기.",
-      "color": "#ffffff",
+      "color": "#ece7e6",
       "pick": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=834369",
       "autoAt": "2026-11-16",
@@ -9865,7 +9932,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w025",
@@ -9873,7 +9941,7 @@
       "author": "후딩, 신마니",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/10025.html",
-      "cover": "https://i.namu.wiki/i/ZStu0iNQjl5z7k0gyNSlqB8K-5rb082b78KdT84QW2VTMPLuL71nWTEu8mGCCLcQQ63EaWYUG-acc0KJYKiyoGO8XA451ENcSEJgr-aIC-JJiYjTyDS8Vw2nLM-B3yif1xFFL0NwBkFq-D-SMoBNGA.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/773916/thumbnail/thumbnail_IMAG21_4ed8076c-cf13-4a8a-a6e5-f0868349f635.jpg",
       "genres": [
         "fantasy"
       ],
@@ -9896,7 +9964,7 @@
         "밀리터리"
       ],
       "desc": "전역하기 3일 전 어이없는 사고로 죽어버린 말년 병장.\n갑자기 이세계로 떠나라는 현실을 받아들이지 못하고 난리를 치다\n맨몸으로 이세계에 떨어지는 벌을 받게 된다.\n말년 병장의 눈물겨운 밀리터리 생존 판타지!",
-      "color": "#01c7fc",
+      "color": "#391612",
       "source": "https://comic.naver.com/webtoon/list?titleId=773916",
       "autoAt": "2026-11-16",
       "authors": [
@@ -9912,7 +9980,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w024",
@@ -9920,19 +9989,19 @@
       "author": "UMI, 슬리피-C, 싱숑",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/4279.html",
-      "cover": "https://i.namu.wiki/i/hctZcawovPWWqUJIBtPBE8Y2xEa10m9amRGwYbHx60s95WLdcCCpH0pMjV1boEHYomAOZf22bw78avxZwHbA5uXorldONML8NhwKQ9zWBBNDeTEbey4Uk3H8KDSEud5Q4JxthGNbcumhJAs6al4fUw.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/747269/thumbnail/thumbnail_IMAG21_aabd9952-ff45-47a2-a543-33f19a5c6708.jpg",
       "genres": [
         "fantasy",
         "apocalyps"
       ],
       "recommended": 5,
       "episodes": 313,
-      "status": "hiatus",
+      "status": "ongoing",
       "days": [
         "wed"
       ],
-      "autoCount": false,
-      "baseDate": "2026-11-11",
+      "autoCount": true,
+      "baseDate": "2026-11-16",
       "tags": [
         "판타지",
         "레드아이스 스튜디오",
@@ -9944,7 +10013,7 @@
         "이능력배틀물"
       ],
       "desc": "'이건 내가 아는 그 전개다'\n한순간에 세계가 멸망하고, 새로운 세상이 펼쳐졌다.\n오직 나만이 완주했던 소설 세계에서 평범했던 독자의 새로운 삶이 시작된다.",
-      "color": "#99244f",
+      "color": "#462728",
       "pick": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=747269",
       "autoAt": "2026-11-16",
@@ -9967,7 +10036,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w023",
@@ -9975,7 +10045,7 @@
       "author": "현군, 장성락(REDICE STUDIO), 추공",
       "platform": "카카오페이지",
       "url": "https://blacktoon427.com/webtoon/279.html",
-      "cover": "https://i.namu.wiki/i/yLbUioKY5JCfQ8zCMD5z1wcJnCUQge-mOyaiFrrNdM7Q4J2pHRX8rQEkqqm9yKegJik8KOoX8OD4xv068q5S7ltCeI9agmzngkJBBB90LYmSO9IXiXruYdPNNLD8NyLbPUwcxUFa-4kM9jh8Wz6dIw.webp",
+      "cover": "https://kr-a.kakaopagecdn.com/P/C/2320/sharing/2x/eacb00ec-9034-42cb-a533-7c7690741113.jpg",
       "genres": [
         "fantasy",
         "apocalyps",
@@ -9997,7 +10067,7 @@
         "레벨업물"
       ],
       "desc": "10여 년 전, \n다른 차원과 이쪽 세계를 이어 주는 통로 ‘게이트’가 열리고 \n평범한 이들 중 각성한 자들이 생겨났다.\n \n게이트 안의 던전에서 마물을 사냥하는 각성자.\n그들을 일컬어 ‘헌터’라 부른다.\n \n그러나 모든 헌터가 강한 것은 아니다.\n \n내 이름은 성진우.\nE급 헌터다. \n \n저급 던전에서조차 죽을 고비를 넘겨야 하는\n‘인류 최약병기’. \n \n무엇 하나 내세울 것 없는 형편에\n저급 던전으로 근근이 생계를 이어가던 그는,\nD급 던전 속에 숨겨진 \n최악의 난이도의 이중 던전을 만난다.\n \n그리고 결국… 죽음을 맞이하려던 ",
-      "color": "#61187c",
+      "color": "#141b28",
       "authors": [
         {
           "name": "현군",
@@ -10019,7 +10089,8 @@
         }
       ],
       "source": "https://webtoon.kakao.com/content/%EB%82%98-%ED%98%BC%EC%9E%90%EB%A7%8C-%EB%A0%88%EB%B2%A8%EC%97%85/2320",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "coverAuto": true
     },
     {
       "id": "w022",
@@ -10027,7 +10098,7 @@
       "author": "세윤, 써나",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/19803.html",
-      "cover": "https://i.namu.wiki/i/F84QhNhexU630Ygqs5pRCR6zPmjwlpHWbtpNiIrhHD5gnd-Tfr0ng0vrzs7yBJKNWFdaA_vEt9oM6j7UHjo2s6jJkktlM9c1DrNF3rJZTkbx1Cdq_3t9oym_qCUlQ1h0UDVmTFQ_s1he0uxoTQC5aw.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/852516/thumbnail/thumbnail_IMAG21_fb9361e6-8576-45f7-b8d1-131a39fbdc7e.jpg",
       "genres": [
         "romance"
       ],
@@ -10047,7 +10118,7 @@
         "걸크러시"
       ],
       "desc": "조폭이라는 소문으로 모두가 두려워하는 한세림.\n'엄친아' 강승우는 한세림과 멘토멘티 프로그램을 하게 되고, 늘 그렇듯 완벽하게 해내기 위해 한세림과 친해지려 한다.\n그런데 얘... 뭐하는 애지? \n\n내일이 없는 듯 구는 한세림과 인생을 완벽하게 설계하는 강승우의 위험천만 로맨스.",
-      "color": "#d6d6d6",
+      "color": "#472b19",
       "source": "https://comic.naver.com/webtoon/list?titleId=852516",
       "autoAt": "2026-11-16",
       "authors": [
@@ -10063,7 +10134,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w021",
@@ -10071,7 +10143,7 @@
       "author": "김기현",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/9582.html",
-      "cover": "https://i.namu.wiki/i/h52JN5FxhrhxsiTwaegbbzsgfGx7ulaRURv7HE8iOFmJ-dv9HAKg-331gfiD3Tyq7TKd__QKXKeKvRxshzPAg0RUzrrcXO9elDGBhpBPCKwpjLwDyTrnp_EQvzbvyJqd3yoI6dY9rKgKTRN7c38mbw.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/770068/thumbnail/thumbnail_IMAG21_b5e21984-464b-4529-91fa-3ecc4428e690.jpg",
       "genres": [
         "romance"
       ],
@@ -10092,7 +10164,7 @@
         "완결로맨스"
       ],
       "desc": "평소보다 특별했던 어느 날, 평범한 대학생 김지용의 꿈속에 정지혜가 나타나기 시작했다.\n정지혜에게 첫눈에 반한 김지용은 그녀를 찾아다니기 위해 노력하지만 알고 보니 그녀는.. 2년 전에 자살한 사람이었다?!\n그녀를 살리기 위해 고군분투하는 김지용의 달콤살벌 로맨스. 나타나주세요, 내 눈앞에!",
-      "color": "#feb43f",
+      "color": "#faece5",
       "source": "https://comic.naver.com/webtoon/list?titleId=770068",
       "autoAt": "2026-11-16",
       "authors": [
@@ -10103,7 +10175,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w020",
@@ -10111,7 +10184,7 @@
       "author": "이혜",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/4609.html",
-      "cover": "https://i.namu.wiki/i/8RIoQuxjsKntBzjuH4K3vqrrJUKJK0kEuO0u_MJ2iaCE_Kq184W1icZO3ehV2bXVJedZhFsmG7Qsx1u1J39jo0Ls5_gQx6JUTbqpmnzNkmqullE4hj3RLDFKLN77DxW8e-EIwqTKkJ-jHJnndxu6lA.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/746858/thumbnail/thumbnail_IMAG21_7306020803348674360.jpg",
       "genres": [
         "romance"
       ],
@@ -10132,7 +10205,7 @@
         "완결로맨스"
       ],
       "desc": "전생을 기억하는 삶은 어떨까? 매번 전생을 기억하는 무료한 삶을 살던 18회차 인생, 윤주원이란 이름으로 살던 12살에 서하를 만나게 된다.\n특별할 거 없던 그 아이가 무료한 삶을 특별하게 만들어주었지만 교통사고로 18회차 인생이 끝나고 만다.\n다시 태어난 19회차 인생, 윤주원에서 반지음이란 이름으로 다시 서하를 만나러 간다.",
-      "color": "#e63b7a",
+      "color": "#ed92ac",
       "source": "https://comic.naver.com/webtoon/list?titleId=746858",
       "autoAt": "2026-11-16",
       "authors": [
@@ -10143,7 +10216,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w019",
@@ -10151,7 +10225,7 @@
       "author": "홍덕, NEMONE",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/4516.html",
-      "cover": "https://i.namu.wiki/i/JXZeC_7vRrordQ2ZhXYA8kQW_remI6_F0v6Nvi3fL5H4EfkcumPXUfvUIf9O31Z1ZRzidbJO3nn_k-g5wrusrA.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/746834/thumbnail/thumbnail_IMAG21_6412ed6b-2288-41df-8715-648a3da9154e.jpg",
       "genres": [
         "romance"
       ],
@@ -10174,7 +10248,7 @@
         "까칠남"
       ],
       "desc": "“푸르지 않아도 괜찮아!”\n이제 막 청춘을 시작하고 있는 아이들.\n그리고 마냥 아름답지만은 않은 그 시절의 기억들.\n봄으로 가기 위한 그들의 성장통.\n봄, 여름, 가을, 겨울... 사계절의 빛깔로 담아낸\n풋풋하고 알싸한 아이들의 청춘 스토리.",
-      "color": "#3a87fe",
+      "color": "#333763",
       "pick": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=746834",
       "autoAt": "2026-11-16",
@@ -10191,7 +10265,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w018",
@@ -10199,7 +10274,7 @@
       "author": "민송아",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/3111.html",
-      "cover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDpzeadNAg67dxepMvYrhCyIhpHykqw2R2RF6XqP8Bfw&s=10",
+      "cover": "https://image-comic.pstatic.net/webtoon/731130/thumbnail/thumbnail_IMAG21_7220732760258196019.jpg",
       "genres": [
         "romance"
       ],
@@ -10222,7 +10297,7 @@
         "연예계"
       ],
       "desc": "(구)아이돌, 첫사랑, 소개팅녀까지 한 집에 모였다!  민송아 작가의 두근두근 누나 리스트! 대학생 이원준은 개강을 맞아 셰어하우스에 입주한다. 은퇴한 아이돌 이두나가 아래층에 살고 있다는 것을 알게 되는데..",
-      "color": "#f7e6dd",
+      "color": "#fb2847",
       "pick": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=731130",
       "autoAt": "2026-11-16",
@@ -10234,7 +10309,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w236",
@@ -10242,12 +10318,12 @@
       "author": "LICO, 조겐, 봄한방울",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/18794.html",
-      "cover": "https://i.namu.wiki/i/Zhk737fROZlctnfvvkt86afmajIQfxNhwrqF0f1mMWSg3_RpG9-96_fYs0F3RPWa-KZ5IeaKZaYv1SA94WhorYuKl8vVxShgc2hrvksMPDMQZQWeLu6_jQvT21po14ywGa5T_T54Be4l4oV93oISjQ.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/844063/thumbnail/thumbnail_IMAG21_07fca44b-55a8-4bae-bdcf-0740d8655274.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 0,
-      "color": "#0061fe",
+      "color": "#893956",
       "episodes": 56,
       "status": "ongoing",
       "days": [
@@ -10291,7 +10367,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w237",
@@ -10299,12 +10376,12 @@
       "author": "윤선웅, MIDNIGHT STUDIO, 미립",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/18920.html",
-      "cover": "https://i.namu.wiki/i/nHl5e_Lmv5w2FpODHxyeERIJTZT8TY9zSjkmo4sthvf5WPq4wUN0009-ab-OWNXaXNQW0e4nKnEMZWPGS8OZmDxVQNKJzJn5tD4wuWI6DwvJ_EvO2i_ANFbSB7VBkoE6RF-ZBL0nsoEvQyzTcX0goQ.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/845002/thumbnail/thumbnail_IMAG21_e81f32be-295e-45cb-bf83-ffbd1887b90d.jpg",
       "genres": [
         "fantasy"
       ],
       "recommended": 1,
-      "color": "#cdf7fd",
+      "color": "#f8ece6",
       "episodes": 51,
       "status": "ongoing",
       "days": [
@@ -10347,7 +10424,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w238",
@@ -10355,14 +10433,14 @@
       "author": "소구미, 오드로버",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/19169.html",
-      "cover": "https://i.namu.wiki/i/NvLAABcgkPVw_mz881P3PROFTg5mlQaoo9HvW-vHcVo67DwBZET61NDyP6xTaOMUeuYZvWr4tPJLoiUl_Xv2Y0n-uqswO48egsTVL_TGucMYKt_tlo2wGSJt7Pqcn02a0bMwjyoobrWGmji2-RWT0w.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/847306/thumbnail/thumbnail_IMAG21_c7f84a22-3abb-4311-b73c-e05b32fc4cdf.jpg",
       "genres": [
         "fantasy",
         "action",
         "apocalyps"
       ],
       "recommended": 2,
-      "color": "#d8665a",
+      "color": "#fae8d9",
       "episodes": 41,
       "status": "ongoing",
       "days": [
@@ -10399,7 +10477,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w239",
@@ -10407,13 +10486,13 @@
       "author": "벤티, 기인",
       "platform": "네이버웹툰",
       "url": "https://blacktoon427.com/webtoon/17801.html",
-      "cover": "https://i.namu.wiki/i/daQeW6TodLjw0wyhusXQM8hNWWW6RUPeLF-sdfEKOADFAL3suAve1klqhixeUBRU_BaMhxVRwDTJiyOF3n7uohoJnokeVMJa5h0JhsaDOpI3jgXAHTEEmUYAHuULODVwjdCEG2lGojSk5Lx3S7a71Q.webp",
+      "cover": "https://image-comic.pstatic.net/webtoon/836683/thumbnail/thumbnail_IMAG21_18bc7426-b4a7-4d99-9cdf-36b52058b405.jpg",
       "genres": [
         "fantasy",
         "action"
       ],
       "recommended": 0,
-      "color": "#286efe",
+      "color": "#95767b",
       "episodes": 53,
       "status": "hiatus",
       "days": [
@@ -10451,7 +10530,8 @@
             "original"
           ]
         }
-      ]
+      ],
+      "coverAuto": true
     },
     {
       "id": "w240",
@@ -10541,6 +10621,53 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=732988",
+      "autoAt": "2026-11-16"
+    },
+    {
+      "id": "w657564281141014",
+      "title": "두근두근 대작전",
+      "author": "최준영, 기령",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=845717",
+      "cover": "https://image-comic.pstatic.net/webtoon/845717/thumbnail/thumbnail_IMAG21_91c9d442-66e7-46f6-b58e-11ddddc2d95b.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 3,
+      "color": "#fae8ea",
+      "episodes": 47,
+      "status": "ongoing",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-16",
+      "tags": [
+        "로맨스",
+        "러브코미디",
+        "설렘폭발",
+        "성장물",
+        "학원로맨스",
+        "학원물",
+        "청춘로맨스"
+      ],
+      "desc": "“우리, 두근두근함이 부족하지 않아?”\n\n초등학교부터 고등학교까지,\n소꿉친구에서 연인이 된 남도연과 정아린.\n\n합리적인 연애를 지향하는 두 사람에게\n빠져버린 한 조각의 설렘을 되찾기 위한—\n\n두근두근 대작전이 시작된다!",
+      "authors": [
+        {
+          "name": "최준영",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "기령",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=845717",
       "autoAt": "2026-11-16"
     }
   ],
@@ -12128,7 +12255,7 @@
     ]
   },
   "meta": {
-    "lastWebtoonId": 241
+    "lastWebtoonId": 6575
   },
   "version": 1,
   "shop": [
