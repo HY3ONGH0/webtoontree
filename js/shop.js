@@ -8,6 +8,56 @@
     const items = WT.data.shop;
     let tab = 'all';
     let preview = S.equip.acc || 'basic';
+    let recSpan = 'month';   // 내 기록: 이번 달 | 전체
+
+    // ---------- 내 기록 정리 (이 기기에 남은 감상 기록으로 계산해요) ----------
+    function recordHTML() {
+      const log = S.log || [];
+      const today = WT.store.today();
+      const mStart = today.slice(0, 7) + '-01';
+      const [yy, mm] = today.split('-').map(Number);
+      const pm = mm === 1 ? `${yy - 1}-12` : `${yy}-${String(mm - 1).padStart(2, '0')}`;
+      const inSpan = (e) => recSpan === 'all' || e.d >= mStart;
+      const eps = log.filter((e) => e.t === 'ep' && inSpan(e)).reduce((a, e) => a + e.n, 0);
+      const prevEps = log.filter((e) => e.t === 'ep' && e.d.slice(0, 7) === pm).reduce((a, e) => a + e.n, 0);
+      const dones = log.filter((e) => e.t === 'done' && inSpan(e) && WT.toon(e.w));
+      const reading = WT.data.webtoons.filter((w) => { const e = (S.progress || {})[w.id] || 0; return e > 0 && e < WT.eps(w); });
+      // 연속으로 본 날
+      const days = [...new Set(log.filter((e) => e.t === 'ep').map((e) => e.d))].sort();
+      const dayN = (d) => Math.round(Date.UTC(...d.split('-').map((v, i) => (i === 1 ? v - 1 : +v))) / 86400000);
+      let best = 0, run = 0, prev = null;
+      days.forEach((d) => { run = prev !== null && dayN(d) - prev === 1 ? run + 1 : 1; prev = dayN(d); best = Math.max(best, run); });
+      const lastN = days.length ? dayN(days[days.length - 1]) : null;
+      const streak = lastN !== null && dayN(today) - lastN <= 1 ? run : 0;
+      // 많이 본 장르
+      const byG = {};
+      log.filter((e) => e.t === 'ep' && inSpan(e)).forEach((e) => { const w = WT.toon(e.w); const g = w && WT.genre((w.genres || [])[0]); if (g) byG[g.id] = (byG[g.id] || 0) + e.n; });
+      const gs = Object.keys(byG).map((id) => ({ g: WT.genre(id), n: byG[id] })).sort((a, b) => b.n - a.n).slice(0, 4);
+      const top = gs.length ? gs[0].n : 1;
+      const since = log.length ? Math.max(1, dayN(today) - dayN(log[0].d) + 1) : 0;
+      const diff = eps - prevEps;
+      const recent = dones.slice(-4).reverse().map((e) => WT.toon(e.w));
+      const cv = (w) => `<a class="rec-cv" href="#/library/${(w.genres || [])[0] || 'all'}/${w.id}" title="${esc(w.title)}" style="--c:${esc(w.color || (WT.genre((w.genres || [])[0]) || {}).color || '#55607F')}"><span>${esc(w.title)}</span>${w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}</a>`;
+      return `<section class="rec" aria-label="내 기록">
+        <div class="rec-head"><div><h2>${esc(S.profile ? S.profile.nick : '')} 님의 기록</h2>${since ? `<span>웹툰트리와 함께한 지 ${since}일</span>` : '<span>웹툰을 기록하면 여기에 모여요</span>'}</div>
+          <div class="rec-seg" role="group" aria-label="기간"><button type="button" data-span="month" aria-pressed="${recSpan === 'month'}">이번 달</button><button type="button" data-span="all" aria-pressed="${recSpan === 'all'}">전체</button></div></div>
+        <div class="rec-tiles">
+          <div class="rec-tile hi"><small>${recSpan === 'month' ? '이번 달' : '지금까지'} 본 화수</small><b>${eps}<i>화</i></b><span>${recSpan === 'month' ? (prevEps || eps ? `지난달보다 ${diff >= 0 ? '+' : ''}${diff}화` : '이번 달 첫 기록을 남겨 보세요') : `하루 평균 ${since ? Math.round(eps / since) : 0}화`}</span></div>
+          <div class="rec-tile"><small>다 본 웹툰</small><b>${dones.length}<i>편</i></b><span>${dones.length ? esc(WT.toon(dones[dones.length - 1].w).title) + (dones.length > 1 ? ` 외 ${dones.length - 1}편` : '') : '아직 없어요'}</span></div>
+          <div class="rec-tile"><small>보는 중</small><b>${reading.length}<i>편</i></b><span>${WT.newCount() ? `새 화가 나온 웹툰 ${WT.newCount()}편` : reading.length ? '새 화를 기다리는 중' : '보기 시작하면 모여요'}</span></div>
+          <div class="rec-tile"><small>연속으로 본 날</small><b>${streak}<i>일</i></b><span>최고 기록 ${best}일</span></div>
+        </div>
+        <div class="rec-row">
+          <div class="rec-box"><small>많이 본 장르</small>${gs.length ? `<div class="rec-bars">${gs.map(({ g, n }) => `<div><span>${esc(g.name)}</span><i><em style="width:${Math.max(4, Math.round((n / top) * 100))}%; background:${esc(g.color)}"></em></i><b>${n}화</b></div>`).join('')}</div>` : '<p class="rec-empty">기록이 쌓이면 보여요</p>'}</div>
+          <div class="rec-box"><small>최근 다 본 웹툰</small>${recent.length ? `<div class="rec-covers">${recent.map(cv).join('')}</div>` : '<p class="rec-empty">다 본 웹툰이 생기면 보여요</p>'}</div>
+        </div>
+        <p class="rec-note">이 기기에서 기록한 화수로 계산해요.</p>
+        ${WT.api.on() && S.token ? `<div class="rec-pub"><span>프로필 공개 범위</span>
+          <div class="rec-seg" role="group" aria-label="프로필 공개 범위">${[['all', '전체'], ['followers', '팔로워만'], ['me', '나만']].map(([k, n]) => `<button type="button" data-privacy="${k}" aria-pressed="${(S.privacy || 'all') === k}">${n}</button>`).join('')}</div>
+          ${S.pid ? `<a class="btn btn-sm press" href="#/u/${esc(S.pid)}">내 공개 프로필 보기</a>` : ''}<a class="btn btn-sm press" href="#/feed">친구 소식</a></div>` : ''}
+      </section>`;
+    }
+
 
     const lookWith = (item) => {
       const now = WT.currentLook();
@@ -40,6 +90,7 @@
           ${WT.topRight()}
         </div>
         ${S.profile ? `<div class="profile-wrap">${WT.profileCard()}</div>` : ''}
+        ${S.profile ? recordHTML() : ''}
         <h2 class="shop-h">캐릭터 꾸미기</h2>
         <main class="shop-main">
           <section class="preview rpg" aria-label="미리보기"><span class="corner-b" aria-hidden="true"></span>
@@ -87,6 +138,11 @@
       const app = document.getElementById('app');
       if (S.profile) WT.bindProfileCard(() => draw(false));
       app.querySelectorAll('[data-tab]').forEach((b) => b.addEventListener('click', () => { tab = b.dataset.tab; draw(false); }));
+      app.querySelectorAll('[data-privacy]').forEach((b) => b.addEventListener('click', async () => {
+        try { const r = await WT.api.authed('setPrivacy', { privacy: b.dataset.privacy }); WT.api.applyMe(r.me); WT.toast(`프로필을 '${b.textContent}'에게 공개해요`); const y = window.scrollY; draw(false); window.scrollTo(0, y); }
+        catch (e) { if (!e.auth) WT.toast(e.message); }
+      }));
+      app.querySelectorAll('[data-span]').forEach((b) => b.addEventListener('click', () => { recSpan = b.dataset.span; const y = window.scrollY; draw(false); window.scrollTo(0, y); }));
       app.querySelectorAll('[data-item]').forEach((b) => b.addEventListener('click', () => { preview = b.dataset.item; draw(true); }));
       document.getElementById('shop-act').addEventListener('click', async () => {
         if (!S.profile) return;
@@ -137,7 +193,7 @@
           <div class="left">
             <a href="#/" class="icon-btn press" aria-label="홈으로">${WT.icon.back}</a>
             <div class="title-block"><h1 style="color:var(--coin)">랭킹</h1><span class="sub">이번 주에 누가 웹툰을 가장 많이 봤을까?</span></div>
-          <nav class="rank-switch" aria-label="랭킹 종류"><a href="#/top">웹툰 랭킹</a><a href="#/ranking" aria-current="page">독자 랭킹</a></nav>
+          <nav class="rank-switch" aria-label="랭킹 종류"><a href="#/top">웹툰 랭킹</a><a href="#/ranking" aria-current="page">독자 랭킹</a><a href="#/feed">친구 소식</a></nav>
           </div>
           ${WT.topRight()}
         </div>
@@ -166,7 +222,7 @@
         return `<div style="flex:1 1 0; max-width:200px; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:6px">
           ${i === 0 ? '<svg aria-hidden="true" width="40" height="30" viewBox="0 0 40 30" style="animation:starTw 2s ease-in-out infinite"><polygon points="4,28 6,8 14,16 20,4 26,16 34,8 36,28" fill="#FFD34D" stroke="#FFF4C2" stroke-width="1.5" stroke-linejoin="round"/></svg>' : ''}
           <div style="animation:bob 1.4s ease-in-out infinite">${WT.charSVG(look(u.equip), i === 0 ? 76 : 60)}</div>
-          <span style="font-size:16px; font-weight:700">${esc(u.nickname)}</span>
+          <span style="font-size:16px; font-weight:700">${WT.userLink(u.nickname, u.pid)}</span>
           <span style="font-size:14px; font-weight:700; color:var(--coin)">${fmt(u)}</span>
           <div style="align-self:stretch; height:${h}px; border-radius:8px 8px 0 0; background:${bg}; display:flex; justify-content:center; padding-top:10px; transform-origin:50% 100%; animation:rise .6s cubic-bezier(.2,.9,.3,1.2) ${i * 0.1}s both"><span style="font-family: var(--display); font-weight: 800; font-size:34px; color:#2A2410">${i + 1}</span></div>
         </div>`;
@@ -174,7 +230,7 @@
       const rest = r.top.slice(3).map((u, k) => `<li class="stat" style="flex-direction:row; align-items:center; gap:12px; animation-delay:${k * 0.05}s">
           <span style="width:32px; text-align:center; font-family: var(--display); font-weight: 800; font-size:20px; color:var(--muted)">${u.rank}</span>
           ${WT.charSVG(look(u.equip), 36)}
-          <span style="flex:1 1 auto; font-weight:700">${esc(u.nickname)}</span>
+          <span style="flex:1 1 auto; font-weight:700">${WT.userLink(u.nickname, u.pid)}</span>
           <span style="font-size:13px; color:var(--muted)">${metric === 'eps' ? `완독 ${u.done}개` : `${u.eps}화 감상`}</span>
           <span style="min-width:90px; text-align:right; font-weight:700; color:var(--coin)">${fmt(u)}</span></li>`).join('');
       const mine = S.profile ? (r.mine
@@ -204,7 +260,7 @@
         <div class="left">
           <a href="#/" class="icon-btn press" aria-label="홈으로">${WT.icon.back}</a>
           <div class="title-block"><h1 style="color:var(--coin)">랭킹</h1><span class="sub">이번 주에 누가 웹툰을 가장 많이 봤을까?</span></div>
-          <nav class="rank-switch" aria-label="랭킹 종류"><a href="#/top">웹툰 랭킹</a><a href="#/ranking" aria-current="page">독자 랭킹</a></nav>
+          <nav class="rank-switch" aria-label="랭킹 종류"><a href="#/top">웹툰 랭킹</a><a href="#/ranking" aria-current="page">독자 랭킹</a><a href="#/feed">친구 소식</a></nav>
         </div>
         ${WT.topRight()}
       </div>

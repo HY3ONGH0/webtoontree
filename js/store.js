@@ -15,6 +15,7 @@
       equip: { acc: 'basic', color: null },
       unlocked: {},         // 웹툰ID → true (잠금 해제)
       favs: {},             // 웹툰ID → 1 (관심 웹툰)
+      seen: {},             // 웹툰ID → 마지막으로 확인한 총 화수 (새 화 알림용)
       ratings: {},          // 웹툰ID → 1~5
       comments: {},         // 웹툰ID → [{ text, at }]
       log: []               // { d: 날짜, t: 'ep' | 'done', n, w }  (내 기록·랭킹 계산용)
