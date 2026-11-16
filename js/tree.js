@@ -1000,6 +1000,22 @@
             <span class="sim-cv" style="--c:${esc(o.color || (WT.genre((o.genres || [])[0]) || {}).color || '#55607F')}"><span>${esc(o.title)}</span>${o.cover ? `<img src="${esc(o.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}</span>
             <b>${esc(o.title)}</b>${why ? `<small>${esc(why)}</small>` : ''}</button>`).join('')}</div>
         </div>` : ''; })()}
+        ${server ? (() => {
+          const sc = social[id];
+          const recs = sc && sc.recs ? sc.recs : null;
+          const mine = recs ? recs.find((r) => r.mine) : null;
+          const others = recs ? recs.filter((r) => !r.mine) : [];
+          return `<div class="recbox">
+            <span class="sim-h">친구에게 추천${recs && recs.length ? ` <small>${recs.length}명이 추천했어요</small>` : ''}</span>
+            ${S.profile && S.token ? `<form class="rec-form" data-form="rec">
+              <label for="rec-in" class="sr">한 줄 추천</label>
+              <input id="rec-in" class="fld" maxlength="40" placeholder="한 줄로 왜 좋은지 적어 주세요 (40자까지)" value="${esc(mine ? mine.text : '')}">
+              <div class="rec-acts"><button type="submit" class="btn press rec-go">${mine ? '추천 고치기' : '추천 남기기'}</button>${mine ? '<button type="button" class="btn press" data-act="unrec">지우기</button>' : ''}<button type="button" class="btn press" data-act="share">링크 복사</button></div>
+              <span class="hint">추천은 나를 팔로우한 사람의 친구 소식과 내 공개 프로필에 보여요.</span>
+            </form>` : `<div class="rec-acts"><a href="#/login" class="btn press">로그인하고 추천하기</a><button type="button" class="btn press" data-act="share">링크 복사</button></div>`}
+            ${others.length ? `<div class="rec-list">${others.slice(0, 5).map((r) => `<div class="rec-it"><b>${WT.userLink(r.nickname, r.pid)}</b><span>“${esc(r.text)}”</span></div>`).join('')}</div>` : ''}
+          </div>`;
+        })() : `<div class="rec-acts"><button type="button" class="btn press" data-act="share">링크 복사</button></div>`}
         <div class="comments">
           ${(() => {
             const sc = server ? social[id] : null;
@@ -1014,7 +1030,7 @@
             const when = (t) => { const m = String(t).match(/^\d{4}-(\d{2})-(\d{2})/); return m ? `${Number(m[1])}월 ${Number(m[2])}일` : esc(t); };
             const rows = items === null ? '<span class="hint">댓글 불러오는 중…</span>'
               : count ? items.map((c) => `<div class="cm"><span class="avatar" style="width:28px; height:28px; font-size:12px" aria-hidden="true">${esc((c.nickname || '?')[0])}</span>
-                <div style="flex:1 1 auto; min-width:0"><div class="who"><b>${esc(c.nickname)}</b> · ${c.local ? esc(c.createdAt) : when(c.createdAt)}</div><div class="txt">${esc(c.text)}</div></div>
+                <div style="flex:1 1 auto; min-width:0"><div class="who"><b>${c.pid && !c.local ? WT.userLink(c.nickname, c.pid) : esc(c.nickname)}</b> · ${c.local ? esc(c.createdAt) : when(c.createdAt)}</div><div class="txt">${esc(c.text)}</div></div>
                 ${c.mine && !c.local ? `<button type="button" class="icon-btn" data-delc="${esc(c.commentId)}" aria-label="내 댓글 지우기" style="width:36px; height:36px; background:transparent; flex:0 0 auto">${WT.icon.close}</button>` : ''}</div>`).join('')
               : (S.profile ? '<span style="font-size:13px; color:#7F8BB0">아직 댓글이 없어요. 첫 감상을 남겨 주세요.</span>' : '<span style="font-size:13px; color:#7F8BB0">아직 댓글이 없어요.</span>');
             return `<span style="font-size:13px; color:var(--muted); font-weight:700">댓글 ${items === null ? '' : count}</span>${form}${rows}`;
@@ -1246,6 +1262,15 @@
       else if (a === 'plus') setEp(sel, ep(sel) + 1);
       else if (a === 'done') setEp(sel, isDone(sel) ? 0 : total(sel));
       else if (a === 'unlock') openUnlock(sel);
+      else if (a === 'share') {
+        const url = `${location.origin}${location.pathname}#/library/all/${sel}`;
+        const ok = () => WT.toast('링크를 복사했어요. 친구에게 보내 보세요');
+        if (navigator.clipboard) navigator.clipboard.writeText(url).then(ok, () => window.prompt('이 링크를 복사해 주세요', url)); else window.prompt('이 링크를 복사해 주세요', url);
+      }
+      else if (a === 'unrec') {
+        const id = sel; t.disabled = true;
+        WT.api.authed('recommend', { webtoonId: id, text: '' }).then((x) => { social[id] = x.social; if (sel === id) renderPanel(false); WT.toast('추천을 지웠어요'); }).catch((er) => { t.disabled = false; if (!er.auth) WT.toast(er.message); });
+      }
       else if (a === 'report') {
         t.disabled = true;
         WT.api.call('report', { webtoonId: sel, viewerId: WT.api.viewerId() })
@@ -1257,6 +1282,15 @@
       if (e.target.id === 'ep-in' && sel) setEp(sel, e.target.value);
     });
     slot.addEventListener('submit', (e) => {
+      if (e.target.dataset.form === 'rec' && sel) {
+        e.preventDefault();
+        const text = e.target.querySelector('#rec-in').value.trim().slice(0, 40);
+        if (!text) { WT.toast('한 줄 추천을 적어 주세요'); return; }
+        const id = sel, btn = e.target.querySelector('.rec-go'); btn.disabled = true;
+        WT.api.authed('recommend', { webtoonId: id, text }).then((x) => { social[id] = x.social; if (sel === id) renderPanel(false); WT.toast('추천을 남겼어요'); })
+          .catch((er) => { btn.disabled = false; if (!er.auth) WT.toast(er.message); });
+        return;
+      }
       if (e.target.dataset.form !== 'comment' || !sel) return;
       e.preventDefault();
       const input = e.target.querySelector('#cmt');

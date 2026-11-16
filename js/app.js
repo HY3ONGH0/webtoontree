@@ -203,7 +203,7 @@
     const last = WT.lastTree();
     const treeId = live.includes(last) ? last : live[0];
     const s = WT.store.state;
-    const on = { home: 'home', tree: 'tree', map: 'tree', worlds: 'tree', library: 'library', books: 'library', author: 'library', week: 'week', top: 'rank', ranking: 'rank', me: 'me', shop: 'me', login: 'me' }[name] || 'home';
+    const on = { home: 'home', tree: 'tree', map: 'tree', worlds: 'tree', library: 'library', books: 'library', author: 'library', week: 'week', top: 'rank', ranking: 'rank', feed: 'rank', u: 'rank', me: 'me', shop: 'me', login: 'me' }[name] || 'home';
     const items = [
       ['home', '#/', '홈', '<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>'],
       ['tree', treeId ? `#/tree/${treeId}` : (WT.liveGenres()[0] ? `#/tree/${WT.liveGenres()[0].id}` : '#/worlds'), '트리', '<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.6 7.9l3.2 7.8M16.4 7.9l-3.2 7.8"/>'],
@@ -535,7 +535,7 @@
         <div class="left">
           <a href="#/" class="icon-btn press" aria-label="홈으로">${WT.icon.back}</a>
           <div class="title-block"><h1 style="color:var(--coin)">이번 주 랭킹</h1><span class="sub">이번 주에 많이 읽은 웹툰 TOP 10</span></div>
-          <nav class="rank-switch" aria-label="랭킹 종류"><a href="#/top" aria-current="page">웹툰 랭킹</a><a href="#/ranking">독자 랭킹</a></nav>
+          <nav class="rank-switch" aria-label="랭킹 종류"><a href="#/top" aria-current="page">웹툰 랭킹</a><a href="#/ranking">독자 랭킹</a><a href="#/feed">친구 소식</a></nav>
         </div>
         ${WT.topRight()}
       </div>

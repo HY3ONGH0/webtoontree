@@ -19,14 +19,16 @@ var DEFAULT_DATA_URL = 'https://hy3ongh0.github.io/webtoontree/data/data.json';
 var TZ = 'Asia/Seoul';
 
 var SHEETS = {
-  users: ['userId', 'nickname', 'pwHash', 'salt', 'createdAt', 'status', 'coins', 'progress', 'rewarded', 'daily', 'owned', 'equip', 'unlocked', 'role', 'favs'],
+  users: ['userId', 'nickname', 'pwHash', 'salt', 'createdAt', 'status', 'coins', 'progress', 'rewarded', 'daily', 'owned', 'equip', 'unlocked', 'role', 'favs', 'privacy'],
   sessions: ['token', 'userId', 'expiresAt'],
   ratings: ['webtoonId', 'userId', 'score', 'updatedAt'],
   comments: ['commentId', 'webtoonId', 'userId', 'text', 'createdAt', 'hidden'],
   views: ['date', 'webtoonId', 'viewerId'],
   coinLog: ['logId', 'userId', 'amount', 'reason', 'ref', 'eps', 'createdAt'],
   live: ['ver', 'at', 'by', 'name', 'ops'],
-  reports: ['reportId', 'webtoonId', 'viewerId', 'note', 'createdAt', 'done']
+  reports: ['reportId', 'webtoonId', 'viewerId', 'note', 'createdAt', 'done'],
+  follows: ['follower', 'followee', 'at'],
+  recs: ['recId', 'userId', 'webtoonId', 'text', 'at']
 };
 var JSON_COLS = { progress: 1, rewarded: 1, daily: 1, owned: 1, equip: 1, unlocked: 1, favs: 1 };
 
@@ -68,12 +70,13 @@ function doPost(e) {
 }
 
 // 서버 코드 판 번호: 관리자 화면이 이 숫자를 보고 "서버 코드가 예전 버전"인지 알려 줘요. 서버 코드를 고치면 1씩 올려요
-var SERVER_VERSION = 17;
+var SERVER_VERSION = 18;
 
 var WRITE_ACTIONS = {
   signup: 1, login: 1, logout: 1, nick: 1, deleteAccount: 1, progress: 1, rate: 1, comment: 1, deleteComment: 1,
   view: 1, buy: 1, equip: 1, unlockCoin: 1, unlockAdmin: 1, report: 1,
-  adminSetStatus: 1, adminResetPassword: 1, adminSetNick: 1, adminHideComment: 1, adminReportDone: 1, adminSaveData: 1, adminSetRole: 1
+  adminSetStatus: 1, adminResetPassword: 1, adminSetNick: 1, adminHideComment: 1, adminReportDone: 1, adminSaveData: 1, adminSetRole: 1,
+  follow: 1, recommend: 1, setPrivacy: 1
 };
 
 var ACTIONS = {
@@ -386,6 +389,83 @@ var ACTIONS = {
     return out;
   },
 
+  // ---------- 회원끼리: 팔로우 · 추천 · 공개 프로필 · 친구 소식 ----------
+  follow: function (b) {
+    var me = auth_(b.token).obj;
+    var t = userByPid_(b.pid);
+    if (!t || t.obj.status === 'banned') fail_('없는 회원이에요.');
+    if (t.obj.userId === me.userId) fail_('나를 팔로우할 수는 없어요.');
+    var rows = readAll_('follows');
+    var has = rows.some(function (r) { return r.obj.follower === me.userId && r.obj.followee === t.obj.userId; });
+    if (b.on && !has) {
+      if (rows.filter(function (r) { return r.obj.follower === me.userId; }).length >= 500) fail_('팔로우는 500명까지 할 수 있어요.');
+      appendRow_('follows', { follower: me.userId, followee: t.obj.userId, at: now_() });
+    } else if (!b.on && has) deleteWhere_('follows', function (o) { return o.follower === me.userId && o.followee === t.obj.userId; });
+    return { following: !!b.on, followers: readAll_('follows').filter(function (r) { return r.obj.followee === t.obj.userId; }).length };
+  },
+
+  /** 웹툰 추천 한 줄 (40자, 한 웹툰에 하나 · 빈 글이면 지워요) */
+  recommend: function (b) {
+    var me = auth_(b.token).obj;
+    if (me.status === 'banned') fail_('이용이 정지된 계정이에요.');
+    var w = findToon_(siteData_(), String(b.webtoonId || ''));
+    var text = String(b.text || '').replace(/\s+/g, ' ').trim().slice(0, 40);
+    var hit = null;
+    readAll_('recs').forEach(function (r) { if (r.obj.userId === me.userId && r.obj.webtoonId === w.id) hit = r; });
+    if (!text) { if (hit) deleteWhere_('recs', function (o) { return o.userId === me.userId && o.webtoonId === w.id; }); }
+    else if (hit) { hit.obj.text = text; hit.obj.at = now_(); updateRow_('recs', hit.row, hit.obj); }
+    else appendRow_('recs', { recId: randomHex_(8), userId: me.userId, webtoonId: w.id, text: text, at: now_() });
+    cacheDel_('social:' + w.id);
+    return { social: social_(w.id, me.userId) };
+  },
+
+  setPrivacy: function (b) {
+    var u = auth_(b.token);
+    u.obj.privacy = { all: 1, followers: 1, me: 1 }[b.privacy] ? b.privacy : 'all';
+    updateRow_('users', u.row, u.obj);
+    return { me: publicMe_(u.obj) };
+  },
+
+  /** 공개 프로필: 닉네임 · 팔로워 수 · 다 본 웹툰 수 · 추천 · 관심 웹툰 (공개 범위에 따라) */
+  userProfile: function (b) {
+    var t = userByPid_(b.pid);
+    if (!t || t.obj.status === 'banned') fail_('없는 회원이에요.');
+    var viewer = null;
+    if (b.token) { try { viewer = auth_(b.token).obj; } catch (e) { viewer = null; } }
+    var uid = t.obj.userId, self = !!viewer && viewer.userId === uid;
+    var fl = readAll_('follows');
+    var iFollow = !!viewer && fl.some(function (r) { return r.obj.follower === viewer.userId && r.obj.followee === uid; });
+    var privacy = t.obj.privacy || 'all';
+    var open = self || privacy === 'all' || (privacy === 'followers' && iFollow);
+    var rw = t.obj.rewarded || {};
+    var out = {
+      pid: b.pid, nickname: t.obj.nickname, self: self, iFollow: iFollow, privacy: privacy, open: open,
+      followers: fl.filter(function (r) { return r.obj.followee === uid; }).length,
+      following: fl.filter(function (r) { return r.obj.follower === uid; }).length,
+      done: Object.keys(rw).filter(function (k) { return /:done$/.test(k); }).length,
+      recs: [], favs: []
+    };
+    if (open) {
+      out.recs = readAll_('recs').filter(function (r) { return r.obj.userId === uid; }).map(function (r) { return { webtoonId: r.obj.webtoonId, text: r.obj.text, at: r.obj.at }; })
+        .sort(function (a, b2) { return String(b2.at).localeCompare(String(a.at)); }).slice(0, 30);
+      out.favs = Object.keys(t.obj.favs || {}).slice(0, 60);
+    }
+    return { profile: out };
+  },
+
+  /** 친구 소식: 내가 팔로우한 회원들의 추천 (공개 범위가 '나만'인 회원은 빼요) */
+  feed: function (b) {
+    var me = auth_(b.token).obj;
+    var follows = {};
+    readAll_('follows').forEach(function (r) { if (r.obj.follower === me.userId) follows[r.obj.followee] = 1; });
+    var users = {};
+    readAll_('users').forEach(function (r) { users[r.obj.userId] = r.obj; });
+    var items = readAll_('recs').filter(function (r) { var u = users[r.obj.userId]; return follows[r.obj.userId] && u && u.status !== 'banned' && (u.privacy || 'all') !== 'me'; })
+      .map(function (r) { return { pid: pubId_(r.obj.userId), nickname: users[r.obj.userId].nickname, webtoonId: r.obj.webtoonId, text: r.obj.text, at: r.obj.at }; })
+      .sort(function (a, b2) { return String(b2.at).localeCompare(String(a.at)); }).slice(0, 60);
+    return { items: items, following: Object.keys(follows).length };
+  },
+
   ranking: function (b) {
     var period = { week: 1, month: 1, all: 1 }[b.period] ? b.period : 'week';
     var metric = b.metric === 'done' ? 'done' : 'eps';
@@ -416,7 +496,7 @@ var ACTIONS = {
         for (var i = 0; i < board.length; i++) if (board[i].userId === uid) { mine = { rank: i + 1, eps: board[i].eps, done: board[i].done }; break; }
       } catch (err) { mine = null; }
     }
-    var top = board.slice(0, 10).map(function (x, i) { return { rank: i + 1, nickname: x.nickname, eps: x.eps, done: x.done, equip: x.equip }; });
+    var top = board.slice(0, 10).map(function (x, i) { return { rank: i + 1, nickname: x.nickname, pid: pubId_(x.userId), eps: x.eps, done: x.done, equip: x.equip }; });
     var gap = null;
     if (mine && mine.rank > 1) {
       var above = board[mine.rank - 2];
@@ -1111,6 +1191,15 @@ function nickTaken_(nick, exceptId) {
   var low = nick.toLowerCase();
   return readAll_('users').some(function (r) { return String(r.obj.nickname).toLowerCase() === low && r.obj.userId !== exceptId; });
 }
+// 공개용 번호: 로그인 아이디를 드러내지 않고 다른 회원을 가리킬 때 써요 (랭킹 · 댓글 · 팔로우)
+function pubId_(userId) { return sha256_('pub:' + String(userId)).slice(0, 12); }
+function userByPid_(pid) {
+  pid = String(pid || '');
+  if (!/^[0-9a-f]{12}$/.test(pid)) return null;
+  var all = readAll_('users');
+  for (var i = 0; i < all.length; i++) if (pubId_(all[i].obj.userId) === pid) return all[i];
+  return null;
+}
 function nickMap_() {
   var m = {};
   readAll_('users').forEach(function (r) { m[r.obj.userId] = r.obj.nickname; });
@@ -1305,7 +1394,7 @@ function publicMe_(u) {
   readAll_('ratings').forEach(function (r) { if (r.obj.userId === u.userId) ratings[r.obj.webtoonId] = Number(r.obj.score); });
   return {
     userId: u.userId, nickname: u.nickname, coins: Number(u.coins), progress: u.progress, rewarded: u.rewarded,
-    daily: u.daily, owned: u.owned, equip: u.equip, unlocked: u.unlocked, favs: u.favs || {}, ratings: ratings, role: u.role === 'admin' ? 'admin' : ''
+    daily: u.daily, owned: u.owned, equip: u.equip, unlocked: u.unlocked, favs: u.favs || {}, ratings: ratings, pid: pubId_(u.userId), privacy: u.privacy || 'all', role: u.role === 'admin' ? 'admin' : ''
   };
 }
 function social_(wid, uid) {
@@ -1317,12 +1406,15 @@ function social_(wid, uid) {
     var comments = readAll_('comments').filter(function (r) { return r.obj.webtoonId === wid && !r.obj.hidden; })
       .map(function (r) { return { commentId: r.obj.commentId, nickname: r.obj.userId ? (nicks[r.obj.userId] || '알 수 없음') : '탈퇴한 사용자', userId: r.obj.userId, text: r.obj.text, createdAt: r.obj.createdAt }; })
       .reverse().slice(0, 50);
-    base = { avg: n ? Math.round(sum / n * 10) / 10 : 0, count: n, comments: comments };
+    var recs = readAll_('recs').filter(function (r) { return r.obj.webtoonId === wid; }).map(function (r) { return { userId: r.obj.userId, nickname: nicks[r.obj.userId] || '알 수 없음', pid: pubId_(r.obj.userId), text: r.obj.text, at: r.obj.at }; })
+      .sort(function (a, b2) { return String(b2.at).localeCompare(String(a.at)); }).slice(0, 20);
+    base = { avg: n ? Math.round(sum / n * 10) / 10 : 0, count: n, comments: comments, recs: recs };
     cachePut_('social:' + wid, base, 120);
   }
   return {
     avg: base.avg, count: base.count,
-    comments: base.comments.map(function (c) { return { commentId: c.commentId, nickname: c.nickname, text: c.text, createdAt: c.createdAt, mine: !!uid && c.userId === uid }; })
+    comments: base.comments.map(function (c) { return { commentId: c.commentId, nickname: c.nickname, pid: c.userId ? pubId_(c.userId) : '', text: c.text, createdAt: c.createdAt, mine: !!uid && c.userId === uid }; }),
+    recs: (base.recs || []).map(function (r) { return { nickname: r.nickname, pid: r.pid, text: r.text, at: r.at, mine: !!uid && r.userId === uid }; })
   };
 }
 function log_(userId, amount, reason, ref, eps) {
