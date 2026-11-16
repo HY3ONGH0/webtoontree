@@ -96,8 +96,10 @@
       "platform": "네이버웹툰",
       "url": "https://comic.naver.com/webtoon/list?titleId=854122",
       "cover": "https://image-comic.pstatic.net/webtoon/854122/thumbnail/thumbnail_IMAG21_a6f33f1e-b6f9-4729-af2f-63f555d4c618.jpg",
-      "genres": [],
-      "recommended": 0,
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 2,
       "color": "#fd8644",
       "episodes": 17,
       "status": "ongoing",
