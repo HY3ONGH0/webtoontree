@@ -4,7 +4,7 @@
    - 이 화면은 서버에 아무것도 바꾸지 않아요. 실제 수정 권한은 GitHub 저장소가 가져요. */
 (function () {
   const DRAFT = 'webtoontree.admin.draft';
-  const NEED_SERVER = 18;   // 이 화면이 필요로 하는 서버 코드 판 번호 (apps-script/Code.gs 의 SERVER_VERSION)
+  const NEED_SERVER = 19;   // 이 화면이 필요로 하는 서버 코드 판 번호 (apps-script/Code.gs 의 SERVER_VERSION)
   const root = () => document.getElementById('admin');
   const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const clone = (o) => JSON.parse(JSON.stringify(o));
