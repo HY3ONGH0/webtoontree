@@ -66,8 +66,7 @@
       "cover": "https://image-comic.pstatic.net/webtoon/847135/thumbnail/thumbnail_IMAG21_779f0fbe-564e-460c-b241-3d776517aad1.jpg",
       "genres": [
         "thriller",
-        "drama",
-        "romance"
+        "drama"
       ],
       "recommended": 0,
       "color": "#a78867",
@@ -2335,7 +2334,7 @@
         "romance",
         "daily"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#eaab85",
       "episodes": 512,
       "status": "completed",
@@ -2364,7 +2363,11 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=651673",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 2
+      },
+      "recAvg": 2
     },
     {
       "id": "w113",
@@ -3706,11 +3709,13 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=703845",
       "autoAt": "2026-11-16",
-      "pick": true,
       "subs": [
         "fantasy-5"
       ],
-      "pickBase": true
+      "apick": [
+        "admin"
+      ],
+      "pick": true
     },
     {
       "id": "w140",
@@ -5414,7 +5419,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#ebf0eb",
       "episodes": 83,
       "status": "ongoing",
@@ -5450,7 +5455,12 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=828920",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 3,
+        "lliooli": 4
+      },
+      "recAvg": 3.5
     },
     {
       "id": "w177",
@@ -6115,7 +6125,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#fcece4",
       "episodes": 72,
       "status": "ongoing",
@@ -6146,7 +6156,11 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=839913",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 2
+      },
+      "recAvg": 2
     },
     {
       "id": "w191",
@@ -6158,7 +6172,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "color": "#191a24",
       "episodes": 44,
       "status": "hiatus",
@@ -6194,7 +6208,11 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=841491",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 1
+      },
+      "recAvg": 1
     },
     {
       "id": "w192",
@@ -6254,7 +6272,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "color": "#fbf8e7",
       "episodes": 49,
       "status": "hiatus",
@@ -6285,7 +6303,11 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=842899",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 1
+      },
+      "recAvg": 1
     },
     {
       "id": "w194",
@@ -6297,7 +6319,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#190b12",
       "episodes": 155,
       "status": "hiatus",
@@ -6328,7 +6350,11 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=786082",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 2
+      },
+      "recAvg": 2
     },
     {
       "id": "w195",
@@ -6340,7 +6366,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#f7e7e9",
       "episodes": 26,
       "status": "ongoing",
@@ -6371,7 +6397,12 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=850214",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 3,
+        "lliooli": 2
+      },
+      "recAvg": 2.5
     },
     {
       "id": "w196",
@@ -6469,7 +6500,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#fae8ea",
       "episodes": 47,
       "status": "ongoing",
@@ -6504,7 +6535,12 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=845717",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 2,
+        "lliooli": 1
+      },
+      "recAvg": 1.5
     },
     {
       "id": "w199",
@@ -6516,7 +6552,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#041657",
       "episodes": 45,
       "status": "ongoing",
@@ -6547,7 +6583,12 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=841128",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 3,
+        "lliooli": 3
+      },
+      "recAvg": 3
     },
     {
       "id": "w200",
@@ -6559,7 +6600,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#342c28",
       "episodes": 45,
       "status": "ongoing",
@@ -6590,7 +6631,12 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=835693",
-      "autoAt": "2026-11-16"
+      "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 2,
+        "lliooli": 2
+      },
+      "recAvg": 2
     },
     {
       "id": "w201",
@@ -6902,7 +6948,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#c7a889",
       "episodes": 58,
       "status": "ongoing",
@@ -6929,7 +6975,12 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "admin": 1,
+        "lliooli": 2
+      },
+      "recAvg": 1.5
     },
     {
       "id": "w208",
@@ -6941,7 +6992,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#d9e7e4",
       "episodes": 140,
       "status": "completed",
@@ -6977,7 +7028,11 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "admin": 3
+      },
+      "recAvg": 3
     },
     {
       "id": "w209",
@@ -7035,7 +7090,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "color": "#ff5767",
       "episodes": 91,
       "status": "completed",
@@ -7062,7 +7117,11 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "admin": 1
+      },
+      "recAvg": 1
     },
     {
       "id": "w211",
@@ -7074,7 +7133,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "color": "#261c27",
       "episodes": 55,
       "status": "ongoing",
@@ -7105,7 +7164,11 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "admin": 1
+      },
+      "recAvg": 1
     },
     {
       "id": "w212",
@@ -7117,7 +7180,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#fbe9e7",
       "episodes": 136,
       "status": "completed",
@@ -7148,7 +7211,12 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "admin": 2,
+        "lliooli": 2
+      },
+      "recAvg": 2
     },
     {
       "id": "w213",
@@ -7243,7 +7311,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "color": "#faebe5",
       "episodes": 236,
       "status": "completed",
@@ -7278,7 +7346,12 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "admin": 1,
+        "lliooli": 1
+      },
+      "recAvg": 1
     },
     {
       "id": "w216",
@@ -7916,7 +7989,10 @@
           ]
         }
       ],
-      "pickBase": true
+      "pickBase": true,
+      "apick": [
+        "admin"
+      ]
     },
     {
       "id": "w228",
@@ -8108,7 +8184,7 @@
         "romance",
         "daily"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#373a47",
       "episodes": 88,
       "status": "hiatus",
@@ -8139,7 +8215,12 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "admin": 2,
+        "lliooli": 3
+      },
+      "recAvg": 2.5
     },
     {
       "id": "w232",
@@ -8212,7 +8293,7 @@
         "romance",
         "thriller"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#261c14",
       "episodes": 126,
       "status": "ongoing",
@@ -8243,7 +8324,12 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "admin": 2,
+        "lliooli": 4
+      },
+      "recAvg": 3
     },
     {
       "id": "w234",
@@ -8314,7 +8400,7 @@
         "romance",
         "drama"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#f9e8d8",
       "episodes": 65,
       "status": "completed",
@@ -8356,7 +8442,12 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "admin": 3,
+        "lliooli": 4
+      },
+      "recAvg": 3.5
     },
     {
       "id": "w063",
@@ -8368,7 +8459,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#fde6d9",
       "episodes": 46,
       "status": "hiatus",
@@ -8399,7 +8490,12 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "admin": 3,
+        "lliooli": 3
+      },
+      "recAvg": 3
     },
     {
       "id": "w062",
@@ -8442,7 +8538,10 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "apick": [
+        "lliooli"
+      ]
     },
     {
       "id": "w061",
@@ -8898,7 +8997,10 @@
       ],
       "pick": true,
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "apick": [
+        "admin"
+      ]
     },
     {
       "id": "w052",
@@ -9208,9 +9310,10 @@
       "url": "",
       "cover": "https://image-comic.pstatic.net/webtoon/667573/thumbnail/thumbnail_IMAG21_095997c8-effc-4722-8157-baeaaa439930.jpg",
       "genres": [
-        "romance"
+        "romance",
+        "daily"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#fefbca",
       "episodes": 372,
       "status": "completed",
@@ -9237,7 +9340,11 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "lliooli": 4
+      },
+      "recAvg": 4
     },
     {
       "id": "w045",
@@ -9250,7 +9357,7 @@
         "romance",
         "daily"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#fea8aa",
       "episodes": 442,
       "status": "completed",
@@ -9281,7 +9388,11 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "lliooli": 4
+      },
+      "recAvg": 4
     },
     {
       "id": "w044",
@@ -9388,7 +9499,7 @@
         "romance",
         "daily"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#74fd92",
       "episodes": 224,
       "status": "ongoing",
@@ -9419,7 +9530,12 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "admin": 3,
+        "lliooli": 3
+      },
+      "recAvg": 3
     },
     {
       "id": "w040",
@@ -9613,7 +9729,10 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "apick": [
+        "admin"
+      ]
     },
     {
       "id": "w036",
@@ -9663,7 +9782,10 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "apick": [
+        "lliooli"
+      ]
     },
     {
       "id": "w035",
@@ -9675,7 +9797,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#fbe8e4",
       "episodes": 92,
       "status": "hiatus",
@@ -9703,7 +9825,12 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "admin": 4,
+        "lliooli": 4
+      },
+      "recAvg": 4
     },
     {
       "id": "w034",
@@ -9805,7 +9932,10 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "apick": [
+        "admin"
+      ]
     },
     {
       "id": "w032",
@@ -9817,7 +9947,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#2a323c",
       "episodes": 29,
       "status": "ongoing",
@@ -9848,7 +9978,12 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "admin": 4,
+        "lliooli": 4
+      },
+      "recAvg": 4
     },
     {
       "id": "w031",
@@ -9980,7 +10115,10 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "apick": [
+        "admin"
+      ]
     },
     {
       "id": "w028",
@@ -10137,7 +10275,10 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "apick": [
+        "admin"
+      ]
     },
     {
       "id": "w025",
@@ -10315,7 +10456,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "episodes": 19,
       "status": "ongoing",
       "days": [
@@ -10348,7 +10489,12 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "admin": 3,
+        "lliooli": 3
+      },
+      "recAvg": 3
     },
     {
       "id": "w021",
@@ -10360,7 +10506,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "episodes": 123,
       "status": "completed",
       "days": [
@@ -10389,7 +10535,12 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "admin": 4,
+        "lliooli": 3
+      },
+      "recAvg": 3.5
     },
     {
       "id": "w020",
@@ -10401,7 +10552,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 5,
       "episodes": 115,
       "status": "completed",
       "days": [
@@ -10430,7 +10581,12 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "arate": {
+        "admin": 5,
+        "lliooli": 5
+      },
+      "recAvg": 5
     },
     {
       "id": "w019",
@@ -10442,7 +10598,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 5,
       "episodes": 130,
       "status": "completed",
       "days": [
@@ -10480,7 +10636,14 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "apick": [
+        "lliooli"
+      ],
+      "arate": {
+        "lliooli": 5
+      },
+      "recAvg": 5
     },
     {
       "id": "w018",
@@ -10492,7 +10655,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 5,
       "episodes": 154,
       "status": "completed",
       "days": [
@@ -10525,7 +10688,14 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true
+      "pickBase": true,
+      "apick": [
+        "lliooli"
+      ],
+      "arate": {
+        "lliooli": 5
+      },
+      "recAvg": 5
     },
     {
       "id": "w236",
@@ -10843,53 +11013,6 @@
       ],
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=732988",
-      "autoAt": "2026-11-16"
-    },
-    {
-      "id": "w657564281141014",
-      "title": "두근두근 대작전",
-      "author": "최준영, 기령",
-      "platform": "네이버웹툰",
-      "url": "https://comic.naver.com/webtoon/list?titleId=845717",
-      "cover": "https://image-comic.pstatic.net/webtoon/845717/thumbnail/thumbnail_IMAG21_91c9d442-66e7-46f6-b58e-11ddddc2d95b.jpg",
-      "genres": [
-        "romance"
-      ],
-      "recommended": 0,
-      "color": "#fae8ea",
-      "episodes": 47,
-      "status": "ongoing",
-      "days": [
-        "fri"
-      ],
-      "autoCount": true,
-      "baseDate": "2026-11-16",
-      "tags": [
-        "로맨스",
-        "러브코미디",
-        "설렘폭발",
-        "성장물",
-        "학원로맨스",
-        "학원물",
-        "청춘로맨스"
-      ],
-      "desc": "“우리, 두근두근함이 부족하지 않아?”\n\n초등학교부터 고등학교까지,\n소꿉친구에서 연인이 된 남도연과 정아린.\n\n합리적인 연애를 지향하는 두 사람에게\n빠져버린 한 조각의 설렘을 되찾기 위한—\n\n두근두근 대작전이 시작된다!",
-      "authors": [
-        {
-          "name": "최준영",
-          "roles": [
-            "writer"
-          ]
-        },
-        {
-          "name": "기령",
-          "roles": [
-            "painter"
-          ]
-        }
-      ],
-      "coverAuto": true,
-      "source": "https://comic.naver.com/webtoon/list?titleId=845717",
       "autoAt": "2026-11-16"
     }
   ],
@@ -12480,7 +12603,7 @@
   "meta": {
     "lastWebtoonId": 6575,
     "admins": {
-      "admin": "최종 관리자"
+      "lliooli": "설하"
     }
   },
   "version": 1,
