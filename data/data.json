@@ -1,6 +1,63 @@
 {
   "webtoons": [
     {
+      "id": "w657575op5k",
+      "title": "역대급 영지 설계사",
+      "author": "이현민, 김현수, 문백경",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=777767",
+      "cover": "https://image-comic.pstatic.net/webtoon/777767/thumbnail/thumbnail_IMAG21_cc85f891-272b-450a-b642-cffe1568ab71.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 5,
+      "color": "#380b09",
+      "episodes": 228,
+      "status": "completed",
+      "days": [
+        "fri"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-16",
+      "tags": [
+        "판타지",
+        "명작",
+        "판타지개그",
+        "서양",
+        "게임",
+        "왕족/귀족",
+        "개그",
+        "세계관"
+      ],
+      "desc": "소설 속 귀족이 된 토목공학도 김수호. \n그런데 뭐? 내 영지가 곧 망할 거라고? \n그럼 살려야지. 설계하고, 건설하고, 분양해서. \n[전 대륙이 기다려온 특별한 기회! 퍼펙트한 교통, 최상의 학군, 쾌적한 숲세권, 원스톱 프리미엄 영지 라이프의 프론테라 남작령이 여러분을 기다립니다. 선착순 분양계약중!]",
+      "authors": [
+        {
+          "name": "이현민",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "김현수",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "문백경",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=777767",
+      "autoAt": "2026-11-16",
+      "subs": [
+        "fantasy-6"
+      ]
+    },
+    {
       "id": "w657574suxh",
       "title": "쪽팔려게임",
       "author": "봉수, 다이",
@@ -59,7 +116,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "color": "#010101",
       "episodes": 57,
       "status": "ongoing",
@@ -1250,7 +1307,7 @@
         "drama",
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 1,
       "color": "#faead8",
       "episodes": 81,
       "status": "completed",
@@ -5500,7 +5557,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "color": "#fed9d5",
       "episodes": 230,
       "status": "ongoing",
@@ -5604,7 +5661,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": 1,
+      "recommended": 3,
       "color": "#171728",
       "episodes": 53,
       "status": "ongoing",
@@ -5795,7 +5852,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#e8dae9",
       "episodes": 69,
       "status": "ongoing",
@@ -5978,7 +6035,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#fcece4",
       "episodes": 72,
       "status": "ongoing",
@@ -11924,13 +11981,8 @@
       "starts": []
     },
     "apocalyps": {
-      "start": "w034",
-      "nodes": {
-        "w034": [
-          130,
-          280
-        ]
-      },
+      "start": null,
+      "nodes": {},
       "links": [],
       "starts": []
     },
@@ -17029,6 +17081,83 @@
       "bio": "",
       "url": "https://comic.naver.com/community/u/dai",
       "works": []
+    },
+    "이현민": {
+      "name": "이현민",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "질풍기획 시즌1",
+          "source": "https://comic.naver.com/webtoon/list?titleId=256855",
+          "cover": "https://image-comic.pstatic.net/webtoon/256855/thumbnail/thumbnail_IMAG21_7377848789307318882.jpg",
+          "finished": true
+        },
+        {
+          "title": "질풍기획 시즌2",
+          "source": "https://comic.naver.com/webtoon/list?titleId=608265",
+          "cover": "https://image-comic.pstatic.net/webtoon/608265/thumbnail/thumbnail_IMAG21_3991933337443973222.jpg",
+          "finished": true
+        },
+        {
+          "title": "나의 목소리를 들어라",
+          "source": "https://comic.naver.com/webtoon/list?titleId=514917",
+          "cover": "https://image-comic.pstatic.net/webtoon/514917/thumbnail/thumbnail_IMAG21_3832626389655239013.jpg",
+          "finished": true
+        },
+        {
+          "title": "아직도 안 깔아 보았나!? 넵스토어!",
+          "source": "https://comic.naver.com/webtoon/list?titleId=627127",
+          "cover": "https://image-comic.pstatic.net/webtoon/627127/thumbnail/thumbnail_IMAG21_4121693481324326964.jpg",
+          "finished": true
+        },
+        {
+          "title": "풍작이에요, 마왕님!",
+          "source": "https://comic.naver.com/webtoon/list?titleId=837486",
+          "cover": "https://image-comic.pstatic.net/webtoon/837486/thumbnail/thumbnail_IMAG21_95cd6be7-b46a-400d-9e3c-2457e71eb7b3.jpg",
+          "finished": false
+        },
+        {
+          "title": "아직도 못 맞춰 보았나! 블쓰헤드샷!",
+          "source": "https://comic.naver.com/webtoon/list?titleId=640168",
+          "cover": "https://image-comic.pstatic.net/webtoon/640168/thumbnail/thumbnail_IMAG21_7076955147921208163.jpg",
+          "finished": true
+        },
+        {
+          "title": "동네몬스터",
+          "source": "https://comic.naver.com/webtoon/list?titleId=749054",
+          "cover": "https://image-comic.pstatic.net/webtoon/749054/thumbnail/thumbnail_IMAG21_3546925981202657842.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "김현수": {
+      "name": "김현수",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20251023_156/17611995413923dhAv_PNG/1751543780371.png",
+      "bio": "대머리",
+      "url": "https://comic.naver.com/community/u/dokdu",
+      "works": []
+    },
+    "문백경": {
+      "name": "문백경",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": [
+        {
+          "title": "풍작이에요, 마왕님!",
+          "source": "https://comic.naver.com/webtoon/list?titleId=837486",
+          "cover": "https://image-comic.pstatic.net/webtoon/837486/thumbnail/thumbnail_IMAG21_95cd6be7-b46a-400d-9e3c-2457e71eb7b3.jpg",
+          "finished": false
+        },
+        {
+          "title": "약 파는 황태자",
+          "source": "https://comic.naver.com/webtoon/list?titleId=818969",
+          "cover": "https://image-comic.pstatic.net/webtoon/818969/thumbnail/thumbnail_IMAG21_a261dbe9-20f0-4233-bdd0-0cf35c89d263.jpg",
+          "finished": false
+        }
+      ]
     }
   },
   "version": 1,
