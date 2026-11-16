@@ -10,7 +10,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "color": "#380b09",
       "episodes": 228,
       "status": "completed",
@@ -116,7 +116,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#010101",
       "episodes": 57,
       "status": "ongoing",
@@ -156,7 +156,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#fd8644",
       "episodes": 10,
       "status": "ongoing",
@@ -361,7 +361,7 @@
         "drama",
         "thriller"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#fd054b",
       "episodes": 230,
       "status": "ongoing",
@@ -404,7 +404,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#39332c",
       "episodes": 71,
       "status": "completed",
@@ -442,7 +442,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#271737",
       "episodes": 181,
       "status": "completed",
@@ -485,7 +485,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#170e11",
       "episodes": 108,
       "status": "completed",
@@ -528,7 +528,7 @@
         "action",
         "drama"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#1b1415",
       "episodes": 626,
       "status": "ongoing",
@@ -571,7 +571,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#dde7e5",
       "episodes": 104,
       "status": "completed",
@@ -614,7 +614,7 @@
       "genres": [
         "drama"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#583a35",
       "episodes": 178,
       "status": "completed",
@@ -661,7 +661,7 @@
       "genres": [
         "drama"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#262c44",
       "episodes": 216,
       "status": "ongoing",
@@ -715,7 +715,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#f3e8e6",
       "episodes": 52,
       "status": "completed",
@@ -758,7 +758,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#e5eaf3",
       "episodes": 653,
       "status": "hiatus",
@@ -805,7 +805,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#eae4da",
       "episodes": 333,
       "status": "completed",
@@ -846,7 +846,7 @@
       "genres": [
         "sports"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#97160d",
       "episodes": 117,
       "status": "completed",
@@ -885,7 +885,7 @@
       "genres": [
         "apocalyps"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#493635",
       "episodes": 141,
       "status": "completed",
@@ -931,7 +931,7 @@
       "genres": [
         "apocalyps"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#0c1219",
       "episodes": 106,
       "status": "hiatus",
@@ -969,7 +969,7 @@
       "genres": [
         "sports"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#493403",
       "episodes": 275,
       "status": "ongoing",
@@ -1022,7 +1022,7 @@
         "sports",
         "drama"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "color": "#0c131c",
       "episodes": 205,
       "status": "completed",
@@ -1066,7 +1066,7 @@
       "genres": [
         "sports"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#163836",
       "episodes": 96,
       "status": "ongoing",
@@ -1117,7 +1117,7 @@
         "fantasy",
         "daily"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#fcede2",
       "episodes": 197,
       "status": "completed",
@@ -1158,7 +1158,7 @@
         "fantasy",
         "romance"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#eae4ea",
       "episodes": 147,
       "status": "hiatus",
@@ -1207,7 +1207,7 @@
         "romance",
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#f9f5e9",
       "episodes": 238,
       "status": "hiatus",
@@ -1260,7 +1260,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#bb8878",
       "episodes": 150,
       "status": "completed",
@@ -1307,7 +1307,7 @@
         "drama",
         "daily"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#faead8",
       "episodes": 81,
       "status": "completed",
@@ -1347,7 +1347,7 @@
         "romance",
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#fae7e8",
       "episodes": 133,
       "status": "hiatus",
@@ -1406,7 +1406,7 @@
         "fantasy",
         "apocalyps"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "color": "#190e11",
       "episodes": 103,
       "status": "hiatus",
@@ -1450,7 +1450,7 @@
         "daily",
         "drama"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#7655e4",
       "episodes": 270,
       "status": "completed",
@@ -1493,7 +1493,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#fae8fb",
       "episodes": 66,
       "status": "completed",
@@ -1557,7 +1557,7 @@
         "daily",
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#f8e5eb",
       "episodes": 72,
       "status": "hiatus",
@@ -1603,7 +1603,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#17131c",
       "episodes": 268,
       "status": "completed",
@@ -1651,7 +1651,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#18130d",
       "episodes": 148,
       "status": "hiatus",
@@ -1712,7 +1712,7 @@
         "drama",
         "action"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#281819",
       "episodes": 349,
       "status": "ongoing",
@@ -1759,7 +1759,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#e8e8f8",
       "episodes": 311,
       "status": "hiatus",
@@ -1810,7 +1810,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#56393a",
       "episodes": 99,
       "status": "hiatus",
@@ -1864,7 +1864,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#fef700",
       "episodes": 719,
       "status": "completed",
@@ -1911,7 +1911,7 @@
         "fantasy",
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#fbf8e9",
       "episodes": 103,
       "status": "hiatus",
@@ -1966,7 +1966,7 @@
         "fantasy",
         "drama"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#cb2c2b",
       "episodes": 127,
       "status": "ongoing",
@@ -2024,7 +2024,7 @@
         "drama",
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#c6b6ab",
       "episodes": 236,
       "status": "completed",
@@ -2074,7 +2074,7 @@
         "fantasy",
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#6daee5",
       "episodes": 187,
       "status": "ongoing",
@@ -2126,7 +2126,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#e83402",
       "episodes": 27,
       "status": "ongoing",
@@ -2177,7 +2177,7 @@
         "action",
         "drama"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#846d66",
       "episodes": 269,
       "status": "completed",
@@ -2222,7 +2222,7 @@
       "genres": [
         "action"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#161319",
       "episodes": 223,
       "status": "completed",
@@ -2267,7 +2267,7 @@
       "genres": [
         "drama"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#473c35",
       "episodes": 86,
       "status": "completed",
@@ -2323,7 +2323,7 @@
         "romance",
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#eaab85",
       "episodes": 512,
       "status": "completed",
@@ -2415,7 +2415,7 @@
       "genres": [
         "drama"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "color": "#16121a",
       "episodes": 140,
       "status": "completed",
@@ -2463,7 +2463,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#d6dbe8",
       "episodes": 1,
       "status": "hiatus",
@@ -2519,7 +2519,7 @@
       "genres": [
         "drama"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "color": "#0f1317",
       "episodes": 76,
       "status": "completed",
@@ -2558,7 +2558,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#241b28",
       "episodes": 22,
       "status": "ongoing",
@@ -2668,7 +2668,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#e6e5ed",
       "episodes": 121,
       "status": "hiatus",
@@ -2721,7 +2721,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#17110f",
       "episodes": 42,
       "status": "hiatus",
@@ -2772,7 +2772,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#1c1937",
       "episodes": 225,
       "status": "hiatus",
@@ -2880,7 +2880,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#f9ebe6",
       "episodes": 53,
       "status": "ongoing",
@@ -2932,7 +2932,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#fbeb22",
       "episodes": 1238,
       "status": "completed",
@@ -2974,7 +2974,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#f2eee5",
       "episodes": 212,
       "status": "completed",
@@ -3016,7 +3016,7 @@
       "genres": [
         "action"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#261d24",
       "episodes": 153,
       "status": "ongoing",
@@ -3160,7 +3160,7 @@
       "genres": [
         "action"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#9b7973",
       "episodes": 136,
       "status": "completed",
@@ -3209,7 +3209,7 @@
       "genres": [
         "action"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#0e1319",
       "episodes": 121,
       "status": "completed",
@@ -3364,7 +3364,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#fbe8da",
       "episodes": 80,
       "status": "ongoing",
@@ -3418,7 +3418,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "color": "#9dbef4",
       "episodes": 205,
       "status": "completed",
@@ -3458,7 +3458,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#b7f8b9",
       "episodes": 257,
       "status": "completed",
@@ -3498,7 +3498,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#a3f5ff",
       "episodes": 298,
       "status": "completed",
@@ -3539,7 +3539,7 @@
         "daily",
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#27141b",
       "episodes": 381,
       "status": "completed",
@@ -3585,7 +3585,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#16131b",
       "episodes": 127,
       "status": "completed",
@@ -3677,7 +3677,8 @@
       "pick": true,
       "subs": [
         "fantasy-5"
-      ]
+      ],
+      "pickBase": true
     },
     {
       "id": "w140",
@@ -3691,7 +3692,7 @@
         "daily",
         "drama"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "color": "#896489",
       "episodes": 374,
       "status": "completed",
@@ -3739,7 +3740,7 @@
       "genres": [
         "sports"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#f1ede9",
       "episodes": 138,
       "status": "hiatus",
@@ -3785,7 +3786,7 @@
       "genres": [
         "sports"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#19110e",
       "episodes": 226,
       "status": "ongoing",
@@ -3828,7 +3829,7 @@
       "genres": [
         "sports"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#120f16",
       "episodes": 257,
       "status": "completed",
@@ -3879,7 +3880,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#fdece7",
       "episodes": 114,
       "status": "ongoing",
@@ -3964,7 +3965,7 @@
       "genres": [
         "sports"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#252a36",
       "episodes": 200,
       "status": "ongoing",
@@ -4058,7 +4059,7 @@
       "genres": [
         "murim"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#faeee4",
       "episodes": 109,
       "status": "ongoing",
@@ -4112,7 +4113,7 @@
       "genres": [
         "murim"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#3e2a21",
       "episodes": 53,
       "status": "hiatus",
@@ -4197,7 +4198,7 @@
         "romance",
         "drama"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#f5e7fc",
       "episodes": 261,
       "status": "completed",
@@ -4240,7 +4241,7 @@
         "daily",
         "romance"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#d7c9b5",
       "episodes": 144,
       "status": "completed",
@@ -4282,7 +4283,7 @@
         "apocalyps",
         "daily"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#69a88a",
       "episodes": 132,
       "status": "completed",
@@ -4322,7 +4323,7 @@
       "genres": [
         "apocalyps"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#f3ecec",
       "episodes": 93,
       "status": "completed",
@@ -4371,7 +4372,7 @@
         "action",
         "apocalyps"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#353648",
       "episodes": 201,
       "status": "completed",
@@ -4464,7 +4465,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#c7b9a7",
       "episodes": 312,
       "status": "completed",
@@ -4509,7 +4510,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#262749",
       "episodes": 89,
       "status": "completed",
@@ -4554,7 +4555,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#f7c991",
       "episodes": 51,
       "status": "completed",
@@ -4598,7 +4599,7 @@
         "fantasy",
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#fcca09",
       "episodes": 85,
       "status": "completed",
@@ -4643,7 +4644,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#83191b",
       "episodes": 84,
       "status": "completed",
@@ -4717,7 +4718,8 @@
       "subs": [
         "fantasy-5"
       ],
-      "pick": true
+      "pick": true,
+      "pickBase": true
     },
     {
       "id": "w163",
@@ -4730,7 +4732,7 @@
         "thriller",
         "action"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#362728",
       "episodes": 109,
       "status": "completed",
@@ -4779,7 +4781,7 @@
         "thriller",
         "action"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#230302",
       "episodes": 141,
       "status": "completed",
@@ -4828,7 +4830,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#010101",
       "episodes": 275,
       "status": "completed",
@@ -4869,7 +4871,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#0ca6ff",
       "episodes": 97,
       "status": "completed",
@@ -4912,7 +4914,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#140a1b",
       "episodes": 393,
       "status": "completed",
@@ -4953,7 +4955,7 @@
         "sports",
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#fdd6b6",
       "episodes": 78,
       "status": "ongoing",
@@ -4999,7 +5001,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#e6ecf5",
       "episodes": 116,
       "status": "ongoing",
@@ -5053,7 +5055,7 @@
       "genres": [
         "sports"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#76575a",
       "episodes": 46,
       "status": "hiatus",
@@ -5106,7 +5108,7 @@
         "action",
         "apocalyps"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#f6eab6",
       "episodes": 81,
       "status": "hiatus",
@@ -5219,7 +5221,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#392527",
       "episodes": 116,
       "status": "hiatus",
@@ -5277,7 +5279,7 @@
       "genres": [
         "drama"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#ece5e9",
       "episodes": 57,
       "status": "completed",
@@ -5321,7 +5323,7 @@
         "action",
         "fantasy"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#272847",
       "episodes": 235,
       "status": "ongoing",
@@ -5368,7 +5370,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#ebf0eb",
       "episodes": 83,
       "status": "ongoing",
@@ -5417,7 +5419,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "color": "#472716",
       "episodes": 246,
       "status": "hiatus",
@@ -5463,7 +5465,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#ececf3",
       "episodes": 35,
       "status": "ongoing",
@@ -5513,7 +5515,7 @@
         "action",
         "apocalyps"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#181d23",
       "episodes": 118,
       "status": "ongoing",
@@ -5557,7 +5559,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#fed9d5",
       "episodes": 230,
       "status": "ongoing",
@@ -5609,7 +5611,7 @@
         "action",
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#1a1318",
       "episodes": 9,
       "status": "ongoing",
@@ -5661,7 +5663,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#171728",
       "episodes": 53,
       "status": "ongoing",
@@ -5709,7 +5711,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#291714",
       "episodes": 39,
       "status": "ongoing",
@@ -5794,7 +5796,8 @@
       "subs": [
         "fantasy-5"
       ],
-      "pick": true
+      "pick": true,
+      "pickBase": true
     },
     {
       "id": "w185",
@@ -5806,7 +5809,7 @@
       "genres": [
         "sports"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#f6ecd1",
       "episodes": 46,
       "status": "hiatus",
@@ -5852,7 +5855,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#e8dae9",
       "episodes": 69,
       "status": "ongoing",
@@ -5896,7 +5899,7 @@
         "romance",
         "fantasy"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#251d24",
       "episodes": 126,
       "status": "completed",
@@ -5988,7 +5991,7 @@
         "drama",
         "fantasy"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#d89999",
       "episodes": 48,
       "status": "completed",
@@ -6036,7 +6039,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#fcece4",
       "episodes": 72,
       "status": "ongoing",
@@ -6079,7 +6082,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#191a24",
       "episodes": 44,
       "status": "hiatus",
@@ -6127,7 +6130,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#fce8e7",
       "episodes": 85,
       "status": "completed",
@@ -6218,7 +6221,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#190b12",
       "episodes": 155,
       "status": "hiatus",
@@ -6261,7 +6264,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#f7e7e9",
       "episodes": 26,
       "status": "ongoing",
@@ -6437,7 +6440,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#041657",
       "episodes": 45,
       "status": "ongoing",
@@ -6480,7 +6483,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#342c28",
       "episodes": 45,
       "status": "ongoing",
@@ -6633,7 +6636,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#fdebe6",
       "episodes": 43,
       "status": "ongoing",
@@ -6730,7 +6733,7 @@
         "action",
         "romance"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#f3eaea",
       "episodes": 149,
       "status": "completed",
@@ -6772,7 +6775,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#d5b6a8",
       "episodes": 70,
       "status": "completed",
@@ -6815,7 +6818,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#c7a889",
       "episodes": 58,
       "status": "ongoing",
@@ -6854,7 +6857,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#d9e7e4",
       "episodes": 140,
       "status": "completed",
@@ -6902,7 +6905,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#f62a5f",
       "episodes": 96,
       "status": "completed",
@@ -6948,7 +6951,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#ff5767",
       "episodes": 91,
       "status": "completed",
@@ -7030,7 +7033,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#fbe9e7",
       "episodes": 136,
       "status": "completed",
@@ -7156,7 +7159,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#faebe5",
       "episodes": 236,
       "status": "completed",
@@ -7246,7 +7249,7 @@
       "genres": [
         "murim"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#191b24",
       "episodes": 118,
       "status": "ongoing",
@@ -7300,7 +7303,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#fcf4e7",
       "episodes": 253,
       "status": "completed",
@@ -7357,7 +7360,7 @@
       "genres": [
         "murim"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#27151a",
       "episodes": 331,
       "status": "ongoing",
@@ -7411,7 +7414,7 @@
       "genres": [
         "murim"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#262637",
       "episodes": 220,
       "status": "hiatus",
@@ -7462,7 +7465,7 @@
       "genres": [
         "murim"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#f8eae8",
       "episodes": 236,
       "status": "completed",
@@ -7508,7 +7511,7 @@
       "genres": [
         "murim"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#fee4d8",
       "episodes": 69,
       "status": "ongoing",
@@ -7556,7 +7559,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#373668",
       "episodes": 165,
       "status": "ongoing",
@@ -7614,7 +7617,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#e6f6fd",
       "episodes": 185,
       "status": "ongoing",
@@ -7673,7 +7676,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#f5ebe8",
       "episodes": 229,
       "status": "ongoing",
@@ -7725,7 +7728,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#faf9e8",
       "episodes": 101,
       "status": "ongoing",
@@ -7812,7 +7815,8 @@
             "painter"
           ]
         }
-      ]
+      ],
+      "pickBase": true
     },
     {
       "id": "w228",
@@ -7876,7 +7880,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#162a47",
       "episodes": 278,
       "status": "ongoing",
@@ -7935,7 +7939,7 @@
         "action",
         "apocalyps"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#363869",
       "episodes": 411,
       "status": "completed",
@@ -7992,7 +7996,7 @@
         "romance",
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#373a47",
       "episodes": 88,
       "status": "hiatus",
@@ -8035,7 +8039,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#24221c",
       "episodes": 159,
       "status": "hiatus",
@@ -8092,7 +8096,7 @@
         "romance",
         "thriller"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#261c14",
       "episodes": 126,
       "status": "ongoing",
@@ -8135,7 +8139,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#251c17",
       "episodes": 193,
       "status": "hiatus",
@@ -8190,7 +8194,7 @@
         "romance",
         "drama"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#f9e8d8",
       "episodes": 65,
       "status": "completed",
@@ -8244,7 +8248,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#fde6d9",
       "episodes": 46,
       "status": "hiatus",
@@ -8287,7 +8291,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "color": "#e8f6fb",
       "episodes": 206,
       "status": "completed",
@@ -8317,7 +8321,8 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "pickBase": true
     },
     {
       "id": "w061",
@@ -8376,7 +8381,7 @@
         "fantasy",
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#19120d",
       "episodes": 153,
       "status": "ongoing",
@@ -8428,7 +8433,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#271807",
       "episodes": 171,
       "status": "completed",
@@ -8483,7 +8488,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#271718",
       "episodes": 101,
       "status": "hiatus",
@@ -8575,7 +8580,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#0d121a",
       "episodes": 121,
       "status": "ongoing",
@@ -8624,7 +8629,7 @@
         "fantasy",
         "romance"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#151419",
       "episodes": 41,
       "status": "ongoing",
@@ -8662,7 +8667,7 @@
       "genres": [
         "murim"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#0e1217",
       "episodes": 30,
       "status": "ongoing",
@@ -8718,7 +8723,7 @@
         "action",
         "fantasy"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "color": "#576a78",
       "episodes": 150,
       "status": "completed",
@@ -8748,7 +8753,8 @@
         }
       ],
       "pick": true,
-      "coverAuto": true
+      "coverAuto": true,
+      "pickBase": true
     },
     {
       "id": "w052",
@@ -8760,7 +8766,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#100f17",
       "episodes": 43,
       "status": "completed",
@@ -8804,7 +8810,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#251d36",
       "episodes": 97,
       "status": "completed",
@@ -8852,7 +8858,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#160f14",
       "episodes": 89,
       "status": "ongoing",
@@ -8900,7 +8906,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#485667",
       "episodes": 157,
       "status": "ongoing",
@@ -8943,7 +8949,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#79535c",
       "episodes": 193,
       "status": "ongoing",
@@ -8986,7 +8992,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#482927",
       "episodes": 165,
       "status": "ongoing",
@@ -9040,7 +9046,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#fefbca",
       "episodes": 372,
       "status": "completed",
@@ -9080,7 +9086,7 @@
         "romance",
         "daily"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#fea8aa",
       "episodes": 442,
       "status": "completed",
@@ -9123,7 +9129,7 @@
       "genres": [
         "drama"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#1a1317",
       "episodes": 44,
       "status": "hiatus",
@@ -9151,7 +9157,8 @@
         }
       ],
       "pick": true,
-      "coverAuto": true
+      "coverAuto": true,
+      "pickBase": true
     },
     {
       "id": "w042",
@@ -9163,7 +9170,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#f9e8e7",
       "episodes": 127,
       "status": "ongoing",
@@ -9213,7 +9220,7 @@
         "romance",
         "daily"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#74fd92",
       "episodes": 224,
       "status": "ongoing",
@@ -9256,7 +9263,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#191a36",
       "episodes": 114,
       "status": "completed",
@@ -9300,7 +9307,7 @@
         "action",
         "sports"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "color": "#1d1922",
       "episodes": 134,
       "status": "completed",
@@ -9346,7 +9353,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#26191a",
       "episodes": 70,
       "status": "hiatus",
@@ -9394,7 +9401,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#f7ebe5",
       "episodes": 113,
       "status": "ongoing",
@@ -9426,7 +9433,8 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "pickBase": true
     },
     {
       "id": "w036",
@@ -9438,7 +9446,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "color": "#fcebe6",
       "episodes": 55,
       "status": "hiatus",
@@ -9475,7 +9483,8 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "pickBase": true
     },
     {
       "id": "w035",
@@ -9487,7 +9496,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#fbe8e4",
       "episodes": 92,
       "status": "hiatus",
@@ -9529,7 +9538,7 @@
         "action",
         "apocalyps"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#e50202",
       "episodes": 279,
       "status": "completed",
@@ -9569,7 +9578,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "color": "#f5ebe9",
       "episodes": 143,
       "status": "ongoing",
@@ -9612,7 +9621,8 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "pickBase": true
     },
     {
       "id": "w032",
@@ -9624,7 +9634,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#2a323c",
       "episodes": 29,
       "status": "ongoing",
@@ -9667,7 +9677,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "color": "#13151b",
       "episodes": 51,
       "status": "ongoing",
@@ -9709,7 +9719,7 @@
       "genres": [
         "action"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#c90101",
       "episodes": 63,
       "status": "completed",
@@ -9743,7 +9753,8 @@
         }
       ],
       "pick": true,
-      "coverAuto": true
+      "coverAuto": true,
+      "pickBase": true
     },
     {
       "id": "w029",
@@ -9755,7 +9766,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "color": "#f9e7e7",
       "episodes": 573,
       "status": "completed",
@@ -9785,7 +9796,8 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "pickBase": true
     },
     {
       "id": "w028",
@@ -9798,7 +9810,7 @@
         "murim",
         "fantasy"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "episodes": 188,
       "status": "ongoing",
       "days": [
@@ -9854,7 +9866,7 @@
       "genres": [
         "sports"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "episodes": 203,
       "status": "completed",
       "days": [
@@ -9888,7 +9900,8 @@
       "subs": [
         "sports-1"
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "pickBase": true
     },
     {
       "id": "w026",
@@ -9901,7 +9914,7 @@
         "daily",
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "episodes": 55,
       "status": "completed",
       "days": [
@@ -9933,7 +9946,8 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "pickBase": true
     },
     {
       "id": "w025",
@@ -9945,7 +9959,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "episodes": 224,
       "status": "ongoing",
       "days": [
@@ -9994,7 +10008,7 @@
         "fantasy",
         "apocalyps"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "episodes": 313,
       "status": "ongoing",
       "days": [
@@ -10037,7 +10051,8 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "pickBase": true
     },
     {
       "id": "w023",
@@ -10051,7 +10066,7 @@
         "apocalyps",
         "action"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "episodes": 200,
       "status": "completed",
       "days": [
@@ -10102,7 +10117,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "episodes": 19,
       "status": "ongoing",
       "days": [
@@ -10147,7 +10162,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "episodes": 123,
       "status": "completed",
       "days": [
@@ -10188,7 +10203,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 4,
+      "recommended": 0,
       "episodes": 115,
       "status": "completed",
       "days": [
@@ -10229,7 +10244,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "episodes": 130,
       "status": "completed",
       "days": [
@@ -10266,7 +10281,8 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "pickBase": true
     },
     {
       "id": "w018",
@@ -10278,7 +10294,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 5,
+      "recommended": 0,
       "episodes": 154,
       "status": "completed",
       "days": [
@@ -10310,7 +10326,8 @@
           ]
         }
       ],
-      "coverAuto": true
+      "coverAuto": true,
+      "pickBase": true
     },
     {
       "id": "w236",
@@ -10380,7 +10397,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "color": "#f8ece6",
       "episodes": 51,
       "status": "ongoing",
@@ -10439,7 +10456,7 @@
         "action",
         "apocalyps"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#fae8d9",
       "episodes": 41,
       "status": "ongoing",
@@ -10590,7 +10607,7 @@
         "drama",
         "thriller"
       ],
-      "recommended": 2,
+      "recommended": 0,
       "color": "#372616",
       "episodes": 204,
       "status": "completed",
@@ -10633,7 +10650,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 3,
+      "recommended": 0,
       "color": "#fae8ea",
       "episodes": 47,
       "status": "ongoing",
@@ -12238,7 +12255,22 @@
       "topN": 3,
       "minViewers": 5
     },
-    "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
+    "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec",
+    "attend": [
+      2,
+      2,
+      3,
+      3,
+      4,
+      4,
+      20
+    ],
+    "contact": [
+      "33_22@kbs.hs.kr",
+      "33_37@kbs.hs.kr",
+      "33_45@kbs.hs.kr"
+    ],
+    "libraryLock": true
   },
   "meta": {
     "lastWebtoonId": 6575
@@ -12347,7 +12379,889 @@
       "feet": "#7FB8F0",
       "acc": "crown",
       "isNew": true
+    },
+    {
+      "id": "acc-ribbon",
+      "kind": "acc",
+      "name": "분홍 리본",
+      "desc": "머리 위에 살짝 얹은 리본",
+      "price": 80,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "ribbon",
+      "isNew": true
+    },
+    {
+      "id": "acc-flower",
+      "kind": "acc",
+      "name": "꽃 핀",
+      "desc": "봄바람에 어울리는 꽃 한 송이",
+      "price": 60,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "flower",
+      "isNew": true
+    },
+    {
+      "id": "acc-sprout",
+      "kind": "acc",
+      "name": "새싹",
+      "desc": "쑥쑥 자라는 중",
+      "price": 80,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "sprout",
+      "isNew": true
+    },
+    {
+      "id": "acc-cap",
+      "kind": "acc",
+      "name": "야구 모자",
+      "desc": "스포츠 웹툰 볼 때",
+      "price": 80,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "cap",
+      "isNew": true
+    },
+    {
+      "id": "acc-shades",
+      "kind": "acc",
+      "name": "선글라스",
+      "desc": "액션 웹툰 주인공처럼",
+      "price": 100,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "shades",
+      "isNew": true
+    },
+    {
+      "id": "acc-horn",
+      "kind": "acc",
+      "name": "꼬마 뿔",
+      "desc": "장난꾸러기 악마",
+      "price": 100,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "horn",
+      "isNew": true
+    },
+    {
+      "id": "acc-beanie",
+      "kind": "acc",
+      "name": "털모자",
+      "desc": "포근한 겨울 모자",
+      "price": 100,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "beanie",
+      "isNew": true
+    },
+    {
+      "id": "acc-chef",
+      "kind": "acc",
+      "name": "요리사 모자",
+      "desc": "요리 웹툰 정주행 중",
+      "price": 100,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "chef",
+      "isNew": true
+    },
+    {
+      "id": "acc-grad",
+      "kind": "acc",
+      "name": "학사모",
+      "desc": "완독 박사",
+      "price": 120,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "grad",
+      "isNew": true
+    },
+    {
+      "id": "acc-halo",
+      "kind": "acc",
+      "name": "천사 고리",
+      "desc": "착한 독자에게만 보여요",
+      "price": 160,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "halo",
+      "isNew": true
+    },
+    {
+      "id": "acc-bunny",
+      "kind": "acc",
+      "name": "토끼 귀",
+      "desc": "봄 한정 · 깡충깡충",
+      "price": 120,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "bunny",
+      "isNew": true,
+      "season": "spring"
+    },
+    {
+      "id": "acc-straw",
+      "kind": "acc",
+      "name": "밀짚모자",
+      "desc": "여름 한정 · 바다로 떠나요",
+      "price": 120,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "straw",
+      "isNew": true,
+      "season": "summer"
+    },
+    {
+      "id": "acc-snorkel",
+      "kind": "acc",
+      "name": "스노클",
+      "desc": "여름 한정 · 바닷속 탐험",
+      "price": 150,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "snorkel",
+      "isNew": true,
+      "season": "summer"
+    },
+    {
+      "id": "acc-gat",
+      "kind": "acc",
+      "name": "선비 갓",
+      "desc": "추석 한정 · 달 보러 가는 선비",
+      "price": 120,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "gat",
+      "isNew": true,
+      "season": "chuseok"
+    },
+    {
+      "id": "acc-pumpkin",
+      "kind": "acc",
+      "name": "호박 모자",
+      "desc": "할로윈 한정 · 사탕 주세요",
+      "price": 150,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "pumpkin",
+      "isNew": true,
+      "season": "halloween"
+    },
+    {
+      "id": "acc-witch",
+      "kind": "acc",
+      "name": "마녀 모자",
+      "desc": "할로윈 한정 · 빗자루는 없어요",
+      "price": 150,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "witch",
+      "isNew": true,
+      "season": "halloween"
+    },
+    {
+      "id": "acc-santa",
+      "kind": "acc",
+      "name": "산타 모자",
+      "desc": "크리스마스 한정 · 선물은 웹툰",
+      "price": 180,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "santa",
+      "isNew": true,
+      "season": "xmas"
+    },
+    {
+      "id": "acc-rudolph",
+      "kind": "acc",
+      "name": "루돌프 뿔",
+      "desc": "크리스마스 한정 · 빨간 코",
+      "price": 150,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "rudolph",
+      "isNew": true,
+      "season": "xmas"
+    },
+    {
+      "id": "acc-bok",
+      "kind": "acc",
+      "name": "복주머니",
+      "desc": "설날 한정 · 새해 복 많이",
+      "price": 150,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "bok",
+      "isNew": true,
+      "season": "seollal"
+    },
+    {
+      "id": "acc-jobawi",
+      "kind": "acc",
+      "name": "조바위",
+      "desc": "설날 한정 · 고운 설빔",
+      "price": 150,
+      "body": "#CDEBFF",
+      "feet": "#7FB8F0",
+      "acc": "jobawi",
+      "isNew": true,
+      "season": "seollal"
+    },
+    {
+      "id": "col-peach",
+      "kind": "color",
+      "name": "복숭아빛 몸",
+      "desc": "말랑한 분홍빛",
+      "price": 50,
+      "body": "#FFD3DC",
+      "feet": "#F28CA6",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-mint",
+      "kind": "color",
+      "name": "민트빛 몸",
+      "desc": "시원한 민트",
+      "price": 50,
+      "body": "#C6F3EA",
+      "feet": "#5CC9B5",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-lemon",
+      "kind": "color",
+      "name": "레몬빛 몸",
+      "desc": "상큼한 노랑",
+      "price": 50,
+      "body": "#FFF2B0",
+      "feet": "#F2C230",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-sky",
+      "kind": "color",
+      "name": "하늘빛 몸",
+      "desc": "맑은 날의 하늘",
+      "price": 50,
+      "body": "#BFE3FF",
+      "feet": "#4FA3F2",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-grape",
+      "kind": "color",
+      "name": "포도빛 몸",
+      "desc": "진한 보라",
+      "price": 80,
+      "body": "#D9C2FF",
+      "feet": "#8A56E0",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-coral",
+      "kind": "color",
+      "name": "산호빛 몸",
+      "desc": "바닷속 산호색",
+      "price": 80,
+      "body": "#FFC2B0",
+      "feet": "#F0704F",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-snow",
+      "kind": "color",
+      "name": "눈빛 몸",
+      "desc": "새하얀 눈사람",
+      "price": 100,
+      "body": "#FFFFFF",
+      "feet": "#BFD0E6",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-choco",
+      "kind": "color",
+      "name": "초코빛 몸",
+      "desc": "달콤한 초콜릿",
+      "price": 100,
+      "body": "#D9B99B",
+      "feet": "#8A5A3A",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-mono",
+      "kind": "color",
+      "name": "먹빛 몸",
+      "desc": "무협 고수의 색",
+      "price": 120,
+      "body": "#C9CED9",
+      "feet": "#4A5068",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "col-gold",
+      "kind": "color",
+      "name": "황금빛 몸",
+      "desc": "반짝반짝",
+      "price": 200,
+      "body": "#FFE9A0",
+      "feet": "#E0A21A",
+      "acc": "none",
+      "isNew": true
+    },
+    {
+      "id": "bg-cream",
+      "kind": "bg",
+      "name": "크림",
+      "desc": "가장 깔끔한 배경",
+      "price": 30,
+      "c1": "#FBF3E0",
+      "c2": "#F2E2C4",
+      "scene": "none",
+      "pattern": "none",
+      "isNew": true
+    },
+    {
+      "id": "bg-mintsky",
+      "kind": "bg",
+      "name": "민트 하늘",
+      "desc": "산뜻한 하루",
+      "price": 30,
+      "c1": "#D5F5EC",
+      "c2": "#A8E0D0",
+      "scene": "none",
+      "pattern": "none",
+      "isNew": true
+    },
+    {
+      "id": "bg-sunset",
+      "kind": "bg",
+      "name": "노을 언덕",
+      "desc": "해 질 무렵의 언덕",
+      "price": 60,
+      "c1": "#FF9A6B",
+      "c2": "#FFD79A",
+      "scene": "sunset",
+      "pattern": "none",
+      "isNew": true
+    },
+    {
+      "id": "bg-forest",
+      "kind": "bg",
+      "name": "숲속 아침",
+      "desc": "나무 사이로 드는 햇살",
+      "price": 60,
+      "c1": "#BDE8C8",
+      "c2": "#E8F7DC",
+      "scene": "forest",
+      "pattern": "none",
+      "isNew": true
+    },
+    {
+      "id": "bg-night",
+      "kind": "bg",
+      "name": "별밤 언덕",
+      "desc": "별이 쏟아지는 밤",
+      "price": 80,
+      "c1": "#0E1530",
+      "c2": "#3A2C6B",
+      "scene": "night",
+      "pattern": "star",
+      "isNew": true
+    },
+    {
+      "id": "bg-sea",
+      "kind": "bg",
+      "name": "바닷속",
+      "desc": "물고기와 함께",
+      "price": 100,
+      "c1": "#0E7FB8",
+      "c2": "#7FE0E6",
+      "scene": "sea",
+      "pattern": "bubble",
+      "isNew": true
+    },
+    {
+      "id": "bg-city",
+      "kind": "bg",
+      "name": "도시의 밤",
+      "desc": "불 켜진 창문들",
+      "price": 100,
+      "c1": "#141A3C",
+      "c2": "#3B3F77",
+      "scene": "city",
+      "pattern": "star",
+      "isNew": true
+    },
+    {
+      "id": "bg-space",
+      "kind": "bg",
+      "name": "우주 여행",
+      "desc": "행성 사이를 떠다녀요",
+      "price": 150,
+      "c1": "#0B0D26",
+      "c2": "#2A1E5C",
+      "scene": "space",
+      "pattern": "spark",
+      "isNew": true
+    },
+    {
+      "id": "bg-love",
+      "kind": "bg",
+      "name": "두근두근",
+      "desc": "로맨스 웹툰 볼 때",
+      "price": 100,
+      "c1": "#FFD0E0",
+      "c2": "#FFF0F5",
+      "scene": "none",
+      "pattern": "heart",
+      "isNew": true
+    },
+    {
+      "id": "bg-newyear",
+      "kind": "bg",
+      "name": "새해 불꽃놀이",
+      "desc": "새해 한정 · 펑펑 터지는 불꽃",
+      "price": 120,
+      "c1": "#0B1030",
+      "c2": "#28306B",
+      "scene": "newyear",
+      "pattern": "spark",
+      "isNew": true,
+      "season": "newyear"
+    },
+    {
+      "id": "bg-seollal",
+      "kind": "bg",
+      "name": "설날 아침",
+      "desc": "설날 한정 · 새해 첫 해돋이",
+      "price": 150,
+      "c1": "#B3202C",
+      "c2": "#F1B92E",
+      "scene": "seollal",
+      "pattern": "none",
+      "isNew": true,
+      "season": "seollal"
+    },
+    {
+      "id": "bg-spring",
+      "kind": "bg",
+      "name": "벚꽃길",
+      "desc": "봄 한정 · 꽃잎이 흩날려요",
+      "price": 120,
+      "c1": "#FFD6E6",
+      "c2": "#FFF4F8",
+      "scene": "spring",
+      "pattern": "petal",
+      "isNew": true,
+      "season": "spring"
+    },
+    {
+      "id": "bg-summer",
+      "kind": "bg",
+      "name": "한여름 해변",
+      "desc": "여름 한정 · 파도 소리",
+      "price": 150,
+      "c1": "#3CC1E6",
+      "c2": "#C9F0FA",
+      "scene": "summer",
+      "pattern": "none",
+      "isNew": true,
+      "season": "summer"
+    },
+    {
+      "id": "bg-chuseok",
+      "kind": "bg",
+      "name": "한가위 보름달",
+      "desc": "추석 한정 · 보름달과 억새",
+      "price": 150,
+      "c1": "#161A40",
+      "c2": "#3C3470",
+      "scene": "chuseok",
+      "pattern": "leaf",
+      "isNew": true,
+      "season": "chuseok"
+    },
+    {
+      "id": "bg-halloween",
+      "kind": "bg",
+      "name": "할로윈의 밤",
+      "desc": "할로윈 한정 · 박쥐와 호박",
+      "price": 150,
+      "c1": "#2A1638",
+      "c2": "#B8551F",
+      "scene": "halloween",
+      "pattern": "none",
+      "isNew": true,
+      "season": "halloween"
+    },
+    {
+      "id": "bg-xmas",
+      "kind": "bg",
+      "name": "눈 내리는 크리스마스",
+      "desc": "크리스마스 한정 · 눈 내리는 밤",
+      "price": 180,
+      "c1": "#12203F",
+      "c2": "#3C6E9E",
+      "scene": "xmas",
+      "pattern": "snow",
+      "isNew": true,
+      "season": "xmas"
+    },
+    {
+      "id": "tk-vine",
+      "kind": "tree",
+      "name": "덩굴",
+      "desc": "초록 덩굴이 이어져요",
+      "price": 100,
+      "ring": "#4E9B5A",
+      "line": "#6DB277",
+      "shape": "circle",
+      "lineStyle": "solid",
+      "isNew": true
+    },
+    {
+      "id": "tk-candy",
+      "kind": "tree",
+      "name": "솜사탕",
+      "desc": "분홍 점선",
+      "price": 120,
+      "ring": "#FF7EB6",
+      "line": "#FFB0D2",
+      "shape": "circle",
+      "lineStyle": "dash",
+      "isNew": true
+    },
+    {
+      "id": "tk-neon",
+      "kind": "tree",
+      "name": "네온",
+      "desc": "빛나는 보라색 선",
+      "price": 150,
+      "ring": "#8B6CFF",
+      "line": "#A990FF",
+      "shape": "hex",
+      "lineStyle": "glow",
+      "isNew": true
+    },
+    {
+      "id": "tk-ocean",
+      "kind": "tree",
+      "name": "바다",
+      "desc": "물방울처럼 이어지는 선",
+      "price": 120,
+      "ring": "#2FA8D8",
+      "line": "#7FD4FF",
+      "shape": "circle",
+      "lineStyle": "dot",
+      "isNew": true
+    },
+    {
+      "id": "tk-gold",
+      "kind": "tree",
+      "name": "황금",
+      "desc": "둥근 네모 황금 칸",
+      "price": 200,
+      "ring": "#E0A21A",
+      "line": "#EBC550",
+      "shape": "square",
+      "lineStyle": "solid",
+      "isNew": true
+    },
+    {
+      "id": "tk-mono",
+      "kind": "tree",
+      "name": "먹선",
+      "desc": "무협풍 마름모",
+      "price": 150,
+      "ring": "#3A3F52",
+      "line": "#7A8098",
+      "shape": "diamond",
+      "lineStyle": "solid",
+      "isNew": true
+    },
+    {
+      "id": "tk-blossom",
+      "kind": "tree",
+      "name": "벚꽃 가지",
+      "desc": "봄 한정 · 분홍 가지",
+      "price": 120,
+      "ring": "#F48FB1",
+      "line": "#F8BBD0",
+      "shape": "circle",
+      "lineStyle": "solid",
+      "isNew": true,
+      "season": "spring"
+    },
+    {
+      "id": "tk-pumpkin",
+      "kind": "tree",
+      "name": "호박 덩굴",
+      "desc": "할로윈 한정 · 주황 점선",
+      "price": 120,
+      "ring": "#F28C28",
+      "line": "#C96A12",
+      "shape": "hex",
+      "lineStyle": "dash",
+      "isNew": true,
+      "season": "halloween"
+    },
+    {
+      "id": "tk-ice",
+      "kind": "tree",
+      "name": "얼음 결정",
+      "desc": "크리스마스 한정 · 육각 얼음",
+      "price": 150,
+      "ring": "#5AB6E8",
+      "line": "#9CD3F0",
+      "shape": "hex",
+      "lineStyle": "dash",
+      "isNew": true,
+      "season": "xmas"
+    },
+    {
+      "id": "tk-lantern",
+      "kind": "tree",
+      "name": "청사초롱",
+      "desc": "설날 한정 · 붉은 둥근 네모",
+      "price": 150,
+      "ring": "#D93A4A",
+      "line": "#F1B92E",
+      "shape": "square",
+      "lineStyle": "glow",
+      "isNew": true,
+      "season": "seollal"
     }
   ],
-  "hotToday": []
+  "hotToday": [],
+  "seasons": [
+    {
+      "id": "newyear",
+      "name": "새해",
+      "date": "01-01",
+      "before": 3,
+      "after": 7,
+      "bg": "bg-newyear",
+      "reward": "bg-newyear",
+      "missions": [
+        {
+          "type": "eps",
+          "n": 10,
+          "reward": 15
+        },
+        {
+          "type": "attend",
+          "n": 5,
+          "reward": 20
+        },
+        {
+          "type": "done",
+          "n": 1,
+          "reward": 30
+        },
+        {
+          "type": "rec",
+          "n": 1,
+          "reward": 10
+        }
+      ]
+    },
+    {
+      "id": "seollal",
+      "name": "설날",
+      "lunar": "seollal",
+      "before": 10,
+      "after": 3,
+      "bg": "bg-seollal",
+      "reward": "bg-seollal",
+      "missions": [
+        {
+          "type": "eps",
+          "n": 10,
+          "reward": 15
+        },
+        {
+          "type": "attend",
+          "n": 5,
+          "reward": 20
+        },
+        {
+          "type": "done",
+          "n": 1,
+          "reward": 30
+        },
+        {
+          "type": "rec",
+          "n": 1,
+          "reward": 10
+        }
+      ]
+    },
+    {
+      "id": "spring",
+      "name": "봄 벚꽃",
+      "date": "04-05",
+      "before": 10,
+      "after": 3,
+      "bg": "bg-spring",
+      "reward": "bg-spring",
+      "missions": [
+        {
+          "type": "eps",
+          "n": 10,
+          "reward": 15
+        },
+        {
+          "type": "attend",
+          "n": 5,
+          "reward": 20
+        },
+        {
+          "type": "done",
+          "n": 1,
+          "reward": 30
+        },
+        {
+          "type": "rec",
+          "n": 1,
+          "reward": 10
+        }
+      ]
+    },
+    {
+      "id": "summer",
+      "name": "여름",
+      "date": "08-01",
+      "before": 10,
+      "after": 3,
+      "bg": "bg-summer",
+      "reward": "bg-summer",
+      "missions": [
+        {
+          "type": "eps",
+          "n": 10,
+          "reward": 15
+        },
+        {
+          "type": "attend",
+          "n": 5,
+          "reward": 20
+        },
+        {
+          "type": "done",
+          "n": 1,
+          "reward": 30
+        },
+        {
+          "type": "rec",
+          "n": 1,
+          "reward": 10
+        }
+      ]
+    },
+    {
+      "id": "chuseok",
+      "name": "추석",
+      "lunar": "chuseok",
+      "before": 10,
+      "after": 3,
+      "bg": "bg-chuseok",
+      "reward": "bg-chuseok",
+      "missions": [
+        {
+          "type": "eps",
+          "n": 10,
+          "reward": 15
+        },
+        {
+          "type": "attend",
+          "n": 5,
+          "reward": 20
+        },
+        {
+          "type": "done",
+          "n": 1,
+          "reward": 30
+        },
+        {
+          "type": "rec",
+          "n": 1,
+          "reward": 10
+        }
+      ]
+    },
+    {
+      "id": "halloween",
+      "name": "할로윈",
+      "date": "10-31",
+      "before": 10,
+      "after": 3,
+      "bg": "bg-halloween",
+      "reward": "bg-halloween",
+      "missions": [
+        {
+          "type": "eps",
+          "n": 10,
+          "reward": 15
+        },
+        {
+          "type": "attend",
+          "n": 5,
+          "reward": 20
+        },
+        {
+          "type": "done",
+          "n": 1,
+          "reward": 30
+        },
+        {
+          "type": "rec",
+          "n": 1,
+          "reward": 10
+        }
+      ]
+    },
+    {
+      "id": "xmas",
+      "name": "크리스마스",
+      "date": "12-25",
+      "before": 10,
+      "after": 3,
+      "bg": "bg-xmas",
+      "reward": "bg-xmas",
+      "missions": [
+        {
+          "type": "eps",
+          "n": 10,
+          "reward": 15
+        },
+        {
+          "type": "attend",
+          "n": 5,
+          "reward": 20
+        },
+        {
+          "type": "done",
+          "n": 1,
+          "reward": 30
+        },
+        {
+          "type": "rec",
+          "n": 1,
+          "reward": 10
+        }
+      ]
+    }
+  ]
 }

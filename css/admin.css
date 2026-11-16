@@ -314,3 +314,27 @@ body.admin .chip-admin { background: #5BB8FF; }
 .bulk-t b { font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .bulk-t small { font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .bulk-foot { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; } .bulk-foot .btn { margin-left: auto; }
+
+/* 상점: 배경 · 트리 디자인 미리보기, 시즌 편집 */
+.ad-pv { display: grid; place-items: center; width: 110px; height: 66px; border-radius: 8px; overflow: hidden; }
+.ad-pv-t { background: #F1EEE6; }
+.ad-ctl { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.ad-ctl select.fld { width: auto; min-width: 96px; }
+.ad-shop td { vertical-align: middle; }
+.ad-season { margin: 10px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; display: flex; flex-direction: column; gap: 10px; }
+.ad-season.on { border-color: #E0565B; box-shadow: inset 0 0 0 1px #E0565B; }
+.ad-season-h { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+.ad-season-h select.fld, .ad-ms select.fld { width: auto; }
+.ad-ms { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+.ad-ms > div { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.table-box { flex-shrink: 0; }   /* 표가 길어도 납작하게 눌리지 않게 */
+.ad-shop .fld { min-height: 38px; }
+.ad-shop th, .ad-shop td:nth-child(3), .ad-shop .btn-danger { white-space: nowrap; }
+.ad-shop td:nth-child(2) .fld { min-width: 0; width: 100%; }
+.ad-shop td:nth-child(6) select.fld { min-width: 112px; }
+
+/* 관리자 별점 · 강추 */
+.rate-box { display: flex; flex-direction: column; gap: 10px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; }
+.rate-row { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: flex-end; }
+.rate-sum { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 13.5px; align-items: baseline; }
+.rate-who { grid-column: 2; color: var(--muted); font-size: 12.5px; }

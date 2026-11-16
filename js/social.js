@@ -39,14 +39,18 @@
     const draw = () => {
       const recs = (p.recs || []).filter((r) => WT.toon(r.webtoonId));
       const favs = (p.favs || []).map((id) => WT.toon(id)).filter(Boolean);
+      const best = (p.best || []).map((id) => WT.toon(id)).filter(Boolean);
       const followBtn = p.self ? `<a class="btn press" href="#/me">내 프로필 · 공개 범위</a>`
         : S.profile && S.token ? `<button type="button" class="btn press ${p.iFollow ? '' : 'u-follow'}" id="u-follow">${p.iFollow ? '팔로우 중 ✓' : '+ 팔로우'}</button>`
         : `<a class="btn press" href="#/login">로그인하고 팔로우</a>`;
       app.querySelector('.u-main').innerHTML = `
-        <section class="u-card">
-          <div class="u-head">${av(p.nickname)}<div><h2>${esc(p.nickname)}</h2><span class="u-stat">${p.open ? `<button type="button" class="u-cnt" data-fl="followers" aria-pressed="${list.kind === 'followers'}">팔로워 <b>${p.followers}</b></button> · <button type="button" class="u-cnt" data-fl="following" aria-pressed="${list.kind === 'following'}">팔로잉 <b>${p.following}</b></button>` : `팔로워 ${p.followers} · 팔로잉 ${p.following}`} · 다 본 웹툰 ${p.done}편</span></div>${followBtn}</div>
+        <section class="u-card u-prof">
+          ${(() => { const eq = p.equip || {}, bg = WT.data.shop.find((i) => i.id === eq.bg && i.kind === 'bg'); return `<div class="u-banner bg-box${bg ? '' : ' plain'}">${bg ? WT.skin.thumb(bg, 12) : ''}<div style="animation:bob 1.6s ease-in-out infinite">${WT.charSVG(WT.lookOf(eq), 92, p.nickname + ' 님의 캐릭터')}</div></div>`; })()}
+          <div class="u-head"><div><h2>${esc(p.nickname)}${p.streak ? ` <span class="u-streak">${p.streak}일 연속 출석</span>` : ''}</h2><span class="u-stat">${p.open ? `<button type="button" class="u-cnt" data-fl="followers" aria-pressed="${list.kind === 'followers'}">팔로워 <b>${p.followers}</b></button> · <button type="button" class="u-cnt" data-fl="following" aria-pressed="${list.kind === 'following'}">팔로잉 <b>${p.following}</b></button>` : `팔로워 ${p.followers} · 팔로잉 ${p.following}`} · 다 본 웹툰 ${p.done}편</span></div>${followBtn}</div>
           ${list.kind ? `<div class="u-fl"><h3>${p.self ? (list.kind === 'followers' ? '나를 팔로우하는 사람' : '내가 팔로우하는 사람') : list.kind === 'followers' ? `${esc(p.nickname)} 님을 팔로우하는 사람` : `${esc(p.nickname)} 님이 팔로우하는 사람`}</h3><div class="u-find-r">${list.html}</div></div>` : ''}
           ${p.open ? `
+          ${p.bio ? `<p class="u-bio">${esc(p.bio)}</p>` : ''}
+          ${best.length ? `<h3>최애 웹툰</h3><div class="u-best">${best.map((w, i) => `<a href="${libHref(w)}" style="--c:${esc(w.color || (WT.genre((w.genres || [])[0]) || {}).color || '#55607F')}"><i>${i + 1}</i>${w.cover ? `<img src="${esc(w.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}<b>${esc(w.title)}</b></a>`).join('')}</div>` : ''}
           <h3>${esc(p.nickname)} 님의 추천 ${recs.length ? `<small>${recs.length}</small>` : ''}</h3>
           ${recs.length ? `<div class="u-recs">${recs.map((r) => { const w = WT.toon(r.webtoonId); return `<div class="u-rec">${cover(w, true)}<div><a href="${libHref(w)}"><b>${esc(w.title)}</b></a><p>“${esc(r.text)}”</p><small>${when(r.at)}</small></div></div>`; }).join('')}</div>` : '<p class="u-note">아직 남긴 추천이 없어요.</p>'}
           <h3>관심 웹툰 ${favs.length ? `<small>${favs.length}</small>` : ''}</h3>
@@ -136,7 +140,7 @@
   async function viewFeed() {
     const app = document.getElementById('app');
     const S = WT.store.state;
-    const tabs = `<nav class="rank-switch" aria-label="랭킹 종류"><a href="#/top">웹툰 랭킹</a><a href="#/ranking">독자 랭킹</a><a href="#/feed" aria-current="page">친구 소식</a></nav>`;
+    const tabs = WT.rankTabs('feed');
     const sh = (body) => shell('친구 소식', '내가 팔로우한 사람들의 추천', `<div class="u-tabs">${tabs}</div>${body}`);
     if (!WT.api.on()) { app.innerHTML = sh(needServer()); return; }
     const keep = (document.getElementById('u-q') || {}).value || '';   // 다시 그려도 검색어는 남겨요
