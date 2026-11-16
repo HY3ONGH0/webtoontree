@@ -16,6 +16,7 @@
   function filtered() {
     const q = F.q.trim().toLowerCase();
     let list = WT.data.webtoons.filter((w) => {
+      if (!WT.libBookOpen(w)) return false;   // 도서관 문을 연 장르만
       if (q && !(w.title + ' ' + WT.authorsOf(w).map((a) => a.name).join(' ') + ' ' + (w.tags || []).join(' ')).toLowerCase().includes(q)) return false;
       if (F.genres.length && !F.genres.some((g) => (w.genres || []).includes(g))) return false;
       if (F.subs.length && !F.subs.some((x) => (w.subs || []).includes(x))) return false;
@@ -59,10 +60,11 @@
   const chk = (attr, val, on, label, n) => `<label class="bk-chk"><input type="checkbox" data-${attr}="${esc(val)}" ${on ? 'checked' : ''}><span>${esc(label)}</span>${n != null ? `<em>${n}</em>` : ''}</label>`;
 
   function sideHTML() {
-    const all = WT.data.webtoons;
+    const all = WT.data.webtoons.filter(WT.libBookOpen);
     const subGenres = WT.data.genres.filter((g) => (F.genres.length ? F.genres.includes(g.id) : false) && (g.subs || []).length);
     return `<h2 class="bk-h2">거르기</h2>
-      ${sec('genre', '장르', `<div class="bk-chks two">${WT.data.genres.map((g) => chk('g', g.id, F.genres.includes(g.id), g.name, all.filter((w) => (w.genres || []).includes(g.id)).length)).join('')}</div>
+      ${sec('genre', '장르', `<div class="bk-chks two">${WT.data.genres.map((g) => (WT.libGenreOpen(g.id) ? chk('g', g.id, F.genres.includes(g.id), g.name, all.filter((w) => (w.genres || []).includes(g.id)).length)
+          : `<label class="bk-chk locked" title="${esc(g.name)} 트리 끝 웹툰을 완독하면 열려요"><input type="checkbox" disabled><span>🔒 ${esc(g.name)}</span></label>`)).join('')}</div>
         ${subGenres.map((g) => `<p class="bk-subh">${esc(g.name)} 세부 장르</p><div class="bk-chks">${g.subs.map((x) => chk('s', x.id, F.subs.includes(x.id), x.name, all.filter((w) => (w.subs || []).includes(x.id)).length)).join('')}</div>`).join('')}`)}
       ${sec('status', '연재 상태', `<div class="bk-chks">${[['ongoing', '연재 중'], ['completed', '완결'], ['hiatus', '휴재']].map(([k, n]) => chk('st', k, F.status.includes(k), n, all.filter((w) => WT.schedule.status(w) === k).length)).join('')}</div>`)}
       ${sec('age', '연령 등급', `<div class="bk-chks two">${[['0', '전체'], ['12', '12세'], ['15', '15세'], ['19', '19세']].map(([k, n]) => chk('age', k, F.ages.includes(k), n, all.filter((w) => String(w.age) === k).length)).join('')}</div>`)}

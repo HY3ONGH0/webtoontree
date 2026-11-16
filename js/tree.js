@@ -73,7 +73,9 @@
       // 도서관: 장르별(또는 전체) 남은 웹툰을 책장에. 위치 대신 책 순서만 있어요
       gid = !weekMode && (params[0] === 'all' || WT.libGenres().some((x) => x.id === params[0])) ? params[0] : 'all';
       g = gid === 'all' ? { id: 'all', name: '전체', color: '#E8C66A', desc: '', constellation: '' } : WT.genre(gid);
-      T = { nodes: Object.fromEntries((weekMode ? WT.data.webtoons : libraryBooks(gid)).map((w) => [w.id, [0, 0]])), links: [], start: null };
+      // 도서관은 문을 연 장르의 웹툰만 (특정 웹툰으로 바로 온 링크면 그 한 권은 보여 줘요)
+      const books = weekMode ? WT.data.webtoons : libraryBooks(gid).filter((w) => WT.libBookOpen(w) || w.id === params[1]);
+      T = { nodes: Object.fromEntries(books.map((w) => [w.id, [0, 0]])), links: [], start: null };
     } else {
       gid = live.includes(params[0]) ? params[0] : live[0];
       g = WT.genre(gid);
@@ -283,9 +285,11 @@
     }
     function lbHTML() {
       const st = WT.settings();
-      const tabs = [{ id: 'all', name: '전체' }].concat(WT.libGenres()).map((x) => ({ x, n: libraryBooks(x.id).length }))
-        .filter(({ x, n }) => x.id === 'all' || n || x.id === gid)
-        .map(({ x, n }) => `<a href="#/library/${x.id}" class="lb-tab" ${x.id === gid ? 'aria-current="page"' : ''}>${esc(x.name)} <small>${n}</small></a>`).join('');
+      const tabs = [{ id: 'all', name: '전체' }].concat(WT.libGenres()).map((x) => ({ x, n: libraryBooks(x.id).filter(WT.libBookOpen).length, open: WT.libGenreOpen(x.id) }))
+        .filter(({ x }) => x.id === 'all' || libraryBooks(x.id).length || x.id === gid)
+        .map(({ x, n, open }) => (open
+          ? `<a href="#/library/${x.id}" class="lb-tab" ${x.id === gid ? 'aria-current="page"' : ''}>${esc(x.name)} <small>${n}</small></a>`
+          : `<a href="#/library/${x.id}" class="lb-tab locked" title="${esc(x.name)} 트리 끝 웹툰을 완독하면 열려요" aria-label="${esc(x.name)}, 잠김">${WT.icon.lockIn || ''}${esc(x.name)}</a>`)).join('');
       const subs = gid !== 'all' && (g.subs || []).length ? [{ id: 'all', name: '전체' }].concat(g.subs) : [];
       const ic = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">${d}</svg>`;
       return `<div class="view lib-view lb-view">

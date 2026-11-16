@@ -2478,3 +2478,7 @@ html[data-theme="light"] body.has-bg { --frame-bg: rgba(250, 248, 242, .88); }
 .lb-metas .age { margin-right: 2px; }
 .bk-cv .age-cv { left: auto; right: 36px; bottom: 8px; }
 .lb-metas span.age { width: 24px; height: 24px; min-width: 24px; padding: 0; border-radius: 50%; background: #fff; border: 2px solid currentColor; }
+/* 도서관: 아직 문을 열지 않은 장르 */
+.lb-tab.locked { opacity: .55; display: inline-flex; align-items: center; gap: 3px; }
+.lb-tab.locked svg { width: 12px; height: 12px; }
+.bk-chk.locked { opacity: .5; cursor: not-allowed; }

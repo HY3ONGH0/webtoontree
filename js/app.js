@@ -196,21 +196,27 @@
   const RAIL_IC = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">${d}</svg>`;
   // ---------- 도서관 잠금 ----------
   // 트리 끝 웹툰을 완독해 도서관 문을 연 사람(과 관리자)만 메뉴 · 홈에서 도서관에 들어가요. 설정(libraryLock)을 끄면 모두에게 열려요.
-  WT.libReached = () => {
-    const S = WT.store.state;
-    return WT.liveGenres().some((g) => {
-      const T = (WT.data.trees || {})[g.id];
-      if (!T || !T.nodes) return false;
-      if ((S.unlocked || {})['lib:' + g.id]) return true;
-      const leaves = Object.keys(T.nodes).filter((id) => WT.toon(id) && !(T.links || []).some((l) => l.from === id && T.nodes[l.to]));
-      return leaves.some((id) => !!(S.rewarded || {})[id + ':done'] || ((S.progress || {})[id] || 0) >= WT.eps(WT.toon(id)));
-    });
+  /** 이 장르 트리 끝에서 도서관 문을 열었나 (트리 끝 웹툰 중 하나를 완독) */
+  const treeLibOpen = (gid) => {
+    const S = WT.store.state, T = (WT.data.trees || {})[gid];
+    if (!T || !T.nodes) return false;
+    if ((S.unlocked || {})['lib:' + gid]) return true;
+    const leaves = Object.keys(T.nodes).filter((id) => WT.toon(id) && !(T.links || []).some((l) => l.from === id && T.nodes[l.to]));
+    return leaves.some((id) => !!(S.rewarded || {})[id + ':done'] || ((S.progress || {})[id] || 0) >= WT.eps(WT.toon(id)));
   };
-  WT.libLocked = () => {
-    if (WT.settings().libraryLock === false) return false;
-    if ((WT.store.state.role || '') === 'admin') return false;
-    return !WT.libReached();
+  /** 도서관에서 볼 수 있는 장르 (null 이면 모두 열림: 잠금 설정을 껐거나 관리자) */
+  WT.libOpenGenres = () => {
+    if (WT.settings().libraryLock === false || (WT.store.state.role || '') === 'admin') return null;
+    const open = new Set(WT.liveGenres().filter((g) => treeLibOpen(g.id)).map((g) => g.id));
+    // 트리가 없는 장르(예: 아포칼립스 & SF)는 도서관 문을 하나라도 열면 함께 열려요
+    if (open.size) WT.libGenres().forEach((g) => { if (!WT.liveGenres().includes(g)) open.add(g.id); });
+    return open;
   };
+  WT.libGenreOpen = (gid) => { const o = WT.libOpenGenres(); return !o || gid === 'all' || o.has(gid); };
+  /** 이 웹툰이 도서관에 보이나 (연 장르 중 하나에 들어 있으면) */
+  WT.libBookOpen = (w) => { const o = WT.libOpenGenres(); return !o || (w.genres || []).some((x) => o.has(x)); };
+  WT.libReached = () => { const o = WT.libOpenGenres(); return !o || o.size > 0; };
+  WT.libLocked = () => !WT.libReached();
   WT.lastTree = function (gid) {
     try { if (gid) localStorage.setItem('webtoontree.lastTree', gid); return localStorage.getItem('webtoontree.lastTree'); } catch (e) { return gid || null; }
   };
@@ -933,6 +939,12 @@
     const s = WT.store.state;
     if (!s.profile && !s.guest && name !== 'login' && name !== 'about') { location.replace('#/login'); return; }
     // 도서관은 트리 끝에서 문을 연 사람만 (특정 웹툰으로 가는 링크는 그대로 열려요)
+    // 잠긴 장르 칸: 그 장르 트리로 안내해요
+    if (name === 'library' && parts[1] && !parts[2] && !WT.libLocked() && !WT.libGenreOpen(parts[1])) {
+      const gg = WT.genre(parts[1]);
+      WT.toast(`${gg ? gg.name : '이 장르'} 도서관은 아직 잠겨 있어요. ${gg && (WT.data.trees || {})[gg.id] ? `${gg.name} 트리 끝 웹툰을 완독하면 열려요` : '트리에서 도서관 문을 열면 함께 열려요'}`);
+      location.replace(gg && (WT.data.trees || {})[gg.id] ? `#/tree/${gg.id}` : '#/library/all'); return;
+    }
     if (((name === 'library' && !parts[2]) || name === 'books') && WT.libLocked()) {
       WT.toast('도서관은 잠겨 있어요. 트리를 따라가 끝 웹툰을 완독하면 문이 열려요');
       const live = WT.liveGenres().map((g) => g.id), last = WT.lastTree();
