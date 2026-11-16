@@ -936,10 +936,10 @@
     "url": "https://comic.naver.com/community/u/goda",
     "works": [
       {
-        "title": "슬로우 다이브",
-        "source": "https://comic.naver.com/webtoon/list?titleId=839087",
-        "cover": "https://image-comic.pstatic.net/webtoon/839087/thumbnail/thumbnail_IMAG21_0c921e46-37fc-42fc-84e4-c1792e03945d.jpg",
-        "finished": false
+        "title": "평행도시",
+        "source": "https://comic.naver.com/webtoon/list?titleId=730607",
+        "cover": "https://image-comic.pstatic.net/webtoon/730607/thumbnail/thumbnail_IMAG21_4050531779662669109.jpg",
+        "finished": true
       }
     ]
   },
@@ -1014,9 +1014,9 @@
         "finished": true
       },
       {
-        "title": "좀비X슬래셔",
-        "source": "https://comic.naver.com/webtoon/list?titleId=808533",
-        "cover": "https://image-comic.pstatic.net/webtoon/808533/thumbnail/thumbnail_IMAG21_53a3fb2b-dc24-4281-b4c0-0cc1015bcaa8.jpg",
+        "title": "헬크래프트",
+        "source": "https://comic.naver.com/webtoon/list?titleId=800034",
+        "cover": "https://image-comic.pstatic.net/webtoon/800034/thumbnail/thumbnail_IMAG21_df4c9ca5-a954-4c14-b03b-8716f5eea843.jpg",
         "finished": true
       },
       {
@@ -1184,10 +1184,10 @@
         "finished": true
       },
       {
-        "title": "죽음에 관하여",
-        "source": "https://comic.naver.com/webtoon/list?titleId=703845",
-        "cover": "https://image-comic.pstatic.net/webtoon/703845/thumbnail/thumbnail_IMAG21_4120902941892752226.JPEG",
-        "finished": true
+        "title": "별이삼샵",
+        "source": "https://comic.naver.com/webtoon/list?titleId=737628",
+        "cover": "https://image-comic.pstatic.net/webtoon/737628/thumbnail/thumbnail_IMAG21_9e108875-36b5-4872-8ace-53a6e492376b.jpg",
+        "finished": false
       }
     ]
   },
@@ -1245,10 +1245,10 @@
     "url": "https://comic.naver.com/community/u/oozoodol",
     "works": [
       {
-        "title": "아이캣치유",
-        "source": "https://comic.naver.com/webtoon/list?titleId=843460",
-        "cover": "https://image-comic.pstatic.net/webtoon/843460/thumbnail/thumbnail_IMAG21_ced95f8a-75a6-4c95-ba32-91a12a73a52f.jpg",
-        "finished": true
+        "title": "사람의 탈",
+        "source": "https://comic.naver.com/webtoon/list?titleId=822198",
+        "cover": "https://image-comic.pstatic.net/webtoon/822198/thumbnail/thumbnail_IMAG21_87309bfe-6df3-40c5-b299-1dee7d144c80.jpg",
+        "finished": false
       },
       {
         "title": "도둑잡기",
@@ -1360,15 +1360,15 @@
     "url": "https://comic.naver.com/community/u/hyungju",
     "works": [
       {
+        "title": "아리도록",
+        "source": "https://comic.naver.com/webtoon/list?titleId=849736",
+        "cover": "https://image-comic.pstatic.net/webtoon/849736/thumbnail/thumbnail_IMAG21_dedcc8fc-7230-4a58-a0c9-82d44cfe6391.jpg",
+        "finished": false
+      },
+      {
         "title": "로봇소녀 노이도",
         "source": "https://comic.naver.com/webtoon/list?titleId=823026",
         "cover": "https://image-comic.pstatic.net/webtoon/823026/thumbnail/thumbnail_IMAG21_cae95264-ade4-44c1-8286-9b590cebf631.jpg",
-        "finished": true
-      },
-      {
-        "title": "축제는 이미 시작되었다",
-        "source": "https://comic.naver.com/webtoon/list?titleId=851401",
-        "cover": "https://image-comic.pstatic.net/webtoon/851401/thumbnail/thumbnail_IMAG21_cf4bb0da-bacc-4ef8-9337-1d35eced6980.jpg",
         "finished": true
       }
     ]
@@ -1380,10 +1380,10 @@
     "url": "https://comic.naver.com/community/u/sangC",
     "works": [
       {
-        "title": "메모리얼",
-        "source": "https://comic.naver.com/webtoon/list?titleId=791140",
-        "cover": "https://image-comic.pstatic.net/webtoon/791140/thumbnail/thumbnail_IMAG21_28c779aa-48bf-47bc-8a52-fd0ede76a9c5.jpg",
-        "finished": true
+        "title": "44교시 생존수업",
+        "source": "https://comic.naver.com/webtoon/list?titleId=836848",
+        "cover": "https://image-comic.pstatic.net/webtoon/836848/thumbnail/thumbnail_IMAG21_3908e9b2-6cfb-45d5-9bc1-04b8453c1602.jpg",
+        "finished": false
       }
     ]
   },
@@ -1401,16 +1401,16 @@
     "url": "",
     "works": [
       {
+        "title": "갓 오브 하이스쿨",
+        "source": "https://comic.naver.com/webtoon/list?titleId=318995",
+        "cover": "https://image-comic.pstatic.net/webtoon/318995/thumbnail/thumbnail_IMAG21_38f18e00-09f2-4a0c-b36a-3aa56dfe0b3b.jpg",
+        "finished": true
+      },
+      {
         "title": "쎈놈",
         "source": "https://comic.naver.com/webtoon/list?titleId=720127",
         "cover": "https://image-comic.pstatic.net/webtoon/720127/thumbnail/thumbnail_IMAG21_3616728296469837412.jpg",
         "finished": true
-      },
-      {
-        "title": "무무무",
-        "source": "https://comic.naver.com/webtoon/list?titleId=850649",
-        "cover": "https://image-comic.pstatic.net/webtoon/850649/thumbnail/thumbnail_IMAG21_90d9c386-0526-4468-98ed-e7fff953e2b1.jpg",
-        "finished": false
       }
     ]
   },
@@ -1427,6 +1427,12 @@
     "bio": "",
     "url": "",
     "works": [
+      {
+        "title": "화산귀환",
+        "source": "https://comic.naver.com/webtoon/list?titleId=769209",
+        "cover": "https://image-comic.pstatic.net/webtoon/769209/thumbnail/thumbnail_IMAG21_3511dcdd-6e33-4171-8839-598d6d266215.jpg",
+        "finished": false
+      },
       {
         "title": "내 남편과 결혼해줘",
         "source": "https://comic.naver.com/webtoon/list?titleId=783769",
@@ -1559,16 +1565,16 @@
         "finished": true
       },
       {
-        "title": "순정빌런",
-        "source": "https://comic.naver.com/webtoon/list?titleId=797731",
-        "cover": "https://image-comic.pstatic.net/webtoon/797731/thumbnail/thumbnail_IMAG21_deeb76b6-89ce-4ae0-87e7-24e7576cc857.jpg",
-        "finished": true
-      },
-      {
         "title": "당신의 살인을 위하여",
         "source": "https://comic.naver.com/webtoon/list?titleId=836066",
         "cover": "https://image-comic.pstatic.net/webtoon/836066/thumbnail/thumbnail_IMAG21_54c936d9-ada4-4f1a-a456-73ce0acf9244.jpg",
         "finished": true
+      },
+      {
+        "title": "세림의 철칙",
+        "source": "https://comic.naver.com/webtoon/list?titleId=852516",
+        "cover": "https://image-comic.pstatic.net/webtoon/852516/thumbnail/thumbnail_IMAG21_fb9361e6-8576-45f7-b8d1-131a39fbdc7e.jpg",
+        "finished": false
       },
       {
         "title": "신체",
@@ -1681,10 +1687,10 @@
     "url": "https://comic.naver.com/community/u/_l1dx3l",
     "works": [
       {
-        "title": "청춘 러브썸",
-        "source": "https://comic.naver.com/webtoon/list?titleId=828920",
-        "cover": "https://image-comic.pstatic.net/webtoon/828920/thumbnail/thumbnail_IMAG21_4a49ae6d-a059-4b94-b3f4-a16d62dad552.jpg",
-        "finished": false
+        "title": "청춘 블라썸",
+        "source": "https://comic.naver.com/webtoon/list?titleId=746834",
+        "cover": "https://image-comic.pstatic.net/webtoon/746834/thumbnail/thumbnail_IMAG21_6412ed6b-2288-41df-8715-648a3da9154e.jpg",
+        "finished": true
       }
     ]
   },
@@ -1695,10 +1701,10 @@
     "url": "https://comic.naver.com/community/u/_k1eyok",
     "works": [
       {
-        "title": "청춘 러브썸",
-        "source": "https://comic.naver.com/webtoon/list?titleId=828920",
-        "cover": "https://image-comic.pstatic.net/webtoon/828920/thumbnail/thumbnail_IMAG21_4a49ae6d-a059-4b94-b3f4-a16d62dad552.jpg",
-        "finished": false
+        "title": "청춘 블라썸",
+        "source": "https://comic.naver.com/webtoon/list?titleId=746834",
+        "cover": "https://image-comic.pstatic.net/webtoon/746834/thumbnail/thumbnail_IMAG21_6412ed6b-2288-41df-8715-648a3da9154e.jpg",
+        "finished": true
       }
     ]
   },
@@ -2853,6 +2859,12 @@
     "url": "https://comic.naver.com/community/u/SAMmagician",
     "works": [
       {
+        "title": "파브르 in 사천당가",
+        "source": "https://comic.naver.com/webtoon/list?titleId=833702",
+        "cover": "https://image-comic.pstatic.net/webtoon/833702/thumbnail/thumbnail_IMAG21_aad66c46-90fc-4d2d-8cb9-46fc0ff0abc2.jpg",
+        "finished": false
+      },
+      {
         "title": "신과함께 돌아온 기사왕님",
         "source": "https://comic.naver.com/webtoon/list?titleId=809618",
         "cover": "https://image-comic.pstatic.net/webtoon/809618/thumbnail/thumbnail_IMAG21_df87e004-a86e-46d0-9749-aa338e9363ac.jpg",
@@ -2862,12 +2874,6 @@
         "title": "부패의 사제",
         "source": "https://comic.naver.com/webtoon/list?titleId=809722",
         "cover": "https://image-comic.pstatic.net/webtoon/809722/thumbnail/thumbnail_IMAG21_a4b83b0f-31c2-40b2-9bf1-0bd5e4cb2e74.jpg",
-        "finished": false
-      },
-      {
-        "title": "호감도로 스킬 복사!",
-        "source": "https://comic.naver.com/webtoon/list?titleId=855599",
-        "cover": "https://image-comic.pstatic.net/webtoon/855599/thumbnail/thumbnail_IMAG21_218333ad-6ed5-4d8e-b713-6109dfbb8690.jpg",
         "finished": false
       },
       {
@@ -3762,6 +3768,12 @@
         "title": "S급 공무수행에 협조 부탁드립니다",
         "source": "https://comic.naver.com/webtoon/list?titleId=843070",
         "cover": "https://image-comic.pstatic.net/webtoon/843070/thumbnail/thumbnail_IMAG21_02735a4a-1819-4b20-b522-fb76ad7775a9.jpg",
+        "finished": false
+      },
+      {
+        "title": "짜장 한 그릇에 제갈세가 데릴사위",
+        "source": "https://comic.naver.com/webtoon/list?titleId=822114",
+        "cover": "https://image-comic.pstatic.net/webtoon/822114/thumbnail/thumbnail_IMAG21_072b5567-fe04-4da3-abcd-fdb3ea167744.jpg",
         "finished": false
       },
       {
