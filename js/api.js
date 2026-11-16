@@ -52,8 +52,41 @@
     if (me.favs) S.favs = me.favs;
     S.pid = me.pid || ''; S.privacy = me.privacy || 'all';   // 관심 웹툰 (예전 서버 코드면 이 기기 기록을 그대로 둬요)
     S.role = me.role || '';
-    if (WT.initSeen && WT.data) WT.initSeen();
+    // 새 화 확인 표시 · 내 기록: 서버와 이 기기 것을 합쳐요 (예전 서버 코드면 이 기기 기록을 그대로 둬요)
+    let push = false, pushLog = false;
+    if (me.seen && typeof me.seen === 'object') {
+      S.canSync = true;
+      const seen = Object.assign({}, me.seen);
+      Object.entries(S.seen || {}).forEach(([k, v]) => { if (seen[k] == null || v > seen[k]) { seen[k] = v; push = true; } });
+      S.seen = seen;
+    }
+    if (WT.initSeen && WT.data && WT.initSeen()) push = S.canSync;
+    if (Array.isArray(me.log)) {
+      const key = (e) => `${e.d}|${e.t}|${e.n}|${e.w}`;
+      const have = {}; me.log.forEach((x) => { have[x] = (have[x] || 0) + 1; });
+      const cnt = {}, extra = (S.log || []).filter((e) => { const k = key(e); cnt[k] = (cnt[k] || 0) + 1; return cnt[k] > (have[k] || 0); });
+      S.log = me.log.map((x) => { const p = String(x).split('|'); return { d: p[0], t: p[1], n: Number(p[2]) || 0, w: p.slice(3).join('|') }; })
+        .concat(extra).sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0)).slice(-1500);   // 서버도 최근 1500개까지만 둬요
+      const kept = new Set(S.log);
+      if (extra.some((e) => kept.has(e))) { push = true; pushLog = true; }
+    }
     WT.store.save();
+    if (push) syncSoon(pushLog);
+  }
+
+  /** 이 기기에서 바뀐 새 화 확인 표시(와 기록)를 조금 모았다가 계정에 저장해요 */
+  let syncT = 0, syncLog = false;
+  function syncSoon(withLog) {
+    const S = WT.store.state;
+    if (!url() || !S.token || !S.canSync) return;
+    syncLog = syncLog || !!withLog;
+    clearTimeout(syncT);
+    syncT = setTimeout(() => {
+      const body = { seen: S.seen || {} };
+      if (syncLog) body.log = (S.log || []).slice(-1500);
+      syncLog = false;
+      authed('sync', body).then((r) => applyMe(r.me)).catch(() => {});
+    }, 1500);
   }
 
   function viewerId() {
@@ -65,7 +98,7 @@
 
   WT.api = {
     on: () => !!url(),
-    call, authed, applyMe, viewerId,
+    call, authed, applyMe, viewerId, syncSoon,
     /** 결과를 기다릴 필요 없는 요청 (조회 기록 등) */
     fire(action, payload) { if (url()) call(action, payload).catch(() => {}); }
   };
