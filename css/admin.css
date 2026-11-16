@@ -332,3 +332,9 @@ body.admin .chip-admin { background: #5BB8FF; }
 .ad-shop th, .ad-shop td:nth-child(3), .ad-shop .btn-danger { white-space: nowrap; }
 .ad-shop td:nth-child(2) .fld { min-width: 0; width: 100%; }
 .ad-shop td:nth-child(6) select.fld { min-width: 112px; }
+
+/* 관리자 별점 · 강추 */
+.rate-box { display: flex; flex-direction: column; gap: 10px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; }
+.rate-row { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: flex-end; }
+.rate-sum { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 13.5px; align-items: baseline; }
+.rate-who { grid-column: 2; color: var(--muted); font-size: 12.5px; }

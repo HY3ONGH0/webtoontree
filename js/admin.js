@@ -82,9 +82,55 @@
   const toon = (id) => D.webtoons.find((w) => w.id === id);
   const genre = (id) => D.genres.find((g) => g.id === id);
   const gColor = (w) => ((w && w.genres && genre(w.genres[0])) || {}).color || '#5BB8FF';
+  // ---------- 관리자 별점 · 강추 (관리자마다 따로 주고, 평균이 최종 별점) ----------
+  /** 지금 이 화면의 관리자 (서버에 연결해야 알 수 있어요) */
+  const meAdmin = () => (srv.ok ? { key: String(srv.uid || srv.name || 'owner'), name: srv.name || (srv.owner ? '최종 관리자' : '관리자') } : null);
+  /** 사이트에 보이는 값(별 · 강추)을 관리자들이 준 값에서 다시 계산해요 */
+  function recompute(w) {
+    const vals = Object.values(w.arate || {}).map(Number).filter((n) => n >= 1 && n <= 5);
+    if (vals.length) { const avg = vals.reduce((a, b) => a + b, 0) / vals.length; w.recommended = Math.max(1, Math.min(5, Math.round(avg))); w.recAvg = Math.round(avg * 10) / 10; }
+    else { w.recommended = 0; delete w.recAvg; }
+    if (w.arate && !Object.keys(w.arate).length) delete w.arate;
+    if (w.apick && !w.apick.length) delete w.apick;
+    if (w.pickBase || (w.apick || []).length) w.pick = true; else delete w.pick;
+  }
+  /** 예전 데이터 정리: 예전 별점은 지우고, 예전 강추는 '기존 강추'로 남겨요 (몇 번 불러도 같은 결과) */
+  function migrateRatings() {
+    D.webtoons.forEach((w) => {
+      if (w.pick && !(w.apick || []).length) w.pickBase = true;
+      if (!Object.keys(w.arate || {}).length) { w.recommended = 0; delete w.recAvg; }
+      else recompute(w);
+    });
+  }
+  function adminNames() { const m = (D.meta && D.meta.admins) || {}; return m; }
+  function ratingBox(w) {
+    const me = meAdmin(), names = adminNames();
+    const nm = (k) => esc(names[k] || (me && k === me.key ? me.name : k));
+    const rows = Object.keys(w.arate || {});
+    const picks = w.apick || [];
+    const mine = me ? Number((w.arate || {})[me.key]) || 0 : 0;
+    const avg = w.recAvg ? `${w.recAvg} → ${'★'.repeat(w.recommended)}` : '아직 별점이 없어요';
+    return `<div class="rate-box">
+      <div class="rate-row">
+        <div class="field"><label for="f-rec" style="color:var(--coin); font-weight:700">내 별점${me ? ` (${esc(me.name)})` : ''}</label>
+          <select id="f-rec" class="fld" data-myrate ${me ? '' : 'disabled'} style="max-width:220px">${[0, 1, 2, 3, 4, 5].map((n) => `<option value="${n}" ${mine === n ? 'selected' : ''}>${n ? '★'.repeat(n) + ` 별 ${n}개` : '안 줌'}</option>`).join('')}</select></div>
+        <label class="ad-check" style="align-self:flex-end"><input type="checkbox" data-mypick ${me ? '' : 'disabled'} ${me && picks.includes(me.key) ? 'checked' : ''}> <span class="pick-badge">관리자 강추</span> 내가 강추해요</label>
+      </div>
+      ${me ? '' : '<p class="hint" style="margin:0; color:#E0565B">[저장 · 백업] 탭 아래 \'서버\'에서 관리자로 연결해야 내 별점과 강추를 줄 수 있어요.</p>'}
+      <div class="rate-sum">
+        <b>최종 별점</b> <span>${avg}</span>
+        ${rows.length ? `<span class="rate-who">${rows.map((k) => `${nm(k)} ${'★'.repeat(Number(w.arate[k]) || 0)}`).join(' · ')}</span>` : ''}
+        <b>강추</b> <span>${w.pick ? `<span class="pick-badge sm">강추</span> ${picks.length ? picks.map(nm).join(', ') + ' 님이 강추' : ''}` : '아직 아무도 강추하지 않았어요'}</span>
+        ${w.pickBase ? `<label class="ad-check"><input type="checkbox" data-pickbase checked> 이전부터 있던 강추 <span class="hint">(끄면 이 표시가 사라져요)</span></label>` : ''}
+      </div>
+      <span class="hint">관리자 3명이 각자 별점을 주면 <b>평균(반올림)</b>이 사이트의 최종 별점이 되고, 한 명이라도 강추를 누르면 <b>관리자 강추</b>로 표시돼요. 강추 웹툰은 별 대신 강추 표시가 나와요.</span>
+    </div>`;
+  }
+
   function ensure() {
     D.meta = D.meta || {};
     D.shop = D.shop || []; D.seasons = D.seasons || [];
+    if (D.webtoons) migrateRatings();
     // 웹툰 번호: w001 처럼 w 뒤 숫자(6자리까지)만 봐요. 전에는 ID 안의 숫자를 모두 이어 붙여서 번호가 터무니없이 커졌어요
     const max = D.webtoons.reduce((m, w) => { const x = /^w(\d{1,4})(?![0-9])/.exec(String(w.id)); return x ? Math.max(m, Number(x[1])) : m; }, 0);
     const last = Number(D.meta.lastWebtoonId);
@@ -434,12 +480,7 @@
       ${w.genres.filter((gid) => subsOf(gid).length).map((gid) => `<fieldset style="border:none; margin:0; padding:0"><legend class="hint" style="margin-bottom:6px; font-size:14px; color:var(--soft)">${esc(genre(gid).name)} 세부 장르 (도서관 마도서)</legend>
         <div class="checks">${subsOf(gid).map((x) => `<label><input type="checkbox" data-ws="${x.id}" ${(w.subs || []).includes(x.id) ? 'checked' : ''}> <span style="color:${esc(x.color)}">◆</span> ${esc(x.name)}</label>`).join('')}</div>
       </fieldset>`).join('')}
-      <div class="checks">
-        <div class="field"><label for="f-rec" style="color:var(--coin); font-weight:700">관리자 추천 (원 옆에 별)</label>
-          <select id="f-rec" class="fld" data-wf="recommended" style="max-width:220px" ${w.pick ? 'disabled title="관리자 강추를 켜면 별 대신 강추 표시가 나와요"' : ''}>${[0, 1, 2, 3, 4, 5].map((n) => `<option value="${n}" ${WT.recStars(w) === n ? 'selected' : ''}>${n ? '★'.repeat(n) + ` 별 ${n}개` : '추천 안 함'}</option>`).join('')}</select></div>
-        <label class="ad-check" style="align-self:flex-end"><input type="checkbox" data-wf="pick" ${w.pick ? 'checked' : ''}> <span class="pick-badge">관리자 강추</span> 표시 달기</label>
-        ${w.pick ? '<span class="hint" style="align-self:flex-end">강추를 켜면 사이트에서는 별 대신 강추 표시와 테두리 효과가 나와요</span>' : ''}
-      </div>
+      ${ratingBox(w)}
       <details class="ad-more fx-manual" ${w.source ? '' : 'open'}><summary>${w.source ? '자동 정보 직접 고치기 (가져온 정보가 틀렸을 때만)' : '작품 정보 직접 입력 (작품을 연결하지 않을 때만)'}</summary>
       <div class="field"><label for="f-title">제목</label><input id="f-title" class="fld" data-wf="title" value="${esc(w.title)}"></div>
       ${authorEditor(w)}
@@ -1193,6 +1234,7 @@
       </section>
       <section class="ad-card"><h3>애니메이션</h3>
         <label class="ad-check"><input type="checkbox" data-sf="animations" ${S.animations !== false ? 'checked' : ''}> 애니메이션 켜기</label>
+        <label class="ad-check"><input type="checkbox" data-sf="libraryLock" ${S.libraryLock !== false ? 'checked' : ''}> 도서관 잠그기 <span class="hint">(켜면 트리 끝에서 도서관을 연 사람만 메뉴 · 홈에서 들어가요. 열어 주고 싶을 때 끄세요)</span></label>
       </section>
       <section class="ad-card"><h3>코인 규칙</h3>
         <div class="ad-form" style="padding:0; border:none; background:none"><div class="grid2">
@@ -2055,7 +2097,6 @@
       else if (k === 'status') { w.episodes = WT.schedule.episodes(w); w.baseDate = WT.schedule.today(); w.status = el.value; delete w.ongoing; }
       else if (k === 'tags') w.tags = el.value.split(',').map((x) => x.trim()).filter(Boolean);
       else if (k === 'chars') { w.chars = [...new Set(el.value.split(',').map((x) => x.trim().slice(0, 12)).filter(Boolean))].slice(0, 12); if (!w.chars.length) delete w.chars; }
-      else if (k === 'recommended') w.recommended = Math.max(0, Math.min(5, parseInt(el.value, 10) || 0));
       else { w[k] = el.value; if (k === 'cover') delete w.coverAuto; }
       saveDraft();
       return;
@@ -2090,6 +2131,21 @@
     if (el.id === 'w-fg') { ui.fg = el.value; render(); return; }
     if (el.id === 'import-file') { importFile(el.files[0]); return; }
     if (el.dataset.a === 'natural-auto') { D.settings.treeAutoSpacing = el.checked; saveDraft(); toast(el.checked ? '가지를 이을 때 간격을 자동으로 펴요' : '이을 때 자동으로 펴지 않아요'); return; }
+    if (el.dataset.myrate !== undefined || el.dataset.mypick !== undefined || el.dataset.pickbase !== undefined) {
+      const w = toon(ui.w), me = meAdmin();
+      if (el.dataset.pickbase !== undefined) { if (!el.checked) delete w.pickBase; }
+      else if (me) {
+        D.meta = D.meta || {}; D.meta.admins = D.meta.admins || {}; D.meta.admins[me.key] = me.name;
+        if (el.dataset.myrate !== undefined) {
+          const n = Number(el.value) || 0; w.arate = w.arate || {};
+          if (n) w.arate[me.key] = n; else delete w.arate[me.key];
+        } else {
+          w.apick = (w.apick || []).filter((k) => k !== me.key);
+          if (el.checked) w.apick.push(me.key);
+        }
+      }
+      recompute(w); saveDraft(); render(); return;
+    }
     if (el.dataset.wf && el.type === 'checkbox') {
       const w = toon(ui.w);
       if (el.dataset.wf === 'autoCount') { w.episodes = WT.schedule.episodes(w); w.baseDate = WT.schedule.today(); }
