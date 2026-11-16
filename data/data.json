@@ -67,8 +67,7 @@
       "cover": "https://image-comic.pstatic.net/webtoon/847135/thumbnail/thumbnail_IMAG21_779f0fbe-564e-460c-b241-3d776517aad1.jpg",
       "genres": [
         "thriller",
-        "drama",
-        "romance"
+        "drama"
       ],
       "recommended": 0,
       "color": "#a78867",
@@ -118,7 +117,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#010101",
       "episodes": 57,
       "status": "ongoing",
@@ -147,6 +146,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=843310",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 3
+      },
+      "recAvg": 3,
       "age": 15
     },
     {
@@ -955,7 +958,7 @@
       "genres": [
         "apocalyps"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#0c1219",
       "episodes": 106,
       "status": "hiatus",
@@ -982,6 +985,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=783596",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 2
+      },
+      "recAvg": 2,
       "age": 15
     },
     {
@@ -1339,7 +1346,7 @@
         "drama",
         "daily"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#faead8",
       "episodes": 81,
       "status": "completed",
@@ -1367,6 +1374,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=851401",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 2
+      },
+      "recAvg": 2,
       "age": 0
     },
     {
@@ -1915,7 +1926,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#fef700",
       "episodes": 719,
       "status": "completed",
@@ -1950,6 +1961,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=81482",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 3
+      },
+      "recAvg": 3,
       "age": 0
     },
     {
@@ -2234,7 +2249,7 @@
         "action",
         "drama"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#846d66",
       "episodes": 269,
       "status": "completed",
@@ -2268,6 +2283,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=710751",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 4
+      },
+      "recAvg": 4,
       "age": 15
     },
     {
@@ -2280,7 +2299,7 @@
       "genres": [
         "action"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#161319",
       "episodes": 223,
       "status": "completed",
@@ -2314,6 +2333,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=736277",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 3
+      },
+      "recAvg": 3,
       "age": 15
     },
     {
@@ -2383,7 +2406,7 @@
         "romance",
         "daily"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#eaab85",
       "episodes": 512,
       "status": "completed",
@@ -2413,6 +2436,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=651673",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 2
+      },
+      "recAvg": 2,
       "age": 12
     },
     {
@@ -3012,7 +3039,7 @@
       "genres": [
         "daily"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#fbeb22",
       "episodes": 1238,
       "status": "completed",
@@ -3042,7 +3069,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=20853",
       "autoAt": "2026-11-16",
-      "pick": false,
+      "arate": {
+        "admin": 4
+      },
+      "recAvg": 4,
       "age": 0
     },
     {
@@ -3102,7 +3132,7 @@
       "genres": [
         "action"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#261d24",
       "episodes": 153,
       "status": "ongoing",
@@ -3139,6 +3169,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=816798",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 4
+      },
+      "recAvg": 4,
       "age": 15
     },
     {
@@ -3253,7 +3287,7 @@
       "genres": [
         "action"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#9b7973",
       "episodes": 136,
       "status": "completed",
@@ -3291,6 +3325,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=807178",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 4
+      },
+      "recAvg": 4,
       "age": 15
     },
     {
@@ -3303,7 +3341,7 @@
       "genres": [
         "action"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#0e1319",
       "episodes": 121,
       "status": "completed",
@@ -3331,6 +3369,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=736744",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 3
+      },
+      "recAvg": 3,
       "age": 15
     },
     {
@@ -3781,11 +3823,13 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=703845",
       "autoAt": "2026-11-16",
-      "pick": true,
       "subs": [
         "fantasy-5"
       ],
-      "pickBase": true,
+      "apick": [
+        "admin"
+      ],
+      "pick": true,
       "age": 12
     },
     {
@@ -4175,7 +4219,7 @@
       "genres": [
         "murim"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#faeee4",
       "episodes": 109,
       "status": "ongoing",
@@ -4218,6 +4262,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=833702",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 2
+      },
+      "recAvg": 2,
       "age": 15
     },
     {
@@ -4848,8 +4896,6 @@
       "subs": [
         "fantasy-5"
       ],
-      "pick": true,
-      "pickBase": true,
       "age": 12
     },
     {
@@ -5193,7 +5239,7 @@
       "genres": [
         "sports"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#76575a",
       "episodes": 46,
       "status": "hiatus",
@@ -5233,6 +5279,10 @@
       "subs": [
         "sports-1"
       ],
+      "arate": {
+        "admin": 2
+      },
+      "recAvg": 2,
       "age": 0
     },
     {
@@ -5429,7 +5479,7 @@
       "genres": [
         "drama"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#ece5e9",
       "episodes": 57,
       "status": "completed",
@@ -5461,6 +5511,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=842839",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 2
+      },
+      "recAvg": 2,
       "age": 15
     },
     {
@@ -5526,7 +5580,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#ebf0eb",
       "episodes": 83,
       "status": "ongoing",
@@ -5563,6 +5617,11 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=828920",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 3,
+        "lliooli": 4
+      },
+      "recAvg": 3.5,
       "age": 12
     },
     {
@@ -5627,7 +5686,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#ececf3",
       "episodes": 35,
       "status": "ongoing",
@@ -5664,6 +5723,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=848549",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 2
+      },
+      "recAvg": 2,
       "age": 15
     },
     {
@@ -5984,8 +6047,10 @@
       "subs": [
         "fantasy-5"
       ],
+      "apick": [
+        "admin"
+      ],
       "pick": true,
-      "pickBase": true,
       "age": 12
     },
     {
@@ -5998,7 +6063,7 @@
       "genres": [
         "sports"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#f6ecd1",
       "episodes": 46,
       "status": "hiatus",
@@ -6033,6 +6098,10 @@
       "subs": [
         "sports-1"
       ],
+      "arate": {
+        "admin": 3
+      },
+      "recAvg": 3,
       "age": 0
     },
     {
@@ -6241,7 +6310,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#fcece4",
       "episodes": 72,
       "status": "ongoing",
@@ -6273,6 +6342,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=839913",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 2
+      },
+      "recAvg": 2,
       "age": 15
     },
     {
@@ -6285,7 +6358,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "color": "#191a24",
       "episodes": 44,
       "status": "hiatus",
@@ -6322,6 +6395,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=841491",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 1
+      },
+      "recAvg": 1,
       "age": 15
     },
     {
@@ -6383,7 +6460,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "color": "#fbf8e7",
       "episodes": 49,
       "status": "hiatus",
@@ -6415,6 +6492,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=842899",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 1
+      },
+      "recAvg": 1,
       "age": 0
     },
     {
@@ -6427,7 +6508,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#190b12",
       "episodes": 155,
       "status": "hiatus",
@@ -6459,6 +6540,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=786082",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 2
+      },
+      "recAvg": 2,
       "age": 15
     },
     {
@@ -6471,7 +6556,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#f7e7e9",
       "episodes": 26,
       "status": "ongoing",
@@ -6503,6 +6588,11 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=850214",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 3,
+        "lliooli": 2
+      },
+      "recAvg": 2.5,
       "age": 12
     },
     {
@@ -6603,7 +6693,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#fae8ea",
       "episodes": 47,
       "status": "ongoing",
@@ -6639,6 +6729,11 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=845717",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 2,
+        "lliooli": 1
+      },
+      "recAvg": 1.5,
       "age": 0
     },
     {
@@ -6651,7 +6746,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#041657",
       "episodes": 45,
       "status": "ongoing",
@@ -6683,6 +6778,11 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=841128",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 3,
+        "lliooli": 3
+      },
+      "recAvg": 3,
       "age": 0
     },
     {
@@ -6695,7 +6795,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#342c28",
       "episodes": 45,
       "status": "ongoing",
@@ -6727,6 +6827,11 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=835693",
       "autoAt": "2026-11-16",
+      "arate": {
+        "admin": 2,
+        "lliooli": 2
+      },
+      "recAvg": 2,
       "age": 15
     },
     {
@@ -7045,7 +7150,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#c7a889",
       "episodes": 58,
       "status": "ongoing",
@@ -7073,6 +7178,11 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 1,
+        "lliooli": 2
+      },
+      "recAvg": 1.5,
       "age": 15
     },
     {
@@ -7085,7 +7195,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#d9e7e4",
       "episodes": 140,
       "status": "completed",
@@ -7122,6 +7232,10 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 3
+      },
+      "recAvg": 3,
       "age": 15
     },
     {
@@ -7181,7 +7295,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "color": "#ff5767",
       "episodes": 91,
       "status": "completed",
@@ -7209,6 +7323,10 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 1
+      },
+      "recAvg": 1,
       "age": 0
     },
     {
@@ -7221,7 +7339,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "color": "#261c27",
       "episodes": 55,
       "status": "ongoing",
@@ -7253,6 +7371,10 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 1
+      },
+      "recAvg": 1,
       "age": 15
     },
     {
@@ -7265,7 +7387,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#fbe9e7",
       "episodes": 136,
       "status": "completed",
@@ -7297,6 +7419,11 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 2,
+        "lliooli": 2
+      },
+      "recAvg": 2,
       "age": 15
     },
     {
@@ -7394,7 +7521,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "color": "#faebe5",
       "episodes": 236,
       "status": "completed",
@@ -7430,6 +7557,11 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 1,
+        "lliooli": 1
+      },
+      "recAvg": 1,
       "age": 0
     },
     {
@@ -7486,7 +7618,7 @@
       "genres": [
         "murim"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#191b24",
       "episodes": 118,
       "status": "ongoing",
@@ -7529,6 +7661,10 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 2
+      },
+      "recAvg": 2,
       "age": 15
     },
     {
@@ -8079,7 +8215,9 @@
           ]
         }
       ],
-      "pickBase": true,
+      "apick": [
+        "admin"
+      ],
       "age": 15
     },
     {
@@ -8275,7 +8413,7 @@
         "romance",
         "daily"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#373a47",
       "episodes": 88,
       "status": "hiatus",
@@ -8307,6 +8445,11 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 2,
+        "lliooli": 3
+      },
+      "recAvg": 2.5,
       "age": 19
     },
     {
@@ -8381,7 +8524,7 @@
         "romance",
         "thriller"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#261c14",
       "episodes": 126,
       "status": "ongoing",
@@ -8413,6 +8556,11 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 2,
+        "lliooli": 4
+      },
+      "recAvg": 3,
       "age": 19
     },
     {
@@ -8485,7 +8633,7 @@
         "romance",
         "drama"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#f9e8d8",
       "episodes": 65,
       "status": "completed",
@@ -8528,6 +8676,11 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 3,
+        "lliooli": 4
+      },
+      "recAvg": 3.5,
       "age": 15
     },
     {
@@ -8540,7 +8693,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#fde6d9",
       "episodes": 46,
       "status": "hiatus",
@@ -8572,6 +8725,11 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 3,
+        "lliooli": 3
+      },
+      "recAvg": 3,
       "age": 15
     },
     {
@@ -8615,7 +8773,10 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true,
+      "apick": [
+        "lliooli",
+        "admin"
+      ],
       "age": 12
     },
     {
@@ -8992,7 +9153,7 @@
       "genres": [
         "murim"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "color": "#0e1217",
       "episodes": 30,
       "status": "ongoing",
@@ -9035,6 +9196,10 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 1
+      },
+      "recAvg": 1,
       "age": 15
     },
     {
@@ -9080,7 +9245,9 @@
       ],
       "pick": true,
       "coverAuto": true,
-      "pickBase": true,
+      "apick": [
+        "admin"
+      ],
       "age": 15
     },
     {
@@ -9093,7 +9260,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#100f17",
       "episodes": 43,
       "status": "completed",
@@ -9126,6 +9293,10 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 2
+      },
+      "recAvg": 2,
       "age": 15
     },
     {
@@ -9397,9 +9568,10 @@
       "url": "https://comic.naver.com/webtoon/list?titleId=667573",
       "cover": "https://image-comic.pstatic.net/webtoon/667573/thumbnail/thumbnail_IMAG21_095997c8-effc-4722-8157-baeaaa439930.jpg",
       "genres": [
-        "romance"
+        "romance",
+        "daily"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#fefbca",
       "episodes": 372,
       "status": "completed",
@@ -9427,6 +9599,10 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "lliooli": 4
+      },
+      "recAvg": 4,
       "age": 12
     },
     {
@@ -9440,7 +9616,7 @@
         "romance",
         "daily"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#fea8aa",
       "episodes": 442,
       "status": "completed",
@@ -9472,6 +9648,10 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "lliooli": 4
+      },
+      "recAvg": 4,
       "age": 15
     },
     {
@@ -9511,9 +9691,7 @@
           ]
         }
       ],
-      "pick": true,
       "coverAuto": true,
-      "pickBase": true,
       "age": 15
     },
     {
@@ -9581,7 +9759,7 @@
         "romance",
         "daily"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#74fd92",
       "episodes": 224,
       "status": "ongoing",
@@ -9613,6 +9791,11 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 3,
+        "lliooli": 3
+      },
+      "recAvg": 3,
       "age": 15
     },
     {
@@ -9677,7 +9860,7 @@
         "action",
         "sports"
       ],
-      "recommended": 0,
+      "recommended": 5,
       "color": "#1d1922",
       "episodes": 134,
       "status": "completed",
@@ -9712,6 +9895,10 @@
         "sports-4"
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 5
+      },
+      "recAvg": 5,
       "age": 15
     },
     {
@@ -9810,7 +9997,9 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true,
+      "apick": [
+        "admin"
+      ],
       "age": 15
     },
     {
@@ -9861,7 +10050,10 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true,
+      "apick": [
+        "lliooli",
+        "admin"
+      ],
       "age": 0
     },
     {
@@ -9874,7 +10066,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#fbe8e4",
       "episodes": 92,
       "status": "hiatus",
@@ -9903,6 +10095,11 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 4,
+        "lliooli": 4
+      },
+      "recAvg": 4,
       "age": 15
     },
     {
@@ -10006,7 +10203,9 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true,
+      "apick": [
+        "admin"
+      ],
       "age": 15
     },
     {
@@ -10019,7 +10218,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#2a323c",
       "episodes": 29,
       "status": "ongoing",
@@ -10051,6 +10250,11 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 4,
+        "lliooli": 4
+      },
+      "recAvg": 4,
       "age": 15
     },
     {
@@ -10063,7 +10267,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#13151b",
       "episodes": 51,
       "status": "ongoing",
@@ -10092,8 +10296,11 @@
           ]
         }
       ],
-      "pick": false,
       "coverAuto": true,
+      "arate": {
+        "admin": 4
+      },
+      "recAvg": 4,
       "age": 15
     },
     {
@@ -10139,9 +10346,7 @@
           ]
         }
       ],
-      "pick": true,
       "coverAuto": true,
-      "pickBase": true,
       "age": 15
     },
     {
@@ -10185,7 +10390,9 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true,
+      "apick": [
+        "admin"
+      ],
       "age": 12
     },
     {
@@ -10199,7 +10406,7 @@
         "murim",
         "fantasy"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "episodes": 188,
       "status": "ongoing",
       "days": [
@@ -10245,9 +10452,9 @@
       ],
       "coverAuto": true,
       "arate": {
-        "admin": 4
+        "admin": 5
       },
-      "recAvg": 4,
+      "recAvg": 5,
       "subs": [
         "fantasy-1"
       ],
@@ -10293,12 +10500,14 @@
           ]
         }
       ],
-      "pick": true,
       "subs": [
         "sports-1"
       ],
       "coverAuto": true,
-      "pickBase": true,
+      "apick": [
+        "admin"
+      ],
+      "pick": true,
       "age": 0
     },
     {
@@ -10345,7 +10554,9 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true,
+      "apick": [
+        "admin"
+      ],
       "age": 0
     },
     {
@@ -10432,7 +10643,6 @@
       ],
       "desc": "'이건 내가 아는 그 전개다'\n한순간에 세계가 멸망하고, 새로운 세상이 펼쳐졌다.\n오직 나만이 완주했던 소설 세계에서 평범했던 독자의 새로운 삶이 시작된다.",
       "color": "#462728",
-      "pick": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=747269",
       "autoAt": "2026-11-16",
       "authors": [
@@ -10456,7 +10666,10 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true,
+      "apick": [
+        "admin"
+      ],
+      "pick": true,
       "age": 15
     },
     {
@@ -10527,7 +10740,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "episodes": 19,
       "status": "ongoing",
       "days": [
@@ -10561,6 +10774,11 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 3,
+        "lliooli": 3
+      },
+      "recAvg": 3,
       "age": 15
     },
     {
@@ -10573,7 +10791,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "episodes": 123,
       "status": "completed",
       "days": [
@@ -10603,6 +10821,11 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 4,
+        "lliooli": 3
+      },
+      "recAvg": 3.5,
       "age": 15
     },
     {
@@ -10615,7 +10838,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 5,
       "episodes": 115,
       "status": "completed",
       "days": [
@@ -10645,6 +10868,11 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 5,
+        "lliooli": 5
+      },
+      "recAvg": 5,
       "age": 0
     },
     {
@@ -10657,7 +10885,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 5,
       "episodes": 130,
       "status": "completed",
       "days": [
@@ -10695,7 +10923,14 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true,
+      "apick": [
+        "lliooli",
+        "admin"
+      ],
+      "arate": {
+        "lliooli": 5
+      },
+      "recAvg": 5,
       "age": 0
     },
     {
@@ -10708,7 +10943,7 @@
       "genres": [
         "romance"
       ],
-      "recommended": 0,
+      "recommended": 5,
       "episodes": 154,
       "status": "completed",
       "days": [
@@ -10741,7 +10976,14 @@
         }
       ],
       "coverAuto": true,
-      "pickBase": true,
+      "apick": [
+        "lliooli",
+        "admin"
+      ],
+      "arate": {
+        "lliooli": 5
+      },
+      "recAvg": 5,
       "age": 12
     },
     {
@@ -10933,7 +11175,7 @@
         "fantasy",
         "action"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "color": "#95767b",
       "episodes": 53,
       "status": "hiatus",
@@ -10974,6 +11216,10 @@
         }
       ],
       "coverAuto": true,
+      "arate": {
+        "admin": 1
+      },
+      "recAvg": 1,
       "age": 15
     },
     {
@@ -11067,54 +11313,6 @@
       "source": "https://comic.naver.com/webtoon/list?titleId=732988",
       "autoAt": "2026-11-16",
       "age": 15
-    },
-    {
-      "id": "w657564281141014",
-      "title": "두근두근 대작전",
-      "author": "최준영, 기령",
-      "platform": "네이버웹툰",
-      "url": "https://comic.naver.com/webtoon/list?titleId=845717",
-      "cover": "https://image-comic.pstatic.net/webtoon/845717/thumbnail/thumbnail_IMAG21_91c9d442-66e7-46f6-b58e-11ddddc2d95b.jpg",
-      "genres": [
-        "romance"
-      ],
-      "recommended": 0,
-      "color": "#fae8ea",
-      "episodes": 47,
-      "status": "ongoing",
-      "days": [
-        "fri"
-      ],
-      "autoCount": true,
-      "baseDate": "2026-11-16",
-      "tags": [
-        "로맨스",
-        "러브코미디",
-        "설렘폭발",
-        "성장물",
-        "학원로맨스",
-        "학원물",
-        "청춘로맨스"
-      ],
-      "desc": "“우리, 두근두근함이 부족하지 않아?”\n\n초등학교부터 고등학교까지,\n소꿉친구에서 연인이 된 남도연과 정아린.\n\n합리적인 연애를 지향하는 두 사람에게\n빠져버린 한 조각의 설렘을 되찾기 위한—\n\n두근두근 대작전이 시작된다!",
-      "authors": [
-        {
-          "name": "최준영",
-          "roles": [
-            "writer"
-          ]
-        },
-        {
-          "name": "기령",
-          "roles": [
-            "painter"
-          ]
-        }
-      ],
-      "coverAuto": true,
-      "source": "https://comic.naver.com/webtoon/list?titleId=845717",
-      "autoAt": "2026-11-16",
-      "age": 0
     }
   ],
   "genres": [
@@ -12065,8 +12263,8 @@
           210
         ],
         "w032": [
-          470,
-          290
+          480,
+          280
         ],
         "w035": [
           300,
@@ -12193,7 +12391,7 @@
         {
           "from": "w018",
           "to": "w020",
-          "why": ""
+          "why": "몰입감 높은 서사"
         },
         {
           "from": "w235",
@@ -12203,12 +12401,17 @@
         {
           "from": "w233",
           "to": "w231",
-          "why": "조금 덜 숨막히는 성인웹툰!"
+          "why": "성인웹툰!"
         },
         {
           "from": "w045",
           "to": "w231",
           "why": "나도 19나 먹어볼까?"
+        },
+        {
+          "from": "w018",
+          "to": "w235",
+          "why": "현실과 가상 그 사이 "
         }
       ],
       "starts": []
