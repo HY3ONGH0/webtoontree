@@ -25,6 +25,17 @@
     let p;
     try { p = (await WT.api.call('userProfile', { pid, token: S.token || '' })).profile; }
     catch (e) { app.innerHTML = shell('회원 프로필', '', `<p class="u-note">${esc(e.message)}</p>`); return; }
+    const list = { kind: '', html: '' };   // 펼친 팔로워 · 팔로잉 목록
+    const openList = async (kind) => {
+      if (list.kind === kind) { list.kind = ''; draw(); return; }
+      list.kind = kind; list.html = '<p class="u-note">불러오는 중…</p>'; draw();
+      try {
+        const r = await WT.api.call('followList', { pid, kind, token: S.token || '' });
+        if (list.kind !== kind) return;
+        list.html = (r.users || []).length ? rowsHTML(r.users) : `<p class="u-note">${kind === 'followers' ? '아직 팔로워가 없어요.' : '아직 팔로우한 사람이 없어요.'}</p>`;
+      } catch (e) { list.html = `<p class="u-note">${esc(/알 수 없는 요청/.test(e.message) ? '서버 코드가 예전 버전이에요. 관리자에게 서버 배포를 부탁해 주세요.' : e.message)}</p>`; }
+      if (list.kind === kind) draw();
+    };
     const draw = () => {
       const recs = (p.recs || []).filter((r) => WT.toon(r.webtoonId));
       const favs = (p.favs || []).map((id) => WT.toon(id)).filter(Boolean);
@@ -33,7 +44,8 @@
         : `<a class="btn press" href="#/login">로그인하고 팔로우</a>`;
       app.querySelector('.u-main').innerHTML = `
         <section class="u-card">
-          <div class="u-head">${av(p.nickname)}<div><h2>${esc(p.nickname)}</h2><span>팔로워 ${p.followers} · 팔로잉 ${p.following} · 다 본 웹툰 ${p.done}편</span></div>${followBtn}</div>
+          <div class="u-head">${av(p.nickname)}<div><h2>${esc(p.nickname)}</h2><span class="u-stat">${p.open ? `<button type="button" class="u-cnt" data-fl="followers" aria-pressed="${list.kind === 'followers'}">팔로워 <b>${p.followers}</b></button> · <button type="button" class="u-cnt" data-fl="following" aria-pressed="${list.kind === 'following'}">팔로잉 <b>${p.following}</b></button>` : `팔로워 ${p.followers} · 팔로잉 ${p.following}`} · 다 본 웹툰 ${p.done}편</span></div>${followBtn}</div>
+          ${list.kind ? `<div class="u-fl"><h3>${p.self ? (list.kind === 'followers' ? '나를 팔로우하는 사람' : '내가 팔로우하는 사람') : list.kind === 'followers' ? `${esc(p.nickname)} 님을 팔로우하는 사람` : `${esc(p.nickname)} 님이 팔로우하는 사람`}</h3><div class="u-find-r">${list.html}</div></div>` : ''}
           ${p.open ? `
           <h3>${esc(p.nickname)} 님의 추천 ${recs.length ? `<small>${recs.length}</small>` : ''}</h3>
           ${recs.length ? `<div class="u-recs">${recs.map((r) => { const w = WT.toon(r.webtoonId); return `<div class="u-rec">${cover(w, true)}<div><a href="${libHref(w)}"><b>${esc(w.title)}</b></a><p>“${esc(r.text)}”</p><small>${when(r.at)}</small></div></div>`; }).join('')}</div>` : '<p class="u-note">아직 남긴 추천이 없어요.</p>'}
@@ -41,6 +53,14 @@
           ${favs.length ? `<div class="u-favs">${favs.map((w) => cover(w)).join('')}</div>` : '<p class="u-note">관심 웹툰이 없어요.</p>'}`
           : `<p class="u-note">${p.privacy === 'followers' ? '팔로워에게만 공개한 프로필이에요. 팔로우하면 추천과 관심 웹툰이 보여요.' : '비공개 프로필이에요.'}</p>`}
         </section>`;
+      app.querySelectorAll('[data-fl]').forEach((b) => b.addEventListener('click', () => openList(b.dataset.fl)));
+      const fl = app.querySelector('.u-fl');
+      if (fl) bindFollow(fl, (on) => {   // 내 프로필에서 팔로우를 바꾸면 팔로잉 수도 맞춰요
+        list.html = fl.querySelector('.u-find-r').innerHTML;
+        if (!p.self) return;
+        p.following = Math.max(0, p.following + (on ? 1 : -1));
+        const c = app.querySelector('[data-fl="following"] b'); if (c) c.textContent = p.following;
+      });
       const fb = document.getElementById('u-follow');
       if (fb) fb.addEventListener('click', async () => {
         fb.disabled = true;
@@ -54,6 +74,28 @@
       });
     };
     draw();
+  }
+
+  // ---------- 회원 줄 (친구 찾기 · 팔로워 목록이 함께 써요) ----------
+  function rowsHTML(us) {
+    const S = WT.store.state, can = S.profile && S.token;
+    return us.map((u) => `<div class="u-find-it">${av(u.nickname)}<a href="#/u/${esc(u.pid)}" class="u-find-n"><b>${esc(u.nickname)}${u.me ? ' <small>(나)</small>' : ''}</b><small>팔로워 ${u.followers}</small></a>
+      ${can && !u.me ? `<button type="button" class="btn btn-sm press ${u.iFollow ? '' : 'u-follow'}" data-fpid="${esc(u.pid)}" data-on="${u.iFollow ? 0 : 1}">${u.iFollow ? '팔로우 중 ✓' : '+ 팔로우'}</button>` : ''}</div>`).join('');
+  }
+  /** 줄 안의 팔로우 버튼. after(on) 은 팔로우가 바뀐 뒤에 불러요 */
+  function bindFollow(box, after) {
+    box.addEventListener('click', async (e) => {
+      const b = e.target.closest('[data-fpid]'); if (!b) return;
+      b.disabled = true;
+      try {
+        const on = b.dataset.on === '1';
+        await WT.api.authed('follow', { pid: b.dataset.fpid, on });
+        b.dataset.on = on ? '0' : '1'; b.textContent = on ? '팔로우 중 ✓' : '+ 팔로우'; b.classList.toggle('u-follow', !on);
+        WT.toast(on ? '팔로우했어요. 그 사람의 추천이 친구 소식에 떠요' : '팔로우를 그만뒀어요');
+        if (after) after(on);
+      } catch (er) { if (!er.auth) WT.toast(er.message); }
+      b.disabled = false;
+    });
   }
 
   // ---------- 닉네임으로 친구 찾기 ----------
@@ -80,27 +122,14 @@
       catch (e) { if (my === seq) out.innerHTML = `<p class="u-note">${esc(/알 수 없는 요청/.test(e.message) ? '서버 코드가 예전 버전이에요. 관리자에게 서버 배포를 부탁해 주세요.' : e.message)}</p>`; return; }
       if (my !== seq) return;
       const us = r.users || [];
-      out.innerHTML = us.length ? us.map((u) => `<div class="u-find-it">${av(u.nickname)}<a href="#/u/${esc(u.pid)}" class="u-find-n"><b>${esc(u.nickname)}</b><small>팔로워 ${u.followers}</small></a>
-          ${S.profile && S.token ? `<button type="button" class="btn btn-sm press ${u.iFollow ? '' : 'u-follow'}" data-fpid="${esc(u.pid)}" data-on="${u.iFollow ? 0 : 1}">${u.iFollow ? '팔로우 중 ✓' : '+ 팔로우'}</button>` : ''}</div>`).join('')
-        : `<p class="u-note">"${esc(v)}" 닉네임을 찾지 못했어요.</p>`;
+      out.innerHTML = us.length ? rowsHTML(us) : `<p class="u-note">"${esc(v)}" 닉네임을 찾지 못했어요.</p>`;
     };
     const soon = () => { clearTimeout(timer); timer = setTimeout(run, 300); };
     f.addEventListener('submit', (e) => { e.preventDefault(); clearTimeout(timer); run(); });
     q.addEventListener('compositionstart', () => { comp = true; });
     q.addEventListener('compositionend', () => { comp = false; soon(); });
     q.addEventListener('input', () => { if (!comp) soon(); });
-    out.addEventListener('click', async (e) => {
-      const b = e.target.closest('[data-fpid]'); if (!b) return;
-      b.disabled = true;
-      try {
-        const on = b.dataset.on === '1';
-        await WT.api.authed('follow', { pid: b.dataset.fpid, on });
-        b.dataset.on = on ? '0' : '1'; b.textContent = on ? '팔로우 중 ✓' : '+ 팔로우'; b.classList.toggle('u-follow', !on);
-        WT.toast(on ? '팔로우했어요. 그 사람의 추천이 친구 소식에 떠요' : '팔로우를 그만뒀어요');
-        if (on && root.dataset.refeed) viewFeed();
-      } catch (er) { if (!er.auth) WT.toast(er.message); }
-      b.disabled = false;
-    });
+    bindFollow(out, (on) => { if (on && root.dataset.refeed) viewFeed(); });
   }
 
   // ---------- 친구 소식 ----------

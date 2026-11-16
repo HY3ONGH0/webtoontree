@@ -2269,3 +2269,9 @@ h1, h2, h3, .wt-word, .lb-h1, .hm-h1, .lb-qt, .wk-t-n { font-family: var(--displ
 .u-find-n { flex: 1; min-width: 0; display: flex; flex-direction: column; color: var(--text); text-decoration: none; }
 .u-find-n b { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .u-find-n small { font-size: 12px; color: var(--muted); }
 .u-find-n:hover b { color: var(--brand); }
+/* 프로필의 팔로워 · 팔로잉 (누르면 목록) */
+.u-cnt { font: inherit; color: inherit; background: none; border: 0; padding: 2px 0; cursor: pointer; border-bottom: 1px dashed currentColor; }
+.u-cnt b { color: var(--text); }
+.u-cnt[aria-pressed="true"] { color: var(--brand); border-bottom-style: solid; }
+.u-fl { margin-top: 14px; padding-top: 4px; border-top: 1px solid var(--card-line); }
+.u-fl h3 { margin: 12px 0 4px; font-size: 15px; }

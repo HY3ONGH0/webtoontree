@@ -1137,7 +1137,7 @@
     function setEp(id, value) {
       const useServer = server && !!S.token;
       const r = WT.store.recordEpisodes(id, value, total(id), rules, WT.canEarn() && !useServer);
-      WT.markSeen(id);   // 기록했으면 새 화 알림은 여기서부터 다시 세요
+      WT.markSeen(id, useServer);   // 기록했으면 새 화 알림은 여기서부터 다시 세요
       if (useServer) {
         WT.api.authed('progress', { webtoonId: id, value: S.progress[id] }).then((x) => {
           WT.api.applyMe(x.me);

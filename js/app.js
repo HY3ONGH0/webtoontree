@@ -27,7 +27,7 @@
 
   // ---------- 새 화 알림 ----------
   // 관심 웹툰 · 보는 중인 웹툰에서, 내가 마지막으로 확인한(기록하거나 관심에 담은) 뒤로 늘어난 화 수
-  WT.markSeen = (id) => { const w = WT.toon(id); if (!w) return; const S = WT.store.state; S.seen = S.seen || {}; S.seen[id] = WT.eps(w); WT.store.save(); };
+  WT.markSeen = (id, quiet) => { const w = WT.toon(id); if (!w) return; const S = WT.store.state; S.seen = S.seen || {}; S.seen[id] = WT.eps(w); WT.store.save(); if (!quiet && WT.api) WT.api.syncSoon(); };   // quiet: 서버가 알아서 기록할 때
   WT.follows = (id) => { const S = WT.store.state; const w = WT.toon(id); if (!w) return false; const e = (S.progress || {})[id] || 0; return !!((S.favs || {})[id]) || (e > 0 && e < WT.eps(w)); };
   WT.newEps = (id) => {
     const S = WT.store.state, w = WT.toon(id);
@@ -67,6 +67,7 @@
     const S = WT.store.state; S.seen = S.seen || {}; let n = 0;
     WT.data.webtoons.forEach((w) => { if (S.seen[w.id] == null && WT.follows(w.id)) { S.seen[w.id] = WT.eps(w); n++; } });
     if (n) WT.store.save();
+    return n;
   };
 
   // ---------- 관심 웹툰 ----------

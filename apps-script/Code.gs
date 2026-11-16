@@ -19,7 +19,7 @@ var DEFAULT_DATA_URL = 'https://hy3ongh0.github.io/webtoontree/data/data.json';
 var TZ = 'Asia/Seoul';
 
 var SHEETS = {
-  users: ['userId', 'nickname', 'pwHash', 'salt', 'createdAt', 'status', 'coins', 'progress', 'rewarded', 'daily', 'owned', 'equip', 'unlocked', 'role', 'favs', 'privacy'],
+  users: ['userId', 'nickname', 'pwHash', 'salt', 'createdAt', 'status', 'coins', 'progress', 'rewarded', 'daily', 'owned', 'equip', 'unlocked', 'role', 'favs', 'privacy', 'seen', 'log'],
   sessions: ['token', 'userId', 'expiresAt'],
   ratings: ['webtoonId', 'userId', 'score', 'updatedAt'],
   comments: ['commentId', 'webtoonId', 'userId', 'text', 'createdAt', 'hidden'],
@@ -30,7 +30,7 @@ var SHEETS = {
   follows: ['follower', 'followee', 'at'],
   recs: ['recId', 'userId', 'webtoonId', 'text', 'at']
 };
-var JSON_COLS = { progress: 1, rewarded: 1, daily: 1, owned: 1, equip: 1, unlocked: 1, favs: 1 };
+var JSON_COLS = { progress: 1, rewarded: 1, daily: 1, owned: 1, equip: 1, unlocked: 1, favs: 1, seen: 1, log: 1 };
 
 // ======================================================================
 // 웹 요청 입구
@@ -70,7 +70,7 @@ function doPost(e) {
 }
 
 // 서버 코드 판 번호: 관리자 화면이 이 숫자를 보고 "서버 코드가 예전 버전"인지 알려 줘요. 서버 코드를 고치면 1씩 올려요
-var SERVER_VERSION = 19;
+var SERVER_VERSION = 20;
 
 var WRITE_ACTIONS = {
   signup: 1, login: 1, logout: 1, nick: 1, deleteAccount: 1, progress: 1, rate: 1, comment: 1, deleteComment: 1,
@@ -99,7 +99,7 @@ var ACTIONS = {
       owned: { basic: true }, equip: { acc: 'basic', color: null }, unlocked: {}
     };
     appendRow_('users', user);
-    return { token: newSession_(id), me: publicMe_(user) };
+    return { token: newSession_(id), me: publicMe_(user, true) };
   },
 
   login: function (b) {
@@ -118,7 +118,7 @@ var ACTIONS = {
     }
     if (hit.obj.status === 'banned') fail_('이용이 정지된 계정이에요. 관리자에게 문의해 주세요.');
     cacheDel_('login:' + id);
-    return { token: newSession_(id), me: publicMe_(hit.obj) };
+    return { token: newSession_(id), me: publicMe_(hit.obj, true) };
   },
 
   logout: function (b) {
@@ -128,7 +128,7 @@ var ACTIONS = {
   },
 
   me: function (b) {
-    return { me: publicMe_(auth_(b.token).obj) };
+    return { me: publicMe_(auth_(b.token).obj, true) };
   },
 
   nick: function (b) {
@@ -180,6 +180,7 @@ var ACTIONS = {
       gain = counted * Number(rules.perEpisode);
       label = '+' + gain + ' 코인 · 화수 기록';
       log_(me.userId, gain, 'ep', wid, counted);
+      logPush_(me, 'ep', counted, wid);
     } else if (fresh > 0) {
       label = '오늘 화수 코인은 다 받았어요';
     }
@@ -189,10 +190,12 @@ var ACTIONS = {
       gain += bonus;
       label = '+' + gain + ' 코인 · 완독 보너스!';
       log_(me.userId, bonus, 'done', wid, 0);
+      logPush_(me, 'done', 1, wid);
     }
     me.coins = Number(me.coins) + gain;
+    me.seen = seenObj_(me.seen); me.seen[wid] = Math.max(Number(me.seen[wid]) || 0, total);   // 기록했으면 새 화 알림은 여기서부터
     updateRow_('users', u.row, me);
-    return { me: publicMe_(me), gain: gain, label: label, completed: completed };
+    return { me: publicMe_(me, true), gain: gain, label: label, completed: completed };
   },
 
   // ---------- 별점 · 댓글 ----------
@@ -454,6 +457,55 @@ var ACTIONS = {
   },
 
   /** 닉네임으로 회원 찾기 (20명까지). 공개 범위가 '나만'인 회원은 닉네임을 똑같이 넣었을 때만 나와요 */
+  /** 새 화 확인 표시 · 내 기록을 계정에 합쳐요 (여러 기기에서 이어 보기). 두 쪽 기록을 모두 남기고 겹치는 건 한 번만 세요 */
+  sync: function (b) {
+    var u = auth_(b.token), me = u.obj, changed = false;
+    var seen = seenObj_(me.seen), inS = b.seen && typeof b.seen === 'object' ? b.seen : {};
+    Object.keys(inS).slice(0, 3000).forEach(function (k) {
+      if (k.length > 40) return;
+      var v = Math.max(0, Math.min(100000, Math.round(Number(inS[k]) || 0)));
+      if (seen[k] == null || v > Number(seen[k])) { seen[k] = v; changed = true; }
+    });
+    me.seen = seen;
+    if (Array.isArray(b.log) && b.log.length) {
+      var cur = logArr_(me.log), have = {}, cnt = {}, add = [];
+      cur.forEach(function (x) { have[x] = (have[x] || 0) + 1; });
+      b.log.slice(-LOG_MAX).forEach(function (e) {
+        var x = logKey_(e); if (!x) return;
+        cnt[x] = (cnt[x] || 0) + 1;
+        if (cnt[x] > (have[x] || 0)) add.push(x);
+      });
+      if (add.length) { me.log = cur.concat(add).sort(function (a, c) { return a.slice(0, 10) < c.slice(0, 10) ? -1 : a.slice(0, 10) > c.slice(0, 10) ? 1 : 0; }).slice(-LOG_MAX); changed = true; }
+    }
+    if (changed) updateRow_('users', u.row, me);
+    return { me: publicMe_(me, true) };
+  },
+
+  /** 팔로워 · 팔로잉 목록 (프로필 공개 범위를 따라요) */
+  followList: function (b) {
+    var t = userByPid_(b.pid);
+    if (!t || t.obj.status === 'banned') fail_('없는 회원이에요.');
+    var viewer = null;
+    if (b.token) { try { viewer = auth_(b.token).obj; } catch (e) { viewer = null; } }
+    var uid = t.obj.userId, fl = readAll_('follows').map(function (r) { return r.obj; });
+    var self = !!viewer && viewer.userId === uid;
+    var privacy = t.obj.privacy || 'all';
+    var open = self || privacy === 'all' || (privacy === 'followers' && !!viewer && fl.some(function (f) { return f.follower === viewer.userId && f.followee === uid; }));
+    if (!open) fail_(privacy === 'followers' ? '팔로워에게만 공개한 목록이에요.' : '비공개 목록이에요.');
+    var kind = b.kind === 'following' ? 'following' : 'followers';
+    var ids = fl.filter(function (f) { return kind === 'followers' ? f.followee === uid : f.follower === uid; })
+      .sort(function (a, c) { return String(c.at || '').localeCompare(String(a.at || '')); })
+      .map(function (f) { return kind === 'followers' ? f.follower : f.followee; });
+    var users = {};
+    readAll_('users').forEach(function (r) { users[r.obj.userId] = r.obj; });
+    var mine = {}, cntF = {};
+    fl.forEach(function (f) { cntF[f.followee] = (cntF[f.followee] || 0) + 1; if (viewer && f.follower === viewer.userId) mine[f.followee] = 1; });
+    var list = ids.filter(function (id) { return users[id] && users[id].status !== 'banned'; }).slice(0, 200).map(function (id) {
+      return { pid: pubId_(id), nickname: users[id].nickname, followers: cntF[id] || 0, iFollow: !!mine[id], me: !!viewer && id === viewer.userId };
+    });
+    return { kind: kind, users: list };
+  },
+
   searchUsers: function (b) {
     var q = String(b.q || '').replace(/\s+/g, '').toLowerCase().slice(0, 20);
     if (!q) return { users: [] };
@@ -1410,12 +1462,27 @@ function livePresence_(me, here) {
   if (me) cachePut_('live:who', map, 120);
   return Object.keys(map).map(function (k) { var x = map[k]; return { userId: k, name: x.name, owner: x.owner, tab: x.tab, w: x.w, g: x.g }; });
 }
-function publicMe_(u) {
+var LOG_MAX = 1500;   // 내 기록은 최근 1500개까지 (시트 칸 하나에 다 들어가게)
+function seenObj_(v) { return v && typeof v === 'object' && !Array.isArray(v) ? v : {}; }
+function logArr_(v) { return Array.isArray(v) ? v : []; }
+/** 기록 한 줄: '날짜|ep 또는 done|화수|웹툰ID' */
+function logKey_(e) {
+  if (!e || typeof e !== 'object') return '';
+  var d = String(e.d || ''), t = e.t === 'done' ? 'done' : e.t === 'ep' ? 'ep' : '', n = Math.round(Number(e.n) || 0), w = String(e.w || '');
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(d) || !t || n < 1 || n > 10000 || !w || w.length > 40 || /\|/.test(w)) return '';
+  return d + '|' + t + '|' + n + '|' + w;
+}
+function logPush_(me, t, n, w) {
+  var a = logArr_(me.log); a.push(today_() + '|' + t + '|' + n + '|' + w);
+  me.log = a.length > LOG_MAX ? a.slice(-LOG_MAX) : a;
+}
+function publicMe_(u, full) {
   var ratings = {};
   readAll_('ratings').forEach(function (r) { if (r.obj.userId === u.userId) ratings[r.obj.webtoonId] = Number(r.obj.score); });
   return {
     userId: u.userId, nickname: u.nickname, coins: Number(u.coins), progress: u.progress, rewarded: u.rewarded,
-    daily: u.daily, owned: u.owned, equip: u.equip, unlocked: u.unlocked, favs: u.favs || {}, ratings: ratings, pid: pubId_(u.userId), privacy: u.privacy || 'all', role: u.role === 'admin' ? 'admin' : ''
+    daily: u.daily, owned: u.owned, equip: u.equip, unlocked: u.unlocked, favs: u.favs || {}, ratings: ratings, pid: pubId_(u.userId), privacy: u.privacy || 'all', role: u.role === 'admin' ? 'admin' : '',
+    seen: seenObj_(u.seen), log: full ? logArr_(u.log) : undefined
   };
 }
 function social_(wid, uid) {
