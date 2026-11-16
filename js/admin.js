@@ -4,7 +4,7 @@
    - 이 화면은 서버에 아무것도 바꾸지 않아요. 실제 수정 권한은 GitHub 저장소가 가져요. */
 (function () {
   const DRAFT = 'webtoontree.admin.draft';
-  const NEED_SERVER = 15;   // 이 화면이 필요로 하는 서버 코드 판 번호 (apps-script/Code.gs 의 SERVER_VERSION)
+  const NEED_SERVER = 17;   // 이 화면이 필요로 하는 서버 코드 판 번호 (apps-script/Code.gs 의 SERVER_VERSION)
   const root = () => document.getElementById('admin');
   const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -163,7 +163,7 @@
   }
 
   // ---------- 틀 ----------
-  const TABS = [['webtoons', '웹툰 목록'], ['genres', '장르 관리'], ['tree', '트리 편집'], ['map', '전체 지도 편집'], ['settings', '디자인 · 코인 설정'], ['shop', '상점 아이템'], ['server', '회원 · 댓글 · 제보'], ['data', '저장 · 백업']];
+  const TABS = [['webtoons', '웹툰 목록'], ['genres', '장르 관리'], ['tree', '트리 편집'], ['map', '전체 지도 편집'], ['settings', '디자인 · 코인 설정'], ['shop', '상점 아이템'], ['server', '회원 · 댓글 · 제보'], ['check', '데이터 점검'], ['data', '저장 · 백업']];
   let lastTab = null;
   let lastW = null;
   function render() {
@@ -190,7 +190,7 @@
           <a href="index.html" target="_blank" rel="noopener">실제 사이트 열기</a>
           ${srv.ok ? '<button type="button" data-a="srv-logout" style="margin-top:4px">관리자 나가기</button>' : ''}
         </nav>
-        <main class="ad-main" id="ad-main">${({ webtoons: tabWebtoons, genres: tabGenres, tree: tabTree, map: tabMap, settings: tabSettings, shop: tabShop, server: tabServer, data: tabData })[ui.tab]()}</main>
+        <main class="ad-main" id="ad-main">${({ check: tabCheck, webtoons: tabWebtoons, genres: tabGenres, tree: tabTree, map: tabMap, settings: tabSettings, shop: tabShop, server: tabServer, data: tabData })[ui.tab]()}</main>
       </div>`;
     if (!keepTyping(html)) root().innerHTML = html;
     setState();
@@ -242,6 +242,120 @@
     return true;
   }
 
+  // ---------- 데이터 점검: 고칠 데이터를 종류별로 모아 보여 줘요 ----------
+  const OFFICIAL_IMG = /(pstatic\.net|kakaopagecdn\.com|kakaocdn\.net|lezhin\.com|ridicdn\.net)/i;
+  const hostOf = (u) => ((String(u || '').match(/^https?:\/\/(?:www\.)?([^/]+)/) || [])[1] || '');
+  function checks() {
+    const inTree = new Set(Object.values(D.trees || {}).flatMap((T) => Object.keys((T && T.nodes) || {})));
+    const all = D.webtoons;
+    return [
+      { k: 'badlink', lv: 'bad', title: '보러 가기가 비공식 링크', sub: [...new Set(all.filter((w) => w.url && w.source && !isOfficial(w)).map((w) => hostOf(w.url)))].slice(0, 3).join(' · '),
+        list: all.filter((w) => w.url && w.source && !isOfficial(w)), fix: ['lk-official-all', '모두 공식 페이지로'] },
+      { k: 'nolink', lv: 'bad', title: '보러 가기 링크 없음', sub: '연결된 작품은 공식 페이지로 채울 수 있어요',
+        list: all.filter((w) => !w.url), fix: ['chk-fill-url', '공식 페이지로 채우기'] },
+      { k: 'cover', lv: 'warn', title: '표지가 외부 사이트 이미지', sub: [...new Set(all.filter((w) => w.cover && !OFFICIAL_IMG.test(w.cover)).map((w) => hostOf(w.cover)))].slice(0, 3).join(' · ') + ' · 깨질 수 있어요',
+        list: all.filter((w) => w.cover && !OFFICIAL_IMG.test(w.cover)), fix: srvReady() ? ['chk-cover', '공식 표지로 바꾸기'] : null },
+      { k: 'nocover', lv: 'warn', title: '표지 없음', sub: '제목 글자로 보여요', list: all.filter((w) => !w.cover), fix: srvReady() ? ['chk-cover', '공식 표지 가져오기'] : null },
+      { k: 'eps', lv: 'warn', title: '화수 · 연재 정보가 이상해요', sub: '1화 이하 · 연재 중인데 요일 없음',
+        list: all.filter((w) => WT.schedule.episodes(w) <= 1 || (WT.schedule.status(w) === 'ongoing' && !(w.days || []).length)) },
+      { k: 'genre', lv: 'warn', title: '장르 없음', sub: '도서관 장르 칸에 안 보여요', list: all.filter((w) => !(w.genres || []).length) },
+      { k: 'notree', lv: 'info', title: '트리에 없는 웹툰', sub: '도서관에만 있어요', list: all.filter((w) => !inTree.has(w.id)) },
+      { k: 'nosrc', lv: 'info', title: '작품 연결 안 됨', sub: '정보가 자동으로 맞춰지지 않아요', list: all.filter((w) => !w.source) },
+    ];
+  }
+  function tabCheck() {
+    const cs = checks();
+    const open = cs.find((c) => c.k === ui.chk) || null;
+    const row = (w) => {
+      const why = open.k === 'badlink' ? hostOf(w.url) : open.k === 'cover' ? hostOf(w.cover) : open.k === 'eps' ? `${WT.schedule.episodes(w)}화 · ${WT.schedule.label(w)}` : (w.platform || '');
+      return `<button type="button" class="chk-row" data-a="chk-go" data-id="${w.id}"><span class="dotc" style="background:${w.cover ? `url('${esc(w.cover)}') center/cover` : gColor(w)}"></span><b>${esc(w.title)}</b><small>${esc(why)}</small><i>고치기 →</i></button>`;
+    };
+    return `<h2>데이터 점검 <span class="ad-help" style="display:inline">웹툰 ${D.webtoons.length}편 · 지금 초안 기준</span></h2>
+      <p class="ad-help">고쳐야 할 데이터를 종류별로 모았어요. 칸을 누르면 그 웹툰들이 아래에 나오고, 한꺼번에 고치는 단추가 있으면 함께 보여요. 고친 뒤에는 [사이트에 바로 저장]을 눌러 주세요.</p>
+      <div class="chk-grid">${cs.map((c) => `<button type="button" class="chk-card ${c.lv}${c.list.length ? '' : ' zero'}" data-a="chk-open" data-id="${c.k}" aria-pressed="${ui.chk === c.k}">
+          <b>${c.list.length}</b><span>${esc(c.title)}</span>${c.sub ? `<small>${esc(c.sub)}</small>` : ''}</button>`).join('')}</div>
+      ${open ? `<section class="ad-card chk-list">
+        <div class="chk-list-h"><h3>${esc(open.title)} ${open.list.length}편</h3>${open.fix && open.list.length ? `<button type="button" class="btn btn-sm btn-gold press" data-a="${open.fix[0]}" data-id="${open.k}" ${ui.refreshing ? 'disabled' : ''}>${ui.refreshing ? `가져오는 중… ${ui.refreshing}` : ui.confirm === 'official-all' && open.fix[0] === 'lk-official-all' ? '한 번 더 누르면 바꿔요' : esc(open.fix[1])}</button>` : ''}</div>
+        ${open.list.length ? `<div class="chk-rows">${open.list.slice(0, 200).map(row).join('')}</div>` : '<p class="ad-help">고칠 게 없어요 👍</p>'}
+      </section>` : ''}`;
+  }
+
+  // ---------- 여러 편 추가: 네이버 요일별 · 완결 목록, 제목 여러 줄, 카카오웹툰 검색에서 골라 한 번에 연결 ----------
+  const BULK_SRC = [['naver', '네이버 요일별'], ['lines', '제목 여러 줄 붙여 넣기'], ['kakaow', '카카오웹툰 검색']];
+  const BULK_WEEK = [['mon', '월'], ['tue', '화'], ['wed', '수'], ['thu', '목'], ['fri', '금'], ['sat', '토'], ['sun', '일'], ['finished', '완결']];
+  const registered = (src) => D.webtoons.find((o) => o.source && sameWork(o.source, src));
+  function bulkHTML() {
+    const B = ui.bulk;
+    const list = B.items || [];
+    const pickable = list.filter((x) => !registered(x.source));
+    const nSel = pickable.filter((x) => B.sel[x.source]).length;
+    const gopts = (v) => `<option value="">장르 자동</option>` + D.genres.map((g) => `<option value="${g.id}" ${g.id === v ? 'selected' : ''}>${esc(g.name)}</option>`).join('');
+    return `<section class="ad-form bulk" aria-label="여러 편 추가">
+      <div class="bulk-top"><h3>여러 편 추가</h3><button type="button" class="btn btn-sm press" data-a="bulk-close" ${B.adding ? 'disabled' : ''}>닫기</button></div>
+      <div class="fx-pf" role="group" aria-label="가져올 곳">${BULK_SRC.map(([k, n]) => `<button type="button" data-a="bulk-src" data-id="${k}" aria-pressed="${B.src === k}">${n}</button>`).join('')}</div>
+      ${B.src === 'naver' ? `<div class="bulk-weeks">${BULK_WEEK.map(([k, n]) => `<button type="button" data-a="bulk-week" data-id="${k}" aria-pressed="${B.week === k}">${n}</button>`).join('')}${B.week === 'finished' && B.pages > 1 ? `<span class="ad-help">완결 ${B.page} / ${B.pages}쪽 <button type="button" class="btn btn-sm press" data-a="bulk-page" data-id="${B.page - 1}" ${B.page <= 1 ? 'disabled' : ''}>←</button><button type="button" class="btn btn-sm press" data-a="bulk-page" data-id="${B.page + 1}" ${B.page >= B.pages ? 'disabled' : ''}>→</button></span>` : ''}</div>`
+        : B.src === 'lines' ? `<div class="field"><label for="bulk-lines">제목을 한 줄에 하나씩 (네이버 웹툰에서 찾아요)</label><textarea id="bulk-lines" class="fld" rows="5" placeholder="화산귀환&#10;전지적 독자 시점&#10;나노마신">${esc(B.lines || '')}</textarea><button type="button" class="btn btn-sm btn-gold press" data-a="bulk-find" style="align-self:flex-start">찾기</button></div>`
+        : `<div class="fx-in"><label class="sr" for="bulk-q">카카오웹툰 제목</label><input id="bulk-q" class="fld" placeholder="예: 레벨업" value="${esc(B.q || '')}" autocomplete="off"><button type="button" class="btn btn-gold btn-sm press" data-a="bulk-find">찾기</button></div>`}
+      ${B.busy ? '<p class="ad-help">불러오는 중…</p>' : B.error ? `<p class="warn" role="alert">${esc(B.error)}</p>` : list.length ? `
+        <div class="bulk-bar"><label class="ad-check"><input type="checkbox" data-bulkall ${pickable.length && nSel === pickable.length ? 'checked' : ''}> 모두 고르기</label>
+          <span class="ad-help">${list.length}편 · 이미 등록 ${list.length - pickable.length}</span>
+          <label class="ad-help" style="margin-left:auto">한꺼번에 장르 <select class="fld bulk-g" data-bulkg="*">${gopts(B.defGenre || '')}</select></label></div>
+        <div class="bulk-rows">${list.map((x) => { const reg = registered(x.source); return `<label class="bulk-row${reg ? ' reg' : ''}">
+            <input type="checkbox" data-bulk="${esc(x.source)}" ${reg ? 'disabled' : B.sel[x.source] ? 'checked' : ''}>
+            <span class="fx-cv">${x.cover ? `<img src="${esc(x.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}</span>
+            <span class="bulk-t"><b>${esc(x.title)}</b><small>${esc([x.author, x.finished ? '완결' : x.rest ? '휴재' : x.when || '', x.adult ? '성인' : ''].filter(Boolean).join(' · '))}${reg ? ` · 이미 등록됨 (${esc(reg.title)})` : ''}</small></span>
+            ${reg ? '' : `<select class="fld bulk-g" data-bulkg="${esc(x.source)}" aria-label="${esc(x.title)} 장르">${gopts(B.genre[x.source] || B.defGenre)}</select>`}
+          </label>`; }).join('')}</div>
+        <div class="bulk-foot"><span class="ad-help">고른 웹툰은 정보 · 표지 · 보러 가기 링크(공식)까지 채워서 추가해요.</span>
+          <button type="button" class="btn btn-gold press" data-a="bulk-add" ${nSel && !B.adding ? '' : 'disabled'}>${B.adding ? `추가하는 중… ${B.adding}` : `고른 ${nSel}편 추가`}</button></div>`
+        : B.src === 'naver' ? '' : '<p class="ad-help">제목을 넣고 [찾기]를 눌러 주세요.</p>'}
+    </section>`;
+  }
+  async function bulkLoad() {
+    const B = ui.bulk; if (!B) return;
+    B.busy = true; B.error = ''; B.items = null; render();
+    try {
+      if (B.src === 'naver') { const r = await api('adminNaverList', { week: B.week, page: B.page }); B.items = r.items || []; B.pages = r.pages || 1; }
+      else if (B.src === 'kakaow') { if (!B.q) { B.items = []; } else { const r = await api('adminSearch', { q: B.q, platform: 'kakaow' }); B.items = r.items || []; } }
+      else {
+        const lines = String(B.lines || '').split('\n').map((x) => x.trim()).filter(Boolean).slice(0, 40);
+        const out = [], seen = new Set();
+        const norm = (t) => String(t).replace(/[^0-9a-z가-힣]/gi, '').toLowerCase();
+        for (const t of lines) {
+          try { const r = await api('adminSearch', { q: t }); const it = (r.items || []).find((x) => norm(x.title) === norm(t)) || (r.items || [])[0]; if (it && !seen.has(it.source)) { seen.add(it.source); out.push(it); } } catch (e) { /* 다음 줄 */ }
+        }
+        B.items = out;
+        if (lines.length && !out.length) B.error = '네이버 웹툰에서 찾은 작품이 없어요.';
+      }
+      B.sel = {}; (B.items || []).forEach((x) => { if (!registered(x.source)) B.sel[x.source] = B.src !== 'naver'; });
+    } catch (e) { B.error = apiErr(e); }
+    B.busy = false; render();
+  }
+  async function bulkAdd() {
+    const B = ui.bulk; if (!B || B.adding) return;
+    const todo = (B.items || []).filter((x) => B.sel[x.source] && !registered(x.source));
+    let n = 0, fail = 0;
+    for (const x of todo) {
+      B.adding = `${n + 1} / ${todo.length}`; render();
+      try {
+        const r = await api('adminFetchInfo', { url: x.source });
+        const I = Object.assign({ cover: x.cover }, r.info || {}, { source: (r.info && r.info.source) || x.source });
+        if (!I.title || registered(I.source)) { fail++; n++; continue; }
+        // 장르: 고른 것 → 없으면 작품 태그(판타지 · 로맨스 …)에서 찾아요
+        const guess = (D.genres.find((g) => (I.tags || []).some((t) => { const a = String(t).replace(/\s/g, ''), b = g.name.replace(/\s/g, ''); return a && (b === a || b.split(/[·&]/).some((p) => p && p === a)); })) || {}).id;
+        const w = blankWebtoon(I.title, B.genre[x.source] || B.defGenre || guess || null);
+        applyInfo(w, I);
+        if (!w.url) w.url = I.url || I.source;
+        D.webtoons.unshift(w);
+        if (!w.color && w.cover) autoColor(w, false);
+      } catch (e) { fail++; }
+      n++;
+    }
+    B.adding = null; saveDraft();
+    B.sel = {}; render();
+    toast(`${todo.length - fail}편을 추가했어요${fail ? ` · ${fail}편은 가져오지 못했어요` : ''}. 확인한 뒤 저장해 주세요`);
+  }
+
   // ---------- 웹툰 목록 ----------
   function tabWebtoons() {
     const q = ui.q.trim().toLowerCase();
@@ -252,7 +366,7 @@
       <p class="ad-help">웹툰을 추가하고 고쳐요. 웹툰 ID(w001 같은 값)는 자동으로 정해지고 바뀌지 않아요. 감상 기록이 ID로 연결돼 있어요.</p>
       <div class="ad-split">
         <section class="ad-list${ui.wview === 'rows' ? '' : ' wide'}" aria-label="웹툰 목록">
-          <button type="button" class="btn btn-gold press" data-a="new-w">+ 새 웹툰</button>
+          <div class="ad-addrow"><button type="button" class="btn btn-gold press" data-a="new-w">+ 새 웹툰</button>${srvReady() ? '<button type="button" class="btn press" data-a="bulk-open">여러 편 추가</button>' : ''}</div>
           <label class="sr" for="w-q">웹툰 검색</label>
           <input id="w-q" class="fld" type="search" placeholder="제목, 작가 검색" value="${esc(ui.q)}">
           ${srvReady() ? `<button type="button" class="btn btn-sm press" data-a="lk-all" ${ui.refreshing ? 'disabled' : ''}>${ui.refreshing ? `자동 정보 가져오는 중… ${ui.refreshing}` : `연결된 웹툰 ${D.webtoons.filter((x) => x.source).length}개 지금 다시 가져오기`}</button>` : ''}
@@ -289,7 +403,7 @@
             }).join('') || '<p class="ad-help">찾는 웹툰이 없어요</p>'}
           </div>`}
         </section>
-        ${w ? webtoonForm(w) : '<section class="ad-form"><div class="ad-empty">왼쪽에서 웹툰을 고르거나 [+ 새 웹툰]을 눌러 주세요</div></section>'}
+        ${ui.bulk ? bulkHTML() : w ? webtoonForm(w) : '<section class="ad-form"><div class="ad-empty">왼쪽에서 웹툰을 고르거나 [+ 새 웹툰]을 눌러 주세요</div></section>'}
       </div>`;
   }
   function webtoonForm(w) {
@@ -534,8 +648,8 @@
     } catch (e) { ui.link = { id: w.id, error: apiErr(e) }; render(); }
   }
   // 연결된 웹툰 모두 지금 다시 가져오기 (25개씩)
-  async function linkRefreshAll() {
-    const list = D.webtoons.filter((w) => w.source);
+  async function linkRefreshAll(only) {
+    const list = (only || D.webtoons).filter((w) => w.source);
     if (!list.length) { toast('연결된 웹툰이 아직 없어요'); return; }
     ui.refreshing = `0 / ${list.length}`; render();
     let n = 0, changed = 0, fail = 0;
@@ -1428,6 +1542,17 @@
       case 'lk-refresh': linkRefresh(toon(id)); break;
       case 'lk-change': ui.link = { id, relink: true, q: toon(id).title }; render(); break;
       case 'lk-cancel': ui.link = null; render(); break;
+      case 'chk-open': ui.chk = ui.chk === id ? null : id; render(); break;
+      case 'chk-go': ui.tab = 'webtoons'; ui.w = id; ui.bulk = null; render(); break;
+      case 'chk-fill-url': { let n = 0; D.webtoons.forEach((w) => { if (!w.url && w.source) { w.url = w.source; n++; } }); saveDraft(); toast(n ? `${n}편의 보러 가기 링크를 공식 페이지로 채웠어요. 확인한 뒤 저장해 주세요` : '연결된 작품 중 채울 웹툰이 없어요'); render(); break; }
+      case 'chk-cover': { if (ui.refreshing) break; const c = checks().find((x) => x.k === id); const l = c ? c.list.filter((w) => w.source) : []; if (!l.length) { toast('연결된 작품이 없어서 자동으로 가져올 수 없어요'); break; } l.forEach((w) => { w.coverAuto = true; }); linkRefreshAll(l); break; }
+      case 'bulk-open': ui.bulk = { src: 'naver', week: ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'][new Date(Date.now() + 9 * 3600e3).getUTCDay()], page: 1, pages: 1, items: null, sel: {}, genre: {}, defGenre: ui.fg !== 'all' && ui.fg !== 'none' && ui.fg !== 'nolink' ? ui.fg : '' }; ui.w = null; render(); bulkLoad(); break;
+      case 'bulk-close': ui.bulk = null; render(); break;
+      case 'bulk-src': ui.bulk.src = id; ui.bulk.items = null; ui.bulk.error = ''; render(); if (id === 'naver') bulkLoad(); break;
+      case 'bulk-week': ui.bulk.week = id; ui.bulk.page = 1; bulkLoad(); break;
+      case 'bulk-page': ui.bulk.page = Math.max(1, Number(id)); bulkLoad(); break;
+      case 'bulk-find': { const B = ui.bulk; const q = document.getElementById('bulk-q'), ln = document.getElementById('bulk-lines'); if (q) B.q = q.value.trim(); if (ln) B.lines = ln.value; bulkLoad(); break; }
+      case 'bulk-add': bulkAdd(); break;
       case 'lk-pf': ui.linkPf = { id, pf: t.dataset.pf }; if (ui.link && ui.link.id === id) ui.link = { id, relink: !!ui.link.relink }; render(); break;
       case 'live-retry': live.tries = 0; live.joining = false; clearTimeout(live.retry); liveJoin(); break;
       case 'lk-unlink': if (confirmOnce('unlink:' + id)) { const w = toon(id); delete w.source; delete w.autoAt; w.autoCount = false; ui.link = null; saveDraft(); toast('연결을 끊었어요. 이제 자동으로 바뀌지 않아요'); render(); } break;
@@ -1780,6 +1905,15 @@
 
   function onInput(e) {
     const el = e.target;
+    // 여러 편 추가: 고르기 · 장르
+    if (ui.bulk && (el.dataset.bulk !== undefined || el.dataset.bulkall !== undefined || el.dataset.bulkg !== undefined)) {
+      const B = ui.bulk;
+      if (el.dataset.bulk !== undefined) B.sel[el.dataset.bulk] = el.checked;
+      else if (el.dataset.bulkall !== undefined) (B.items || []).forEach((x) => { if (!registered(x.source)) B.sel[x.source] = el.checked; });
+      else if (el.dataset.bulkg === '*') { B.defGenre = el.value; B.genre = {}; }
+      else B.genre[el.dataset.bulkg] = el.value;
+      render(); return;
+    }
     // 한국어처럼 글자를 조합하는 중에는 화면을 다시 그리지 않아요 (그리면 조합이 끊겨요). 조합이 끝나면(compositionend) 반영해요
     if (el.id === 'w-q') { ui.q = el.value; render(); return; }
     if (el.id === 'b-q') { ui.bq = el.value; render(); return; }

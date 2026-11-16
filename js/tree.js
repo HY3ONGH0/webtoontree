@@ -994,6 +994,12 @@
           <span style="font-size:13px; color:var(--muted); font-weight:700">${esc(labels.nextList || '다음으로 이어지는 웹툰')}</span>
           ${nexts.map((l) => `<button type="button" class="next-btn" data-next="${l.to}"><b>${esc(WT.toon(l.to).title)}</b><span>${esc(l.why || '')}</span></button>`).join('')}
         </div>` : ''}
+        ${(() => { const sim = WT.similar(id, 4); return sim.length ? `<div class="sim">
+          <span class="sim-h">이것도 좋아할 만해요</span>
+          <div class="sim-list">${sim.map(({ o, why }) => `<button type="button" class="sim-it" data-sim="${o.id}" aria-label="${esc(o.title)}${why ? ', ' + esc(why) : ''}">
+            <span class="sim-cv" style="--c:${esc(o.color || (WT.genre((o.genres || [])[0]) || {}).color || '#55607F')}"><span>${esc(o.title)}</span>${o.cover ? `<img src="${esc(o.cover)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}</span>
+            <b>${esc(o.title)}</b>${why ? `<small>${esc(why)}</small>` : ''}</button>`).join('')}</div>
+        </div>` : ''; })()}
         <div class="comments">
           ${(() => {
             const sc = server ? social[id] : null;
@@ -1115,6 +1121,7 @@
     function setEp(id, value) {
       const useServer = server && !!S.token;
       const r = WT.store.recordEpisodes(id, value, total(id), rules, WT.canEarn() && !useServer);
+      WT.markSeen(id);   // 기록했으면 새 화 알림은 여기서부터 다시 세요
       if (useServer) {
         WT.api.authed('progress', { webtoonId: id, value: S.progress[id] }).then((x) => {
           WT.api.applyMe(x.me);
@@ -1219,6 +1226,8 @@
         WT.api.authed('deleteComment', { commentId: dc.dataset.delc }).then((x) => { social[id] = x.social; if (sel === id) renderPanel(false); }).catch((er) => { if (!er.auth) WT.toast(er.message); });
         return;
       }
+      const sm = e.target.closest('[data-sim]');
+      if (sm) { const sid = sm.dataset.sim; if (T.nodes[sid]) return select(sid, { swap: true }); location.hash = `#/library/all/${sid}`; return; }
       const t = e.target.closest('[data-act], [data-rate], [data-next]');
       if (!t || !sel) return;
       if (t.dataset.next) return select(t.dataset.next);

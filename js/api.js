@@ -51,6 +51,7 @@
     S.ratings = me.ratings || {};
     if (me.favs) S.favs = me.favs;   // 관심 웹툰 (예전 서버 코드면 이 기기 기록을 그대로 둬요)
     S.role = me.role || '';
+    if (WT.initSeen && WT.data) WT.initSeen();
     WT.store.save();
   }
 

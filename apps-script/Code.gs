@@ -68,7 +68,7 @@ function doPost(e) {
 }
 
 // 서버 코드 판 번호: 관리자 화면이 이 숫자를 보고 "서버 코드가 예전 버전"인지 알려 줘요. 서버 코드를 고치면 1씩 올려요
-var SERVER_VERSION = 16;
+var SERVER_VERSION = 17;
 
 var WRITE_ACTIONS = {
   signup: 1, login: 1, logout: 1, nick: 1, deleteAccount: 1, progress: 1, rate: 1, comment: 1, deleteComment: 1,
@@ -506,6 +506,26 @@ var ACTIONS = {
   },
 
   // ---------- 관리자 ----------
+  // 여러 편 추가 (관리자만): 네이버 웹툰 요일별 목록 · 완결 목록
+  adminNaverList: function (b) {
+    who_(b);
+    var week = String(b.week || 'mon');
+    var url = week === 'finished'
+      ? 'https://comic.naver.com/api/webtoon/titlelist/finished?page=' + Math.max(1, Number(b.page) || 1) + '&order=UPDATE'
+      : 'https://comic.naver.com/api/webtoon/titlelist/weekday?week=' + (/^(mon|tue|wed|thu|fri|sat|sun|dailyPlus)$/.test(week) ? week : 'mon') + '&order=user';
+    var key = 'nlist:' + sha256_(url).slice(0, 24);
+    var memo = cacheGet_(key);
+    if (memo) return memo;
+    var j = get_(url, true);
+    var items = ((j && j.titleList) || []).map(function (o) {
+      return { title: clean_(o.titleName), author: clean_(o.author || ''), platform: '네이버웹툰', cover: o.thumbnailUrl || '',
+        source: 'https://comic.naver.com/webtoon/list?titleId=' + o.titleId, finished: !!(o.finish || o.finished), rest: !!o.rest, adult: !!o.adult };
+    }).filter(function (x) { return x.title; });
+    var out = { items: items, pages: week === 'finished' ? Number(((j || {}).pageInfo || {}).totalPages) || 1 : 1 };
+    cachePut_(key, out, 1800);
+    return out;
+  },
+
   // 제목으로 작품 찾기 (관리자만): 네이버 웹툰 정식 연재작
   adminSearch: function (b) {
     who_(b);

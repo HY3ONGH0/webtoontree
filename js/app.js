@@ -25,6 +25,50 @@
     search: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA6C8" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>'
   };
 
+  // ---------- 새 화 알림 ----------
+  // 관심 웹툰 · 보는 중인 웹툰에서, 내가 마지막으로 확인한(기록하거나 관심에 담은) 뒤로 늘어난 화 수
+  WT.markSeen = (id) => { const w = WT.toon(id); if (!w) return; const S = WT.store.state; S.seen = S.seen || {}; S.seen[id] = WT.eps(w); WT.store.save(); };
+  WT.follows = (id) => { const S = WT.store.state; const w = WT.toon(id); if (!w) return false; const e = (S.progress || {})[id] || 0; return !!((S.favs || {})[id]) || (e > 0 && e < WT.eps(w)); };
+  WT.newEps = (id) => {
+    const S = WT.store.state, w = WT.toon(id);
+    if (!w || !WT.follows(id) || WT.schedule.status(w) === 'completed') return 0;
+    const seen = (S.seen || {})[id];
+    if (seen == null) return 0;
+    return Math.max(0, WT.eps(w) - Math.max(Number(seen) || 0, (S.progress || {})[id] || 0));
+  };
+  // ---------- 비슷한 웹툰 ----------
+  // 점수: 같은 작가 +5, 같은 트리에서 이어지는 웹툰 +3, 겹치는 태그 하나마다 +2 (장르 이름 같은 흔한 태그는 +1), 같은 세부 장르 +2, 강추 · 추천 별 +0.5씩
+  WT.similar = (id, n) => {
+    const w = WT.toon(id); if (!w) return [];
+    const S = WT.store.state;
+    const names = new Set(WT.authorsOf(w).map((a) => a.name));
+    const genreNames = new Set(WT.data.genres.map((g) => g.name.replace(/\s/g, '')));
+    const tags = new Set(w.tags || []);
+    const linked = new Set(Object.values(WT.data.trees || {}).flatMap((T) => (T.links || []).filter((l) => l.from === id || l.to === id).map((l) => (l.from === id ? l.to : l.from))));
+    const subs = new Set(w.subs || []);
+    return WT.data.webtoons.filter((o) => o.id !== id && !(S.rewarded || {})[o.id + ':done']).map((o) => {
+      let s = 0; const why = [];
+      const sameAu = WT.authorsOf(o).some((a) => names.has(a.name));
+      if (sameAu) { s += 5; why.push('같은 작가'); }
+      if (linked.has(o.id)) { s += 3; if (!sameAu) why.push('트리에서 이어져요'); }
+      const both = (o.tags || []).filter((t) => tags.has(t));
+      both.forEach((t) => { s += genreNames.has(String(t).replace(/\s/g, '')) ? 1 : 2; });
+      if ((o.subs || []).some((x) => subs.has(x))) s += 2;
+      if ((o.genres || []).some((g) => (w.genres || []).includes(g))) s += 0.5;
+      s += WT.recRank(o) * 0.5;
+      if (!why.length && both.length) why.push(both.slice(0, 2).map((t) => '#' + t).join(' ') + ' 겹침');
+      if (!why.length && (o.subs || []).some((x) => subs.has(x))) why.push('같은 세부 장르');
+      return { o, s, why: why[0] || '' };
+    }).filter((x) => x.s >= 3).sort((a, b) => b.s - a.s || a.o.title.localeCompare(b.o.title, 'ko')).slice(0, n || 4);
+  };
+  WT.newCount = () => WT.data.webtoons.filter((w) => WT.newEps(w.id) > 0).length;
+  /** 처음에는 지금 화수를 "확인함"으로 둬요 (예전 기록 때문에 배지가 한꺼번에 뜨지 않게) */
+  WT.initSeen = () => {
+    const S = WT.store.state; S.seen = S.seen || {}; let n = 0;
+    WT.data.webtoons.forEach((w) => { if (S.seen[w.id] == null && WT.follows(w.id)) { S.seen[w.id] = WT.eps(w); n++; } });
+    if (n) WT.store.save();
+  };
+
   // ---------- 관심 웹툰 ----------
   const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg>';
   WT.fav = {
@@ -37,7 +81,7 @@
       const S = WT.store.state;
       S.favs = S.favs || {};
       const on = !S.favs[id];
-      if (on) S.favs[id] = 1; else delete S.favs[id];
+      if (on) { S.favs[id] = 1; if ((S.seen || {})[id] == null) WT.markSeen(id); } else delete S.favs[id];
       WT.store.save();
       document.querySelectorAll('[data-fav]').forEach((b) => { if (b.dataset.fav === id) b.setAttribute('aria-pressed', String(on)); });
       WT.toast(on ? '관심 웹툰에 담았어요' : '관심 웹툰에서 뺐어요');
@@ -172,7 +216,7 @@
     const onD = (name === 'map' || name === 'worlds') ? 'map' : on;   // 위쪽 메뉴에서는 전체 지도가 따로 있어요
     const nick = s.profile ? s.profile.nick : '둘러보기 중';
     el.innerHTML = `<a href="#/" class="rail-mark" aria-label="${esc(WT.settings().siteName)} 홈">${WT.logo.mark()}${WT.logo.word(WT.settings().siteName)}</a>
-      <div class="rail-items">${items.map(([k, href, label, d]) => `<a href="${href}" class="rail-item k-${k}${on === k ? ' on' : ''}${onD === k ? ' on-d' : ''}" ${on === k ? 'aria-current="page"' : ''} title="${label}">${RAIL_IC(d)}<span class="lb">${label}</span>${k === 'me' ? `<i class="rail-av" aria-hidden="true">${esc((s.profile ? s.profile.nick : '?')[0])}</i><span class="nk">${esc(nick)}</span>` : ''}</a>`).join('')}</div>
+      <div class="rail-items">${items.map(([k, href, label, d]) => `<a href="${href}" class="rail-item k-${k}${on === k ? ' on' : ''}${onD === k ? ' on-d' : ''}" ${on === k ? 'aria-current="page"' : ''} title="${label}">${RAIL_IC(d)}<span class="lb">${label}</span>${k === 'week' && WT.newCount() ? `<i class="rail-new" aria-label="새 화가 나온 웹툰 ${WT.newCount()}편">${WT.newCount()}</i>` : ''}${k === 'me' ? `<i class="rail-av" aria-hidden="true">${esc((s.profile ? s.profile.nick : '?')[0])}</i><span class="nk">${esc(nick)}</span>` : ''}</a>`).join('')}</div>
       <div class="rail-tools">${WT.coinPill ? WT.coinPill() : ''}${WT.themeBtn()}</div>`;
   };
 
@@ -895,6 +939,7 @@
       app().innerHTML = '<div class="view" style="align-items:center; justify-content:center; padding:40px; text-align:center"><p>웹툰 데이터를 불러오지 못했어요. 잠시 뒤 새로고침해 주세요.</p></div>';
       return;
     }
+    WT.initSeen();
     // 작가 정보(프로필 사진 · 소개 · 다른 작품)는 data/authors.json 에 따로 있어요.
     // 화면은 먼저 띄우고 뒤에서 받아, 다 받으면 'wt:authors' 신호로 작가가 보이는 화면을 다시 그려요
     WT.data.authorInfo = WT.data.authorInfo || {};
