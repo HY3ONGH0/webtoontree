@@ -70,7 +70,7 @@ function doPost(e) {
 }
 
 // 서버 코드 판 번호: 관리자 화면이 이 숫자를 보고 "서버 코드가 예전 버전"인지 알려 줘요. 서버 코드를 고치면 1씩 올려요
-var SERVER_VERSION = 18;
+var SERVER_VERSION = 19;
 
 var WRITE_ACTIONS = {
   signup: 1, login: 1, logout: 1, nick: 1, deleteAccount: 1, progress: 1, rate: 1, comment: 1, deleteComment: 1,
@@ -451,6 +451,27 @@ var ACTIONS = {
       out.favs = Object.keys(t.obj.favs || {}).slice(0, 60);
     }
     return { profile: out };
+  },
+
+  /** 닉네임으로 회원 찾기 (20명까지). 공개 범위가 '나만'인 회원은 닉네임을 똑같이 넣었을 때만 나와요 */
+  searchUsers: function (b) {
+    var q = String(b.q || '').replace(/\s+/g, '').toLowerCase().slice(0, 20);
+    if (!q) return { users: [] };
+    var viewer = null;
+    if (b.token) { try { viewer = auth_(b.token).obj; } catch (e) { viewer = null; } }
+    var fl = readAll_('follows'), followers = {}, mine = {};
+    fl.forEach(function (r) { followers[r.obj.followee] = (followers[r.obj.followee] || 0) + 1; if (viewer && r.obj.follower === viewer.userId) mine[r.obj.followee] = 1; });
+    var list = readAll_('users').map(function (r) { return r.obj; }).filter(function (u) {
+      if (u.status === 'banned' || (viewer && u.userId === viewer.userId)) return false;
+      var n = String(u.nickname || '').replace(/\s+/g, '').toLowerCase();
+      if ((u.privacy || 'all') === 'me') return n === q;
+      return n.indexOf(q) >= 0;
+    }).map(function (u) {
+      var n = String(u.nickname || '').replace(/\s+/g, '').toLowerCase();
+      return { pid: pubId_(u.userId), nickname: u.nickname, followers: followers[u.userId] || 0, iFollow: !!mine[u.userId], rank: n === q ? 0 : n.indexOf(q) === 0 ? 1 : 2 };
+    }).sort(function (a, b2) { return a.rank - b2.rank || b2.followers - a.followers || String(a.nickname).localeCompare(String(b2.nickname)); }).slice(0, 20);
+    list.forEach(function (x) { delete x.rank; });
+    return { users: list };
   },
 
   /** 친구 소식: 내가 팔로우한 회원들의 추천 (공개 범위가 '나만'인 회원은 빼요) */
