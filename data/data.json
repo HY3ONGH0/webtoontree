@@ -1,6 +1,297 @@
 {
   "webtoons": [
     {
+      "id": "w657574suxh",
+      "title": "쪽팔려게임",
+      "author": "봉수, 다이",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=847135",
+      "cover": "https://image-comic.pstatic.net/webtoon/847135/thumbnail/thumbnail_IMAG21_779f0fbe-564e-460c-b241-3d776517aad1.jpg",
+      "genres": [
+        "thriller",
+        "drama",
+        "romance"
+      ],
+      "recommended": 0,
+      "color": "#a78867",
+      "episodes": 47,
+      "status": "ongoing",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-16",
+      "tags": [
+        "스릴러",
+        "고자극드라마",
+        "자극적인",
+        "시리어스",
+        "우정",
+        "로맨스",
+        "학원물"
+      ],
+      "desc": "고등학교 2학년 유사랑은 반에서 묘한 취급을 받는다. 같은 반 친구들의 쪽팔려게임에서 놀이에 껴있지도 않은 유사랑이 자꾸 벌칙의 대상이 된다. 반 친구들도 유사랑의 인격이 어딘가 어긋나 있는 걸 어렴풋이 느끼기 때문이다.",
+      "authors": [
+        {
+          "name": "봉수",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "다이",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=847135",
+      "autoAt": "2026-11-16"
+    },
+    {
+      "id": "w6575732hyt",
+      "title": "장편단편선",
+      "author": "기주주",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=843310",
+      "cover": "https://image-comic.pstatic.net/webtoon/843310/thumbnail/thumbnail_IMAG21_3cf6d1eb-a9e8-4c2b-8598-fbe7c57e4b04.jpg",
+      "genres": [
+        "thriller"
+      ],
+      "recommended": 3,
+      "color": "#010101",
+      "episodes": 61,
+      "status": "ongoing",
+      "days": [
+        "mon"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-16",
+      "tags": [
+        "드라마",
+        "흑백",
+        "독자PICK",
+        "로맨스",
+        "괴담"
+      ],
+      "desc": "장편의 감상이 느껴지는 다양한 장르의 단편 모음집.\n스릴러와 개그, 드라마와 로맨스 등 장르를 넘나드는 다양한 단편을 한 번에 즐겨보세요.",
+      "authors": [
+        {
+          "name": "기주주",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=843310",
+      "autoAt": "2026-11-16"
+    },
+    {
+      "id": "w657572cfjn",
+      "title": "용사의 발라드",
+      "author": "남웅, 음유시인, 도동파",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=854122",
+      "cover": "https://image-comic.pstatic.net/webtoon/854122/thumbnail/thumbnail_IMAG21_a6f33f1e-b6f9-4729-af2f-63f555d4c618.jpg",
+      "genres": [],
+      "recommended": 0,
+      "color": "#fd8644",
+      "episodes": 17,
+      "status": "ongoing",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-16",
+      "tags": [
+        "판타지",
+        "레드아이스 스튜디오",
+        "액션판타지",
+        "중세",
+        "소년물",
+        "모험",
+        "용사",
+        "소설원작"
+      ],
+      "desc": "양치기로 10년, 전쟁터에서 10년, 희대의 살인마로 10년. 하이덴 들판의 양치기로 시작하여 소드 마스터이자 죽음을 몰고 다니는 강철 사신으로 죽은 남자, 리키. \n불과 강철, 피, 죽음의 냄새와 비명만이 가득한 삶을 보냈던 그는 들판에서 쓸쓸한 죽음을 맞고, 백년 후 전쟁이 끝난 세상에서 귀족 가문의 삼남으로 환생하게 된다. \n자신을 사신으로 만들었던 과거의 전쟁에 가치는 있는가. 리키는 아카데미에서 모험가가 되어 삶과 전쟁의 의미를 찾고자 한다. \n소년의 압도적인 강함이 선보이는 전율의 드라마. 정통 다크 중세 판타지의 묵직한",
+      "authors": [
+        {
+          "name": "남웅",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "음유시인",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "도동파",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=854122",
+      "autoAt": "2026-11-16"
+    },
+    {
+      "id": "w657571cbsz",
+      "title": "호감도로 스킬 복사!",
+      "author": "지대공마법소년, 퓨리, 리틀빅",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=855599",
+      "cover": "https://image-comic.pstatic.net/webtoon/855599/thumbnail/thumbnail_IMAG21_218333ad-6ed5-4d8e-b713-6109dfbb8690.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#754969",
+      "episodes": 14,
+      "status": "ongoing",
+      "days": [
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-16",
+      "tags": [
+        "판타지",
+        "하렘",
+        "계략남",
+        "능력녀",
+        "로맨스",
+        "액션",
+        "소설원작"
+      ],
+      "desc": "뒷골목에서 사기꾼으로 살아가던 에이든,\n어느 날 갑자기 제국 최고의 여기사에게 납치 당했다.\n'결혼합시다. 1년 동안 제 남편인 척 해주시겠어요?'\n\n'잘, 부탁드립니다...?'",
+      "authors": [
+        {
+          "name": "지대공마법소년",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "퓨리",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "리틀빅",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=855599",
+      "autoAt": "2026-11-16",
+      "subs": [
+        "fantasy-6"
+      ]
+    },
+    {
+      "id": "w65757004yy",
+      "title": "헤어져서 팝니다",
+      "author": "헛둘, 정동생",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=850709",
+      "cover": "https://image-comic.pstatic.net/webtoon/850709/thumbnail/thumbnail_IMAG21_a04e80a2-242f-4611-a326-5720a101176b.jpg",
+      "genres": [
+        "romance",
+        "daily"
+      ],
+      "recommended": 0,
+      "color": "#f9ece6",
+      "episodes": 29,
+      "status": "ongoing",
+      "days": [
+        "mon"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-16",
+      "tags": [
+        "로맨스",
+        "햇살남",
+        "후회남",
+        "미친작화",
+        "다정남",
+        "청춘로맨스",
+        "캠퍼스로맨스",
+        "삼각관계"
+      ],
+      "desc": "대학교 4학년, ‘서정하’. 그녀는 과거 사귀었던 전남친이 준 스피커를 중고판매하기로 한다. 이유는 간단하다. 잘생기고 다정한 썸남, ‘박민준’이 생긴 그녀에게 그 스피커는 골칫덩이니까. 후련한 마음으로 중고 거래를 하는 ‘서정하’에게 찾아온 것은… 거래를 하러 온 전남친, ‘최서훈’. “이게 얼마짜리인데 고작 18만원에 팔아!?” 본격 중고거래로 시작하는 삼각관계 로맨스드라마!",
+      "authors": [
+        {
+          "name": "헛둘",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "정동생",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=850709",
+      "autoAt": "2026-11-16"
+    },
+    {
+      "id": "w657569tabt",
+      "title": "머저리 M수생",
+      "author": "규정",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=845214",
+      "cover": "https://image-comic.pstatic.net/webtoon/845214/thumbnail/thumbnail_IMAG21_071d5fd2-4590-428e-93ee-3b168c410bfd.jpg",
+      "genres": [
+        "romance",
+        "drama",
+        "daily"
+      ],
+      "recommended": 0,
+      "color": "#fce9e7",
+      "episodes": 59,
+      "status": "ongoing",
+      "days": [
+        "mon"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-16",
+      "tags": [
+        "드라마",
+        "입시",
+        "러브코미디",
+        "고자극드라마",
+        "설렘폭발",
+        "현대",
+        "청춘",
+        "성장물"
+      ],
+      "desc": "사교육비 월 400, 여친 있음, 친구 많음.\n성적도 곧이곧대로 '남들보다'는 높은 편.\n그렇기에 꿈도 높게 가지는 천재범은 현세 의대를 꿈꾸며 입시를 준비 중이었다.\n하지만 예상과 달리 수능을 망쳐 여자 친구와 재수하게 되었다.\n그런데 수능 하루 전날 여자 친구의 이별통보….\n이내 천재범은 수능을 포기하게 된다.\n과연 그의 앞길은 어떻게 될까…?",
+      "authors": [
+        {
+          "name": "규정",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=845214",
+      "autoAt": "2026-11-16"
+    },
+    {
       "id": "w6.57564281141091e+21ac",
       "title": "똑 닮은 딸",
       "author": "이담",
@@ -11769,7 +12060,7 @@
     "apiUrl": "https://script.google.com/macros/s/AKfycbyV2a94vSIS9yl3Vng4EoIbkO7KhEAby4mFx3hhLAS4TxZo4nkY6AcEQELdfQtKRjSpIw/exec"
   },
   "meta": {
-    "lastWebtoonId": 657568
+    "lastWebtoonId": 657575
   },
   "authorInfo": {
     "232": {
@@ -16614,6 +16905,127 @@
       "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
       "bio": "",
       "url": "https://comic.naver.com/community/u/_dboz2",
+      "works": []
+    },
+    "규정": {
+      "name": "규정",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260731_98/1785486532151Q787F_PNG/1000009438.png",
+      "bio": "aiali2020@naver.com -메일",
+      "url": "https://comic.naver.com/community/u/aiali110110",
+      "works": []
+    },
+    "헛둘": {
+      "name": "헛둘",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260516_124/1778904756030mtEmU_PNG/IMG_9306.png",
+      "bio": "안녕하세요, 헛둘입니다. Instagram - @hutdul3_3",
+      "url": "https://comic.naver.com/community/u/extaxi",
+      "works": [
+        {
+          "title": "왜 아직도",
+          "source": "https://comic.naver.com/webtoon/list?titleId=819275",
+          "cover": "https://image-comic.pstatic.net/webtoon/819275/thumbnail/thumbnail_IMAG21_7b076716-390c-4cca-b26e-7365cb0b38b4.jpg",
+          "finished": true
+        }
+      ]
+    },
+    "정동생": {
+      "name": "정동생",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260517_260/1779024920227qBgvU_PNG/1000018376.png",
+      "bio": "X - @JungGaYeong Instagram - @jungdongsaeng",
+      "url": "https://comic.naver.com/community/u/Jung",
+      "works": []
+    },
+    "퓨리": {
+      "name": "퓨리",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "리틀빅": {
+      "name": "리틀빅",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "남웅": {
+      "name": "남웅",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260919_169/1789821083335An1NN_PNG/1000046499.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/southernmale",
+      "works": []
+    },
+    "음유시인": {
+      "name": "음유시인",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "도동파": {
+      "name": "도동파",
+      "img": "",
+      "bio": "",
+      "url": "",
+      "works": []
+    },
+    "기주주": {
+      "name": "기주주",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20250519_86/1747650372544mW3he_PNG/%B1%E2%C1%D6%C1%D6_%281%29.png",
+      "bio": "메일 bvidksps456@naver.com  치지직 - 장편단편선 기주주 인스타 kiii_juju",
+      "url": "https://comic.naver.com/community/u/_22gsi4",
+      "works": []
+    },
+    "봉수": {
+      "name": "봉수",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20231002_252/16961899308967yKiz_PNG/008.png",
+      "bio": "늘 끝까지 읽어주셔서 감사합니다. 여기서라도 자주 인사드리겠습니다~  인스타그램 @lee_bongsoo",
+      "url": "https://comic.naver.com/community/u/bongsoo",
+      "works": [
+        {
+          "title": "나 없는 단톡방",
+          "source": "https://comic.naver.com/webtoon/list?titleId=805907",
+          "cover": "https://image-comic.pstatic.net/webtoon/805907/thumbnail/thumbnail_IMAG21_ab626e51-db74-46ff-8fdb-4a62edbc4fd1.jpg",
+          "finished": true
+        },
+        {
+          "title": "썸내일",
+          "source": "https://comic.naver.com/webtoon/list?titleId=768470",
+          "cover": "https://image-comic.pstatic.net/webtoon/768470/thumbnail/thumbnail_IMAG21_4063201459953677667.jpg",
+          "finished": true
+        },
+        {
+          "title": "4학년",
+          "source": "https://comic.naver.com/webtoon/list?titleId=839909",
+          "cover": "https://image-comic.pstatic.net/webtoon/839909/thumbnail/thumbnail_IMAG21_b3e50d24-76af-4a7f-97ab-ea31cfa62481.jpg",
+          "finished": true
+        },
+        {
+          "title": "스페이스 차이나드레스",
+          "source": "https://comic.naver.com/webtoon/list?titleId=423383",
+          "cover": "https://image-comic.pstatic.net/webtoon/423383/thumbnail/thumbnail_IMAG21_3763148048049451315.jpg",
+          "finished": true
+        },
+        {
+          "title": "내과 박원장",
+          "source": "https://comic.naver.com/webtoon/list?titleId=781354",
+          "cover": "https://image-comic.pstatic.net/webtoon/781354/thumbnail/thumbnail_IMAG21_7364291814342549808.jpg",
+          "finished": true
+        },
+        {
+          "title": "지옥 최강 마금강",
+          "source": "https://comic.naver.com/webtoon/list?titleId=850745",
+          "cover": "https://image-comic.pstatic.net/webtoon/850745/thumbnail/thumbnail_IMAG21_79431cce-80c6-4e7a-afd9-5bf23ab34a87.jpg",
+          "finished": false
+        }
+      ]
+    },
+    "다이": {
+      "name": "다이",
+      "img": "https://kw-wcommunity-phinf.pstatic.net/20260115_238/1768475866611saR7J_PNG/33193.png",
+      "bio": "",
+      "url": "https://comic.naver.com/community/u/dai",
       "works": []
     }
   },
