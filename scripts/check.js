@@ -36,6 +36,12 @@ if (data) {
   });
 }
 
+// 2-1) 작가 정보 파일 (data/authors.json)
+if (exists('data/authors.json')) {
+  try { const a = JSON.parse(read('data/authors.json')); if (!a || typeof a !== 'object' || Array.isArray(a)) bad('data/authors.json: 작가 이름 → 정보 모양이 아니에요'); }
+  catch (e) { bad(`data/authors.json: JSON을 읽지 못했어요 — ${e.message}`); }
+}
+
 // 3) HTML이 가리키는 파일이 있는지, 새로고침용 번호(?v=)가 한 파일 안에서 같은지
 ['index.html', 'admin.html', 'server-code.html'].forEach((f) => {
   const html = read(f);

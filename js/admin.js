@@ -85,9 +85,9 @@
   function ensure() {
     D.meta = D.meta || {};
     // 웹툰 번호: w001 처럼 w 뒤 숫자(6자리까지)만 봐요. 전에는 ID 안의 숫자를 모두 이어 붙여서 번호가 터무니없이 커졌어요
-    const max = D.webtoons.reduce((m, w) => { const x = /^w(\d{1,6})(?!\d)/.exec(String(w.id)); return x ? Math.max(m, Number(x[1])) : m; }, 0);
+    const max = D.webtoons.reduce((m, w) => { const x = /^w(\d{1,4})(?![0-9])/.exec(String(w.id)); return x ? Math.max(m, Number(x[1])) : m; }, 0);
     const last = Number(D.meta.lastWebtoonId);
-    D.meta.lastWebtoonId = Number.isSafeInteger(last) && last >= 0 && last <= 999999 ? Math.max(last, max) : max;
+    D.meta.lastWebtoonId = Number.isSafeInteger(last) && last >= 0 && last <= 9999 ? Math.max(last, max) : max;
     D.trees = D.trees || {};
     D.map = D.map || { width: 2400, height: 1400, regions: [], links: [] };
     D.map.regions = D.map.regions || []; D.map.links = D.map.links || [];
@@ -112,13 +112,13 @@
   function newWebtoonId() {
     // 번호가 망가져 있으면(너무 큰 수 등) 지금 있는 웹툰 번호 가운데 가장 큰 것에서 다시 이어요
     let last = Number(D.meta.lastWebtoonId);
-    if (!Number.isSafeInteger(last) || last < 0 || last > 999999) {
-      last = D.webtoons.reduce((m, w) => { const x = /^w(\d{1,6})(?!\d)/.exec(w.id); return x ? Math.max(m, Number(x[1])) : m; }, 0);
+    if (!Number.isSafeInteger(last) || last < 0 || last > 9999) {
+      last = D.webtoons.reduce((m, w) => { const x = /^w(\d{1,4})(?![0-9])/.exec(w.id); return x ? Math.max(m, Number(x[1])) : m; }, 0);
     }
     D.meta.lastWebtoonId = last + 1;          // 지운 번호는 다시 쓰지 않아요
     let id = 'w' + String(D.meta.lastWebtoonId).padStart(3, '0');
     // 함께 편집 중이면 다른 관리자와 같은 번호가 되지 않게 꼬리표를 붙여요
-    if (live.on) id += Math.random().toString(36).slice(2, 6);
+    if (live.on) id += Math.random().toString(36).replace(/[^a-z]/g, '').slice(0, 3);   // 글자만 (숫자를 붙이면 번호 계산이 어긋나요)
     while (D.webtoons.some((w) => w.id === id)) id += Math.random().toString(36).slice(2, 3);
     return id;
   }
@@ -1446,7 +1446,7 @@
         if (isDirty() && !srv.conflict && !confirmOnce('srv-latest')) { toast('아직 안 올린 변경이 있어요. 한 번 더 누르면 버리고 최신 내용을 불러와요'); break; }
         t.disabled = true;
         api('adminLatest').then((r) => {
-          D = r.data; ensure(); siteJSON = JSON.stringify(D); setBase(r.hash); srv.conflict = false; ui.confirm = null;
+          D = withAuthors(r.data); ensure(); siteJSON = JSON.stringify(D); setBase(r.hash); srv.conflict = false; ui.confirm = null;
           try { localStorage.removeItem(DRAFT); } catch (e) { /* 무시 */ }
           ui.w = null; ui.g = null; ui.tsel = null; ui.msel = null;
           toast('최신 내용을 불러왔어요'); render();
@@ -1599,7 +1599,7 @@
       toast('이 기기에 예전 초안이 있었는데 사이트가 그 뒤로 바뀌어서 함께 편집에 섞지 않았어요');
     }
     const meta = D.meta;
-    D = r.base; ensure();
+    D = withAuthors(r.base); ensure();
     siteJSON = JSON.stringify(D);
     setBase(r.baseHash);
     let u = units(D);
@@ -1875,11 +1875,20 @@
     r.readAsText(file);
   }
 
+  // 작가 정보는 data/authors.json 에 따로 있어요. 서버와 같은 규칙으로 합쳐요 (authors.json 위에 data.json 안의 것을 덮어써요)
+  let authorsFile = null;
+  function withAuthors(data) {
+    if (!data || !authorsFile) return data;
+    data.authorInfo = Object.assign({}, authorsFile, data.authorInfo || {});
+    return data;
+  }
   async function init() {
     let site = null;
     try {
-      const res = await fetch('data/data.json', { cache: 'no-cache' });
+      const [res, ra] = await Promise.all([fetch('data/data.json', { cache: 'no-cache' }), fetch('data/authors.json', { cache: 'no-cache' }).catch(() => null)]);
       site = await res.json();
+      if (ra && ra.ok) { try { authorsFile = await ra.json(); } catch (e) { authorsFile = null; } }
+      withAuthors(site);
     } catch (e) {
       root().innerHTML = '<p style="padding:40px">data/data.json을 불러오지 못했어요.</p>';
       return;

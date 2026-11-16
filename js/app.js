@@ -64,6 +64,8 @@
   WT.starts = (T) => (T ? [T.start].concat(T.starts || []).filter((id, i, a) => id && a.indexOf(id) === i && (T.nodes || {})[id]) : []);
   WT.isStart = (T, id) => WT.starts(T).includes(id);
   WT.liveGenres = () => WT.data.genres.filter((g) => WT.data.trees[g.id] && Object.keys(WT.data.trees[g.id].nodes || {}).length && WT.data.trees[g.id].start);
+  /** 도서관에 보이는 장르: 트리가 없어도 웹툰이 있으면 (예: 아포칼립스 & SF) */
+  WT.libGenres = () => WT.data.genres.filter((g) => WT.liveGenres().includes(g) || WT.data.webtoons.some((w) => (w.genres || []).includes(g.id)));
   WT.canEarn = () => !!WT.store.state.profile;
   WT.settings = () => WT.data.settings;
 
@@ -892,6 +894,18 @@
     } catch (e) {
       app().innerHTML = '<div class="view" style="align-items:center; justify-content:center; padding:40px; text-align:center"><p>웹툰 데이터를 불러오지 못했어요. 잠시 뒤 새로고침해 주세요.</p></div>';
       return;
+    }
+    // 작가 정보(프로필 사진 · 소개 · 다른 작품)는 data/authors.json 에 따로 있어요.
+    // 화면은 먼저 띄우고 뒤에서 받아, 다 받으면 'wt:authors' 신호로 작가가 보이는 화면을 다시 그려요
+    WT.data.authorInfo = WT.data.authorInfo || {};
+    const preview = new URLSearchParams(location.search).get('preview') === '1';
+    if (!preview) {
+      fetch('data/authors.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : null)).then((a) => {
+        if (!a || typeof a !== 'object') return;
+        WT.data.authorInfo = Object.assign({}, a, WT.data.authorInfo || {});
+        WT.authorsReady = true;
+        document.dispatchEvent(new CustomEvent('wt:authors'));
+      }).catch(() => {});
     }
     // 관리자 미리보기: index.html?preview=1 이면 관리자 화면에서 고치던 초안을 보여 줘요
     if (new URLSearchParams(location.search).get('preview') === '1') {

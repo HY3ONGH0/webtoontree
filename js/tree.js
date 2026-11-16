@@ -71,7 +71,7 @@
     let gid, g, T;
     if (lib) {
       // 도서관: 장르별(또는 전체) 남은 웹툰을 책장에. 위치 대신 책 순서만 있어요
-      gid = !weekMode && (params[0] === 'all' || live.includes(params[0])) ? params[0] : 'all';
+      gid = !weekMode && (params[0] === 'all' || WT.libGenres().some((x) => x.id === params[0])) ? params[0] : 'all';
       g = gid === 'all' ? { id: 'all', name: '전체', color: '#E8C66A', desc: '', constellation: '' } : WT.genre(gid);
       T = { nodes: Object.fromEntries((weekMode ? WT.data.webtoons : libraryBooks(gid)).map((w) => [w.id, [0, 0]])), links: [], start: null };
     } else {
@@ -283,7 +283,7 @@
     }
     function lbHTML() {
       const st = WT.settings();
-      const tabs = [{ id: 'all', name: '전체' }].concat(WT.liveGenres()).map((x) => ({ x, n: libraryBooks(x.id).length }))
+      const tabs = [{ id: 'all', name: '전체' }].concat(WT.libGenres()).map((x) => ({ x, n: libraryBooks(x.id).length }))
         .filter(({ x, n }) => x.id === 'all' || n || x.id === gid)
         .map(({ x, n }) => `<a href="#/library/${x.id}" class="lb-tab" ${x.id === gid ? 'aria-current="page"' : ''}>${esc(x.name)} <small>${n}</small></a>`).join('');
       const subs = gid !== 'all' && (g.subs || []).length ? [{ id: 'all', name: '전체' }].concat(g.subs) : [];
@@ -1376,7 +1376,11 @@
       if (slot.innerHTML && !slot.classList.contains('closing')) clearSlot(); else { clearTimeout(closeT); slot.classList.remove('closing'); slot.innerHTML = emptyPanelHTML(); }
     });
     slot.addEventListener('click', (e) => { if (!sel && e.target.closest('.guide-x')) clearSlot(); });
+    // 작가 정보(authors.json)가 늦게 도착하면 도서관의 작가 사진을 다시 그려요
+    const onAuthors = () => { if (lib) lbRefresh(); };
+    document.addEventListener('wt:authors', onAuthors);
     WT.leaveView = () => {
+      document.removeEventListener('wt:authors', onAuthors);
       if (lib && !weekMode) WT.libLeftAt = Date.now();
       if (ro) ro.disconnect();
       if (ro2) ro2.disconnect();
