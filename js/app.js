@@ -153,7 +153,7 @@
   WT.userChip = function () {
     const s = WT.store.state;
     const nick = s.profile ? s.profile.nick : '둘러보기 중';
-    return `<a href="${s.profile ? '#/me' : '#/login'}" class="pill press" aria-label="프로필"><span class="avatar" aria-hidden="true">${esc((s.profile ? s.profile.nick : '?')[0])}</span>${esc(nick)}</a>`;
+    return `<a href="${s.profile ? '#/me' : '#/login'}" class="pill press user-chip" aria-label="프로필"><span class="avatar" aria-hidden="true">${esc((s.profile ? s.profile.nick : '?')[0])}</span>${esc(nick)}</a>`;
   };
 
   // ---------- 블랙 모드 · 화이트 모드 ----------
