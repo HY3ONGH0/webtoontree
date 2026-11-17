@@ -166,7 +166,7 @@
               ${item.season ? `<span class="it-lim">${esc(seasonName(item.season))} 한정${sale && now ? ` · ${now.to.slice(5).replace('-', '.')}까지 판매` : ''}</span>` : ''}
             </div>
             <button type="button" class="btn ${btnCls} press" id="shop-act" style="align-self:stretch; min-height:52px; font-size:16px" ${disabled ? 'disabled' : ''}>${btnLabel}</button>
-            ${now && now.season.bg ? `<label class="pv-season"><input type="checkbox" id="season-auto" ${(S.seasonOff || '') === now.key ? '' : 'checked'}> ${esc(now.season.name)} 시즌 배경 자동으로 보기</label>` : ''}
+            <p class="pv-season">계절 · 시즌 테마는 위쪽 <b>테마 버튼(☀/☾)</b>에서 골라요.${WT.skin.pickedTheme() ? ` 지금은 <b>${esc(WT.skin.pickedTheme().name)}</b>가 켜져 있어서, 여기서 고른 배경 · 트리 디자인은 테마를 '기본'으로 돌리면 보여요.` : ''}</p>
             <div class="rules">
               <span class="h">코인 모으는 법</span>
               <span>웹툰 1화 기록</span><span class="v">+${rules.perEpisode} (하루 ${rules.dailyEpisodeCap}까지)</span>
@@ -210,8 +210,6 @@
       app.querySelectorAll('[data-span]').forEach((b) => b.addEventListener('click', () => { recSpan = b.dataset.span; keepY(() => draw(false)); }));
       app.querySelectorAll('[data-item]').forEach((b) => b.addEventListener('click', () => { preview = b.dataset.item; keepY(() => draw(true)); }));
       app.querySelectorAll('[data-calm]').forEach((b) => b.addEventListener('click', () => { calM = b.dataset.calm; keepY(() => draw(false)); }));
-      const sa = document.getElementById('season-auto');
-      if (sa) sa.addEventListener('change', () => { S.seasonOff = sa.checked ? '' : WT.skin.seasonNow().key; WT.store.save(); WT.skin.apply(); });
       const att = document.getElementById('att-go');
       if (att) att.addEventListener('click', async () => {
         att.disabled = true;

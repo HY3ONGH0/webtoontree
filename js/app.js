@@ -164,13 +164,13 @@
     else delete document.documentElement.dataset.theme;
     try { localStorage.setItem(THEME_KEY, t); } catch (e) { /* 저장 못 해도 이번엔 바뀌어요 */ }
     document.querySelectorAll('.theme-btn').forEach((b) => {
-      b.setAttribute('aria-label', t === 'light' ? '블랙 모드로 바꾸기' : '화이트 모드로 바꾸기');
-      b.title = t === 'light' ? '블랙 모드' : '화이트 모드';
+      b.setAttribute('aria-label', '화면 · 테마 고르기');
+      b.title = '화면 · 테마';
     });
   };
   WT.themeBtn = function () {
     const light = WT.theme() === 'light';
-    return `<button type="button" class="pill press theme-btn" data-theme-toggle aria-label="${light ? '블랙 모드로 바꾸기' : '화이트 모드로 바꾸기'}" title="${light ? '블랙 모드' : '화이트 모드'}">
+    return `<button type="button" class="pill press theme-btn" data-theme-toggle aria-label="화면 · 테마 고르기" aria-haspopup="dialog" title="화면 · 테마">
       <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg>
       <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
     </button>`;
@@ -187,10 +187,40 @@
     clearTimeout(WT._fadeT);
     WT._fadeT = setTimeout(() => html.classList.remove('theme-fade'), 800);
   };
+  // 테마 버튼: 밝게 · 어둡게 + 고를 수 있는 테마(기본 · 이번 계절 · 시즌)
+  function closeThemeMenu() { const m = document.getElementById('theme-menu'); if (m) m.remove(); }
+  function openThemeMenu(btn) {
+    closeThemeMenu();
+    const opts = WT.skin && WT.data ? WT.skin.themeOptions() : [];
+    const cur = (WT.skin && WT.skin.pickedTheme() || {}).key || '';
+    const light = WT.theme() === 'light';
+    const fixed = !!(WT.skin && WT.data && WT.skin.currentBg().item);   // 배경이 켜져 있으면 밝기는 배경에 맞춰져요
+    const m = document.createElement('div');
+    m.id = 'theme-menu'; m.className = 'theme-menu'; m.setAttribute('role', 'dialog'); m.setAttribute('aria-label', '화면 · 테마 고르기');
+    const thumb = (o) => { const it = WT.data.shop.find((i) => i.id === o.bg); return it ? `<span class="tm-th bg-box">${WT.skin.thumb(it, 0)}</span>` : '<span class="tm-th"></span>'; };
+    m.innerHTML = `<p class="tm-h">화면</p>
+      <div class="tm-seg" role="group" aria-label="화면 밝기"><button type="button" data-tm-mode="light" aria-pressed="${light}" ${fixed ? 'disabled' : ''}>☀ 밝게</button><button type="button" data-tm-mode="dark" aria-pressed="${!light}" ${fixed ? 'disabled' : ''}>☾ 어둡게</button></div>
+      ${fixed ? '<p class="tm-note">배경이 켜져 있는 동안은 글씨가 잘 보이게 밝기를 배경에 맞춰요.</p>' : ''}
+      ${opts.length ? `<p class="tm-h">테마</p>
+      <button type="button" class="tm-opt" data-tm-pick="" aria-pressed="${!cur}"><span class="tm-th tm-basic"></span><span><b>기본</b><small>${(WT.skin.currentBg().item && !cur) ? '내가 고른 배경' : '평소 화면'}</small></span></button>
+      ${opts.map((o) => `<button type="button" class="tm-opt" data-tm-pick="${esc(o.key)}" aria-pressed="${cur === o.key}">${thumb(o)}<span><b>${esc(o.name)}</b><small>${esc(o.sub)}</small></span></button>`).join('')}
+      <p class="tm-note">테마는 그 계절 · 시즌 동안만 고를 수 있고, 끝나면 기본으로 돌아가요.</p>` : ''}`;
+    document.body.appendChild(m);
+    const r = btn.getBoundingClientRect(), w = m.offsetWidth, h = m.offsetHeight;
+    m.style.left = Math.max(8, Math.min(window.innerWidth - w - 8, r.right - w)) + 'px';
+    m.style.top = (r.bottom + 8 + h > window.innerHeight ? Math.max(8, r.top - h - 8) : r.bottom + 8) + 'px';
+  }
   document.addEventListener('click', (e) => {
-    const b = e.target.closest && e.target.closest('[data-theme-toggle]');
-    if (b) WT.switchTheme();
+    const t = e.target.closest ? e.target : null;
+    if (!t) return;
+    const mode = t.closest('[data-tm-mode]'), pick = t.closest('[data-tm-pick]'), b = t.closest('[data-theme-toggle]');
+    if (mode) { if (mode.disabled) return; if (WT.theme() !== mode.dataset.tmMode) WT.switchTheme(); document.querySelectorAll('[data-tm-mode]').forEach((x) => x.setAttribute('aria-pressed', String(x === mode))); return; }
+    if (pick) { WT.skin.pickTheme(pick.dataset.tmPick); closeThemeMenu(); const o = WT.skin.pickedTheme(); WT.toast(o ? `${o.name}로 바꿨어요` : '기본 화면으로 돌아왔어요'); return; }
+    if (b) { if (document.getElementById('theme-menu')) closeThemeMenu(); else openThemeMenu(b); return; }
+    if (!t.closest('#theme-menu')) closeThemeMenu();
   });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeThemeMenu(); });
+  window.addEventListener('hashchange', closeThemeMenu);
 
   // ---------- 모든 화면 공통 왼쪽 메뉴: 홈 · 트리 · 도서관 · 랭킹 · 프로필 ----------
   const RAIL_IC = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">${d}</svg>`;

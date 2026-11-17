@@ -1274,7 +1274,7 @@
     if (kindOf(it) === 'color') return `${col('body', '몸 색')} ${col('feet', '발 색')}`;
     if (kindOf(it) === 'bg') return `<div class="ad-ctl">${col('c1', '위쪽 색')} ${col('c2', '아래쪽 색')} ${sel('scene', WT.skin.SCENES, '그림')} ${sel('pattern', WT.skin.PATTERNS, '날리는 무늬')} ${sel('motion', Object.assign({ '': '움직임 자동' }, WT.skin.MOTIONS), '움직임')}</div>
       <input class="fld" data-shop="${i}" data-k="img" value="${esc(it.img || '')}" placeholder="직접 그린 그림 주소 (선택 · 넣으면 그림 대신 보여요)" aria-label="직접 그린 그림 주소" style="margin-top:6px; width:100%">`;
-    if (kindOf(it) === 'tree') return `<div class="ad-ctl">${col('ring', '칸 테두리 색')} ${col('line', '선 색')} ${sel('shape', WT.skin.SHAPES, '칸 모양')} ${sel('lineStyle', WT.skin.LINES, '선 모양')}</div>`;
+    if (kindOf(it) === 'tree') return `<div class="ad-ctl">${col('ring', '칸 테두리 색')} ${col('line', '선 색')} ${sel('frame', Object.assign({ '': '장식 틀 없음' }, WT.skin.FRAMES), '장식 틀')} ${it.frame ? '' : sel('shape', WT.skin.SHAPES, '칸 모양') + ' ' + sel('lineStyle', WT.skin.LINES, '선 모양')}</div>${it.frame ? '<span class="hint">장식 틀을 고르면 칸 둘레와 선이 그 무늬로 그려져요.</span>' : ''}`;
     return `<div class="ad-ctl"><select class="fld" data-shop="${i}" data-k="acc" aria-label="장식 모양" ${it.id === 'basic' ? 'disabled' : ''}>${opts(WT.ACC_NAMES || ACCS, it.acc)}</select> ${col('body', '몸 색')} ${col('feet', '발 색')}</div>`;
   }
   function tabShop() {
@@ -1304,7 +1304,7 @@
       <p class="ad-help">이미 산 사람이 있는 아이템을 지우면 그 사람의 착용이 기본으로 돌아가요. 배경은 사이트 전체에, 트리 디자인은 트리 화면에 입혀져요.</p>
 
       <h2 style="margin-top:28px">시즌 · 이벤트</h2>
-      <p class="ad-help">시즌 기간(당일 앞뒤 며칠)이 되면 <b>사이트 배경이 자동으로 바뀌고</b> 회원에게 알림이 떠요. 그 기간에만 시즌 한정 아이템을 팔고, 미션 이벤트가 열려요. 설날 · 추석은 음력이라 해마다 날짜를 자동으로 맞춰요 (2035년까지).</p>
+      <p class="ad-help">시즌 기간(당일 앞뒤 며칠)이 되면 회원에게 알림이 뜨고, <b>테마 버튼(☀/☾)에서 시즌 테마를 고를 수 있어요</b> (기본 화면이 처음 상태예요). 그 기간에만 시즌 한정 아이템을 팔고, 미션 이벤트가 열려요. 설날 · 추석은 음력이라 해마다 날짜를 자동으로 맞춰요 (2035년까지).</p>
       ${seasons.map((s, i) => { const nx = WT.skin.seasonNext(s, today), on = s.on !== false && WT.skin.seasonSpan(s, today); return `<section class="ad-season${on ? ' on' : ''}">
         <div class="ad-season-h">
           <label class="ad-check"><input type="checkbox" data-season="${i}" data-k="on" ${s.on === false ? '' : 'checked'}> 사용</label>
@@ -1316,7 +1316,7 @@
           <button type="button" class="btn btn-sm btn-danger press" data-a="del-season" data-i="${i}" style="margin-left:auto">${ui.confirm === 'ss:' + i ? '정말 삭제' : '삭제'}</button>
         </div>
         <div class="ad-season-h">
-          <label class="hint">자동 배경 <select class="fld" data-season="${i}" data-k="bg">${itemOpts(s.bg, ['bg'], '바꾸지 않음')}</select></label>
+          <label class="hint">시즌 테마 배경 <select class="fld" data-season="${i}" data-k="bg">${itemOpts(s.bg, ['bg'], '바꾸지 않음')}</select></label>
           <label class="hint">미션 모두 완료 보상 <select class="fld" data-season="${i}" data-k="reward">${itemOpts(s.reward, ['bg', 'tree', 'acc', 'color'], '없음')}</select></label>
         </div>
         <div class="ad-ms">${(s.missions || []).map((m, j) => `<div><select class="fld" data-ms="${i}:${j}" data-k="type" aria-label="미션 종류">${opts({ eps: '웹툰 N화 보기', attend: 'N일 출석', done: 'N편 완독', rec: '추천 N개 남기기' }, m.type)}</select>
@@ -2189,7 +2189,7 @@
       if (!redraw) return;
       const it = D.shop[Number(el.dataset.shop)], k = el.dataset.k;
       if (k === 'price') it.price = Math.max(0, parseInt(el.value, 10) || 0);
-      else if ((k === 'season' || k === 'motion') && !el.value) delete it[k];
+      else if ((k === 'season' || k === 'motion' || k === 'frame') && !el.value) delete it[k];
       else it[k] = el.type === 'checkbox' ? el.checked : el.value;
       saveDraft(); render();
     }
