@@ -661,6 +661,7 @@
           <div class="stage-sizer" id="sizer">
           <div class="stage" id="stage" style="width:${SW}px; height:${BH}px">
             ${T.links.map(linkHTML).join('')}
+            ${ids.map((id) => { const [x, y] = T.nodes[id]; return `<div class="node-frame" data-frame="${id}" aria-hidden="true" style="left:${x}px; top:${y}px; --sz:${sizeOf(id)}px"></div>`; }).join('')}
             ${ids.map((id) => {
               const [x, y] = T.nodes[id];
               return `<div class="node-wrap" data-wrap="${id}" style="left:${x - 85}px; top:${y - sizeOf(id) / 2}px; --oy:${sizeOf(id) / 2}px"></div>`;
@@ -786,6 +787,8 @@
         sigs[id] = sig;
         const slotEl = stage.querySelector(`[data-wrap="${id}"]`);
         if (slotEl) slotEl.innerHTML = lib ? lbBook(id) : nodeInner(id);
+        const fr = stage.querySelector(`[data-frame="${id}"]`);   // 트리 디자인 장식 틀 (잠김은 흐리게, 완독은 금빛)
+        if (fr) { fr.classList.toggle('locked', status(id) === 'locked'); fr.classList.toggle('done', status(id) === 'done'); }
       });
       if (!lib) refreshLib();
       T.links.forEach((l, i) => {
