@@ -919,7 +919,7 @@
     el.setAttribute('aria-label', '제작: ' + CREDITS.join(', '));
     el.innerHTML = `<div class="credits-in">
         <p class="cr-role">제작</p>
-        ${CREDITS.map((n, i) => `<p class="cr-name" style="animation-delay:${0.9 + i * 0.45}s">${esc(n)}</p>`).join('')}
+        ${CREDITS.map((n, i) => `<p class="cr-name" style="animation-delay:${0.35 + i * 0.25}s">${esc(n)}</p>`).join('')}
       </div>
       <p class="cr-skip">화면을 누르면 건너뛰어요</p>`;
     document.body.appendChild(el);
@@ -934,7 +934,7 @@
       setTimeout(done, 250);   // 로그인 화면은 검은 화면이 걷히면서 바로 등장해요
     };
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const timer = setTimeout(finish, reduce ? 1800 : 4600);
+    const timer = setTimeout(finish, reduce ? 1200 : 2400);
     el.addEventListener('click', finish);
     document.addEventListener('keydown', finish);
   }
@@ -1001,11 +1001,47 @@
     document.body.classList.toggle('no-anim', WT.settings().animations === false);
   };
 
+  // 뒤에서 받은 데이터를 화면에 반영: 아직 아무것도 누르지 않았으면 지금 화면을 다시 그리고, 이미 쓰는 중이면 코인 · 메뉴만 바꿔요
+  let userActed = false, booted = false;
+  ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach((ev) => window.addEventListener(ev, () => { userActed = true; }, { once: true, passive: true, capture: true }));
+  window.addEventListener('hashchange', () => { userActed = true; });
+  let quietT = 0;
+  function refreshQuietly() {
+    clearTimeout(quietT);
+    quietT = setTimeout(() => {
+      if (!booted || !WT.data || !document.querySelector('#app > .view')) return;
+      if (!userActed && !document.querySelector('.credits')) { routeNow(); return; }
+      if (WT.coinPill) document.querySelectorAll('#coin-pill').forEach((cp) => { cp.outerHTML = WT.coinPill(); });
+      if (WT.skin) WT.skin.apply();
+      if (document.body.classList.contains('has-rail') && WT.renderRail) WT.renderRail(((location.hash || '#/').replace(/^#\/?/, '').split('/')[0]) || 'home');
+    }, 60);
+  }
+
   async function init() {
+    // 웹툰 데이터: 전에 받아 둔 것이 있으면 그걸로 바로 그리고, 새 데이터는 뒤에서 받아 바뀌었으면 바꿔요
+    const DATA_CACHE = 'webtoontree.dataCache.v1';
+    let cachedText = null;
+    try { cachedText = localStorage.getItem(DATA_CACHE); } catch (e) { cachedText = null; }
+    const freshText = fetch('data/data.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.text() : Promise.reject(new Error(r.status))));
+    const keep = (t) => { try { localStorage.setItem(DATA_CACHE, t); } catch (e) { /* 저장 공간이 부족하면 다음에 다시 받아요 */ } };
     try {
-      const res = await fetch('data/data.json', { cache: 'no-cache' });
-      if (!res.ok) throw new Error(res.status);
-      WT.data = await res.json();
+      let usedCache = false;
+      if (cachedText) { try { WT.data = JSON.parse(cachedText); usedCache = Array.isArray(WT.data.webtoons); } catch (e) { usedCache = false; } }
+      if (usedCache) {
+        freshText.then((t) => {
+          if (t === cachedText) return;
+          keep(t);
+          const next = JSON.parse(t);
+          next.authorInfo = WT.data.authorInfo; next.hotToday = WT.data.hotToday;
+          WT.data = next;
+          WT.applySettings(); WT.initSeen();
+          refreshQuietly();
+        }).catch(() => {});
+      } else {
+        const t = await freshText;
+        WT.data = JSON.parse(t);
+        keep(t);
+      }
     } catch (e) {
       app().innerHTML = '<div class="view" style="align-items:center; justify-content:center; padding:40px; text-align:center"><p>웹툰 데이터를 불러오지 못했어요. 잠시 뒤 새로고침해 주세요.</p></div>';
       return;
@@ -1038,20 +1074,20 @@
       } catch (e) { /* 초안이 없으면 원래 데이터 */ }
     }
     WT.applySettings();
-    // 서버 모드: 로그인 상태 확인 + 오늘 폭주 목록 (늦어도 4초만 기다려요)
+    // 서버 모드: 로그인 상태 확인 + 오늘 폭주 목록은 기다리지 않고 뒤에서 받아요 (화면은 이 기기에 저장된 기록으로 먼저 그려요)
     if (WT.api.on()) {
       const S = WT.store.state;
-      const tasks = [
-        WT.api.call('hot').then((r) => { WT.data.hotToday = r.hot || []; }).catch(() => {})
-      ];
+      WT.api.call('hot').then((r) => { WT.data.hotToday = r.hot || []; refreshQuietly(); }).catch(() => {});
       if (S.token) {
-        tasks.push(WT.api.call('me', { token: S.token }).then((r) => WT.api.applyMe(r.me)).catch((e) => {
-          if (e.auth) { S.token = null; S.profile = null; WT.store.save(); }
-        }));
+        WT.api.call('me', { token: S.token }).then((r) => { WT.api.applyMe(r.me); refreshQuietly(); }).catch((e) => {
+          if (!e.auth) return;
+          S.token = null; S.profile = null; WT.store.save();
+          if (WT.toast) WT.toast('로그인이 풀렸어요. 다시 로그인해 주세요.');
+          location.hash = '#/login';
+        });
       } else if (S.profile) {
         S.profile = null; WT.store.save();   // 혼자 모드 닉네임은 서버 계정이 아니에요
       }
-      await Promise.race([Promise.all(tasks), new Promise((r) => setTimeout(r, 4000))]);
     }
     startMeteors();
     // 사이트를 새로 열었을 때: 로그인하지 않았으면 (예전에 둘러보기를 했어도) 로그인 화면부터 보여 줘요
@@ -1072,6 +1108,7 @@
     try { seen = sessionStorage.getItem(CREDITS_KEY) === '1'; } catch (e) { seen = false; }
     if (!loggedIn && !S3.guest && !seen && !new URLSearchParams(location.search).has('preview')) playCredits(route);
     else route();
+    booted = true;
   }
 
   document.addEventListener('DOMContentLoaded', init);
