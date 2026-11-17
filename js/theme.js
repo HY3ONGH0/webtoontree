@@ -111,7 +111,7 @@
       + [[60, 50], [140, 76], [220, 110], [300, 150], [360, 176], [200, 190], [214, 214], [330, 96], [384, 60], [1140, 44], [1060, 76], [980, 120], [900, 166], [860, 184], [996, 210], [1004, 236], [880, 110], [812, 96]].map((p, i) => blossom(p[0], p[1], i % 3 ? 16 : 22, i % 2 ? '#FFC2DA' : '#FFE0EC')).join('') },
     sheep: { name: '붉은 양의 해 (2027)', draw: () => '<circle cx="600" cy="430" r="160" fill="#FFF1C2"/><circle cx="600" cy="430" r="240" fill="#FFF1C2" opacity=".25"/>'
       + cloudK(80, 130, 1.2, '#FFE9A8') + cloudK(920, 100, 1.4, '#FFE9A8') + cloudK(250, 280, 0.8, '#FFD27A') + cloudK(800, 250, 0.8, '#FFD27A')
-      + '<text x="600" y="200" text-anchor="middle" font-family="Jalnan, sans-serif" font-weight="800" font-size="92" fill="#FFF6E0" opacity=".95">2027</text><text x="600" y="246" text-anchor="middle" font-family="Jalnan, sans-serif" font-weight="800" font-size="30" fill="#FFE9A8">붉은 양의 해</text>'
+      + '<text x="600" y="200" text-anchor="middle" font-family="Jalnan, sans-serif" font-weight="800" font-size="92" fill="#FFF6E0" opacity=".5">2027</text><text x="600" y="246" text-anchor="middle" font-family="Jalnan, sans-serif" font-weight="800" font-size="30" fill="#FFE9A8" opacity=".6">붉은 양의 해</text>'
       + '<path d="M0 520 Q200 440 420 510 T820 490 T1200 520 V700 H0z" fill="#9E2A33"/><path d="M0 590 Q300 520 620 590 T1200 570 V700 H0z" fill="#7A1F28"/>'
       + sheep(250, 560, 1.5, '#FFE3E0') + sheep(470, 600, 1, '#FFF6EE') + sheep(940, 560, 1.6, '#FFD0CC', true) + sheep(740, 610, 0.9, '#FFF6EE', true)
       + '<g transform="translate(1080 330) rotate(10)"><polygon points="0,-60 44,0 0,60 -44,0" fill="#fff" stroke="#7A1F28" stroke-width="4"/><text y="14" text-anchor="middle" font-size="40" font-weight="900" fill="#C8323A" font-family="serif">未</text><path d="M0 60 q16 40 -8 80" fill="none" stroke="#fff" stroke-width="3"/></g>' },
@@ -245,6 +245,12 @@
         document.body.classList.add('has-bg');
         document.body.classList.toggle('bg-dark', isDark(bg)); document.body.classList.toggle('bg-light', !isDark(bg));
       }
+      // 배경을 깔면 글씨가 읽히게 화면 밝기를 배경에 맞춰요 (어두운 배경 → 어두운 화면). 배경을 끄면 내가 고른 밝기로 돌아와요
+      const html = document.documentElement;
+      let want = 'dark';
+      try { want = localStorage.getItem('webtoontree.theme') === 'light' ? 'light' : 'dark'; } catch (e) { /* 저장소를 못 읽으면 어두운 화면 */ }
+      if (bg) want = isDark(bg) ? 'dark' : 'light';
+      if (want === 'light') html.dataset.theme = 'light'; else delete html.dataset.theme;
       const b = document.body;
       if (tr) {
         b.dataset.tkShape = tr.shape || 'circle'; b.dataset.tkLine = tr.lineStyle || 'solid';

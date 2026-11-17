@@ -194,11 +194,13 @@
     const opts = WT.skin && WT.data ? WT.skin.themeOptions() : [];
     const cur = (WT.skin && WT.skin.pickedTheme() || {}).key || '';
     const light = WT.theme() === 'light';
+    const fixed = !!(WT.skin && WT.data && WT.skin.currentBg().item);   // 배경이 켜져 있으면 밝기는 배경에 맞춰져요
     const m = document.createElement('div');
     m.id = 'theme-menu'; m.className = 'theme-menu'; m.setAttribute('role', 'dialog'); m.setAttribute('aria-label', '화면 · 테마 고르기');
     const thumb = (o) => { const it = WT.data.shop.find((i) => i.id === o.bg); return it ? `<span class="tm-th bg-box">${WT.skin.thumb(it, 0)}</span>` : '<span class="tm-th"></span>'; };
     m.innerHTML = `<p class="tm-h">화면</p>
-      <div class="tm-seg" role="group" aria-label="화면 밝기"><button type="button" data-tm-mode="light" aria-pressed="${light}">☀ 밝게</button><button type="button" data-tm-mode="dark" aria-pressed="${!light}">☾ 어둡게</button></div>
+      <div class="tm-seg" role="group" aria-label="화면 밝기"><button type="button" data-tm-mode="light" aria-pressed="${light}" ${fixed ? 'disabled' : ''}>☀ 밝게</button><button type="button" data-tm-mode="dark" aria-pressed="${!light}" ${fixed ? 'disabled' : ''}>☾ 어둡게</button></div>
+      ${fixed ? '<p class="tm-note">배경이 켜져 있는 동안은 글씨가 잘 보이게 밝기를 배경에 맞춰요.</p>' : ''}
       ${opts.length ? `<p class="tm-h">테마</p>
       <button type="button" class="tm-opt" data-tm-pick="" aria-pressed="${!cur}"><span class="tm-th tm-basic"></span><span><b>기본</b><small>${(WT.skin.currentBg().item && !cur) ? '내가 고른 배경' : '평소 화면'}</small></span></button>
       ${opts.map((o) => `<button type="button" class="tm-opt" data-tm-pick="${esc(o.key)}" aria-pressed="${cur === o.key}">${thumb(o)}<span><b>${esc(o.name)}</b><small>${esc(o.sub)}</small></span></button>`).join('')}
@@ -212,7 +214,7 @@
     const t = e.target.closest ? e.target : null;
     if (!t) return;
     const mode = t.closest('[data-tm-mode]'), pick = t.closest('[data-tm-pick]'), b = t.closest('[data-theme-toggle]');
-    if (mode) { if (WT.theme() !== mode.dataset.tmMode) WT.switchTheme(); document.querySelectorAll('[data-tm-mode]').forEach((x) => x.setAttribute('aria-pressed', String(x === mode))); return; }
+    if (mode) { if (mode.disabled) return; if (WT.theme() !== mode.dataset.tmMode) WT.switchTheme(); document.querySelectorAll('[data-tm-mode]').forEach((x) => x.setAttribute('aria-pressed', String(x === mode))); return; }
     if (pick) { WT.skin.pickTheme(pick.dataset.tmPick); closeThemeMenu(); const o = WT.skin.pickedTheme(); WT.toast(o ? `${o.name}로 바꿨어요` : '기본 화면으로 돌아왔어요'); return; }
     if (b) { if (document.getElementById('theme-menu')) closeThemeMenu(); else openThemeMenu(b); return; }
     if (!t.closest('#theme-menu')) closeThemeMenu();

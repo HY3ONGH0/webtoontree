@@ -2508,3 +2508,17 @@ body.has-tk[data-tk-frame] .stage .link { height: 16px; margin-top: -6.5px; bord
 body.has-tk[data-tk-frame] .stage .link.half { opacity: .9; }
 body.has-tk[data-tk-frame] .stage .link.lit { opacity: 1; }
 body.has-tk[data-tk-frame] .stage .link .flow { display: none; }
+
+/* ================= 배경을 켰을 때: 판 없이 배경 위에 바로 올려요 ================= */
+body.has-bg, html[data-theme="light"] body.has-bg { --frame-bg: transparent; --frame-shadow: none; --halo: rgba(8, 12, 28, .92); }
+html[data-theme="light"] body.has-bg { --halo: rgba(255, 255, 255, .95); }
+body.has-bg .lb-shell { background: transparent; box-shadow: none; border-color: transparent; }
+body.has-bg .home-panel, html[data-theme="light"] body.has-bg .home-panel { background: transparent; box-shadow: none; border-color: transparent; }
+@media (max-width: 860px) { body.has-bg #app > .view { background: transparent; } }
+/* 그림 위에서도 글씨가 읽히게: 글씨 둘레에 화면 색의 옅은 빛 (카드 안에서는 카드와 같은 색이라 안 보여요) */
+body.has-bg #app > .view { text-shadow: 0 0 2px var(--halo), 0 0 5px var(--halo), 0 0 10px var(--halo), 0 0 16px var(--halo); }
+body.has-bg #app .btn, body.has-bg #app .pill, body.has-bg #app .node-tag, body.has-bg #app [class*="badge"], body.has-bg #app [class*="-pick"], body.has-bg #app .tag,
+body.has-bg #app input, body.has-bg #app select, body.has-bg #app textarea, body.has-bg #app .panel, body.has-bg #app .hm-pill, body.has-bg #app .hm-cont, body.has-bg #app .hm-cta,
+body.has-bg #app .rec-tile, body.has-bg #app .age, body.has-bg #app .ev-hero, body.has-bg #app .u-best, body.has-bg #app .bk-cv, body.has-bg #app .wk-cv, body.has-bg #app .band, body.has-bg #app .lb-cta { text-shadow: none; }
+.tm-seg button:disabled { opacity: .45; cursor: default; }
+body.has-bg #app .hm-name, body.has-bg #app .au-brand, body.has-bg #app .home-logo { text-shadow: none; }
