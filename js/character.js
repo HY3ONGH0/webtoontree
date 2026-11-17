@@ -25,12 +25,14 @@
     grad: '<polygon points="32,6 58,16 32,26 6,16" fill="#22242C"/><rect x="22" y="18" width="20" height="8" fill="#2E313B"/><path d="M54 17 v12" stroke="#F1B92E" stroke-width="2"/><circle cx="54" cy="30" r="2.6" fill="#F1B92E"/>',
     sprout: '<path d="M32 20 V8" stroke="#4E9B5A" stroke-width="2.5"/><path d="M32 10 Q22 2 18 10 Q26 16 32 10z M32 10 Q42 2 46 10 Q38 16 32 10z" fill="#6DB277"/>',
     bunny: '<ellipse cx="22" cy="6" rx="6" ry="16" fill="#fff" stroke="#E8E4DA" stroke-width="1"/><ellipse cx="42" cy="6" rx="6" ry="16" fill="#fff" stroke="#E8E4DA" stroke-width="1"/><ellipse cx="22" cy="8" rx="2.6" ry="10" fill="#FFB7D5"/><ellipse cx="42" cy="8" rx="2.6" ry="10" fill="#FFB7D5"/>',
+    wool: '<g fill="#fff" stroke="#E8E2D2" stroke-width="1"><circle cx="18" cy="20" r="8"/><circle cx="28" cy="14" r="9"/><circle cx="39" cy="14" r="9"/><circle cx="47" cy="21" r="8"/><circle cx="32" cy="20" r="9"/></g><path d="M12 26 Q6 30 10 36 M52 26 Q58 30 54 36" stroke="#E9D7A8" stroke-width="4" fill="none" stroke-linecap="round"/>',
+    ramhorn: '<path d="M17 24 Q4 20 6 34 Q8 42 15 38 Q10 34 13 30 Q16 27 20 29z M47 24 Q60 20 58 34 Q56 42 49 38 Q54 34 51 30 Q48 27 44 29z" fill="#E9D7A8" stroke="#C9A54C" stroke-width="1.2"/>',
     snorkel: '<rect x="13" y="31" width="38" height="14" rx="7" fill="#7FD4FF" stroke="#1E8FC4" stroke-width="2.5" opacity=".9"/><path d="M53 36 V10 q0 -6 6 -6" fill="none" stroke="#F6922C" stroke-width="3.4" stroke-linecap="round"/>'
   };
   // 머리 위 별 더듬이를 가리는 장식
-  const NO_ANTENNA = ['crown', 'wizard', 'satgat', 'santa', 'pumpkin', 'witch', 'gat', 'bok', 'jobawi', 'ribbon', 'straw', 'halo', 'cap', 'beanie', 'chef', 'grad', 'sprout', 'bunny'];
+  const NO_ANTENNA = ['crown', 'wizard', 'satgat', 'santa', 'pumpkin', 'witch', 'gat', 'bok', 'jobawi', 'ribbon', 'straw', 'halo', 'cap', 'beanie', 'chef', 'grad', 'sprout', 'bunny', 'wool'];
   // 관리자 화면에서 고를 때 보이는 이름
-  const ACC_NAMES = { none: '없음 (별)', crown: '왕관', wizard: '마법사 모자', satgat: '삿갓', cat: '고양이 귀', phones: '헤드폰', santa: '산타 모자', rudolph: '루돌프 뿔', pumpkin: '호박 모자', witch: '마녀 모자', gat: '선비 갓', bok: '복주머니', jobawi: '조바위', ribbon: '리본', shades: '선글라스', straw: '밀짚모자', horn: '꼬마 뿔', flower: '꽃 핀', halo: '천사 고리', cap: '야구 모자', beanie: '털모자', chef: '요리사 모자', grad: '학사모', sprout: '새싹', bunny: '토끼 귀', snorkel: '스노클' };
+  const ACC_NAMES = { none: '없음 (별)', crown: '왕관', wizard: '마법사 모자', satgat: '삿갓', cat: '고양이 귀', phones: '헤드폰', santa: '산타 모자', rudolph: '루돌프 뿔', pumpkin: '호박 모자', witch: '마녀 모자', gat: '선비 갓', bok: '복주머니', jobawi: '조바위', ribbon: '리본', shades: '선글라스', straw: '밀짚모자', horn: '꼬마 뿔', flower: '꽃 핀', halo: '천사 고리', cap: '야구 모자', beanie: '털모자', chef: '요리사 모자', grad: '학사모', sprout: '새싹', bunny: '토끼 귀', snorkel: '스노클', wool: '양털 모자', ramhorn: '양 뿔' };
 
   /** look = { body, feet, acc } */
   function charSVG(look, width, label) {
