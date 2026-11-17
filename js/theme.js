@@ -251,6 +251,10 @@
       try { want = localStorage.getItem('webtoontree.theme') === 'light' ? 'light' : 'dark'; } catch (e) { /* 저장소를 못 읽으면 어두운 화면 */ }
       if (bg) want = isDark(bg) ? 'dark' : 'light';
       if (want === 'light') html.dataset.theme = 'light'; else delete html.dataset.theme;
+      // 강추 · 폭주 효과도 배경 그림에 맞춰요 (배경이 없으면 기본 효과)
+      const FX = { winter: 'winter', spring: 'spring', summer: 'summer', sea: 'summer', autumn: 'autumn', xmas: 'xmas', sheep: 'sheep', newyear: 'firework', seollal: 'seollal', chuseok: 'chuseok', halloween: 'halloween' };
+      const fx = bg && FX[bg.scene];
+      if (fx) document.body.dataset.fx = fx; else delete document.body.dataset.fx;
       const b = document.body;
       if (tr) {
         b.dataset.tkShape = tr.shape || 'circle'; b.dataset.tkLine = tr.lineStyle || 'solid';

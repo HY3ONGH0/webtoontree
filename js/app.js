@@ -99,8 +99,10 @@
     WT.fav.toggle(b.dataset.fav);
   }, true);
 
-  WT.genre = (id) => WT.data.genres.find((g) => g.id === id);
-  WT.toon = (id) => WT.data.webtoons.find((w) => w.id === id);
+  // 자주 불러서 목록을 처음부터 찾지 않고 바로 찾아요 (목록이 바뀌면 다시 만들어요)
+  let toonArr = null, toonMap = null, genreArr = null, genreMap = null;
+  WT.genre = (id) => { const a = WT.data.genres; if (a !== genreArr || genreMap.size !== a.length) { genreArr = a; genreMap = new Map(a.map((g) => [g.id, g])); } return genreMap.get(id); };
+  WT.toon = (id) => { const a = WT.data.webtoons; if (a !== toonArr || toonMap.size !== a.length) { toonArr = a; toonMap = new Map(a.map((w) => [w.id, w])); } return toonMap.get(id); };
   /** 오늘 기준 총 화수 (연재 요일 자동 계산 포함) */
   WT.eps = (w) => WT.schedule.episodes(w);
   WT.isHot = (id) => (WT.data.hotToday || []).includes(id);

@@ -72,7 +72,7 @@ function doPost(e) {
 }
 
 // 서버 코드 판 번호: 관리자 화면이 이 숫자를 보고 "서버 코드가 예전 버전"인지 알려 줘요. 서버 코드를 고치면 1씩 올려요
-var SERVER_VERSION = 22;
+var SERVER_VERSION = 23;
 
 var WRITE_ACTIONS = {
   signup: 1, login: 1, logout: 1, nick: 1, deleteAccount: 1, progress: 1, rate: 1, comment: 1, deleteComment: 1,
@@ -292,7 +292,7 @@ var ACTIONS = {
     try { batches = liveOps_(st.base, st.ver); } catch (e) { console.error('liveOps', e && e.stack ? e.stack : e); lost = true; }
     var who = [];
     try { livePresence_(me, b.here); who = livePresence_(null); } catch (e) { console.error('presence', e); }
-    return { version: st.ver, baseVersion: st.base, base: data, baseHash: hash_(JSON.stringify(data)), batches: batches, lost: lost, who: who };
+    return { version: st.ver, baseVersion: st.base, base: data, baseHash: dataHash_(data), batches: batches, lost: lost, who: who };
   },
 
   /** 몇 초마다: 내 변경 올리기 + 다른 관리자 변경 받기 + 누가 있는지 */
@@ -304,15 +304,14 @@ var ACTIONS = {
       var text = JSON.stringify(b.ops);
       // 시트 한 칸에는 5만 자까지만 들어가요. 관리자 화면이 이보다 작게 나눠서 보내요
       if (text.length > 49000) fail_('한 번에 고친 내용이 너무 커요. 관리자 화면을 새로고침한 뒤 다시 해 주세요.');
-      var lock = LockService.getScriptLock();
-      lock.waitLock(15000);
+      var lock = liveLock_();
       try {
-        var st0 = liveState_();
+        var st0 = liveState_(true);
         myVer = st0.ver + 1;
         var row = { ver: myVer, at: now_(), by: me.userId, name: me.name, ops: text };
         CacheService.getScriptCache().put('live:op:' + myVer, JSON.stringify(row), 21600);
         appendRow_('live', row);
-        PropertiesService.getScriptProperties().setProperty('LIVE_VER', String(myVer));
+        liveSet_({ ver: myVer });
       } finally { lock.releaseLock(); }
     }
     var st = liveState_();
@@ -944,7 +943,7 @@ var ACTIONS = {
     who_(b);
     var site = readSite_(github_());
     if (!site) fail_('GitHub에서 data.json을 읽지 못했어요.');
-    return { data: site.data, hash: hash_(JSON.stringify(site.data)) };
+    return { data: site.data, hash: dataHash_(site.data) };
   },
 
   adminSaveData: function (b) {
@@ -954,10 +953,10 @@ var ACTIONS = {
     var g = github_();
     var site = readSite_(g);
     // 내가 고치기 시작한 뒤에 다른 관리자가 먼저 저장했으면, 덮어쓰기 전에 알려 줘요
-    if (site && b.baseHash && !b.force && hash_(JSON.stringify(site.data)) !== b.baseHash) return { conflict: true };
+    if (site && b.baseHash && !b.force && dataHash_(site.data) !== b.baseHash) return { conflict: true };
     var liveSt = null;
     if (b.liveVersion !== undefined && b.liveVersion !== null) {
-      liveSt = liveState_();
+      liveSt = liveState_(true);
       if (Number(b.liveVersion) !== liveSt.ver) return { behind: true, version: liveSt.ver };
     }
     var who = me.owner ? '최종 관리자' : me.name + ' (' + me.userId + ')';
@@ -965,14 +964,16 @@ var ACTIONS = {
     if (code === 409) return { conflict: true };
     if (code >= 300) fail_('GitHub에 저장하지 못했어요 (' + code + '). 토큰 권한을 확인해 주세요.');
     cacheDel_('site');
-    var savedHash = hash_(JSON.stringify(data));
-    if (!liveSt && b.resetLive) liveSt = liveState_();   // 함께 편집에 연결하지 못한 관리자가 저장: 지금 내용을 새 기준으로
+    var savedHash = dataHash_(data);
+    if (!liveSt && b.resetLive) liveSt = liveState_(true);   // 함께 편집에 연결하지 못한 관리자가 저장: 지금 내용을 새 기준으로
     if (liveSt) {
       // 함께 편집: 여기까지 사이트에 올렸어요. 그 전 기록은 정리해요
-      var props = PropertiesService.getScriptProperties();
-      props.setProperty('LIVE_BASE', String(liveSt.ver));
-      props.setProperty('LIVE_BASE_HASH', savedHash);
-      livePrune_(liveSt.ver);
+      var lk = liveLock_();
+      try { liveSet_({ base: liveSt.ver, baseHash: savedHash }); livePrune_(liveSt.ver); } finally { lk.releaseLock(); }
+    } else {
+      // 함께 편집 기준이 바뀐 것만 알려요 (다른 관리자 화면이 새 기준을 받아 가요)
+      var lk2 = liveLock_();
+      try { liveSet_({ baseHash: savedHash }); } finally { lk2.releaseLock(); }
     }
     return { savedAt: now_(), hash: savedHash };
   }
@@ -1211,8 +1212,8 @@ function autoRefresh() {
   if (code >= 300) { p.deleteProperty('AUTO_DAY'); return 'GitHub 저장 실패 ' + code; }
   cacheDel_('site');
   // 함께 편집 기준도 새 데이터로 맞춰요 (저장 버튼을 누른 것과 같아요)
-  p.setProperty('LIVE_BASE', String(live.ver));
-  p.setProperty('LIVE_BASE_HASH', hash_(JSON.stringify(data)));
+  var lk = liveLock_();
+  try { liveSet_({ base: live.ver, baseHash: dataHash_(data) }); } finally { lk.releaseLock(); }
   return changed.length + '개 갱신했어요';
 }
 var DAY_EN_ = { MONDAY: 'mon', TUESDAY: 'tue', WEDNESDAY: 'wed', THURSDAY: 'thu', FRIDAY: 'fri', SATURDAY: 'sat', SUNDAY: 'sun' };
@@ -1471,6 +1472,13 @@ function guardTarget_(me, target) {
   if (!me.owner && target.role === 'admin') fail_('다른 관리자 계정은 최종 관리자만 바꿀 수 있어요.');
 }
 /** 바뀐 내용 확인용 짧은 지문 (js/admin.js 와 같은 계산) */
+/** 데이터 지문: 칸 순서와 상관없이 내용이 같으면 같은 값 (관리자 화면의 dataFp 와 같은 규칙) */
+function canon_(v) {
+  if (Array.isArray(v)) return '[' + v.map(function (x) { return x === undefined ? 'null' : canon_(x); }).join(',') + ']';
+  if (v && typeof v === 'object') return '{' + Object.keys(v).filter(function (k) { return v[k] !== undefined; }).sort().map(function (k) { return JSON.stringify(k) + ':' + canon_(v[k]); }).join(',') + '}';
+  return JSON.stringify(v);
+}
+function dataHash_(d) { return hash_(canon_(d)); }
 function hash_(str) {
   var h = 0x811c9dc5;
   for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
@@ -1546,9 +1554,32 @@ function writeSite_(g, data, site, message) {
   }
   return ghPut_(g, null, JSON.stringify(slim, null, 2) + '\n', site && site.sha, message).getResponseCode();
 }
-function liveState_() {
-  var p = PropertiesService.getScriptProperties();
-  return { ver: Number(p.getProperty('LIVE_VER') || 0), base: Number(p.getProperty('LIVE_BASE') || 0), baseHash: p.getProperty('LIVE_BASE_HASH') || '' };
+// 함께 편집 상태: 스크립트 속성에 두고, 자주 읽는 값은 캐시에서 읽어요 (속성은 하루 읽기 한도가 있어서 2초마다 읽으면 한도에 걸려요)
+function liveState_(fresh) {
+  var c = CacheService.getScriptCache();
+  if (!fresh) { var hit = c.get('live:state'); if (hit) { try { return JSON.parse(hit); } catch (e) { /* 속성에서 다시 읽어요 */ } } }
+  var all = PropertiesService.getScriptProperties().getProperties();   // 한 번에 읽기 (한도 1회)
+  var st = { ver: Number(all.LIVE_VER || 0), base: Number(all.LIVE_BASE || 0), baseHash: all.LIVE_BASE_HASH || '' };
+  c.put('live:state', JSON.stringify(st), 600);
+  return st;
+}
+/** 상태 바꾸기 (liveLock_ 안에서 불러요) */
+function liveSet_(patch) {
+  var p = PropertiesService.getScriptProperties(), props = {};
+  if (patch.ver != null) props.LIVE_VER = String(patch.ver);
+  if (patch.base != null) props.LIVE_BASE = String(patch.base);
+  if (patch.baseHash != null) props.LIVE_BASE_HASH = String(patch.baseHash);
+  p.setProperties(props, false);
+  CacheService.getScriptCache().remove('live:state');
+  return liveState_(true);
+}
+/** 함께 편집 전용 잠금: 회원 기록 저장 · 사이트 저장이 쓰는 잠금과 따로라서 서로 오래 기다리지 않아요 */
+function liveLock_() {
+  var lock = null;
+  try { lock = LockService.getDocumentLock(); } catch (e) { lock = null; }
+  if (!lock) lock = LockService.getScriptLock();
+  if (!lock.tryLock(25000)) fail_('다른 관리자의 변경을 저장하는 중이에요. 잠시 뒤 자동으로 다시 보내요.');
+  return lock;
 }
 /** since 다음부터 upto 까지의 변경 묶음 (캐시에 없으면 시트에서) */
 function liveOps_(since, upto) {
