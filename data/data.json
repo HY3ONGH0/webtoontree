@@ -1,6 +1,672 @@
 {
   "webtoons": [
     {
+      "id": "w6591cnx",
+      "title": "사신소년",
+      "author": "류",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=730656",
+      "cover": "https://image-comic.pstatic.net/webtoon/730656/thumbnail/thumbnail_IMAG21_fc6d8dbf-eed2-43d0-af45-2edb3cc4244e.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#e4ecf9",
+      "episodes": 353,
+      "status": "ongoing",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "액션",
+        "액션판타지",
+        "학원액션",
+        "현대",
+        "동양",
+        "소년물",
+        "판타지",
+        "이능력배틀물"
+      ],
+      "desc": "수명을 대가로 죽은 자의 능력을 빌리는 소년! \n화려한 액션에서 부터 스포츠, 두뇌 플레이까지 한계는 없다!",
+      "authors": [
+        {
+          "name": "류",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=730656",
+      "age": 15,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w6590rjh",
+      "title": "제물 투표",
+      "author": "이아거",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=850211",
+      "cover": "https://image-comic.pstatic.net/webtoon/850211/thumbnail/thumbnail_IMAG21_921a8f66-a310-47bb-8953-bcecc29e5342.jpg",
+      "genres": [
+        "thriller"
+      ],
+      "recommended": 0,
+      "color": "#fafafa",
+      "episodes": 26,
+      "status": "ongoing",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "스릴러",
+        "비쥬얼쇼크",
+        "흑백",
+        "공포",
+        "서바이벌",
+        "인외존재"
+      ],
+      "desc": "한 번 들어가면 다시는 나올 수 없는 정체불명의 마을에 갇혀버렸다. 그곳에선 사람들이 이틀에 한 번씩 악마에게 바칠 사람을 뽑는 ‘제물 투표’를 한다. 악마들은 기차를 타고 와서 제물을 아그작아그작 씹어 먹는다. 비밀 가득한 이곳에서 탈출할 방도가 도저히 없어 보인다. 오늘 밤, 뽑히는 건 누구일까.",
+      "authors": [
+        {
+          "name": "이아거",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=850211",
+      "age": 15,
+      "autoAt": "2026-11-19"
+    },
+    {
+      "id": "w6589xjx",
+      "title": "마도애를 사랑하는 법",
+      "author": "서글",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=849913",
+      "cover": "https://image-comic.pstatic.net/webtoon/849913/thumbnail/thumbnail_IMAG21_0fbdc5d6-471b-4b70-9388-ad232a4529e1.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 0,
+      "color": "#fd3699",
+      "episodes": 30,
+      "status": "ongoing",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "로맨스",
+        "까칠녀",
+        "현대",
+        "능글남",
+        "사연녀",
+        "혐관로맨스",
+        "캠퍼스로맨스"
+      ],
+      "desc": "사랑하거나 사랑받는 순간 상대가 불행에 빠지는 저주를 타고난 ‘마도애’.\n이 저주를 끝낼 수 있는 방법은 단 하나\n바로 저주가 통하지 않는 ‘운명의 상대’를 찾는 것이다.\n그런데 하필 유일한 후보가 양아치 ‘공선화’ 뿐이라니?\n저주를 끝내기 위해 최악의 남자와 억지로 엮인 도애는 과연 이번에야말로 '진짜'를 찾을 수 있을까?",
+      "authors": [
+        {
+          "name": "서글",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=849913",
+      "age": 15,
+      "autoAt": "2026-11-19"
+    },
+    {
+      "id": "w6588ksm",
+      "title": "검술명가의 네크로맨서",
+      "author": "해귤, 이광수, 감튀이이이",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=850499",
+      "cover": "https://image-comic.pstatic.net/webtoon/850499/thumbnail/thumbnail_IMAG21_d4cf588e-b48f-4c58-9110-b6669d4e88f2.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#0d1219",
+      "episodes": 29,
+      "status": "ongoing",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "판타지",
+        "액션판타지",
+        "소년물",
+        "라이벌",
+        "환생",
+        "왕족/귀족",
+        "액션",
+        "미친작화"
+      ],
+      "desc": "대륙을 공포로 몰아넣었던 최강의 네크로맨서 아키몬드. 그는 영웅 베르켈 라인란트의 검에 목숨을 잃는다. 그리고 200년 후, 어느 가문의 아기로 태어나 첫 마디를 뱉는다. “어둠의 문지기와 하수인 그리고 병사들이여, 내 명을 받들라!“",
+      "authors": [
+        {
+          "name": "해귤",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "이광수",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "감튀이이이",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=850499",
+      "age": 15,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "fantasy-1"
+      ]
+    },
+    {
+      "id": "w6587imq",
+      "title": "괴물 천재선수들이 날 너무 좋아함",
+      "author": "조약돌, 혜인태",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=843901",
+      "cover": "https://image-comic.pstatic.net/webtoon/843901/thumbnail/thumbnail_IMAG21_952bd533-fb2b-44a8-97a0-40ee51fdb954.jpg",
+      "genres": [
+        "sports"
+      ],
+      "recommended": 0,
+      "color": "#fdf5e4",
+      "episodes": 51,
+      "status": "hiatus",
+      "days": [
+        "sun"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "스포츠",
+        "열혈",
+        "우정",
+        "라이벌",
+        "청춘",
+        "드라마",
+        "야구",
+        "스포츠성장"
+      ],
+      "desc": "유틸천재 야구선수, 에이스들의 사랑을 독식한다.",
+      "authors": [
+        {
+          "name": "조약돌",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        },
+        {
+          "name": "혜인태",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=843901",
+      "age": 12,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "sports-2"
+      ]
+    },
+    {
+      "id": "w6586bon",
+      "title": "에러 디 에코",
+      "author": "순수",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=854335",
+      "cover": "https://image-comic.pstatic.net/webtoon/854335/thumbnail/thumbnail_IMAG21_c5b19c82-94b1-4d08-ace2-b85e74ea6406.jpg",
+      "genres": [
+        "thriller"
+      ],
+      "recommended": 0,
+      "color": "#251b1b",
+      "episodes": 8,
+      "status": "ongoing",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "스릴러",
+        "고자극스릴러",
+        "게임",
+        "생존",
+        "데스게임",
+        "판타지",
+        "공포",
+        "게임판타지"
+      ],
+      "desc": "죽으면 현실에서도 죽는 공포게임.\n그런데 나만 죽지 않는다.",
+      "authors": [
+        {
+          "name": "순수",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=854335",
+      "age": 15,
+      "autoAt": "2026-11-19"
+    },
+    {
+      "id": "w6585ksg",
+      "title": "마왕까지 한 걸음",
+      "author": "윤홍",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=776668",
+      "cover": "https://image-comic.pstatic.net/webtoon/776668/thumbnail/thumbnail_IMAG21_a28279d5-333a-4d23-a524-95152ae48322.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#875749",
+      "episodes": 257,
+      "status": "completed",
+      "days": [
+        "thu"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "판타지",
+        "중세판타지액션",
+        "서양",
+        "크리처",
+        "액션",
+        "가벼운",
+        "개그",
+        "성장물"
+      ],
+      "desc": "\"이건 그냥… 마을 사람 A랑 다를게 없잖아…, 나보다 강한 존재는 이 세계에 있을 수 없어!\"\n세계관 최강자 자리를 위해 지상최강 마왕을 찾아 뭍으로 나온 바다의 왕 유리아.\n그런데… 거울을 보니 웬 어린아이가…?\n다리를 얻음과 동시에 그녀의 모든 힘이 사라져 버렸다...\n그럼에도 여전히 세계최강 자리를 노리고 있는 그녀의 눈물겨운 여정이 시작된다!!",
+      "authors": [
+        {
+          "name": "윤홍",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=776668",
+      "age": 15,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w6584jbj",
+      "title": "로스트 미디어샵 아코드",
+      "author": "육공",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=844728",
+      "cover": "https://image-comic.pstatic.net/webtoon/844728/thumbnail/thumbnail_IMAG21_86161dd8-3cb4-4f4a-a214-6431cde765c7.jpg",
+      "genres": [
+        "thriller"
+      ],
+      "recommended": 0,
+      "color": "#291417",
+      "episodes": 51,
+      "status": "ongoing",
+      "days": [
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "스릴러",
+        "크리처",
+        "미스터리",
+        "공포",
+        "오컬트",
+        "레트로",
+        "괴담"
+      ],
+      "desc": "'잊혀진 매체'라는 뜻을 가진 '로스트 미디어'.\n아코드는 그런 로스트 미디어를 사람들에게 선보이는 가게이다.\n아코드의 아리따운 점원 '리카'는 손님들이 찾는 로스트 미디어를 다시금 그들 앞에 선보인다.\n\n하지만 잊혀진 것에는 잊혀진 이유가 있다고 했던가.\n우리가 기억 속에서 그 매체들을 지운 까닭은 그것들이 끔찍해서였고 그것들을 다시 마주하는 순간 손님들은 공포에 휩싸인다.",
+      "authors": [
+        {
+          "name": "육공",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=844728",
+      "age": 15,
+      "autoAt": "2026-11-19"
+    },
+    {
+      "id": "w6583kbf",
+      "title": "용사는 쉴 수 없다",
+      "author": "판테라, 프라임, 플레임",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=855296",
+      "cover": "https://image-comic.pstatic.net/webtoon/855296/thumbnail/thumbnail_IMAG21_277022fd-e76c-43ad-a6dd-ad31561b1e5c.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#1c1316",
+      "episodes": 8,
+      "status": "ongoing",
+      "days": [
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "판타지",
+        "중세판타지액션",
+        "블랙코미디",
+        "모험",
+        "용사",
+        "차원이동"
+      ],
+      "desc": "마왕을 죽이고도 현실로 돌아가지 못한 용사 라온.\n이건 돌아가기 위해 또 다른 세계를 구해야 하는, 쉬고 싶지만 쉴 수 없는 2회차 용사의 이야기다.",
+      "authors": [
+        {
+          "name": "판테라",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "프라임",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "플레임",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=855296",
+      "age": 15,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "fantasy-1"
+      ]
+    },
+    {
+      "id": "w6582grq",
+      "title": "과학고 생존일지",
+      "author": "윤찐빵",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=841608",
+      "cover": "https://image-comic.pstatic.net/webtoon/841608/thumbnail/thumbnail_IMAG21_b8a6d322-5829-4108-afe1-6e0cd26299c8.jpg",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 0,
+      "color": "#183527",
+      "episodes": 64,
+      "status": "ongoing",
+      "days": [
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "일상",
+        "컷툰",
+        "독자PICK",
+        "일상개그힐링",
+        "감성적인",
+        "공감",
+        "우정",
+        "가족"
+      ],
+      "desc": "과학보다 만화가 좋았고, 수학은 보기만 해도 머리가 아픈 찐빵이.\n그런 내가... 대한민국 영재들만 모인다는 과학고에 덜컥 입학했다.\n천재들 사이에서 살아남기 위한, 범재의 눈물겨운 생존 분투기!\n100% 실화 기반 하이퍼리얼리즘 일상툰 :3",
+      "authors": [
+        {
+          "name": "윤찐빵",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=841608",
+      "age": 0,
+      "autoAt": "2026-11-19"
+    },
+    {
+      "id": "w6581eyp",
+      "title": "아마도 무적불패",
+      "author": "2Poet",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=834396",
+      "cover": "https://image-comic.pstatic.net/webtoon/834396/thumbnail/thumbnail_IMAG21_3a69b99a-e65a-4a10-8c81-5a4dd5a634dc.jpg",
+      "genres": [
+        "romance",
+        "murim"
+      ],
+      "recommended": 0,
+      "color": "#f9e8e9",
+      "episodes": 91,
+      "status": "ongoing",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "개그",
+        "하렘",
+        "러브코미디",
+        "판타지개그"
+      ],
+      "desc": "험악한 겉모습 때문에 '사파의 별'이라 불리던 삼류 무사 유혈.\n헛소문 때문에 억울한 나날을 보내던 중 과거, 미래를 약속했던 여인 설화가 진짜배기 고수가 되어 그의 앞에 나타난다.\n\n설화를 시작으로 수많은 무림인들과 엮이며 악명은 점점 커져만 가고 이윽고 무림맹과 마교, 심지어는 황실까지 그의 이름이 들어가게 되는데...\n\n\"아니... 다 오해라니까요?\"",
+      "authors": [
+        {
+          "name": "2Poet",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=834396",
+      "age": 15,
+      "autoAt": "2026-11-19"
+    },
+    {
+      "id": "w6580xqv",
+      "title": "구운몽 제로",
+      "author": "민송아",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=840163",
+      "cover": "https://image-comic.pstatic.net/webtoon/840163/thumbnail/thumbnail_IMAG21_a8b359f5-7477-4bb7-a484-28f5178312e5.jpg",
+      "genres": [
+        "fantasy",
+        "thriller"
+      ],
+      "recommended": 0,
+      "color": "#381918",
+      "episodes": 64,
+      "status": "ongoing",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "판타지",
+        "현대판타지",
+        "액션판타지",
+        "소년물",
+        "액션",
+        "성장물",
+        "동양풍판타지",
+        "이세계"
+      ],
+      "desc": "현대 배경의 이세계로 소환된 대한민국 20살 '양소유'가 용을 잡고 다시 현실 세계로 돌아가기까지의 이야기.\n고전 구운몽..... 의 거의 이름만 빌려온 먼치킨/상태창 없는 현대액션판타지 만화.",
+      "authors": [
+        {
+          "name": "민송아",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=840163",
+      "age": 15,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "fantasy-1"
+      ]
+    },
+    {
+      "id": "w6579bhc",
+      "title": "세상에 나쁜 용사는 없다",
+      "author": "유령두부, 한소",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=833358",
+      "cover": "https://image-comic.pstatic.net/webtoon/833358/thumbnail/thumbnail_IMAG21_3998a790-e582-4b05-8c96-6cf05732f4df.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#19131c",
+      "episodes": 99,
+      "status": "ongoing",
+      "days": [
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "판타지",
+        "액션판타지",
+        "판타지개그",
+        "열혈",
+        "상태창",
+        "소년물",
+        "용사",
+        "액션"
+      ],
+      "desc": "세상에서 가장 강한 남자라 불렸던 사나이.\n세계 최대 격투기 리그의 헤비급 챔피언.\n최강의 남자였던 최현석은 죽음 이후 이세계의 용사로서 새로운 삶을 시작한다.\n\n'부! 명예! 미녀를 독차지하는 용사!'\n\n찬란한 미래를 꿈꾸며 이세계로 이동한 그가 조우한 것은 자신보다 머리 하나는 더 큰 근육질의 소대가리를 괴물.\n마왕군의 간부였던 괴물이 물었다.\n\n\"용사? 네가 용사라는 거냐?\"\n“어... 용사일걸요...?”\n\n그렇게 지옥이 시작됐다.",
+      "authors": [
+        {
+          "name": "유령두부",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        },
+        {
+          "name": "한소",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=833358",
+      "age": 15,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "fantasy-1"
+      ]
+    },
+    {
+      "id": "w6578hvb",
+      "title": "완벽한 선배의 Hide!",
+      "author": "두지",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=849742",
+      "cover": "https://image-comic.pstatic.net/webtoon/849742/thumbnail/thumbnail_IMAG21_a267e21e-2ff7-4abe-81bb-c29e3d2df60a.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 3,
+      "color": "#fdeae6",
+      "episodes": 31,
+      "status": "ongoing",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "로맨스",
+        "치명적인",
+        "캠퍼스",
+        "집착남",
+        "로맨틱코미디",
+        "드라마",
+        "캠퍼스로맨스"
+      ],
+      "desc": "모두에게 다정하고 친절한 엄친아 과탑 태혁 선배.\n그러나 그 엄친아의 껍데기 속에는 미친 또라이 지랄남이 숨겨져 있다?\n\n학과 동기들 중 유일하게 그 남자의 비밀을 알고 있는 여자.\n그리고 그 여자에게 점점 더 집착하는 또라이 지랄남.\n\n두 선남선녀의 조금 미묘한 대학 생활이 시작된다.",
+      "authors": [
+        {
+          "name": "두지",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=849742",
+      "age": 15,
+      "autoAt": "2026-11-19",
+      "arate": {
+        "hoje": 3
+      },
+      "recAvg": 3
+    },
+    {
       "id": "w6577izg",
       "title": "멸귀수도전",
       "author": "이산책, 솔티 독, 연우솔",
@@ -13013,7 +13679,7 @@
     "libraryLock": true
   },
   "meta": {
-    "lastWebtoonId": 6577,
+    "lastWebtoonId": 6591,
     "admins": {
       "hoje": "효제"
     }
