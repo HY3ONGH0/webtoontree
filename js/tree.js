@@ -706,7 +706,13 @@
       const bw = wide ? Math.max(64, Math.min(210, (h - 86) / 1.417 / 1.18)) : 120;
       const lv = main.closest('.lb-view'); if (lv) lv.classList.toggle('small-books', wide && bw < 120);
       // 크기는 칸(.lb-slot)에 걸어 둬요 → 책을 다시 그려도(진행 기록 등) 크기가 유지돼요
-      [...stage.querySelectorAll('.lb-slot')].forEach((el, i) => { el.style.setProperty('--bw', `${Math.round(i === LB.idx ? bw * 1.18 : bw)}px`); el.classList.toggle('on', i === LB.idx); });
+      // 크기는 책장에 한 번만 걸고, 고른 책 하나만 바꿔요 (223권을 하나씩 바꾸면 크롬북에서 느려요)
+      stage.style.setProperty('--bw', `${Math.round(bw)}px`); stage.style.setProperty('--bw-on', `${Math.round(bw * 1.18)}px`);
+      const slots = stage.children;
+      const prevOn = stage.querySelector('.lb-slot.on');
+      const nowOn = slots[LB.idx] && slots[LB.idx].classList.contains('lb-slot') ? slots[LB.idx] : [...stage.querySelectorAll('.lb-slot')][LB.idx];
+      if (prevOn && prevOn !== nowOn) prevOn.classList.remove('on');
+      if (nowOn) nowOn.classList.add('on');
       const gap = wide ? 44 : 22;
       const shift = Math.max(0, LB.idx * (bw + gap) - (wide ? bw + gap : 0));
       stage.style.transform = `translateX(${-shift}px)`;

@@ -4,7 +4,7 @@
    - 이 화면은 서버에 아무것도 바꾸지 않아요. 실제 수정 권한은 GitHub 저장소가 가져요. */
 (function () {
   const DRAFT = 'webtoontree.admin.draft';
-  const NEED_SERVER = 22;   // 이 화면이 필요로 하는 서버 코드 판 번호 (apps-script/Code.gs 의 SERVER_VERSION)
+  const NEED_SERVER = 23;   // 이 화면이 필요로 하는 서버 코드 판 번호 (apps-script/Code.gs 의 SERVER_VERSION)
   const root = () => document.getElementById('admin');
   const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -38,6 +38,13 @@
     for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
     return ('0000000' + h.toString(16)).slice(-8) + ':' + str.length;
   }
+  /** 데이터 지문: 칸 순서와 상관없이 내용이 같으면 같은 값 (서버 dataHash_ 와 같은 규칙) */
+  function canon(v) {
+    if (Array.isArray(v)) return '[' + v.map((x) => (x === undefined ? 'null' : canon(x))).join(',') + ']';
+    if (v && typeof v === 'object') return '{' + Object.keys(v).filter((k) => v[k] !== undefined).sort().map((k) => JSON.stringify(k) + ':' + canon(v[k])).join(',') + '}';
+    return JSON.stringify(v);
+  }
+  const dataFp = (d) => fp(canon(d));
   function setBase(h) { base = h; try { localStorage.setItem(BASE, h); } catch (e) { /* 무시 */ } }
   // 입문작 여러 개 (사이트의 app.js와 같은 규칙)
   WT.starts = WT.starts || ((T) => (T ? [T.start].concat(T.starts || []).filter((id, i, a) => id && a.indexOf(id) === i && (T.nodes || {})[id]) : []));
@@ -1372,17 +1379,25 @@
 
 
   // ---------- 서버: 회원 · 댓글 · 제보 ----------
-  async function api(action, payload) {
+  // 잠깐 끊기거나 서버가 바쁠 때 한 번 더 해 봐요 (함께 편집 · 읽기 요청만. 저장은 두 번 하지 않아요)
+  const RETRY = { liveSync: 1, liveJoin: 1, adminCheck: 1, adminUsers: 1, adminComments: 1, adminReports: 1 };
+  const transient = (m) => /닿지 못했어요|잠시 응답하지|잠시 뒤|Lock|lock|timed out|too many|Service|서버에서 문제가/.test(String(m || ''));
+  async function api(action, payload, tries) {
     const url = (D.settings.apiUrl || '').trim();
     if (!url) throw new Error('먼저 [디자인 · 코인 설정]에 Apps Script 주소를 넣어 주세요.');
     const who = srv.pw ? { adminPassword: srv.pw } : { token: srv.token };
     let res, j;
-    try { res = await fetch(url, { method: 'POST', body: JSON.stringify(Object.assign({ action }, who, payload || {})) }); }
-    catch (e) { throw new Error('서버에 닿지 못했어요. 인터넷 연결을 확인해 주세요.'); }
-    try { j = await res.json(); }
-    catch (e) { throw new Error(`서버가 잠시 응답하지 못했어요 (응답 ${res.status}). 조금 뒤에 다시 돼요.`); }
-    if (!j.ok) throw new Error((j.error || '서버에서 문제가 생겼어요.') + (j.detail ? ` (${j.detail})` : ''));
-    return j;
+    try {
+      try { res = await fetch(url, { method: 'POST', body: JSON.stringify(Object.assign({ action }, who, payload || {})) }); }
+      catch (e) { throw new Error('서버에 닿지 못했어요. 인터넷 연결을 확인해 주세요.'); }
+      try { j = await res.json(); }
+      catch (e) { throw new Error(`서버가 잠시 응답하지 못했어요 (응답 ${res.status}). 조금 뒤에 다시 돼요.`); }
+      if (!j.ok) throw new Error((j.error || '서버에서 문제가 생겼어요.') + (j.detail ? ` (${j.detail})` : ''));
+      return j;
+    } catch (e) {
+      if (RETRY[action] && !(tries > 0) && transient(e.message)) { await new Promise((ok) => setTimeout(ok, 1200)); return api(action, payload, 1); }
+      throw e;
+    }
   }
   async function srvLoad() {
     srv.busy = true; srv.msg = ''; render();
@@ -1876,7 +1891,7 @@
     if (document.hidden) return;   // 다른 탭을 보는 동안에는 쉬었다가, 돌아오면 다시 연결해요
     live.retry = setTimeout(() => liveJoin(), Math.min(30000, 3000 * Math.pow(2, live.tries - 1)));
   }
-  async function liveJoin() {
+  async function liveJoin(quiet) {
     if (live.on || live.joining || !srv.ok) return;
     live.joining = true; clearTimeout(live.retry);
     let r;
@@ -1886,8 +1901,9 @@
     const before = JSON.parse(siteJSON);               // 이 화면을 열 때 받은 사이트 데이터
     let savedBase = '';
     try { savedBase = localStorage.getItem(BASE) || ''; } catch (e) { savedBase = ''; }
-    const mineOk = !savedBase || savedBase === siteHash; // 예전 사이트 기준으로 만든 초안은 섞지 않아요
-    const mine = mineOk ? diffUnits(units(before), units(D)) : [];
+    const mineOk = quiet || !savedBase || savedBase === siteHash; // 예전 사이트 기준으로 만든 초안은 섞지 않아요
+    // 다시 맞출 때는 아직 서버에 안 보낸 내 변경만 지켜요 (이미 함께 편집에 올라간 것은 기록에서 다시 받아요)
+    const mine = quiet && live.shadow ? diffUnits(live.shadow, units(D)) : mineOk ? diffUnits(units(before), units(D)) : [];
     if (!mineOk && isDirty()) {
       try { localStorage.setItem('webtoontree.admin.oldDraft', JSON.stringify(D)); } catch (e) { /* 무시 */ }
       toast('이 기기에 예전 초안이 있었는데 사이트가 그 뒤로 바뀌어서 함께 편집에 섞지 않았어요');
@@ -1905,7 +1921,8 @@
     const again = live.tries > 0;
     live.on = true; live.joining = false; live.joined = true; live.tries = 0; live.ver = r.version; live.base = r.baseVersion; live.who = r.who || []; live.err = '';
     try { localStorage.setItem(DRAFT, JSON.stringify(D)); } catch (e) { /* 무시 */ }
-    if (mine.length) toast(`함께 편집에 연결됐어요. 이 기기에서 하던 변경 ${mine.length}곳을 같이 올려요`);
+    if (quiet) { if (Date.now() - live.lastNote > 6000) { live.lastNote = Date.now(); toast('사이트에 새로 저장된 내용을 받아 왔어요'); } }
+    else if (mine.length) toast(`함께 편집에 연결됐어요. 이 기기에서 하던 변경 ${mine.length}곳을 같이 올려요`);
     else if (first || again) toast(again ? '함께 편집에 다시 연결됐어요' : '함께 편집에 연결됐어요. 다른 관리자가 고친 내용이 몇 초 안에 보여요');
     liveRender();
     liveLoop();
@@ -1921,9 +1938,10 @@
   // (종일 열어 두어도 서버 하루 사용량을 아껴요. 내가 고치면 0.5초 안에 따로 올려요)
   function liveWait() {
     if (document.hidden) return 20000;
+    if (live.fails) return Math.min(20000, 2500 * Math.pow(2, live.fails));   // 실패하면 간격을 늘려요
     const idle = Date.now() - (live.act || 0);
     const others = live.who.some((x) => x.userId !== srv.uid);
-    if (others || idle < 30000) return 2000;
+    if (others || idle < 30000) return 2500;
     return idle < 120000 ? 6000 : 12000;
   }
   const liveTouch = () => { const was = Date.now() - (live.act || 0); live.act = Date.now(); if (live.on && was > 30000) liveLoop(); };   // 다시 움직이면 바로 빠른 간격으로
@@ -1951,11 +1969,18 @@
         if (r.base.hash) setBase(r.base.hash);
         if (live.base === live.ver && !diffUnits(live.shadow, units(D)).length) siteJSON = JSON.stringify(D);
         setState();
+      } else if (r.base && r.base.hash && base && r.base.hash !== base) {
+        // 함께 고친 것 없이 사이트가 바뀌었어요 (다른 관리자가 한 번 더 저장 · 새벽 자동 갱신): 새 사이트 데이터로 다시 맞추고, 내가 아직 안 올린 변경은 지켜요
+        live.on = false; live.busy = false; live.fails = 0;
+        await liveJoin(true);
+        return;
       }
-      live.err = '';
+      live.err = ''; live.fails = 0;
       if (all.length > ops.length) setTimeout(() => liveTick(), 150);   // 남은 조각 이어서 올리기
     } catch (e) {
-      live.err = e.message;
+      // 한두 번 실패는 조용히 다시 해요. 세 번 연속 실패하면 그때 알려요
+      live.fails = (live.fails || 0) + 1;
+      if (live.fails >= 3) live.err = e.message;
     }
     live.busy = false;
     liveBadge();
@@ -2243,7 +2268,7 @@
       root().innerHTML = '<p style="padding:40px">data/data.json을 불러오지 못했어요.</p>';
       return;
     }
-    siteHash = fp(JSON.stringify(site));
+    siteHash = dataFp(site);
     D = clone(site);
     ensure();                     // 빠진 칸(meta 등)을 채운 상태를 "사이트 데이터"로 봐요
     siteJSON = JSON.stringify(D);

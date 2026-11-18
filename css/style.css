@@ -2532,3 +2532,55 @@ body.has-tk[data-tk-frame] .stage > .node-frame { display: block; }
 /* 배경 위 트리 이름: 배경 밝기에 맞춘 글자색 · 둘레 빛 (잠긴 웹툰도 읽히게) */
 body.has-bg .stage .node-label, body.has-bg .stage .node-sub { color: var(--text); text-shadow: 0 0 3px var(--halo), 0 0 8px var(--halo); }
 body.has-bg .stage .node-label.dim { color: var(--text); opacity: .72; }
+/* ================= 테마별 관리자 강추 · 오늘 폭주 효과 ================= */
+/* 색은 변수로, 모양은 테마별 규칙으로 바꿔요. 기본(테마 없음)은 지금 그대로 */
+body[data-fx] .pick-ring { background: conic-gradient(from 0deg, transparent 0deg, var(--pk-a) 50deg, var(--pk-b) 105deg, var(--pk-c) 120deg, transparent 165deg, transparent 180deg, var(--pk-a) 230deg, var(--pk-b) 285deg, var(--pk-c) 300deg, transparent 345deg); filter: drop-shadow(0 0 6px var(--pk-a)) drop-shadow(0 0 2px var(--pk-c)); }
+body[data-fx] .pick-orbit { border-color: var(--pk-orbit); filter: drop-shadow(0 0 4px var(--pk-a)); }
+body[data-fx] .pick-glow { background: radial-gradient(circle, transparent 42%, var(--pk-glow) 56%, transparent 72%); }
+body[data-fx] .node-box.is-pick .node { box-shadow: 0 0 0 2px var(--pk-a), 0 0 26px var(--pk-glow); }
+body[data-fx] .pick-badge, body[data-fx] .pick-badge.on-node { background: var(--pk-badge); border-color: var(--pk-c); box-shadow: 0 0 10px var(--pk-glow), 0 2px 4px rgba(0, 0, 0, .45); color: var(--pk-ink, #fff); }
+body[data-fx] .fire .glow { background: radial-gradient(circle, var(--f-glow) 0%, var(--f-glow2) 45%, transparent 70%); }
+body[data-fx] .fire .outer { background: radial-gradient(ellipse 50% 60% at 50% 70%, var(--f-hi) 0%, var(--f-mid) 35%, var(--f-lo) 60%, transparent 75%); }
+body[data-fx] .fire .inner { background: radial-gradient(ellipse 50% 60% at 50% 75%, #fff 0%, var(--f-hi) 40%, transparent 72%); }
+body[data-fx] .fire .ember { background: var(--ember); box-shadow: 0 0 8px var(--ember-glow); }
+body[data-fx] .node.is-hot:not(.st-locked) { box-shadow: 0 0 26px var(--f-mid), inset 0 0 18px var(--f-glow); }
+/* 불씨 모양 */
+body[data-fx="winter"] .fire .ember, body[data-fx="xmas"] .fire .ember { border-radius: 0; clip-path: polygon(50% 0, 60% 38%, 100% 50%, 60% 62%, 50% 100%, 40% 62%, 0 50%, 40% 38%); width: 11px !important; height: 11px !important; }
+body[data-fx="spring"] .fire .ember { border-radius: 80% 10% 80% 10%; width: 10px !important; height: 7px !important; }
+body[data-fx="autumn"] .fire .ember { border-radius: 80% 10% 80% 10%; width: 11px !important; height: 8px !important; }
+body[data-fx="summer"] .fire .ember { background: transparent; border: 2px solid var(--ember); width: 9px !important; height: 9px !important; }
+body[data-fx="sheep"] .fire .ember { width: 9px !important; height: 9px !important; box-shadow: 0 0 0 2px #fff inset, 0 0 8px var(--ember-glow); }
+body[data-fx="firework"] .fire .ember:nth-child(3n) { background: #7FD4FF; } body[data-fx="firework"] .fire .ember:nth-child(3n+1) { background: #FF7EB6; }
+body[data-fx="halloween"] .fire .outer { filter: blur(6px) hue-rotate(0deg); }
+/* 강추 둘레 장식 (궤도 점선 대신 테마 무늬) */
+body[data-fx="winter"] .pick-orbit, body[data-fx="xmas"] .pick-orbit { border-style: dotted; border-width: 4px; }
+body[data-fx="spring"] .pick-orbit, body[data-fx="autumn"] .pick-orbit { border-style: dashed; border-width: 3px; }
+body[data-fx="seollal"] .pick-ring { background: conic-gradient(#E0383E 0 45deg, #F1B92E 45deg 90deg, #2E9E5B 90deg 135deg, #3B6FD9 135deg 180deg, #FF7EB6 180deg 225deg, #fff 225deg 270deg, #E0383E 270deg 315deg, #F1B92E 315deg 360deg); }
+body[data-fx="firework"] .pick-ring { background: conic-gradient(#FF6B6B, #FFD34D, #B5F58A, #7FD4FF, #B08CFF, #FF7EB6, #FF6B6B); }
+body[data-fx="xmas"] .pick-ring { background: repeating-conic-gradient(#E0383E 0 15deg, #fff 15deg 30deg); }
+
+body[data-fx="winter"] { --pk-a: #5AB6E8; --pk-b: #BFE6FF; --pk-c: #FFFFFF; --pk-glow: rgba(120, 200, 255, .7); --pk-orbit: rgba(220, 240, 255, .95); --pk-badge: #2F80C9;
+  --f-hi: #F2FBFF; --f-mid: rgba(120, 200, 255, .85); --f-lo: rgba(60, 120, 220, .55); --f-glow: rgba(150, 210, 255, .5); --f-glow2: rgba(80, 150, 255, .2); --ember: #fff; --ember-glow: #7FD4FF; }
+body[data-fx="spring"] { --pk-a: #F06292; --pk-b: #FFB7D5; --pk-c: #FFF0F6; --pk-glow: rgba(255, 140, 190, .7); --pk-orbit: rgba(255, 183, 213, .95); --pk-badge: #E0568E;
+  --f-hi: #FFF4F9; --f-mid: rgba(255, 160, 200, .85); --f-lo: rgba(240, 98, 146, .55); --f-glow: rgba(255, 180, 210, .5); --f-glow2: rgba(240, 98, 146, .18); --ember: #FFC2DA; --ember-glow: #F06292; }
+body[data-fx="summer"] { --pk-a: #1EA7D6; --pk-b: #5FE0E6; --pk-c: #FFF1A8; --pk-glow: rgba(60, 200, 230, .7); --pk-orbit: rgba(255, 241, 168, .95); --pk-badge: #1789B8;
+  --f-hi: #FFFBE0; --f-mid: rgba(255, 210, 60, .85); --f-lo: rgba(30, 167, 214, .5); --f-glow: rgba(255, 230, 120, .5); --f-glow2: rgba(30, 167, 214, .2); --ember: #E8FBFF; --ember-glow: #1EA7D6; }
+body[data-fx="autumn"] { --pk-a: #D9482B; --pk-b: #F2A03D; --pk-c: #FFE08A; --pk-glow: rgba(232, 134, 46, .75); --pk-orbit: rgba(242, 160, 61, .95); --pk-badge: #C9482B;
+  --f-hi: #FFF1C9; --f-mid: rgba(242, 160, 61, .85); --f-lo: rgba(201, 72, 43, .6); --f-glow: rgba(242, 160, 61, .45); --f-glow2: rgba(201, 72, 43, .2); --ember: #E8862E; --ember-glow: #D9482B; }
+body[data-fx="xmas"] { --pk-a: #E0383E; --pk-b: #2F9A55; --pk-c: #FFD34D; --pk-glow: rgba(255, 211, 77, .65); --pk-orbit: rgba(47, 154, 85, .95); --pk-badge: #2F7A4A;
+  --f-hi: #FFFBE6; --f-mid: rgba(255, 211, 77, .85); --f-lo: rgba(224, 56, 62, .55); --f-glow: rgba(255, 230, 140, .5); --f-glow2: rgba(224, 56, 62, .18); --ember: #FFD34D; --ember-glow: #FFF4C2; }
+body[data-fx="sheep"] { --pk-a: #C8323A; --pk-b: #F1B92E; --pk-c: #FFF1C2; --pk-glow: rgba(241, 185, 46, .7); --pk-orbit: rgba(255, 241, 194, .95); --pk-badge: #B3202C;
+  --f-hi: #FFF6E0; --f-mid: rgba(241, 140, 60, .85); --f-lo: rgba(200, 50, 58, .6); --f-glow: rgba(255, 210, 140, .5); --f-glow2: rgba(200, 50, 58, .2); --ember: #FFE3E0; --ember-glow: #F1B92E; }
+body[data-fx="firework"] { --pk-a: #B08CFF; --pk-b: #FFD34D; --pk-c: #fff; --pk-glow: rgba(176, 140, 255, .7); --pk-orbit: rgba(255, 211, 77, .95); --pk-badge: #6B4FD8;
+  --f-hi: #FFFFFF; --f-mid: rgba(176, 140, 255, .8); --f-lo: rgba(255, 126, 182, .55); --f-glow: rgba(200, 170, 255, .5); --f-glow2: rgba(255, 126, 182, .2); --ember: #FFD34D; --ember-glow: #fff; }
+body[data-fx="seollal"] { --pk-a: #E0383E; --pk-b: #F1B92E; --pk-c: #FFF4C2; --pk-glow: rgba(241, 185, 46, .7); --pk-orbit: rgba(59, 111, 217, .9); --pk-badge: #B3202C;
+  --f-hi: #FFF8D6; --f-mid: rgba(241, 185, 46, .9); --f-lo: rgba(224, 56, 62, .6); --f-glow: rgba(241, 185, 46, .5); --f-glow2: rgba(224, 56, 62, .2); --ember: #F1B92E; --ember-glow: #FFE08A; }
+body[data-fx="chuseok"] { --pk-a: #E9C46A; --pk-b: #FFF1B8; --pk-c: #FFFFFF; --pk-glow: rgba(255, 241, 184, .75); --pk-orbit: rgba(255, 241, 184, .9); --pk-badge: #8A6A2E; --pk-ink: #FFF8DC;
+  --f-hi: #FFFFF2; --f-mid: rgba(255, 236, 160, .85); --f-lo: rgba(233, 196, 106, .55); --f-glow: rgba(255, 241, 184, .55); --f-glow2: rgba(233, 196, 106, .2); --ember: #FFF1B8; --ember-glow: #FFFFFF; }
+body[data-fx="halloween"] { --pk-a: #8E44AD; --pk-b: #F28C28; --pk-c: #B5F58A; --pk-glow: rgba(142, 68, 173, .75); --pk-orbit: rgba(181, 245, 138, .9); --pk-badge: #6B2E86;
+  --f-hi: #F2FFE8; --f-mid: rgba(130, 230, 110, .85); --f-lo: rgba(40, 150, 90, .6); --f-glow: rgba(150, 255, 140, .45); --f-glow2: rgba(142, 68, 173, .25); --ember: #B5F58A; --ember-glow: #4BE07A; }
+/* 도서관 책장: 크기는 책장(--bw)에서 받고, 고른 책만 크게 · 화면 밖 책은 보일 때 그려요 */
+.lb-track { --bw: 140px; }
+.lb-slot { --bw: inherit; }
+.lb-slot.on { --bw: var(--bw-on, 140px); }
+.lb-slot:not(.on) { content-visibility: auto; contain-intrinsic-size: auto calc(var(--bw, 140px) * 1.05) auto calc(var(--bw, 140px) * 1.9); }
