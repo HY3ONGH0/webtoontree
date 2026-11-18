@@ -1,6 +1,66 @@
 {
   "webtoons": [
     {
+      "id": "w6577izg",
+      "title": "멸귀수도전",
+      "author": "이산책, 솔티 독, 연우솔",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=851689",
+      "cover": "https://image-comic.pstatic.net/webtoon/851689/thumbnail/thumbnail_IMAG21_ed1fb23a-ede8-412b-8d10-a5288bac83e0.jpg",
+      "genres": [],
+      "recommended": 4,
+      "color": "#1a110a",
+      "episodes": 18,
+      "status": "ongoing",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "무협/사극",
+        "레드아이스 스튜디오",
+        "선협",
+        "오컬트판타지",
+        "동양",
+        "소년물",
+        "크리처",
+        "성장물"
+      ],
+      "desc": "\"내 복수는 요귀를 절멸시켜야 끝나는 거야.\"\n\n부모를 죽인 요귀를 잔혹하게 효수한 이후,\n마을에서 괴물이라고 손가락질 받던 소년 '이세'.\n\n삶에 더 이상 미련이 없던 '이세'는\n도깨비이자 요귀사냥꾼인 '몽련'을 만나\n세상에서 요귀를 절멸시키겠다는 목표를 가지게 된다.\n\n그렇게 시작된 몽련과의 생활.\n그 생활 속에서 몽련은 이세의 어떠한 '특이점'을 알게 된다.\n\n몽련은 그런 이세를 위해\n그를 수선계의 백정 집단,\n수도 문파 '대무도'로 보내는데…",
+      "authors": [
+        {
+          "name": "이산책",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "솔티 독",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "연우솔",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=851689",
+      "age": 15,
+      "autoAt": "2026-11-19",
+      "arate": {
+        "hoje": 4
+      },
+      "recAvg": 4,
+      "chars": [
+        "이세"
+      ]
+    },
+    {
       "id": "w064",
       "title": "역대급 영지 설계사",
       "author": "이현민, 김현수, 문백경",
@@ -10,7 +70,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 0,
+      "recommended": 5,
       "color": "#380b09",
       "episodes": 228,
       "status": "completed",
@@ -56,7 +116,11 @@
       "subs": [
         "fantasy-6"
       ],
-      "age": 0
+      "age": 0,
+      "arate": {
+        "hoje": 5
+      },
+      "recAvg": 5
     },
     {
       "id": "w065",
@@ -117,7 +181,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "color": "#010101",
       "episodes": 57,
       "status": "ongoing",
@@ -147,9 +211,10 @@
       "source": "https://comic.naver.com/webtoon/list?titleId=843310",
       "autoAt": "2026-11-18",
       "arate": {
-        "admin": 3
+        "admin": 3,
+        "hoje": 4
       },
-      "recAvg": 3,
+      "recAvg": 3.5,
       "age": 15
     },
     {
@@ -162,7 +227,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "color": "#fd8644",
       "episodes": 10,
       "status": "ongoing",
@@ -206,9 +271,10 @@
       "source": "https://comic.naver.com/webtoon/list?titleId=854122",
       "autoAt": "2026-11-18",
       "arate": {
-        "admin": 2
+        "admin": 2,
+        "hoje": 3
       },
-      "recAvg": 2,
+      "recAvg": 2.5,
       "age": 15
     },
     {
@@ -375,7 +441,7 @@
         "drama",
         "thriller"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#fd054b",
       "episodes": 230,
       "status": "ongoing",
@@ -407,7 +473,11 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=774866",
       "autoAt": "2026-11-18",
-      "age": 15
+      "age": 15,
+      "arate": {
+        "hoje": 4
+      },
+      "recAvg": 4
     },
     {
       "id": "w072",
@@ -419,7 +489,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "color": "#39332c",
       "episodes": 71,
       "status": "completed",
@@ -446,7 +516,11 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=791140",
       "autoAt": "2026-11-18",
-      "age": 15
+      "age": 15,
+      "arate": {
+        "hoje": 2
+      },
+      "recAvg": 2
     },
     {
       "id": "w073",
@@ -458,7 +532,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#271737",
       "episodes": 181,
       "status": "completed",
@@ -490,7 +564,11 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=776092",
       "autoAt": "2026-11-18",
-      "age": 15
+      "age": 15,
+      "arate": {
+        "hoje": 3
+      },
+      "recAvg": 3
     },
     {
       "id": "w074",
@@ -502,7 +580,7 @@
       "genres": [
         "thriller"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#170e11",
       "episodes": 108,
       "status": "completed",
@@ -533,7 +611,11 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=758666",
       "autoAt": "2026-11-18",
-      "age": 15
+      "age": 15,
+      "arate": {
+        "hoje": 3
+      },
+      "recAvg": 3
     },
     {
       "id": "w075",
@@ -634,7 +716,7 @@
       "genres": [
         "drama"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "color": "#583a35",
       "episodes": 178,
       "status": "completed",
@@ -670,7 +752,11 @@
       "subs": [
         "fantasy-5"
       ],
-      "age": 15
+      "age": 15,
+      "arate": {
+        "hoje": 3
+      },
+      "recAvg": 3
     },
     {
       "id": "w078",
@@ -781,7 +867,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#e5eaf3",
       "episodes": 653,
       "status": "hiatus",
@@ -817,7 +903,11 @@
         "fantasy-5",
         "fantasy-6"
       ],
-      "age": 12
+      "age": 12,
+      "arate": {
+        "hoje": 4
+      },
+      "recAvg": 4
     },
     {
       "id": "w081",
@@ -829,7 +919,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#eae4da",
       "episodes": 333,
       "status": "completed",
@@ -859,7 +949,11 @@
       "subs": [
         "fantasy-5"
       ],
-      "age": 12
+      "age": 12,
+      "arate": {
+        "hoje": 4
+      },
+      "recAvg": 4
     },
     {
       "id": "w082",
@@ -1055,7 +1149,7 @@
         "sports",
         "drama"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#0c131c",
       "episodes": 205,
       "status": "completed",
@@ -1088,7 +1182,11 @@
       "subs": [
         "sports-5"
       ],
-      "age": 0
+      "age": 0,
+      "arate": {
+        "hoje": 4
+      },
+      "recAvg": 4
     },
     {
       "id": "w087",
@@ -1152,7 +1250,7 @@
         "fantasy",
         "daily"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "color": "#fcede2",
       "episodes": 197,
       "status": "completed",
@@ -1181,7 +1279,11 @@
       "subs": [
         "fantasy-5"
       ],
-      "age": 0
+      "age": 0,
+      "arate": {
+        "hoje": 4
+      },
+      "recAvg": 4
     },
     {
       "id": "w089",
@@ -12905,9 +13007,9 @@
     "libraryLock": true
   },
   "meta": {
-    "lastWebtoonId": 6575,
+    "lastWebtoonId": 6577,
     "admins": {
-      "admin": "최종 관리자"
+      "hoje": "효제"
     }
   },
   "version": 1,
