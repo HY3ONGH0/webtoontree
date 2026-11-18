@@ -10671,7 +10671,10 @@
         "admin"
       ],
       "pick": true,
-      "age": 15
+      "age": 15,
+      "subs": [
+        "fantasy-1"
+      ]
     },
     {
       "id": "w023",
