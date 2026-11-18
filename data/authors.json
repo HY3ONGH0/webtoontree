@@ -5046,5 +5046,33 @@
         "finished": false
       }
     ]
+  },
+  "이산책": {
+    "name": "이산책",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "솔티 독": {
+    "name": "솔티 독",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20260818_42/1787059225264gXYeK_PNG/%BC%D6%C6%BC%B5%B6.png",
+    "bio": "",
+    "url": "https://comic.naver.com/community/u/_g19inl",
+    "works": []
+  },
+  "연우솔": {
+    "name": "연우솔",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "스타 플레이어의 귀환",
+        "source": "https://comic.naver.com/webtoon/list?titleId=849923",
+        "cover": "https://image-comic.pstatic.net/webtoon/849923/thumbnail/thumbnail_IMAG21_d2af9af2-a417-4b9c-a7c8-0e5038f56edf.jpg",
+        "finished": false
+      }
+    ]
   }
 }
