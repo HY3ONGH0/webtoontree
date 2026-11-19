@@ -43,7 +43,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=853684",
       "age": 15,
-      "autoAt": "2026-11-19"
+      "autoAt": "2026-11-20"
     },
     {
       "id": "w6703bcb",
@@ -84,7 +84,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=774832",
       "age": 0,
-      "autoAt": "2026-11-19",
+      "autoAt": "2026-11-20",
       "subs": [
         "romance-3"
       ]
@@ -133,7 +133,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=755674",
       "age": 12,
-      "autoAt": "2026-11-19"
+      "autoAt": "2026-11-20"
     },
     {
       "id": "w6701lrb",
@@ -176,7 +176,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=796062",
       "age": 15,
-      "autoAt": "2026-11-19"
+      "autoAt": "2026-11-20"
     },
     {
       "id": "w6700qha",
@@ -214,7 +214,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=795929",
       "age": 15,
-      "autoAt": "2026-11-19"
+      "autoAt": "2026-11-20"
     },
     {
       "id": "w6699txa",
@@ -269,7 +269,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=854302",
       "age": 15,
-      "autoAt": "2026-11-19",
+      "autoAt": "2026-11-20",
       "subs": [
         "fantasy-5"
       ]
@@ -321,7 +321,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=850976",
       "age": 15,
-      "autoAt": "2026-11-19"
+      "autoAt": "2026-11-20"
     },
     {
       "id": "w6697vxe",
@@ -376,7 +376,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=846109",
       "age": 19,
-      "autoAt": "2026-11-19"
+      "autoAt": "2026-11-20"
     },
     {
       "id": "w6696edt",
@@ -422,7 +422,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=753858",
       "age": 15,
-      "autoAt": "2026-11-19"
+      "autoAt": "2026-11-20"
     },
     {
       "id": "w6695jzz",
@@ -467,7 +467,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=741458",
       "age": 12,
-      "autoAt": "2026-11-19",
+      "autoAt": "2026-11-20",
       "subs": [
         "fantasy-5"
       ]
@@ -525,7 +525,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=759940",
       "age": 15,
-      "autoAt": "2026-11-19"
+      "autoAt": "2026-11-20"
     },
     {
       "id": "w6693rju",
@@ -580,7 +580,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=761104",
       "age": 12,
-      "autoAt": "2026-11-19",
+      "autoAt": "2026-11-20",
       "subs": [
         "romance-3"
       ]
@@ -621,7 +621,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=740034",
       "age": 0,
-      "autoAt": "2026-11-19",
+      "autoAt": "2026-11-20",
       "subs": [
         "romance-3"
       ]
@@ -629,7 +629,7 @@
     {
       "id": "w6691xwj",
       "title": "던전을 그리는 화가",
-      "author": "글리, 오솟, 취미글주의",
+      "author": "리디에만 있는 독점 작품!",
       "platform": "리디",
       "url": "https://ridibooks.com/books/6305000001",
       "cover": "https://img.ridicdn.net/cover/6305000034/xxlarge#1",
@@ -647,27 +647,13 @@
       "desc": "던전을 그리는 화가 작품소개: 전지구를 뒤바꾼 ‘대재앙’ 이후의 세계.미술교사였던 주인공 서지오는 갑작스러운 화재로 인해 사망한 뒤초상화 속으로 빨려 들어가, 그림이 되고 만다.초상화 속 세계에서 지오는 생명을 창조하고,또 다른 차원문을 열 수도 있는 전능한 능력을 얻게 된다.지오는 자신의 능력을 통해 수많은 인연과 마주하며그들이 맞닥뜨린 문제를 해결해주고자 한다.그러나, 차원을 넘나들...",
       "authors": [
         {
-          "roles": [
-            "writer"
-          ],
-          "name": "글리"
-        },
-        {
-          "roles": [
-            "painter"
-          ],
-          "name": "오솟"
-        },
-        {
-          "roles": [
-            "original"
-          ],
-          "name": "취미글주의"
+          "name": "리디에만 있는 독점 작품!",
+          "roles": []
         }
       ],
       "coverAuto": true,
       "source": "https://ridibooks.com/books/6305000001",
-      "autoAt": "2026-11-19",
+      "autoAt": "2026-11-20",
       "subs": [
         "fantasy-2"
       ]
@@ -693,7 +679,7 @@
       "desc": "여기 악마가 있어 작품소개: 게임회사의 인사팀에서 일하게 된 1년 차 직장인 조승훈.인간의 모습을 한 악마 상사와 함께 회사를 급성장시키게 되는데…성장의 이면에 있는 악마의 진짜 목표는 무엇이며,이를 깨달은 인간은 과연 어떤 선택을 하게 될 것인가....",
       "coverAuto": true,
       "source": "https://ridibooks.com/books/1746034299",
-      "autoAt": "2026-11-19",
+      "autoAt": "2026-11-20",
       "authors": [
         {
           "name": "맷집왕",
@@ -742,7 +728,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=724854",
       "age": 15,
-      "autoAt": "2026-11-19"
+      "autoAt": "2026-11-20"
     },
     {
       "id": "w6688imw",
@@ -786,7 +772,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=754875",
       "age": 12,
-      "autoAt": "2026-11-19",
+      "autoAt": "2026-11-20",
       "subs": [
         "fantasy-5"
       ]
@@ -833,7 +819,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=703630",
       "age": 15,
-      "autoAt": "2026-11-19",
+      "autoAt": "2026-11-20",
       "subs": [
         "fantasy-5"
       ]
@@ -875,7 +861,7 @@
       "coverAuto": true,
       "source": "https://webtoon.kakao.com/content/%EC%9C%A0%EC%82%AC%EA%B3%BC%ED%95%99-%ED%83%90%EA%B5%AC%EC%98%81%EC%97%AD/1397",
       "age": 0,
-      "autoAt": "2026-11-19",
+      "autoAt": "2026-11-20",
       "subs": [
         "daily-1"
       ]
@@ -927,7 +913,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=833052",
       "age": 19,
-      "autoAt": "2026-11-19"
+      "autoAt": "2026-11-20"
     },
     {
       "id": "w6684qpi",
@@ -967,7 +953,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=685460",
       "age": 0,
-      "autoAt": "2026-11-19"
+      "autoAt": "2026-11-20"
     },
     {
       "id": "w6683aps",
@@ -996,7 +982,7 @@
       ],
       "coverAuto": true,
       "source": "https://www.lezhin.com/ko/comic/academy_of_card",
-      "autoAt": "2026-11-19",
+      "autoAt": "2026-11-20",
       "subs": [
         "romance-2"
       ]
@@ -1039,7 +1025,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=828373",
       "age": 15,
-      "autoAt": "2026-11-19",
+      "autoAt": "2026-11-20",
       "subs": [
         "fantasy-8"
       ]
@@ -1081,7 +1067,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=728128",
       "age": 0,
-      "autoAt": "2026-11-19",
+      "autoAt": "2026-11-20",
       "subs": [
         "fantasy-5"
       ]
@@ -1140,7 +1126,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=800726",
       "age": 0,
-      "autoAt": "2026-11-19"
+      "autoAt": "2026-11-20"
     },
     {
       "id": "w6679mzh",
