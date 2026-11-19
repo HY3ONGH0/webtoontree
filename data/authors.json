@@ -6327,6 +6327,12 @@
     "url": "https://comic.naver.com/community/u/Hailkwon",
     "works": [
       {
+        "title": "안나라수마나라",
+        "source": "https://comic.naver.com/webtoon/list?titleId=179704",
+        "cover": "https://image-comic.pstatic.net/webtoon/179704/thumbnail/thumbnail_IMAG21_3486178852879937589.jpg",
+        "finished": true
+      },
+      {
         "title": "두근두근두근거려",
         "source": "https://comic.naver.com/webtoon/list?titleId=65410",
         "cover": "https://image-comic.pstatic.net/webtoon/65410/thumbnail/thumbnail_IMAG21_4121747357475157299.jpg",
@@ -7048,5 +7054,33 @@
     "bio": "",
     "url": "",
     "works": []
+  },
+  "나무꾼": {
+    "name": "나무꾼",
+    "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+    "bio": "",
+    "url": "https://comic.naver.com/community/u/_u65iic",
+    "works": []
+  },
+  "jun2": {
+    "name": "JUN2",
+    "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+    "bio": "",
+    "url": "https://comic.naver.com/community/u/JUN2TOON",
+    "works": []
+  },
+  "편곤": {
+    "name": "편곤",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "마법사의 수기",
+        "source": "https://comic.naver.com/webtoon/list?titleId=856210",
+        "cover": "https://image-comic.pstatic.net/webtoon/856210/thumbnail/thumbnail_IMAG21_b2c46c2f-5f3c-48c5-a6e4-70c2e5b9ccd5.jpg",
+        "finished": false
+      }
+    ]
   }
 }
