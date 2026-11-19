@@ -1,6 +1,905 @@
 {
   "webtoons": [
     {
+      "id": "w6680jqu",
+      "title": "새 웹툰",
+      "author": "",
+      "platform": "네이버웹툰",
+      "url": "",
+      "cover": "",
+      "genres": [],
+      "recommended": 0,
+      "color": "",
+      "episodes": 1,
+      "status": "ongoing",
+      "days": [],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [],
+      "desc": ""
+    },
+    {
+      "id": "w6679mzh",
+      "title": "백수세끼",
+      "author": "치즈",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=733074",
+      "cover": "https://image-comic.pstatic.net/webtoon/733074/thumbnail/thumbnail_IMAG21_80df3e76-47af-4007-b57c-e8f2830835e5.jpg",
+      "genres": [
+        "drama"
+      ],
+      "recommended": 0,
+      "color": "#3b4657",
+      "episodes": 302,
+      "status": "ongoing",
+      "days": [
+        "mon"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "드라마",
+        "리얼로맨스",
+        "공감",
+        "캠퍼스",
+        "오피스",
+        "평범남",
+        "평범녀",
+        "재회"
+      ],
+      "desc": "백수 시절 내 곁을 지켜줬던 그녀... 돌아와 주면 안 되겠니?\n음식 메뉴마다 담겨 있는 우리들의 연애 흑역사!",
+      "authors": [
+        {
+          "name": "치즈",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=733074",
+      "age": 0,
+      "autoAt": "2026-11-19"
+    },
+    {
+      "id": "w6678enq",
+      "title": "무직백수 계백순",
+      "author": "지발",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=811721",
+      "cover": "https://image-comic.pstatic.net/webtoon/811721/thumbnail/thumbnail_IMAG21_e0ccaab6-9ad2-4926-983b-c6cbb2dfecd7.jpg",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 0,
+      "color": "#fe6994",
+      "episodes": 237,
+      "status": "completed",
+      "days": [
+        "wed",
+        "sun"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "개그",
+        "요즘핫한추천작",
+        "완결개그"
+      ],
+      "desc": "해둔 것도 없고, 스펙도 평범, 통장 잔고는 늘 만원 이하.\n등골 브레이커 계백순은 과연 백수에서 탈출할 수 있을까?",
+      "authors": [
+        {
+          "name": "지발",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=811721",
+      "age": 15,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "daily-1"
+      ]
+    },
+    {
+      "id": "w6677ipp",
+      "title": "마이너스의 손",
+      "author": "김뎐",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=679568",
+      "cover": "https://image-comic.pstatic.net/webtoon/679568/thumbnail/thumbnail_IMAG21_0e7abd73-060d-42eb-afed-65cafc457104.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#f8cb57",
+      "episodes": 176,
+      "status": "completed",
+      "days": [
+        "mon"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "판타지",
+        "액션판타지",
+        "이능력",
+        "소년물",
+        "액션",
+        "성장물",
+        "최강자전",
+        "2015 최강자전"
+      ],
+      "desc": "만지면 모두 부서진다.\n마이너스의 오른손을 가진 소년 이야기",
+      "authors": [
+        {
+          "name": "김뎐",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=679568",
+      "age": 0,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w6676dfo",
+      "title": "지옥락",
+      "author": "Yuji Kaku",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=808269",
+      "cover": "https://image-comic.pstatic.net/webtoon/808269/thumbnail/thumbnail_IMAG21_23c2a75b-45a1-4687-9209-742f605f9758.jpg",
+      "genres": [
+        "action",
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#dad6c9",
+      "episodes": 131,
+      "status": "completed",
+      "days": [
+        "mon"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "액션",
+        "자극적인",
+        "절망적인",
+        "동양",
+        "신화",
+        "이능력",
+        "크리처",
+        "인외존재"
+      ],
+      "desc": "최강의 닌자로 이름을 떨쳤지만 탈주하여 붙잡히게 된 가비마루는,\n참수 집행인 ‘야마다 아사에몬 사기리’로부터 무죄 방면이 될 수 있는 조건을 제안받는다.\n그 조건은 극락정토라고 소문이 난 땅에서 ‘불로불사의 선약’을 손에 넣는 것…!!\n삶과 죽음을 깨닫는 인법 낭만 활극, 개막────!!",
+      "authors": [
+        {
+          "name": "Yuji Kaku",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=808269",
+      "age": 19,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w6675rtf",
+      "title": "호랑이형님",
+      "author": "이상규",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=650305",
+      "cover": "https://image-comic.pstatic.net/webtoon/650305/thumbnail/thumbnail_IMAG21_9e070729-5990-4653-90dd-1158847c1c68.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#f9ede5",
+      "episodes": 471,
+      "status": "ongoing",
+      "days": [
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "판타지",
+        "명작",
+        "세계관",
+        "동양풍판타지",
+        "판무",
+        "동물"
+      ],
+      "desc": "신비한 힘을 가진 아이를 이용하여 세상을 지배하려는 반인반수 흰눈썹!\n \n그리고 얼떨결에 아이의 보호자가 된 괴물호랑이 빠르와 착호갑사 지망생 가우리!\n이제 힘을 합쳐 흰눈썹으로부터 아이와 세상을 지켜라!!!",
+      "authors": [
+        {
+          "name": "이상규",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=650305",
+      "age": 15,
+      "autoAt": "2026-11-19"
+    },
+    {
+      "id": "w6674gkr",
+      "title": "레사 시즌1",
+      "author": "POGO",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=478262",
+      "cover": "https://image-comic.pstatic.net/webtoon/478262/thumbnail/thumbnail_IMAG21_4063201468423091760.JPEG",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#eaf5f7",
+      "episodes": 59,
+      "status": "completed",
+      "days": [
+        "fri"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "판타지",
+        "몰아보기",
+        "먼치킨",
+        "완결판타지"
+      ],
+      "desc": "어느날부턴가, 사람들은 디맨으로 변한다.\n매일밤 계속되는 습격, 그리고 동생을 찾는 한 남자.\n그 혼돈 속에서 신이 눈을 뜬다!",
+      "authors": [
+        {
+          "name": "POGO",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=478262",
+      "age": 12,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w6673fue",
+      "title": "인어를 위한 수영교실",
+      "author": "용찬",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=728900",
+      "cover": "https://image-comic.pstatic.net/webtoon/728900/thumbnail/thumbnail_IMAG21_7018357750268977509.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 0,
+      "color": "#9ad7fc",
+      "episodes": 102,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "로맨스",
+        "몰아보기",
+        "최강자전",
+        "2018 최강자전",
+        "학원로맨스",
+        "친구>연인",
+        "인외존재",
+        "삼각관계"
+      ],
+      "desc": "헤엄에 서툰 인어를 위한 수영 교실! \n초아는 수영을 배워 그리워하던 바다로 다시 돌아갈 수 있을까?",
+      "authors": [
+        {
+          "name": "용찬",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=728900",
+      "age": 0,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "romance-3"
+      ]
+    },
+    {
+      "id": "w6672aoa",
+      "title": "살아남은 로맨스",
+      "author": "이연",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=764129",
+      "cover": "https://image-comic.pstatic.net/webtoon/764129/thumbnail/thumbnail_IMAG21_89b292f9-8c86-45bd-9149-abf704a8f00d.jpg",
+      "genres": [
+        "thriller",
+        "romance",
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#f9e8fb",
+      "episodes": 103,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "판타지",
+        "서바이벌",
+        "아포칼립스",
+        "학원로맨스",
+        "빙의",
+        "구원서사",
+        "완결판타지"
+      ],
+      "desc": "로맨스 소설에 빙의해 행복한 삶을 살던 채린.\n그녀의 눈에 남자주인공인 '제하' 외에는 모두 검은색 그림자로밖에 보이지 않는다.\n그리고 갑자기 바뀐 소설의 장르. \n살아남으려면 엑스트라들과 손을 잡아야 한다!!\n 이연 작가의 차기작, 세상에 이런 장르는 없었다!",
+      "authors": [
+        {
+          "name": "이연",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=764129",
+      "age": 15,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w6671sub",
+      "title": "시한부 천재가 살아남는 법",
+      "author": "JP, 윤승기, 청시소",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=832703",
+      "cover": "https://image-comic.pstatic.net/webtoon/832703/thumbnail/thumbnail_IMAG21_1dab240b-fafb-472a-8b42-966f40f8fdc0.jpg",
+      "genres": [
+        "murim",
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#394359",
+      "episodes": 98,
+      "status": "ongoing",
+      "days": [
+        "mon"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "무협/사극",
+        "정통무협",
+        "시리어스",
+        "동양",
+        "모험",
+        "고인물",
+        "힘숨찐",
+        "복수극"
+      ],
+      "desc": "'스물을 넘기지 못하고 단명할 운명'을 타고난 정연신.\n집안사람들 모두 연신을 홀대하지만,\n직접 무공을 만들 정도로 그의 실력은 대단했다.\n그러던 어느 날, 연신은 자신의 수명이 얼마 남지 않았음을 알게 되는데...\n시한부 천재 정연신의 살아남기 위한 고군분투가 펼쳐진다!",
+      "authors": [
+        {
+          "name": "JP",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "윤승기",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "청시소",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=832703",
+      "age": 15,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "fantasy-1"
+      ]
+    },
+    {
+      "id": "w6670jle",
+      "title": "칼가는 소녀",
+      "author": "오리",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=730174",
+      "cover": "https://image-comic.pstatic.net/webtoon/730174/thumbnail/thumbnail_IMAG21_5bfd08ed-6ca8-4a27-9fab-d9fb15588d3a.jpg",
+      "genres": [
+        "drama"
+      ],
+      "recommended": 0,
+      "color": "#fef4e5",
+      "episodes": 210,
+      "status": "completed",
+      "days": [
+        "mon"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "드라마",
+        "최강자전",
+        "2018 최강자전",
+        "성장드라마",
+        "걸크러시",
+        "감성드라마",
+        "완결드라마"
+      ],
+      "desc": "치사율 100%의 인싸 희귀병 소녀 '사랑'\n누구보다 차분하고 두려움 없는 같은 반 소녀 '은조'\n두 소녀가 가슴 속 칼을 품고 세상을 향한 복수를 꿈꾼다.\n네이버웹툰 최강자전 18년 대표작.",
+      "authors": [
+        {
+          "name": "오리",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=730174",
+      "age": 12,
+      "autoAt": "2026-11-19"
+    },
+    {
+      "id": "w6669hlr",
+      "title": "겟백",
+      "author": "세윤",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=727798",
+      "cover": "https://image-comic.pstatic.net/webtoon/727798/thumbnail/thumbnail_IMAG21_b8ef26fe-3b02-402b-a0da-e9d6c2811249.jpg",
+      "genres": [
+        "action"
+      ],
+      "recommended": 0,
+      "color": "#1d0e10",
+      "episodes": 147,
+      "status": "completed",
+      "days": [
+        "thu"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "드라마",
+        "몰아보기",
+        "피카레스크",
+        "최강자전",
+        "2018 최강자전",
+        "서스펜스",
+        "완결드라마"
+      ],
+      "desc": "7년 전, 운명이 뒤바뀐 소녀들. \n태어날 때 부터 타고난 능력을 지닌 다정과 \n그런 천재가 부러웠던 언니 은정.  \n그렇게 하루 하루가 지옥이었다!",
+      "authors": [
+        {
+          "name": "세윤",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=727798",
+      "age": 15,
+      "autoAt": "2026-11-19"
+    },
+    {
+      "id": "w6668vxv",
+      "title": "씬커",
+      "author": "권혁주",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=635174",
+      "cover": "https://image-comic.pstatic.net/webtoon/635174/thumbnail/thumbnail_IMAG21_3991707034828681313.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#ebecf2",
+      "episodes": 228,
+      "status": "completed",
+      "days": [
+        "wed"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "판타지",
+        "완결판타지"
+      ],
+      "desc": "몸 속에 서버가 있는 파쿠르 소년이 전파를 자유자재로 사용하는 능력으로\n해킹의 세계에서 히어로가 된다",
+      "authors": [
+        {
+          "name": "권혁주",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=635174",
+      "age": 0,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w6667xyi",
+      "title": "럭키언럭키",
+      "author": "가천가",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=736281",
+      "cover": "https://image-comic.pstatic.net/webtoon/736281/thumbnail/thumbnail_IMAG21_3689072845997355320.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#462765",
+      "episodes": 87,
+      "status": "completed",
+      "days": [
+        "wed"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "판타지",
+        "몰아보기",
+        "완결판타지"
+      ],
+      "desc": "평범하게 살아왔던 안녹희, 알고보니 행운 초능력자였다?!\n어쩌다보니 초능력학교 전교 1등까지 해버리고...\n다시 평범해지고픈 안녹희의 고군분투 고교생활",
+      "authors": [
+        {
+          "name": "가천가",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=736281",
+      "age": 0,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w6666lfm",
+      "title": "이제 곧 죽습니다",
+      "author": "이원식, 꿀찬",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=727189",
+      "cover": "https://image-comic.pstatic.net/webtoon/727189/thumbnail/thumbnail_IMAG21_4123387648317351472.jpg",
+      "genres": [
+        "drama"
+      ],
+      "recommended": 0,
+      "color": "#987468",
+      "episodes": 66,
+      "status": "completed",
+      "days": [
+        "fri"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "드라마",
+        "완결드라마"
+      ],
+      "desc": "아무래도 이번 생은 실패다.\n죽음과 함께 시작된 13번의 새로운 삶",
+      "authors": [
+        {
+          "name": "이원식",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "꿀찬",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=727189",
+      "age": 15,
+      "autoAt": "2026-11-19"
+    },
+    {
+      "id": "w6665tha",
+      "title": "갓핑크",
+      "author": "이상신, 국중록",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=715159",
+      "cover": "https://image-comic.pstatic.net/webtoon/715159/thumbnail/thumbnail_IMAG21_3847537954288906805.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#fe6a67",
+      "episodes": 151,
+      "status": "completed",
+      "days": [
+        "sat"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "판타지",
+        "몰아보기",
+        "완결판타지"
+      ],
+      "desc": "흥분하면 거대해지는 그놈!\n박성기를 함부로 자극하지 마라​\n생체병기 '핑크맨'의 신체 부위를 나눠가진 초능력자들이 펼치는 박진감 넘치는 액션",
+      "authors": [
+        {
+          "name": "이상신",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "국중록",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=715159",
+      "age": 15,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
+      "id": "w6664vhk",
+      "title": "결계녀",
+      "author": "김태경",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=668101",
+      "cover": "https://image-comic.pstatic.net/webtoon/668101/thumbnail/thumbnail_IMAG21_3761740664713340212.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 0,
+      "color": "#e7f1ee",
+      "episodes": 178,
+      "status": "completed",
+      "days": [
+        "fri"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "로맨스",
+        "까칠녀",
+        "하렘",
+        "러브코미디",
+        "하이틴",
+        "학원로맨스",
+        "완결로맨스"
+      ],
+      "desc": "결계가 된 소녀, 소년을 지키다! \n본격 미소녀 군단과 함께하는 셔틀남 탈출기!",
+      "authors": [
+        {
+          "name": "김태경",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=668101",
+      "age": 15,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "romance-2"
+      ]
+    },
+    {
+      "id": "w6663kek",
+      "title": "윌유메리미",
+      "author": "마인드C",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=616239",
+      "cover": "https://image-comic.pstatic.net/webtoon/616239/thumbnail/thumbnail_IMAG21_b412e69f-b6dc-40eb-b022-0f2c0991389b.jpg",
+      "genres": [
+        "daily"
+      ],
+      "recommended": 0,
+      "color": "#fefe99",
+      "episodes": 1302,
+      "status": "ongoing",
+      "days": [
+        "tue",
+        "sat"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "일상",
+        "공감",
+        "결혼생활",
+        "가족",
+        "연애/결혼공감",
+        "가벼운",
+        "개그",
+        "무해한"
+      ],
+      "desc": "외모는 상남자, 마음은 감성소녀 윌.외모는 청순녀, 마음은 터프가이 메리! \n서울 부산 띠동갑 커플의 리얼 연애 일기",
+      "authors": [
+        {
+          "name": "마인드C",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=616239",
+      "age": 0,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "daily-1"
+      ]
+    },
+    {
+      "id": "w6662jvo",
+      "title": "포그랜드",
+      "author": "POGO",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=843116",
+      "cover": "https://image-comic.pstatic.net/webtoon/843116/thumbnail/thumbnail_IMAG21_ae6cdd6e-a02d-4ec7-a2ad-85b295ee1a6b.jpg",
+      "genres": [
+        "fantasy",
+        "action"
+      ],
+      "recommended": 4,
+      "color": "#e9edf3",
+      "episodes": 65,
+      "status": "ongoing",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "판타지",
+        "자극적인",
+        "절망적인",
+        "이능력",
+        "크리처",
+        "액션",
+        "미친작화",
+        "범죄"
+      ],
+      "desc": "존재만으로도 미스터리한 국제 교도소 포그랜드.\n죄수 교화 목적으로 파견된 과학교사 단테 강은 한순간의 폭동 속에 포그랜드에 갇히게 된다.\n탈출하는 방법은 영도자가 되는 길 뿐.\n\n무너진 이성과 신성을 목도하라!\n단테의 아홉 지옥 탈출기.",
+      "authors": [
+        {
+          "name": "POGO",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=843116",
+      "age": 19,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "fantasy-5"
+      ],
+      "arate": {
+        "hoje": 4
+      },
+      "recAvg": 4
+    },
+    {
+      "id": "w6661wfg",
+      "title": "재앙급 영웅님이 귀환하셨다",
+      "author": "OMinute(REDICE STUDIO), 이범근, 산지직송",
+      "platform": "카카오웹툰",
+      "url": "https://webtoon.kakao.com/content/%EC%9E%AC%EC%95%99%EA%B8%89-%EC%98%81%EC%9B%85%EB%8B%98%EC%9D%B4-%EA%B7%80%ED%99%98%ED%95%98%EC%85%A8%EB%8B%A4/2701",
+      "cover": "https://kr-a.kakaopagecdn.com/P/C/2701/sharing/2x/bb6e2809-b5f4-49d1-8813-e5196a5c21f6.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#151b26",
+      "episodes": 194,
+      "status": "hiatus",
+      "days": [
+        "thu"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "학원",
+        "판타지",
+        "압도되는",
+        "통쾌한",
+        "복수물"
+      ],
+      "desc": "지상에 최강의 영웅이 있었다.\n\n“하지만 죽었잖아. 우리가 죽인 놈이 어떻게 돌아와?”\n“그러게. 돌아올 수 있으면 한번 돌아와 보라지.”\n\n그런데 20년 만에 진짜 돌아와 버렸다?\n\n“뭘 그리 놀래? 왜. 양심에 찔릴 짓이라도 하셨나?”\n\n이 XX들. 가만 안 둔다.",
+      "authors": [
+        {
+          "name": "OMinute(REDICE STUDIO)",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "이범근",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "산지직송",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://webtoon.kakao.com/content/%EC%9E%AC%EC%95%99%EA%B8%89-%EC%98%81%EC%9B%85%EB%8B%98%EC%9D%B4-%EA%B7%80%ED%99%98%ED%95%98%EC%85%A8%EB%8B%A4/2701",
+      "age": 0,
+      "autoAt": "2026-11-19",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
       "id": "w6660xic",
       "title": "이발소 밑 게임가게",
       "author": "하일권",
@@ -7096,7 +7995,7 @@
       "genres": [
         "fantasy"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "color": "#1c1937",
       "episodes": 225,
       "status": "hiatus",
@@ -7142,9 +8041,10 @@
         "fantasy-6"
       ],
       "arate": {
-        "admin": 3
+        "admin": 3,
+        "hoje": 4
       },
-      "recAvg": 3,
+      "recAvg": 3.5,
       "age": 0
     },
     {
@@ -17320,7 +18220,7 @@
     "libraryLock": true
   },
   "meta": {
-    "lastWebtoonId": 6660,
+    "lastWebtoonId": 6680,
     "admins": {
       "hoje": "효제"
     }
