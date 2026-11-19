@@ -883,16 +883,16 @@
         "finished": true
       },
       {
+        "title": "작두",
+        "source": "https://comic.naver.com/webtoon/list?titleId=828294",
+        "cover": "https://image-comic.pstatic.net/webtoon/828294/thumbnail/thumbnail_IMAG21_840e741d-f74e-44bc-b60b-a4e132516889.jpg",
+        "finished": false
+      },
+      {
         "title": "미스터 모",
         "source": "https://comic.naver.com/webtoon/list?titleId=657467",
         "cover": "https://image-comic.pstatic.net/webtoon/657467/thumbnail/thumbnail_IMAG21_3762584003687889202.jpg",
         "finished": true
-      },
-      {
-        "title": "포그랜드",
-        "source": "https://comic.naver.com/webtoon/list?titleId=843116",
-        "cover": "https://image-comic.pstatic.net/webtoon/843116/thumbnail/thumbnail_IMAG21_ae6cdd6e-a02d-4ec7-a2ad-85b295ee1a6b.jpg",
-        "finished": false
       },
       {
         "title": "AI가 세상을 지배한다면",
@@ -1573,9 +1573,9 @@
     "url": "https://comic.naver.com/community/u/seyoonni",
     "works": [
       {
-        "title": "겟백",
-        "source": "https://comic.naver.com/webtoon/list?titleId=727798",
-        "cover": "https://image-comic.pstatic.net/webtoon/727798/thumbnail/thumbnail_IMAG21_b8ef26fe-3b02-402b-a0da-e9d6c2811249.jpg",
+        "title": "순정빌런",
+        "source": "https://comic.naver.com/webtoon/list?titleId=797731",
+        "cover": "https://image-comic.pstatic.net/webtoon/797731/thumbnail/thumbnail_IMAG21_deeb76b6-89ce-4ae0-87e7-24e7576cc857.jpg",
         "finished": true
       },
       {
@@ -4661,6 +4661,12 @@
         "finished": false
       },
       {
+        "title": "재벌집 막내아들",
+        "source": "https://comic.naver.com/webtoon/list?titleId=800770",
+        "cover": "https://image-comic.pstatic.net/webtoon/800770/thumbnail/thumbnail_IMAG21_d2e1e7ee-fc83-4030-a1e7-200378bc088f.jpg",
+        "finished": false
+      },
+      {
         "title": "절대회귀",
         "source": "https://comic.naver.com/webtoon/list?titleId=828715",
         "cover": "https://image-comic.pstatic.net/webtoon/828715/thumbnail/thumbnail_IMAG21_8957548a-2eb2-4ddf-a50e-dbc7fddc16a7.jpg",
@@ -4676,12 +4682,6 @@
         "title": "칼에 취한 밤을 걷다",
         "source": "https://comic.naver.com/webtoon/list?titleId=795542",
         "cover": "https://image-comic.pstatic.net/webtoon/795542/thumbnail/thumbnail_IMAG21_3703756833080816441.jpg",
-        "finished": false
-      },
-      {
-        "title": "시한부 천재가 살아남는 법",
-        "source": "https://comic.naver.com/webtoon/list?titleId=832703",
-        "cover": "https://image-comic.pstatic.net/webtoon/832703/thumbnail/thumbnail_IMAG21_1dab240b-fafb-472a-8b42-966f40f8fdc0.jpg",
         "finished": false
       }
     ]
@@ -5730,10 +5730,10 @@
     "url": "https://comic.naver.com/community/u/TKkim",
     "works": [
       {
-        "title": "결계녀",
-        "source": "https://comic.naver.com/webtoon/list?titleId=668101",
-        "cover": "https://image-comic.pstatic.net/webtoon/668101/thumbnail/thumbnail_IMAG21_3761740664713340212.jpg",
-        "finished": true
+        "title": "1등급 싸움과외",
+        "source": "https://comic.naver.com/webtoon/list?titleId=821321",
+        "cover": "https://image-comic.pstatic.net/webtoon/821321/thumbnail/thumbnail_IMAG21_60e7a0a6-e3cc-470c-8328-95f7eb367b49.jpg",
+        "finished": false
       },
       {
         "title": "두근두근 연극부",
@@ -7080,6 +7080,363 @@
         "source": "https://comic.naver.com/webtoon/list?titleId=856210",
         "cover": "https://image-comic.pstatic.net/webtoon/856210/thumbnail/thumbnail_IMAG21_b2c46c2f-5f3c-48c5-a6e4-70c2e5b9ccd5.jpg",
         "finished": false
+      }
+    ]
+  },
+  "마인드c": {
+    "name": "마인드C",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20240319_138/171082527575506H83_PNG/92006AB0-C03E-4015-9409-0417C2661F1F.png",
+    "bio": "안녕하세요 마인드C입니다",
+    "url": "https://comic.naver.com/community/u/mindc",
+    "works": [
+      {
+        "title": "마인드컨트롤",
+        "source": "https://comic.naver.com/webtoon/list?titleId=541901",
+        "cover": "https://image-comic.pstatic.net/webtoon/541901/thumbnail/thumbnail_IMAG21_3762818380137062962.jpg",
+        "finished": true
+      },
+      {
+        "title": "반투명인간",
+        "source": "https://comic.naver.com/webtoon/list?titleId=710762",
+        "cover": "https://image-comic.pstatic.net/webtoon/710762/thumbnail/thumbnail_IMAG21_3761178797024895286.jpg",
+        "finished": true
+      },
+      {
+        "title": "달려라!메리",
+        "source": "https://comic.naver.com/webtoon/list?titleId=661886",
+        "cover": "https://image-comic.pstatic.net/webtoon/661886/thumbnail/thumbnail_IMAG21_3472619679795132514.jpg",
+        "finished": true
+      },
+      {
+        "title": "가족愛발견",
+        "source": "https://comic.naver.com/webtoon/list?titleId=632319",
+        "cover": "https://image-comic.pstatic.net/webtoon/632319/thumbnail/thumbnail_IMAG21_3761411932077450340.jpg",
+        "finished": true
+      },
+      {
+        "title": "윌메리의 한의약 이야기",
+        "source": "https://comic.naver.com/webtoon/list?titleId=685294",
+        "cover": "https://image-comic.pstatic.net/webtoon/685294/thumbnail/thumbnail_IMAG21_3545234739884602467.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "이상신": {
+    "name": "이상신",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "꽃가족",
+        "source": "https://comic.naver.com/webtoon/list?titleId=505715",
+        "cover": "https://image-comic.pstatic.net/webtoon/505715/thumbnail/thumbnail_IMAG21_3847824934725497145.jpg",
+        "finished": true
+      },
+      {
+        "title": "첩보의 별",
+        "source": "https://comic.naver.com/webtoon/list?titleId=675392",
+        "cover": "https://image-comic.pstatic.net/webtoon/675392/thumbnail/thumbnail_IMAG21_7365417530404516965.jpg",
+        "finished": true
+      },
+      {
+        "title": "첩보의 별 시즌2",
+        "source": "https://comic.naver.com/webtoon/list?titleId=686669",
+        "cover": "https://image-comic.pstatic.net/webtoon/686669/thumbnail/thumbnail_IMAG21_7233405950172213554.jpg",
+        "finished": true
+      },
+      {
+        "title": "워킹히어로",
+        "source": "https://comic.naver.com/webtoon/list?titleId=645129",
+        "cover": "https://image-comic.pstatic.net/webtoon/645129/thumbnail/thumbnail_IMAG21_3832625290163663201.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "국중록": {
+    "name": "국중록",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "꽃가족",
+        "source": "https://comic.naver.com/webtoon/list?titleId=505715",
+        "cover": "https://image-comic.pstatic.net/webtoon/505715/thumbnail/thumbnail_IMAG21_3847824934725497145.jpg",
+        "finished": true
+      },
+      {
+        "title": "첩보의 별",
+        "source": "https://comic.naver.com/webtoon/list?titleId=675392",
+        "cover": "https://image-comic.pstatic.net/webtoon/675392/thumbnail/thumbnail_IMAG21_7365417530404516965.jpg",
+        "finished": true
+      },
+      {
+        "title": "첩보의 별 시즌2",
+        "source": "https://comic.naver.com/webtoon/list?titleId=686669",
+        "cover": "https://image-comic.pstatic.net/webtoon/686669/thumbnail/thumbnail_IMAG21_7233405950172213554.jpg",
+        "finished": true
+      },
+      {
+        "title": "워킹히어로",
+        "source": "https://comic.naver.com/webtoon/list?titleId=645129",
+        "cover": "https://image-comic.pstatic.net/webtoon/645129/thumbnail/thumbnail_IMAG21_3832625290163663201.jpg",
+        "finished": true
+      },
+      {
+        "title": "악마와 함께 하는 일상",
+        "source": "https://comic.naver.com/webtoon/list?titleId=834177",
+        "cover": "https://image-comic.pstatic.net/webtoon/834177/thumbnail/thumbnail_IMAG21_55e80026-046a-4154-8840-ba694ccbcfbe.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "이원식": {
+    "name": "이원식",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "삼매경",
+        "source": "https://comic.naver.com/webtoon/list?titleId=769317",
+        "cover": "https://image-comic.pstatic.net/webtoon/769317/thumbnail/thumbnail_IMAG21_3762587498966114610.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "꿀찬": {
+    "name": "꿀찬",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20231124_164/1700801137316NmxKt_PNG/1000026052.png",
+    "bio": "열심히 잘 하겠습니다.",
+    "url": "https://comic.naver.com/community/u/ggc",
+    "works": [
+      {
+        "title": "삼매경",
+        "source": "https://comic.naver.com/webtoon/list?titleId=769317",
+        "cover": "https://image-comic.pstatic.net/webtoon/769317/thumbnail/thumbnail_IMAG21_3762587498966114610.jpg",
+        "finished": true
+      },
+      {
+        "title": "끝장",
+        "source": "https://comic.naver.com/webtoon/list?titleId=844588",
+        "cover": "https://image-comic.pstatic.net/webtoon/844588/thumbnail/thumbnail_IMAG21_bb0c2732-a565-4c60-b55b-d81bb0ba30fd.jpg",
+        "finished": true
+      },
+      {
+        "title": "미리보기",
+        "source": "https://comic.naver.com/webtoon/list?titleId=818965",
+        "cover": "https://image-comic.pstatic.net/webtoon/818965/thumbnail/thumbnail_IMAG21_08a588ea-4e47-4d7e-a475-bb472bbe92de.jpg",
+        "finished": false
+      }
+    ]
+  },
+  "가천가": {
+    "name": "가천가",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20240909_157/1725870404364BjbW0_PNG/20240909_171827.png",
+    "bio": "가끔...아니아니 가장 천재인 작가",
+    "url": "https://comic.naver.com/community/u/gachunga",
+    "works": [
+      {
+        "title": "북부 공작님을 유혹하겠습니다",
+        "source": "https://comic.naver.com/webtoon/list?titleId=794421",
+        "cover": "https://image-comic.pstatic.net/webtoon/794421/thumbnail/thumbnail_IMAG21_79eb2725-914a-4258-8be1-f11e6652400e.jpg",
+        "finished": true
+      },
+      {
+        "title": "꿇어보세요, 대공님!",
+        "source": "https://comic.naver.com/webtoon/list?titleId=836707",
+        "cover": "https://image-comic.pstatic.net/webtoon/836707/thumbnail/thumbnail_IMAG21_08eaba4a-8144-4d85-b929-169bf98f149e.jpg",
+        "finished": false
+      },
+      {
+        "title": "내가 만든 이세계",
+        "source": "https://comic.naver.com/webtoon/list?titleId=813451",
+        "cover": "https://image-comic.pstatic.net/webtoon/813451/thumbnail/thumbnail_IMAG21_63771fb5-bb2b-4ecf-a9d8-1169fa9c73ab.jpeg",
+        "finished": true
+      }
+    ]
+  },
+  "권혁주": {
+    "name": "권혁주",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20230913_65/1694611015109NV6z0_PNG/2021-04-30.png",
+    "bio": "웹툰의 미학을 찾아서",
+    "url": "https://comic.naver.com/community/u/xink3r",
+    "works": [
+      {
+        "title": "그린스마일",
+        "source": "https://comic.naver.com/webtoon/list?titleId=72938",
+        "cover": "https://image-comic.pstatic.net/webtoon/72938/thumbnail/thumbnail_IMAG21_3919882335456552548.jpg",
+        "finished": true
+      },
+      {
+        "title": "움비처럼",
+        "source": "https://comic.naver.com/webtoon/list?titleId=332797",
+        "cover": "https://image-comic.pstatic.net/webtoon/332797/thumbnail/thumbnail_IMAG21_3919088689958117734.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "오리": {
+    "name": "오리",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20230913_14/1694597753195w3dkI_PNG/270_200_%C4%AE%B0%A1%B4%C2%BC%D2%B3%E0_%B4%EB%C7%A5%C0%CC%B9%CC%C1%F6.png",
+    "bio": "😳",
+    "url": "https://comic.naver.com/community/u/ori",
+    "works": [
+      {
+        "title": "없는 사람",
+        "source": "https://comic.naver.com/webtoon/list?titleId=844571",
+        "cover": "https://image-comic.pstatic.net/webtoon/844571/thumbnail/thumbnail_IMAG21_46224f62-5e8f-4c4b-875c-995bb5910562.jpg",
+        "finished": false
+      },
+      {
+        "title": "사천당가의 막내딸을 납치했다",
+        "source": "https://comic.naver.com/webtoon/list?titleId=852534",
+        "cover": "https://image-comic.pstatic.net/webtoon/852534/thumbnail/thumbnail_IMAG21_9265ff92-99d4-4d52-b59a-4e730d2d17ea.jpg",
+        "finished": false
+      },
+      {
+        "title": "재벌집 천재 괴물",
+        "source": "https://comic.naver.com/webtoon/list?titleId=850964",
+        "cover": "https://image-comic.pstatic.net/webtoon/850964/thumbnail/thumbnail_IMAG21_5ab60072-b317-4707-ba60-ee5f47690549.jpg",
+        "finished": false
+      },
+      {
+        "title": "DC 플래시: 세상에서 제일 빠른 남자",
+        "source": "https://comic.naver.com/webtoon/list?titleId=812127",
+        "cover": "https://image-comic.pstatic.net/webtoon/812127/thumbnail/thumbnail_IMAG21_b8083392-15f9-4533-b0ce-c30ac698948e.jpg",
+        "finished": true
+      },
+      {
+        "title": "???랭크 히든 장비 무쌍",
+        "source": "https://comic.naver.com/webtoon/list?titleId=832707",
+        "cover": "https://image-comic.pstatic.net/webtoon/832707/thumbnail/thumbnail_IMAG21_2b540c70-91b5-4e32-a611-a745fc6c32f9.jpg",
+        "finished": true
+      },
+      {
+        "title": "당신이 날 좋아했다고?",
+        "source": "https://comic.naver.com/webtoon/list?titleId=844525",
+        "cover": "https://image-comic.pstatic.net/webtoon/844525/thumbnail/thumbnail_IMAG21_878a9890-0115-4e99-b0b3-cbe17a74e3e3.jpg",
+        "finished": false
+      }
+    ]
+  },
+  "윤승기": {
+    "name": "윤승기",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20241022_2/1729596159639NGfIb_PNG/004_023.png",
+    "bio": "안녕하세요~~",
+    "url": "https://comic.naver.com/community/u/_k1j02r",
+    "works": []
+  },
+  "청시소": {
+    "name": "청시소",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "이연": {
+    "name": "이연",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20230913_222/1694603455640ltbhB_PNG/%BB%EC%B3%B2%B7%CE_%BD%C3%B8%AE%C1%EE%C7%A5%C1%F6_-%BC%BC%B7%CE.png",
+    "bio": "화장 지워주는 남자 / 살아남은 로맨스 /남편을 죽여줘요 완결 나쁜남자가 돼라! 연재중",
+    "url": "https://comic.naver.com/community/u/lyyonevv",
+    "works": [
+      {
+        "title": "화장 지워주는 남자",
+        "source": "https://comic.naver.com/webtoon/list?titleId=710754",
+        "cover": "https://image-comic.pstatic.net/webtoon/710754/thumbnail/thumbnail_IMAG21_3702862917312722999.jpg",
+        "finished": true
+      },
+      {
+        "title": "남편을 죽여줘요",
+        "source": "https://comic.naver.com/webtoon/list?titleId=797410",
+        "cover": "https://image-comic.pstatic.net/webtoon/797410/thumbnail/thumbnail_IMAG21_9852442e-217e-4ec7-92a7-21c0ada85dc7.jpg",
+        "finished": true
+      },
+      {
+        "title": "나쁜남자가 돼라!",
+        "source": "https://comic.naver.com/webtoon/list?titleId=847491",
+        "cover": "https://image-comic.pstatic.net/webtoon/847491/thumbnail/thumbnail_IMAG21_0990eecb-3a80-4a4e-81b5-212998f95346.jpg",
+        "finished": false
+      },
+      {
+        "title": "살아남은 약속",
+        "source": "https://comic.naver.com/webtoon/list?titleId=834571",
+        "cover": "https://image-comic.pstatic.net/webtoon/834571/thumbnail/thumbnail_IMAG21_c1c907c2-b815-4636-b34a-6c66af0600e3.jpg",
+        "finished": true
+      },
+      {
+        "title": "뱀이 앉은 자리",
+        "source": "https://comic.naver.com/webtoon/list?titleId=695585",
+        "cover": "https://image-comic.pstatic.net/webtoon/695585/thumbnail/thumbnail_IMAG21_7161393441227812921.jpg",
+        "finished": true
+      },
+      {
+        "title": "구독금지",
+        "source": "https://comic.naver.com/webtoon/list?titleId=730466",
+        "cover": "https://image-comic.pstatic.net/webtoon/730466/thumbnail/thumbnail_IMAG21_3774407060858364978.jpg",
+        "finished": true
+      },
+      {
+        "title": "메소드 연기법",
+        "source": "https://comic.naver.com/webtoon/list?titleId=799838",
+        "cover": "https://image-comic.pstatic.net/webtoon/799838/thumbnail/thumbnail_IMAG21_e19883fb-74f1-4491-9b72-8731946a11fc.jpg",
+        "finished": true
+      },
+      {
+        "title": "예쁨 컬렉션",
+        "source": "https://comic.naver.com/webtoon/list?titleId=844519",
+        "cover": "https://image-comic.pstatic.net/webtoon/844519/thumbnail/thumbnail_IMAG21_ee3b61ad-ed21-46cb-8ee2-13e76b903537.jpg",
+        "finished": false
+      }
+    ]
+  },
+  "용찬": {
+    "name": "용찬",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "이상규": {
+    "name": "이상규",
+    "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+    "bio": "호랑이형님의 이상규입니다",
+    "url": "https://comic.naver.com/community/u/_uboqi",
+    "works": []
+  },
+  "yuji kaku": {
+    "name": "Yuji Kaku",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "김뎐": {
+    "name": "김뎐",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20230913_45/1694614283037MJH7n_PNG/%C7%C1%B7%CE%C7%CA.png",
+    "bio": "",
+    "url": "https://comic.naver.com/community/u/rlaeus",
+    "works": []
+  },
+  "지발": {
+    "name": "지발",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20261020_80/1792488875581WIRae_PNG/40552.png",
+    "bio": "",
+    "url": "https://comic.naver.com/community/u/zirarval",
+    "works": []
+  },
+  "치즈": {
+    "name": "치즈",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20230913_43/1694583552835bS4xc_PNG/KakaoTalk_20230913_143658847.png",
+    "bio": "안녕하세요! 치즈 입니다. SAY CHEESE🧀",
+    "url": "https://comic.naver.com/community/u/cheese",
+    "works": [
+      {
+        "title": "오프에서 만나요",
+        "source": "https://comic.naver.com/webtoon/list?titleId=812412",
+        "cover": "https://image-comic.pstatic.net/webtoon/812412/thumbnail/thumbnail_IMAG21_b0a8614e-59fe-4268-ae2d-2d60e999061b.jpg",
+        "finished": true
       }
     ]
   }
