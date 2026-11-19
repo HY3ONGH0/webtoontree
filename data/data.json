@@ -1,6 +1,105 @@
 {
   "webtoons": [
     {
+      "id": "w6660xic",
+      "title": "이발소 밑 게임가게",
+      "author": "하일권",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=821812",
+      "cover": "https://image-comic.pstatic.net/webtoon/821812/thumbnail/thumbnail_IMAG21_4e039fad-5af3-4ef5-96e5-05a6b261a9df.jpg",
+      "genres": [
+        "drama"
+      ],
+      "recommended": 0,
+      "color": "#e3522e",
+      "episodes": 37,
+      "status": "completed",
+      "days": [
+        "sun"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "감성",
+        "감성적인",
+        "게임",
+        "우정",
+        "성장물",
+        "타임슬립",
+        "힐링",
+        "학원물"
+      ],
+      "desc": "열정적으로 좋아하는 것도, 딱히 이루고 싶은것도 없는 고등학교 1학년인 미소.\n하루하루 무난하게 살아가지만 심심하다. 그러다 하교길 지하철에서 같은 반 친구인 효정이를 보게된다.\n효정이는 처음 보는 레트로 게임기를 플레이 중이다. \n예쁘고 공부도 잘하지만 약간 차갑고 무서운 이미지라 처음엔 그저 인상이 무서운 애라고 생각했는데, \n반짝거리는 눈으로 플레이하고있는 효정에게 뭔가 알수없는 매력을 느끼고, \n미소는 레트로 게임과 효정이란 아이를 알아가기 위해 용기를내어 친구가 되어보려고 한다. \n\n한편 미소의 오빠 민준은 13살이나 많지",
+      "authors": [
+        {
+          "name": "하일권",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=821812",
+      "age": 0,
+      "autoAt": "2026-11-19"
+    },
+    {
+      "id": "w6659",
+      "title": "사이버펑크의 해결사가 사는 법",
+      "author": "나무꾼, JUN2, 편곤",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=855686",
+      "cover": "https://image-comic.pstatic.net/webtoon/855686/thumbnail/thumbnail_IMAG21_2142cf30-9987-49cd-aa9a-b4bdcc17ecd2.jpg",
+      "genres": [
+        "apocalyps"
+      ],
+      "recommended": 0,
+      "color": "#282657",
+      "episodes": 7,
+      "status": "ongoing",
+      "days": [
+        "wed"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "액션",
+        "스팀펑크",
+        "디스토피아",
+        "사이버펑크",
+        "비쥬얼쇼크",
+        "액션아포칼립스",
+        "SF액션",
+        "시리어스"
+      ],
+      "desc": "대(對) 사이보그 부대 ‘헥사곤’ 출신인 레너드 워커.\n그런 그가 현재는 사이보그들이 모여 사는 도시 중 하나, A-044 시티에서 해결사로서 살아가고 있다.\n\n갱과 공안들의 총질이 난무하는 도시에서 돈만 받으면 어떤 의뢰든 수행하지만,\n‘사람을 죽이는 의뢰’만은 받지 않는다는 과거와 어울리지 않는 고집을 부리는 그에게\n기업으로부터의 해방을 외치는 혁명가로부터 의뢰가 하나 들어온다.",
+      "authors": [
+        {
+          "name": "나무꾼",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "JUN2",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "편곤",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=855686",
+      "age": 15,
+      "autoAt": "2026-11-19"
+    },
+    {
       "id": "w6658snu",
       "title": "마법스크롤 상인 지오",
       "author": "엄재경, 호패",
@@ -17221,7 +17320,7 @@
     "libraryLock": true
   },
   "meta": {
-    "lastWebtoonId": 6658,
+    "lastWebtoonId": 6660,
     "admins": {
       "hoje": "효제"
     }
