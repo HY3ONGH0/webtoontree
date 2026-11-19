@@ -1,6 +1,51 @@
 {
   "webtoons": [
     {
+      "id": "w6704ygt",
+      "title": "럼버잭",
+      "author": "룡키, 무무8",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=853684",
+      "cover": "https://image-comic.pstatic.net/webtoon/853684/thumbnail/thumbnail_IMAG21_a13d0c5a-3d39-4812-a6c0-7a4b953079e1.jpg",
+      "genres": [],
+      "recommended": 0,
+      "color": "#362927",
+      "episodes": 6,
+      "status": "ongoing",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-19",
+      "tags": [
+        "판타지",
+        "액션판타지",
+        "소년물",
+        "모험",
+        "액션",
+        "세계관"
+      ],
+      "desc": "정상에 오르면 소원을 이룰 수 있다는 거대한 나무 마신목.\n마신목을 오르기 위해 찾아온 탐험가들은 자신들을 대신해 위험을 감수할 노예, '럼버잭'을 데리고 다녔다.\n럼버잭은, 자유를 얻기 위해 100번의 탐험을 무사히 마쳐야 했는데.\n99번의 탐험을 마치고 오랜 노예생활의 끝을 눈앞에 두고 있는 럼버잭 소년 '잭'의 마지막 여정이 시작된다.",
+      "authors": [
+        {
+          "name": "룡키",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "무무8",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=853684",
+      "age": 15,
+      "autoAt": "2026-11-19"
+    },
+    {
       "id": "w6703bcb",
       "title": "같은 학교 친구",
       "author": "유유",
@@ -19299,7 +19344,7 @@
     "libraryLock": true
   },
   "meta": {
-    "lastWebtoonId": 6703,
+    "lastWebtoonId": 6704,
     "admins": {
       "hoje": "효제"
     }
