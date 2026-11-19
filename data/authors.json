@@ -2186,10 +2186,10 @@
     "url": "https://comic.naver.com/community/u/hwandaeng",
     "works": [
       {
-        "title": "애늙은이",
-        "source": "https://comic.naver.com/webtoon/list?titleId=828373",
-        "cover": "https://image-comic.pstatic.net/webtoon/828373/thumbnail/thumbnail_IMAG21_bbe24b60-281a-4fd0-ab72-933259a2a3ab.jpg",
-        "finished": true
+        "title": "잔불의 기사",
+        "source": "https://comic.naver.com/webtoon/list?titleId=768536",
+        "cover": "https://image-comic.pstatic.net/webtoon/768536/thumbnail/thumbnail_IMAG21_06774772-8958-4f9b-ad2c-895567ec11bc.jpg",
+        "finished": false
       }
     ]
   },
@@ -2795,15 +2795,15 @@
     "url": "",
     "works": [
       {
-        "title": "걸어서 30분",
-        "source": "https://comic.naver.com/webtoon/list?titleId=700844",
-        "cover": "https://image-comic.pstatic.net/webtoon/700844/thumbnail/thumbnail_IMAG21_4135202081180039526.jpg",
+        "title": "슈퍼 시크릿",
+        "source": "https://comic.naver.com/webtoon/list?titleId=650304",
+        "cover": "https://image-comic.pstatic.net/webtoon/650304/thumbnail/thumbnail_IMAG21_4051329144585728102.jpg",
         "finished": true
       },
       {
-        "title": "합격시켜주세용",
-        "source": "https://comic.naver.com/webtoon/list?titleId=728128",
-        "cover": "https://image-comic.pstatic.net/webtoon/728128/thumbnail/thumbnail_IMAG21_7089844928995668020.jpg",
+        "title": "걸어서 30분",
+        "source": "https://comic.naver.com/webtoon/list?titleId=700844",
+        "cover": "https://image-comic.pstatic.net/webtoon/700844/thumbnail/thumbnail_IMAG21_4135202081180039526.jpg",
         "finished": true
       },
       {
@@ -3028,16 +3028,16 @@
         "finished": true
       },
       {
+        "title": "죽음에 관하여",
+        "source": "https://comic.naver.com/webtoon/list?titleId=703845",
+        "cover": "https://image-comic.pstatic.net/webtoon/703845/thumbnail/thumbnail_IMAG21_4120902941892752226.JPEG",
+        "finished": true
+      },
+      {
         "title": "아이덴티티",
         "source": "https://comic.naver.com/webtoon/list?titleId=642599",
         "cover": "https://image-comic.pstatic.net/webtoon/642599/thumbnail/thumbnail_IMAG21_3760613669455869492.jpg",
         "finished": true
-      },
-      {
-        "title": "만약은 없다",
-        "source": "https://comic.naver.com/webtoon/list?titleId=850976",
-        "cover": "https://image-comic.pstatic.net/webtoon/850976/thumbnail/thumbnail_IMAG21_b4c05bd3-fa13-4a57-8c6a-006892cac8e0.jpg",
-        "finished": false
       },
       {
         "title": "기밀입니다",
@@ -3631,9 +3631,9 @@
     "url": "",
     "works": [
       {
-        "title": "사표내고 이계에서 힐링합니다",
-        "source": "https://comic.naver.com/webtoon/list?titleId=800726",
-        "cover": "https://image-comic.pstatic.net/webtoon/800726/thumbnail/thumbnail_IMAG21_69bbd5e5-ddcc-48b0-8682-3986c5005720.jpg",
+        "title": "차라리 빌런으로 살겠다",
+        "source": "https://comic.naver.com/webtoon/list?titleId=842601",
+        "cover": "https://image-comic.pstatic.net/webtoon/842601/thumbnail/thumbnail_IMAG21_7bc1b44d-7910-41bf-b4eb-661843b1f833.jpg",
         "finished": false
       },
       {
@@ -4522,9 +4522,9 @@
         "finished": true
       },
       {
-        "title": "돼지우리",
-        "source": "https://comic.naver.com/webtoon/list?titleId=724854",
-        "cover": "https://image-comic.pstatic.net/webtoon/724854/thumbnail/thumbnail_IMAG21_3833460919822935650.jpg",
+        "title": "스위트홈",
+        "source": "https://comic.naver.com/webtoon/list?titleId=701081",
+        "cover": "https://image-comic.pstatic.net/webtoon/701081/thumbnail/thumbnail_IMAG21_3761692268951647077.jpg",
         "finished": true
       },
       {
@@ -6395,9 +6395,9 @@
     "url": "https://comic.naver.com/community/u/qbrns",
     "works": [
       {
-        "title": "아이레",
-        "source": "https://comic.naver.com/webtoon/list?titleId=754875",
-        "cover": "https://image-comic.pstatic.net/webtoon/754875/thumbnail/thumbnail_IMAG21_3546365037103113315.JPEG",
+        "title": "뷰티풀 군바리",
+        "source": "https://comic.naver.com/webtoon/list?titleId=648419",
+        "cover": "https://image-comic.pstatic.net/webtoon/648419/thumbnail/thumbnail_IMAG21_d9398229-cbfd-47dc-9208-0a6fb936f3a7.jpg",
         "finished": true
       },
       {
@@ -6592,9 +6592,9 @@
         "finished": true
       },
       {
-        "title": "골든 체인지",
-        "source": "https://comic.naver.com/webtoon/list?titleId=685460",
-        "cover": "https://image-comic.pstatic.net/webtoon/685460/thumbnail/thumbnail_IMAG21_6c04897d-d64e-4d43-b0ed-1f8add0db7f5.jpeg",
+        "title": "영광의 해일로",
+        "source": "https://comic.naver.com/webtoon/list?titleId=820102",
+        "cover": "https://image-comic.pstatic.net/webtoon/820102/thumbnail/thumbnail_IMAG21_69ce7ca5-9799-4f6c-80c3-10feae4f4588.jpg",
         "finished": true
       }
     ]
@@ -7436,6 +7436,352 @@
         "title": "오프에서 만나요",
         "source": "https://comic.naver.com/webtoon/list?titleId=812412",
         "cover": "https://image-comic.pstatic.net/webtoon/812412/thumbnail/thumbnail_IMAG21_b0a8614e-59fe-4268-ae2d-2d60e999061b.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "파란": {
+    "name": "파란",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20241002_268/17278199299994sYPz_PNG/1727818851660.png",
+    "bio": "만화는 독자를 즐겁게 하기위해 존재한다!! 인스타그램 아이디. paran_is_blue",
+    "url": "https://comic.naver.com/community/u/paran",
+    "works": [
+      {
+        "title": "탐닉",
+        "source": "https://comic.naver.com/webtoon/list?titleId=835521",
+        "cover": "https://image-comic.pstatic.net/webtoon/835521/thumbnail/thumbnail_IMAG21_63a22211-0b70-4e0b-8d46-55f5185ad633.jpg",
+        "finished": true
+      },
+      {
+        "title": "감 비서가 고장났다",
+        "source": "https://comic.naver.com/webtoon/list?titleId=774706",
+        "cover": "https://image-comic.pstatic.net/webtoon/774706/thumbnail/thumbnail_IMAG21_3919031304916776244.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "딥블랙": {
+    "name": "딥블랙",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "젤리피쉬": {
+    "name": "젤리피쉬",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20230914_262/1694670376924gPgxV_PNG/8A5A2C0E-BC0D-4CDD-8686-6A69F307EAB0.png",
+    "bio": "안녕! 만나서 반갑습니다 ❤️",
+    "url": "https://comic.naver.com/community/u/dearjellyfish",
+    "works": [
+      {
+        "title": "오징어도 사랑이 되나요?",
+        "source": "https://comic.naver.com/webtoon/list?titleId=770524",
+        "cover": "https://image-comic.pstatic.net/webtoon/770524/thumbnail/thumbnail_IMAG21_4064044776762336057.jpg",
+        "finished": true
+      },
+      {
+        "title": "하나는 적고 둘은 너무 많아",
+        "source": "https://comic.naver.com/webtoon/list?titleId=801773",
+        "cover": "https://image-comic.pstatic.net/webtoon/801773/thumbnail/thumbnail_IMAG21_ea1917eb-9a72-45ab-a7fe-fa5cbd90b2ca.jpg",
+        "finished": true
+      },
+      {
+        "title": "나의 죄",
+        "source": "https://comic.naver.com/webtoon/list?titleId=853249",
+        "cover": "https://image-comic.pstatic.net/webtoon/853249/thumbnail/thumbnail_IMAG21_ca8c5987-fdf7-493a-9db3-ced5021d582c.jpg",
+        "finished": false
+      }
+    ]
+  },
+  "영모": {
+    "name": "영모",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20250926_272/1758857590634mgnUQ_PNG/1000006211.png",
+    "bio": "",
+    "url": "https://comic.naver.com/community/u/youngmo",
+    "works": [
+      {
+        "title": "성경의 역사",
+        "source": "https://comic.naver.com/webtoon/list?titleId=752402",
+        "cover": "https://image-comic.pstatic.net/webtoon/752402/thumbnail/thumbnail_IMAG21_6d7a2e3c-aa28-4dcc-8323-5036c42001d6.jpg",
+        "finished": true
+      },
+      {
+        "title": "다시쓰는 연애사",
+        "source": "https://comic.naver.com/webtoon/list?titleId=793274",
+        "cover": "https://image-comic.pstatic.net/webtoon/793274/thumbnail/thumbnail_IMAG21_25a04dea-a6d3-4232-8c86-35bec996fde1.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "미애": {
+    "name": "미애",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20230914_177/1694696704946QSgno_PNG/1000020059.png",
+    "bio": "반갑습니다",
+    "url": "https://comic.naver.com/community/u/crazycaterpillar",
+    "works": []
+  },
+  "team 설이": {
+    "name": "Team 설이",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "천범식": {
+    "name": "천범식",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20230913_232/1694615350075UmSAQ_PNG/IMG_4740.png",
+    "bio": "안녕하세요! 매주 마감하고있는 웹툰작가 \"천범식\"입니다. \"마감인생\" 이라고도 불립니다🙏",
+    "url": "https://comic.naver.com/community/u/1000bombsick",
+    "works": [
+      {
+        "title": "판타지스케치 - 더 게임",
+        "source": "https://comic.naver.com/webtoon/list?titleId=579417",
+        "cover": "https://image-comic.pstatic.net/webtoon/579417/thumbnail/thumbnail_IMAG21_3618190642656721201.JPEG",
+        "finished": true
+      },
+      {
+        "title": "사람의 조각",
+        "source": "https://comic.naver.com/webtoon/list?titleId=765821",
+        "cover": "https://image-comic.pstatic.net/webtoon/765821/thumbnail/thumbnail_IMAG21_3977066809952645171.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "안수민": {
+    "name": "안수민",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20250630_181/1751291980464ttVEV_PNG/IMG_5015.png",
+    "bio": "안녕하세요🤗",
+    "url": "https://comic.naver.com/community/u/_nbov8",
+    "works": [
+      {
+        "title": "흑역사 어게인",
+        "source": "https://comic.naver.com/webtoon/list?titleId=814817",
+        "cover": "https://image-comic.pstatic.net/webtoon/814817/thumbnail/thumbnail_IMAG21_495bd250-daae-4308-a615-9267801c2595.jpg",
+        "finished": true
+      },
+      {
+        "title": "간병동맹",
+        "source": "https://comic.naver.com/webtoon/list?titleId=850962",
+        "cover": "https://image-comic.pstatic.net/webtoon/850962/thumbnail/thumbnail_IMAG21_c7118c93-3924-4323-94df-b6f26517fe29.jpg",
+        "finished": false
+      }
+    ]
+  },
+  "티바": {
+    "name": "티바",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "악당의 끝은 선택이 아니다",
+        "source": "https://comic.naver.com/webtoon/list?titleId=814125",
+        "cover": "https://image-comic.pstatic.net/webtoon/814125/thumbnail/thumbnail_IMAG21_936a4228-eec7-4482-a2dc-af4543742d8e.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "여슬기": {
+    "name": "여슬기",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "밤마다 남편이 바뀐다",
+        "source": "https://comic.naver.com/webtoon/list?titleId=803649",
+        "cover": "https://image-comic.pstatic.net/webtoon/803649/thumbnail/thumbnail_IMAG21_6602c073-14a8-4a8f-9ee2-cfff898873c2.jpg",
+        "finished": true
+      },
+      {
+        "title": "모럴리스 스캔들",
+        "source": "https://comic.naver.com/webtoon/list?titleId=838705",
+        "cover": "https://image-comic.pstatic.net/webtoon/838705/thumbnail/thumbnail_IMAG21_d95c88ed-c8ed-4428-aa20-95a17c42b48c.jpg",
+        "finished": false
+      }
+    ]
+  },
+  "이른꽃": {
+    "name": "이른꽃",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "멜팅 슬로우",
+        "source": "https://comic.naver.com/webtoon/list?titleId=820166",
+        "cover": "https://image-comic.pstatic.net/webtoon/820166/thumbnail/thumbnail_IMAG21_25f1e164-26f9-456b-9a80-51a8ab5aeed1.jpg",
+        "finished": true
+      },
+      {
+        "title": "바라건대, 당신의 자비를",
+        "source": "https://comic.naver.com/webtoon/list?titleId=833236",
+        "cover": "https://image-comic.pstatic.net/webtoon/833236/thumbnail/thumbnail_IMAG21_c85e0c7d-2d88-44f3-b9f7-84c09d96f2fe.jpg",
+        "finished": false
+      }
+    ]
+  },
+  "성불예정": {
+    "name": "성불예정",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20230916_18/1694833139246IDR4C_PNG/Screenshot_20230730_181501_Whale.png",
+    "bio": "",
+    "url": "https://comic.naver.com/community/u/_kbriy",
+    "works": [
+      {
+        "title": "해골협객",
+        "source": "https://comic.naver.com/webtoon/list?titleId=808388",
+        "cover": "https://image-comic.pstatic.net/webtoon/808388/thumbnail/thumbnail_IMAG21_741d216d-75b8-4a81-93c5-1f6d6f697ed2.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "준1": {
+    "name": "준1",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "해골협객",
+        "source": "https://comic.naver.com/webtoon/list?titleId=808388",
+        "cover": "https://image-comic.pstatic.net/webtoon/808388/thumbnail/thumbnail_IMAG21_741d216d-75b8-4a81-93c5-1f6d6f697ed2.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "미노": {
+    "name": "미노",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20240227_208/1708993915396LHsQN_PNG/IMG_20230101_232650_717.png",
+    "bio": "",
+    "url": "https://comic.naver.com/community/u/Mino",
+    "works": [
+      {
+        "title": "조선야차",
+        "source": "https://comic.naver.com/webtoon/list?titleId=850109",
+        "cover": "https://image-comic.pstatic.net/webtoon/850109/thumbnail/thumbnail_IMAG21_75b7a482-2f0f-4da2-a26c-4aa1e82c965b.jpg",
+        "finished": false
+      },
+      {
+        "title": "사랑받고 있을 때가 아니야",
+        "source": "https://comic.naver.com/webtoon/list?titleId=835045",
+        "cover": "https://image-comic.pstatic.net/webtoon/835045/thumbnail/thumbnail_IMAG21_b54cffcd-75e1-4ac7-ab8a-9754f9db5851.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "saym": {
+    "name": "SAYM",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "박성호": {
+    "name": "박성호",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "전직용병의 검사생활",
+        "source": "https://comic.naver.com/webtoon/list?titleId=840147",
+        "cover": "https://image-comic.pstatic.net/webtoon/840147/thumbnail/thumbnail_IMAG21_132bae82-9453-42d7-9aa7-d0626865a3c2.jpg",
+        "finished": false
+      }
+    ]
+  },
+  "기송": {
+    "name": "기송",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "넴가": {
+    "name": "넴가",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20250720_77/1752938313551kEM0S_PNG/%BE%C6%C0%CC%C4%DC.png",
+    "bio": "잘 부탁드립니다!",
+    "url": "https://comic.naver.com/community/u/nemga",
+    "works": [
+      {
+        "title": "회귀했는데 세상이 안 망함",
+        "source": "https://comic.naver.com/webtoon/list?titleId=836812",
+        "cover": "https://image-comic.pstatic.net/webtoon/836812/thumbnail/thumbnail_IMAG21_59834709-68d1-4d1d-9865-6e5ab4453f1d.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "김언": {
+    "name": "김언",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "천중용문",
+        "source": "https://comic.naver.com/webtoon/list?titleId=835116",
+        "cover": "https://image-comic.pstatic.net/webtoon/835116/thumbnail/thumbnail_IMAG21_9b13b0a9-b8a3-4fe1-adff-7344c7738002.jpg",
+        "finished": false
+      },
+      {
+        "title": "엘리오스 전기",
+        "source": "https://comic.naver.com/webtoon/list?titleId=415350",
+        "cover": "https://image-comic.pstatic.net/webtoon/415350/thumbnail/thumbnail_IMAG21_7378412657581581667.jpg",
+        "finished": true
+      },
+      {
+        "title": "이섭의 연애",
+        "source": "https://comic.naver.com/webtoon/list?titleId=813454",
+        "cover": "https://image-comic.pstatic.net/webtoon/813454/thumbnail/thumbnail_IMAG21_c4366e98-c6eb-4b3e-bc51-9d7b5baadb9c.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "송범규": {
+    "name": "송범규",
+    "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+    "bio": "",
+    "url": "https://comic.naver.com/community/u/_tbp1w",
+    "works": [
+      {
+        "title": "보고 있지?",
+        "source": "https://comic.naver.com/webtoon/list?titleId=794458",
+        "cover": "https://image-comic.pstatic.net/webtoon/794458/thumbnail/thumbnail_IMAG21_7089291664123257185.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "곤붕": {
+    "name": "곤붕",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "무한 레벨업 in 무림",
+        "source": "https://comic.naver.com/webtoon/list?titleId=816676",
+        "cover": "https://image-comic.pstatic.net/webtoon/816676/thumbnail/thumbnail_IMAG21_6ece24a6-9a87-4352-aa93-d88278a21f28.jpg",
+        "finished": false
+      }
+    ]
+  },
+  "남궁인": {
+    "name": "남궁인",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "본인": {
+    "name": "본인",
+    "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+    "bio": "",
+    "url": "https://comic.naver.com/community/u/_ljmtg",
+    "works": [
+      {
+        "title": "SPT - 박쥐의 시간",
+        "source": "https://comic.naver.com/webtoon/list?titleId=815326",
+        "cover": "https://image-comic.pstatic.net/webtoon/815326/thumbnail/thumbnail_IMAG21_15ae6e84-2468-4bfd-b2e9-524a24a69312.jpg",
         "finished": true
       }
     ]
