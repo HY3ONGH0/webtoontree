@@ -2339,10 +2339,10 @@
     "url": "",
     "works": [
       {
-        "title": "AI가 세상을 지배한다면",
-        "source": "https://comic.naver.com/webtoon/list?titleId=755674",
-        "cover": "https://image-comic.pstatic.net/webtoon/755674/thumbnail/thumbnail_IMAG21_3473176247429837112.jpg",
-        "finished": true
+        "title": "내게 종말은 게임이다",
+        "source": "https://comic.naver.com/webtoon/list?titleId=807826",
+        "cover": "https://image-comic.pstatic.net/webtoon/807826/thumbnail/thumbnail_IMAG21_634e489a-2a62-4078-86e0-ca1a24f55f65.jpg",
+        "finished": false
       }
     ]
   },
@@ -7783,6 +7783,69 @@
         "source": "https://comic.naver.com/webtoon/list?titleId=815326",
         "cover": "https://image-comic.pstatic.net/webtoon/815326/thumbnail/thumbnail_IMAG21_15ae6e84-2468-4bfd-b2e9-524a24a69312.jpg",
         "finished": true
+      }
+    ]
+  },
+  "화현": {
+    "name": "화현",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "장요나": {
+    "name": "장요나",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20260830_17/1788089046312K28qY_PNG/17818.png",
+    "bio": "jhn5333@naver.com",
+    "url": "https://comic.naver.com/community/u/Jyona",
+    "works": []
+  },
+  "중고루": {
+    "name": "중고루",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "다크 판타지 속 성기사",
+        "source": "https://comic.naver.com/webtoon/list?titleId=819426",
+        "cover": "https://image-comic.pstatic.net/webtoon/819426/thumbnail/thumbnail_IMAG21_1a7f57a6-bb7c-43d7-aff5-47735d0fc590.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "샤이탄": {
+    "name": "샤이탄",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20260301_235/1772354997179EK0nF_PNG/%BD%B4%C6%DB_%BB%FE%C0%CC%C5%BA_ver.1_2.png",
+    "bio": "장래희망: 세계를 지배한 암흑 대마왕, 박사 학위 3개, 장학금 재단 설립",
+    "url": "https://comic.naver.com/community/u/shaetan",
+    "works": []
+  },
+  "옹구": {
+    "name": "옹구",
+    "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+    "bio": "",
+    "url": "https://comic.naver.com/community/u/_5bouu",
+    "works": [
+      {
+        "title": "스테어스",
+        "source": "https://comic.naver.com/webtoon/list?titleId=736928",
+        "cover": "https://image-comic.pstatic.net/webtoon/736928/thumbnail/thumbnail_IMAG21_7005456294752106342.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "유유": {
+    "name": "유유",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20230914_64/16946508253266Akxo_PNG/600.png",
+    "bio": "안녕하세요! 같은 학교 친구 연재중인 유유입니다.",
+    "url": "https://comic.naver.com/community/u/youryu",
+    "works": [
+      {
+        "title": "송이연 50살, 이혼 한 달 차",
+        "source": "https://comic.naver.com/webtoon/list?titleId=835206",
+        "cover": "https://image-comic.pstatic.net/webtoon/835206/thumbnail/thumbnail_IMAG21_40de3a76-6d90-4ac6-b148-64e39b350672.jpg",
+        "finished": false
       }
     ]
   }
