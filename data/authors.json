@@ -2682,10 +2682,10 @@
     "url": "https://comic.naver.com/community/u/_vsk4g",
     "works": [
       {
-        "title": "세기말 풋사과 보습학원",
-        "source": "https://comic.naver.com/webtoon/list?titleId=761722",
-        "cover": "https://image-comic.pstatic.net/webtoon/761722/thumbnail/thumbnail_IMAG21_47b5d901-5671-403a-bb20-ab9a2fe95883.jpg",
-        "finished": false
+        "title": "치즈인더트랩",
+        "source": "https://comic.naver.com/webtoon/list?titleId=720121",
+        "cover": "https://image-comic.pstatic.net/webtoon/720121/thumbnail/thumbnail_IMAG21_7221302526240580196.jpg",
+        "finished": true
       },
       {
         "title": "쿠키히어로",
@@ -2960,10 +2960,10 @@
     "url": "https://comic.naver.com/community/u/slanket",
     "works": [
       {
-        "title": "급식러너",
-        "source": "https://comic.naver.com/webtoon/list?titleId=770030",
-        "cover": "https://image-comic.pstatic.net/webtoon/770030/thumbnail/thumbnail_IMAG21_3760841466767095601.jpg",
-        "finished": true
+        "title": "스쿨 오브 스트릿",
+        "source": "https://comic.naver.com/webtoon/list?titleId=822642",
+        "cover": "https://image-comic.pstatic.net/webtoon/822642/thumbnail/thumbnail_IMAG21_3ef8c3a2-29d5-45a5-8567-c8e56b6d4642.jpg",
+        "finished": false
       }
     ]
   },
@@ -7899,6 +7899,297 @@
   },
   "너": {
     "name": "너",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "김종섭": {
+    "name": "김종섭",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20240415_83/1713173526076W9gwy_PNG/804C223C-B2B5-4E71-BC3A-85C4F739E8D5.png",
+    "bio": "좋은일 가득하세요~💙 인스타그램: supja_art",
+    "url": "https://comic.naver.com/community/u/supja",
+    "works": [
+      {
+        "title": "사천당가의 검신급 소가주가 되었다",
+        "source": "https://comic.naver.com/webtoon/list?titleId=822862",
+        "cover": "https://image-comic.pstatic.net/webtoon/822862/thumbnail/thumbnail_IMAG21_4b42bf07-151d-42a0-9a5c-b44aa100acdd.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "더블타임": {
+    "name": "더블타임",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "이채은": {
+    "name": "이채은",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20250824_182/1756015929796Lk6aK_PNG/01_%C5%B0%BD%BA%B4%C2%C0%DA%B1%E2%C0%FC%BF%A1_%C6%F7%BD%BA%C5%CD%BD%E6%B3%D7%C0%CF_2%BA%CE.png",
+    "bio": "NAVERWEBTOON <트럼프>, <키스는 자기 전에> Insta @txn20121228",
+    "url": "https://comic.naver.com/community/u/txn20121228",
+    "works": [
+      {
+        "title": "키스는 자기 전에",
+        "source": "https://comic.naver.com/webtoon/list?titleId=818643",
+        "cover": "https://image-comic.pstatic.net/webtoon/818643/thumbnail/thumbnail_IMAG21_ae559947-65f6-4ac3-8832-237800ac20d6.jpg",
+        "finished": false
+      }
+    ]
+  },
+  "섭이": {
+    "name": "섭이",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20240522_97/1716353571393HvzwL_PNG/1000032942.png",
+    "bio": "",
+    "url": "https://comic.naver.com/community/u/supp",
+    "works": [
+      {
+        "title": "마도서를 줍다 마법사가 되다",
+        "source": "https://comic.naver.com/webtoon/list?titleId=855671",
+        "cover": "https://image-comic.pstatic.net/webtoon/855671/thumbnail/thumbnail_IMAG21_7c8a33aa-77cc-4541-8353-d9ef0d7ec928.jpg",
+        "finished": false
+      }
+    ]
+  },
+  "박성현": {
+    "name": "박성현",
+    "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
+    "bio": "",
+    "url": "https://comic.naver.com/community/u/_abp73",
+    "works": [
+      {
+        "title": "냥하무인",
+        "source": "https://comic.naver.com/webtoon/list?titleId=719507",
+        "cover": "https://image-comic.pstatic.net/webtoon/719507/thumbnail/thumbnail_IMAG21_3703700959062997045.jpg",
+        "finished": true
+      },
+      {
+        "title": "사장님을 잠금해제",
+        "source": "https://comic.naver.com/webtoon/list?titleId=743031",
+        "cover": "https://image-comic.pstatic.net/webtoon/743031/thumbnail/thumbnail_IMAG21_7075214620980687416.jpg",
+        "finished": true
+      },
+      {
+        "title": "돈구멍",
+        "source": "https://comic.naver.com/webtoon/list?titleId=828950",
+        "cover": "https://image-comic.pstatic.net/webtoon/828950/thumbnail/thumbnail_IMAG21_1d9f4f33-d2ca-4702-95cd-681c11db19ed.jpg",
+        "finished": true
+      },
+      {
+        "title": "사실 마법이었던 거임",
+        "source": "https://comic.naver.com/webtoon/list?titleId=774865",
+        "cover": "https://image-comic.pstatic.net/webtoon/774865/thumbnail/thumbnail_IMAG21_7305176584710874161.jpg",
+        "finished": true
+      },
+      {
+        "title": "코인 리벤지",
+        "source": "https://comic.naver.com/webtoon/list?titleId=801998",
+        "cover": "https://image-comic.pstatic.net/webtoon/801998/thumbnail/thumbnail_IMAG21_6607e2c4-b8bd-4145-94f6-ed96d1ec27a2.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "심재영": {
+    "name": "심재영",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20260828_116/17879107509261ItVE_PNG/NewCanvas4.png",
+    "bio": "제가 굶고 있어요 ㅠ email : re-zero95@naver.com",
+    "url": "https://comic.naver.com/community/u/zero95",
+    "works": [
+      {
+        "title": "선의의 경쟁",
+        "source": "https://comic.naver.com/webtoon/list?titleId=748069",
+        "cover": "https://image-comic.pstatic.net/webtoon/748069/thumbnail/thumbnail_IMAG21_7003208682531271014.jpg",
+        "finished": true
+      },
+      {
+        "title": "배드 엔딩 메이커",
+        "source": "https://comic.naver.com/webtoon/list?titleId=812017",
+        "cover": "https://image-comic.pstatic.net/webtoon/812017/thumbnail/thumbnail_IMAG21_017f773e-5879-4620-bf22-146f897ad559.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "글망쟁이": {
+    "name": "글망쟁이",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "섀이": {
+    "name": "섀이",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "장그린": {
+    "name": "장그린",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20231218_164/17029039663615CjJQ_PNG/%C0%E5%B1%D7%B8%B0.png",
+    "bio": "내가그린장그린그림 @jangreeen_",
+    "url": "https://comic.naver.com/community/u/jangreeen",
+    "works": [
+      {
+        "title": "팀장님은 신혼이 피곤하다",
+        "source": "https://comic.naver.com/webtoon/list?titleId=804868",
+        "cover": "https://image-comic.pstatic.net/webtoon/804868/thumbnail/thumbnail_IMAG21_93eac9f2-8185-43a1-ab9e-272fc5c96fe1.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "플라비": {
+    "name": "플라비",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "입술이 예쁜 남자",
+        "source": "https://comic.naver.com/webtoon/list?titleId=791629",
+        "cover": "https://image-comic.pstatic.net/webtoon/791629/thumbnail/thumbnail_IMAG21_4122541015824753209.jpg",
+        "finished": true
+      },
+      {
+        "title": "너의 달콤한 숨을",
+        "source": "https://comic.naver.com/webtoon/list?titleId=835176",
+        "cover": "https://image-comic.pstatic.net/webtoon/835176/thumbnail/thumbnail_IMAG21_3fc30b7e-6f3c-49fd-b4db-72c9d3a4e03b.jpg",
+        "finished": false
+      }
+    ]
+  },
+  "봉이": {
+    "name": "봉이",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "당신의 그림자를 그만두었을 때",
+        "source": "https://comic.naver.com/webtoon/list?titleId=807406",
+        "cover": "https://image-comic.pstatic.net/webtoon/807406/thumbnail/thumbnail_IMAG21_6fbae7f4-b275-4c27-8ae0-23549dc8a84e.jpg",
+        "finished": true
+      },
+      {
+        "title": "비서 일탈",
+        "source": "https://comic.naver.com/webtoon/list?titleId=801515",
+        "cover": "https://image-comic.pstatic.net/webtoon/801515/thumbnail/thumbnail_IMAG21_2e85c821-0398-4b06-9c61-66f729974082.jpg",
+        "finished": true
+      },
+      {
+        "title": "경계선",
+        "source": "https://comic.naver.com/webtoon/list?titleId=838217",
+        "cover": "https://image-comic.pstatic.net/webtoon/838217/thumbnail/thumbnail_IMAG21_576ebf36-d9a3-4a5e-ac79-f6c67c9b3c7a.jpg",
+        "finished": false
+      },
+      {
+        "title": "자화자찬",
+        "source": "https://comic.naver.com/webtoon/list?titleId=849449",
+        "cover": "https://image-comic.pstatic.net/webtoon/849449/thumbnail/thumbnail_IMAG21_f761db34-6e7c-45e7-ab56-28076ebcdebe.jpg",
+        "finished": false
+      }
+    ]
+  },
+  "갈피": {
+    "name": "갈피",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "오윤": {
+    "name": "오윤",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "폭군 남편과 이혼하겠습니다",
+        "source": "https://comic.naver.com/webtoon/list?titleId=797844",
+        "cover": "https://image-comic.pstatic.net/webtoon/797844/thumbnail/thumbnail_IMAG21_1ffb357a-bb83-4d88-9dfb-d8b20eabdb75.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "ctk": {
+    "name": "CTK",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "롭플롭",
+        "source": "https://comic.naver.com/webtoon/list?titleId=780983",
+        "cover": "https://image-comic.pstatic.net/webtoon/780983/thumbnail/thumbnail_IMAG21_3558466274943657061.jpg",
+        "finished": true
+      },
+      {
+        "title": "잭슨의 관",
+        "source": "https://comic.naver.com/webtoon/list?titleId=759092",
+        "cover": "https://image-comic.pstatic.net/webtoon/759092/thumbnail/thumbnail_IMAG21_3474303251948647473.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "돌석": {
+    "name": "돌석",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20240625_77/1719279042208aqiy8_PNG/%C4%B8%C3%B3.png",
+    "bio": "안녕하세요, 독자님. 만화 그리는 돌멩이입니다.",
+    "url": "https://comic.naver.com/community/u/_51860i",
+    "works": []
+  },
+  "이량": {
+    "name": "이량",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "중대장은 실망했다",
+        "source": "https://comic.naver.com/webtoon/list?titleId=841639",
+        "cover": "https://image-comic.pstatic.net/webtoon/841639/thumbnail/thumbnail_IMAG21_4aca7dd7-dfda-44a0-984e-2583976d707f.jpg",
+        "finished": false
+      }
+    ]
+  },
+  "유월": {
+    "name": "유월",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20240722_97/1721634319477bTFsU_PNG/%C7%C1%BB%E7.png",
+    "bio": "인스타 @june6month 블로그 https://blog.naver.com/ddanddan02",
+    "url": "https://comic.naver.com/community/u/june6month",
+    "works": [
+      {
+        "title": "동트는 로맨스",
+        "source": "https://comic.naver.com/webtoon/list?titleId=746285",
+        "cover": "https://image-comic.pstatic.net/webtoon/746285/thumbnail/thumbnail_IMAG21_7017845389930148663.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "로커8": {
+    "name": "로커8",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20251011_39/1760111606578HGlI0_PNG/IMG_1437.png",
+    "bio": "@lokeo_8  즐거운 만화!🪽",
+    "url": "https://comic.naver.com/community/u/lokeo8",
+    "works": []
+  },
+  "섭이53": {
+    "name": "섭이53",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "무명": {
+    "name": "무명",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "방구석와룡": {
+    "name": "방구석와룡",
     "img": "",
     "bio": "",
     "url": "",
