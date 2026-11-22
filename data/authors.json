@@ -6206,15 +6206,15 @@
         "finished": true
       },
       {
-        "title": "A.I. 닥터",
-        "source": "https://comic.naver.com/webtoon/list?titleId=765804",
-        "cover": "https://image-comic.pstatic.net/webtoon/765804/thumbnail/thumbnail_IMAG21_bca18580-e6e1-42d8-8e89-1b496c00ebf7.jpg",
-        "finished": false
-      },
-      {
         "title": "중증외상센터 : 외과의사 백강혁",
         "source": "https://comic.naver.com/webtoon/list?titleId=835736",
         "cover": "https://image-comic.pstatic.net/webtoon/835736/thumbnail/thumbnail_IMAG21_b4c990c2-ef0d-45b5-bcee-d45e492712cf.jpg",
+        "finished": false
+      },
+      {
+        "title": "검은 머리 영국 의사",
+        "source": "https://comic.naver.com/webtoon/list?titleId=835435",
+        "cover": "https://image-comic.pstatic.net/webtoon/835435/thumbnail/thumbnail_IMAG21_cf340c28-1083-46ea-8169-a5e0939a0ef1.jpg",
         "finished": false
       },
       {
@@ -7867,6 +7867,41 @@
     "img": "https://kw-community.pstatic.net/static/real/26.37.1-hotfix.7/_next/static/media/profile-image-light.0y1gv_vozmcwr.png",
     "bio": "",
     "url": "https://comic.naver.com/community/u/_x1kxil",
+    "works": []
+  },
+  "zaino": {
+    "name": "ZAINO",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": []
+  },
+  "쿠큐": {
+    "name": "쿠큐",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20230925_83/1695636820854R8Wnz_PNG/1695636784252.png",
+    "bio": "안녕하세요 쿠큐입니다!",
+    "url": "https://comic.naver.com/community/u/kuiq",
+    "works": []
+  },
+  "나": {
+    "name": "나",
+    "img": "",
+    "bio": "",
+    "url": "",
+    "works": [
+      {
+        "title": "나는 어디에 있는 거니",
+        "source": "https://comic.naver.com/webtoon/list?titleId=72498",
+        "cover": "https://image-comic.pstatic.net/webtoon/72498/thumbnail/thumbnail_IMAG21_3618421527216862769.jpg",
+        "finished": true
+      }
+    ]
+  },
+  "너": {
+    "name": "너",
+    "img": "",
+    "bio": "",
+    "url": "",
     "works": []
   }
 }
