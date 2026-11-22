@@ -17710,7 +17710,11 @@
       "subs": [
         "fantasy-1"
       ],
-      "age": 15
+      "age": 15,
+      "apick": [
+        "lliooli"
+      ],
+      "pick": true
     },
     {
       "id": "w027",
@@ -20205,7 +20209,8 @@
   "meta": {
     "lastWebtoonId": 6722,
     "admins": {
-      "hoje": "효제"
+      "admin": "최종 관리자",
+      "lliooli": "설하"
     }
   },
   "version": 1,
