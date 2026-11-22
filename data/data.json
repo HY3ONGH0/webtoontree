@@ -1,6 +1,49 @@
 {
   "webtoons": [
     {
+      "id": "w6723ods",
+      "title": "레사 시즌2~3",
+      "author": "POGO",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=603159",
+      "cover": "https://image-comic.pstatic.net/webtoon/603159/thumbnail/thumbnail_IMAG21_3904964132380750392.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#170e12",
+      "episodes": 237,
+      "status": "completed",
+      "days": [
+        "wed"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-23",
+      "tags": [
+        "판타지",
+        "몰아보기",
+        "먼치킨",
+        "완결판타지"
+      ],
+      "desc": "어둠을 따르는 자와, 빛을 따르려는 자. \n마침내 모두에게 공평한 멸망의 때가 왔다...! \n멸망을 막기 위한 신들의 전쟁.",
+      "authors": [
+        {
+          "name": "POGO",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=603159",
+      "age": 12,
+      "autoAt": "2026-11-23",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
       "id": "w6722ndx",
       "title": "사실 마법이었던 거임",
       "author": "박성현",
@@ -20207,10 +20250,9 @@
     "libraryLock": true
   },
   "meta": {
-    "lastWebtoonId": 6722,
+    "lastWebtoonId": 6723,
     "admins": {
-      "admin": "최종 관리자",
-      "lliooli": "설하"
+      "hoje": "효제"
     }
   },
   "version": 1,
