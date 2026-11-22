@@ -1,6 +1,108 @@
 {
   "webtoons": [
     {
+      "id": "w6706kmr",
+      "title": "낭만 죽이기",
+      "author": "나, 너",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=857700",
+      "cover": "https://image-comic.pstatic.net/webtoon/857700/thumbnail/thumbnail_IMAG21_bb8367f2-955e-4287-a901-6d396d8d2636.jpg",
+      "genres": [
+        "thriller"
+      ],
+      "recommended": 0,
+      "color": "#26211e",
+      "episodes": 1,
+      "status": "ongoing",
+      "days": [
+        "sun"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-22",
+      "tags": [
+        "스릴러",
+        "시리어스",
+        "미스터리",
+        "최강자전",
+        "아포칼립스",
+        "학원물"
+      ],
+      "desc": "전국적으로 인기를 끌게 된 수면 보조제 ‘백일몽’은 사람들의 낭만을 꿈에서 실현시켜준다. 그러나 부작용으로 사상자가 나왔다는 뉴스를 시작으로, 상황은 악화되어 ‘허상 바이러스’의 감염자가 늘어나 혼란해진 현재. 학교에 갇힌 이 솔은 아이들과 함께 학교를 탈출해 현실에서 살아가는 법을 모색한다.",
+      "authors": [
+        {
+          "name": "나",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "너",
+          "roles": [
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=857700",
+      "age": 15,
+      "autoAt": "2026-11-22"
+    },
+    {
+      "id": "w6705mou",
+      "title": "A.I. 닥터",
+      "author": "ZAINO, 쿠큐, 한산이가",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=765804",
+      "cover": "https://image-comic.pstatic.net/webtoon/765804/thumbnail/thumbnail_IMAG21_bca18580-e6e1-42d8-8e89-1b496c00ebf7.jpg",
+      "genres": [
+        "drama"
+      ],
+      "recommended": 0,
+      "color": "#d9e5e8",
+      "episodes": 262,
+      "status": "ongoing",
+      "days": [
+        "fri"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-22",
+      "tags": [
+        "드라마",
+        "사이다",
+        "현대판타지",
+        "현대",
+        "직업드라마",
+        "SF",
+        "의학드라마",
+        "소설원작"
+      ],
+      "desc": "태화 그룹이 미래를 걸고 개발한 진단 목적 A.I. 바루다!\n내과 레지던트 1년 차 이수혁은 바루다를 견학하던 중 원인 모를 폭발에 휘말려 정신을 잃고 만다.\n그리고 다시 정신을 차렸을 때 그는 자신의 머릿속에 존재하는 A.I. 바루다를 마주한다.\n이미 절대 떨어질 수 없는 사이가 되어 버린 둘.\n딥러닝을 계속해 세계 최고의 진단 인공지능이 되는 것이 목적인 바루다와\n어려운 환경에서도 악착같이 출세를 위해 노력해 온 수혁,\n그들은 의기투합해 환자를 치료해 나가며 세계 최고의 내과 의사를 목표로 활동을 개시한다.",
+      "authors": [
+        {
+          "name": "ZAINO",
+          "roles": [
+            "writer"
+          ]
+        },
+        {
+          "name": "쿠큐",
+          "roles": [
+            "painter"
+          ]
+        },
+        {
+          "name": "한산이가",
+          "roles": [
+            "original"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=765804",
+      "age": 0,
+      "autoAt": "2026-11-22"
+    },
+    {
       "id": "w6704ygt",
       "title": "럼버잭",
       "author": "룡키, 무무8",
@@ -637,7 +739,7 @@
         "fantasy"
       ],
       "recommended": 0,
-      "color": "",
+      "color": "#1a130c",
       "episodes": 33,
       "status": "ongoing",
       "days": [],
@@ -16157,9 +16259,10 @@
       "coverAuto": true,
       "arate": {
         "admin": 3,
-        "lliooli": 3
+        "lliooli": 3,
+        "hoje": 4
       },
-      "recAvg": 3,
+      "recAvg": 3.3,
       "age": 15,
       "subs": [
         "romance-2"
@@ -19330,7 +19433,7 @@
     "libraryLock": true
   },
   "meta": {
-    "lastWebtoonId": 6704,
+    "lastWebtoonId": 6706,
     "admins": {
       "hoje": "효제"
     }
