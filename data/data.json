@@ -109,7 +109,9 @@
       "platform": "네이버웹툰",
       "url": "https://comic.naver.com/webtoon/list?titleId=853684",
       "cover": "https://image-comic.pstatic.net/webtoon/853684/thumbnail/thumbnail_IMAG21_a13d0c5a-3d39-4812-a6c0-7a4b953079e1.jpg",
-      "genres": [],
+      "genres": [
+        "fantasy"
+      ],
       "recommended": 0,
       "color": "#362927",
       "episodes": 6,
@@ -145,7 +147,10 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=853684",
       "age": 15,
-      "autoAt": "2026-11-22"
+      "autoAt": "2026-11-22",
+      "subs": [
+        "fantasy-5"
+      ]
     },
     {
       "id": "w6703bcb",
