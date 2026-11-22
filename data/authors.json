@@ -5973,6 +5973,12 @@
         "source": "https://comic.naver.com/webtoon/list?titleId=679490",
         "cover": "https://image-comic.pstatic.net/webtoon/679490/thumbnail/thumbnail_IMAG21_7161960565892658229.jpg",
         "finished": true
+      },
+      {
+        "title": "무무 무적",
+        "source": "https://comic.naver.com/webtoon/list?titleId=857487",
+        "cover": "https://image-comic.pstatic.net/webtoon/857487/thumbnail/thumbnail_IMAG21_23ecc37e-637c-48f2-aa8d-1927e967c2dc.jpg",
+        "finished": false
       }
     ]
   },
@@ -7978,16 +7984,16 @@
         "finished": true
       },
       {
-        "title": "사실 마법이었던 거임",
-        "source": "https://comic.naver.com/webtoon/list?titleId=774865",
-        "cover": "https://image-comic.pstatic.net/webtoon/774865/thumbnail/thumbnail_IMAG21_7305176584710874161.jpg",
-        "finished": true
-      },
-      {
         "title": "코인 리벤지",
         "source": "https://comic.naver.com/webtoon/list?titleId=801998",
         "cover": "https://image-comic.pstatic.net/webtoon/801998/thumbnail/thumbnail_IMAG21_6607e2c4-b8bd-4145-94f6-ed96d1ec27a2.jpg",
         "finished": true
+      },
+      {
+        "title": "월스트리트 천재의 시한부 투자법",
+        "source": "https://comic.naver.com/webtoon/list?titleId=854407",
+        "cover": "https://image-comic.pstatic.net/webtoon/854407/thumbnail/thumbnail_IMAG21_d5f98ef0-c29e-43fe-a03c-bd3a48a42d76.jpg",
+        "finished": false
       }
     ]
   },
