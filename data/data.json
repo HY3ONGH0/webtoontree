@@ -1,6 +1,50 @@
 {
   "webtoons": [
     {
+      "id": "w6726",
+      "title": "랜덤채팅의 그녀!",
+      "author": "박은혁",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=702608",
+      "cover": "https://image-comic.pstatic.net/webtoon/702608/thumbnail/thumbnail_IMAG21_7005692479348499809.jpg",
+      "genres": [
+        "romance"
+      ],
+      "recommended": 0,
+      "color": "#ebe4e6",
+      "episodes": 351,
+      "status": "completed",
+      "days": [
+        "tue"
+      ],
+      "autoCount": false,
+      "baseDate": "2026-11-23",
+      "tags": [
+        "드라마",
+        "사이다",
+        "하렘",
+        "러브코미디",
+        "학원액션",
+        "참교육",
+        "피카레스크",
+        "범죄"
+      ],
+      "desc": "랜덤채팅만 하던 준우에게 온 기적!\n과연 그녀(들)에게 다가갈수 있을까?!\n(읽다 보면 원픽 캐릭터 무조건 생김ㅇㅇ)",
+      "authors": [
+        {
+          "name": "박은혁",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=702608",
+      "age": 15,
+      "autoAt": "2026-11-23"
+    },
+    {
       "id": "w6723ods",
       "title": "레사 시즌2~3",
       "author": "POGO",
@@ -13755,9 +13799,10 @@
       "url": "https://comic.naver.com/webtoon/list?titleId=850214",
       "cover": "https://image-comic.pstatic.net/webtoon/850214/thumbnail/thumbnail_IMAG21_38079741-6a35-462b-824a-8846e2e6b8e4.jpg",
       "genres": [
-        "romance"
+        "romance",
+        "daily"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "color": "#f7e7e9",
       "episodes": 26,
       "status": "ongoing",
@@ -13791,9 +13836,9 @@
       "autoAt": "2026-11-16",
       "arate": {
         "admin": 4,
-        "lliooli": 2
+        "lliooli": 4
       },
-      "recAvg": 3,
+      "recAvg": 4,
       "age": 12,
       "subs": [
         "romance-2",
@@ -19596,60 +19641,64 @@
       "start": "w036",
       "nodes": {
         "w019": [
-          300,
-          370
+          530,
+          420
         ],
         "w020": [
-          850,
-          290
+          990,
+          360
         ],
         "w018": [
-          660,
-          200
-        ],
-        "w022": [
-          300,
+          810,
           210
         ],
+        "w022": [
+          430,
+          150
+        ],
         "w032": [
-          480,
-          280
+          700,
+          350
         ],
         "w035": [
-          300,
-          60
+          480,
+          270
         ],
         "w036": [
           110,
           280
         ],
         "w041": [
-          660,
-          430
+          860,
+          480
         ],
         "w045": [
-          900,
-          430
+          1120,
+          480
         ],
         "w046": [
-          1100,
+          1370,
           480
         ],
         "w062": [
-          210,
-          490
+          1240,
+          360
         ],
         "w063": [
-          570,
-          50
+          780,
+          80
         ],
         "w235": [
-          810,
-          60
+          1020,
+          80
         ],
         "w233": [
-          1000,
-          120
+          1210,
+          220
+        ],
+        "w195": [
+          580,
+          70
         ]
       },
       "links": [
@@ -19714,11 +19763,6 @@
           "why": "현시점 goat를 보고싶다면...?"
         },
         {
-          "from": "w036",
-          "to": "w062",
-          "why": "서사의 극치, 사극 로맨스의 극치"
-        },
-        {
           "from": "w035",
           "to": "w063",
           "why": "그냥 재밌고 싶어요..."
@@ -19757,6 +19801,21 @@
           "from": "w032",
           "to": "w041",
           "why": "학원물"
+        },
+        {
+          "from": "w020",
+          "to": "w062",
+          "why": "전설"
+        },
+        {
+          "from": "w035",
+          "to": "w195",
+          "why": "캠퍼스물 완성도로 가자"
+        },
+        {
+          "from": "w195",
+          "to": "w063",
+          "why": "캠퍼스물 다른맛도..."
         }
       ],
       "starts": []
@@ -20250,9 +20309,10 @@
     "libraryLock": true
   },
   "meta": {
-    "lastWebtoonId": 6723,
+    "lastWebtoonId": 6726,
     "admins": {
-      "hoje": "효제"
+      "hoje": "효제",
+      "lliooli": "설하"
     }
   },
   "version": 1,
