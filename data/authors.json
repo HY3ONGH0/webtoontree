@@ -8200,5 +8200,25 @@
     "bio": "",
     "url": "",
     "works": []
+  },
+  "박은혁": {
+    "name": "박은혁",
+    "img": "https://kw-wcommunity-phinf.pstatic.net/20231006_40/1696602879257YYIg4_PNG/IMG_8265.png",
+    "bio": "안녕하세요 박은혁 입니다!",
+    "url": "https://comic.naver.com/community/u/_lbori",
+    "works": [
+      {
+        "title": "최면학교",
+        "source": "https://comic.naver.com/webtoon/list?titleId=776656",
+        "cover": "https://image-comic.pstatic.net/webtoon/776656/thumbnail/thumbnail_IMAG21_3559314170173470050.jpg",
+        "finished": true
+      },
+      {
+        "title": "방송은 방송으로 봐",
+        "source": "https://comic.naver.com/webtoon/list?titleId=808265",
+        "cover": "https://image-comic.pstatic.net/webtoon/808265/thumbnail/thumbnail_IMAG21_9efa88c9-cd85-41c2-8c4c-8dea39c6acd9.jpg",
+        "finished": true
+      }
+    ]
   }
 }
