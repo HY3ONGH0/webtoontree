@@ -865,12 +865,6 @@
         "finished": true
       },
       {
-        "title": "레사 시즌2~3",
-        "source": "https://comic.naver.com/webtoon/list?titleId=603159",
-        "cover": "https://image-comic.pstatic.net/webtoon/603159/thumbnail/thumbnail_IMAG21_3904964132380750392.jpg",
-        "finished": true
-      },
-      {
         "title": "레사 시즌1",
         "source": "https://comic.naver.com/webtoon/list?titleId=478262",
         "cover": "https://image-comic.pstatic.net/webtoon/478262/thumbnail/thumbnail_IMAG21_4063201468423091760.JPEG",
@@ -899,6 +893,12 @@
         "source": "https://comic.naver.com/webtoon/list?titleId=843116",
         "cover": "https://image-comic.pstatic.net/webtoon/843116/thumbnail/thumbnail_IMAG21_ae6cdd6e-a02d-4ec7-a2ad-85b295ee1a6b.jpg",
         "finished": false
+      },
+      {
+        "title": "AI가 세상을 지배한다면",
+        "source": "https://comic.naver.com/webtoon/list?titleId=755674",
+        "cover": "https://image-comic.pstatic.net/webtoon/755674/thumbnail/thumbnail_IMAG21_3473176247429837112.jpg",
+        "finished": true
       }
     ]
   },
@@ -8076,6 +8076,12 @@
         "source": "https://comic.naver.com/webtoon/list?titleId=807406",
         "cover": "https://image-comic.pstatic.net/webtoon/807406/thumbnail/thumbnail_IMAG21_6fbae7f4-b275-4c27-8ae0-23549dc8a84e.jpg",
         "finished": true
+      },
+      {
+        "title": "천하제일 제갈학관",
+        "source": "https://comic.naver.com/webtoon/list?titleId=857374",
+        "cover": "https://image-comic.pstatic.net/webtoon/857374/thumbnail/thumbnail_IMAG21_377e6e7f-8684-4773-a049-a4d115f208e3.jpg",
+        "finished": false
       },
       {
         "title": "비서 일탈",
