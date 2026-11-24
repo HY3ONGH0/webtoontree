@@ -1,6 +1,53 @@
 {
   "webtoons": [
     {
+      "id": "w6728kqc",
+      "title": "하울링",
+      "author": "WANKE",
+      "platform": "네이버웹툰",
+      "url": "https://comic.naver.com/webtoon/list?titleId=854794",
+      "cover": "https://image-comic.pstatic.net/webtoon/854794/thumbnail/thumbnail_IMAG21_d4b2ac79-0640-413d-bf34-6d356686667a.jpg",
+      "genres": [
+        "fantasy"
+      ],
+      "recommended": 0,
+      "color": "#1a100b",
+      "episodes": 8,
+      "status": "ongoing",
+      "days": [
+        "tue"
+      ],
+      "autoCount": true,
+      "baseDate": "2026-11-24",
+      "tags": [
+        "판타지",
+        "2025 지상최대공모전",
+        "액션판타지",
+        "현대",
+        "이능력",
+        "소년물",
+        "액션",
+        "다크판타지"
+      ],
+      "desc": "인간이 ‘짐승’으로 변하는 재해, 짐승병이 창궐한 서울.\n그곳에서 병든 동생을 홀로 돌보며 살아가는 유난히 감이 좋은 소년, 리르.\n그러던 어느 날, 병원에서 정체불명의 사건이 벌어진다.\n유일한 가족을 지키려던 리르는 인간과 짐승의 경계에서 다시 눈을 뜬다.\n\n“약속할게— 반드시 널 되찾겠다고.”\n”짐승이 되어서라도.”",
+      "authors": [
+        {
+          "name": "WANKE",
+          "roles": [
+            "writer",
+            "painter"
+          ]
+        }
+      ],
+      "coverAuto": true,
+      "source": "https://comic.naver.com/webtoon/list?titleId=854794",
+      "age": 15,
+      "autoAt": "2026-11-24",
+      "subs": [
+        "fantasy-5"
+      ]
+    },
+    {
       "id": "w6726",
       "title": "랜덤채팅의 그녀!",
       "author": "박은혁",
@@ -20309,10 +20356,9 @@
     "libraryLock": true
   },
   "meta": {
-    "lastWebtoonId": 6726,
+    "lastWebtoonId": 6728,
     "admins": {
-      "hoje": "효제",
-      "lliooli": "설하"
+      "hoje": "효제"
     }
   },
   "version": 1,
