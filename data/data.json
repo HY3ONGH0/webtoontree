@@ -42,7 +42,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=702608",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6723ods",
@@ -82,7 +82,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=603159",
       "age": 12,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -123,7 +123,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=774865",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "daily-1"
       ]
@@ -175,7 +175,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=855671",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -221,7 +221,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=779354",
       "age": 0,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6719mzu",
@@ -235,13 +235,13 @@
       ],
       "recommended": 0,
       "color": "#fadad2",
-      "episodes": 100,
-      "status": "hiatus",
+      "episodes": 101,
+      "status": "ongoing",
       "days": [
         "tue"
       ],
-      "autoCount": false,
-      "baseDate": "2026-11-22",
+      "autoCount": true,
+      "baseDate": "2026-11-24",
       "tags": [
         "로맨스",
         "우정",
@@ -265,7 +265,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=828402",
       "age": 0,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6718lae",
@@ -310,7 +310,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=824750",
       "age": 12,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "daily-1"
       ]
@@ -357,7 +357,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=826440",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "sports-2"
       ]
@@ -404,7 +404,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=753842",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -447,7 +447,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=770030",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -506,7 +506,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=787061",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-7"
       ]
@@ -555,7 +555,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=753856",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "romance-3"
       ]
@@ -604,7 +604,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=804418",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6711gct",
@@ -648,7 +648,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=761722",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "romance-3"
       ]
@@ -706,7 +706,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=854407",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6709jey",
@@ -751,7 +751,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=730694",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -795,7 +795,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=524520",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -850,7 +850,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=855498",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6706kmr",
@@ -897,7 +897,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=857700",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6705mou",
@@ -952,7 +952,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=765804",
       "age": 0,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6704ygt",
@@ -999,7 +999,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=853684",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -1043,7 +1043,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=774832",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "romance-3"
       ]
@@ -1092,7 +1092,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=755674",
       "age": 12,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6701lrb",
@@ -1135,7 +1135,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=796062",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6700qha",
@@ -1173,7 +1173,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=795929",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6699txa",
@@ -1228,7 +1228,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=854302",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -1280,7 +1280,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=850976",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6697vxe",
@@ -1335,7 +1335,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=846109",
       "age": 19,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6696edt",
@@ -1381,7 +1381,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=753858",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6695jzz",
@@ -1426,7 +1426,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=741458",
       "age": 12,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -1484,7 +1484,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=759940",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6693rju",
@@ -1539,7 +1539,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=761104",
       "age": 12,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "romance-3"
       ]
@@ -1580,7 +1580,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=740034",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "romance-3"
       ]
@@ -1612,7 +1612,7 @@
       ],
       "coverAuto": true,
       "source": "https://ridibooks.com/books/6305000001",
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-2"
       ]
@@ -1638,7 +1638,7 @@
       "desc": "여기 악마가 있어 작품소개: 게임회사의 인사팀에서 일하게 된 1년 차 직장인 조승훈.인간의 모습을 한 악마 상사와 함께 회사를 급성장시키게 되는데…성장의 이면에 있는 악마의 진짜 목표는 무엇이며,이를 깨달은 인간은 과연 어떤 선택을 하게 될 것인가....",
       "coverAuto": true,
       "source": "https://ridibooks.com/books/1746034299",
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "authors": [
         {
           "name": "맷집왕",
@@ -1687,7 +1687,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=724854",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6688imw",
@@ -1731,7 +1731,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=754875",
       "age": 12,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -1778,7 +1778,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=703630",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -1820,7 +1820,7 @@
       "coverAuto": true,
       "source": "https://webtoon.kakao.com/content/%EC%9C%A0%EC%82%AC%EA%B3%BC%ED%95%99-%ED%83%90%EA%B5%AC%EC%98%81%EC%97%AD/1397",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "daily-1"
       ]
@@ -1872,7 +1872,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=833052",
       "age": 19,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6684qpi",
@@ -1912,7 +1912,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=685460",
       "age": 0,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6683aps",
@@ -1941,7 +1941,7 @@
       ],
       "coverAuto": true,
       "source": "https://www.lezhin.com/ko/comic/academy_of_card",
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "romance-2"
       ]
@@ -1984,7 +1984,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=828373",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-8"
       ]
@@ -2026,7 +2026,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=728128",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -2085,7 +2085,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=800726",
       "age": 0,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6679mzh",
@@ -2129,7 +2129,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=733074",
       "age": 0,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6678enq",
@@ -2169,7 +2169,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=811721",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "daily-1"
       ]
@@ -2216,7 +2216,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=679568",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -2264,7 +2264,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=808269",
       "age": 19,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -2309,7 +2309,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=650305",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6674gkr",
@@ -2349,7 +2349,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=478262",
       "age": 12,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -2396,7 +2396,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=728900",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "romance-3"
       ]
@@ -2444,7 +2444,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=764129",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -2503,7 +2503,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=832703",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-1"
       ]
@@ -2549,7 +2549,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=730174",
       "age": 12,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6669hlr",
@@ -2592,7 +2592,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=727798",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6668vxv",
@@ -2630,7 +2630,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=635174",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -2672,7 +2672,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=736281",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -2718,7 +2718,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=727189",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6665tha",
@@ -2762,7 +2762,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=715159",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -2808,7 +2808,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=668101",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "romance-2"
       ]
@@ -2856,7 +2856,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=616239",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "daily-1"
       ]
@@ -2904,7 +2904,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=843116",
       "age": 19,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ],
@@ -2963,7 +2963,7 @@
       "coverAuto": true,
       "source": "https://webtoon.kakao.com/content/%EC%9E%AC%EC%95%99%EA%B8%89-%EC%98%81%EC%9B%85%EB%8B%98%EC%9D%B4-%EA%B7%80%ED%99%98%ED%95%98%EC%85%A8%EB%8B%A4/2701",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -3010,7 +3010,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=821812",
       "age": 0,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6659",
@@ -3065,7 +3065,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=855686",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6658snu",
@@ -3114,7 +3114,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=655746",
       "age": 12,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -3172,7 +3172,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=822570",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -3220,7 +3220,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=807029",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -3279,7 +3279,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=824264",
       "age": 12,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "daily-1",
         "fantasy-1"
@@ -3328,7 +3328,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=807634",
       "age": 12,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "daily-1"
       ]
@@ -3375,7 +3375,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=783056",
       "age": 12,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "daily-1",
         "fantasy-6"
@@ -3425,7 +3425,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=812851",
       "age": 12,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5",
         "daily-1"
@@ -3491,7 +3491,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=814742",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6650uge",
@@ -3546,7 +3546,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=828715",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6649apn",
@@ -3590,7 +3590,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=732036",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "daily-1"
       ]
@@ -3633,7 +3633,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=701535",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "sports-4"
       ]
@@ -3697,7 +3697,7 @@
       "coverAuto": true,
       "age": 12,
       "source": "https://comic.naver.com/webtoon/list?titleId=775141",
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-1"
       ]
@@ -3744,7 +3744,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=834511",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-7"
       ]
@@ -3800,7 +3800,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=835762",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -3847,7 +3847,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=676695",
       "age": 12,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -3900,7 +3900,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=820102",
       "age": 0,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6642bpt",
@@ -3945,7 +3945,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=746833",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "romance-3",
         "fantasy-7"
@@ -3999,7 +3999,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=717481",
       "age": 12,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -4046,7 +4046,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=752532",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6639tbt",
@@ -4091,7 +4091,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=821408",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "romance-3"
       ]
@@ -4144,7 +4144,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=813454",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "romance-3"
       ]
@@ -4190,7 +4190,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=738488",
       "age": 12,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6636myi",
@@ -4229,7 +4229,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=715772",
       "age": 0,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6635uvo",
@@ -4274,7 +4274,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=648419",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6634mxb",
@@ -4314,7 +4314,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=179704",
       "age": 0,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6633cex",
@@ -4369,7 +4369,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=808757",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-6"
       ]
@@ -4421,7 +4421,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=798101",
       "age": 12,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6631pus",
@@ -4466,7 +4466,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=846114",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6630yfq",
@@ -4515,7 +4515,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=772764",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6629hzd",
@@ -4564,7 +4564,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=823496",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "romance-2"
       ]
@@ -4622,7 +4622,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=835435",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6627igy",
@@ -4665,7 +4665,7 @@
         "fantasy-5"
       ],
       "source": "https://comic.naver.com/webtoon/list?titleId=718021",
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6626dml",
@@ -4710,7 +4710,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=608261",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6625iey",
@@ -4756,7 +4756,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=761565",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6624gqv",
@@ -4803,7 +4803,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=670149",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6623dci",
@@ -4852,7 +4852,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=743139",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6622upf",
@@ -4899,7 +4899,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=703307",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -4947,7 +4947,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=786987",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6620urm",
@@ -4992,7 +4992,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=703308",
       "age": 12,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6619jik",
@@ -5036,7 +5036,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=830004",
       "age": 0,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "sports-4"
       ]
@@ -5089,7 +5089,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=823284",
       "age": 0,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6617rtz",
@@ -5104,12 +5104,12 @@
       "recommended": 0,
       "color": "#3f4650",
       "episodes": 22,
-      "status": "ongoing",
+      "status": "hiatus",
       "days": [
         "tue"
       ],
-      "autoCount": true,
-      "baseDate": "2026-11-19",
+      "autoCount": false,
+      "baseDate": "2026-11-24",
       "tags": [
         "액션",
         "고자극스릴러",
@@ -5131,7 +5131,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=851854",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6616llz",
@@ -5173,7 +5173,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=846781",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
@@ -5231,7 +5231,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=828670",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "romance-2"
       ]
@@ -5284,7 +5284,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=771718",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-1",
         "romance-2"
@@ -5332,7 +5332,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=838078",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6612wqi",
@@ -5348,12 +5348,12 @@
       "recommended": 0,
       "color": "#fee5d4",
       "episodes": 110,
-      "status": "ongoing",
+      "status": "hiatus",
       "days": [
         "wed"
       ],
-      "autoCount": true,
-      "baseDate": "2026-11-19",
+      "autoCount": false,
+      "baseDate": "2026-11-24",
       "tags": [
         "액션",
         "러브코미디",
@@ -5377,7 +5377,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=821321",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "romance-2"
       ]
@@ -5428,7 +5428,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=850079",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6610dzd",
@@ -5483,7 +5483,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=798182",
       "age": 12,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-1"
       ]
@@ -5533,7 +5533,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=845515",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5",
         "fantasy-8"
@@ -5599,7 +5599,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=844589",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-6"
       ]
@@ -5653,7 +5653,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=845508",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-2"
       ]
@@ -5705,7 +5705,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=758037",
       "age": 15,
-      "autoAt": "2026-11-23"
+      "autoAt": "2026-11-24"
     },
     {
       "id": "w6605jmv",
@@ -5749,7 +5749,7 @@
       "coverAuto": true,
       "source": "https://comic.naver.com/webtoon/list?titleId=838212",
       "age": 15,
-      "autoAt": "2026-11-23",
+      "autoAt": "2026-11-24",
       "subs": [
         "fantasy-5"
       ]
